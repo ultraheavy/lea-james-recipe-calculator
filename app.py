@@ -150,9 +150,9 @@ def index():
 def inventory():
     with get_db() as conn:
         items = conn.execute('''
-            SELECT i.*, v.vendor_name as vendor_display_name 
+            SELECT i.* 
             FROM inventory i 
-            LEFT JOIN vendors v ON i.vendor_name = v.vendor_name 
+             
             ORDER BY i.item_code
         ''').fetchall()
     return render_template('inventory.html', items=items)
