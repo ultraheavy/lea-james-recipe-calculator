@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Add Inventory Item - Restaurant Recipe Calculator{% endblock %}
+
+{% block content %}
+<h1>Add Inventory Item</h1>
+<p>Add a new ingredient to your inventory master list.</p>
+
+<form method="POST" style="max-width: 600px;">
+    <div class="form-group">
+        <label for="item_number">Item Number:</label>
+        <input type="text" id="item_number" name="item_number" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="item_description">Item Description:</label>
+        <input type="text" id="item_description" name="item_description" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="current_price">Current Price ($):</label>
+        <input type="number" id="current_price" name="current_price" step="0.01" min="0">
+    </div>
+    
+    <div class="form-group">
+        <label for="unit_measure">Unit of Measure:</label>
+        <select id="unit_measure" name="unit_measure">
+            <option value="LB">LB (Pound)</option>
+            <option value="OZ">OZ (Ounce)</option>
+            <option value="EA">EA (Each)</option>
+            <option value="Box">Box</option>
+            <option value="Can">Can</option>
+            <option value="Bottle">Bottle</option>
+            <option value="Bag">Bag</option>
+            <option value="Carton">Carton</option>
+            <option value="Roll">Roll</option>
+            <option value="Jar">Jar</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="purchase_unit">Purchase Unit:</label>
+        <input type="text" id="purchase_unit" name="purchase_unit" placeholder="e.g., Case, Box, LB">
+    </div>
+    
+    <div class="form-group">
+        <label for="recipe_cost_unit">Recipe Cost Unit:</label>
+        <input type="text" id="recipe_cost_unit" name="recipe_cost_unit" placeholder="e.g., OZ, Cup, Each">
+    </div>
+    
+    <div class="form-group">
+        <label for="yield_percent">Yield Percentage:</label>
+        <input type="number" id="yield_percent" name="yield_percent" step="0.1" min="0" max="100" value="100">
+        <small>Percentage of usable product after preparation (default: 100%)</small>
+    </div>
+    
+    <div style="margin-top: 20px;">
+        <button type="submit" class="btn btn-success">Add Item</button>
+        <a href="/inventory" class="btn" style="margin-left: 10px;">Cancel</a>
+    </div>
+</form>
+{% endblock %}

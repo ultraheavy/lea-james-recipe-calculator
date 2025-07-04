@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Menu Items - Restaurant Recipe Calculator{% endblock %}
+
+{% block content %}
+<h1>Menu Item Management</h1>
+<p>Manage your menu items and link them to recipes for cost analysis.</p>
+
+<a href="/menu/add" class="btn btn-success">Add New Menu Item</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Item Name</th>
+            <th>Menu Group</th>
+            <th>Linked Recipe</th>
+            <th>Menu Price</th>
+            <th>Food Cost</th>
+            <th>Food Cost %</th>
+            <th>Gross Profit</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if menu_items %}
+            {% for item in menu_items %}
+            <tr>
+                <td>{{ item.item_name }}</td>
+                <td>{{ item.menu_group or 'Ungrouped' }}</td>
+                <td>{{ item.recipe_name or 'No Recipe' }}</td>
+                <td>${{ "%.2f"|format(item.menu_price or 0) }}</td>
+                <td>${{ "%.2f"|format(item.food_cost or 0) }}</td>
+                <td>{{ "%.1f"|format(item.food_cost_percent or 0) }}%</td>
+                <td>${{ "%.2f"|format(item.gross_profit or 0) }}</td>
+                <td>
+                    <a href="/menu/edit/{{ item.id }}" class="btn" style="font-size: 12px; padding: 5px 10px;">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="8" style="text-align: center; padding: 40px;">
+                    No menu items found. <a href="/menu/add">Add your first menu item</a>
+                </td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

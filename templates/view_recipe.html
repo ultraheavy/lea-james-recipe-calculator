@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}{{ recipe.recipe_name }} - Recipe Details{% endblock %}
+
+{% block content %}
+<h1>{{ recipe.recipe_name }}</h1>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
+    <div>
+        <h3>Recipe Information</h3>
+        <p><strong>Recipe Number:</strong> {{ recipe.recipe_number or 'N/A' }}</p>
+        <p><strong>Yield:</strong> {{ recipe.yield_amount or 'N/A' }}</p>
+        <p><strong>Shelf Life:</strong> {{ recipe.shelf_life or 'N/A' }}</p>
+        <p><strong>Station:</strong> {{ recipe.station or 'N/A' }}</p>
+        <p><strong>Total Cost:</strong> ${{ "%.2f"|format(recipe.total_cost or 0) }}</p>
+    </div>
+    
+    <div>
+        <h3>Procedure</h3>
+        <p>{{ recipe.procedure or 'No procedure entered' }}</p>
+    </div>
+</div>
+
+<h3>Ingredients</h3>
+{% if ingredients %}
+<table>
+    <thead>
+        <tr>
+            <th>Ingredient</th>
+            <th>Quantity</th>
+            <th>Unit</th>
+            <th>Cost</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ingredient in ingredients %}
+        <tr>
+            <td>{{ ingredient.item_description }}</td>
+            <td>{{ ingredient.quantity or 'N/A' }}</td>
+            <td>{{ ingredient.unit or ingredient.unit_measure }}</td>
+            <td>${{ "%.2f"|format(ingredient.cost or 0) }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr style="font-weight: bold; background-color: #f8f9fa;">
+            <td colspan="3">Total Recipe Cost:</td>
+            <td>${{ "%.2f"|format(recipe.total_cost or 0) }}</td>
+        </tr>
+    </tfoot>
+</table>
+{% else %}
+<div style="text-align: center; padding: 40px; background: #f8f9fa; border-radius: 8px;">
+    <p>No ingredients added to this recipe yet.</p>
+    <a href="#" class="btn">Add Ingredients</a>
+</div>
+{% endif %}
+
+<div style="margin-top: 30px;">
+    <a href="/recipes" class="btn">← Back to Recipes</a>
+    <a href="/recipes/edit/{{ recipe.id }}" class="btn">Edit Recipe</a>
+</div>
+{% endblock %}

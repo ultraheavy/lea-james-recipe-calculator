@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Add Recipe - Restaurant Recipe Calculator{% endblock %}
+
+{% block content %}
+<h1>Add Recipe</h1>
+<p>Create a new recipe with cost calculations.</p>
+
+<form method="POST" style="max-width: 600px;">
+    <div class="form-group">
+        <label for="recipe_name">Recipe Name:</label>
+        <input type="text" id="recipe_name" name="recipe_name" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="recipe_number">Recipe Number:</label>
+        <input type="number" id="recipe_number" name="recipe_number" min="1">
+    </div>
+    
+    <div class="form-group">
+        <label for="yield_amount">Yield Amount:</label>
+        <input type="text" id="yield_amount" name="yield_amount" placeholder="e.g., 4 portions, 2 lbs">
+    </div>
+    
+    <div class="form-group">
+        <label for="shelf_life">Shelf Life:</label>
+        <select id="shelf_life" name="shelf_life">
+            <option value="1 shift">1 shift</option>
+            <option value="1 day">1 day</option>
+            <option value="2 days">2 days</option>
+            <option value="3 days">3 days</option>
+            <option value="4 days">4 days</option>
+            <option value="5 days">5 days</option>
+            <option value="6 days">6 days</option>
+            <option value="7 days">7 days</option>
+            <option value="8 days">8 days</option>
+            <option value="9 days">9 days</option>
+            <option value="10 days">10 days</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="station">Kitchen Station:</label>
+        <select id="station" name="station">
+            <option value="Prep cook">Prep cook</option>
+            <option value="Line cook">Line cook</option>
+            <option value="Sous chef">Sous chef</option>
+            <option value="Pantry">Pantry</option>
+            <option value="Grill station">Grill station</option>
+            <option value="Fry station">Fry station</option>
+            <option value="Dishwasher">Dishwasher</option>
+            <option value="Server">Server</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="procedure">Procedure/Instructions:</label>
+        <textarea id="procedure" name="procedure" rows="4" placeholder="Enter cooking instructions and procedures..."></textarea>
+    </div>
+    
+    <div style="margin-top: 20px;">
+        <button type="submit" class="btn btn-success">Create Recipe</button>
+        <a href="/recipes" class="btn" style="margin-left: 10px;">Cancel</a>
+    </div>
+</form>
+
+{% if inventory %}
+<div style="margin-top: 40px;">
+    <h3>Available Ingredients</h3>
+    <p><em>Note: After creating the recipe, you can add ingredients on the recipe detail page.</em></p>
+    <table style="font-size: 12px;">
+        <thead>
+            <tr>
+                <th>Item #</th>
+                <th>Description</th>
+                <th>Unit</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in inventory[:10] %}
+            <tr>
+                <td>{{ item.item_number }}</td>
+                <td>{{ item.item_description }}</td>
+                <td>{{ item.unit_measure }}</td>
+                <td>${{ "%.2f"|format(item.current_price or 0) }}</td>
+            </tr>
+            {% endfor %}
+            {% if inventory|length > 10 %}
+            <tr>
+                <td colspan="4" style="text-align: center; font-style: italic;">
+                    ... and {{ inventory|length - 10 }} more items
+                </td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% endblock %}

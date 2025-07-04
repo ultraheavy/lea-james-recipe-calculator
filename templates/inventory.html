@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Inventory - Restaurant Recipe Calculator{% endblock %}
+
+{% block content %}
+<h1>Inventory Management</h1>
+<p>Manage your ingredient inventory, similar to the "Inventory Master" sheet in your Excel file.</p>
+
+<a href="/inventory/add" class="btn btn-success">Add New Item</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Item #</th>
+            <th>Description</th>
+            <th>Current Price</th>
+            <th>Unit</th>
+            <th>Purchase Unit</th>
+            <th>Recipe Unit</th>
+            <th>Yield %</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if items %}
+            {% for item in items %}
+            <tr>
+                <td>{{ item.item_number }}</td>
+                <td>{{ item.item_description }}</td>
+                <td>${{ "%.2f"|format(item.current_price or 0) }}</td>
+                <td>{{ item.unit_measure }}</td>
+                <td>{{ item.purchase_unit }}</td>
+                <td>{{ item.recipe_cost_unit }}</td>
+                <td>{{ item.yield_percent }}%</td>
+                <td>
+                    <a href="/inventory/edit/{{ item.id }}" class="btn" style="font-size: 12px; padding: 5px 10px;">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="8" style="text-align: center; padding: 40px;">
+                    No inventory items found. <a href="/inventory/add">Add your first item</a>
+                </td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}
