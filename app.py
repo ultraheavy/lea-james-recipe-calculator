@@ -291,6 +291,103 @@ def view_recipe(recipe_id):
     
     return render_template('view_recipe.html', recipe=recipe, ingredients=ingredients)
 
+@app.route('/recipes/<int:recipe_id>/ingredients/add', methods=['GET', 'POST'])
+def add_recipe_ingredient(recipe_id):
+    """Add ingredient to recipe"""
+    if request.method == 'POST':
+        with get_db() as conn:
+            cursor = conn.cursor()
+            
+            # Get ingredient info for cost calculation
+            ingredient = cursor.execute('SELECT * FROM inventory WHERE id = ?', 
+                                      (request.form['ingredient_id'],)).fetchone()
+            
+            quantity = float(request.form['quantity'])
+            unit = request.form.get('unit') or ingredient['unit_measure']
+            
+            # Calculate cost based on cost_per_recipe_unit
+            cost = quantity * (ingredient['cost_per_recipe_unit'] or 0)
+            
+            # Insert recipe ingredient
+            cursor.execute('''
+                INSERT INTO recipe_ingredients 
+                (recipe_id, ingredient_id, quantity, unit, cost)
+                VALUES (?, ?, ?, ?, ?)
+            ''', (recipe_id, request.form['ingredient_id'], quantity, unit, cost))
+            
+            # Update recipe total cost
+            cursor.execute('''
+                UPDATE recipes 
+                SET food_cost = (SELECT SUM(cost) FROM recipe_ingredients WHERE recipe_id = ?),
+                    total_cost = (SELECT SUM(cost) FROM recipe_ingredients WHERE recipe_id = ?) + COALESCE(labor_cost, 0)
+                WHERE id = ?
+            ''', (recipe_id, recipe_id, recipe_id))
+            
+            conn.commit()
+        
+        return redirect(url_for('view_recipe', recipe_id=recipe_id))
+    
+    # Get recipe and inventory for form
+    with get_db() as conn:
+        recipe = conn.execute('SELECT * FROM recipes WHERE id = ?', (recipe_id,)).fetchone()
+        inventory = conn.execute('SELECT * FROM inventory ORDER BY item_description').fetchall()
+    
+    return render_template('add_recipe_ingredient.html', recipe=recipe, inventory=inventory)
+
+@app.route('/recipes/<int:recipe_id>/ingredients/edit/<int:ingredient_id>', methods=['GET', 'POST'])
+def edit_recipe_ingredient(recipe_id, ingredient_id):
+    """Edit recipe ingredient"""
+    if request.method == 'POST':
+        with get_db() as conn:
+            cursor = conn.cursor()
+            
+            # Get ingredient info for cost calculation
+            ingredient = cursor.execute('SELECT * FROM inventory WHERE id = ?', 
+                                      (request.form['ingredient_id'],)).fetchone()
+            
+            quantity = float(request.form['quantity'])
+            unit = request.form.get('unit') or ingredient['unit_measure']
+            
+            # Calculate cost based on cost_per_recipe_unit
+            cost = quantity * (ingredient['cost_per_recipe_unit'] or 0)
+            
+            # Update recipe ingredient
+            cursor.execute('''
+                UPDATE recipe_ingredients 
+                SET ingredient_id = ?, quantity = ?, unit = ?, cost = ?
+                WHERE id = ? AND recipe_id = ?
+            ''', (request.form['ingredient_id'], quantity, unit, cost, 
+                  ingredient_id, recipe_id))
+            
+            # Update recipe total cost
+            cursor.execute('''
+                UPDATE recipes 
+                SET food_cost = (SELECT SUM(cost) FROM recipe_ingredients WHERE recipe_id = ?),
+                    total_cost = (SELECT SUM(cost) FROM recipe_ingredients WHERE recipe_id = ?) + COALESCE(labor_cost, 0)
+                WHERE id = ?
+            ''', (recipe_id, recipe_id, recipe_id))
+            
+            conn.commit()
+        
+        return redirect(url_for('view_recipe', recipe_id=recipe_id))
+    
+    # Get recipe, ingredient, and inventory for form
+    with get_db() as conn:
+        recipe = conn.execute('SELECT * FROM recipes WHERE id = ?', (recipe_id,)).fetchone()
+        ingredient = conn.execute('''
+            SELECT ri.*, i.item_description 
+            FROM recipe_ingredients ri
+            JOIN inventory i ON ri.ingredient_id = i.id
+            WHERE ri.id = ? AND ri.recipe_id = ?
+        ''', (ingredient_id, recipe_id)).fetchone()
+        inventory = conn.execute('SELECT * FROM inventory ORDER BY item_description').fetchall()
+    
+    if not ingredient:
+        return redirect(url_for('view_recipe', recipe_id=recipe_id))
+    
+    return render_template('edit_recipe_ingredient.html', 
+                         recipe=recipe, ingredient=ingredient, inventory=inventory)
+
 @app.route('/menu')
 def menu():
     """Menu management page with enhanced data"""

@@ -22,6 +22,7 @@
 </div>
 
 <h3>Ingredients</h3>
+<a href="/recipes/{{ recipe.id }}/ingredients/add" class="btn btn-success">Add Ingredient</a>
 {% if ingredients %}
 <table>
     <thead>
@@ -30,6 +31,7 @@
             <th>Quantity</th>
             <th>Unit</th>
             <th>Cost</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -39,12 +41,15 @@
             <td>{{ ingredient.quantity or 'N/A' }}</td>
             <td>{{ ingredient.unit or ingredient.unit_measure }}</td>
             <td>${{ "%.2f"|format(ingredient.cost or 0) }}</td>
+            <td>
+                <a href="/recipes/{{ recipe.id }}/ingredients/edit/{{ ingredient.id }}" class="btn" style="font-size: 12px; padding: 5px 10px;">Edit</a>
+            </td>
         </tr>
         {% endfor %}
     </tbody>
     <tfoot>
         <tr style="font-weight: bold; background-color: #f8f9fa;">
-            <td colspan="3">Total Recipe Cost:</td>
+            <td colspan="4">Total Recipe Cost:</td>
             <td>${{ "%.2f"|format(recipe.total_cost or 0) }}</td>
         </tr>
     </tfoot>

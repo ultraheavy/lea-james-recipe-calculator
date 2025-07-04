@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Add Ingredient to {{ recipe.recipe_name }} - Restaurant Recipe Calculator{% endblock %}
+
+{% block content %}
+<h1>Add Ingredient to {{ recipe.recipe_name }}</h1>
+<p>Add a new ingredient to this recipe</p>
+
+<form method="POST">
+    <label for="ingredient_id">Ingredient:</label>
+    <select id="ingredient_id" name="ingredient_id" required>
+        <option value="">Select an ingredient</option>
+        {% for item in inventory %}
+        <option value="{{ item.id }}">{{ item.item_description }} ({{ item.unit_measure }})</option>
+        {% endfor %}
+    </select>
+    
+    <label for="quantity">Quantity:</label>
+    <input type="number" step="0.001" id="quantity" name="quantity" required>
+    
+    <label for="unit">Unit:</label>
+    <input type="text" id="unit" name="unit" placeholder="Override unit if needed">
+    
+    <button type="submit">Add Ingredient</button>
+    <a href="/recipes/{{ recipe.id }}" class="btn" style="background-color: #6c757d;">Cancel</a>
+</form>
+{% endblock %}
