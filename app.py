@@ -407,6 +407,20 @@ def edit_recipe_ingredient(recipe_id, ingredient_id):
     return render_template('edit_recipe_ingredient.html', 
                          recipe=recipe, ingredient=ingredient, inventory=inventory)
 
+@app.route('/recipes/delete/<int:recipe_id>', methods=['POST'])
+def delete_recipe(recipe_id):
+    """Delete recipe and all its ingredients"""
+    with get_db() as conn:
+        # Delete all recipe ingredients first
+        conn.execute('DELETE FROM recipe_ingredients WHERE recipe_id = ?', (recipe_id,))
+        
+        # Delete the recipe
+        conn.execute('DELETE FROM recipes WHERE id = ?', (recipe_id,))
+        
+        conn.commit()
+    
+    return redirect(url_for('recipes'))
+
 @app.route('/menu')
 def menu():
     """Menu management page with enhanced data"""

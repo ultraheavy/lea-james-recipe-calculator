@@ -33,6 +33,10 @@
                 <td>
                     <a href="/recipes/{{ recipe.id }}" class="btn" style="font-size: 12px; padding: 5px 10px;">View</a>
                     <a href="/recipes/edit/{{ recipe.id }}" class="btn" style="font-size: 12px; padding: 5px 10px;">Edit</a>
+                    <form method="POST" action="/recipes/delete/{{ recipe.id }}" style="display: inline;">
+                        <button type="submit" class="btn" style="font-size: 12px; padding: 5px 10px; background-color: #dc3545; color: white;" 
+                                onclick="return confirm('Are you sure you want to delete {{ recipe.recipe_name }}? This will also delete all its ingredients.')">Delete</button>
+                    </form>
                 </td>
             </tr>
             {% endfor %}
