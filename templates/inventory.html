@@ -34,6 +34,10 @@
                 <td>{{ item.yield_percent }}%</td>
                 <td>
                     <a href="/inventory/edit/{{ item.id }}" class="btn" style="font-size: 12px; padding: 5px 10px;">Edit</a>
+                    <form method="POST" action="/inventory/delete/{{ item.id }}" style="display: inline;">
+                        <button type="submit" class="btn" style="font-size: 12px; padding: 5px 10px; background-color: #dc3545; color: white;" 
+                                onclick="return confirm('Are you sure you want to delete {{ item.item_description }}?')">Delete</button>
+                    </form>
                 </td>
             </tr>
             {% endfor %}

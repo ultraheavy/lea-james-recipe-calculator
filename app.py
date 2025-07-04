@@ -230,6 +230,25 @@ def edit_inventory(item_id):
     
     return render_template('edit_inventory.html', item=item, vendors=vendors)
 
+@app.route('/inventory/delete/<int:item_id>', methods=['POST'])
+def delete_inventory(item_id):
+    """Delete inventory item and its recipe ingredient references"""
+    with get_db() as conn:
+        # Check if item is used in any recipes
+        usage_count = conn.execute('''
+            SELECT COUNT(*) FROM recipe_ingredients WHERE ingredient_id = ?
+        ''', (item_id,)).fetchone()[0]
+        
+        if usage_count > 0:
+            # Item is in use, we'll remove it from recipes first
+            conn.execute('DELETE FROM recipe_ingredients WHERE ingredient_id = ?', (item_id,))
+        
+        # Delete the inventory item
+        conn.execute('DELETE FROM inventory WHERE id = ?', (item_id,))
+        conn.commit()
+    
+    return redirect(url_for('inventory'))
+
 @app.route('/recipes')
 def recipes():
     with get_db() as conn:
