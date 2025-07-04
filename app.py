@@ -191,6 +191,45 @@ def add_inventory():
     
     return render_template('add_inventory.html', vendors=vendors)
 
+@app.route('/inventory/edit/<int:item_id>', methods=['GET', 'POST'])
+def edit_inventory(item_id):
+    """Edit existing inventory item"""
+    if request.method == 'POST':
+        with get_db() as conn:
+            conn.execute('''
+                UPDATE inventory 
+                SET item_code = ?, item_description = ?, vendor_name = ?, 
+                    current_price = ?, unit_measure = ?, purchase_unit = ?, 
+                    recipe_cost_unit = ?, yield_percent = ?, 
+                    cost_per_recipe_unit = ?, conversion_factor = ?
+                WHERE id = ?
+            ''', (
+                request.form['item_code'],
+                request.form['item_description'],
+                request.form['vendor_name'],
+                float(request.form['current_price']) if request.form['current_price'] else 0,
+                request.form['unit_measure'],
+                request.form['purchase_unit'],
+                request.form['recipe_cost_unit'],
+                float(request.form['yield_percent']) if request.form['yield_percent'] else 100,
+                float(request.form['cost_per_recipe_unit']) if request.form['cost_per_recipe_unit'] else 0,
+                float(request.form['conversion_factor']) if request.form['conversion_factor'] else 1,
+                item_id
+            ))
+            conn.commit()
+        
+        return redirect(url_for('inventory'))
+    
+    # Get item data and vendors for form
+    with get_db() as conn:
+        item = conn.execute('SELECT * FROM inventory WHERE id = ?', (item_id,)).fetchone()
+        vendors = conn.execute('SELECT DISTINCT name FROM vendors ORDER BY name').fetchall()
+    
+    if not item:
+        return redirect(url_for('inventory'))
+    
+    return render_template('edit_inventory.html', item=item, vendors=vendors)
+
 @app.route('/recipes')
 def recipes():
     with get_db() as conn:

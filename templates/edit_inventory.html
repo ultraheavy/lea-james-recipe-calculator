@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Inventory Item - Restaurant Recipe Calculator{% endblock %}
+
+{% block content %}
+<h1>Edit Inventory Item</h1>
+<p>Update the details for {{ item.item_description }}</p>
+
+<form method="POST">
+    <label for="item_code">Item Code:</label>
+    <input type="text" id="item_code" name="item_code" value="{{ item.item_code }}" required>
+    
+    <label for="item_description">Description:</label>
+    <input type="text" id="item_description" name="item_description" value="{{ item.item_description }}" required>
+    
+    <label for="vendor_name">Vendor:</label>
+    <select id="vendor_name" name="vendor_name">
+        <option value="">Select a vendor</option>
+        {% for vendor in vendors %}
+        <option value="{{ vendor.name }}" {% if vendor.name == item.vendor_name %}selected{% endif %}>{{ vendor.name }}</option>
+        {% endfor %}
+    </select>
+    
+    <label for="unit_measure">Unit Measure:</label>
+    <input type="text" id="unit_measure" name="unit_measure" value="{{ item.unit_measure }}">
+    
+    <label for="purchase_unit">Purchase Unit:</label>
+    <input type="text" id="purchase_unit" name="purchase_unit" value="{{ item.purchase_unit }}">
+    
+    <label for="recipe_cost_unit">Recipe Cost Unit:</label>
+    <input type="text" id="recipe_cost_unit" name="recipe_cost_unit" value="{{ item.recipe_cost_unit }}">
+    
+    <label for="current_price">Current Price:</label>
+    <input type="number" step="0.01" id="current_price" name="current_price" value="{{ item.current_price }}">
+    
+    <label for="yield_percent">Yield Percent:</label>
+    <input type="number" id="yield_percent" name="yield_percent" value="{{ item.yield_percent }}">
+    
+    <label for="cost_per_recipe_unit">Cost per Recipe Unit:</label>
+    <input type="number" step="0.0001" id="cost_per_recipe_unit" name="cost_per_recipe_unit" value="{{ item.cost_per_recipe_unit }}">
+    
+    <label for="conversion_factor">Conversion Factor:</label>
+    <input type="number" step="0.0001" id="conversion_factor" name="conversion_factor" value="{{ item.conversion_factor }}">
+    
+    <button type="submit">Update Item</button>
+    <a href="/inventory" class="btn" style="background-color: #6c757d;">Cancel</a>
+</form>
+{% endblock %}
