@@ -429,19 +429,34 @@ def edit_inventory(item_id):
 
 @app.route('/inventory/delete/<int:item_id>', methods=['POST'])
 def delete_inventory(item_id):
-    """Delete inventory item and its recipe ingredient references"""
+    """Delete inventory item and recalculate affected recipe costs"""
     with get_db() as conn:
-        # Check if item is used in any recipes
-        usage_count = conn.execute('''
-            SELECT COUNT(*) FROM recipe_ingredients WHERE ingredient_id = ?
-        ''', (item_id,)).fetchone()[0]
+        cursor = conn.cursor()
         
-        if usage_count > 0:
-            # Item is in use, we'll remove it from recipes first
-            conn.execute('DELETE FROM recipe_ingredients WHERE ingredient_id = ?', (item_id,))
+        # Find which recipes will be affected BEFORE deleting
+        affected_recipes = cursor.execute('''
+            SELECT DISTINCT recipe_id FROM recipe_ingredients WHERE ingredient_id = ?
+        ''', (item_id,)).fetchall()
         
-        # Delete the inventory item
-        conn.execute('DELETE FROM inventory WHERE id = ?', (item_id,))
+        # Delete the ingredient from all recipes
+        cursor.execute('DELETE FROM recipe_ingredients WHERE ingredient_id = ?', (item_id,))
+        
+        # Delete vendor products for this item
+        cursor.execute('DELETE FROM vendor_products WHERE inventory_id = ?', (item_id,))
+        
+        # Delete the inventory item itself
+        cursor.execute('DELETE FROM inventory WHERE id = ?', (item_id,))
+        
+        # Recalculate costs for all affected recipes
+        for row in affected_recipes:
+            recipe_id = row['recipe_id']
+            cursor.execute('''
+                UPDATE recipes 
+                SET food_cost = (SELECT COALESCE(SUM(cost), 0) FROM recipe_ingredients WHERE recipe_id = ?),
+                    prime_cost = (SELECT COALESCE(SUM(cost), 0) FROM recipe_ingredients WHERE recipe_id = ?) + COALESCE(labor_cost, 0)
+                WHERE id = ?
+            ''', (recipe_id, recipe_id, recipe_id))
+        
         conn.commit()
     
     return redirect(url_for('inventory'))
