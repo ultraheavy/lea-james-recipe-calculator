@@ -42,8 +42,10 @@
    ======================================== */
 
 /* Hide desktop navigation by default */
-.navbar-menu {
-  display: none;
+.navbar-menu,
+.neo-nav-menu.navbar-menu,
+.fam-nav-menu.navbar-menu {
+  display: none !important;
 }
 
 /* Show mobile menu toggle by default */
@@ -72,8 +74,10 @@
 }
 
 /* Mobile Menu Styles (when active) */
-.navbar-menu.active {
-  display: flex;
+.navbar-menu.active,
+.neo-nav-menu.navbar-menu.active,
+.fam-nav-menu.navbar-menu.active {
+  display: flex !important;
   position: fixed;
   top: 0;
   left: 0;
@@ -200,8 +204,10 @@
    ======================================== */
 @media (min-width: 768px) {
   /* Show desktop navigation */
-  .navbar-menu {
-    display: flex;
+  .navbar-menu,
+  .neo-nav-menu.navbar-menu,
+  .fam-nav-menu.navbar-menu {
+    display: flex !important;
     position: static;
     flex-direction: row;
     align-items: center;
