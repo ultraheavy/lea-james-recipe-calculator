@@ -12,7 +12,7 @@
         <p><strong>Yield:</strong> {{ recipe.yield_amount or 'N/A' }}</p>
         <p><strong>Shelf Life:</strong> {{ recipe.shelf_life or 'N/A' }}</p>
         <p><strong>Station:</strong> {{ recipe.station or 'N/A' }}</p>
-        <p><strong>Total Cost:</strong> ${{ "%.2f"|format(recipe.total_cost or 0) }}</p>
+        <p><strong>Total Cost:</strong> ${{ "%.2f"|format(recipe.food_cost or 0) }}</p>
     </div>
     
     <div>
@@ -39,7 +39,7 @@
         <tr>
             <td>{{ ingredient.item_description }}</td>
             <td>{{ ingredient.quantity or 'N/A' }}</td>
-            <td>{{ ingredient.unit or ingredient.unit_measure }}</td>
+            <td>{{ ingredient.unit_of_measure or ingredient.unit_measure }}</td>
             <td>${{ "%.2f"|format(ingredient.cost or 0) }}</td>
             <td>
                 <a href="/recipes/{{ recipe.id }}/ingredients/edit/{{ ingredient.id }}" class="btn" style="font-size: 12px; padding: 5px 10px;">Edit</a>
@@ -50,7 +50,7 @@
     <tfoot>
         <tr style="font-weight: bold; background-color: #f8f9fa;">
             <td colspan="4">Total Recipe Cost:</td>
-            <td>${{ "%.2f"|format(recipe.total_cost or 0) }}</td>
+            <td>${{ "%.2f"|format(recipe.food_cost or 0) }}</td>
         </tr>
     </tfoot>
 </table>
@@ -63,6 +63,5 @@
 
 <div style="margin-top: 30px;">
     <a href="/recipes" class="btn">← Back to Recipes</a>
-    <a href="/recipes/edit/{{ recipe.id }}" class="btn">Edit Recipe</a>
 </div>
 {% endblock %}

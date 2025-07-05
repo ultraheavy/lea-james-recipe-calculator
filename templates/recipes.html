@@ -26,13 +26,12 @@
             <tr>
                 <td>{{ recipe.recipe_number or 'N/A' }}</td>
                 <td>{{ recipe.recipe_name }}</td>
-                <td>${{ "%.2f"|format(recipe.total_cost or 0) }}</td>
+                <td>${{ "%.2f"|format(recipe.food_cost or 0) }}</td>
                 <td>{{ recipe.yield_amount or 'N/A' }}</td>
                 <td>{{ recipe.shelf_life or 'N/A' }}</td>
                 <td>{{ recipe.station or 'N/A' }}</td>
                 <td>
                     <a href="/recipes/{{ recipe.id }}" class="btn" style="font-size: 12px; padding: 5px 10px;">View</a>
-                    <a href="/recipes/edit/{{ recipe.id }}" class="btn" style="font-size: 12px; padding: 5px 10px;">Edit</a>
                     <form method="POST" action="/recipes/delete/{{ recipe.id }}" style="display: inline;">
                         <button type="submit" class="btn" style="font-size: 12px; padding: 5px 10px; background-color: #dc3545; color: white;" 
                                 onclick="return confirm('Are you sure you want to delete {{ recipe.recipe_name }}? This will also delete all its ingredients.')">Delete</button>

@@ -200,8 +200,7 @@ def edit_inventory(item_id):
                 UPDATE inventory 
                 SET item_code = ?, item_description = ?, vendor_name = ?, 
                     current_price = ?, unit_measure = ?, purchase_unit = ?, 
-                    recipe_cost_unit = ?, yield_percent = ?, 
-                    cost_per_recipe_unit = ?, conversion_factor = ?
+                    recipe_cost_unit = ?, yield_percent = ?
                 WHERE id = ?
             ''', (
                 request.form['item_code'],
@@ -212,8 +211,6 @@ def edit_inventory(item_id):
                 request.form['purchase_unit'],
                 request.form['recipe_cost_unit'],
                 float(request.form['yield_percent']) if request.form['yield_percent'] else 100,
-                float(request.form['cost_per_recipe_unit']) if request.form['cost_per_recipe_unit'] else 0,
-                float(request.form['conversion_factor']) if request.form['conversion_factor'] else 1,
                 item_id
             ))
             conn.commit()
@@ -223,7 +220,7 @@ def edit_inventory(item_id):
     # Get item data and vendors for form
     with get_db() as conn:
         item = conn.execute('SELECT * FROM inventory WHERE id = ?', (item_id,)).fetchone()
-        vendors = conn.execute('SELECT DISTINCT name FROM vendors ORDER BY name').fetchall()
+        vendors = conn.execute('SELECT DISTINCT vendor_name as name FROM vendors ORDER BY vendor_name').fetchall()
     
     if not item:
         return redirect(url_for('inventory'))
@@ -324,21 +321,22 @@ def add_recipe_ingredient(recipe_id):
             quantity = float(request.form['quantity'])
             unit = request.form.get('unit') or ingredient['unit_measure']
             
-            # Calculate cost based on cost_per_recipe_unit
-            cost = quantity * (ingredient['cost_per_recipe_unit'] or 0)
+            # Calculate cost based on current_price
+            cost = quantity * (ingredient['current_price'] or 0)
             
             # Insert recipe ingredient
             cursor.execute('''
                 INSERT INTO recipe_ingredients 
-                (recipe_id, ingredient_id, quantity, unit, cost)
-                VALUES (?, ?, ?, ?, ?)
-            ''', (recipe_id, request.form['ingredient_id'], quantity, unit, cost))
+                (recipe_id, ingredient_id, ingredient_name, quantity, unit_of_measure, cost)
+                VALUES (?, ?, ?, ?, ?, ?)
+            ''', (recipe_id, request.form['ingredient_id'], ingredient['item_description'], 
+                  quantity, unit, cost))
             
             # Update recipe total cost
             cursor.execute('''
                 UPDATE recipes 
                 SET food_cost = (SELECT SUM(cost) FROM recipe_ingredients WHERE recipe_id = ?),
-                    total_cost = (SELECT SUM(cost) FROM recipe_ingredients WHERE recipe_id = ?) + COALESCE(labor_cost, 0)
+                    prime_cost = (SELECT SUM(cost) FROM recipe_ingredients WHERE recipe_id = ?) + COALESCE(labor_cost, 0)
                 WHERE id = ?
             ''', (recipe_id, recipe_id, recipe_id))
             
@@ -367,22 +365,22 @@ def edit_recipe_ingredient(recipe_id, ingredient_id):
             quantity = float(request.form['quantity'])
             unit = request.form.get('unit') or ingredient['unit_measure']
             
-            # Calculate cost based on cost_per_recipe_unit
-            cost = quantity * (ingredient['cost_per_recipe_unit'] or 0)
+            # Calculate cost based on current_price
+            cost = quantity * (ingredient['current_price'] or 0)
             
             # Update recipe ingredient
             cursor.execute('''
                 UPDATE recipe_ingredients 
-                SET ingredient_id = ?, quantity = ?, unit = ?, cost = ?
+                SET ingredient_id = ?, ingredient_name = ?, quantity = ?, unit_of_measure = ?, cost = ?
                 WHERE id = ? AND recipe_id = ?
-            ''', (request.form['ingredient_id'], quantity, unit, cost, 
-                  ingredient_id, recipe_id))
+            ''', (request.form['ingredient_id'], ingredient['item_description'], 
+                  quantity, unit, cost, ingredient_id, recipe_id))
             
             # Update recipe total cost
             cursor.execute('''
                 UPDATE recipes 
                 SET food_cost = (SELECT SUM(cost) FROM recipe_ingredients WHERE recipe_id = ?),
-                    total_cost = (SELECT SUM(cost) FROM recipe_ingredients WHERE recipe_id = ?) + COALESCE(labor_cost, 0)
+                    prime_cost = (SELECT SUM(cost) FROM recipe_ingredients WHERE recipe_id = ?) + COALESCE(labor_cost, 0)
                 WHERE id = ?
             ''', (recipe_id, recipe_id, recipe_id))
             
