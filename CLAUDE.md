@@ -105,3 +105,39 @@ The application is designed to import/export data from Toast POS:
 - Development server: http://localhost:8888
 - Debug mode is enabled by default
 - Accessible from network: host='0.0.0.0'
+
+## UI/UX Design System
+
+### Theme System
+The application supports multiple themes with a theme switcher:
+- **Modern Theme**: Clean, professional design with purple accent colors
+- **Neo-Tokyo Theme**: Cyberpunk aesthetic with neon pink/cyan colors
+- **FAM Hospitality Theme**: Minimalist design (currently incomplete)
+
+### Responsive Design Status (as of Jan 2025)
+A comprehensive responsive audit has been completed (see `docs/responsive-audit.md`). Key findings:
+
+#### Critical Issues to Address:
+1. **Mobile Navigation**: Hamburger menu not functional, needs implementation
+2. **Touch Targets**: Many buttons below 44x44px minimum requirement  
+3. **Table Responsiveness**: Tables overflow on mobile, need mobile-friendly view
+4. **FAM Theme**: Only 2 of 8 pages implemented
+5. **Form Spacing**: Insufficient padding for mobile interaction
+
+#### Design Guidelines:
+- **Touch Targets**: Minimum 44x44px for all interactive elements
+- **Spacing System**: Use 8px grid (4px, 8px, 16px, 24px, 32px, 48px, 64px)
+- **Breakpoints**: 375px (mobile), 428px (large mobile), 768px (tablet), 1024px (desktop)
+- **Typography**: Minimum 16px font size on mobile, 1.5 line height
+- **Navigation**: Bottom tab bar pattern for mobile with slide-out drawer
+
+#### Theme Colors:
+- **Modern**: Primary #6366f1, Secondary #8b5cf6
+- **Neo-Tokyo**: Pink #ff006e, Cyan #00f5ff, Black #0a0a0f
+- **FAM**: Mint #4DB6AC (needs additional colors)
+
+### Accessibility
+- All themes should maintain WCAG 2.1 Level AA compliance
+- Color contrast ratios must meet minimum standards
+- Focus indicators required for keyboard navigation
+- ARIA labels for icon-only buttons
