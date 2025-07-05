@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 import sqlite3
 import os
-from auto_commit import integrate_with_flask
 
 app = Flask(__name__)
 
@@ -13,8 +12,14 @@ else:
     # In development, use local file
     DATABASE = 'restaurant_calculator.db'
 
-# Set up auto-commit decorator
-with_auto_commit = integrate_with_flask(app)
+# Set up auto-commit decorator (optional)
+try:
+    from auto_commit import integrate_with_flask
+    with_auto_commit = integrate_with_flask(app)
+except ImportError:
+    # If auto_commit is not available, create a dummy decorator
+    def with_auto_commit(func):
+        return func
 
 def import_production_data(conn):
     """Import production data if available and database is empty."""
@@ -837,6 +842,16 @@ def not_found(error):
 
 @app.errorhandler(500)
 def internal_error(error):
+    import traceback
+    app.logger.error(f"Internal error: {error}")
+    app.logger.error(traceback.format_exc())
+    return render_template('500.html'), 500
+
+@app.errorhandler(Exception)
+def handle_exception(error):
+    import traceback
+    app.logger.error(f"Unhandled exception: {error}")
+    app.logger.error(traceback.format_exc())
     return render_template('500.html'), 500
 
 if __name__ == '__main__':
