@@ -125,11 +125,22 @@ A comprehensive responsive audit has been completed (see `docs/responsive-audit.
 5. **Form Spacing**: Insufficient padding for mobile interaction
 
 #### Design Guidelines:
-- **Touch Targets**: Minimum 44x44px for all interactive elements
+- **Touch Targets**: 
+  - Mobile/Desktop: Minimum 44x44px
+  - TV/Kiosk: Minimum 60x60px (80px recommended)
 - **Spacing System**: Use 8px grid (4px, 8px, 16px, 24px, 32px, 48px, 64px)
-- **Breakpoints**: 375px (mobile), 428px (large mobile), 768px (tablet), 1024px (desktop)
+- **Breakpoints**: 
+  - 375px (mobile)
+  - 428px (large mobile)
+  - 768px (tablet)
+  - 1024px (desktop)
+  - 1440px (desktop-lg)
+  - 1920px (Full HD)
+  - 2560px (2K displays)
+  - 3840px (4K/TV)
 - **Typography**: Minimum 16px font size on mobile, 1.5 line height
 - **Navigation**: Bottom tab bar pattern for mobile with slide-out drawer
+- **Large Screens**: Max container width, multi-column layouts, TV/kiosk mode support
 
 #### Theme Colors:
 - **Modern**: Primary #6366f1, Secondary #8b5cf6

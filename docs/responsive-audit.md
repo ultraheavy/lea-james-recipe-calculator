@@ -154,22 +154,66 @@ This audit identifies critical responsive design issues across all three themes 
 
 ### Breakpoints:
 ```css
---mobile-sm: 375px;
---mobile-lg: 428px;
---tablet: 768px;
---desktop: 1024px;
---desktop-lg: 1440px;
+--mobile-sm: 375px;      /* iPhone SE/Mini */
+--mobile-lg: 428px;      /* iPhone Pro Max */
+--tablet: 768px;         /* iPad Portrait */
+--desktop: 1024px;       /* iPad Landscape / Small laptop */
+--desktop-lg: 1440px;    /* Standard desktop */
+--desktop-xl: 1920px;    /* Full HD monitors */
+--desktop-2xl: 2560px;   /* 2K displays */
+--desktop-4k: 3840px;    /* 4K monitors/TVs */
 ```
+
+### Large Screen Considerations:
+- **1920px+**: Optimize for multi-column layouts
+- **2560px+**: Consider max-width containers to prevent excessive line lengths
+- **3840px+**: Scale up touch targets for TV/kiosk use (60-80px minimum)
+- **TV/Kiosk Mode**: Larger fonts, high contrast, simplified navigation
+
+---
+
+## 📺 Large Screen Opportunities
+
+### Current State:
+- All themes max out at ~1200px container width
+- No optimization for screens > 1440px
+- Wasted space on ultra-wide monitors
+- No TV/kiosk mode considerations
+
+### Recommendations for Large Screens:
+
+1. **Dashboard (1920px+)**:
+   - Multi-column layout with live metrics
+   - Side-by-side recipe comparison
+   - Expanded data visualization
+
+2. **Inventory/Recipe Views (2560px+)**:
+   - Master-detail split view
+   - Inline editing without modals
+   - Persistent filters sidebar
+
+3. **TV/Kiosk Mode (3840px)**:
+   - Kitchen display system layout
+   - High contrast mode
+   - Voice control integration ready
+   - 60-80px touch targets for gloved hands
+   - Auto-refresh capabilities
+
+4. **Ultra-Wide Support**:
+   - Flexible grid that expands to 6-8 columns
+   - Pinnable sidebars
+   - Multiple workflow panels
 
 ---
 
 ## 🚀 Next Steps
 
 1. Start with mobile navigation implementation
-2. Apply consistent spacing system
+2. Apply consistent spacing system  
 3. Fix touch targets across all interactive elements
 4. Complete FAM theme
-5. Test on real devices
+5. Implement large screen optimizations
+6. Test on real devices (mobile, tablet, desktop, TV)
 
 ---
 
