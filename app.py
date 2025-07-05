@@ -240,24 +240,27 @@ def init_database():
             # Add units table for conversion system
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS units (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    unit_id INTEGER PRIMARY KEY AUTOINCREMENT,
                     name TEXT NOT NULL,
                     symbol TEXT NOT NULL UNIQUE,
                     dimension TEXT NOT NULL,
                     to_canonical_factor REAL NOT NULL,
                     is_precise BOOLEAN DEFAULT TRUE,
-                    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 )
             ''')
             
             # Add ingredient densities table
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS ingredient_densities (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    density_id INTEGER PRIMARY KEY AUTOINCREMENT,
                     ingredient_name TEXT NOT NULL UNIQUE,
                     density_g_per_ml REAL NOT NULL,
                     source TEXT,
-                    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                    notes TEXT,
+                    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 )
             ''')
             
