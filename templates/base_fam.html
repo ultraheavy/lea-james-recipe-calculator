@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Lea James Recipe Calculator{% endblock %}</title>
+    <title>{% block title %}Lea Jane's Recipe Calculator{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/design-system.css">
     <link rel="stylesheet" href="/static/css/fam-hospitality.css">
     <link rel="stylesheet" href="/static/css/food-icons.css">
     <link rel="stylesheet" href="/static/css/responsive-navigation.css">
+    <link rel="stylesheet" href="/static/css/mobile-buttons.css">
+    <link rel="stylesheet" href="/static/css/responsive-tables.css">
     {% block extra_css %}{% endblock %}
 </head>
 <body class="theme-fam">
@@ -17,7 +20,7 @@
                 <!-- Brand -->
                 <a href="/" class="fam-brand">
                     <div class="fam-logo">LJ</div>
-                    <span>Lea James</span>
+                    <span>Lea Jane's</span>
                 </a>
                 
                 <!-- Mobile Menu Toggle -->
@@ -31,10 +34,7 @@
                 <div class="fam-nav-menu navbar-menu" id="navbarMenu">
                     <!-- Mobile Menu Header -->
                     <div class="mobile-menu-header mobile-only">
-                        <div style="display: flex; align-items: center;">
-                            <div class="fam-logo" style="width: 40px; height: 40px; font-size: 1rem;">LJ</div>
-                            <span style="font-weight: 600; margin-left: 0.5rem;">Lea James</span>
-                        </div>
+                        <div class="fam-logo" style="width: 40px; height: 40px; font-size: 1rem;">LJ</div>
                         <button class="mobile-menu-close" onclick="closeMobileMenu()">×</button>
                     </div>
                     
