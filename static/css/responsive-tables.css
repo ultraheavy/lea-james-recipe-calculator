@@ -1,0 +1,335 @@
+/* Responsive Tables for Modern Theme */
+
+/* ========================================
+   TABLE RESPONSIVE PATTERNS
+   ======================================== */
+
+/* Option 1: Horizontal Scroll (Default) */
+.table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius-lg, 16px);
+  box-shadow: var(--shadow, 0 2px 8px rgba(0, 0, 0, 0.1));
+  background: var(--bg-primary, #ffffff);
+  position: relative;
+}
+
+/* Add scroll indicators */
+.table-container::before,
+.table-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  pointer-events: none;
+  z-index: 2;
+  display: none;
+}
+
+.table-container::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-primary, #ffffff), transparent);
+}
+
+.table-container::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-primary, #ffffff), transparent);
+}
+
+/* Show scroll indicators on mobile when scrollable */
+@media (max-width: 767px) {
+  .table-container.has-scroll::before,
+  .table-container.has-scroll::after {
+    display: block;
+  }
+}
+
+/* ========================================
+   MOBILE TABLE STYLES (< 768px)
+   ======================================== */
+@media (max-width: 767px) {
+  /* Ensure minimum width for readability */
+  .table {
+    min-width: 600px;
+  }
+  
+  /* Smaller font and padding */
+  .table {
+    font-size: 0.875rem;
+  }
+  
+  .table th,
+  .table td {
+    padding: 0.75rem 0.5rem;
+    white-space: nowrap;
+  }
+  
+  /* Hide less important columns */
+  .hide-mobile {
+    display: none !important;
+  }
+  
+  /* Make action buttons more compact */
+  .table .btn-icon {
+    min-width: 36px !important;
+    min-height: 36px !important;
+    width: 36px !important;
+    height: 36px !important;
+    padding: 0.5rem !important;
+  }
+  
+  .table .btn-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  /* Stack action buttons vertically if needed */
+  .table td:last-child .flex {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+}
+
+/* ========================================
+   OPTION 2: CARD VIEW PATTERN
+   ======================================== */
+.table-cards {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  /* Hide regular table on mobile */
+  .table-container.card-view {
+    display: none;
+  }
+  
+  /* Show card view on mobile */
+  .table-cards {
+    display: block;
+  }
+  
+  .table-card {
+    background: var(--bg-primary, #ffffff);
+    border: 1px solid var(--gray-200, #e5e5e5);
+    border-radius: var(--radius-lg, 16px);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.1));
+  }
+  
+  .table-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--gray-100, #f5f5f5);
+  }
+  
+  .table-card-title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-primary);
+  }
+  
+  .table-card-subtitle {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+  }
+  
+  .table-card-actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .table-card-body {
+    display: grid;
+    gap: 0.5rem;
+  }
+  
+  .table-card-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.25rem 0;
+  }
+  
+  .table-card-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+  
+  .table-card-value {
+    font-weight: 500;
+    text-align: right;
+  }
+}
+
+/* ========================================
+   SPECIFIC TABLE IMPROVEMENTS
+   ======================================== */
+
+/* Inventory Table Mobile */
+@media (max-width: 767px) {
+  /* Combine item info into single cell */
+  .inventory-table .item-cell {
+    max-width: 200px;
+  }
+  
+  .inventory-table .item-name {
+    font-weight: 500;
+    line-height: 1.4;
+    word-break: break-word;
+    white-space: normal;
+  }
+  
+  .inventory-table .item-code {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+  }
+}
+
+/* Recipe Ingredients Table Mobile */
+@media (max-width: 767px) {
+  .ingredients-table {
+    min-width: 500px;
+  }
+  
+  .ingredients-table .ingredient-name {
+    max-width: 150px;
+    word-break: break-word;
+    white-space: normal;
+    line-height: 1.4;
+  }
+  
+  .ingredients-table .quantity-cell {
+    white-space: nowrap;
+  }
+}
+
+/* Pricing Analysis Table Mobile */
+@media (max-width: 767px) {
+  .pricing-table {
+    min-width: 650px;
+  }
+  
+  /* Highlight important columns */
+  .pricing-table .food-cost-cell,
+  .pricing-table .margin-cell {
+    background: var(--gray-50, #f9f9f9);
+    font-weight: 600;
+  }
+}
+
+/* ========================================
+   STICKY HEADERS FOR BETTER UX
+   ======================================== */
+@media (max-width: 767px) {
+  .table thead th {
+    position: sticky;
+    top: 0;
+    background: var(--bg-primary, #ffffff);
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Dark mode support */
+  [data-theme="dark"] .table thead th {
+    background: var(--bg-primary);
+  }
+}
+
+/* ========================================
+   TOUCH-FRIENDLY TABLE INTERACTIONS
+   ======================================== */
+@media (max-width: 767px) {
+  /* Larger touch targets for clickable rows */
+  .table tbody tr.clickable {
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .table tbody tr.clickable::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+  
+  /* Visual feedback on tap */
+  .table tbody tr:active {
+    background: var(--gray-100, #f5f5f5);
+    transform: scale(0.99);
+  }
+}
+
+/* ========================================
+   RESPONSIVE TABLE UTILITIES
+   ======================================== */
+
+/* Force table to not break layout */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent text wrapping in specific cells */
+.nowrap {
+  white-space: nowrap;
+}
+
+/* Allow wrapping for long content */
+.wrap {
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* Minimum column widths */
+.min-w-100 { min-width: 100px; }
+.min-w-150 { min-width: 150px; }
+.min-w-200 { min-width: 200px; }
+
+/* ========================================
+   SCROLL HINT ANIMATION
+   ======================================== */
+@media (max-width: 767px) {
+  .table-container {
+    position: relative;
+  }
+  
+  .table-scroll-hint {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--primary-color, #6366f1);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+    pointer-events: none;
+    z-index: 20;
+  }
+  
+  .table-scroll-hint svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  @keyframes pulse {
+    0% { opacity: 1; transform: translateY(-50%) scale(1); }
+    50% { opacity: 0.7; transform: translateY(-50%) scale(1.1); }
+    100% { opacity: 1; transform: translateY(-50%) scale(1); }
+  }
+  
+  /* Hide hint when scrolled */
+  .table-container.scrolled .table-scroll-hint {
+    display: none;
+  }
+}

@@ -66,7 +66,7 @@
     
     <!-- Inventory Table -->
     <div class="table-container">
-        <table class="table table-striped" id="inventoryTable">
+        <table class="table table-striped inventory-table" id="inventoryTable">
             <thead>
                 <tr>
                     <th class="hide-mobile">Code</th>
@@ -86,11 +86,12 @@
                     <td class="hide-mobile">
                         <span class="font-mono text-sm">{{ item.item_code or '-' }}</span>
                     </td>
-                    <td>
+                    <td class="item-cell">
                         <div class="flex items-center gap-3">
                             <div class="icon-container"></div>
                             <div>
-                                <p class="font-medium">{{ item.item_description }}</p>
+                                <p class="font-medium item-name">{{ item.item_description }}</p>
+                                <span class="item-code mobile-only">{{ item.item_code or '-' }}</span>
                                 {% if item.product_categories %}
                                 <div class="flex flex-wrap gap-1 mt-1">
                                     {% for category in item.product_categories.split(',')[:2] %}

@@ -101,7 +101,7 @@
                 </div>
                 <div class="card-body p-0">
                     <div class="table-container">
-                        <table class="table">
+                        <table class="table ingredients-table">
                             <thead>
                                 <tr>
                                     <th>Ingredient</th>
@@ -117,10 +117,10 @@
                                     <td>
                                         <div class="flex items-center gap-3">
                                             <div class="icon-container"></div>
-                                            <span>{{ ingredient.ingredient_name or ingredient.item_description }}</span>
+                                            <span class="ingredient-name">{{ ingredient.ingredient_name or ingredient.item_description }}</span>
                                         </div>
                                     </td>
-                                    <td>
+                                    <td class="quantity-cell">
                                         <span class="font-medium">{{ ingredient.quantity }}</span>
                                         <span class="text-secondary">{{ ingredient.unit_of_measure }}</span>
                                     </td>

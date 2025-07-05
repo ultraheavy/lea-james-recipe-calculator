@@ -98,7 +98,7 @@
         </div>
         <div class="card-body p-0">
             <div class="table-container">
-                <table class="table" id="analysisTable">
+                <table class="table pricing-table" id="analysisTable">
                     <thead>
                         <tr>
                             <th>Menu Item</th>
@@ -124,8 +124,8 @@
                                 <span class="badge badge-info">{{ item.menu_group or '-' }}</span>
                             </td>
                             <td class="font-semibold">${{ "%.2f"|format(item.menu_price) }}</td>
-                            <td>${{ "%.2f"|format(item.food_cost) }}</td>
-                            <td>
+                            <td class="food-cost-cell">${{ "%.2f"|format(item.food_cost) }}</td>
+                            <td class="food-cost-cell">
                                 <span class="font-medium {% if item.food_cost_percent > target_food_cost %}text-danger{% else %}text-success{% endif %}">
                                     {{ "%.1f"|format(item.food_cost_percent) }}%
                                 </span>
@@ -143,7 +143,7 @@
                                     <span class="text-secondary">-</span>
                                 {% endif %}
                             </td>
-                            <td>
+                            <td class="margin-cell">
                                 <span class="font-medium text-success">${{ "%.2f"|format(item.new_margin) }}</span>
                             </td>
                         </tr>
