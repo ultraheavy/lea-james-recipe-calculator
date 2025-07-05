@@ -8,6 +8,7 @@
 
 <a href="/inventory/add" class="btn btn-success">Add New Item</a>
 
+<div class="table-wrapper">
 <table>
     <thead>
         <tr>
@@ -16,10 +17,10 @@
             <th>Current Price</th>
             <th>Last Purchase</th>
             <th>Last Price</th>
-            <th>Unit</th>
-            <th>Purchase Unit</th>
-            <th>Recipe Unit</th>
-            <th>Yield %</th>
+            <th class="hide-mobile">Unit</th>
+            <th class="hide-mobile">Purchase Unit</th>
+            <th class="hide-mobile">Recipe Unit</th>
+            <th class="hide-mobile">Yield %</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -32,10 +33,10 @@
                 <td>${{ "%.2f"|format(item.current_price or 0) }}</td>
                 <td>{{ item.last_purchased_date or '-' }}</td>
                 <td>{{ "$%.2f"|format(item.last_purchased_price) if item.last_purchased_price else '-' }}</td>
-                <td>{{ item.unit_measure }}</td>
-                <td>{{ item.purchase_unit }}</td>
-                <td>{{ item.recipe_cost_unit }}</td>
-                <td>{{ item.yield_percent }}%</td>
+                <td class="hide-mobile">{{ item.unit_measure }}</td>
+                <td class="hide-mobile">{{ item.purchase_unit }}</td>
+                <td class="hide-mobile">{{ item.recipe_cost_unit }}</td>
+                <td class="hide-mobile">{{ item.yield_percent }}%</td>
                 <td>
                     <a href="/inventory/edit/{{ item.id }}" class="btn" style="font-size: 12px; padding: 5px 10px;">Edit</a>
                     <a href="/inventory/vendors/{{ item.id }}" class="btn" style="font-size: 12px; padding: 5px 10px;">Vendors</a>
@@ -55,4 +56,5 @@
         {% endif %}
     </tbody>
 </table>
+</div>
 {% endblock %}
