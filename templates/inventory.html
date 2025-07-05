@@ -13,7 +13,8 @@
     <thead>
         <tr>
             <th>Vendor Code</th>
-            <th>Description / Category</th>
+            <th>Description</th>
+            <th>Recipe Item Name</th>
             <th>Current Price</th>
             <th>Last Purchase</th>
             <th>Last Price</th>
@@ -29,10 +30,12 @@
             {% for item in items %}
             <tr>
                 <td>{{ item.item_code }}</td>
+                <td>{{ item.item_description }}</td>
                 <td>
-                    {{ item.item_description }}
                     {% if item.product_categories %}
-                        <br><small style="color: #666;">{{ item.product_categories }}</small>
+                        {{ item.product_categories }}
+                    {% else %}
+                        -
                     {% endif %}
                 </td>
                 <td>${{ "%.2f"|format(item.current_price or 0) }}</td>
