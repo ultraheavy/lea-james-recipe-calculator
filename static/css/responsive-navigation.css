@@ -85,7 +85,7 @@
   bottom: 0;
   background: var(--bg-primary, #ffffff);
   flex-direction: column;
-  padding: var(--space-lg);
+  padding: var(--space-md);
   z-index: 1050 !important; /* Force above backdrop */
   overflow-y: auto;
   animation: slideIn 0.3s ease-out;
@@ -96,8 +96,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--space-xl);
-  padding-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
   border-bottom: 1px solid var(--border-color, #e0e0e0);
 }
 
@@ -125,18 +125,18 @@
   .navbar-link {
     display: flex;
     align-items: center;
-    gap: var(--space-md);
-    min-height: var(--touch-target-large);
-    padding: var(--space-md) var(--space-lg);
+    gap: var(--space-sm);
+    min-height: var(--touch-target-comfortable);
+    padding: var(--space-sm) var(--space-md);
     margin: var(--space-xs) 0;
-    border-radius: 12px;
-    font-size: 1.125rem;
+    border-radius: 8px;
+    font-size: 0.9375rem;
     font-weight: 500;
   }
   
   .navbar-link svg {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     flex-shrink: 0;
   }
   
@@ -203,6 +203,23 @@
 .theme-neo .mobile-menu-backdrop {
   background: rgba(10, 10, 15, 0.8);
   backdrop-filter: blur(10px);
+}
+
+/* Neo theme switcher */
+.theme-neo .theme-btn {
+  background: var(--neo-dark, #141420);
+  border-color: var(--neo-purple, #6b5b95);
+}
+
+.theme-neo .theme-btn.active {
+  border-color: var(--neo-pink, #ff006e);
+  box-shadow: 0 0 0 3px rgba(255, 0, 110, 0.2), 0 0 20px rgba(255, 0, 110, 0.3);
+}
+
+/* FAM theme switcher */
+.theme-fam .theme-btn.active {
+  border-color: var(--fam-mint, #4DB6AC);
+  box-shadow: 0 0 0 3px rgba(77, 182, 172, 0.2);
 }
 
 /* ========================================
@@ -319,6 +336,61 @@
 }
 
 /* ========================================
+   MOBILE THEME SWITCHER
+   ======================================== */
+.theme-selector-mobile {
+  margin-top: auto;
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border-color, #e0e0e0);
+}
+
+.theme-selector-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary, #6b7280);
+  margin-bottom: var(--space-sm);
+}
+
+.theme-buttons {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.theme-btn {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--bg-secondary, #f5f5f5);
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.theme-btn:hover {
+  transform: scale(1.05);
+  border-color: var(--border-color, #e0e0e0);
+}
+
+.theme-btn.active {
+  border-color: var(--primary-color, #6366f1);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.theme-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
    THEME-SPECIFIC OVERRIDES
    ======================================== */
 
@@ -359,11 +431,11 @@
   
   .theme-neo .neo-nav-link {
     flex-direction: row !important;
-    padding: var(--space-md) var(--space-lg) !important;
-    font-size: 1.125rem !important;
+    padding: var(--space-sm) var(--space-md) !important;
+    font-size: 0.9375rem !important;
     width: 100% !important;
     justify-content: flex-start !important;
-    gap: var(--space-md) !important;
+    gap: var(--space-sm) !important;
   }
   
   .theme-neo .neo-nav-link span {
