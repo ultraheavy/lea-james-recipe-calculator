@@ -28,34 +28,78 @@
                 </button>
                 
                 <!-- Main Menu -->
-                <div class="fam-nav-menu" id="navbarMenu">
-                    <a href="/" class="fam-nav-link {% if request.endpoint == 'index' %}active{% endif %}">
-                        Dashboard
+                <div class="fam-nav-menu navbar-menu" id="navbarMenu">
+                    <!-- Mobile Menu Header -->
+                    <div class="mobile-menu-header mobile-only">
+                        <div style="display: flex; align-items: center;">
+                            <div class="fam-logo" style="width: 40px; height: 40px; font-size: 1rem;">LJ</div>
+                            <span style="font-weight: 600; margin-left: 0.5rem;">Lea James</span>
+                        </div>
+                        <button class="mobile-menu-close" onclick="closeMobileMenu()">×</button>
+                    </div>
+                    
+                    <!-- Navigation Links -->
+                    <a href="/" class="fam-nav-link navbar-link {% if request.endpoint == 'index' %}active{% endif %}">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                        </svg>
+                        <span>Dashboard</span>
                     </a>
-                    <a href="/inventory" class="fam-nav-link {% if request.endpoint == 'inventory' %}active{% endif %}">
-                        Inventory
+                    <a href="/inventory" class="fam-nav-link navbar-link {% if request.endpoint == 'inventory' %}active{% endif %}">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M20 7H4a2 2 0 00-2 2v9a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/>
+                        </svg>
+                        <span>Inventory</span>
                     </a>
-                    <a href="/recipes" class="fam-nav-link {% if request.endpoint == 'recipes' %}active{% endif %}">
-                        Recipes
+                    <a href="/recipes" class="fam-nav-link navbar-link {% if request.endpoint == 'recipes' %}active{% endif %}">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                        </svg>
+                        <span>Recipes</span>
                     </a>
-                    <a href="/menu" class="fam-nav-link {% if request.endpoint == 'menu_items' %}active{% endif %}">
-                        Menu
+                    <a href="/menu" class="fam-nav-link navbar-link {% if request.endpoint == 'menu_items' %}active{% endif %}">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="4" y="4" width="16" height="16" rx="2"/>
+                        </svg>
+                        <span>Menu</span>
                     </a>
-                    <a href="/pricing-analysis" class="fam-nav-link {% if request.endpoint == 'pricing_analysis' %}active{% endif %}">
-                        Pricing
+                    <a href="/pricing-analysis" class="fam-nav-link navbar-link {% if request.endpoint == 'pricing_analysis' %}active{% endif %}">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                        <span>Analytics</span>
                     </a>
-                    <a href="/vendors" class="fam-nav-link {% if request.endpoint == 'vendors' %}active{% endif %}">
-                        Vendors
+                    <a href="/vendors" class="fam-nav-link navbar-link {% if request.endpoint == 'vendors' %}active{% endif %}">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                        </svg>
+                        <span>Vendors</span>
                     </a>
                     
-                    <!-- Theme Switcher -->
-                    <div class="fam-nav-link" style="margin-left: auto;">
-                        <select onchange="window.location.href='/set-theme/' + this.value" class="fam-form-control" style="width: auto; padding: 0.5rem 1rem; font-size: 0.875rem;">
-                            <option value="fam" selected>FAM Theme</option>
-                            <option value="modern">Modern Theme</option>
-                            <option value="neo">Neo Tokyo Theme</option>
-                        </select>
+                    <!-- Theme Selector in Mobile Menu -->
+                    <div class="mobile-only" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--fam-mint);">
+                        <h3 style="font-size: 1rem; margin-bottom: 1rem; color: var(--text-secondary);">Choose Theme</h3>
+                        <div style="display: grid; gap: 0.5rem;">
+                            <a href="/set-theme/modern" class="fam-nav-link navbar-link" style="justify-content: center;">
+                                Modern
+                            </a>
+                            <a href="/set-theme/neo" class="fam-nav-link navbar-link" style="justify-content: center;">
+                                Neo Tokyo
+                            </a>
+                            <a href="/set-theme/fam" class="fam-nav-link navbar-link active" style="justify-content: center;">
+                                FAM Hospitality
+                            </a>
+                        </div>
                     </div>
+                </div>
+                
+                <!-- Desktop Theme Switcher -->
+                <div class="desktop-only" style="margin-left: auto;">
+                    <select onchange="window.location.href='/set-theme/' + this.value" class="fam-form-control theme-selector" style="width: auto; padding: 0.5rem 1rem; font-size: 0.875rem;">
+                        <option value="modern">Modern Theme</option>
+                        <option value="neo">Neo Tokyo</option>
+                        <option value="fam" selected>FAM Hospitality</option>
+                    </select>
                 </div>
             </div>
         </div>

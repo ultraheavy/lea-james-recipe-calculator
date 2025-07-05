@@ -39,6 +39,16 @@
                 </button>
                 
                 <div class="navbar-menu" id="navbarMenu">
+                    <!-- Mobile Menu Header -->
+                    <div class="mobile-menu-header mobile-only">
+                        <div>
+                            <div class="navbar-logo" style="width: 40px; height: 40px; font-size: 1rem;">LJ</div>
+                            <span style="font-weight: 600; margin-left: 0.5rem;">Lea James</span>
+                        </div>
+                        <button class="mobile-menu-close" onclick="closeMobileMenu()">×</button>
+                    </div>
+                    
+                    <!-- Navigation Links -->
                     <a href="/" class="navbar-link {% if request.endpoint == 'index' %}active{% endif %}">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
@@ -63,7 +73,7 @@
                         <span>Recipes</span>
                     </a>
                     
-                    <a href="/menu" class="navbar-link {% if request.endpoint == 'menu' %}active{% endif %}">
+                    <a href="/menu" class="navbar-link {% if request.endpoint == 'menu_items' %}active{% endif %}">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <rect x="4" y="4" width="16" height="16" rx="2"/>
                             <path d="M9 9h6M9 15h6M12 9v6"/>
@@ -77,17 +87,40 @@
                         </svg>
                         <span>Analytics</span>
                     </a>
+                    
+                    <a href="/vendors" class="navbar-link {% if request.endpoint == 'vendors' %}active{% endif %}">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                        </svg>
+                        <span>Vendors</span>
+                    </a>
+                    
+                    <!-- Theme Selector in Mobile Menu -->
+                    <div class="mobile-only" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--gray-200);">
+                        <h3 style="font-size: 1rem; margin-bottom: 1rem; color: var(--gray-600);">Choose Theme</h3>
+                        <div style="display: grid; gap: 0.5rem;">
+                            <a href="/set-theme/modern" class="navbar-link" style="background: var(--gray-50); justify-content: center;">
+                                Modern
+                            </a>
+                            <a href="/set-theme/neo" class="navbar-link" style="background: #0a0a0f; color: #ff006e; justify-content: center;">
+                                Neo Tokyo
+                            </a>
+                            <a href="/set-theme/fam" class="navbar-link" style="background: #4DB6AC; color: white; justify-content: center;">
+                                FAM Hospitality
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- Theme Switcher -->
-                <a href="/set-theme/neo" class="navbar-link" style="margin-left: auto;">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <circle cx="12" cy="12" r="10"/>
-                        <path d="M12 2v20M2 12h20"/>
-                        <path d="M4.93 4.93l14.14 14.14M4.93 19.07l14.14-14.14"/>
-                    </svg>
-                    <span>Neo Tokyo Theme</span>
-                </a>
+                <!-- Desktop Theme Switcher -->
+                <div class="desktop-only" style="margin-left: auto;">
+                    <select onchange="window.location.href='/set-theme/' + this.value" class="theme-selector">
+                        <option value="modern" selected>Modern Theme</option>
+                        <option value="neo">Neo Tokyo</option>
+                        <option value="fam">FAM Hospitality</option>
+                    </select>
+                </div>
             </div>
         </div>
     </nav>

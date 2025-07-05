@@ -87,21 +87,33 @@
   animation: slideIn 0.3s ease-out;
 }
 
-/* Close button for mobile menu */
-.navbar-menu.active::before {
-  content: '×';
-  position: absolute;
-  top: var(--space-md);
-  right: var(--space-md);
-  font-size: 2rem;
+/* Mobile menu header with close button */
+.mobile-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--border-color, #e0e0e0);
+}
+
+.mobile-menu-close {
   width: var(--touch-target-comfortable);
   height: var(--touch-target-comfortable);
   display: flex;
   align-items: center;
   justify-content: center;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 8px;
   cursor: pointer;
-  border-radius: 50%;
+  font-size: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.mobile-menu-close:hover {
   background: rgba(0, 0, 0, 0.05);
+  border-color: currentColor;
 }
 
 /* Mobile Navigation Links */
@@ -124,9 +136,34 @@
     flex-shrink: 0;
   }
   
+  .navbar-link span {
+    display: block !important; /* Always show text on mobile */
+  }
+  
   .navbar-link.active {
     background: var(--primary-color, #6366f1);
     color: white;
+  }
+  
+  /* Show mobile-only elements */
+  .mobile-only {
+    display: flex !important;
+  }
+  
+  /* Hide desktop-only elements */
+  .desktop-only {
+    display: none !important;
+  }
+  
+  /* Compact navbar on mobile */
+  .navbar-brand span {
+    display: none; /* Hide "Recipe Calculator" text on mobile */
+  }
+  
+  .navbar-logo {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 0.875rem !important;
   }
 }
 
@@ -191,9 +228,34 @@
     height: 20px;
   }
   
-  /* Remove mobile-only styles */
-  .navbar-menu.active::before {
-    display: none;
+  /* Hide mobile-only elements */
+  .mobile-only {
+    display: none !important;
+  }
+  
+  /* Show desktop-only elements */
+  .desktop-only {
+    display: flex !important;
+  }
+  
+  /* Theme selector styling */
+  .theme-selector {
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--border-color, #e0e0e0);
+    border-radius: 8px;
+    background: var(--bg-primary);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .theme-selector:hover {
+    border-color: var(--primary-color, #6366f1);
+  }
+  
+  .theme-selector:focus {
+    outline: 3px solid var(--primary-color, #6366f1);
+    outline-offset: 2px;
   }
 }
 
@@ -259,6 +321,12 @@
   background: var(--neo-black, #0a0a0f);
   border: 1px solid var(--neo-pink, #ff006e);
   box-shadow: 0 0 30px rgba(255, 0, 110, 0.3);
+}
+
+.theme-neo .theme-selector {
+  background: var(--neo-black, #0a0a0f);
+  color: var(--neo-cyan, #00f5ff);
+  border-color: var(--neo-pink, #ff006e);
 }
 
 .theme-neo .navbar-link {
