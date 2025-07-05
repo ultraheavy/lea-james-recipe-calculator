@@ -1,101 +1,89 @@
-# Restaurant Recipe Cost Calculator - Web App Version
+# Lea James Recipe Cost Calculator
 
-This is a Flask web application that replicates the functionality of your Excel restaurant recipe cost calculator (`LJ_recipe_cost_calculator_withoutmacros.xlsx`).
+A professional web application for restaurant recipe costing and menu management. Track ingredients, build recipes, analyze costs, and optimize your menu pricing - all in one integrated platform.
 
 ## Features
 
-✅ **Inventory Management** - Replaces "Inventory Master" sheet
-- Add/edit ingredients with costs, units, and yields
-- Track purchase units vs recipe units
-- Calculate yield percentages
+✅ **Inventory Management**
+- Add and manage ingredients with current pricing
+- Track vendors and compare costs
+- Monitor purchase units vs recipe units
+- Calculate yield percentages for accurate costing
 
-✅ **Recipe Cost Calculator** - Replaces Recipe_1, Recipe_2, etc. sheets
-- Create recipes with multiple ingredients
-- Automatic cost calculations
-- Track yield amounts and shelf life
-- Station and equipment requirements
+✅ **Recipe Builder**
+- Create detailed recipes with precise measurements
+- Automatic cost calculations per portion
+- Track prep time, shelf life, and cooking stations
+- Scale recipes up or down instantly
 
-✅ **Menu Item Management** - Replaces "Menu Item List" sheets
+✅ **Menu Management**
 - Link recipes to menu items
-- Calculate food cost percentages
-- Track menu pricing and profitability
+- Calculate real-time food cost percentages
+- Track profitability by item and category
+- Version control for menu changes
 
-✅ **Unit Conversions** - Replaces "Conversion Calculator" sheet
-- Convert between cooking measurements
-- Automatic calculations for recipe scaling
+✅ **Pricing Analysis**
+- Smart pricing recommendations based on target margins
+- Compare actual vs ideal food costs
+- Identify high and low profit items
+- Make data-driven pricing decisions
 
-## Technology Stack
+✅ **Multi-Vendor Support**
+- Track multiple suppliers per ingredient
+- Compare prices and choose best options
+- Manage vendor relationships
+- Optimize purchasing decisions
 
-- **Backend**: Flask (Python)
-- **Database**: SQLite (file-based, no server required)
-- **Frontend**: HTML/CSS/JavaScript
-- **Deployment**: Can run locally or on any server
+## Benefits
 
-## Installation & Setup
+- **Save Time**: Automated calculations replace hours of manual work
+- **Increase Accuracy**: Eliminate spreadsheet errors and broken formulas
+- **Improve Profits**: Identify opportunities to optimize costs and pricing
+- **Better Decisions**: Real-time data for informed menu engineering
+- **Team Collaboration**: Multiple users can work simultaneously
+- **Accessible Anywhere**: Web-based platform works on any device
 
-1. **Install Dependencies**:
+## Getting Started
+
+### Quick Start (Local)
+
+1. **Install Python** (if not already installed)
+
+2. **Install Dependencies**:
    ```bash
-   pip3 install flask
+   pip3 install -r requirements.txt
    ```
 
-2. **Run the Application**:
+3. **Run the Application**:
    ```bash
    python3 app.py
    ```
 
-3. **Access the App**:
-   Open your browser to: `http://localhost:8888`
+4. **Open Your Browser**:
+   Navigate to `http://localhost:8888`
 
-## File Structure
+### Production Deployment
 
-```
-LJ_Test_Doca/
-├── app.py                          # Main Flask application
-├── templates/                      # HTML templates
-│   ├── base.html                  # Base template with navigation
-│   ├── index.html                 # Dashboard
-│   ├── inventory.html             # Inventory management
-│   └── recipes.html               # Recipe management
-├── restaurant_calculator.db       # SQLite database (auto-created)
-└── README.md                      # This file
-```
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions on deploying to Railway or other cloud platforms.
 
-## Database Schema
+## How It Works
 
-The app uses SQLite with these tables:
+1. **Set Up Inventory**: Add your ingredients with current costs and units
+2. **Build Recipes**: Combine ingredients into recipes with exact quantities
+3. **Create Menu Items**: Link recipes to menu items with selling prices
+4. **Analyze & Optimize**: Use the pricing analysis to maximize profitability
 
-- **inventory** - Ingredient master data
-- **recipes** - Recipe information
-- **recipe_ingredients** - Links recipes to ingredients with quantities
-- **menu_items** - Menu items linked to recipes
+## Technology
 
-## Advantages over Excel
+- **Backend**: Python Flask for reliable performance
+- **Database**: SQLite for simplicity (PostgreSQL ready for scale)
+- **Frontend**: Clean, responsive design that works on all devices
+- **Deployment**: One-click deploy to Railway, Heroku, or any cloud platform
 
-1. **Multi-user Access** - Multiple people can use it simultaneously
-2. **Web-based** - Access from any device with a browser
-3. **Data Integrity** - Prevents formula corruption
-4. **Backup & Sync** - Easy to backup the database file
-5. **Scalability** - Can handle thousands of recipes/ingredients
-6. **Mobile Friendly** - Works on phones and tablets
-7. **Security** - No macro security concerns
+## Support
 
-## Next Steps to Expand
+For questions or issues, please contact your system administrator or create an issue in the project repository.
 
-- Add user authentication
-- Import existing Excel data
-- Export to PDF reports
-- Recipe photo uploads
-- Nutritional information
-- Supplier management
-- Cost trend analysis
-- Menu engineering analytics
+## License
 
-## Original Excel Structure Analyzed
-
-The original Excel file contained:
-- 36 worksheets total
-- Inventory Master with 995+ data strings
-- 15 Recipe calculation sheets
-- 15 Menu Cost Group sheets
-- Instructions and conversion tools
-- Batch recipe management
+© 2024 Lea James Hot Chicken. All rights reserved.
