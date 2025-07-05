@@ -857,6 +857,275 @@ def menu_compare():
                              v1_id=v1_id,
                              v2_id=v2_id)
 
+@app.route('/menu/versions')
+def menu_versions_page():
+    """Manage menu versions"""
+    with get_db() as conn:
+        versions = conn.execute('''
+            SELECT mv.*, 
+                   COUNT(mi.id) as item_count,
+                   SUM(mi.menu_price) as total_revenue
+            FROM menu_versions mv
+            LEFT JOIN menu_items mi ON mv.id = mi.version_id
+            GROUP BY mv.id
+            ORDER BY mv.id
+        ''').fetchall()
+    
+    theme = get_theme()
+    return render_template(f'menu_versions_{theme}.html', versions=versions)
+
+@app.route('/menu/versions/add', methods=['GET', 'POST'])
+def add_menu_version():
+    """Create a new menu version"""
+    if request.method == 'POST':
+        with get_db() as conn:
+            cursor = conn.cursor()
+            
+            version_name = request.form['version_name']
+            description = request.form.get('description', '')
+            is_active = request.form.get('is_active') == 'on'
+            effective_date = request.form.get('effective_date', '')
+            notes = request.form.get('notes', '')
+            
+            # If setting as active, deactivate all others
+            if is_active:
+                cursor.execute('UPDATE menu_versions SET is_active = 0')
+            
+            cursor.execute('''
+                INSERT INTO menu_versions 
+                (version_name, description, is_active, effective_date, notes)
+                VALUES (?, ?, ?, ?, ?)
+            ''', (version_name, description, is_active, effective_date, notes))
+            
+            conn.commit()
+            
+        return redirect(url_for('menu_versions_page'))
+    
+    theme = get_theme()
+    return render_template(f'add_menu_version_{theme}.html')
+
+@app.route('/menu/versions/edit/<int:version_id>', methods=['GET', 'POST'])
+def edit_menu_version(version_id):
+    """Edit a menu version"""
+    if request.method == 'POST':
+        with get_db() as conn:
+            cursor = conn.cursor()
+            
+            version_name = request.form['version_name']
+            description = request.form.get('description', '')
+            is_active = request.form.get('is_active') == 'on'
+            effective_date = request.form.get('effective_date', '')
+            notes = request.form.get('notes', '')
+            
+            # If setting as active, deactivate all others
+            if is_active:
+                cursor.execute('UPDATE menu_versions SET is_active = 0')
+            
+            cursor.execute('''
+                UPDATE menu_versions 
+                SET version_name = ?, description = ?, is_active = ?, 
+                    effective_date = ?, notes = ?
+                WHERE id = ?
+            ''', (version_name, description, is_active, effective_date, notes, version_id))
+            
+            conn.commit()
+            
+        return redirect(url_for('menu_versions_page'))
+    
+    with get_db() as conn:
+        version = conn.execute('SELECT * FROM menu_versions WHERE id = ?', (version_id,)).fetchone()
+    
+    theme = get_theme()
+    return render_template(f'edit_menu_version_{theme}.html', version=version)
+
+@app.route('/menu/versions/delete/<int:version_id>', methods=['POST'])
+def delete_menu_version(version_id):
+    """Delete a menu version and all its items"""
+    with get_db() as conn:
+        cursor = conn.cursor()
+        
+        # Don't delete if it's the only version or master list
+        if version_id == 0:
+            return jsonify({'error': 'Cannot delete the Master List'}), 400
+            
+        version_count = cursor.execute('SELECT COUNT(*) FROM menu_versions').fetchone()[0]
+        if version_count <= 2:  # Master + 1 other
+            return jsonify({'error': 'Cannot delete the last menu version'}), 400
+        
+        # Delete all menu items for this version
+        cursor.execute('DELETE FROM menu_items WHERE version_id = ?', (version_id,))
+        
+        # Delete the version
+        cursor.execute('DELETE FROM menu_versions WHERE id = ?', (version_id,))
+        
+        conn.commit()
+    
+    return redirect(url_for('menu_versions_page'))
+
+@app.route('/menu/items/add', methods=['GET', 'POST'])
+def add_menu_item():
+    """Add a recipe to menu(s)"""
+    if request.method == 'POST':
+        with get_db() as conn:
+            cursor = conn.cursor()
+            
+            recipe_id = request.form['recipe_id']
+            menu_price = float(request.form['menu_price'])
+            menu_group = request.form['menu_group']
+            item_description = request.form.get('item_description', '')
+            serving_size = request.form.get('serving_size', '')
+            
+            # Get recipe details
+            recipe = cursor.execute('''
+                SELECT recipe_name, food_cost 
+                FROM recipes WHERE id = ?
+            ''', (recipe_id,)).fetchone()
+            
+            # Calculate food cost percentage
+            food_cost = recipe['food_cost'] or 0
+            food_cost_percent = (food_cost / menu_price * 100) if menu_price > 0 else 0
+            gross_profit = menu_price - food_cost
+            
+            # Get selected menu versions
+            version_ids = request.form.getlist('version_ids')
+            
+            # Add to each selected menu version
+            for version_id in version_ids:
+                # Check if already exists
+                exists = cursor.execute('''
+                    SELECT id FROM menu_items 
+                    WHERE recipe_id = ? AND version_id = ?
+                ''', (recipe_id, version_id)).fetchone()
+                
+                if not exists:
+                    cursor.execute('''
+                        INSERT INTO menu_items 
+                        (item_name, menu_group, item_description, recipe_id, 
+                         menu_price, food_cost, food_cost_percent, gross_profit, 
+                         serving_size, version_id)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    ''', (recipe['recipe_name'], menu_group, item_description, 
+                          recipe_id, menu_price, food_cost, food_cost_percent, 
+                          gross_profit, serving_size, version_id))
+            
+            conn.commit()
+        
+        return redirect(url_for('menu'))
+    
+    # GET request - show form
+    with get_db() as conn:
+        # Get all recipes
+        recipes = conn.execute('''
+            SELECT r.* 
+            FROM recipes r
+            ORDER BY r.recipe_name
+        ''').fetchall()
+        
+        menu_versions = conn.execute('''
+            SELECT * FROM menu_versions ORDER BY id
+        ''').fetchall()
+    
+    theme = get_theme()
+    return render_template(f'add_menu_item_{theme}.html', 
+                         recipes=recipes, 
+                         menu_versions=menu_versions)
+
+@app.route('/menu/items/edit/<int:item_id>', methods=['GET', 'POST'])
+def edit_menu_item(item_id):
+    """Edit a menu item"""
+    if request.method == 'POST':
+        with get_db() as conn:
+            cursor = conn.cursor()
+            
+            menu_price = float(request.form['menu_price'])
+            menu_group = request.form['menu_group']
+            item_description = request.form.get('item_description', '')
+            serving_size = request.form.get('serving_size', '')
+            status = request.form.get('status', 'Active')
+            
+            # Get current food cost
+            item = cursor.execute('''
+                SELECT food_cost FROM menu_items WHERE id = ?
+            ''', (item_id,)).fetchone()
+            
+            food_cost = item['food_cost'] or 0
+            food_cost_percent = (food_cost / menu_price * 100) if menu_price > 0 else 0
+            gross_profit = menu_price - food_cost
+            
+            cursor.execute('''
+                UPDATE menu_items 
+                SET menu_price = ?, menu_group = ?, item_description = ?,
+                    serving_size = ?, status = ?, food_cost_percent = ?,
+                    gross_profit = ?, updated_date = CURRENT_TIMESTAMP
+                WHERE id = ?
+            ''', (menu_price, menu_group, item_description, serving_size, 
+                  status, food_cost_percent, gross_profit, item_id))
+            
+            conn.commit()
+        
+        return redirect(url_for('menu'))
+    
+    # GET request
+    with get_db() as conn:
+        item = conn.execute('''
+            SELECT mi.*, r.recipe_name, r.food_cost, mv.version_name
+            FROM menu_items mi
+            JOIN recipes r ON mi.recipe_id = r.id
+            JOIN menu_versions mv ON mi.version_id = mv.id
+            WHERE mi.id = ?
+        ''', (item_id,)).fetchone()
+    
+    theme = get_theme()
+    return render_template(f'edit_menu_item_{theme}.html', item=item)
+
+@app.route('/menu/items/delete/<int:item_id>', methods=['POST'])
+def delete_menu_item(item_id):
+    """Remove item from menu"""
+    with get_db() as conn:
+        conn.execute('DELETE FROM menu_items WHERE id = ?', (item_id,))
+        conn.commit()
+    
+    return redirect(url_for('menu'))
+
+@app.route('/menu/items/copy/<int:item_id>', methods=['POST'])
+def copy_menu_item(item_id):
+    """Copy a menu item to other menu versions"""
+    version_ids = request.form.getlist('version_ids')
+    
+    with get_db() as conn:
+        cursor = conn.cursor()
+        
+        # Get the item to copy
+        item = cursor.execute('''
+            SELECT * FROM menu_items WHERE id = ?
+        ''', (item_id,)).fetchone()
+        
+        if item:
+            # Copy to each selected version
+            for version_id in version_ids:
+                # Check if already exists
+                exists = cursor.execute('''
+                    SELECT id FROM menu_items 
+                    WHERE recipe_id = ? AND version_id = ?
+                ''', (item['recipe_id'], version_id)).fetchone()
+                
+                if not exists:
+                    cursor.execute('''
+                        INSERT INTO menu_items 
+                        (item_name, menu_group, item_description, recipe_id,
+                         menu_price, food_cost, food_cost_percent, gross_profit,
+                         status, serving_size, version_id)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    ''', (item['item_name'], item['menu_group'], 
+                          item['item_description'], item['recipe_id'],
+                          item['menu_price'], item['food_cost'], 
+                          item['food_cost_percent'], item['gross_profit'],
+                          item['status'], item['serving_size'], version_id))
+            
+            conn.commit()
+    
+    return redirect(url_for('menu'))
+
 @app.route('/pricing-analysis')
 def pricing_analysis():
     """Pricing analysis and recommendations page"""

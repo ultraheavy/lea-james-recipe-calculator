@@ -1,0 +1,243 @@
+{% extends "base_modern.html" %}
+
+{% block title %}Add Menu Item - Lea Jane's Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in max-w-4xl mx-auto">
+    <!-- Page Header -->
+    <div class="mb-6">
+        <h1 class="text-3xl font-semibold mb-2">Add Recipe to Menu</h1>
+        <p class="text-secondary">Select a recipe and add it to one or more menus</p>
+    </div>
+
+    <form method="POST" class="space-y-4">
+        <!-- Recipe Selection -->
+        <div class="card">
+            <div class="card-body">
+                <h3 class="text-lg font-semibold mb-4">1. Select Recipe</h3>
+                
+                <div class="form-group">
+                    <label for="recipe_id" class="form-label">Recipe</label>
+                    <select id="recipe_id" name="recipe_id" class="form-control" required onchange="updateRecipeInfo()">
+                        <option value="">Choose a recipe...</option>
+                        {% for recipe in recipes %}
+                        <option value="{{ recipe.id }}" 
+                                data-cost="{{ recipe.food_cost or 0 }}"
+                                data-group="{{ recipe.recipe_group or 'Uncategorized' }}">
+                            {{ recipe.recipe_name }} 
+                            (Cost: ${{ "%.2f"|format(recipe.food_cost or 0) }})
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div id="recipe-info" class="mt-4 p-4 bg-gray-50 rounded-lg hidden">
+                    <div class="grid grid-cols-3 gap-4 text-sm">
+                        <div>
+                            <p class="text-secondary">Food Cost</p>
+                            <p class="font-semibold" id="food-cost">$0.00</p>
+                        </div>
+                        <div>
+                            <p class="text-secondary">Suggested Price (28% FC)</p>
+                            <p class="font-semibold" id="suggested-price">$0.00</p>
+                        </div>
+                        <div>
+                            <p class="text-secondary">Recipe Group</p>
+                            <p class="font-semibold" id="recipe-group">-</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing & Details -->
+        <div class="card">
+            <div class="card-body">
+                <h3 class="text-lg font-semibold mb-4">2. Set Pricing & Details</h3>
+                
+                <div class="grid grid-cols-1 grid-cols-2 gap-4">
+                    <div class="form-group">
+                        <label for="menu_price" class="form-label">Menu Price</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
+                            <input type="number" 
+                                   id="menu_price" 
+                                   name="menu_price" 
+                                   class="form-control pl-8" 
+                                   step="0.01" 
+                                   min="0" 
+                                   required
+                                   onchange="calculateMargins()">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="menu_group" class="form-label">Menu Category</label>
+                        <select id="menu_group" name="menu_group" class="form-control" required>
+                            <option value="">Select category...</option>
+                            <option value="Appetizers">Appetizers</option>
+                            <option value="Salads">Salads</option>
+                            <option value="Sandwiches">Sandwiches</option>
+                            <option value="Entrees">Entrees</option>
+                            <option value="Sides">Sides</option>
+                            <option value="Desserts">Desserts</option>
+                            <option value="Beverages">Beverages</option>
+                            <option value="Specials">Specials</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="serving_size" class="form-label">Serving Size</label>
+                        <input type="text" 
+                               id="serving_size" 
+                               name="serving_size" 
+                               class="form-control" 
+                               placeholder="e.g., 8 oz, 1 plate, 2 pieces">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="item_description" class="form-label">Menu Description</label>
+                        <textarea id="item_description" 
+                                  name="item_description" 
+                                  class="form-control" 
+                                  rows="2"
+                                  placeholder="Brief description for the menu"></textarea>
+                    </div>
+                </div>
+                
+                <!-- Margin Calculator -->
+                <div id="margin-info" class="mt-4 p-4 bg-blue-50 rounded-lg hidden">
+                    <h4 class="font-semibold mb-2">Profit Margins</h4>
+                    <div class="grid grid-cols-4 gap-4 text-sm">
+                        <div>
+                            <p class="text-secondary">Food Cost %</p>
+                            <p class="font-semibold" id="fc-percent">0%</p>
+                        </div>
+                        <div>
+                            <p class="text-secondary">Gross Profit</p>
+                            <p class="font-semibold" id="gross-profit">$0.00</p>
+                        </div>
+                        <div>
+                            <p class="text-secondary">Markup</p>
+                            <p class="font-semibold" id="markup">0x</p>
+                        </div>
+                        <div>
+                            <p class="text-secondary">Target Status</p>
+                            <p class="font-semibold" id="target-status">-</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Selection -->
+        <div class="card">
+            <div class="card-body">
+                <h3 class="text-lg font-semibold mb-4">3. Add to Menu(s)</h3>
+                <p class="text-secondary mb-4">Select which menus should include this item</p>
+                
+                <div class="space-y-2">
+                    {% for version in menu_versions %}
+                    <label class="flex items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="checkbox" 
+                               name="version_ids" 
+                               value="{{ version.id }}" 
+                               class="mr-3"
+                               {% if version.id == 0 %}checked{% endif %}>
+                        <div class="flex-1">
+                            <span class="font-medium">{{ version.version_name }}</span>
+                            {% if version.is_active %}
+                            <span class="badge badge-success ml-2">Active</span>
+                            {% endif %}
+                            {% if version.id == 0 %}
+                            <span class="badge badge-secondary ml-2">Master</span>
+                            {% endif %}
+                            <p class="text-sm text-secondary">{{ version.description }}</p>
+                        </div>
+                    </label>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex gap-3">
+            <button type="submit" class="btn btn-primary flex-1">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mr-2">
+                    <path d="M12 5v14m-7-7h14"/>
+                </svg>
+                Add to Selected Menus
+            </button>
+            <a href="/menu" class="btn btn-secondary flex-1">
+                Cancel
+            </a>
+        </div>
+    </form>
+</div>
+
+<script>
+function updateRecipeInfo() {
+    const select = document.getElementById('recipe_id');
+    const option = select.options[select.selectedIndex];
+    
+    if (option.value) {
+        const cost = parseFloat(option.dataset.cost) || 0;
+        const suggestedPrice = cost * 3.5; // 28.5% food cost
+        
+        document.getElementById('food-cost').textContent = '$' + cost.toFixed(2);
+        document.getElementById('suggested-price').textContent = '$' + suggestedPrice.toFixed(2);
+        document.getElementById('recipe-group').textContent = option.dataset.group;
+        document.getElementById('menu_price').value = suggestedPrice.toFixed(2);
+        document.getElementById('menu_group').value = option.dataset.group;
+        
+        document.getElementById('recipe-info').classList.remove('hidden');
+        calculateMargins();
+    } else {
+        document.getElementById('recipe-info').classList.add('hidden');
+        document.getElementById('margin-info').classList.add('hidden');
+    }
+}
+
+function calculateMargins() {
+    const price = parseFloat(document.getElementById('menu_price').value) || 0;
+    const select = document.getElementById('recipe_id');
+    const option = select.options[select.selectedIndex];
+    
+    if (option.value && price > 0) {
+        const cost = parseFloat(option.dataset.cost) || 0;
+        const fcPercent = (cost / price * 100);
+        const grossProfit = price - cost;
+        const markup = price / cost;
+        
+        document.getElementById('fc-percent').textContent = fcPercent.toFixed(1) + '%';
+        document.getElementById('gross-profit').textContent = '$' + grossProfit.toFixed(2);
+        document.getElementById('markup').textContent = markup.toFixed(1) + 'x';
+        
+        // Target status
+        let status = '';
+        let statusClass = '';
+        if (fcPercent <= 25) {
+            status = 'Excellent';
+            statusClass = 'text-green-600';
+        } else if (fcPercent <= 30) {
+            status = 'Good';
+            statusClass = 'text-blue-600';
+        } else if (fcPercent <= 35) {
+            status = 'Fair';
+            statusClass = 'text-yellow-600';
+        } else {
+            status = 'High';
+            statusClass = 'text-red-600';
+        }
+        
+        const statusEl = document.getElementById('target-status');
+        statusEl.textContent = status;
+        statusEl.className = 'font-semibold ' + statusClass;
+        
+        document.getElementById('margin-info').classList.remove('hidden');
+    } else {
+        document.getElementById('margin-info').classList.add('hidden');
+    }
+}
+</script>
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends "base_modern.html" %}
+
+{% block title %}Menu Versions - Lea Jane's Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in">
+    <!-- Page Header -->
+    <div class="flex items-center justify-between mb-6">
+        <div>
+            <h1 class="text-3xl font-semibold mb-2">Menu Versions</h1>
+            <p class="text-secondary">Manage different menu configurations</p>
+        </div>
+        <div class="flex gap-3">
+            <a href="/menu" class="btn btn-secondary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5m7-7l-7 7 7 7"/>
+                </svg>
+                Back to Menu
+            </a>
+            <a href="/menu/versions/add" class="btn btn-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14m-7-7h14"/>
+                </svg>
+                Create New Version
+            </a>
+        </div>
+    </div>
+
+    <!-- Menu Versions Grid -->
+    <div class="grid grid-cols-1 grid-cols-2 gap-4">
+        {% for version in versions %}
+        <div class="card {% if version.is_active %}ring-2 ring-primary{% endif %}">
+            <div class="card-body">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="text-xl font-semibold">{{ version.version_name }}</h3>
+                        {% if version.is_active %}
+                        <span class="badge badge-success">Active</span>
+                        {% endif %}
+                        {% if version.id == 0 %}
+                        <span class="badge badge-secondary">Master</span>
+                        {% endif %}
+                    </div>
+                    <div class="flex gap-2">
+                        {% if version.id != 0 %}
+                        <a href="/menu/versions/edit/{{ version.id }}" 
+                           class="btn btn-sm btn-secondary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+                                <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                            </svg>
+                        </a>
+                        {% if not version.is_active %}
+                        <form method="POST" action="/menu/versions/delete/{{ version.id }}" 
+                              class="inline" onsubmit="return confirm('Delete this menu version and all its items?');">
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 6h18m-2 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+                                </svg>
+                            </button>
+                        </form>
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <p class="text-secondary mb-4">{{ version.description or 'No description' }}</p>
+                
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                        <p class="text-secondary">Items</p>
+                        <p class="text-2xl font-semibold">{{ version.item_count or 0 }}</p>
+                    </div>
+                    <div>
+                        <p class="text-secondary">Total Revenue</p>
+                        <p class="text-2xl font-semibold">${{ "%.2f"|format(version.total_revenue or 0) }}</p>
+                    </div>
+                </div>
+                
+                {% if version.effective_date %}
+                <div class="mt-4 pt-4 border-t border-gray-200">
+                    <p class="text-sm text-secondary">
+                        Effective: {{ version.effective_date }}
+                    </p>
+                </div>
+                {% endif %}
+                
+                <div class="mt-4 flex gap-2">
+                    <a href="/menu?version={{ version.id }}" class="btn btn-sm btn-primary flex-1">
+                        View Items
+                    </a>
+                    {% if version.id != 0 %}
+                    <a href="/menu/compare?v1=0&v2={{ version.id }}" class="btn btn-sm btn-secondary flex-1">
+                        Compare to Master
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
