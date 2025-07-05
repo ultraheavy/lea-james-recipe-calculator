@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for
+from flask import Flask, render_template, request, jsonify, redirect, url_for, make_response
 import sqlite3
 import os
 
@@ -287,6 +287,11 @@ def get_db():
     conn.row_factory = sqlite3.Row
     return conn
 
+def get_theme():
+    """Get the current theme from cookies or query parameter"""
+    theme = request.args.get('theme') or request.cookies.get('theme', 'modern')
+    return theme if theme in ['modern', 'neo'] else 'modern'
+
 @app.route('/health')
 def health():
     """Health check endpoint for debugging"""
@@ -310,6 +315,16 @@ def health():
             'error': str(e)
         }), 500
 
+@app.route('/set-theme/<theme>')
+def set_theme(theme):
+    """Set the UI theme"""
+    if theme not in ['modern', 'neo']:
+        theme = 'modern'
+    
+    response = make_response(redirect(request.referrer or '/'))
+    response.set_cookie('theme', theme, max_age=60*60*24*365)  # 1 year
+    return response
+
 @app.route('/')
 def index():
     """Dashboard with enhanced statistics"""
@@ -326,7 +341,8 @@ def index():
         'vendor_count': vendor_count
     }
     
-    return render_template('index_modern.html', stats=stats)
+    theme = get_theme()
+    return render_template(f'index_{theme}.html', stats=stats)
 
 @app.route('/inventory')
 def inventory():
@@ -337,7 +353,8 @@ def inventory():
              
             ORDER BY i.item_code
         ''').fetchall()
-    return render_template('inventory_modern.html', items=items)
+    theme = get_theme()
+    return render_template(f'inventory_{theme}.html', items=items)
 
 @app.route('/inventory/add', methods=['GET', 'POST'])
 def add_inventory():
@@ -532,7 +549,8 @@ def recipes():
             GROUP BY r.id 
             ORDER BY r.recipe_group, r.recipe_name
         ''').fetchall()
-    return render_template('recipes_modern.html', recipes=recipes)
+    theme = get_theme()
+    return render_template(f'recipes_{theme}.html', recipes=recipes)
 
 @app.route('/recipes/add', methods=['GET', 'POST'])
 def add_recipe():
@@ -722,7 +740,8 @@ def menu():
             ORDER BY m.menu_group, m.item_name
         ''', (version_id,)).fetchall()
     
-    return render_template('menu_modern.html', 
+    theme = get_theme()
+    return render_template(f'menu_{theme}.html', 
                          menu_items=menu_items,
                          menu_versions=menu_versions,
                          current_version_id=version_id)

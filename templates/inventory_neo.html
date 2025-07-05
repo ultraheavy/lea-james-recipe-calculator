@@ -9,7 +9,7 @@
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <div>
                 <h1>Inventory Management</h1>
-                <p class="neo-text-muted">{{ inventory|length }} items in your digital pantry</p>
+                <p class="neo-text-muted">{{ items|length }} items in your digital pantry</p>
             </div>
             <a href="/inventory/add" class="neo-btn neo-btn-primary">
                 <span>+</span> Add Item
@@ -30,6 +30,7 @@
                 </div>
                 <select name="category" class="neo-form-control" style="width: auto;" onchange="this.form.submit()">
                     <option value="">All Categories</option>
+                    {% set categories = items|map(attribute='product_categories')|select|unique|list %}
                     {% for category in categories %}
                     <option value="{{ category }}" {% if request.args.get('category') == category %}selected{% endif %}>
                         {{ category }}
@@ -38,6 +39,7 @@
                 </select>
                 <select name="vendor" class="neo-form-control" style="width: auto;" onchange="this.form.submit()">
                     <option value="">All Vendors</option>
+                    {% set vendor_list = items|map(attribute='vendor_name')|select|unique|list %}
                     {% for vendor in vendor_list %}
                     <option value="{{ vendor }}" {% if request.args.get('vendor') == vendor %}selected{% endif %}>
                         {{ vendor }}
@@ -51,7 +53,7 @@
     
     <!-- Inventory Grid -->
     <div class="neo-grid neo-grid-3">
-        {% for item in inventory %}
+        {% for item in items %}
         <div class="neo-card neo-animate-fade-up" style="animation-delay: {{ loop.index0 * 0.03 }}s;">
             <div class="neo-card-body">
                 <!-- Header -->
@@ -99,7 +101,7 @@
         {% endfor %}
     </div>
     
-    {% if not inventory %}
+    {% if not items %}
     <div class="neo-card">
         <div class="neo-card-body" style="text-align: center; padding: 4rem 2rem;">
             <div class="neo-icon neo-icon-cyan" style="width: 4rem; height: 4rem; font-size: 2rem; margin: 0 auto 1rem;">

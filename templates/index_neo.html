@@ -14,7 +14,7 @@
     <div class="neo-grid neo-grid-4 neo-mb-4">
         <div class="neo-stat-card">
             <div class="neo-stat-label">Total Inventory Items</div>
-            <div class="neo-stat-value neo-text-cyan">{{ stats.total_items or 0 }}</div>
+            <div class="neo-stat-value neo-text-cyan">{{ stats.inventory_count or 0 }}</div>
             <div class="neo-mt-2">
                 <a href="/inventory" class="neo-text-cyan">View all →</a>
             </div>
@@ -22,7 +22,7 @@
         
         <div class="neo-stat-card">
             <div class="neo-stat-label">Active Recipes</div>
-            <div class="neo-stat-value neo-text-pink">{{ stats.active_recipes or 0 }}</div>
+            <div class="neo-stat-value neo-text-pink">{{ stats.recipe_count or 0 }}</div>
             <div class="neo-mt-2">
                 <a href="/recipes" class="neo-text-pink">Browse recipes →</a>
             </div>
@@ -30,7 +30,7 @@
         
         <div class="neo-stat-card">
             <div class="neo-stat-label">Menu Items</div>
-            <div class="neo-stat-value neo-text-lime">{{ stats.menu_items or 0 }}</div>
+            <div class="neo-stat-value neo-text-lime">{{ stats.menu_count or 0 }}</div>
             <div class="neo-mt-2">
                 <a href="/menu" class="neo-text-lime">View menu →</a>
             </div>
