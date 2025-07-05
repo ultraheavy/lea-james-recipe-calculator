@@ -4,47 +4,24 @@ __pycache__/
 *$py.class
 *.so
 .Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# Flask
-instance/
-.webassets-cache
-
-# Environment variables
-.env
-.venv
 env/
 venv/
 ENV/
-env.bak/
-venv.bak/
+.venv
 
-# Database files
+# Database
 *.db
 *.sqlite
 *.sqlite3
 
 # Logs
 *.log
-logs/
 app.log
+
+# Environment variables
+.env
+.env.local
+.env.production
 
 # IDE
 .vscode/
@@ -55,32 +32,21 @@ app.log
 
 # OS
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
 
+# Backup files
+*.bak
+backup/
+
 # Temporary files
-*.tmp
-*.temp
-nohup.out
+tmp/
+temp/
 
-# Original Excel files (keep for reference but don't track changes)
-*.xlsx
-*.xlsm
-*.xls
+# Session files
+flask_session/
 
-# Production configs
-config.py
-instance/config.py
-
-# Coverage reports
-htmlcov/
-.coverage
-.coverage.*
-coverage.xml
-*.cover
-.hypothesis/
-.pytest_cache/
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+EOF < /dev/null

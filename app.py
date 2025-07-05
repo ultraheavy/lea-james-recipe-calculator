@@ -5,7 +5,13 @@ from auto_commit import integrate_with_flask
 
 app = Flask(__name__)
 
-DATABASE = 'restaurant_calculator.db'
+# Support for production deployment
+if os.getenv('FLASK_ENV') == 'production':
+    # In production, use a persistent volume
+    DATABASE = os.getenv('DATABASE_PATH', '/data/restaurant_calculator.db')
+else:
+    # In development, use local file
+    DATABASE = 'restaurant_calculator.db'
 
 # Set up auto-commit decorator
 with_auto_commit = integrate_with_flask(app)
@@ -736,5 +742,16 @@ def vendors():
 
 if __name__ == '__main__':
     os.makedirs('templates', exist_ok=True)
+    
+    # Ensure data directory exists in production
+    if os.getenv('FLASK_ENV') == 'production':
+        os.makedirs('/data', exist_ok=True)
+    
     init_database()
-    app.run(debug=True, host='0.0.0.0', port=8888)
+    
+    # Production mode
+    if os.getenv('FLASK_ENV') == 'production':
+        app.run(host='0.0.0.0', port=int(os.getenv('PORT', 8000)))
+    else:
+        # Development mode
+        app.run(debug=True, host='0.0.0.0', port=8888)
