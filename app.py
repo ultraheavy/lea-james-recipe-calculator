@@ -515,15 +515,119 @@ def delete_recipe(recipe_id):
 
 @app.route('/menu')
 def menu():
-    """Menu management page with enhanced data"""
+    """Menu management page with version support"""
     with get_db() as conn:
+        # Get menu versions
+        menu_versions = conn.execute('''
+            SELECT * FROM menu_versions ORDER BY id
+        ''').fetchall()
+        
+        # Get requested version or default to active version
+        version_id = request.args.get('version_id', type=int)
+        if not version_id:
+            # Get active version
+            active_version = conn.execute('''
+                SELECT id FROM menu_versions WHERE is_active = 1 LIMIT 1
+            ''').fetchone()
+            version_id = active_version['id'] if active_version else 1
+        
+        # Get menu items for selected version
         menu_items = conn.execute('''
             SELECT m.*, r.recipe_name, r.food_cost, r.recipe_group
             FROM menu_items m 
             LEFT JOIN recipes r ON m.recipe_id = r.id 
+            WHERE m.version_id = ?
             ORDER BY m.menu_group, m.item_name
-        ''').fetchall()
-    return render_template('menu.html', menu_items=menu_items)
+        ''', (version_id,)).fetchall()
+    
+    return render_template('menu.html', 
+                         menu_items=menu_items,
+                         menu_versions=menu_versions,
+                         current_version_id=version_id)
+
+@app.route('/menu/compare')
+def menu_compare():
+    """Compare menu versions side by side"""
+    with get_db() as conn:
+        # Get all menu versions
+        menu_versions = conn.execute('SELECT * FROM menu_versions ORDER BY id').fetchall()
+        
+        # Get selected versions
+        v1_id = request.args.get('v1', type=int, default=1)
+        v2_id = request.args.get('v2', type=int, default=2)
+        
+        if v1_id and v2_id:
+            # Get version names
+            v1 = conn.execute('SELECT * FROM menu_versions WHERE id = ?', (v1_id,)).fetchone()
+            v2 = conn.execute('SELECT * FROM menu_versions WHERE id = ?', (v2_id,)).fetchone()
+            
+            # Get all unique items from both versions
+            all_items = conn.execute('''
+                SELECT DISTINCT item_name, menu_group
+                FROM menu_items
+                WHERE version_id IN (?, ?)
+                ORDER BY menu_group, item_name
+            ''', (v1_id, v2_id)).fetchall()
+            
+            comparison_data = []
+            for item in all_items:
+                # Get data from version 1
+                v1_data = conn.execute('''
+                    SELECT * FROM menu_items 
+                    WHERE item_name = ? AND version_id = ?
+                ''', (item['item_name'], v1_id)).fetchone()
+                
+                # Get data from version 2
+                v2_data = conn.execute('''
+                    SELECT * FROM menu_items 
+                    WHERE item_name = ? AND version_id = ?
+                ''', (item['item_name'], v2_id)).fetchone()
+                
+                # Calculate changes
+                price_change = None
+                cost_change = None
+                if v1_data and v2_data:
+                    price_change = (v2_data['menu_price'] or 0) - (v1_data['menu_price'] or 0)
+                    cost_change = (v2_data['food_cost'] or 0) - (v1_data['food_cost'] or 0)
+                
+                comparison_data.append({
+                    'item_name': item['item_name'],
+                    'menu_group': item['menu_group'],
+                    'v1_data': v1_data,
+                    'v2_data': v2_data,
+                    'price_change': price_change,
+                    'cost_change': cost_change
+                })
+            
+            # Calculate summary statistics
+            v1_items = [item for item in comparison_data if item['v1_data']]
+            v2_items = [item for item in comparison_data if item['v2_data']]
+            
+            summary = {
+                'v1_count': len(v1_items),
+                'v2_count': len(v2_items),
+                'v1_avg_price': sum(item['v1_data']['menu_price'] or 0 for item in v1_items) / len(v1_items) if v1_items else 0,
+                'v2_avg_price': sum(item['v2_data']['menu_price'] or 0 for item in v2_items) / len(v2_items) if v2_items else 0,
+                'v1_avg_cost_percent': sum(item['v1_data']['food_cost_percent'] or 0 for item in v1_items) / len(v1_items) if v1_items else 0,
+                'v2_avg_cost_percent': sum(item['v2_data']['food_cost_percent'] or 0 for item in v2_items) / len(v2_items) if v2_items else 0,
+                'items_added': len([item for item in comparison_data if not item['v1_data'] and item['v2_data']]),
+                'items_removed': len([item for item in comparison_data if item['v1_data'] and not item['v2_data']]),
+                'items_changed': len([item for item in comparison_data if item['v1_data'] and item['v2_data']])
+            }
+            
+            return render_template('menu_compare.html',
+                                 menu_versions=menu_versions,
+                                 v1_id=v1_id,
+                                 v2_id=v2_id,
+                                 v1_name=v1['version_name'] if v1 else 'Version 1',
+                                 v2_name=v2['version_name'] if v2 else 'Version 2',
+                                 comparison_data=comparison_data,
+                                 summary=summary)
+        
+        return render_template('menu_compare.html',
+                             menu_versions=menu_versions,
+                             v1_id=v1_id,
+                             v2_id=v2_id)
 
 @app.route('/vendors')
 def vendors():

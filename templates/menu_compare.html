@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block title %}Compare Menu Versions - Restaurant Recipe Calculator{% endblock %}
+
+{% block content %}
+<div style="margin-bottom: 20px;">
+    <a href="/menu" class="btn">← Back to Menu</a>
+</div>
+
+<h1>Menu Version Comparison</h1>
+<p>Compare items and pricing across different menu versions.</p>
+
+<form method="GET" action="/menu/compare" style="margin-bottom: 30px;">
+    <div style="display: flex; gap: 20px; align-items: center;">
+        <div>
+            <label for="v1">Version 1:</label>
+            <select name="v1" id="v1">
+                {% for version in menu_versions %}
+                <option value="{{ version.id }}" {% if version.id == v1_id %}selected{% endif %}>
+                    {{ version.version_name }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="v2">Version 2:</label>
+            <select name="v2" id="v2">
+                {% for version in menu_versions %}
+                <option value="{{ version.id }}" {% if version.id == v2_id %}selected{% endif %}>
+                    {{ version.version_name }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn">Compare</button>
+    </div>
+</form>
+
+{% if comparison_data %}
+<div style="overflow-x: auto;">
+    <table>
+        <thead>
+            <tr>
+                <th rowspan="2">Item Name</th>
+                <th rowspan="2">Menu Group</th>
+                <th colspan="4" style="text-align: center; background-color: #f0f0f0;">{{ v1_name }}</th>
+                <th colspan="4" style="text-align: center; background-color: #e0e0e0;">{{ v2_name }}</th>
+                <th rowspan="2">Price Change</th>
+                <th rowspan="2">Cost Change</th>
+            </tr>
+            <tr>
+                <th style="background-color: #f0f0f0;">Price</th>
+                <th style="background-color: #f0f0f0;">Cost</th>
+                <th style="background-color: #f0f0f0;">Cost %</th>
+                <th style="background-color: #f0f0f0;">Profit</th>
+                <th style="background-color: #e0e0e0;">Price</th>
+                <th style="background-color: #e0e0e0;">Cost</th>
+                <th style="background-color: #e0e0e0;">Cost %</th>
+                <th style="background-color: #e0e0e0;">Profit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in comparison_data %}
+            <tr>
+                <td>{{ item.item_name }}</td>
+                <td>{{ item.menu_group or 'Ungrouped' }}</td>
+                
+                <!-- Version 1 data -->
+                {% if item.v1_data %}
+                    <td>${{ "%.2f"|format(item.v1_data.menu_price or 0) }}</td>
+                    <td>${{ "%.2f"|format(item.v1_data.food_cost or 0) }}</td>
+                    <td>{{ "%.1f"|format(item.v1_data.food_cost_percent or 0) }}%</td>
+                    <td>${{ "%.2f"|format(item.v1_data.gross_profit or 0) }}</td>
+                {% else %}
+                    <td colspan="4" style="text-align: center; color: #999;">Not in version</td>
+                {% endif %}
+                
+                <!-- Version 2 data -->
+                {% if item.v2_data %}
+                    <td>${{ "%.2f"|format(item.v2_data.menu_price or 0) }}</td>
+                    <td>${{ "%.2f"|format(item.v2_data.food_cost or 0) }}</td>
+                    <td>{{ "%.1f"|format(item.v2_data.food_cost_percent or 0) }}%</td>
+                    <td>${{ "%.2f"|format(item.v2_data.gross_profit or 0) }}</td>
+                {% else %}
+                    <td colspan="4" style="text-align: center; color: #999;">Not in version</td>
+                {% endif %}
+                
+                <!-- Changes -->
+                <td>
+                    {% if item.price_change %}
+                        <span style="color: {% if item.price_change > 0 %}green{% else %}red{% endif %};">
+                            {{ "%+.2f"|format(item.price_change) }}
+                        </span>
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                <td>
+                    {% if item.cost_change %}
+                        <span style="color: {% if item.cost_change > 0 %}red{% else %}green{% endif %};">
+                            {{ "%+.2f"|format(item.cost_change) }}
+                        </span>
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div style="margin-top: 30px;">
+    <h3>Summary</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+        <div style="border: 1px solid #ddd; padding: 15px; border-radius: 5px;">
+            <h4>{{ v1_name }}</h4>
+            <p>Total Items: {{ summary.v1_count }}</p>
+            <p>Avg Price: ${{ "%.2f"|format(summary.v1_avg_price) }}</p>
+            <p>Avg Cost %: {{ "%.1f"|format(summary.v1_avg_cost_percent) }}%</p>
+        </div>
+        <div style="border: 1px solid #ddd; padding: 15px; border-radius: 5px;">
+            <h4>{{ v2_name }}</h4>
+            <p>Total Items: {{ summary.v2_count }}</p>
+            <p>Avg Price: ${{ "%.2f"|format(summary.v2_avg_price) }}</p>
+            <p>Avg Cost %: {{ "%.1f"|format(summary.v2_avg_cost_percent) }}%</p>
+        </div>
+        <div style="border: 1px solid #ddd; padding: 15px; border-radius: 5px;">
+            <h4>Changes</h4>
+            <p>Items Added: {{ summary.items_added }}</p>
+            <p>Items Removed: {{ summary.items_removed }}</p>
+            <p>Items Changed: {{ summary.items_changed }}</p>
+        </div>
+    </div>
+</div>
+{% else %}
+    <p>Select two menu versions to compare.</p>
+{% endif %}
+{% endblock %}

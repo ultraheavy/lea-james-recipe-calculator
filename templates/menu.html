@@ -6,7 +6,28 @@
 <h1>Menu Item Management</h1>
 <p>Manage your menu items and link them to recipes for cost analysis.</p>
 
-<a href="/menu/add" class="btn btn-success">Add New Menu Item</a>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <div>
+        <label for="version_select">Menu Version:</label>
+        <select id="version_select" onchange="changeVersion(this.value)" style="margin-left: 10px;">
+            {% for version in menu_versions %}
+            <option value="{{ version.id }}" {% if version.id == current_version_id %}selected{% endif %}>
+                {{ version.version_name }} {% if version.is_active %}(Active){% endif %}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <a href="/menu/add?version_id={{ current_version_id }}" class="btn btn-success">Add New Menu Item</a>
+        <a href="/menu/compare" class="btn">Compare Versions</a>
+    </div>
+</div>
+
+<script>
+function changeVersion(versionId) {
+    window.location.href = '/menu?version_id=' + versionId;
+}
+</script>
 
 <table>
     <thead>
