@@ -52,9 +52,12 @@ def import_production_data(conn):
 def init_database():
     """Initialize database with updated schema for Toast POS integration"""
     try:
+        print(f"Database path: {DATABASE}")
+        
         # Ensure database directory exists
         db_dir = os.path.dirname(DATABASE)
         if db_dir and not os.path.exists(db_dir):
+            print(f"Creating database directory: {db_dir}")
             os.makedirs(db_dir, exist_ok=True)
             
         with sqlite3.connect(DATABASE) as conn:
@@ -220,12 +223,15 @@ def init_database():
             cursor.execute('CREATE INDEX IF NOT EXISTS idx_menu_items_group ON menu_items(menu_group)')
             
             conn.commit()
+            print("Database schema created successfully!")
             
             # Import production data if available and database is empty
             import_production_data(conn)
             
     except Exception as e:
         print(f"Database initialization error: {e}")
+        import traceback
+        print(traceback.format_exc())
         raise
 
 def get_db():
@@ -854,15 +860,19 @@ def handle_exception(error):
     app.logger.error(traceback.format_exc())
     return render_template('500.html'), 500
 
+# Initialize database on module load (for production)
+# This ensures database is ready before any requests
+print("Initializing database...")
+os.makedirs('templates', exist_ok=True)
+
+# Ensure data directory exists in production
+if os.getenv('FLASK_ENV') == 'production':
+    os.makedirs('/data', exist_ok=True)
+
+# Always initialize database when module loads
+init_database()
+
 if __name__ == '__main__':
-    os.makedirs('templates', exist_ok=True)
-    
-    # Ensure data directory exists in production
-    if os.getenv('FLASK_ENV') == 'production':
-        os.makedirs('/data', exist_ok=True)
-    
-    init_database()
-    
     # Production mode
     if os.getenv('FLASK_ENV') == 'production':
         app.run(host='0.0.0.0', port=int(os.getenv('PORT', 8000)))
