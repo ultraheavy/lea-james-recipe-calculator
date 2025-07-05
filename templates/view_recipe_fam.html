@@ -1,0 +1,317 @@
+{% extends "base_fam.html" %}
+
+{% block title %}{{ recipe.recipe_name }} - Lea Jane's Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="fam-page-content">
+    <!-- Page Header -->
+    <div class="fam-page-header">
+        <div>
+            <div class="fam-breadcrumb">
+                <a href="/recipes" class="fam-btn-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5m7-7l-7 7 7 7"/>
+                    </svg>
+                </a>
+                <h1 class="fam-page-title">{{ recipe.recipe_name }}</h1>
+                <span class="fam-status-badge {% if recipe.status == 'Active' %}fam-status-active{% elif recipe.status == 'Draft' %}fam-status-draft{% else %}fam-status-archived{% endif %}">
+                    {{ recipe.status or 'Draft' }}
+                </span>
+            </div>
+            {% if recipe.recipe_group %}
+            <p class="fam-page-subtitle">{{ recipe.recipe_group }}</p>
+            {% endif %}
+        </div>
+        <div class="fam-header-actions">
+            <button class="fam-btn fam-btn-secondary" onclick="editRecipe()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+                    <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                </svg>
+                Edit
+            </button>
+            <a href="/recipes/{{ recipe.id }}/ingredients/add" class="fam-btn fam-btn-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 8v8m-4-4h8"/>
+                </svg>
+                Add Ingredient
+            </a>
+        </div>
+    </div>
+    
+    <!-- Recipe Info Cards -->
+    <div class="fam-stats-grid mb-6">
+        <div class="fam-stat-card">
+            <div class="fam-stat-label">Menu Price</div>
+            <div class="fam-stat-value">${{ "%.2f"|format(recipe.menu_price or 0) }}</div>
+        </div>
+        
+        <div class="fam-stat-card">
+            <div class="fam-stat-label">Food Cost</div>
+            <div class="fam-stat-value fam-text-primary">${{ "%.2f"|format(recipe.food_cost or 0) }}</div>
+            <div class="fam-stat-detail">
+                {% if recipe.menu_price and recipe.menu_price > 0 %}
+                    {% set fc_percent = (recipe.food_cost / recipe.menu_price * 100) %}
+                    <span class="{% if fc_percent > 35 %}fam-text-danger{% else %}fam-text-success{% endif %}">
+                        {{ "%.1f"|format(fc_percent) }}% of price
+                    </span>
+                {% else %}
+                    - % of price
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="fam-stat-card">
+            <div class="fam-stat-label">Gross Margin</div>
+            <div class="fam-stat-value fam-text-success">
+                {% if recipe.menu_price %}
+                    ${{ "%.2f"|format(recipe.menu_price - (recipe.food_cost or 0)) }}
+                {% else %}
+                    $0.00
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="fam-stat-card">
+            <div class="fam-stat-label">Serving Info</div>
+            {% if recipe.serving_size %}
+                <div class="fam-stat-value">{{ recipe.serving_size }} {{ recipe.serving_size_uom or '' }}</div>
+                <div class="fam-stat-detail">${{ "%.2f"|format(recipe.per_serving or 0) }} per serving</div>
+            {% else %}
+                <div class="fam-stat-value fam-text-muted">Not specified</div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- Recipe Details -->
+    <div class="fam-recipe-layout">
+        <!-- Ingredients -->
+        <div class="fam-ingredients-section">
+            <div class="fam-card">
+                <div class="fam-card-header">
+                    <h2 class="fam-section-title">Ingredients ({{ ingredients|length }})</h2>
+                </div>
+                <div class="table-container">
+                    <table class="fam-table">
+                        <thead>
+                            <tr>
+                                <th>Ingredient</th>
+                                <th>Quantity</th>
+                                <th>Unit Price</th>
+                                <th>Cost</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for ingredient in ingredients %}
+                            <tr>
+                                <td>
+                                    <div class="fam-item-cell">
+                                        <div class="icon-container"></div>
+                                        <span class="fam-ingredient-name">{{ ingredient.ingredient_name or ingredient.item_description }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="fam-quantity">{{ ingredient.quantity }}</span>
+                                    <span class="fam-unit">{{ ingredient.unit_of_measure }}</span>
+                                </td>
+                                <td class="fam-text-muted">${{ "%.2f"|format(ingredient.current_price or 0) }}</td>
+                                <td class="fam-cost">${{ "%.2f"|format(ingredient.cost or 0) }}</td>
+                                <td>
+                                    <div class="fam-action-buttons">
+                                        <a href="/recipes/{{ recipe.id }}/ingredients/edit/{{ ingredient.id }}" 
+                                           class="fam-btn-icon">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+                                                <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                            </svg>
+                                        </a>
+                                        <button class="fam-btn-icon fam-btn-icon-danger" onclick="deleteIngredient({{ ingredient.id }})">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M3 6h18m-2 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                        <tfoot>
+                            <tr class="fam-table-footer">
+                                <td colspan="3">Total Food Cost</td>
+                                <td class="fam-total-cost">${{ "%.2f"|format(recipe.food_cost or 0) }}</td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                
+                {% if not ingredients %}
+                <div class="fam-empty-ingredients">
+                    <p class="fam-empty-text">No ingredients added yet</p>
+                    <a href="/recipes/{{ recipe.id }}/ingredients/add" class="fam-btn fam-btn-primary">Add First Ingredient</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Recipe Info -->
+        <div class="fam-info-section">
+            <div class="fam-card mb-4">
+                <div class="fam-card-header">
+                    <h3 class="fam-subsection-title">Recipe Information</h3>
+                </div>
+                <div class="fam-card-body">
+                    <div class="fam-info-grid">
+                        {% if recipe.station %}
+                        <div class="fam-info-item">
+                            <div class="fam-info-label">Station</div>
+                            <div class="fam-info-value">{{ recipe.station }}</div>
+                        </div>
+                        {% endif %}
+                        
+                        {% if recipe.shelf_life %}
+                        <div class="fam-info-item">
+                            <div class="fam-info-label">Shelf Life</div>
+                            <div class="fam-info-value">{{ recipe.shelf_life }} {{ recipe.shelf_life_uom or 'days' }}</div>
+                        </div>
+                        {% endif %}
+                        
+                        {% if recipe.prep_recipe_yield %}
+                        <div class="fam-info-item">
+                            <div class="fam-info-label">Recipe Yield</div>
+                            <div class="fam-info-value">{{ recipe.prep_recipe_yield }} {{ recipe.prep_recipe_yield_uom or '' }}</div>
+                        </div>
+                        {% endif %}
+                        
+                        <div class="fam-info-item">
+                            <div class="fam-info-label">Last Updated</div>
+                            <div class="fam-info-value">{{ recipe.updated_date or recipe.created_date or 'Unknown' }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            {% if recipe.procedure %}
+            <div class="fam-card">
+                <div class="fam-card-header">
+                    <h3 class="fam-subsection-title">Preparation Instructions</h3>
+                </div>
+                <div class="fam-card-body">
+                    <p class="fam-procedure">{{ recipe.procedure }}</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script>
+// Initialize category icons
+document.addEventListener('DOMContentLoaded', function() {
+    const rows = document.querySelectorAll('tbody tr');
+    rows.forEach(row => {
+        const ingredientName = row.cells[0].textContent.trim();
+        const iconContainer = row.querySelector('.icon-container');
+        if (iconContainer) {
+            const icon = createFoodIcon(ingredientName || 'misc', 'sm');
+            iconContainer.appendChild(icon);
+        }
+    });
+});
+
+function editRecipe() {
+    alert('Edit recipe functionality coming soon!');
+}
+
+function deleteIngredient(id) {
+    if (confirm('Are you sure you want to remove this ingredient?')) {
+        alert('Delete functionality coming soon!');
+    }
+}
+</script>
+
+<style>
+.fam-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.fam-header-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.fam-recipe-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+}
+
+.fam-empty-ingredients {
+    padding: 3rem;
+    text-align: center;
+}
+
+.fam-info-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.fam-info-item {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--fam-border-color);
+}
+
+.fam-info-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.fam-info-label {
+    font-size: 0.875rem;
+    color: var(--fam-text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.fam-info-value {
+    font-weight: 500;
+    color: var(--fam-text-primary);
+}
+
+.fam-procedure {
+    white-space: pre-wrap;
+    color: var(--fam-text-primary);
+    line-height: 1.6;
+}
+
+.fam-table-footer {
+    font-weight: 600;
+    background: var(--fam-bg-secondary);
+}
+
+.fam-total-cost {
+    color: var(--fam-primary);
+    font-size: 1.125rem;
+}
+
+@media (max-width: 768px) {
+    .fam-recipe-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .fam-header-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .fam-header-actions .fam-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+</style>
+{% endblock %}

@@ -1,0 +1,259 @@
+{% extends "base_fam.html" %}
+
+{% block title %}Pricing Analysis - Lea Jane's Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="fam-page-content">
+    <!-- Page Header -->
+    <div class="fam-page-header">
+        <div>
+            <h1 class="fam-page-title">Pricing Analysis & Recommendations</h1>
+            <p class="fam-page-subtitle">Optimize your menu pricing to meet target food cost percentages</p>
+        </div>
+    </div>
+    
+    <!-- Controls -->
+    <div class="fam-card mb-6">
+        <div class="fam-card-body">
+            <form method="GET" action="/pricing-analysis" class="fam-analysis-controls">
+                <div class="fam-control-group">
+                    <label class="fam-form-label">Target Food Cost %</label>
+                    <div class="fam-input-group">
+                        <input type="number" 
+                               name="target_food_cost" 
+                               class="fam-form-control" 
+                               value="{{ target_food_cost }}"
+                               min="10" max="50" step="0.5">
+                        <button type="submit" class="fam-btn fam-btn-primary">Analyze</button>
+                    </div>
+                </div>
+                <div class="fam-control-group">
+                    <label class="fam-form-label">Menu Version</label>
+                    <select name="version_id" class="fam-form-control" onchange="this.form.submit()">
+                        {% for version in menu_versions %}
+                        <option value="{{ version.id }}" {% if version.id == current_version_id %}selected{% endif %}>
+                            {{ version.version_name }} {% if version.is_active %}(Active){% endif %}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="fam-control-group">
+                    <label class="fam-form-label">Quick Targets</label>
+                    <div class="fam-target-buttons">
+                        <button type="button" class="fam-btn fam-btn-outline" onclick="setTarget(25)">25%</button>
+                        <button type="button" class="fam-btn fam-btn-outline" onclick="setTarget(30)">30%</button>
+                        <button type="button" class="fam-btn fam-btn-outline" onclick="setTarget(35)">35%</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Summary Cards -->
+    {% if summary %}
+    <div class="fam-stats-grid mb-6">
+        <div class="fam-stat-card">
+            <div class="fam-stat-label">Average Food Cost</div>
+            <div class="fam-stat-value {% if summary.avg_food_cost_percent > target_food_cost %}fam-text-danger{% else %}fam-text-success{% endif %}">
+                {{ "%.1f"|format(summary.avg_food_cost_percent) }}%
+            </div>
+            <div class="fam-progress-bar">
+                <div class="fam-progress-fill {% if summary.avg_food_cost_percent > target_food_cost %}fam-bg-danger{% else %}fam-bg-success{% endif %}" 
+                     style="width: {{ [summary.avg_food_cost_percent, 100]|min }}%"></div>
+            </div>
+        </div>
+        
+        <div class="fam-stat-card">
+            <div class="fam-stat-label">Items Above Target</div>
+            <div class="fam-stat-value fam-text-danger">{{ summary.items_above_target }}</div>
+            <div class="fam-stat-detail">Need price adjustment</div>
+        </div>
+        
+        <div class="fam-stat-card">
+            <div class="fam-stat-label">Average Adjustment</div>
+            <div class="fam-stat-value fam-text-primary">${{ "%.2f"|format(summary.avg_price_increase) }}</div>
+            <div class="fam-stat-detail">Per item increase</div>
+        </div>
+        
+        <div class="fam-stat-card">
+            <div class="fam-stat-label">Revenue Impact</div>
+            <div class="fam-stat-value fam-text-success">${{ "%.2f"|format(summary.total_revenue_impact) }}</div>
+            <div class="fam-stat-detail">Potential increase</div>
+        </div>
+    </div>
+    {% endif %}
+    
+    <!-- Analysis Results -->
+    <div class="fam-card">
+        <div class="fam-card-header">
+            <h2 class="fam-section-title">Price Recommendations</h2>
+        </div>
+        <div class="table-container">
+            <table class="fam-table" id="analysisTable">
+                <thead>
+                    <tr>
+                        <th>Menu Item</th>
+                        <th>Group</th>
+                        <th>Current Price</th>
+                        <th>Food Cost</th>
+                        <th>Current %</th>
+                        <th>Recommended Price</th>
+                        <th>Change</th>
+                        <th class="hide-mobile">New Margin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in analysis_data %}
+                    <tr class="{% if item.needs_adjustment %}fam-highlight-row{% endif %}">
+                        <td>
+                            <div class="fam-item-cell">
+                                <div class="icon-container"></div>
+                                <span>{{ item.item_name }}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="fam-badge">{{ item.menu_group or '-' }}</span>
+                        </td>
+                        <td class="fam-price">${{ "%.2f"|format(item.menu_price) }}</td>
+                        <td class="fam-cost">${{ "%.2f"|format(item.food_cost) }}</td>
+                        <td>
+                            <span class="fam-percentage {% if item.food_cost_percent > target_food_cost %}fam-text-danger{% else %}fam-text-success{% endif %}">
+                                {{ "%.1f"|format(item.food_cost_percent) }}%
+                            </span>
+                        </td>
+                        <td class="fam-recommended-price {% if item.price_change > 0 %}fam-text-primary{% endif %}">
+                            ${{ "%.2f"|format(item.recommended_price) }}
+                        </td>
+                        <td>
+                            {% if item.price_change != 0 %}
+                                <span class="fam-price-change {% if item.price_change > 0 %}fam-text-primary{% else %}fam-text-secondary{% endif %}">
+                                    {% if item.price_change > 0 %}+{% endif %}${{ "%.2f"|format(item.price_change) }}
+                                    <span class="fam-change-percent">({{ "%.1f"|format(item.price_change_percent) }}%)</span>
+                                </span>
+                            {% else %}
+                                <span class="fam-text-muted">-</span>
+                            {% endif %}
+                        </td>
+                        <td class="hide-mobile">
+                            <span class="fam-margin fam-text-success">${{ "%.2f"|format(item.new_margin) }}</span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    {% if not analysis_data %}
+    <div class="fam-empty-state">
+        <div class="fam-empty-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+        </div>
+        <h3 class="fam-empty-title">No menu items to analyze</h3>
+        <p class="fam-empty-text">Add menu items with prices to see pricing recommendations</p>
+        <a href="/menu" class="fam-btn fam-btn-primary">Go to Menu</a>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+// Initialize category icons
+document.addEventListener('DOMContentLoaded', function() {
+    const rows = document.querySelectorAll('#analysisTable tbody tr');
+    rows.forEach(row => {
+        const menuGroup = row.cells[1].textContent.trim();
+        const iconContainer = row.querySelector('.icon-container');
+        if (iconContainer) {
+            const icon = createFoodIcon(menuGroup || 'misc', 'sm');
+            iconContainer.appendChild(icon);
+        }
+    });
+});
+
+function setTarget(value) {
+    document.querySelector('input[name="target_food_cost"]').value = value;
+    document.querySelector('form').submit();
+}
+</script>
+
+<style>
+.fam-analysis-controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.fam-control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.fam-input-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.fam-input-group .fam-form-control {
+    flex: 1;
+}
+
+.fam-target-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.fam-progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--fam-bg-secondary);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+
+.fam-progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.fam-highlight-row {
+    background: rgba(244, 67, 54, 0.05);
+}
+
+.fam-highlight-row:hover {
+    background: rgba(244, 67, 54, 0.1);
+}
+
+.fam-recommended-price {
+    font-weight: 600;
+}
+
+.fam-price-change {
+    font-weight: 500;
+}
+
+.fam-change-percent {
+    font-size: 0.75rem;
+    color: var(--fam-text-secondary);
+}
+
+@media (max-width: 768px) {
+    .fam-analysis-controls {
+        grid-template-columns: 1fr;
+    }
+    
+    .fam-target-buttons {
+        flex-wrap: wrap;
+    }
+    
+    .fam-target-buttons .fam-btn {
+        flex: 1;
+        min-width: 60px;
+    }
+}
+</style>
+{% endblock %}

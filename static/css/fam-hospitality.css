@@ -554,3 +554,91 @@ h6 { font-size: 1rem; }
   border-radius: var(--radius-sm);
   transition: width var(--transition-slow);
 }
+
+/* Theme Switcher Styles for FAM */
+.theme-fam .theme-selector-mobile {
+    padding: 1rem 0;
+    border-top: 1px solid var(--fam-border-color);
+    margin-top: 1rem;
+}
+
+.theme-fam .theme-selector-label {
+    color: var(--fam-text-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+.theme-fam .theme-buttons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.theme-fam .theme-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--fam-bg-secondary);
+    border: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.theme-fam .theme-btn:hover {
+    border-color: var(--fam-primary-light);
+    transform: translateY(-1px);
+}
+
+.theme-fam .theme-btn.active {
+    border-color: var(--fam-primary);
+    background: var(--fam-bg-hover);
+}
+
+.theme-fam .theme-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    display: block;
+}
+
+/* Mobile Navigation Styles for FAM */
+.theme-fam .navbar-menu {
+    background: var(--fam-bg-primary) !important;
+}
+
+.theme-fam .navbar-link {
+    color: var(--fam-text-primary) !important;
+    padding: 10px 12px !important;
+    font-size: 0.875rem !important;
+}
+
+.theme-fam .navbar-link:hover {
+    background: var(--fam-bg-hover) !important;
+}
+
+.theme-fam .navbar-link.active {
+    background: var(--fam-primary) !important;
+    color: white !important;
+}
+
+.theme-fam .mobile-menu-header {
+    padding: 1rem !important;
+    border-bottom: 1px solid var(--fam-border-color) !important;
+}
+
+.theme-fam .mobile-menu-close {
+    background: var(--fam-bg-secondary) !important;
+    color: var(--fam-text-primary) !important;
+}
+
+.theme-fam .mobile-menu-close:hover {
+    background: var(--fam-bg-hover) !important;
+}

@@ -1,0 +1,199 @@
+{% extends "base_fam.html" %}
+
+{% block title %}Recipes - Lea Jane's Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="fam-page-content">
+    <!-- Page Header -->
+    <div class="fam-page-header">
+        <div>
+            <h1 class="fam-page-title">Recipe Management</h1>
+            <p class="fam-page-subtitle">{{ recipes|length }} recipes in your collection</p>
+        </div>
+        <a href="/recipes/add" class="fam-btn fam-btn-primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 8v8m-4-4h8"/>
+            </svg>
+            Add Recipe
+        </a>
+    </div>
+    
+    <!-- Search and Filters -->
+    <div class="fam-card mb-6">
+        <div class="fam-card-body">
+            <div class="fam-grid">
+                <div class="fam-form-group">
+                    <input type="text" 
+                           class="fam-form-control" 
+                           id="searchInput" 
+                           placeholder="Search recipes..."
+                           onkeyup="filterTable()">
+                </div>
+                <div class="fam-form-group">
+                    <select class="fam-form-control" id="groupFilter" onchange="filterTable()">
+                        <option value="">All Groups</option>
+                        {% set group_list = [] %}
+                        {% for recipe in recipes %}
+                            {% if recipe.recipe_group and recipe.recipe_group not in group_list %}
+                                <option value="{{ recipe.recipe_group }}">{{ recipe.recipe_group }}</option>
+                                {% set _ = group_list.append(recipe.recipe_group) %}
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="fam-form-group">
+                    <select class="fam-form-control" id="statusFilter" onchange="filterTable()">
+                        <option value="">All Status</option>
+                        <option value="Active">Active</option>
+                        <option value="Draft">Draft</option>
+                        <option value="Archived">Archived</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recipes Table -->
+    <div class="fam-card">
+        <div class="table-container">
+            <table class="fam-table" id="recipesTable">
+                <thead>
+                    <tr>
+                        <th>Recipe Name</th>
+                        <th>Group</th>
+                        <th>Menu Price</th>
+                        <th>Food Cost</th>
+                        <th>FC %</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for recipe in recipes %}
+                    <tr data-group="{{ recipe.recipe_group|lower }}" 
+                        data-status="{{ recipe.status|lower }}"
+                        data-name="{{ recipe.recipe_name|lower }}">
+                        <td>
+                            <div class="fam-item-cell">
+                                <div class="icon-container"></div>
+                                <a href="/recipes/{{ recipe.id }}" class="fam-recipe-link">
+                                    {{ recipe.recipe_name }}
+                                </a>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="fam-badge">{{ recipe.recipe_group or '-' }}</span>
+                        </td>
+                        <td>
+                            <span class="fam-price">${{ "%.2f"|format(recipe.menu_price or 0) }}</span>
+                        </td>
+                        <td>
+                            <span class="fam-cost">${{ "%.2f"|format(recipe.food_cost or 0) }}</span>
+                        </td>
+                        <td>
+                            {% if recipe.menu_price and recipe.menu_price > 0 %}
+                                {% set fc_percent = (recipe.food_cost / recipe.menu_price * 100) %}
+                                <span class="fam-percentage {% if fc_percent > 35 %}fam-text-danger{% elif fc_percent > 30 %}fam-text-warning{% else %}fam-text-success{% endif %}">
+                                    {{ "%.1f"|format(fc_percent) }}%
+                                </span>
+                            {% else %}
+                                <span class="fam-text-muted">-</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <span class="fam-status-badge {% if recipe.status == 'Active' %}fam-status-active{% elif recipe.status == 'Draft' %}fam-status-draft{% else %}fam-status-archived{% endif %}">
+                                {{ recipe.status or 'Draft' }}
+                            </span>
+                        </td>
+                        <td>
+                            <div class="fam-action-buttons">
+                                <a href="/recipes/{{ recipe.id }}" 
+                                   class="fam-btn-icon"
+                                   title="View">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                        <circle cx="12" cy="12" r="3"/>
+                                    </svg>
+                                </a>
+                                <a href="/recipes/edit/{{ recipe.id }}" 
+                                   class="fam-btn-icon"
+                                   title="Edit">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+                                        <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                    </svg>
+                                </a>
+                                <form method="POST" action="/recipes/delete/{{ recipe.id }}" style="display: inline;">
+                                    <button type="submit" 
+                                            class="fam-btn-icon fam-btn-icon-danger"
+                                            title="Delete"
+                                            onclick="return confirm('Are you sure you want to delete this recipe?');">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M3 6h18m-2 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+                                        </svg>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    {% if not recipes %}
+    <div class="fam-empty-state">
+        <div class="fam-empty-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                <path d="M14 2v6h6M16 13H8m8 4H8m2-8H8"/>
+            </svg>
+        </div>
+        <h3 class="fam-empty-title">No recipes yet</h3>
+        <p class="fam-empty-text">Start by creating your first recipe</p>
+        <a href="/recipes/add" class="fam-btn fam-btn-primary">Create First Recipe</a>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+// Initialize category icons
+document.addEventListener('DOMContentLoaded', function() {
+    const rows = document.querySelectorAll('#recipesTable tbody tr');
+    rows.forEach(row => {
+        const recipeGroup = row.getAttribute('data-group');
+        const iconContainer = row.querySelector('.icon-container');
+        if (iconContainer) {
+            const icon = createFoodIcon(recipeGroup || 'misc', 'sm');
+            iconContainer.appendChild(icon);
+        }
+    });
+});
+
+// Table filtering
+function filterTable() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const groupFilter = document.getElementById('groupFilter').value.toLowerCase();
+    const statusFilter = document.getElementById('statusFilter').value.toLowerCase();
+    const rows = document.querySelectorAll('#recipesTable tbody tr');
+    
+    rows.forEach(row => {
+        const group = row.getAttribute('data-group') || '';
+        const status = row.getAttribute('data-status') || '';
+        const name = row.getAttribute('data-name') || '';
+        
+        const matchesSearch = !searchInput || name.includes(searchInput);
+        const matchesGroup = !groupFilter || group.includes(groupFilter);
+        const matchesStatus = !statusFilter || status.includes(statusFilter);
+        
+        if (matchesSearch && matchesGroup && matchesStatus) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+</script>
+{% endblock %}

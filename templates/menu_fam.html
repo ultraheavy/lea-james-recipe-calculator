@@ -1,0 +1,227 @@
+{% extends "base_fam.html" %}
+
+{% block title %}Menu Items - Lea Jane's Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="fam-page-content">
+    <!-- Page Header -->
+    <div class="fam-page-header">
+        <div>
+            <h1 class="fam-page-title">Menu Management</h1>
+            <p class="fam-page-subtitle">{{ menu_items|length }} items across menu versions</p>
+        </div>
+        <a href="/menu/add" class="fam-btn fam-btn-primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 8v8m-4-4h8"/>
+            </svg>
+            Add Menu Item
+        </a>
+    </div>
+    
+    <!-- Version Selector -->
+    <div class="fam-card mb-6">
+        <div class="fam-card-body">
+            <div class="fam-version-selector">
+                <label class="fam-form-label">Menu Version</label>
+                <div class="fam-version-tabs">
+                    {% for version in menu_versions %}
+                    <a href="/menu?version_id={{ version.id }}" 
+                       class="fam-version-tab {% if version.id == current_version_id %}active{% endif %}">
+                        {{ version.version_name }}
+                        {% if version.is_active %}
+                            <span class="fam-version-badge">Active</span>
+                        {% endif %}
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Menu Groups -->
+    {% set groups = menu_items|groupby('menu_group') %}
+    {% for group_name, group_items in groups %}
+    <div class="fam-menu-group mb-6">
+        <h2 class="fam-group-header">
+            <div class="icon-container"></div>
+            {{ group_name or 'Uncategorized' }}
+            <span class="fam-group-count">({{ group_items|list|length }} items)</span>
+        </h2>
+        
+        <div class="fam-card">
+            <div class="table-container">
+                <table class="fam-table">
+                    <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Recipe</th>
+                            <th>Menu Price</th>
+                            <th>Food Cost</th>
+                            <th>FC %</th>
+                            <th>Margin</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in group_items %}
+                        <tr>
+                            <td>
+                                <span class="fam-item-name">{{ item.item_name }}</span>
+                            </td>
+                            <td>
+                                {% if item.recipe_id %}
+                                    <a href="/recipes/{{ item.recipe_id }}" class="fam-recipe-link">
+                                        {{ item.recipe_name }}
+                                    </a>
+                                {% else %}
+                                    <span class="fam-text-muted">No recipe</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <span class="fam-price">${{ "%.2f"|format(item.menu_price or 0) }}</span>
+                            </td>
+                            <td>
+                                <span class="fam-cost">${{ "%.2f"|format(item.food_cost or 0) }}</span>
+                            </td>
+                            <td>
+                                {% if item.food_cost_percent %}
+                                    <span class="fam-percentage {% if item.food_cost_percent > 35 %}fam-text-danger{% elif item.food_cost_percent > 30 %}fam-text-warning{% else %}fam-text-success{% endif %}">
+                                        {{ "%.1f"|format(item.food_cost_percent) }}%
+                                    </span>
+                                {% else %}
+                                    <span class="fam-text-muted">-</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if item.menu_price and item.food_cost %}
+                                    <span class="fam-margin">
+                                        ${{ "%.2f"|format(item.menu_price - item.food_cost) }}
+                                    </span>
+                                {% else %}
+                                    <span class="fam-text-muted">-</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <div class="fam-action-buttons">
+                                    <a href="/menu/edit/{{ item.id }}" 
+                                       class="fam-btn-icon"
+                                       title="Edit">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+                                            <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                        </svg>
+                                    </a>
+                                    <form method="POST" action="/menu/delete/{{ item.id }}" style="display: inline;">
+                                        <button type="submit" 
+                                                class="fam-btn-icon fam-btn-icon-danger"
+                                                title="Delete"
+                                                onclick="return confirm('Are you sure you want to delete this menu item?');">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M3 6h18m-2 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+                                            </svg>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    
+    {% if not menu_items %}
+    <div class="fam-empty-state">
+        <div class="fam-empty-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="4" y="4" width="16" height="16" rx="2"/>
+                <path d="M9 9h6M9 15h6M12 9v6"/>
+            </svg>
+        </div>
+        <h3 class="fam-empty-title">No menu items yet</h3>
+        <p class="fam-empty-text">Start by adding your first menu item</p>
+        <a href="/menu/add" class="fam-btn fam-btn-primary">Add First Item</a>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+// Initialize group icons
+document.addEventListener('DOMContentLoaded', function() {
+    const groupHeaders = document.querySelectorAll('.fam-group-header');
+    groupHeaders.forEach(header => {
+        const groupName = header.textContent.trim();
+        const iconContainer = header.querySelector('.icon-container');
+        if (iconContainer) {
+            const icon = createFoodIcon(groupName, 'md');
+            iconContainer.appendChild(icon);
+        }
+    });
+});
+</script>
+
+<style>
+.fam-menu-group {
+    margin-bottom: 2rem;
+}
+
+.fam-group-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--fam-text-primary);
+    margin-bottom: 1rem;
+}
+
+.fam-group-count {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--fam-text-secondary);
+}
+
+.fam-version-selector {
+    margin-bottom: 0;
+}
+
+.fam-version-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.fam-version-tab {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background: var(--fam-bg-secondary);
+    color: var(--fam-text-secondary);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.fam-version-tab:hover {
+    background: var(--fam-bg-hover);
+    color: var(--fam-text-primary);
+}
+
+.fam-version-tab.active {
+    background: var(--fam-primary);
+    color: white;
+}
+
+.fam-version-badge {
+    font-size: 0.75rem;
+    padding: 0.125rem 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+}
+</style>
+{% endblock %}
