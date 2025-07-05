@@ -86,7 +86,7 @@
   background: var(--bg-primary, #ffffff);
   flex-direction: column;
   padding: var(--space-lg);
-  z-index: var(--z-modal);
+  z-index: 1050 !important; /* Force above backdrop */
   overflow-y: auto;
   animation: slideIn 0.3s ease-out;
 }
@@ -192,7 +192,7 @@
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: var(--z-modal-backdrop);
+  z-index: 1040; /* Below menu at 1050 */
 }
 
 .mobile-menu-backdrop.active {
