@@ -16,34 +16,6 @@ else:
 # Set up auto-commit decorator
 with_auto_commit = integrate_with_flask(app)
 
-def import_production_data(conn):
-    """Import production data if available and database is empty."""
-    try:
-        cursor = conn.cursor()
-        
-        # Check if we already have data
-        cursor.execute('SELECT COUNT(*) FROM inventory')
-        if cursor.fetchone()[0] > 0:
-            return  # Already has data
-        
-        # Check if production data file exists
-        data_file = os.path.join('data', 'production_data.sql')
-        if os.path.exists(data_file):
-            print("Importing production data...")
-            with open(data_file, 'r') as f:
-                sql_commands = f.read()
-                
-            # Execute all SQL commands
-            for command in sql_commands.split(';\n'):
-                if command.strip() and not command.strip().startswith('--'):
-                    cursor.execute(command + ';')
-            
-            conn.commit()
-            print("Production data imported successfully!")
-    except Exception as e:
-        print(f"Warning: Could not import production data: {e}")
-        # Don't raise - let the app continue with empty database
-
 def init_database():
     """Initialize database with updated schema for Toast POS integration"""
     try:
@@ -54,174 +26,118 @@ def init_database():
             
         with sqlite3.connect(DATABASE) as conn:
             cursor = conn.cursor()
-            
-            # Enhanced inventory table to match Toast Item Library
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS inventory (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    item_code TEXT UNIQUE,
-                    item_description TEXT NOT NULL,
-                    vendor_name TEXT,
-                    current_price REAL,
-                    last_purchased_price REAL,
-                    last_purchased_date TEXT,
-                    unit_measure TEXT,
-                    purchase_unit TEXT,
-                    recipe_cost_unit TEXT,
-                    pack_size TEXT,
-                    yield_percent REAL DEFAULT 100,
-                    product_categories TEXT,
-                    close_watch BOOLEAN DEFAULT FALSE,
-                    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                    updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                )
-            ''')
-            
-            # Enhanced recipes table to match Toast Recipe data
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS recipes (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    recipe_name TEXT NOT NULL UNIQUE,
-                    status TEXT DEFAULT 'Draft',
-                    recipe_group TEXT,
-                    recipe_type TEXT DEFAULT 'Recipe',
-                    food_cost REAL DEFAULT 0,
-                    food_cost_percentage REAL DEFAULT 0,
-                    labor_cost REAL DEFAULT 0,
-                    labor_cost_percentage REAL DEFAULT 0,
-                    menu_price REAL DEFAULT 0,
-                    gross_margin REAL DEFAULT 0,
-                    prime_cost REAL DEFAULT 0,
-                    prime_cost_percentage REAL DEFAULT 0,
-                    shelf_life TEXT,
-                    shelf_life_uom TEXT,
-                    prep_recipe_yield TEXT,
-                    prep_recipe_yield_uom TEXT,
-                    serving_size TEXT,
-                    serving_size_uom TEXT,
-                    per_serving REAL DEFAULT 0,
-                    station TEXT,
-                    procedure TEXT,
-                    cost_modified TEXT,
-                    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                    updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                )
-            ''')
-            
-            # Recipe ingredients table with enhanced fields
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS recipe_ingredients (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    recipe_id INTEGER,
-                    ingredient_id INTEGER,
-                    ingredient_name TEXT,
-                    ingredient_type TEXT DEFAULT 'Product',
-                    quantity REAL,
-                    unit_of_measure TEXT,
-                    cost REAL DEFAULT 0,
-                    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                    FOREIGN KEY (recipe_id) REFERENCES recipes (id),
-                    FOREIGN KEY (ingredient_id) REFERENCES inventory (id)
-                )
-            ''')
-            
-            # Enhanced menu items table
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS menu_items (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    item_name TEXT NOT NULL,
-                    menu_group TEXT,
-                    item_description TEXT,
-                    recipe_id INTEGER,
-                    menu_price REAL DEFAULT 0,
-                    food_cost REAL DEFAULT 0,
-                    food_cost_percent REAL DEFAULT 0,
-                    gross_profit REAL DEFAULT 0,
-                    status TEXT DEFAULT 'Active',
-                    serving_size TEXT,
-                    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                    updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                    FOREIGN KEY (recipe_id) REFERENCES recipes (id)
-                )
-            ''')
-            
-            # Add vendors table for vendor management
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS vendors (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    vendor_name TEXT NOT NULL UNIQUE,
-                    contact_info TEXT,
-                    address TEXT,
-                    phone TEXT,
-                    email TEXT,
-                    active BOOLEAN DEFAULT TRUE,
-                    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                )
-            ''')
-            
-            # Add vendor products table
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS vendor_products (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    inventory_id INTEGER,
-                    vendor_id INTEGER,
-                    vendor_item_code TEXT,
-                    vendor_price REAL,
-                    pack_size TEXT,
-                    unit_measure TEXT,
-                    is_primary BOOLEAN DEFAULT FALSE,
-                    is_active BOOLEAN DEFAULT TRUE,
-                    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                    updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                    FOREIGN KEY (inventory_id) REFERENCES inventory (id),
-                    FOREIGN KEY (vendor_id) REFERENCES vendors (id)
-                )
-            ''')
-            
-            # Add menu versions table
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS menu_versions (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    version_name TEXT NOT NULL,
-                    description TEXT,
-                    is_active BOOLEAN DEFAULT FALSE,
-                    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                    updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                )
-            ''')
-            
-            # Update menu_items to include version_id
-            cursor.execute('''
-                PRAGMA table_info(menu_items)
-            ''')
-            columns = [col[1] for col in cursor.fetchall()]
-            if 'version_id' not in columns:
-                cursor.execute('''
-                    ALTER TABLE menu_items ADD COLUMN version_id INTEGER DEFAULT 1
-                ''')
-            
-            # Ensure at least one menu version exists
-            cursor.execute('SELECT COUNT(*) FROM menu_versions')
-            if cursor.fetchone()[0] == 0:
-                cursor.execute('''
-                    INSERT INTO menu_versions (version_name, is_active) 
-                    VALUES ('Current Menu', 1)
-                ''')
-            
-            # Create indexes for better performance
-            cursor.execute('CREATE INDEX IF NOT EXISTS idx_inventory_description ON inventory(item_description)')
-            cursor.execute('CREATE INDEX IF NOT EXISTS idx_recipes_name ON recipes(recipe_name)')
-            cursor.execute('CREATE INDEX IF NOT EXISTS idx_recipe_ingredients_recipe ON recipe_ingredients(recipe_id)')
-            cursor.execute('CREATE INDEX IF NOT EXISTS idx_menu_items_group ON menu_items(menu_group)')
-            
-            conn.commit()
-            
-            # Import production data if available and database is empty
-            import_production_data(conn)
-            
-    except Exception as e:
-        print(f"Database initialization error: {e}")
-        raise
+        
+        # Enhanced inventory table to match Toast Item Library
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS inventory (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                item_code TEXT UNIQUE,
+                item_description TEXT NOT NULL,
+                vendor_name TEXT,
+                current_price REAL,
+                last_purchased_price REAL,
+                last_purchased_date TEXT,
+                unit_measure TEXT,
+                purchase_unit TEXT,
+                recipe_cost_unit TEXT,
+                pack_size TEXT,
+                yield_percent REAL DEFAULT 100,
+                product_categories TEXT,
+                close_watch BOOLEAN DEFAULT FALSE,
+                created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        ''')
+        
+        # Enhanced recipes table to match Toast Recipe data
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS recipes (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                recipe_name TEXT NOT NULL UNIQUE,
+                status TEXT DEFAULT 'Draft',
+                recipe_group TEXT,
+                recipe_type TEXT DEFAULT 'Recipe',
+                food_cost REAL DEFAULT 0,
+                food_cost_percentage REAL DEFAULT 0,
+                labor_cost REAL DEFAULT 0,
+                labor_cost_percentage REAL DEFAULT 0,
+                menu_price REAL DEFAULT 0,
+                gross_margin REAL DEFAULT 0,
+                prime_cost REAL DEFAULT 0,
+                prime_cost_percentage REAL DEFAULT 0,
+                shelf_life TEXT,
+                shelf_life_uom TEXT,
+                prep_recipe_yield TEXT,
+                prep_recipe_yield_uom TEXT,
+                serving_size TEXT,
+                serving_size_uom TEXT,
+                per_serving REAL DEFAULT 0,
+                station TEXT,
+                procedure TEXT,
+                cost_modified TEXT,
+                created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        ''')
+        
+        # Recipe ingredients table with enhanced fields
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS recipe_ingredients (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                recipe_id INTEGER,
+                ingredient_id INTEGER,
+                ingredient_name TEXT,
+                ingredient_type TEXT DEFAULT 'Product',
+                quantity REAL,
+                unit_of_measure TEXT,
+                cost REAL DEFAULT 0,
+                created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (recipe_id) REFERENCES recipes (id),
+                FOREIGN KEY (ingredient_id) REFERENCES inventory (id)
+            )
+        ''')
+        
+        # Enhanced menu items table
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS menu_items (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                item_name TEXT NOT NULL,
+                menu_group TEXT,
+                item_description TEXT,
+                recipe_id INTEGER,
+                menu_price REAL DEFAULT 0,
+                food_cost REAL DEFAULT 0,
+                food_cost_percent REAL DEFAULT 0,
+                gross_profit REAL DEFAULT 0,
+                status TEXT DEFAULT 'Active',
+                serving_size TEXT,
+                created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (recipe_id) REFERENCES recipes (id)
+            )
+        ''')
+        
+        # Add vendors table for vendor management
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS vendors (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                vendor_name TEXT NOT NULL UNIQUE,
+                contact_info TEXT,
+                address TEXT,
+                phone TEXT,
+                email TEXT,
+                active BOOLEAN DEFAULT TRUE,
+                created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        ''')
+        
+        # Create indexes for better performance
+        cursor.execute('CREATE INDEX IF NOT EXISTS idx_inventory_description ON inventory(item_description)')
+        cursor.execute('CREATE INDEX IF NOT EXISTS idx_recipes_name ON recipes(recipe_name)')
+        cursor.execute('CREATE INDEX IF NOT EXISTS idx_recipe_ingredients_recipe ON recipe_ingredients(recipe_id)')
+        cursor.execute('CREATE INDEX IF NOT EXISTS idx_menu_items_group ON menu_items(menu_group)')
+        
+        conn.commit()
 
 def get_db():
     conn = sqlite3.connect(DATABASE)
@@ -829,15 +745,6 @@ def vendors():
     with get_db() as conn:
         vendors = conn.execute('SELECT * FROM vendors ORDER BY vendor_name').fetchall()
     return render_template('vendors.html', vendors=vendors)
-
-# Error handlers for production
-@app.errorhandler(404)
-def not_found(error):
-    return render_template('404.html'), 404
-
-@app.errorhandler(500)
-def internal_error(error):
-    return render_template('500.html'), 500
 
 if __name__ == '__main__':
     os.makedirs('templates', exist_ok=True)

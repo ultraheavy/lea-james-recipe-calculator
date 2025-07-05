@@ -13,6 +13,9 @@ ENV/
 *.db
 *.sqlite
 *.sqlite3
+# But include the data directory with SQL exports
+!data/
+!data/*.sql
 
 # Logs
 *.log
