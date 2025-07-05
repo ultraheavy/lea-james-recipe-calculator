@@ -6,9 +6,10 @@
     <title>{% block title %}Lea James Recipe Calculator{% endblock %}</title>
     <link rel="stylesheet" href="/static/css/neo-tokyo.css">
     <link rel="stylesheet" href="/static/css/food-icons.css">
+    <link rel="stylesheet" href="/static/css/responsive-navigation.css">
     {% block extra_css %}{% endblock %}
 </head>
-<body>
+<body class="theme-neo">
     <!-- Neo Navigation -->
     <nav class="neo-nav">
         <div class="container">
@@ -19,8 +20,15 @@
                     <span>Lea James</span>
                 </a>
                 
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle neo-glow" onclick="toggleMobileMenu()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12h18M3 6h18M3 18h18"/>
+                    </svg>
+                </button>
+                
                 <!-- Main Menu -->
-                <div class="neo-nav-menu">
+                <div class="neo-nav-menu" id="navbarMenu">
                     <a href="/" class="neo-nav-link {% if request.endpoint == 'index' %}active{% endif %}">
                         Dashboard
                     </a>
@@ -134,6 +142,52 @@
         };
         return colorMap[category] || 'cyan';
     }
+    </script>
+    
+    <!-- Mobile Menu Backdrop -->
+    <div class="mobile-menu-backdrop" id="mobileMenuBackdrop" onclick="closeMobileMenu()"></div>
+    
+    <!-- Mobile Navigation Script -->
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('navbarMenu');
+            const backdrop = document.getElementById('mobileMenuBackdrop');
+            menu.classList.toggle('active');
+            backdrop.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (menu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+        
+        // Close mobile menu
+        function closeMobileMenu() {
+            const menu = document.getElementById('navbarMenu');
+            const backdrop = document.getElementById('mobileMenuBackdrop');
+            menu.classList.remove('active');
+            backdrop.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Close mobile menu on click outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('navbarMenu');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            if (!menu.contains(event.target) && !toggle.contains(event.target)) {
+                closeMobileMenu();
+            }
+        });
+        
+        // Close mobile menu with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
     </script>
     
     {% block extra_js %}{% endblock %}
