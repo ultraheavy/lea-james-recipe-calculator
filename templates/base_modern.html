@@ -121,6 +121,9 @@
                         <option value="fam">FAM Hospitality</option>
                     </select>
                 </div>
+                
+                <!-- Mobile Menu Backdrop (inside nav for proper stacking) -->
+                <div class="mobile-menu-backdrop" id="mobileMenuBackdrop" onclick="closeMobileMenu()"></div>
             </div>
         </div>
     </nav>
@@ -169,9 +172,6 @@
             </svg>
         </button>
     </div>
-    
-    <!-- Mobile Menu Backdrop -->
-    <div class="mobile-menu-backdrop" id="mobileMenuBackdrop" onclick="closeMobileMenu()"></div>
     
     <!-- Scripts -->
     <script src="{{ url_for('static', filename='js/icons.js') }}"></script>
