@@ -29,24 +29,38 @@ def import_production_data(conn):
         # Check if we already have data
         cursor.execute('SELECT COUNT(*) FROM inventory')
         if cursor.fetchone()[0] > 0:
+            print("Database already has data, skipping import")
             return  # Already has data
         
         # Check if production data file exists
         data_file = os.path.join('data', 'production_data.sql')
         if os.path.exists(data_file):
-            print("Importing production data...")
+            print(f"Found production data file: {data_file}")
             with open(data_file, 'r') as f:
-                sql_commands = f.read()
+                sql_content = f.read()
                 
-            # Execute all SQL commands
-            for command in sql_commands.split(';\n'):
-                if command.strip() and not command.strip().startswith('--'):
-                    cursor.execute(command + ';')
+            # Split by lines and execute each INSERT statement
+            lines = sql_content.strip().split('\n')
+            insert_count = 0
+            
+            for line in lines:
+                line = line.strip()
+                if line and line.startswith('INSERT INTO') and line.endswith(';'):
+                    try:
+                        cursor.execute(line)
+                        insert_count += 1
+                    except Exception as e:
+                        print(f"Error executing line: {e}")
+                        print(f"Problematic SQL: {line[:100]}...")
             
             conn.commit()
-            print("Production data imported successfully!")
+            print(f"Production data imported successfully! Inserted {insert_count} records.")
+        else:
+            print(f"No production data file found at: {data_file}")
     except Exception as e:
         print(f"Warning: Could not import production data: {e}")
+        import traceback
+        print(traceback.format_exc())
         # Don't raise - let the app continue with empty database
 
 def init_database():
@@ -81,7 +95,9 @@ def init_database():
                     product_categories TEXT,
                     close_watch BOOLEAN DEFAULT FALSE,
                     created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                    updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                    updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    density_g_per_ml DECIMAL(10,4),
+                    count_to_weight_g DECIMAL(10,2)
                 )
             ''')
             
@@ -128,6 +144,9 @@ def init_database():
                     unit_of_measure TEXT,
                     cost REAL DEFAULT 0,
                     created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    canonical_quantity REAL,
+                    canonical_unit TEXT,
+                    conversion_status TEXT,
                     FOREIGN KEY (recipe_id) REFERENCES recipes (id),
                     FOREIGN KEY (ingredient_id) REFERENCES inventory (id)
                 )
@@ -175,6 +194,8 @@ def init_database():
                     vendor_id INTEGER,
                     vendor_item_code TEXT,
                     vendor_price REAL,
+                    last_purchased_date TEXT,
+                    last_purchased_price REAL,
                     pack_size TEXT,
                     unit_measure TEXT,
                     is_primary BOOLEAN DEFAULT FALSE,
@@ -215,6 +236,30 @@ def init_database():
                     INSERT INTO menu_versions (version_name, is_active) 
                     VALUES ('Current Menu', 1)
                 ''')
+            
+            # Add units table for conversion system
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS units (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    name TEXT NOT NULL,
+                    symbol TEXT NOT NULL UNIQUE,
+                    dimension TEXT NOT NULL,
+                    to_canonical_factor REAL NOT NULL,
+                    is_precise BOOLEAN DEFAULT TRUE,
+                    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            ''')
+            
+            # Add ingredient densities table
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS ingredient_densities (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    ingredient_name TEXT NOT NULL UNIQUE,
+                    density_g_per_ml REAL NOT NULL,
+                    source TEXT,
+                    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            ''')
             
             # Create indexes for better performance
             cursor.execute('CREATE INDEX IF NOT EXISTS idx_inventory_description ON inventory(item_description)')
