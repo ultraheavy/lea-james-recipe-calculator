@@ -968,5 +968,9 @@ if __name__ == '__main__':
     if os.getenv('FLASK_ENV') == 'production':
         app.run(host='0.0.0.0', port=int(os.getenv('PORT', 8000)))
     else:
-        # Development mode
-        app.run(debug=True, host='0.0.0.0', port=8888)
+        # Development mode - debug is OFF by default for security
+        # Set FLASK_DEBUG=1 or FLASK_DEBUG=true to enable debug mode
+        is_debug = os.getenv('FLASK_DEBUG', 'false').lower() in ['true', '1']
+        if is_debug:
+            print("WARNING: Debug mode is enabled. Never use this in production!")
+        app.run(debug=is_debug, host='0.0.0.0', port=8888)

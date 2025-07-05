@@ -10,9 +10,12 @@ This is a Flask-based restaurant management web application designed for recipe 
 
 ### Starting the Application
 ```bash
-./start_app.sh              # Start Flask app on port 8888
+./start_app.sh              # Start Flask app on port 8888 (production mode)
 # OR manually:
-python3 app.py              # Runs in debug mode on port 8888
+python3 app.py              # Runs in production mode on port 8888
+
+# For development with debug mode:
+FLASK_DEBUG=1 python3 app.py  # Runs in debug mode (NEVER use in production!)
 ```
 
 ### Stopping the Application
