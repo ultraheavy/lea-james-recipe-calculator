@@ -1,0 +1,223 @@
+{% extends "base_modern.html" %}
+
+{% block title %}Menu Items - Lea James Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in">
+    <!-- Page Header -->
+    <div class="flex flex-col gap-4 mb-6">
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-3xl font-semibold mb-2">Menu Management</h1>
+                <p class="text-secondary">{{ menu_items|length }} items across all versions</p>
+            </div>
+            <div class="flex gap-3">
+                <a href="/menu/compare" class="btn btn-secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 4H6v16m12 0H6m12 0l-3-3m3 3l-3 3"/>
+                    </svg>
+                    Compare Versions
+                </a>
+            </div>
+        </div>
+        
+        <!-- Version Selector and Search -->
+        <div class="card">
+            <div class="card-body">
+                <div class="grid grid-cols-1 grid-cols-3 gap-4">
+                    <div class="form-group m-0">
+                        <label class="form-label text-sm">Menu Version</label>
+                        <select class="form-control" id="versionSelect" onchange="changeVersion()">
+                            {% for version in menu_versions %}
+                            <option value="{{ version.id }}" {% if version.id == current_version_id %}selected{% endif %}>
+                                {{ version.version_name }}
+                                {% if version.is_active %}(Active){% endif %}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group m-0">
+                        <label class="form-label text-sm">Search</label>
+                        <input type="text" 
+                               class="form-control" 
+                               id="searchInput" 
+                               placeholder="Search menu items..."
+                               onkeyup="filterMenu()">
+                    </div>
+                    <div class="form-group m-0">
+                        <label class="form-label text-sm">Menu Group</label>
+                        <select class="form-control" id="groupFilter" onchange="filterMenu()">
+                            <option value="">All Groups</option>
+                            {% set groups = [] %}
+                            {% for item in menu_items %}
+                                {% if item.menu_group and item.menu_group not in groups %}
+                                    <option value="{{ item.menu_group }}">{{ item.menu_group }}</option>
+                                    {% set _ = groups.append(item.menu_group) %}
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Menu Items Table -->
+    <div class="table-container">
+        <table class="table table-striped" id="menuTable">
+            <thead>
+                <tr>
+                    <th>Menu Item</th>
+                    <th>Group</th>
+                    <th>Recipe</th>
+                    <th>Menu Price</th>
+                    <th>Food Cost</th>
+                    <th>Cost %</th>
+                    <th>Profit</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in menu_items %}
+                <tr data-name="{{ item.item_name|lower }}"
+                    data-group="{{ item.menu_group|lower }}"
+                    data-recipe="{{ item.recipe_name|lower }}">
+                    <td>
+                        <div class="flex items-center gap-3">
+                            <div class="icon-container"></div>
+                            <div>
+                                <p class="font-medium">{{ item.item_name }}</p>
+                                {% if item.item_description %}
+                                <p class="text-sm text-secondary">{{ item.item_description }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="badge badge-info">{{ item.menu_group or '-' }}</span>
+                    </td>
+                    <td>
+                        {% if item.recipe_name %}
+                        <a href="/recipes/{{ item.recipe_id }}" class="text-primary text-sm">
+                            {{ item.recipe_name }}
+                        </a>
+                        {% else %}
+                        <span class="text-secondary text-sm">No recipe</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <span class="font-semibold">${{ "%.2f"|format(item.menu_price or 0) }}</span>
+                    </td>
+                    <td>
+                        <span class="text-sm">${{ "%.2f"|format(item.food_cost or item.recipe_food_cost or 0) }}</span>
+                    </td>
+                    <td>
+                        {% set cost = item.food_cost or item.recipe_food_cost or 0 %}
+                        {% set price = item.menu_price or 0 %}
+                        {% if price > 0 %}
+                            {% set cost_percent = (cost / price * 100) %}
+                            <span class="font-medium {% if cost_percent > 35 %}text-danger{% elif cost_percent > 30 %}text-warning{% else %}text-success{% endif %}">
+                                {{ "%.1f"|format(cost_percent) }}%
+                            </span>
+                        {% else %}
+                            <span class="text-secondary">-</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if price > 0 %}
+                            <span class="font-medium text-success">${{ "%.2f"|format(price - cost) }}</span>
+                        {% else %}
+                            <span class="text-secondary">-</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <span class="badge {% if item.status == 'Active' %}badge-success{% else %}badge-warning{% endif %}">
+                            {{ item.status or 'Active' }}
+                        </span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    {% if not menu_items %}
+    <div class="card">
+        <div class="card-body text-center p-8">
+            <div class="food-icon food-icon-lg icon-sauce mx-auto mb-4">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="4" y="4" width="16" height="16" rx="2"/>
+                    <path d="M9 9h6M9 15h6M12 9v6"/>
+                </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">No menu items yet</h3>
+            <p class="text-secondary mb-4">Menu items are created from your recipes</p>
+            <a href="/recipes" class="btn btn-primary">Go to Recipes</a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+// Initialize category icons
+document.addEventListener('DOMContentLoaded', function() {
+    const rows = document.querySelectorAll('#menuTable tbody tr');
+    rows.forEach(row => {
+        const group = row.getAttribute('data-group');
+        const recipe = row.getAttribute('data-recipe');
+        const iconContainer = row.querySelector('.icon-container');
+        if (iconContainer) {
+            // Use recipe name or group for category detection
+            const icon = createFoodIcon(recipe || group || 'misc', 'sm');
+            iconContainer.appendChild(icon);
+        }
+    });
+});
+
+function changeVersion() {
+    const versionId = document.getElementById('versionSelect').value;
+    window.location.href = `/menu?version_id=${versionId}`;
+}
+
+function filterMenu() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const groupFilter = document.getElementById('groupFilter').value.toLowerCase();
+    const rows = document.querySelectorAll('#menuTable tbody tr');
+    
+    rows.forEach(row => {
+        const name = row.getAttribute('data-name') || '';
+        const group = row.getAttribute('data-group') || '';
+        const recipe = row.getAttribute('data-recipe') || '';
+        
+        const matchesSearch = !searchInput || 
+            name.includes(searchInput) || 
+            group.includes(searchInput) ||
+            recipe.includes(searchInput);
+            
+        const matchesGroup = !groupFilter || group === groupFilter;
+        
+        if (matchesSearch && matchesGroup) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+</script>
+
+<style>
+    @media (max-width: 768px) {
+        .table-container {
+            margin: 0 -1rem;
+        }
+        
+        /* Hide less important columns on mobile */
+        #menuTable th:nth-child(3),
+        #menuTable td:nth-child(3),
+        #menuTable th:nth-child(7),
+        #menuTable td:nth-child(7) {
+            display: none;
+        }
+    }
+</style>
+{% endblock %}

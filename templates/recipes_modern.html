@@ -1,0 +1,185 @@
+{% extends "base_modern.html" %}
+
+{% block title %}Recipes - Lea James Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in">
+    <!-- Page Header -->
+    <div class="flex flex-col gap-4 mb-6">
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-3xl font-semibold mb-2">Recipe Management</h1>
+                <p class="text-secondary">{{ recipes|length }} recipes in your collection</p>
+            </div>
+            <a href="/recipes/add" class="btn btn-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 8v8m-4-4h8"/>
+                </svg>
+                Create Recipe
+            </a>
+        </div>
+        
+        <!-- Search and Filters -->
+        <div class="card">
+            <div class="card-body">
+                <div class="grid grid-cols-1 grid-cols-3 gap-4">
+                    <div class="form-group m-0">
+                        <input type="text" 
+                               class="form-control" 
+                               id="searchInput" 
+                               placeholder="Search recipes..."
+                               onkeyup="filterRecipes()">
+                    </div>
+                    <div class="form-group m-0">
+                        <select class="form-control" id="groupFilter" onchange="filterRecipes()">
+                            <option value="">All Groups</option>
+                            {% set groups = [] %}
+                            {% for recipe in recipes %}
+                                {% if recipe.recipe_group and recipe.recipe_group not in groups %}
+                                    <option value="{{ recipe.recipe_group }}">{{ recipe.recipe_group }}</option>
+                                    {% set _ = groups.append(recipe.recipe_group) %}
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group m-0">
+                        <select class="form-control" id="statusFilter" onchange="filterRecipes()">
+                            <option value="">All Status</option>
+                            <option value="Active">Active</option>
+                            <option value="Draft">Draft</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recipe Cards Grid -->
+    <div class="grid grid-cols-1 grid-cols-2 grid-cols-3 gap-6" id="recipeGrid">
+        {% for recipe in recipes %}
+        <div class="card recipe-card animate-slide-up" 
+             data-name="{{ recipe.recipe_name|lower }}"
+             data-group="{{ recipe.recipe_group|lower }}"
+             data-status="{{ recipe.status|lower }}"
+             style="animation-delay: {{ loop.index0 * 0.05 }}s;">
+            <div class="card-body">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="food-icon icon-grains">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                            <path d="M14 2v6h6M16 13H8m8 4H8m2-8H8"/>
+                        </svg>
+                    </div>
+                    <span class="badge {% if recipe.status == 'Active' %}badge-success{% elif recipe.status == 'Draft' %}badge-warning{% else %}badge-info{% endif %}">
+                        {{ recipe.status or 'Draft' }}
+                    </span>
+                </div>
+                
+                <h3 class="text-lg font-semibold mb-2">{{ recipe.recipe_name }}</h3>
+                
+                {% if recipe.recipe_group %}
+                <p class="text-sm text-secondary mb-3">{{ recipe.recipe_group }}</p>
+                {% endif %}
+                
+                <div class="space-y-2 mb-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">Food Cost</span>
+                        <span class="font-semibold">${{ "%.2f"|format(recipe.food_cost or 0) }}</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">Menu Price</span>
+                        <span class="font-semibold">${{ "%.2f"|format(recipe.menu_price or 0) }}</span>
+                    </div>
+                    {% if recipe.menu_price and recipe.food_cost %}
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">Food Cost %</span>
+                        <span class="font-semibold {% if (recipe.food_cost / recipe.menu_price * 100) > 35 %}text-danger{% else %}text-success{% endif %}">
+                            {{ "%.1f"|format(recipe.food_cost / recipe.menu_price * 100) }}%
+                        </span>
+                    </div>
+                    {% endif %}
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">Ingredients</span>
+                        <span class="badge badge-info">{{ recipe.ingredient_count or 0 }}</span>
+                    </div>
+                </div>
+                
+                <div class="flex gap-2">
+                    <a href="/recipes/{{ recipe.id }}" class="btn btn-sm btn-primary flex-1">
+                        View Details
+                    </a>
+                    <a href="/recipes/{{ recipe.id }}/ingredients/add" class="btn btn-sm btn-secondary" title="Add Ingredient">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 8v8m-4-4h8"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    {% if not recipes %}
+    <div class="card">
+        <div class="card-body text-center p-8">
+            <div class="food-icon food-icon-lg icon-grains mx-auto mb-4">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                    <path d="M14 2v6h6M16 13H8m8 4H8m2-8H8"/>
+                </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">No recipes yet</h3>
+            <p class="text-secondary mb-4">Start by creating your first recipe</p>
+            <a href="/recipes/add" class="btn btn-primary">Create First Recipe</a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+function filterRecipes() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const groupFilter = document.getElementById('groupFilter').value.toLowerCase();
+    const statusFilter = document.getElementById('statusFilter').value.toLowerCase();
+    const cards = document.querySelectorAll('.recipe-card');
+    
+    cards.forEach(card => {
+        const name = card.getAttribute('data-name') || '';
+        const group = card.getAttribute('data-group') || '';
+        const status = card.getAttribute('data-status') || '';
+        
+        const matchesSearch = !searchInput || name.includes(searchInput) || group.includes(searchInput);
+        const matchesGroup = !groupFilter || group === groupFilter;
+        const matchesStatus = !statusFilter || status === statusFilter;
+        
+        if (matchesSearch && matchesGroup && matchesStatus) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+</script>
+
+<style>
+    .space-y-2 > * + * {
+        margin-top: 0.5rem;
+    }
+    
+    .recipe-card {
+        height: 100%;
+    }
+    
+    .recipe-card .card-body {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .recipe-card .card-body > :last-child {
+        margin-top: auto;
+    }
+</style>
+{% endblock %}

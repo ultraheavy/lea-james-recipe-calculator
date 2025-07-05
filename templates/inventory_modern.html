@@ -1,0 +1,231 @@
+{% extends "base_modern.html" %}
+
+{% block title %}Inventory - Lea James Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in">
+    <!-- Page Header -->
+    <div class="flex flex-col gap-4 mb-6">
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-3xl font-semibold mb-2">Inventory Management</h1>
+                <p class="text-secondary">{{ items|length }} items in your inventory</p>
+            </div>
+            <a href="/inventory/add" class="btn btn-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 8v8m-4-4h8"/>
+                </svg>
+                Add Item
+            </a>
+        </div>
+        
+        <!-- Search and Filters -->
+        <div class="card">
+            <div class="card-body">
+                <div class="grid grid-cols-1 grid-cols-3 gap-4">
+                    <div class="form-group m-0">
+                        <input type="text" 
+                               class="form-control" 
+                               id="searchInput" 
+                               placeholder="Search inventory..."
+                               onkeyup="filterTable()">
+                    </div>
+                    <div class="form-group m-0">
+                        <select class="form-control" id="categoryFilter" onchange="filterTable()">
+                            <option value="">All Categories</option>
+                            <option value="protein">Protein</option>
+                            <option value="dairy">Dairy</option>
+                            <option value="produce">Produce</option>
+                            <option value="grains">Grains</option>
+                            <option value="beverage">Beverages</option>
+                            <option value="spices">Spices & Herbs</option>
+                            <option value="oil">Oils & Fats</option>
+                            <option value="frozen">Frozen</option>
+                            <option value="dessert">Desserts</option>
+                            <option value="seafood">Seafood</option>
+                            <option value="sauce">Sauces</option>
+                        </select>
+                    </div>
+                    <div class="form-group m-0">
+                        <select class="form-control" id="vendorFilter" onchange="filterTable()">
+                            <option value="">All Vendors</option>
+                            {% set vendor_list = [] %}
+                            {% for item in items %}
+                                {% if item.vendor_name and item.vendor_name not in vendor_list %}
+                                    <option value="{{ item.vendor_name }}">{{ item.vendor_name }}</option>
+                                    {% set _ = vendor_list.append(item.vendor_name) %}
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Inventory Table -->
+    <div class="table-container">
+        <table class="table table-striped" id="inventoryTable">
+            <thead>
+                <tr>
+                    <th class="hide-mobile">Code</th>
+                    <th>Item</th>
+                    <th>Vendor</th>
+                    <th>Price</th>
+                    <th>Unit</th>
+                    <th class="hide-mobile">Pack Size</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr data-category="{{ item.product_categories|lower }}" 
+                    data-vendor="{{ item.vendor_name|lower }}"
+                    data-description="{{ item.item_description|lower }}">
+                    <td class="hide-mobile">
+                        <span class="font-mono text-sm">{{ item.item_code or '-' }}</span>
+                    </td>
+                    <td>
+                        <div class="flex items-center gap-3">
+                            <div class="icon-container"></div>
+                            <div>
+                                <p class="font-medium">{{ item.item_description }}</p>
+                                {% if item.product_categories %}
+                                <div class="flex flex-wrap gap-1 mt-1">
+                                    {% for category in item.product_categories.split(',')[:2] %}
+                                    <span class="category-pill {{ category.strip().lower().split()[0] }} text-xs">
+                                        {{ category.strip() }}
+                                    </span>
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="text-sm">{{ item.vendor_name or '-' }}</span>
+                    </td>
+                    <td>
+                        <span class="font-semibold">${{ "%.2f"|format(item.current_price or 0) }}</span>
+                    </td>
+                    <td>
+                        <span class="badge badge-info">{{ item.unit_measure or '-' }}</span>
+                    </td>
+                    <td class="hide-mobile">
+                        <span class="text-sm">{{ item.pack_size or '-' }}</span>
+                    </td>
+                    <td>
+                        <div class="flex items-center gap-2">
+                            <a href="/inventory/edit/{{ item.id }}" 
+                               class="btn btn-icon btn-sm"
+                               title="Edit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+                                    <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                </svg>
+                            </a>
+                            <a href="/inventory/vendors/{{ item.id }}" 
+                               class="btn btn-icon btn-sm"
+                               title="Manage Vendors">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"/>
+                                </svg>
+                            </a>
+                            <form method="POST" action="/inventory/delete/{{ item.id }}" style="display: inline;">
+                                <button type="submit" 
+                                        class="btn btn-icon btn-sm"
+                                        title="Delete"
+                                        onclick="return confirm('Are you sure you want to delete this item?');">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 6h18m-2 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+                                    </svg>
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    {% if not items %}
+    <div class="card">
+        <div class="card-body text-center p-8">
+            <div class="food-icon food-icon-lg icon-misc mx-auto mb-4">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M20 7H4a2 2 0 00-2 2v9a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/>
+                    <path d="M20 7V5a2 2 0 00-2-2H6a2 2 0 00-2 2v2"/>
+                </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">No inventory items yet</h3>
+            <p class="text-secondary mb-4">Start by adding your first inventory item</p>
+            <a href="/inventory/add" class="btn btn-primary">Add First Item</a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+// Initialize category icons
+document.addEventListener('DOMContentLoaded', function() {
+    const rows = document.querySelectorAll('#inventoryTable tbody tr');
+    rows.forEach(row => {
+        const categories = row.getAttribute('data-category');
+        const iconContainer = row.querySelector('.icon-container');
+        if (iconContainer && categories) {
+            const icon = createFoodIcon(categories, 'sm');
+            iconContainer.appendChild(icon);
+        }
+    });
+});
+
+// Table filtering
+function filterTable() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const categoryFilter = document.getElementById('categoryFilter').value.toLowerCase();
+    const vendorFilter = document.getElementById('vendorFilter').value.toLowerCase();
+    const rows = document.querySelectorAll('#inventoryTable tbody tr');
+    
+    rows.forEach(row => {
+        const category = row.getAttribute('data-category') || '';
+        const vendor = row.getAttribute('data-vendor') || '';
+        const description = row.getAttribute('data-description') || '';
+        
+        const matchesSearch = !searchInput || 
+            description.includes(searchInput) || 
+            category.includes(searchInput) ||
+            vendor.includes(searchInput);
+            
+        const matchesCategory = !categoryFilter || category.includes(categoryFilter);
+        const matchesVendor = !vendorFilter || vendor.includes(vendorFilter);
+        
+        if (matchesSearch && matchesCategory && matchesVendor) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+</script>
+
+<style>
+    .font-mono {
+        font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+    }
+    
+    .mx-auto {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    @media (max-width: 768px) {
+        .table-container {
+            margin: 0 -1rem;
+        }
+    }
+</style>
+{% endblock %}

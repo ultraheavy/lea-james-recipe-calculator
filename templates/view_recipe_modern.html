@@ -1,0 +1,261 @@
+{% extends "base_modern.html" %}
+
+{% block title %}{{ recipe.recipe_name }} - Lea James Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in">
+    <!-- Page Header -->
+    <div class="mb-6">
+        <div class="flex items-start justify-between">
+            <div>
+                <div class="flex items-center gap-3 mb-3">
+                    <a href="/recipes" class="btn btn-icon btn-sm">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5m7-7l-7 7 7 7"/>
+                        </svg>
+                    </a>
+                    <h1 class="text-3xl font-semibold">{{ recipe.recipe_name }}</h1>
+                    <span class="badge {% if recipe.status == 'Active' %}badge-success{% elif recipe.status == 'Draft' %}badge-warning{% else %}badge-info{% endif %}">
+                        {{ recipe.status or 'Draft' }}
+                    </span>
+                </div>
+                {% if recipe.recipe_group %}
+                <p class="text-secondary">{{ recipe.recipe_group }}</p>
+                {% endif %}
+            </div>
+            <div class="flex gap-2">
+                <button class="btn btn-secondary" onclick="editRecipe()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+                        <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                    </svg>
+                    Edit
+                </button>
+                <a href="/recipes/{{ recipe.id }}/ingredients/add" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 8v8m-4-4h8"/>
+                    </svg>
+                    Add Ingredient
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recipe Info Cards -->
+    <div class="grid grid-cols-1 grid-cols-2 grid-cols-4 gap-4 mb-6">
+        <div class="card">
+            <div class="card-body">
+                <p class="text-sm text-secondary mb-2">Menu Price</p>
+                <p class="text-2xl font-bold">${{ "%.2f"|format(recipe.menu_price or 0) }}</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <p class="text-sm text-secondary mb-2">Food Cost</p>
+                <p class="text-2xl font-bold text-primary">${{ "%.2f"|format(recipe.food_cost or 0) }}</p>
+                <p class="text-sm {% if recipe.menu_price and recipe.food_cost and (recipe.food_cost / recipe.menu_price * 100) > 35 %}text-danger{% else %}text-success{% endif %}">
+                    {% if recipe.menu_price and recipe.menu_price > 0 %}
+                        {{ "%.1f"|format(recipe.food_cost / recipe.menu_price * 100) }}% of price
+                    {% else %}
+                        - % of price
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <p class="text-sm text-secondary mb-2">Gross Margin</p>
+                <p class="text-2xl font-bold text-success">
+                    {% if recipe.menu_price %}
+                        ${{ "%.2f"|format(recipe.menu_price - (recipe.food_cost or 0)) }}
+                    {% else %}
+                        $0.00
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <p class="text-sm text-secondary mb-2">Serving Info</p>
+                {% if recipe.serving_size %}
+                    <p class="text-2xl font-bold">{{ recipe.serving_size }} {{ recipe.serving_size_uom or '' }}</p>
+                    <p class="text-sm text-secondary">${{ "%.2f"|format(recipe.per_serving or 0) }} per serving</p>
+                {% else %}
+                    <p class="text-lg text-secondary">Not specified</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recipe Details -->
+    <div class="grid grid-cols-1 grid-cols-3 gap-6 mb-6">
+        <!-- Ingredients -->
+        <div class="col-span-2">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-xl font-semibold">Ingredients ({{ ingredients|length }})</h2>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Ingredient</th>
+                                    <th>Quantity</th>
+                                    <th>Unit Price</th>
+                                    <th>Cost</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for ingredient in ingredients %}
+                                <tr>
+                                    <td>
+                                        <div class="flex items-center gap-3">
+                                            <div class="icon-container"></div>
+                                            <span>{{ ingredient.ingredient_name or ingredient.item_description }}</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="font-medium">{{ ingredient.quantity }}</span>
+                                        <span class="text-secondary">{{ ingredient.unit_of_measure }}</span>
+                                    </td>
+                                    <td class="text-sm">${{ "%.2f"|format(ingredient.current_price or 0) }}</td>
+                                    <td class="font-semibold">${{ "%.2f"|format(ingredient.cost or 0) }}</td>
+                                    <td>
+                                        <div class="flex gap-1">
+                                            <a href="/recipes/{{ recipe.id }}/ingredients/edit/{{ ingredient.id }}" 
+                                               class="btn btn-icon btn-sm">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+                                                    <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                                </svg>
+                                            </a>
+                                            <button class="btn btn-icon btn-sm" onclick="deleteIngredient({{ ingredient.id }})">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M3 6h18m-2 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            <tfoot>
+                                <tr class="font-semibold">
+                                    <td colspan="3">Total Food Cost</td>
+                                    <td class="text-primary">${{ "%.2f"|format(recipe.food_cost or 0) }}</td>
+                                    <td></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    
+                    {% if not ingredients %}
+                    <div class="p-8 text-center">
+                        <p class="text-secondary mb-4">No ingredients added yet</p>
+                        <a href="/recipes/{{ recipe.id }}/ingredients/add" class="btn btn-primary">Add First Ingredient</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Recipe Info -->
+        <div>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="text-lg font-semibold">Recipe Information</h3>
+                </div>
+                <div class="card-body space-y-3">
+                    {% if recipe.station %}
+                    <div>
+                        <p class="text-sm text-secondary">Station</p>
+                        <p class="font-medium">{{ recipe.station }}</p>
+                    </div>
+                    {% endif %}
+                    
+                    {% if recipe.shelf_life %}
+                    <div>
+                        <p class="text-sm text-secondary">Shelf Life</p>
+                        <p class="font-medium">{{ recipe.shelf_life }} {{ recipe.shelf_life_uom or 'days' }}</p>
+                    </div>
+                    {% endif %}
+                    
+                    {% if recipe.prep_recipe_yield %}
+                    <div>
+                        <p class="text-sm text-secondary">Recipe Yield</p>
+                        <p class="font-medium">{{ recipe.prep_recipe_yield }} {{ recipe.prep_recipe_yield_uom or '' }}</p>
+                    </div>
+                    {% endif %}
+                    
+                    <div>
+                        <p class="text-sm text-secondary">Last Updated</p>
+                        <p class="font-medium">{{ recipe.updated_date or recipe.created_date or 'Unknown' }}</p>
+                    </div>
+                </div>
+            </div>
+            
+            {% if recipe.procedure %}
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-lg font-semibold">Preparation Instructions</h3>
+                </div>
+                <div class="card-body">
+                    <p class="whitespace-pre-wrap">{{ recipe.procedure }}</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script>
+// Initialize category icons
+document.addEventListener('DOMContentLoaded', function() {
+    const rows = document.querySelectorAll('tbody tr');
+    rows.forEach(row => {
+        const ingredientName = row.cells[0].textContent.trim();
+        const iconContainer = row.querySelector('.icon-container');
+        if (iconContainer) {
+            const icon = createFoodIcon(ingredientName || 'misc', 'sm');
+            iconContainer.appendChild(icon);
+        }
+    });
+});
+
+function editRecipe() {
+    alert('Edit recipe functionality coming soon!');
+}
+
+function deleteIngredient(id) {
+    if (confirm('Are you sure you want to remove this ingredient?')) {
+        alert('Delete functionality coming soon!');
+    }
+}
+</script>
+
+<style>
+    .space-y-3 > * + * {
+        margin-top: 0.75rem;
+    }
+    
+    .whitespace-pre-wrap {
+        white-space: pre-wrap;
+    }
+    
+    .col-span-2 {
+        grid-column: span 2 / span 2;
+    }
+    
+    @media (max-width: 768px) {
+        .col-span-2 {
+            grid-column: span 1 / span 1;
+        }
+    }
+</style>
+{% endblock %}

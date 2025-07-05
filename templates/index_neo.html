@@ -1,0 +1,168 @@
+{% extends "base_neo.html" %}
+
+{% block title %}Dashboard - Lea James Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="neo-animate-fade-up">
+    <!-- Welcome Section -->
+    <div class="neo-mb-4">
+        <h1>Restaurant Cost Control</h1>
+        <p class="neo-text-muted">Real-time insights into your kitchen economics</p>
+    </div>
+    
+    <!-- Stats Grid -->
+    <div class="neo-grid neo-grid-4 neo-mb-4">
+        <div class="neo-stat-card">
+            <div class="neo-stat-label">Total Inventory Items</div>
+            <div class="neo-stat-value neo-text-cyan">{{ stats.total_items or 0 }}</div>
+            <div class="neo-mt-2">
+                <a href="/inventory" class="neo-text-cyan">View all →</a>
+            </div>
+        </div>
+        
+        <div class="neo-stat-card">
+            <div class="neo-stat-label">Active Recipes</div>
+            <div class="neo-stat-value neo-text-pink">{{ stats.active_recipes or 0 }}</div>
+            <div class="neo-mt-2">
+                <a href="/recipes" class="neo-text-pink">Browse recipes →</a>
+            </div>
+        </div>
+        
+        <div class="neo-stat-card">
+            <div class="neo-stat-label">Menu Items</div>
+            <div class="neo-stat-value neo-text-lime">{{ stats.menu_items or 0 }}</div>
+            <div class="neo-mt-2">
+                <a href="/menu" class="neo-text-lime">View menu →</a>
+            </div>
+        </div>
+        
+        <div class="neo-stat-card">
+            <div class="neo-stat-label">Avg Food Cost</div>
+            <div class="neo-stat-value">
+                {% if stats.avg_food_cost_percent %}
+                    <span class="{% if stats.avg_food_cost_percent > 35 %}neo-text-pink{% else %}neo-text-lime{% endif %}">
+                        {{ "%.1f"|format(stats.avg_food_cost_percent) }}%
+                    </span>
+                {% else %}
+                    <span class="neo-text-muted">-</span>
+                {% endif %}
+            </div>
+            <div class="neo-mt-2">
+                <a href="/pricing-analysis" class="neo-text-cyan">Analyze pricing →</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Quick Actions -->
+    <div class="neo-grid neo-grid-2 neo-mb-4">
+        <div class="neo-card">
+            <div class="neo-card-header">
+                <h2 class="neo-mb-1">Quick Actions</h2>
+            </div>
+            <div class="neo-card-body">
+                <div class="neo-grid neo-grid-2" style="gap: 1rem;">
+                    <a href="/inventory/add" class="neo-btn neo-btn-primary" style="width: 100%;">
+                        Add Inventory Item
+                    </a>
+                    <a href="/recipes/add" class="neo-btn neo-btn-secondary" style="width: 100%;">
+                        Create Recipe
+                    </a>
+                    <a href="/menu/add" class="neo-btn neo-btn-secondary" style="width: 100%;">
+                        Add Menu Item
+                    </a>
+                    <a href="/vendors" class="neo-btn neo-btn-ghost" style="width: 100%;">
+                        Manage Vendors
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="neo-card">
+            <div class="neo-card-header">
+                <h2 class="neo-mb-1">Cost Insights</h2>
+            </div>
+            <div class="neo-card-body">
+                {% if cost_alerts %}
+                    {% for alert in cost_alerts[:3] %}
+                    <div class="neo-mb-3">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span class="neo-text-muted">{{ alert.item_name }}</span>
+                            <span class="neo-badge neo-badge-pink">{{ "%.1f"|format(alert.food_cost_percent) }}%</span>
+                        </div>
+                        <div class="neo-mt-1" style="height: 4px; background: rgba(107, 91, 149, 0.2); border-radius: 2px;">
+                            <div style="height: 100%; background: var(--gradient-neon); border-radius: 2px; width: {{ [alert.food_cost_percent, 100]|min }}%;"></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <a href="/pricing-analysis" class="neo-text-cyan">View all alerts →</a>
+                {% else %}
+                    <p class="neo-text-muted">All menu items within target food cost</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recent Activity -->
+    <div class="neo-card">
+        <div class="neo-card-header">
+            <h2 class="neo-mb-1">Recent Activity</h2>
+        </div>
+        <div class="neo-card-body">
+            {% if recent_activity %}
+            <div class="neo-table-container">
+                <table class="neo-table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Type</th>
+                            <th>Action</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for activity in recent_activity[:5] %}
+                        <tr>
+                            <td>{{ activity.item_name }}</td>
+                            <td>
+                                <span class="neo-badge neo-badge-{{ activity.type_color }}">{{ activity.type }}</span>
+                            </td>
+                            <td class="neo-text-muted">{{ activity.action }}</td>
+                            <td class="neo-text-muted">{{ activity.date }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <p class="neo-text-center neo-text-muted neo-p-4">No recent activity</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+/* Additional dashboard-specific styles */
+.neo-stat-card {
+    transition: all 0.3s ease;
+}
+
+.neo-stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--glow-subtle);
+}
+
+.neo-stat-card:hover .neo-stat-value {
+    animation: neon-pulse 1s ease-in-out infinite;
+}
+
+/* Override some base styles for dashboard */
+h1 {
+    font-size: 3rem;
+    background: var(--gradient-neon);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(255, 0, 110, 0.3);
+}
+</style>
+{% endblock %}

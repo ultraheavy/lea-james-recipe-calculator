@@ -326,7 +326,7 @@ def index():
         'vendor_count': vendor_count
     }
     
-    return render_template('index.html', stats=stats)
+    return render_template('index_modern.html', stats=stats)
 
 @app.route('/inventory')
 def inventory():
@@ -337,7 +337,7 @@ def inventory():
              
             ORDER BY i.item_code
         ''').fetchall()
-    return render_template('inventory.html', items=items)
+    return render_template('inventory_modern.html', items=items)
 
 @app.route('/inventory/add', methods=['GET', 'POST'])
 def add_inventory():
@@ -532,7 +532,7 @@ def recipes():
             GROUP BY r.id 
             ORDER BY r.recipe_group, r.recipe_name
         ''').fetchall()
-    return render_template('recipes.html', recipes=recipes)
+    return render_template('recipes_modern.html', recipes=recipes)
 
 @app.route('/recipes/add', methods=['GET', 'POST'])
 def add_recipe():
@@ -581,7 +581,7 @@ def view_recipe(recipe_id):
             WHERE ri.recipe_id = ?
         ''', (recipe_id,)).fetchall()
     
-    return render_template('view_recipe.html', recipe=recipe, ingredients=ingredients)
+    return render_template('view_recipe_modern.html', recipe=recipe, ingredients=ingredients)
 
 @app.route('/recipes/<int:recipe_id>/ingredients/add', methods=['GET', 'POST'])
 def add_recipe_ingredient(recipe_id):
@@ -722,7 +722,7 @@ def menu():
             ORDER BY m.menu_group, m.item_name
         ''', (version_id,)).fetchall()
     
-    return render_template('menu.html', 
+    return render_template('menu_modern.html', 
                          menu_items=menu_items,
                          menu_versions=menu_versions,
                          current_version_id=version_id)
@@ -898,7 +898,7 @@ def pricing_analysis():
                 'total_revenue_impact': total_price_increase
             }
         
-        return render_template('pricing_analysis.html',
+        return render_template('pricing_analysis_modern.html',
                              menu_versions=menu_versions,
                              current_version_id=version_id,
                              target_food_cost=target_food_cost,
@@ -915,21 +915,21 @@ def vendors():
 # Error handlers for production
 @app.errorhandler(404)
 def not_found(error):
-    return render_template('404.html'), 404
+    return render_template('404_modern.html'), 404
 
 @app.errorhandler(500)
 def internal_error(error):
     import traceback
     app.logger.error(f"Internal error: {error}")
     app.logger.error(traceback.format_exc())
-    return render_template('500.html'), 500
+    return render_template('500_modern.html'), 500
 
 @app.errorhandler(Exception)
 def handle_exception(error):
     import traceback
     app.logger.error(f"Unhandled exception: {error}")
     app.logger.error(traceback.format_exc())
-    return render_template('500.html'), 500
+    return render_template('500_modern.html'), 500
 
 # Initialize database on module load (for production)
 # This ensures database is ready before any requests

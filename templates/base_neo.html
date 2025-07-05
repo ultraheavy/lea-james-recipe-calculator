@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Lea James Recipe Calculator{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/neo-tokyo.css">
+    <link rel="stylesheet" href="/static/css/food-icons.css">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Neo Navigation -->
+    <nav class="neo-nav">
+        <div class="container">
+            <div class="neo-nav-content">
+                <!-- Brand -->
+                <a href="/" class="neo-brand">
+                    <div class="neo-logo">LJ</div>
+                    <span>Lea James</span>
+                </a>
+                
+                <!-- Main Menu -->
+                <div class="neo-nav-menu">
+                    <a href="/" class="neo-nav-link {% if request.endpoint == 'index' %}active{% endif %}">
+                        Dashboard
+                    </a>
+                    <a href="/inventory" class="neo-nav-link {% if request.endpoint == 'inventory' %}active{% endif %}">
+                        Inventory
+                    </a>
+                    <a href="/recipes" class="neo-nav-link {% if request.endpoint == 'recipes' %}active{% endif %}">
+                        Recipes
+                    </a>
+                    <a href="/menu" class="neo-nav-link {% if request.endpoint == 'menu_items' %}active{% endif %}">
+                        Menu
+                    </a>
+                    <a href="/pricing-analysis" class="neo-nav-link {% if request.endpoint == 'pricing_analysis' %}active{% endif %}">
+                        Pricing
+                    </a>
+                    <a href="/vendors" class="neo-nav-link {% if request.endpoint == 'vendors' %}active{% endif %}">
+                        Vendors
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="container" style="margin-top: 2rem; min-height: calc(100vh - 100px);">
+        {% block content %}{% endblock %}
+    </main>
+    
+    <!-- Food Icon Helper Script -->
+    <script>
+    function getFoodCategory(name) {
+        const lowerName = name.toLowerCase();
+        if (lowerName.includes('chicken') || lowerName.includes('beef') || lowerName.includes('pork') || 
+            lowerName.includes('lamb') || lowerName.includes('turkey') || lowerName.includes('meat')) {
+            return 'protein';
+        } else if (lowerName.includes('milk') || lowerName.includes('cheese') || lowerName.includes('cream') || 
+                   lowerName.includes('butter') || lowerName.includes('yogurt')) {
+            return 'dairy';
+        } else if (lowerName.includes('tomato') || lowerName.includes('lettuce') || lowerName.includes('onion') || 
+                   lowerName.includes('pepper') || lowerName.includes('vegetable') || lowerName.includes('produce')) {
+            return 'produce';
+        } else if (lowerName.includes('bread') || lowerName.includes('pasta') || lowerName.includes('rice') || 
+                   lowerName.includes('flour') || lowerName.includes('grain')) {
+            return 'grains';
+        } else if (lowerName.includes('water') || lowerName.includes('juice') || lowerName.includes('soda') || 
+                   lowerName.includes('beverage') || lowerName.includes('drink')) {
+            return 'beverage';
+        } else if (lowerName.includes('spice') || lowerName.includes('salt') || lowerName.includes('pepper') || 
+                   lowerName.includes('seasoning')) {
+            return 'spices';
+        } else if (lowerName.includes('oil') || lowerName.includes('vinegar') || lowerName.includes('cooking')) {
+            return 'oil';
+        } else if (lowerName.includes('frozen') || lowerName.includes('ice')) {
+            return 'frozen';
+        } else if (lowerName.includes('dessert') || lowerName.includes('cake') || lowerName.includes('sweet')) {
+            return 'dessert';
+        } else if (lowerName.includes('fish') || lowerName.includes('shrimp') || lowerName.includes('seafood')) {
+            return 'seafood';
+        } else if (lowerName.includes('sauce') || lowerName.includes('dressing') || lowerName.includes('condiment')) {
+            return 'sauce';
+        } else if (lowerName.includes('appetizer') || lowerName.includes('starter')) {
+            return 'appetizer';
+        }
+        return 'misc';
+    }
+    
+    function createFoodIcon(text, size = 'md') {
+        const category = getFoodCategory(text);
+        const div = document.createElement('div');
+        div.className = `neo-icon neo-icon-${getColorForCategory(category)}`;
+        
+        // Add icon content based on category
+        const iconMap = {
+            'protein': '🥩',
+            'dairy': '🥛',
+            'produce': '🥬',
+            'grains': '🌾',
+            'beverage': '🥤',
+            'spices': '🧂',
+            'oil': '🫒',
+            'frozen': '❄️',
+            'dessert': '🍰',
+            'seafood': '🐟',
+            'sauce': '🥫',
+            'appetizer': '🍤',
+            'misc': '📦'
+        };
+        
+        div.textContent = iconMap[category] || '📦';
+        return div;
+    }
+    
+    function getColorForCategory(category) {
+        const colorMap = {
+            'protein': 'pink',
+            'dairy': 'cyan',
+            'produce': 'lime',
+            'grains': 'cyan',
+            'beverage': 'pink',
+            'spices': 'lime',
+            'oil': 'cyan',
+            'frozen': 'cyan',
+            'dessert': 'pink',
+            'seafood': 'cyan',
+            'sauce': 'lime',
+            'appetizer': 'pink',
+            'misc': 'cyan'
+        };
+        return colorMap[category] || 'cyan';
+    }
+    </script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

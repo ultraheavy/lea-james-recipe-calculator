@@ -1,0 +1,217 @@
+{% extends "base_neo.html" %}
+
+{% block title %}Menu - Lea James Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="neo-animate-fade-up">
+    <!-- Page Header -->
+    <div class="neo-mb-4">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h1>Menu Engineering</h1>
+                <p class="neo-text-muted">Optimize your offerings for maximum profitability</p>
+            </div>
+            <div style="display: flex; gap: 1rem;">
+                <select class="neo-form-control" style="width: auto;" onchange="window.location.href='/menu?version_id=' + this.value">
+                    {% for version in menu_versions %}
+                    <option value="{{ version.id }}" {% if version.id == current_version_id %}selected{% endif %}>
+                        {{ version.version_name }} {% if version.is_active %}⚡{% endif %}
+                    </option>
+                    {% endfor %}
+                </select>
+                <a href="/menu/add" class="neo-btn neo-btn-primary">
+                    <span>+</span> Add Item
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Menu Analytics -->
+    <div class="neo-grid neo-grid-4 neo-mb-4">
+        <div class="neo-stat-card" style="padding: 1.5rem;">
+            <div class="neo-stat-label">Total Items</div>
+            <div class="neo-stat-value neo-text-cyan" style="font-size: 2rem;">{{ menu_items|length }}</div>
+        </div>
+        <div class="neo-stat-card" style="padding: 1.5rem;">
+            <div class="neo-stat-label">Avg Price</div>
+            <div class="neo-stat-value neo-text-pink" style="font-size: 2rem;">
+                {% set avg_price = menu_items|map(attribute='menu_price')|select|list|sum / (menu_items|map(attribute='menu_price')|select|list|length or 1) %}
+                ${{ "%.2f"|format(avg_price) }}
+            </div>
+        </div>
+        <div class="neo-stat-card" style="padding: 1.5rem;">
+            <div class="neo-stat-label">Avg Food Cost %</div>
+            <div class="neo-stat-value" style="font-size: 2rem;">
+                {% set items_with_cost = menu_items|selectattr('menu_price')|selectattr('food_cost')|list %}
+                {% if items_with_cost %}
+                    {% set avg_food_cost_pct = items_with_cost|map(attribute='food_cost_percent')|sum / items_with_cost|length %}
+                    <span class="{% if avg_food_cost_pct > 35 %}neo-text-pink{% else %}neo-text-lime{% endif %}">
+                        {{ "%.1f"|format(avg_food_cost_pct) }}%
+                    </span>
+                {% else %}
+                    <span class="neo-text-muted">-</span>
+                {% endif %}
+            </div>
+        </div>
+        <div class="neo-stat-card" style="padding: 1.5rem;">
+            <div class="neo-stat-label">Total Revenue</div>
+            <div class="neo-stat-value neo-text-lime" style="font-size: 2rem;">
+                ${{ "%.2f"|format(menu_items|map(attribute='menu_price')|select|list|sum) }}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Menu Table -->
+    <div class="neo-card">
+        <div class="neo-card-header">
+            <h2 style="font-size: 1.5rem;">Menu Items</h2>
+        </div>
+        <div class="neo-card-body" style="padding: 0;">
+            <div class="neo-table-container">
+                <table class="neo-table">
+                    <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Group</th>
+                            <th>Price</th>
+                            <th>Food Cost</th>
+                            <th>FC %</th>
+                            <th>Margin</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in menu_items %}
+                        <tr>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <div class="icon-container"></div>
+                                    <span style="font-weight: 500;">{{ item.item_name }}</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="neo-badge neo-badge-purple">{{ item.menu_group or '-' }}</span>
+                            </td>
+                            <td>
+                                <span class="neo-text-cyan" style="font-weight: 600;">
+                                    ${{ "%.2f"|format(item.menu_price or 0) }}
+                                </span>
+                            </td>
+                            <td>
+                                <span style="font-weight: 500;">
+                                    ${{ "%.2f"|format(item.food_cost or 0) }}
+                                </span>
+                            </td>
+                            <td>
+                                {% if item.food_cost_percent %}
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <span class="{% if item.food_cost_percent > 35 %}neo-text-pink{% else %}neo-text-lime{% endif %}" 
+                                          style="font-weight: 600;">
+                                        {{ "%.1f"|format(item.food_cost_percent) }}%
+                                    </span>
+                                    <div style="width: 40px; height: 4px; background: rgba(107, 91, 149, 0.2); border-radius: 2px;">
+                                        <div style="height: 100%; border-radius: 2px;
+                                                    background: {% if item.food_cost_percent > 35 %}var(--neo-pink){% else %}var(--neo-lime){% endif %};
+                                                    width: {{ [item.food_cost_percent, 100]|min }}%;"></div>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <span class="neo-text-muted">-</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <span class="neo-text-lime" style="font-weight: 500;">
+                                    ${{ "%.2f"|format((item.menu_price or 0) - (item.food_cost or 0)) }}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="neo-badge neo-badge-{% if item.is_active %}lime{% else %}cyan{% endif %}">
+                                    {% if item.is_active %}Active{% else %}Inactive{% endif %}
+                                </span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+            {% if not menu_items %}
+            <div style="text-align: center; padding: 4rem 2rem;">
+                <div class="neo-icon neo-icon-cyan" style="width: 4rem; height: 4rem; font-size: 2rem; margin: 0 auto 1rem;">
+                    🍽️
+                </div>
+                <h3>No menu items yet</h3>
+                <p class="neo-text-muted neo-mb-3">Start building your menu</p>
+                <a href="/menu/add" class="neo-btn neo-btn-primary">Add First Item</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script>
+// Initialize icons
+document.addEventListener('DOMContentLoaded', function() {
+    const rows = document.querySelectorAll('tbody tr');
+    rows.forEach(row => {
+        const itemName = row.cells[0].querySelector('span').textContent;
+        const menuGroup = row.cells[1].textContent.trim();
+        const iconContainer = row.querySelector('.icon-container');
+        if (iconContainer) {
+            const icon = createFoodIcon(menuGroup || itemName || 'misc', 'sm');
+            iconContainer.appendChild(icon);
+        }
+    });
+});
+</script>
+
+<style>
+/* Additional menu-specific styles */
+.icon-container {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.neo-table tbody tr {
+    position: relative;
+}
+
+.neo-table tbody tr::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--gradient-neon);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.neo-table tbody tr:hover::before {
+    opacity: 1;
+}
+
+/* Animated stat cards */
+.neo-stat-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.neo-stat-card::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(255, 0, 110, 0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+</style>
+{% endblock %}

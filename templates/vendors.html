@@ -1,0 +1,134 @@
+{% extends "base_modern.html" %}
+
+{% block title %}Vendors - Lea James Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in">
+    <!-- Page Header -->
+    <div class="flex items-center justify-between mb-6">
+        <div>
+            <h1 class="text-3xl font-semibold mb-2">Vendor Management</h1>
+            <p class="text-secondary">{{ vendors|length }} vendors in your network</p>
+        </div>
+        <button class="btn btn-primary" onclick="showAddVendorModal()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 8v8m-4-4h8"/>
+            </svg>
+            Add Vendor
+        </button>
+    </div>
+    
+    <!-- Vendor Cards Grid -->
+    <div class="grid grid-cols-1 grid-cols-2 grid-cols-3 gap-6">
+        {% for vendor in vendors %}
+        <div class="card animate-slide-up" style="animation-delay: {{ loop.index0 * 0.05 }}s;">
+            <div class="card-body">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="food-icon icon-beverage">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/>
+                            <circle cx="6" cy="9" r="4"/>
+                            <path d="M22 21v-2a4 4 0 00-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 010 7.75"/>
+                        </svg>
+                    </div>
+                    <span class="badge {% if vendor.active %}badge-success{% else %}badge-danger{% endif %}">
+                        {% if vendor.active %}Active{% else %}Inactive{% endif %}
+                    </span>
+                </div>
+                
+                <h3 class="text-lg font-semibold mb-3">{{ vendor.vendor_name }}</h3>
+                
+                <div class="space-y-2 text-sm">
+                    {% if vendor.contact_info %}
+                    <div class="flex items-start gap-2">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-secondary mt-0.5">
+                            <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                            <circle cx="8.5" cy="7" r="4"/>
+                        </svg>
+                        <span class="text-secondary">{{ vendor.contact_info }}</span>
+                    </div>
+                    {% endif %}
+                    
+                    {% if vendor.phone %}
+                    <div class="flex items-start gap-2">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-secondary mt-0.5">
+                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                        </svg>
+                        <span class="text-secondary">{{ vendor.phone }}</span>
+                    </div>
+                    {% endif %}
+                    
+                    {% if vendor.email %}
+                    <div class="flex items-start gap-2">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-secondary mt-0.5">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <path d="M22 6l-10 7L2 6"/>
+                        </svg>
+                        <a href="mailto:{{ vendor.email }}" class="text-primary hover:underline">{{ vendor.email }}</a>
+                    </div>
+                    {% endif %}
+                    
+                    {% if vendor.address %}
+                    <div class="flex items-start gap-2">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-secondary mt-0.5">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <span class="text-secondary">{{ vendor.address }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <div class="mt-4 pt-4 border-t border-gray-100">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">Products supplied</span>
+                        <span class="badge badge-info">Coming soon</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    {% if not vendors %}
+    <div class="card">
+        <div class="card-body text-center p-8">
+            <div class="food-icon food-icon-lg icon-beverage mx-auto mb-4">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"/>
+                </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">No vendors yet</h3>
+            <p class="text-secondary mb-4">Start by adding your first vendor</p>
+            <button class="btn btn-primary" onclick="showAddVendorModal()">Add First Vendor</button>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Add Vendor Modal (placeholder) -->
+<script>
+function showAddVendorModal() {
+    // For now, just alert - in a real app, this would show a modal
+    alert('Add vendor functionality coming soon!');
+}
+</script>
+
+<style>
+    .space-y-2 > * + * {
+        margin-top: 0.5rem;
+    }
+    
+    .mt-0\.5 {
+        margin-top: 0.125rem;
+    }
+    
+    .hover\:underline:hover {
+        text-decoration: underline;
+    }
+</style>
+{% endblock %}

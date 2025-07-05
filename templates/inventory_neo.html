@@ -1,0 +1,159 @@
+{% extends "base_neo.html" %}
+
+{% block title %}Inventory - Lea James Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="neo-animate-fade-up">
+    <!-- Page Header -->
+    <div class="neo-mb-4">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h1>Inventory Management</h1>
+                <p class="neo-text-muted">{{ inventory|length }} items in your digital pantry</p>
+            </div>
+            <a href="/inventory/add" class="neo-btn neo-btn-primary">
+                <span>+</span> Add Item
+            </a>
+        </div>
+    </div>
+    
+    <!-- Search and Filters -->
+    <div class="neo-card neo-mb-4">
+        <div class="neo-card-body">
+            <form method="GET" action="/inventory" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 200px;">
+                    <input type="text" 
+                           name="search" 
+                           class="neo-form-control" 
+                           placeholder="Search inventory..."
+                           value="{{ request.args.get('search', '') }}">
+                </div>
+                <select name="category" class="neo-form-control" style="width: auto;" onchange="this.form.submit()">
+                    <option value="">All Categories</option>
+                    {% for category in categories %}
+                    <option value="{{ category }}" {% if request.args.get('category') == category %}selected{% endif %}>
+                        {{ category }}
+                    </option>
+                    {% endfor %}
+                </select>
+                <select name="vendor" class="neo-form-control" style="width: auto;" onchange="this.form.submit()">
+                    <option value="">All Vendors</option>
+                    {% for vendor in vendor_list %}
+                    <option value="{{ vendor }}" {% if request.args.get('vendor') == vendor %}selected{% endif %}>
+                        {{ vendor }}
+                    </option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="neo-btn neo-btn-secondary">Search</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Inventory Grid -->
+    <div class="neo-grid neo-grid-3">
+        {% for item in inventory %}
+        <div class="neo-card neo-animate-fade-up" style="animation-delay: {{ loop.index0 * 0.03 }}s;">
+            <div class="neo-card-body">
+                <!-- Header -->
+                <div style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1rem;">
+                    <div class="icon-container"></div>
+                    <div style="flex: 1;">
+                        <h3 style="font-size: 1.125rem; font-weight: 600; margin: 0;">{{ item.item_description }}</h3>
+                        {% if item.item_code %}
+                        <p class="neo-text-muted" style="font-size: 0.875rem; margin-top: 0.25rem;">{{ item.item_code }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <!-- Price Info -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                    <div>
+                        <p class="neo-text-muted" style="font-size: 0.75rem; margin-bottom: 0.25rem;">Current Price</p>
+                        <p class="neo-text-cyan" style="font-size: 1.25rem; font-weight: 700;">
+                            ${{ "%.2f"|format(item.current_price or 0) }}
+                        </p>
+                    </div>
+                    <div>
+                        <p class="neo-text-muted" style="font-size: 0.75rem; margin-bottom: 0.25rem;">Unit</p>
+                        <p style="font-weight: 500;">{{ item.unit_measure or '-' }}</p>
+                    </div>
+                </div>
+                
+                <!-- Meta Info -->
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+                    {% if item.vendor_name %}
+                    <span class="neo-badge neo-badge-purple">{{ item.vendor_name }}</span>
+                    {% endif %}
+                    {% if item.product_categories %}
+                    <span class="neo-badge neo-badge-cyan">{{ item.product_categories }}</span>
+                    {% endif %}
+                </div>
+                
+                <!-- Actions -->
+                <div style="display: flex; gap: 0.5rem;">
+                    <button class="neo-btn neo-btn-secondary" style="flex: 1; font-size: 0.875rem;">Edit</button>
+                    <button class="neo-btn neo-btn-ghost" style="flex: 1; font-size: 0.875rem;">Details</button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    {% if not inventory %}
+    <div class="neo-card">
+        <div class="neo-card-body" style="text-align: center; padding: 4rem 2rem;">
+            <div class="neo-icon neo-icon-cyan" style="width: 4rem; height: 4rem; font-size: 2rem; margin: 0 auto 1rem;">
+                📦
+            </div>
+            <h3>No inventory items found</h3>
+            <p class="neo-text-muted neo-mb-3">Start by adding your first inventory item</p>
+            <a href="/inventory/add" class="neo-btn neo-btn-primary">Add First Item</a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+// Initialize icons based on item names
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.neo-card');
+    cards.forEach((card, index) => {
+        const itemName = card.querySelector('h3')?.textContent || '';
+        const iconContainer = card.querySelector('.icon-container');
+        if (iconContainer && itemName) {
+            const icon = createFoodIcon(itemName, 'md');
+            iconContainer.appendChild(icon);
+        }
+    });
+});
+</script>
+
+<style>
+/* Additional inventory-specific styles */
+.icon-container {
+    width: 3rem;
+    height: 3rem;
+}
+
+.neo-card:hover {
+    border-color: var(--neo-cyan);
+    box-shadow: var(--glow-cyan);
+}
+
+/* Stagger animation for grid items */
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.neo-animate-fade-up {
+    animation: slide-up 0.4s ease-out forwards;
+}
+</style>
+{% endblock %}
