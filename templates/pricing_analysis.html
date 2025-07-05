@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block title %}Pricing Analysis - Restaurant Recipe Calculator{% endblock %}
+
+{% block content %}
+<h1>Menu Pricing Analysis & Recommendations</h1>
+<p>Analyze your menu pricing and get recommendations based on food cost targets.</p>
+
+<form method="GET" action="/pricing-analysis" style="margin-bottom: 30px;">
+    <div class="flex flex-wrap gap-3" style="align-items: flex-end;">
+        <div class="form-group" style="flex: 1; min-width: 200px;">
+            <label for="target_food_cost">Target Food Cost %:</label>
+            <input type="number" name="target_food_cost" id="target_food_cost" 
+                   value="{{ target_food_cost or 30 }}" min="10" max="50" step="1">
+        </div>
+        <div class="form-group" style="flex: 1; min-width: 200px;">
+            <label for="version_id">Menu Version:</label>
+            <select name="version_id" id="version_id">
+                {% for version in menu_versions %}
+                <option value="{{ version.id }}" {% if version.id == current_version_id %}selected{% endif %}>
+                    {{ version.version_name }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group" style="flex: 0;">
+            <button type="submit" class="btn">Analyze Pricing</button>
+        </div>
+    </div>
+</form>
+
+<div class="table-wrapper">
+<table>
+    <thead>
+        <tr>
+            <th>Item Name</th>
+            <th>Group</th>
+            <th>Current Price</th>
+            <th>Food Cost</th>
+            <th>Current FC%</th>
+            <th>Target FC%</th>
+            <th>Recommended Price</th>
+            <th>Price Change</th>
+            <th>New Margin</th>
+            <th class="hide-mobile">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if analysis_data %}
+            {% for item in analysis_data %}
+            <tr style="{% if item.needs_adjustment %}background-color: #fff3cd;{% endif %}">
+                <td>{{ item.item_name }}</td>
+                <td>{{ item.menu_group or 'Ungrouped' }}</td>
+                <td>${{ "%.2f"|format(item.menu_price or 0) }}</td>
+                <td>${{ "%.2f"|format(item.food_cost or 0) }}</td>
+                <td>
+                    <span style="color: {% if item.food_cost_percent > target_food_cost %}red{% else %}green{% endif %};">
+                        {{ "%.1f"|format(item.food_cost_percent or 0) }}%
+                    </span>
+                </td>
+                <td>{{ target_food_cost }}%</td>
+                <td>
+                    <strong>${{ "%.2f"|format(item.recommended_price) }}</strong>
+                </td>
+                <td>
+                    {% if item.price_change != 0 %}
+                        <span style="color: {% if item.price_change > 0 %}green{% else %}red{% endif %};">
+                            {{ "%+.2f"|format(item.price_change) }}
+                            ({{ "%+.1f"|format(item.price_change_percent) }}%)
+                        </span>
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                <td>${{ "%.2f"|format(item.new_margin) }}</td>
+                <td class="hide-mobile">
+                    {% if item.needs_adjustment %}
+                        <button onclick="updatePrice({{ item.id }}, {{ item.recommended_price }})" 
+                                class="btn" style="font-size: 12px; padding: 5px 10px;">
+                            Update Price
+                        </button>
+                    {% else %}
+                        ✓ Good
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="10" style="text-align: center; padding: 40px;">
+                    No menu items found for analysis.
+                </td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+</div>
+
+{% if summary %}
+<div style="margin-top: 30px;">
+    <h3>Analysis Summary</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+        <div style="border: 1px solid #ddd; padding: 20px; border-radius: 5px;">
+            <h4>Current Performance</h4>
+            <p>Average Food Cost: <strong>{{ "%.1f"|format(summary.avg_food_cost_percent) }}%</strong></p>
+            <p>Items Above Target: <strong>{{ summary.items_above_target }}</strong></p>
+            <p>Items Below Target: <strong>{{ summary.items_below_target }}</strong></p>
+            <p>Average Menu Price: <strong>${{ "%.2f"|format(summary.avg_menu_price) }}</strong></p>
+        </div>
+        <div style="border: 1px solid #ddd; padding: 20px; border-radius: 5px;">
+            <h4>Recommendations</h4>
+            <p>Items Needing Adjustment: <strong>{{ summary.items_needing_adjustment }}</strong></p>
+            <p>Average Price Increase: <strong>${{ "%.2f"|format(summary.avg_price_increase) }}</strong></p>
+            <p>Total Revenue Impact: <strong>${{ "%.2f"|format(summary.total_revenue_impact) }}</strong></p>
+            <p>New Avg Food Cost: <strong>{{ "%.1f"|format(target_food_cost) }}%</strong></p>
+        </div>
+        <div style="border: 1px solid #ddd; padding: 20px; border-radius: 5px;">
+            <h4>Pricing Strategies</h4>
+            <p><strong>Consider these factors:</strong></p>
+            <ul style="margin: 10px 0; padding-left: 20px;">
+                <li>Market positioning</li>
+                <li>Competition pricing</li>
+                <li>Customer perception</li>
+                <li>Volume vs. margin trade-offs</li>
+            </ul>
+            <button onclick="applyAllRecommendations()" class="btn btn-success" style="margin-top: 10px;">
+                Apply All Recommendations
+            </button>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<script>
+function updatePrice(itemId, newPrice) {
+    if (confirm(`Update price to $${newPrice.toFixed(2)}?`)) {
+        // In a real implementation, this would make an AJAX call
+        window.location.href = `/menu/update-price/${itemId}?price=${newPrice}&return_to=pricing-analysis`;
+    }
+}
+
+function applyAllRecommendations() {
+    if (confirm('This will update all menu prices to meet the target food cost percentage. Continue?')) {
+        // In a real implementation, this would make an AJAX call
+        window.location.href = `/menu/apply-price-recommendations?target_food_cost={{ target_food_cost }}&version_id={{ current_version_id }}`;
+    }
+}
+</script>
+{% endblock %}

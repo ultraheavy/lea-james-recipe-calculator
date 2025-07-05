@@ -629,6 +629,100 @@ def menu_compare():
                              v1_id=v1_id,
                              v2_id=v2_id)
 
+@app.route('/pricing-analysis')
+def pricing_analysis():
+    """Pricing analysis and recommendations page"""
+    with get_db() as conn:
+        # Get menu versions
+        menu_versions = conn.execute('SELECT * FROM menu_versions ORDER BY id').fetchall()
+        
+        # Get parameters
+        target_food_cost = request.args.get('target_food_cost', type=float, default=30.0)
+        version_id = request.args.get('version_id', type=int)
+        
+        if not version_id:
+            # Get active version
+            active_version = conn.execute('''
+                SELECT id FROM menu_versions WHERE is_active = 1 LIMIT 1
+            ''').fetchone()
+            version_id = active_version['id'] if active_version else 1
+        
+        # Get menu items with recipe costs
+        menu_items = conn.execute('''
+            SELECT m.*, r.food_cost as recipe_food_cost
+            FROM menu_items m 
+            LEFT JOIN recipes r ON m.recipe_id = r.id 
+            WHERE m.version_id = ? AND m.menu_price > 0
+            ORDER BY m.menu_group, m.item_name
+        ''', (version_id,)).fetchall()
+        
+        analysis_data = []
+        total_items = 0
+        items_above_target = 0
+        items_below_target = 0
+        total_price = 0
+        total_food_cost_percent = 0
+        items_needing_adjustment = 0
+        total_price_increase = 0
+        
+        for item in menu_items:
+            food_cost = item['food_cost'] or item['recipe_food_cost'] or 0
+            menu_price = item['menu_price'] or 0
+            
+            if menu_price > 0:
+                current_fc_percent = (food_cost / menu_price * 100) if menu_price > 0 else 0
+                recommended_price = food_cost / (target_food_cost / 100) if target_food_cost > 0 else menu_price
+                price_change = recommended_price - menu_price
+                price_change_percent = (price_change / menu_price * 100) if menu_price > 0 else 0
+                new_margin = recommended_price - food_cost
+                needs_adjustment = current_fc_percent > target_food_cost
+                
+                analysis_data.append({
+                    'id': item['id'],
+                    'item_name': item['item_name'],
+                    'menu_group': item['menu_group'],
+                    'menu_price': menu_price,
+                    'food_cost': food_cost,
+                    'food_cost_percent': current_fc_percent,
+                    'recommended_price': recommended_price,
+                    'price_change': price_change,
+                    'price_change_percent': price_change_percent,
+                    'new_margin': new_margin,
+                    'needs_adjustment': needs_adjustment
+                })
+                
+                # Summary calculations
+                total_items += 1
+                total_price += menu_price
+                total_food_cost_percent += current_fc_percent
+                
+                if current_fc_percent > target_food_cost:
+                    items_above_target += 1
+                    items_needing_adjustment += 1
+                    total_price_increase += price_change
+                elif current_fc_percent < target_food_cost:
+                    items_below_target += 1
+        
+        # Calculate summary
+        summary = None
+        if total_items > 0:
+            summary = {
+                'avg_food_cost_percent': total_food_cost_percent / total_items,
+                'items_above_target': items_above_target,
+                'items_below_target': items_below_target,
+                'items_needing_adjustment': items_needing_adjustment,
+                'avg_menu_price': total_price / total_items,
+                'avg_price_increase': total_price_increase / items_needing_adjustment if items_needing_adjustment > 0 else 0,
+                'total_revenue_impact': total_price_increase
+            }
+        
+        return render_template('pricing_analysis.html',
+                             menu_versions=menu_versions,
+                             current_version_id=version_id,
+                             target_food_cost=target_food_cost,
+                             analysis_data=analysis_data,
+                             summary=summary)
+
 @app.route('/vendors')
 def vendors():
     """Vendor management page"""
