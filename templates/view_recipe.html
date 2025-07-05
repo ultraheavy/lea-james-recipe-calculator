@@ -37,7 +37,7 @@
     <tbody>
         {% for ingredient in ingredients %}
         <tr>
-            <td>{{ ingredient.item_description }}</td>
+            <td>{{ ingredient.ingredient_name or ingredient.item_description }}</td>
             <td>{{ ingredient.quantity or 'N/A' }}</td>
             <td>{{ ingredient.unit_of_measure or ingredient.unit_measure }}</td>
             <td>${{ "%.2f"|format(ingredient.cost or 0) }}</td>

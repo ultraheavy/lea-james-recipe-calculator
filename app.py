@@ -1,10 +1,14 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 import sqlite3
 import os
+from auto_commit import integrate_with_flask
 
 app = Flask(__name__)
 
 DATABASE = 'restaurant_calculator.db'
+
+# Set up auto-commit decorator
+with_auto_commit = integrate_with_flask(app)
 
 def init_database():
     """Initialize database with updated schema for Toast POS integration"""
@@ -395,7 +399,7 @@ def view_recipe(recipe_id):
         ingredients = conn.execute('''
             SELECT ri.*, i.item_description, i.unit_measure, i.current_price
             FROM recipe_ingredients ri 
-            JOIN inventory i ON ri.ingredient_id = i.id 
+            LEFT JOIN inventory i ON ri.ingredient_id = i.id 
             WHERE ri.recipe_id = ?
         ''', (recipe_id,)).fetchall()
     
