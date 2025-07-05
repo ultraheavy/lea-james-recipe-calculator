@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for, make_response
 import sqlite3
 import os
+from unit_converter import UnitConverter
 
 app = Flask(__name__)
 
@@ -616,8 +617,13 @@ def add_recipe_ingredient(recipe_id):
             quantity = float(request.form['quantity'])
             unit = request.form.get('unit') or ingredient['unit_measure']
             
-            # Calculate cost based on current_price
-            cost = quantity * (ingredient['current_price'] or 0)
+            # Calculate cost using proper unit conversion
+            converter = UnitConverter(DATABASE)
+            cost = converter.calculate_ingredient_cost(
+                dict(ingredient),  # Convert Row to dict
+                quantity,
+                unit
+            )
             
             # Insert recipe ingredient
             cursor.execute('''
@@ -660,8 +666,13 @@ def edit_recipe_ingredient(recipe_id, ingredient_id):
             quantity = float(request.form['quantity'])
             unit = request.form.get('unit') or ingredient['unit_measure']
             
-            # Calculate cost based on current_price
-            cost = quantity * (ingredient['current_price'] or 0)
+            # Calculate cost using proper unit conversion
+            converter = UnitConverter(DATABASE)
+            cost = converter.calculate_ingredient_cost(
+                dict(ingredient),  # Convert Row to dict
+                quantity,
+                unit
+            )
             
             # Update recipe ingredient
             cursor.execute('''
