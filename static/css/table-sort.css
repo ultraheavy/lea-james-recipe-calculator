@@ -1,0 +1,23 @@
+/* Table sorting styles */
+.sort-asc .sort-indicator,
+.sort-desc .sort-indicator {
+    opacity: 1 !important;
+}
+
+.sort-asc .sort-indicator::after {
+    content: '↑' !important;
+}
+
+.sort-desc .sort-indicator::after {
+    content: '↓' !important;
+}
+
+thead th[data-sortable]:hover {
+    background-color: #f0f0f0;
+    transition: background-color 0.2s ease;
+}
+
+.sort-indicator {
+    display: inline-block;
+    transition: opacity 0.2s ease;
+}
