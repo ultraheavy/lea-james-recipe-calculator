@@ -13,11 +13,6 @@
     </div>
     
     <div class="form-group">
-        <label for="recipe_number">Recipe Number:</label>
-        <input type="number" id="recipe_number" name="recipe_number" min="1">
-    </div>
-    
-    <div class="form-group">
         <label for="yield_amount">Yield Amount:</label>
         <input type="text" id="yield_amount" name="yield_amount" placeholder="e.g., 4 portions, 2 lbs">
     </div>
@@ -80,7 +75,7 @@
         <tbody>
             {% for item in inventory[:10] %}
             <tr>
-                <td>{{ item.item_number }}</td>
+                <td>{{ item.item_code }}</td>
                 <td>{{ item.item_description }}</td>
                 <td>{{ item.unit_measure }}</td>
                 <td>${{ "%.2f"|format(item.current_price or 0) }}</td>
