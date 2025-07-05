@@ -1,0 +1,267 @@
+{% extends "base_neo.html" %}
+
+{% block title %}{{ recipe.recipe_name }} - Lea James Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="neo-animate-fade-up">
+    <!-- Page Header -->
+    <div class="neo-mb-4">
+        <div style="display: flex; justify-content: space-between; align-items: start;">
+            <div>
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                    <a href="/recipes" class="neo-btn neo-btn-ghost" style="padding: 0.5rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5m7-7l-7 7 7 7"/>
+                        </svg>
+                    </a>
+                    <h1 style="margin: 0;">{{ recipe.recipe_name }}</h1>
+                    <span class="neo-badge neo-badge-{% if recipe.status == 'Active' %}lime{% elif recipe.status == 'Draft' %}cyan{% else %}purple{% endif %}">
+                        {{ recipe.status or 'Draft' }}
+                    </span>
+                </div>
+                {% if recipe.recipe_group %}
+                <p class="neo-text-muted">{{ recipe.recipe_group }}</p>
+                {% endif %}
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+                <button class="neo-btn neo-btn-secondary" onclick="editRecipe()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+                        <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                    </svg>
+                    Edit Recipe
+                </button>
+                <a href="/recipes/{{ recipe.id }}/ingredients/add" class="neo-btn neo-btn-primary">
+                    <span>+</span> Add Ingredient
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recipe Stats Cards -->
+    <div class="neo-grid neo-grid-4 neo-mb-4">
+        <div class="neo-stat-card" style="padding: 1.5rem;">
+            <div class="neo-stat-label">Menu Price</div>
+            <div class="neo-stat-value neo-text-cyan">${{ "%.2f"|format(recipe.menu_price or 0) }}</div>
+        </div>
+        
+        <div class="neo-stat-card" style="padding: 1.5rem;">
+            <div class="neo-stat-label">Food Cost</div>
+            <div class="neo-stat-value neo-text-pink">${{ "%.2f"|format(recipe.food_cost or 0) }}</div>
+            <p class="{% if recipe.menu_price and recipe.food_cost and (recipe.food_cost / recipe.menu_price * 100) > 35 %}neo-text-pink{% else %}neo-text-lime{% endif %}" style="font-size: 0.875rem; margin-top: 0.25rem;">
+                {% if recipe.menu_price and recipe.menu_price > 0 %}
+                    {{ "%.1f"|format(recipe.food_cost / recipe.menu_price * 100) }}% of price
+                {% else %}
+                    - % of price
+                {% endif %}
+            </p>
+        </div>
+        
+        <div class="neo-stat-card" style="padding: 1.5rem;">
+            <div class="neo-stat-label">Gross Margin</div>
+            <div class="neo-stat-value neo-text-lime">
+                {% if recipe.menu_price %}
+                    ${{ "%.2f"|format(recipe.menu_price - (recipe.food_cost or 0)) }}
+                {% else %}
+                    $0.00
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="neo-stat-card" style="padding: 1.5rem;">
+            <div class="neo-stat-label">Serving Info</div>
+            {% if recipe.serving_size %}
+                <div class="neo-stat-value" style="font-size: 1.5rem;">{{ recipe.serving_size }} {{ recipe.serving_size_uom or '' }}</div>
+                <p class="neo-text-muted" style="font-size: 0.875rem;">${{ "%.2f"|format(recipe.per_serving or 0) }} per serving</p>
+            {% else %}
+                <p class="neo-text-muted">Not specified</p>
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- Main Content Grid -->
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem;">
+        <!-- Ingredients Table -->
+        <div class="neo-card">
+            <div class="neo-card-header">
+                <h2 style="font-size: 1.5rem;">Ingredients ({{ ingredients|length }})</h2>
+            </div>
+            <div class="neo-card-body" style="padding: 0;">
+                <div class="neo-table-container">
+                    <table class="neo-table">
+                        <thead>
+                            <tr>
+                                <th>Ingredient</th>
+                                <th>Quantity</th>
+                                <th>Unit Price</th>
+                                <th>Cost</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for ingredient in ingredients %}
+                            <tr>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <div class="icon-container"></div>
+                                        <span>{{ ingredient.ingredient_name or ingredient.item_description }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="neo-text-cyan" style="font-weight: 600;">{{ ingredient.quantity }}</span>
+                                    <span class="neo-text-muted">{{ ingredient.unit_of_measure }}</span>
+                                </td>
+                                <td class="neo-text-muted">${{ "%.2f"|format(ingredient.current_price or 0) }}</td>
+                                <td class="neo-text-pink" style="font-weight: 700;">${{ "%.2f"|format(ingredient.cost or 0) }}</td>
+                                <td>
+                                    <div style="display: flex; gap: 0.25rem;">
+                                        <a href="/recipes/{{ recipe.id }}/ingredients/edit/{{ ingredient.id }}" 
+                                           class="neo-btn neo-btn-ghost" style="padding: 0.5rem;">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+                                                <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                            </svg>
+                                        </a>
+                                        <button class="neo-btn neo-btn-ghost" style="padding: 0.5rem;" onclick="deleteIngredient({{ ingredient.id }})">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M3 6h18m-2 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                        <tfoot>
+                            <tr style="font-weight: 700;">
+                                <td colspan="3">Total Food Cost</td>
+                                <td class="neo-text-pink" style="font-size: 1.25rem;">${{ "%.2f"|format(recipe.food_cost or 0) }}</td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                
+                {% if not ingredients %}
+                <div style="padding: 3rem; text-align: center;">
+                    <p class="neo-text-muted neo-mb-3">No ingredients added yet</p>
+                    <a href="/recipes/{{ recipe.id }}/ingredients/add" class="neo-btn neo-btn-primary">Add First Ingredient</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Recipe Info Sidebar -->
+        <div>
+            <div class="neo-card neo-mb-3">
+                <div class="neo-card-header">
+                    <h3 style="font-size: 1.25rem;">Recipe Information</h3>
+                </div>
+                <div class="neo-card-body">
+                    <div style="display: grid; gap: 1rem;">
+                        {% if recipe.station %}
+                        <div>
+                            <p class="neo-form-label">Station</p>
+                            <p class="neo-text-cyan">{{ recipe.station }}</p>
+                        </div>
+                        {% endif %}
+                        
+                        {% if recipe.shelf_life %}
+                        <div>
+                            <p class="neo-form-label">Shelf Life</p>
+                            <p class="neo-text-cyan">{{ recipe.shelf_life }} {{ recipe.shelf_life_uom or 'days' }}</p>
+                        </div>
+                        {% endif %}
+                        
+                        {% if recipe.prep_recipe_yield %}
+                        <div>
+                            <p class="neo-form-label">Recipe Yield</p>
+                            <p class="neo-text-cyan">{{ recipe.prep_recipe_yield }} {{ recipe.prep_recipe_yield_uom or '' }}</p>
+                        </div>
+                        {% endif %}
+                        
+                        <div>
+                            <p class="neo-form-label">Last Updated</p>
+                            <p class="neo-text-muted">{{ recipe.updated_date or recipe.created_date or 'Unknown' }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            {% if recipe.procedure %}
+            <div class="neo-card">
+                <div class="neo-card-header">
+                    <h3 style="font-size: 1.25rem;">Preparation Instructions</h3>
+                </div>
+                <div class="neo-card-body">
+                    <p style="white-space: pre-wrap; line-height: 1.6;">{{ recipe.procedure }}</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script>
+// Initialize category icons
+document.addEventListener('DOMContentLoaded', function() {
+    const rows = document.querySelectorAll('tbody tr');
+    rows.forEach(row => {
+        const ingredientName = row.cells[0].querySelector('span').textContent.trim();
+        const iconContainer = row.querySelector('.icon-container');
+        if (iconContainer) {
+            const icon = createFoodIcon(ingredientName || 'misc', 'sm');
+            iconContainer.appendChild(icon);
+        }
+    });
+});
+
+function editRecipe() {
+    alert('Edit recipe functionality coming soon!');
+}
+
+function deleteIngredient(id) {
+    if (confirm('Are you sure you want to remove this ingredient?')) {
+        alert('Delete functionality coming soon!');
+    }
+}
+</script>
+
+<style>
+/* Additional view recipe specific styles */
+.icon-container {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+/* Responsive grid */
+@media (max-width: 1024px) {
+    div[style*="grid-template-columns: 2fr 1fr"] {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Animated table rows */
+.neo-table tbody tr {
+    animation: slide-up 0.3s ease-out forwards;
+    opacity: 0;
+}
+
+.neo-table tbody tr:nth-child(1) { animation-delay: 0.05s; }
+.neo-table tbody tr:nth-child(2) { animation-delay: 0.1s; }
+.neo-table tbody tr:nth-child(3) { animation-delay: 0.15s; }
+.neo-table tbody tr:nth-child(4) { animation-delay: 0.2s; }
+.neo-table tbody tr:nth-child(5) { animation-delay: 0.25s; }
+
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+{% endblock %}

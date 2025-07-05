@@ -290,7 +290,7 @@ def get_db():
 def get_theme():
     """Get the current theme from cookies or query parameter"""
     theme = request.args.get('theme') or request.cookies.get('theme', 'modern')
-    return theme if theme in ['modern', 'neo'] else 'modern'
+    return theme if theme in ['modern', 'neo', 'fam'] else 'modern'
 
 @app.route('/health')
 def health():
@@ -318,7 +318,7 @@ def health():
 @app.route('/set-theme/<theme>')
 def set_theme(theme):
     """Set the UI theme"""
-    if theme not in ['modern', 'neo']:
+    if theme not in ['modern', 'neo', 'fam']:
         theme = 'modern'
     
     response = make_response(redirect(request.referrer or '/'))
@@ -599,7 +599,8 @@ def view_recipe(recipe_id):
             WHERE ri.recipe_id = ?
         ''', (recipe_id,)).fetchall()
     
-    return render_template('view_recipe_modern.html', recipe=recipe, ingredients=ingredients)
+    theme = get_theme()
+    return render_template(f'view_recipe_{theme}.html', recipe=recipe, ingredients=ingredients)
 
 @app.route('/recipes/<int:recipe_id>/ingredients/add', methods=['GET', 'POST'])
 def add_recipe_ingredient(recipe_id):
@@ -917,7 +918,8 @@ def pricing_analysis():
                 'total_revenue_impact': total_price_increase
             }
         
-        return render_template('pricing_analysis_modern.html',
+        theme = get_theme()
+        return render_template(f'pricing_analysis_{theme}.html',
                              menu_versions=menu_versions,
                              current_version_id=version_id,
                              target_food_cost=target_food_cost,
@@ -929,7 +931,10 @@ def vendors():
     """Vendor management page"""
     with get_db() as conn:
         vendors = conn.execute('SELECT * FROM vendors ORDER BY vendor_name').fetchall()
-    return render_template('vendors.html', vendors=vendors)
+    theme = get_theme()
+    # Use base template name for modern theme
+    template_name = 'vendors.html' if theme == 'modern' else f'vendors_{theme}.html'
+    return render_template(template_name, vendors=vendors)
 
 # Error handlers for production
 @app.errorhandler(404)

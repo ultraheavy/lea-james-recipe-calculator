@@ -1,0 +1,158 @@
+{% extends "base_neo.html" %}
+
+{% block title %}Vendors - Lea James Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="neo-animate-fade-up">
+    <!-- Page Header -->
+    <div class="neo-mb-4">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h1>Vendor Network</h1>
+                <p class="neo-text-muted">{{ vendors|length }} suppliers in your digital ecosystem</p>
+            </div>
+            <button class="neo-btn neo-btn-primary" onclick="showAddVendorModal()">
+                <span>+</span> Add Vendor
+            </button>
+        </div>
+    </div>
+    
+    <!-- Vendor Cards Grid -->
+    <div class="neo-grid neo-grid-3">
+        {% for vendor in vendors %}
+        <div class="neo-card neo-animate-fade-up" style="animation-delay: {{ loop.index0 * 0.05 }}s;">
+            <div class="neo-card-body">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                    <div class="neo-icon neo-icon-purple" style="width: 3rem; height: 3rem;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/>
+                            <circle cx="6" cy="9" r="4"/>
+                            <path d="M22 21v-2a4 4 0 00-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 010 7.75"/>
+                        </svg>
+                    </div>
+                    <span class="neo-badge neo-badge-{% if vendor.active %}lime{% else %}pink{% endif %}">
+                        {% if vendor.active %}Active{% else %}Inactive{% endif %}
+                    </span>
+                </div>
+                
+                <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;">{{ vendor.vendor_name }}</h3>
+                
+                <div style="display: grid; gap: 0.75rem; font-size: 0.875rem;">
+                    {% if vendor.contact_info %}
+                    <div style="display: flex; align-items: start; gap: 0.5rem;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="neo-text-muted" style="margin-top: 2px;">
+                            <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                            <circle cx="8.5" cy="7" r="4"/>
+                        </svg>
+                        <span class="neo-text-muted">{{ vendor.contact_info }}</span>
+                    </div>
+                    {% endif %}
+                    
+                    {% if vendor.phone %}
+                    <div style="display: flex; align-items: start; gap: 0.5rem;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="neo-text-muted" style="margin-top: 2px;">
+                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                        </svg>
+                        <span class="neo-text-muted">{{ vendor.phone }}</span>
+                    </div>
+                    {% endif %}
+                    
+                    {% if vendor.email %}
+                    <div style="display: flex; align-items: start; gap: 0.5rem;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="neo-text-muted" style="margin-top: 2px;">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <path d="M22 6l-10 7L2 6"/>
+                        </svg>
+                        <a href="mailto:{{ vendor.email }}" class="neo-text-cyan" style="text-decoration: none;">{{ vendor.email }}</a>
+                    </div>
+                    {% endif %}
+                    
+                    {% if vendor.address %}
+                    <div style="display: flex; align-items: start; gap: 0.5rem;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="neo-text-muted" style="margin-top: 2px;">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <span class="neo-text-muted">{{ vendor.address }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="neo-text-muted" style="font-size: 0.75rem;">Products supplied</span>
+                        <span class="neo-badge neo-badge-cyan">Coming soon</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    {% if not vendors %}
+    <div class="neo-card">
+        <div class="neo-card-body" style="text-align: center; padding: 4rem 2rem;">
+            <div class="neo-icon neo-icon-purple" style="width: 4rem; height: 4rem; font-size: 2rem; margin: 0 auto 1rem;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"/>
+                </svg>
+            </div>
+            <h3>No vendors yet</h3>
+            <p class="neo-text-muted neo-mb-3">Start by adding your first vendor</p>
+            <button class="neo-btn neo-btn-primary" onclick="showAddVendorModal()">Add First Vendor</button>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Add Vendor Modal (placeholder) -->
+<script>
+function showAddVendorModal() {
+    // For now, just alert - in a real app, this would show a modal
+    alert('Add vendor functionality coming soon!');
+}
+</script>
+
+<style>
+/* Additional vendor-specific styles */
+.neo-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.neo-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, var(--neo-purple) 0%, transparent 70%);
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+.neo-card:hover {
+    border-color: var(--neo-purple);
+    box-shadow: var(--glow-purple);
+}
+
+/* Animated cards on hover */
+.neo-card:hover .neo-icon {
+    transform: scale(1.1);
+    box-shadow: var(--glow-purple);
+}
+
+.neo-icon {
+    transition: all 0.3s ease;
+}
+
+/* Link hover effect */
+a.neo-text-cyan:hover {
+    text-shadow: 0 0 10px var(--neo-cyan);
+}
+</style>
+{% endblock %}

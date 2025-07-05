@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Lea James Recipe Calculator{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/fam-hospitality.css">
+    <link rel="stylesheet" href="/static/css/food-icons.css">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- FAM Navigation -->
+    <nav class="fam-nav">
+        <div class="fam-container">
+            <div class="fam-nav-content">
+                <!-- Brand -->
+                <a href="/" class="fam-brand">
+                    <div class="fam-logo">LJ</div>
+                    <span>Lea James</span>
+                </a>
+                
+                <!-- Main Menu -->
+                <div class="fam-nav-menu">
+                    <a href="/" class="fam-nav-link {% if request.endpoint == 'index' %}active{% endif %}">
+                        Dashboard
+                    </a>
+                    <a href="/inventory" class="fam-nav-link {% if request.endpoint == 'inventory' %}active{% endif %}">
+                        Inventory
+                    </a>
+                    <a href="/recipes" class="fam-nav-link {% if request.endpoint == 'recipes' %}active{% endif %}">
+                        Recipes
+                    </a>
+                    <a href="/menu" class="fam-nav-link {% if request.endpoint == 'menu_items' %}active{% endif %}">
+                        Menu
+                    </a>
+                    <a href="/pricing-analysis" class="fam-nav-link {% if request.endpoint == 'pricing_analysis' %}active{% endif %}">
+                        Pricing
+                    </a>
+                    <a href="/vendors" class="fam-nav-link {% if request.endpoint == 'vendors' %}active{% endif %}">
+                        Vendors
+                    </a>
+                    
+                    <!-- Theme Switcher -->
+                    <div class="fam-nav-link" style="margin-left: auto;">
+                        <select onchange="window.location.href='/set-theme/' + this.value" class="fam-form-control" style="width: auto; padding: 0.5rem 1rem; font-size: 0.875rem;">
+                            <option value="fam" selected>FAM Theme</option>
+                            <option value="modern">Modern Theme</option>
+                            <option value="neo">Neo Tokyo Theme</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main style="padding: 2rem 0; min-height: calc(100vh - 100px);">
+        <div class="fam-container">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+    
+    <!-- Food Icon Helper Script -->
+    <script>
+    function getFoodCategory(name) {
+        const lowerName = name.toLowerCase();
+        if (lowerName.includes('chicken') || lowerName.includes('beef') || lowerName.includes('pork') || 
+            lowerName.includes('lamb') || lowerName.includes('turkey') || lowerName.includes('meat')) {
+            return 'protein';
+        } else if (lowerName.includes('milk') || lowerName.includes('cheese') || lowerName.includes('cream') || 
+                   lowerName.includes('butter') || lowerName.includes('yogurt')) {
+            return 'dairy';
+        } else if (lowerName.includes('tomato') || lowerName.includes('lettuce') || lowerName.includes('onion') || 
+                   lowerName.includes('pepper') || lowerName.includes('vegetable') || lowerName.includes('produce')) {
+            return 'produce';
+        } else if (lowerName.includes('bread') || lowerName.includes('pasta') || lowerName.includes('rice') || 
+                   lowerName.includes('flour') || lowerName.includes('grain')) {
+            return 'grains';
+        } else if (lowerName.includes('water') || lowerName.includes('juice') || lowerName.includes('soda') || 
+                   lowerName.includes('beverage') || lowerName.includes('drink')) {
+            return 'beverage';
+        } else if (lowerName.includes('spice') || lowerName.includes('salt') || lowerName.includes('pepper') || 
+                   lowerName.includes('seasoning')) {
+            return 'spices';
+        } else if (lowerName.includes('oil') || lowerName.includes('vinegar') || lowerName.includes('cooking')) {
+            return 'oil';
+        } else if (lowerName.includes('frozen') || lowerName.includes('ice')) {
+            return 'frozen';
+        } else if (lowerName.includes('dessert') || lowerName.includes('cake') || lowerName.includes('sweet')) {
+            return 'dessert';
+        } else if (lowerName.includes('fish') || lowerName.includes('shrimp') || lowerName.includes('seafood')) {
+            return 'seafood';
+        } else if (lowerName.includes('sauce') || lowerName.includes('dressing') || lowerName.includes('condiment')) {
+            return 'sauce';
+        } else if (lowerName.includes('appetizer') || lowerName.includes('starter')) {
+            return 'appetizer';
+        }
+        return 'misc';
+    }
+    
+    function createFoodIcon(text, size = 'md') {
+        const category = getFoodCategory(text);
+        const div = document.createElement('div');
+        div.className = `food-icon icon-${category} food-icon-${size}`;
+        
+        // Add icon content based on category
+        const iconMap = {
+            'protein': '🥩',
+            'dairy': '🥛',
+            'produce': '🥬',
+            'grains': '🌾',
+            'beverage': '🥤',
+            'spices': '🧂',
+            'oil': '🫒',
+            'frozen': '❄️',
+            'dessert': '🍰',
+            'seafood': '🐟',
+            'sauce': '🥫',
+            'appetizer': '🍤',
+            'misc': '📦'
+        };
+        
+        div.innerHTML = `<span style="font-size: 1.25rem;">${iconMap[category] || '📦'}</span>`;
+        return div;
+    }
+    </script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

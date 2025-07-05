@@ -1,0 +1,196 @@
+{% extends "base_fam.html" %}
+
+{% block title %}Dashboard - Lea James Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="fam-animate-slide">
+    <!-- Welcome Section -->
+    <div class="fam-mb-4">
+        <h1>Welcome to Lea James</h1>
+        <p class="fam-text-muted">Your culinary cost management system powered by FAM Hospitality Group</p>
+    </div>
+    
+    <!-- Stats Grid -->
+    <div class="fam-grid fam-grid-4 fam-mb-4">
+        <div class="fam-stat-card">
+            <div class="fam-stat-label">Inventory Items</div>
+            <div class="fam-stat-value" style="color: var(--fam-mint);">{{ stats.inventory_count or 0 }}</div>
+            <a href="/inventory" style="color: var(--fam-mint); text-decoration: none; font-size: 0.875rem;">
+                View all items →
+            </a>
+        </div>
+        
+        <div class="fam-stat-card">
+            <div class="fam-stat-label">Total Recipes</div>
+            <div class="fam-stat-value">{{ stats.recipe_count or 0 }}</div>
+            <a href="/recipes" style="color: var(--fam-mint); text-decoration: none; font-size: 0.875rem;">
+                Browse recipes →
+            </a>
+        </div>
+        
+        <div class="fam-stat-card">
+            <div class="fam-stat-label">Menu Items</div>
+            <div class="fam-stat-value">{{ stats.menu_count or 0 }}</div>
+            <a href="/menu" style="color: var(--fam-mint); text-decoration: none; font-size: 0.875rem;">
+                View menu →
+            </a>
+        </div>
+        
+        <div class="fam-stat-card">
+            <div class="fam-stat-label">Active Vendors</div>
+            <div class="fam-stat-value">{{ stats.vendor_count or 0 }}</div>
+            <a href="/vendors" style="color: var(--fam-mint); text-decoration: none; font-size: 0.875rem;">
+                Manage vendors →
+            </a>
+        </div>
+    </div>
+    
+    <!-- Features Grid -->
+    <div class="fam-grid fam-grid-3 fam-mb-4">
+        <div class="fam-card">
+            <div class="fam-card-body">
+                <div class="fam-feature">
+                    <div class="fam-feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3 class="fam-feature-title">Inventory Management</h3>
+                    <p class="fam-feature-text">Track ingredients with real-time pricing and vendor information</p>
+                    <a href="/inventory" class="fam-btn fam-btn-primary fam-mt-3">Manage Inventory</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="fam-card">
+            <div class="fam-card-body">
+                <div class="fam-feature">
+                    <div class="fam-feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                            <path d="M14 2v6h6M16 13H8m8 4H8m2-8H8"/>
+                        </svg>
+                    </div>
+                    <h3 class="fam-feature-title">Recipe Costing</h3>
+                    <p class="fam-feature-text">Calculate precise food costs and optimize your recipes</p>
+                    <a href="/recipes" class="fam-btn fam-btn-primary fam-mt-3">View Recipes</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="fam-card">
+            <div class="fam-card-body">
+                <div class="fam-feature">
+                    <div class="fam-feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <h3 class="fam-feature-title">Pricing Analysis</h3>
+                    <p class="fam-feature-text">Optimize menu pricing to meet target food cost percentages</p>
+                    <a href="/pricing-analysis" class="fam-btn fam-btn-primary fam-mt-3">Analyze Pricing</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recent Activity & Insights -->
+    <div class="fam-grid fam-grid-2 fam-mb-4">
+        <div class="fam-card">
+            <div class="fam-card-header">
+                <h2 style="font-size: 1.25rem; margin: 0;">Recent Activity</h2>
+            </div>
+            <div class="fam-card-body">
+                {% if recent_activity %}
+                    <div style="display: grid; gap: 1rem;">
+                        {% for activity in recent_activity[:3] %}
+                        <div style="display: flex; align-items: center; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+                            <div class="food-icon food-icon-sm">📦</div>
+                            <div style="flex: 1;">
+                                <p style="margin: 0; font-weight: 500;">{{ activity.item_name }}</p>
+                                <p style="margin: 0; font-size: 0.875rem; color: var(--text-secondary);">{{ activity.action }} • {{ activity.date }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="fam-text-muted fam-text-center" style="padding: 2rem 0;">No recent activity</p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="fam-card">
+            <div class="fam-card-header">
+                <h2 style="font-size: 1.25rem; margin: 0;">Cost Insights</h2>
+            </div>
+            <div class="fam-card-body">
+                <div style="display: grid; gap: 1.5rem;">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <span class="fam-text-muted">Average Food Cost</span>
+                            <span style="font-weight: 600; color: var(--fam-mint);">28.5%</span>
+                        </div>
+                        <div class="fam-progress">
+                            <div class="fam-progress-bar" style="width: 28.5%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <span class="fam-text-muted">Target Achievement</span>
+                            <span style="font-weight: 600; color: var(--fam-mint);">92%</span>
+                        </div>
+                        <div class="fam-progress">
+                            <div class="fam-progress-bar" style="width: 92%;"></div>
+                        </div>
+                    </div>
+                    
+                    <a href="/pricing-analysis" style="color: var(--fam-mint); text-decoration: none; font-size: 0.875rem;">
+                        View detailed analysis →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Quick Actions -->
+    <div class="fam-card">
+        <div class="fam-card-header">
+            <h2 style="font-size: 1.25rem; margin: 0;">Quick Actions</h2>
+        </div>
+        <div class="fam-card-body">
+            <div class="fam-grid fam-grid-4" style="gap: 1rem;">
+                <a href="/inventory/add" class="fam-btn fam-btn-secondary" style="width: 100%; justify-content: center;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 8v8m-4-4h8"/>
+                    </svg>
+                    Add Inventory
+                </a>
+                <a href="/recipes/add" class="fam-btn fam-btn-secondary" style="width: 100%; justify-content: center;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                        <path d="M14 2v6h6"/>
+                    </svg>
+                    Create Recipe
+                </a>
+                <a href="/menu/add" class="fam-btn fam-btn-secondary" style="width: 100%; justify-content: center;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="4" y="4" width="16" height="16" rx="2"/>
+                        <path d="M9 9h6M9 15h6"/>
+                    </svg>
+                    Add Menu Item
+                </a>
+                <a href="/vendors" class="fam-btn fam-btn-secondary" style="width: 100%; justify-content: center;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                    </svg>
+                    Manage Vendors
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
