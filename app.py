@@ -6,8 +6,8 @@ app = Flask(__name__)
 
 # Support for production deployment
 if os.getenv('FLASK_ENV') == 'production':
-    # In production, use a persistent volume
-    DATABASE = os.getenv('DATABASE_PATH', '/data/restaurant_calculator.db')
+    # In production, use a persistent volume or local directory
+    DATABASE = os.getenv('DATABASE_PATH', 'restaurant_calculator.db')
 else:
     # In development, use local file
     DATABASE = 'restaurant_calculator.db'
@@ -238,6 +238,29 @@ def get_db():
     conn = sqlite3.connect(DATABASE)
     conn.row_factory = sqlite3.Row
     return conn
+
+@app.route('/health')
+def health():
+    """Health check endpoint for debugging"""
+    try:
+        with get_db() as conn:
+            # Test database connection
+            conn.execute('SELECT 1')
+            tables = conn.execute("SELECT name FROM sqlite_master WHERE type='table'").fetchall()
+            table_names = [t['name'] for t in tables]
+            
+        return jsonify({
+            'status': 'healthy',
+            'database': DATABASE,
+            'tables': table_names,
+            'table_count': len(table_names)
+        })
+    except Exception as e:
+        return jsonify({
+            'status': 'error',
+            'database': DATABASE,
+            'error': str(e)
+        }), 500
 
 @app.route('/')
 def index():
@@ -864,10 +887,6 @@ def handle_exception(error):
 # This ensures database is ready before any requests
 print("Initializing database...")
 os.makedirs('templates', exist_ok=True)
-
-# Ensure data directory exists in production
-if os.getenv('FLASK_ENV') == 'production':
-    os.makedirs('/data', exist_ok=True)
 
 # Always initialize database when module loads
 init_database()
