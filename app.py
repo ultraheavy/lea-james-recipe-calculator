@@ -246,6 +246,100 @@ def delete_inventory(item_id):
     
     return redirect(url_for('inventory'))
 
+@app.route('/inventory/vendors/<int:item_id>')
+def inventory_vendors(item_id):
+    """Manage vendors for an inventory item"""
+    with get_db() as conn:
+        # Get inventory item
+        item = conn.execute('SELECT * FROM inventory WHERE id = ?', (item_id,)).fetchone()
+        if not item:
+            return "Item not found", 404
+        
+        # Get all vendors for dropdown
+        vendors = conn.execute('SELECT * FROM vendors ORDER BY vendor_name').fetchall()
+        
+        # Get vendor products for this item
+        vendor_products = conn.execute('''
+            SELECT vp.*, v.vendor_name
+            FROM vendor_products vp
+            JOIN vendors v ON vp.vendor_id = v.id
+            WHERE vp.inventory_id = ?
+            ORDER BY vp.is_primary DESC, vp.is_active DESC, v.vendor_name
+        ''', (item_id,)).fetchall()
+    
+    return render_template('inventory_vendors.html', 
+                         item=item, 
+                         vendors=vendors, 
+                         vendor_products=vendor_products)
+
+@app.route('/inventory/vendors/<int:item_id>/add', methods=['POST'])
+def add_vendor_product(item_id):
+    """Add a vendor product for an inventory item"""
+    with get_db() as conn:
+        cursor = conn.cursor()
+        
+        # Check if this is the first vendor product for this item
+        existing_count = cursor.execute('''
+            SELECT COUNT(*) FROM vendor_products WHERE inventory_id = ?
+        ''', (item_id,)).fetchone()[0]
+        
+        # Insert vendor product
+        cursor.execute('''
+            INSERT INTO vendor_products 
+            (inventory_id, vendor_id, vendor_item_code, vendor_price, 
+             pack_size, unit_measure, is_primary)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        ''', (
+            item_id,
+            request.form['vendor_id'],
+            request.form['vendor_item_code'],
+            float(request.form['vendor_price']),
+            request.form.get('pack_size', ''),
+            request.form.get('unit_measure', ''),
+            existing_count == 0  # First vendor is primary by default
+        ))
+        
+        conn.commit()
+    
+    return redirect(url_for('inventory_vendors', item_id=item_id))
+
+@app.route('/inventory/vendors/<int:item_id>/set-primary/<int:vp_id>', methods=['POST'])
+def set_primary_vendor(item_id, vp_id):
+    """Set a vendor product as primary for an inventory item"""
+    with get_db() as conn:
+        cursor = conn.cursor()
+        
+        # Remove primary flag from all vendor products for this item
+        cursor.execute('''
+            UPDATE vendor_products SET is_primary = 0 WHERE inventory_id = ?
+        ''', (item_id,))
+        
+        # Set this vendor product as primary
+        cursor.execute('''
+            UPDATE vendor_products SET is_primary = 1 WHERE id = ?
+        ''', (vp_id,))
+        
+        conn.commit()
+    
+    return redirect(url_for('inventory_vendors', item_id=item_id))
+
+@app.route('/inventory/vendors/<int:item_id>/toggle-active/<int:vp_id>', methods=['POST'])
+def toggle_vendor_active(item_id, vp_id):
+    """Toggle active status of a vendor product"""
+    with get_db() as conn:
+        cursor = conn.cursor()
+        
+        # Toggle active status
+        cursor.execute('''
+            UPDATE vendor_products 
+            SET is_active = NOT is_active 
+            WHERE id = ?
+        ''', (vp_id,))
+        
+        conn.commit()
+    
+    return redirect(url_for('inventory_vendors', item_id=item_id))
+
 @app.route('/recipes')
 def recipes():
     with get_db() as conn:

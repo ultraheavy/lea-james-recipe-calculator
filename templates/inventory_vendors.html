@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Vendors - {{ item.item_description }}{% endblock %}
+
+{% block content %}
+<div style="margin-bottom: 20px;">
+    <a href="/inventory" class="btn">← Back to Inventory</a>
+</div>
+
+<h1>Manage Vendors</h1>
+<h2>{{ item.item_description }}</h2>
+<p>Item Code: {{ item.item_code }}</p>
+
+<div style="margin-bottom: 30px;">
+    <h3>Add New Vendor</h3>
+    <form method="POST" action="/inventory/vendors/{{ item.id }}/add">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 15px;">
+            <div>
+                <label for="vendor_id">Vendor:</label>
+                <select name="vendor_id" id="vendor_id" required>
+                    <option value="">Select a vendor</option>
+                    {% for vendor in vendors %}
+                    <option value="{{ vendor.id }}">{{ vendor.vendor_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="vendor_item_code">Vendor Item Code:</label>
+                <input type="text" name="vendor_item_code" id="vendor_item_code" required>
+            </div>
+            <div>
+                <label for="vendor_price">Vendor Price:</label>
+                <input type="number" name="vendor_price" id="vendor_price" step="0.01" required>
+            </div>
+            <div>
+                <label for="pack_size">Pack Size:</label>
+                <input type="text" name="pack_size" id="pack_size">
+            </div>
+            <div>
+                <label for="unit_measure">Unit Measure:</label>
+                <input type="text" name="unit_measure" id="unit_measure" value="{{ item.unit_measure }}">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Add Vendor Product</button>
+    </form>
+</div>
+
+<h3>Current Vendors</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Vendor</th>
+            <th>Item Code</th>
+            <th>Price</th>
+            <th>Last Purchase</th>
+            <th>Last Price</th>
+            <th>Pack Size</th>
+            <th>Unit</th>
+            <th>Primary</th>
+            <th>Active</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if vendor_products %}
+            {% for vp in vendor_products %}
+            <tr>
+                <td>{{ vp.vendor_name }}</td>
+                <td>{{ vp.vendor_item_code }}</td>
+                <td>${{ "%.2f"|format(vp.vendor_price or 0) }}</td>
+                <td>{{ vp.last_purchased_date or '-' }}</td>
+                <td>{{ "$%.2f"|format(vp.last_purchased_price) if vp.last_purchased_price else '-' }}</td>
+                <td>{{ vp.pack_size or '-' }}</td>
+                <td>{{ vp.unit_measure }}</td>
+                <td>
+                    {% if vp.is_primary %}
+                        <span style="color: green;">✓ Primary</span>
+                    {% else %}
+                        <form method="POST" action="/inventory/vendors/{{ item.id }}/set-primary/{{ vp.id }}" style="display: inline;">
+                            <button type="submit" class="btn" style="font-size: 10px; padding: 2px 8px;">Set Primary</button>
+                        </form>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if vp.is_active %}
+                        <span style="color: green;">Active</span>
+                    {% else %}
+                        <span style="color: red;">Inactive</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="/inventory/vendors/{{ item.id }}/edit/{{ vp.id }}" class="btn" style="font-size: 12px; padding: 5px 10px;">Edit</a>
+                    <form method="POST" action="/inventory/vendors/{{ item.id }}/toggle-active/{{ vp.id }}" style="display: inline;">
+                        <button type="submit" class="btn" style="font-size: 12px; padding: 5px 10px;">
+                            {% if vp.is_active %}Deactivate{% else %}Activate{% endif %}
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="10" style="text-align: center; padding: 20px;">
+                    No vendors configured for this item yet.
+                </td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+
+<div style="margin-top: 30px;">
+    <h3>Purchase History</h3>
+    <p>Coming soon: Track all purchases from all vendors with date, price, and quantity information.</p>
+</div>
+{% endblock %}

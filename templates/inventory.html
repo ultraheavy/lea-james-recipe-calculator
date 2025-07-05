@@ -14,6 +14,8 @@
             <th>Item #</th>
             <th>Description</th>
             <th>Current Price</th>
+            <th>Last Purchase</th>
+            <th>Last Price</th>
             <th>Unit</th>
             <th>Purchase Unit</th>
             <th>Recipe Unit</th>
@@ -28,12 +30,15 @@
                 <td>{{ item.item_code }}</td>
                 <td>{{ item.item_description }}</td>
                 <td>${{ "%.2f"|format(item.current_price or 0) }}</td>
+                <td>{{ item.last_purchased_date or '-' }}</td>
+                <td>{{ "$%.2f"|format(item.last_purchased_price) if item.last_purchased_price else '-' }}</td>
                 <td>{{ item.unit_measure }}</td>
                 <td>{{ item.purchase_unit }}</td>
                 <td>{{ item.recipe_cost_unit }}</td>
                 <td>{{ item.yield_percent }}%</td>
                 <td>
                     <a href="/inventory/edit/{{ item.id }}" class="btn" style="font-size: 12px; padding: 5px 10px;">Edit</a>
+                    <a href="/inventory/vendors/{{ item.id }}" class="btn" style="font-size: 12px; padding: 5px 10px;">Vendors</a>
                     <form method="POST" action="/inventory/delete/{{ item.id }}" style="display: inline;">
                         <button type="submit" class="btn" style="font-size: 12px; padding: 5px 10px; background-color: #dc3545; color: white;" 
                                 onclick="return confirm('Are you sure you want to delete {{ item.item_description }}?')">Delete</button>
@@ -43,7 +48,7 @@
             {% endfor %}
         {% else %}
             <tr>
-                <td colspan="8" style="text-align: center; padding: 40px;">
+                <td colspan="10" style="text-align: center; padding: 40px;">
                     No inventory items found. <a href="/inventory/add">Add your first item</a>
                 </td>
             </tr>
