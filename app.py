@@ -425,7 +425,14 @@ def edit_inventory(item_id):
     
     # Get item data and vendors for form
     with get_db() as conn:
-        item = conn.execute('SELECT * FROM inventory WHERE id = ?', (item_id,)).fetchone()
+        item = conn.execute('''
+            SELECT i.*, 
+                   COUNT(DISTINCT ri.recipe_id) as recipe_count
+            FROM inventory i
+            LEFT JOIN recipe_ingredients ri ON i.id = ri.ingredient_id
+            WHERE i.id = ?
+            GROUP BY i.id
+        ''', (item_id,)).fetchone()
         vendors = conn.execute('SELECT DISTINCT vendor_name as name FROM vendors ORDER BY vendor_name').fetchall()
     
     if not item:
@@ -1372,11 +1379,65 @@ def pricing_analysis():
 def vendors():
     """Vendor management page"""
     with get_db() as conn:
-        vendors = conn.execute('SELECT * FROM vendors ORDER BY vendor_name').fetchall()
+        # Get vendors with product counts
+        vendors = conn.execute('''
+            SELECT v.*, 
+                   COUNT(DISTINCT vp.inventory_id) as product_count,
+                   COUNT(DISTINCT CASE WHEN vp.is_active = 1 THEN vp.inventory_id END) as active_product_count
+            FROM vendors v
+            LEFT JOIN vendor_products vp ON v.id = vp.vendor_id
+            GROUP BY v.id
+            ORDER BY v.vendor_name
+        ''').fetchall()
+        
+        # Get top products for each vendor
+        vendor_top_products = {}
+        for vendor in vendors:
+            if vendor['product_count'] > 0:
+                top_products = conn.execute('''
+                    SELECT i.item_description
+                    FROM vendor_products vp
+                    JOIN inventory i ON vp.inventory_id = i.id
+                    WHERE vp.vendor_id = ? AND vp.is_active = 1
+                    ORDER BY vp.is_primary DESC, i.item_description
+                    LIMIT 3
+                ''', (vendor['id'],)).fetchall()
+                vendor_top_products[vendor['id']] = [p['item_description'] for p in top_products]
+        
     theme = get_theme()
     # Use base template name for modern theme
     template_name = 'vendors.html' if theme == 'modern' else f'vendors_{theme}.html'
-    return render_template(template_name, vendors=vendors)
+    return render_template(template_name, vendors=vendors, vendor_top_products=vendor_top_products)
+
+@app.route('/vendors/<int:vendor_id>')
+def vendor_detail(vendor_id):
+    """Show detailed vendor information and their products"""
+    with get_db() as conn:
+        # Get vendor info
+        vendor = conn.execute('SELECT * FROM vendors WHERE id = ?', (vendor_id,)).fetchone()
+        if not vendor:
+            return render_template('404_modern.html'), 404
+            
+        # Get vendor's products
+        products = conn.execute('''
+            SELECT vp.*, i.item_description, i.item_code, i.product_categories,
+                   i.current_price as inventory_price,
+                   CASE WHEN vp.vendor_price IS NOT NULL 
+                        THEN ((vp.vendor_price - i.current_price) / i.current_price * 100)
+                        ELSE 0 
+                   END as price_variance,
+                   (SELECT COUNT(DISTINCT vendor_id) 
+                    FROM vendor_products vp2 
+                    WHERE vp2.inventory_id = vp.inventory_id) as vendor_count
+            FROM vendor_products vp
+            JOIN inventory i ON vp.inventory_id = i.id
+            WHERE vp.vendor_id = ?
+            ORDER BY vp.is_primary DESC, vp.is_active DESC, i.item_description
+        ''', (vendor_id,)).fetchall()
+        
+    theme = get_theme()
+    template_name = 'vendor_detail.html' if theme == 'modern' else f'vendor_detail_{theme}.html'
+    return render_template(template_name, vendor=vendor, products=products)
 
 # Error handlers for production
 @app.errorhandler(404)

@@ -1,0 +1,162 @@
+{% extends "base_modern.html" %}
+
+{% block title %}{{ vendor.vendor_name }} - Vendor Details{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in">
+    <!-- Page Header -->
+    <div class="mb-6">
+        <div class="flex items-center gap-2 text-sm text-secondary mb-4">
+            <a href="{{ url_for('vendors') }}" class="hover:text-primary">Vendors</a>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18l6-6-6-6"/>
+            </svg>
+            <span>{{ vendor.vendor_name }}</span>
+        </div>
+        
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-3xl font-semibold mb-2">{{ vendor.vendor_name }}</h1>
+                <div class="flex items-center gap-4">
+                    <span class="badge {% if vendor.active %}badge-success{% else %}badge-danger{% endif %}">
+                        {% if vendor.active %}Active{% else %}Inactive{% endif %}
+                    </span>
+                    <span class="text-secondary">{{ products|length }} products</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Vendor Info Card -->
+    <div class="card mb-6">
+        <div class="card-body">
+            <h2 class="text-xl font-semibold mb-4">Contact Information</h2>
+            <div class="grid grid-cols-1 grid-cols-2 gap-4">
+                {% if vendor.contact_info %}
+                <div>
+                    <label class="text-sm text-secondary">Contact Person</label>
+                    <p class="font-medium">{{ vendor.contact_info }}</p>
+                </div>
+                {% endif %}
+                
+                {% if vendor.phone %}
+                <div>
+                    <label class="text-sm text-secondary">Phone</label>
+                    <p class="font-medium">{{ vendor.phone }}</p>
+                </div>
+                {% endif %}
+                
+                {% if vendor.email %}
+                <div>
+                    <label class="text-sm text-secondary">Email</label>
+                    <p class="font-medium"><a href="mailto:{{ vendor.email }}" class="text-primary hover:underline">{{ vendor.email }}</a></p>
+                </div>
+                {% endif %}
+                
+                {% if vendor.address %}
+                <div class="col-span-2">
+                    <label class="text-sm text-secondary">Address</label>
+                    <p class="font-medium">{{ vendor.address }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Products Table -->
+    <div class="card">
+        <div class="card-body">
+            <h2 class="text-xl font-semibold mb-4">Products Supplied</h2>
+            
+            {% if products %}
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b border-gray-200">
+                            <th class="text-left py-3 px-2">Item Code</th>
+                            <th class="text-left py-3 px-2">Description</th>
+                            <th class="text-left py-3 px-2">Category</th>
+                            <th class="text-right py-3 px-2">Vendor Price</th>
+                            <th class="text-right py-3 px-2">Our Price</th>
+                            <th class="text-right py-3 px-2">Variance</th>
+                            <th class="text-center py-3 px-2">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in products %}
+                        <tr class="border-b border-gray-100 hover:bg-gray-50">
+                            <td class="py-3 px-2">
+                                <code class="text-sm">{{ product.vendor_item_code or product.item_code }}</code>
+                            </td>
+                            <td class="py-3 px-2">
+                                <a href="{{ url_for('edit_inventory', item_id=product.inventory_id) }}" class="text-primary hover:underline">
+                                    {{ product.item_description }}
+                                </a>
+                                {% if product.is_primary %}
+                                    <span class="text-yellow-500 ml-1" title="Price used for recipe costing">★</span>
+                                {% endif %}
+                            </td>
+                            <td class="py-3 px-2 text-sm text-secondary">
+                                {{ product.product_categories or 'Uncategorized' }}
+                            </td>
+                            <td class="py-3 px-2 text-right">
+                                {% if product.vendor_price %}
+                                    ${{ "%.2f"|format(product.vendor_price) }}
+                                {% else %}
+                                    <span class="text-secondary">-</span>
+                                {% endif %}
+                            </td>
+                            <td class="py-3 px-2 text-right">
+                                ${{ "%.2f"|format(product.inventory_price) }}
+                            </td>
+                            <td class="py-3 px-2 text-right">
+                                {% if product.vendor_price and product.price_variance != 0 %}
+                                    <span class="{% if product.price_variance > 0 %}text-danger{% else %}text-success{% endif %}">
+                                        {{ "%+.1f"|format(product.price_variance) }}%
+                                    </span>
+                                {% else %}
+                                    <span class="text-secondary">-</span>
+                                {% endif %}
+                            </td>
+                            <td class="py-3 px-2 text-center">
+                                <span class="badge {% if product.is_active %}badge-success{% else %}badge-secondary{% endif %}">
+                                    {% if product.is_active %}Active{% else %}Inactive{% endif %}
+                                </span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="text-center py-8">
+                <div class="food-icon food-icon-lg icon-misc mx-auto mb-4">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M9 11l3 3L22 4"/>
+                        <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">No products yet</h3>
+                <p class="text-secondary mb-4">This vendor hasn't been assigned any products</p>
+                <a href="{{ url_for('inventory') }}" class="btn btn-primary">Browse Inventory</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+    .col-span-2 {
+        grid-column: span 2 / span 2;
+    }
+    
+    .text-yellow-500 {
+        color: #EAB308;
+        font-size: 1.2rem;
+    }
+    
+    .ml-1 {
+        margin-left: 0.25rem;
+    }
+</style>
+{% endblock %}
