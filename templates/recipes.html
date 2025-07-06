@@ -8,17 +8,18 @@
 
 <a href="/recipes/add" class="btn btn-success">Add New Recipe</a>
 
+<div class="table-wrapper">
 <table>
     <thead>
         <tr>
             <th>Recipe Name</th>
-            <th>Group</th>
-            <th>Type</th>
-            <th>Status</th>
+            <th class="hide-mobile">Group</th>
+            <th class="hide-mobile">Type</th>
+            <th class="hide-mobile">Status</th>
             <th>Food Cost</th>
             <th>Menu Price</th>
             <th>FC%</th>
-            <th>Ingredients</th>
+            <th class="hide-mobile">Ingredients</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -27,13 +28,13 @@
             {% for recipe in recipes %}
             <tr>
                 <td>{{ recipe.recipe_name }}</td>
-                <td>{{ recipe.recipe_group or '-' }}</td>
-                <td>{{ recipe.recipe_type or 'Recipe' }}</td>
-                <td>{{ recipe.status or 'Draft' }}</td>
+                <td class="hide-mobile">{{ recipe.recipe_group or '-' }}</td>
+                <td class="hide-mobile">{{ recipe.recipe_type or 'Recipe' }}</td>
+                <td class="hide-mobile">{{ recipe.status or 'Draft' }}</td>
                 <td>${{ "%.2f"|format(recipe.food_cost or 0) }}</td>
                 <td>${{ "%.2f"|format(recipe.menu_price or 0) }}</td>
                 <td>{{ "%.1f"|format(recipe.food_cost_percentage or 0) }}%</td>
-                <td>{{ recipe.ingredient_count or 0 }}</td>
+                <td class="hide-mobile">{{ recipe.ingredient_count or 0 }}</td>
                 <td>
                     <a href="/recipes/{{ recipe.id }}" class="btn" style="font-size: 12px; padding: 5px 10px;">View</a>
                     <form method="POST" action="/recipes/delete/{{ recipe.id }}" style="display: inline;">
@@ -52,4 +53,5 @@
         {% endif %}
     </tbody>
 </table>
+</div>
 {% endblock %}

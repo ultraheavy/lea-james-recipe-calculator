@@ -199,6 +199,536 @@
   }
 }
 
+/* Mobile Typography Fixes */
+@media (max-width: 768px) {
+  /* Responsive headings using clamp() */
+  h1 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem) !important;
+    line-height: 1.2 !important;
+    margin-bottom: var(--space-md, 16px) !important;
+  }
+  
+  h2 {
+    font-size: clamp(1.25rem, 3.5vw, 2rem) !important;
+    line-height: 1.3 !important;
+    margin-bottom: var(--space-sm, 12px) !important;
+  }
+  
+  h3 {
+    font-size: clamp(1.1rem, 3vw, 1.5rem) !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--space-sm, 10px) !important;
+  }
+  
+  /* Page descriptions */
+  p {
+    font-size: clamp(0.875rem, 2.5vw, 1rem) !important;
+    line-height: 1.5 !important;
+    margin-bottom: var(--space-md, 16px) !important;
+  }
+  
+  /* Card titles */
+  .card-title,
+  .text-3xl {
+    font-size: clamp(1.25rem, 3.5vw, 2rem) !important;
+    line-height: 1.3 !important;
+  }
+  
+  /* Secondary text */
+  .text-secondary,
+  .text-sm {
+    font-size: clamp(0.75rem, 2vw, 0.875rem) !important;
+    line-height: 1.4 !important;
+  }
+}
+
+/* Responsive Tables */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin: var(--space-md, 16px) 0;
+}
+
+/* Base table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface-color, #ffffff);
+  font-size: 0.875rem;
+  min-width: 600px; /* Minimum width for horizontal scroll */
+}
+
+table th,
+table td {
+  padding: var(--space-sm, 8px) var(--space-md, 12px);
+  text-align: left;
+  border-bottom: 1px solid var(--border-color, #e5e7eb);
+  vertical-align: middle;
+}
+
+table th {
+  background: var(--background-secondary, #f8fafc);
+  font-weight: 600;
+  color: var(--text-secondary, #374151);
+  border-bottom: 2px solid var(--border-color, #e5e7eb);
+  white-space: nowrap;
+}
+
+table td {
+  color: var(--text-primary, #111827);
+}
+
+table tr:hover {
+  background: var(--background-tertiary, #f9fafb);
+}
+
+/* Mobile table styles */
+@media (max-width: 768px) {
+  .table-wrapper {
+    margin: var(--space-sm, 8px) 0;
+    border-radius: 4px;
+  }
+  
+  table {
+    font-size: 0.75rem;
+    min-width: 500px; /* Reduced minimum for mobile */
+  }
+  
+  table th,
+  table td {
+    padding: var(--space-xs, 6px) var(--space-sm, 8px);
+  }
+  
+  /* Hide mobile columns */
+  .hide-mobile {
+    display: none !important;
+  }
+  
+  /* Compact action buttons */
+  .btn {
+    font-size: 0.75rem !important;
+    padding: 4px 8px !important;
+    margin: 1px !important;
+  }
+  
+  /* Stack action buttons vertically on very small screens */
+  @media (max-width: 480px) {
+    table td form {
+      display: block !important;
+      margin: 2px 0 !important;
+    }
+    
+    table td .btn {
+      display: block !important;
+      width: 100% !important;
+      margin: 2px 0 !important;
+      text-align: center !important;
+    }
+  }
+}
+
+/* Card-style mobile layout for very narrow screens */
+@media (max-width: 480px) {
+  .mobile-card-table {
+    display: none; /* Hidden by default, enabled with JS */
+  }
+  
+  .mobile-card-table.active {
+    display: block;
+  }
+  
+  .mobile-card-table + .table-wrapper {
+    display: none;
+  }
+  
+  .mobile-card {
+    background: var(--surface-color, #ffffff);
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 8px;
+    margin: var(--space-sm, 8px) 0;
+    padding: var(--space-md, 16px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mobile-card-header {
+    font-weight: 600;
+    color: var(--primary-color, #6366f1);
+    margin-bottom: var(--space-sm, 8px);
+    font-size: 0.875rem;
+  }
+  
+  .mobile-card-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-xs, 4px) 0;
+    border-bottom: 1px solid var(--border-light, #f3f4f6);
+    font-size: 0.75rem;
+  }
+  
+  .mobile-card-row:last-child {
+    border-bottom: none;
+    margin-top: var(--space-sm, 8px);
+  }
+  
+  .mobile-card-label {
+    font-weight: 500;
+    color: var(--text-secondary, #6b7280);
+    flex: 0 0 40%;
+  }
+  
+  .mobile-card-value {
+    flex: 1;
+    text-align: right;
+    color: var(--text-primary, #111827);
+  }
+  
+  .mobile-card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs, 4px);
+    margin-top: var(--space-sm, 8px);
+  }
+  
+  .mobile-card-actions .btn {
+    width: 100% !important;
+    text-align: center !important;
+  }
+}
+
+/* Touch targets - ensure minimum 44px touch targets */
+@media (max-width: 768px) {
+  .btn,
+  button,
+  input[type="submit"],
+  input[type="button"] {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+  
+  /* Smaller buttons in tables can be 36px but should be well spaced */
+  table .btn {
+    min-height: 36px;
+    min-width: 60px;
+    margin: 2px;
+  }
+}
+
+/* Mobile Form Improvements */
+@media (max-width: 768px) {
+  /* Form containers */
+  form {
+    padding: var(--space-md, 16px);
+    margin: var(--space-sm, 8px) 0;
+  }
+  
+  /* Form groups */
+  .form-group,
+  .mb-3,
+  div:has(> label) {
+    margin-bottom: var(--space-lg, 20px) !important;
+  }
+  
+  /* Ensure form-group inputs get the mobile styling */
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100% !important;
+    min-height: 48px !important;
+    padding: var(--space-md, 12px) var(--space-md, 16px) !important;
+    border: 2px solid var(--border-color, #d1d5db) !important;
+    border-radius: 8px !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    background: var(--surface-color, #ffffff) !important;
+    color: var(--text-primary, #111827) !important;
+    box-sizing: border-box !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+    margin-bottom: var(--space-xs, 4px) !important;
+  }
+  
+  /* Form-group focus states */
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none !important;
+    border-color: var(--primary-color, #6366f1) !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
+  }
+  
+  /* Form-group labels */
+  .form-group label {
+    display: block !important;
+    font-weight: 600 !important;
+    color: var(--text-primary, #111827) !important;
+    margin-bottom: var(--space-sm, 8px) !important;
+    font-size: 0.9375rem !important;
+  }
+  
+  /* Labels */
+  label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-primary, #111827);
+    margin-bottom: var(--space-sm, 8px);
+    font-size: 0.9375rem;
+  }
+  
+  /* Input fields */
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="url"],
+  textarea,
+  select {
+    width: 100% !important;
+    min-height: 48px !important; /* Increased for better touch targets */
+    padding: var(--space-md, 12px) var(--space-md, 16px) !important;
+    border: 2px solid var(--border-color, #d1d5db) !important;
+    border-radius: 8px !important;
+    font-size: 1rem !important; /* Prevent zoom on iOS */
+    line-height: 1.5 !important;
+    background: var(--surface-color, #ffffff) !important;
+    color: var(--text-primary, #111827) !important;
+    box-sizing: border-box !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+    margin-bottom: var(--space-xs, 4px) !important;
+  }
+  
+  /* Focus states */
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none !important;
+    border-color: var(--primary-color, #6366f1) !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
+  }
+  
+  /* Textarea specific */
+  textarea {
+    min-height: 120px !important;
+    resize: vertical !important;
+  }
+  
+  /* Select dropdowns */
+  select {
+    appearance: none !important;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23374151' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 12px center !important;
+    background-size: 16px !important;
+    padding-right: 48px !important;
+  }
+  
+  /* Form buttons */
+  .btn,
+  button,
+  input[type="submit"],
+  input[type="button"] {
+    width: 100% !important;
+    min-height: 48px !important;
+    margin: var(--space-md, 16px) 0 !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    border: none !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+  }
+  
+  /* Primary button styling */
+  .btn-primary,
+  .btn-success,
+  input[type="submit"] {
+    background: var(--primary-color, #6366f1) !important;
+    color: white !important;
+  }
+  
+  .btn-primary:hover,
+  .btn-success:hover,
+  input[type="submit"]:hover {
+    background: var(--primary-dark, #4f46e5) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;
+  }
+  
+  /* Secondary button styling */
+  .btn-secondary,
+  .btn {
+    background: var(--background-secondary, #f8fafc) !important;
+    color: var(--text-primary, #111827) !important;
+    border: 2px solid var(--border-color, #d1d5db) !important;
+  }
+  
+  .btn-secondary:hover,
+  .btn:hover {
+    background: var(--background-tertiary, #f1f5f9) !important;
+    border-color: var(--primary-color, #6366f1) !important;
+  }
+  
+  /* Form layout improvements */
+  .form-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--space-md, 16px) !important;
+  }
+  
+  /* Helper text */
+  .form-text,
+  .help-text,
+  small {
+    font-size: 0.875rem !important;
+    color: var(--text-secondary, #6b7280) !important;
+    margin-top: var(--space-xs, 4px) !important;
+    line-height: 1.4 !important;
+  }
+  
+  /* Error states */
+  .is-invalid,
+  .error {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+  }
+  
+  .invalid-feedback,
+  .error-message {
+    color: #ef4444 !important;
+    font-size: 0.875rem !important;
+    margin-top: var(--space-xs, 4px) !important;
+  }
+}
+
+/* Menu Header Controls */
+.menu-header-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-lg, 24px);
+  gap: var(--space-md, 16px);
+  flex-wrap: wrap;
+}
+
+.menu-version-section {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm, 8px);
+  flex: 1;
+  min-width: 200px;
+}
+
+.menu-action-buttons {
+  display: flex;
+  gap: var(--space-sm, 8px);
+  flex-wrap: wrap;
+}
+
+/* Mobile menu header improvements */
+@media (max-width: 768px) {
+  .menu-header-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-md, 16px);
+  }
+  
+  .menu-version-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-xs, 4px);
+  }
+  
+  .menu-version-section label {
+    font-weight: 600;
+    margin-bottom: var(--space-xs, 4px);
+  }
+  
+  .menu-action-buttons {
+    flex-direction: column;
+    gap: var(--space-sm, 8px);
+  }
+  
+  .menu-action-buttons .btn {
+    width: 100% !important;
+    text-align: center;
+    padding: var(--space-md, 12px) !important;
+    font-size: 0.9375rem !important;
+  }
+  
+  /* Modern theme button fixes */
+  .flex.gap-3 {
+    flex-direction: column !important;
+    gap: var(--space-sm, 8px) !important;
+    width: 100% !important;
+  }
+  
+  .flex.items-center.justify-between {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: var(--space-md, 16px) !important;
+  }
+  
+  .flex.gap-3 .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: var(--space-md, 12px) var(--space-lg, 16px) !important;
+    min-height: 48px !important;
+  }
+  
+  /* Grid layout fixes for mobile */
+  .grid-cols-3 {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .grid.gap-4 {
+    gap: var(--space-md, 16px) !important;
+  }
+}
+
+/* Form improvements for larger mobile devices */
+@media (min-width: 481px) and (max-width: 768px) {
+  .form-row {
+    flex-direction: row !important;
+  }
+  
+  .form-row > * {
+    flex: 1 !important;
+  }
+  
+  .btn {
+    width: auto !important;
+    min-width: 120px !important;
+  }
+  
+  .menu-action-buttons {
+    flex-direction: row !important;
+  }
+  
+  .menu-action-buttons .btn {
+    width: auto !important;
+    flex: 1;
+  }
+}
+
+/* Large screen optimizations */
+@media (min-width: 1200px) {
+  .table-wrapper {
+    border-radius: 12px;
+  }
+  
+  table th,
+  table td {
+    padding: var(--space-md, 12px) var(--space-lg, 16px);
+  }
+  
+  table {
+    font-size: 0.9375rem;
+  }
+}
+
 /* Backdrop for mobile menu */
 .mobile-menu-backdrop {
   display: none;

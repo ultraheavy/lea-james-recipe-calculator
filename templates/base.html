@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Lea Jane's Recipe Calculator{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/table-sort.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive-navigation.css') }}?v={{ range(1, 10000) | random }}">
     <style>
         /* Base styles */
         * { box-sizing: border-box; }

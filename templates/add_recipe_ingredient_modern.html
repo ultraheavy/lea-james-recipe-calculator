@@ -1,0 +1,143 @@
+{% extends "base_modern.html" %}
+
+{% block title %}Add Ingredient - {{ recipe.recipe_name }} - Lea Jane's Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in">
+    <!-- Page Header -->
+    <div class="flex flex-col gap-4 mb-6">
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-3xl font-semibold mb-2">Add Ingredient</h1>
+                <p class="text-secondary">Add a new ingredient to <span class="font-medium">{{ recipe.recipe_name }}</span></p>
+            </div>
+            <a href="{{ url_for('view_recipe', recipe_id=recipe.id) }}" class="btn btn-secondary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5m7-7l-7 7 7 7"/>
+                </svg>
+                Back to Recipe
+            </a>
+        </div>
+    </div>
+
+    <!-- Add Ingredient Form -->
+    <div class="card max-w-2xl">
+        <div class="card-header">
+            <h3 class="card-title">Ingredient Details</h3>
+        </div>
+        <div class="card-body">
+            <form method="POST" class="space-y-6">
+                <!-- Ingredient Selection -->
+                <div class="form-group">
+                    <label for="ingredient_id" class="form-label required">Select Ingredient</label>
+                    <select id="ingredient_id" name="ingredient_id" class="form-control" required>
+                        <option value="">Choose an ingredient...</option>
+                        {% for item in inventory %}
+                        <option value="{{ item.id }}">
+                            {{ item.item_description }} 
+                            {% if item.unit_measure %}({{ item.unit_measure }}){% endif %}
+                            {% if item.current_price %} - ${{ "%.2f"|format(item.current_price) }}{% endif %}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <p class="form-text">Select from available inventory items</p>
+                </div>
+
+                <!-- Quantity and Unit -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="form-group">
+                        <label for="quantity" class="form-label required">Quantity</label>
+                        <input type="number" 
+                               step="0.001" 
+                               id="quantity" 
+                               name="quantity" 
+                               class="form-control" 
+                               placeholder="e.g., 2.5"
+                               required>
+                        <p class="form-text">Amount needed for this recipe</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="unit" class="form-label">Unit Override</label>
+                        <input type="text" 
+                               id="unit" 
+                               name="unit" 
+                               class="form-control" 
+                               placeholder="Optional - uses item's default unit">
+                        <p class="form-text">Leave blank to use ingredient's default unit</p>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex gap-4 pt-4">
+                    <button type="submit" class="btn btn-primary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14m-7-7h14"/>
+                        </svg>
+                        Add Ingredient
+                    </button>
+                    <a href="{{ url_for('view_recipe', recipe_id=recipe.id) }}" class="btn btn-secondary">
+                        Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Recipe Summary Card -->
+    <div class="card mt-6 max-w-2xl">
+        <div class="card-header">
+            <h3 class="card-title">Recipe Summary</h3>
+        </div>
+        <div class="card-body">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div>
+                    <p class="text-sm text-secondary">Recipe Name</p>
+                    <p class="font-medium">{{ recipe.recipe_name }}</p>
+                </div>
+                <div>
+                    <p class="text-sm text-secondary">Type</p>
+                    <p class="font-medium">{{ recipe.recipe_type or 'Recipe' }}</p>
+                </div>
+                <div>
+                    <p class="text-sm text-secondary">Current Cost</p>
+                    <p class="font-medium">${{ "%.2f"|format(recipe.food_cost or 0) }}</p>
+                </div>
+                <div>
+                    <p class="text-sm text-secondary">Menu Price</p>
+                    <p class="font-medium">${{ "%.2f"|format(recipe.menu_price or 0) }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Enhanced select with search functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const select = document.getElementById('ingredient_id');
+    if (select && select.options.length > 20) {
+        // Add search functionality for large lists
+        const searchInput = document.createElement('input');
+        searchInput.type = 'text';
+        searchInput.placeholder = 'Search ingredients...';
+        searchInput.className = 'form-control mb-2';
+        
+        select.parentNode.insertBefore(searchInput, select);
+        
+        const options = Array.from(select.options);
+        
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            options.forEach(option => {
+                if (option.value === '') return; // Keep the placeholder
+                
+                const text = option.textContent.toLowerCase();
+                option.style.display = text.includes(searchTerm) ? '' : 'none';
+            });
+        });
+    }
+});
+</script>
+{% endblock %}

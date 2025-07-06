@@ -6,10 +6,10 @@
 <h1>Menu Management</h1>
 <p>Link recipes to menu items, track pricing, and analyze profitability across your entire menu.</p>
 
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-    <div>
+<div class="menu-header-controls">
+    <div class="menu-version-section">
         <label for="version_select">Menu Version:</label>
-        <select id="version_select" onchange="changeVersion(this.value)" style="margin-left: 10px;">
+        <select id="version_select" onchange="changeVersion(this.value)">
             {% for version in menu_versions %}
             <option value="{{ version.id }}" {% if version.id == current_version_id %}selected{% endif %}>
                 {{ version.version_name }} {% if version.is_active %}(Active){% endif %}
@@ -17,9 +17,10 @@
             {% endfor %}
         </select>
     </div>
-    <div>
-        <a href="/menu/add?version_id={{ current_version_id }}" class="btn btn-success">Add New Menu Item</a>
-        <a href="/menu/compare" class="btn">Compare Versions</a>
+    <div class="menu-action-buttons">
+        <a href="/menu/versions" class="btn btn-secondary">Manage Versions</a>
+        <a href="/menu/compare" class="btn btn-secondary">Compare</a>
+        <a href="/menu/add?version_id={{ current_version_id }}" class="btn btn-success">Add Recipe to Menu</a>
     </div>
 </div>
 

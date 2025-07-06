@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for, make_response
+from flask import Flask, render_template, request, jsonify, redirect, url_for, make_response, flash
 import sqlite3
 import os
 from unit_converter import UnitConverter
 
 app = Flask(__name__)
+app.secret_key = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
 
 # Support for production deployment
 if os.getenv('FLASK_ENV') == 'production':
@@ -349,10 +350,14 @@ def index():
 def inventory():
     with get_db() as conn:
         items = conn.execute('''
-            SELECT i.* 
+            SELECT i.*, 
+                   v.vendor_name as primary_vendor_name,
+                   vp.vendor_item_code,
+                   vp.vendor_price as vendor_current_price
             FROM inventory i 
-             
-            ORDER BY i.item_code
+            LEFT JOIN vendor_products vp ON i.id = vp.inventory_id AND vp.is_primary = 1
+            LEFT JOIN vendors v ON vp.vendor_id = v.id
+            ORDER BY i.item_description
         ''').fetchall()
     theme = get_theme()
     return render_template(f'inventory_{theme}.html', items=items)
@@ -389,7 +394,8 @@ def add_inventory():
     with get_db() as conn:
         vendors = conn.execute('SELECT DISTINCT vendor_name FROM vendors ORDER BY vendor_name').fetchall()
     
-    return render_template('add_inventory.html', vendors=vendors)
+    theme = get_theme()
+    return render_template(f'add_inventory_{theme}.html', vendors=vendors)
 
 @app.route('/inventory/edit/<int:item_id>', methods=['GET', 'POST'])
 def edit_inventory(item_id):
@@ -425,7 +431,8 @@ def edit_inventory(item_id):
     if not item:
         return redirect(url_for('inventory'))
     
-    return render_template('edit_inventory.html', item=item, vendors=vendors)
+    theme = get_theme()
+    return render_template(f'edit_inventory_{theme}.html', item=item, vendors=vendors)
 
 @app.route('/inventory/delete/<int:item_id>', methods=['POST'])
 def delete_inventory(item_id):
@@ -482,7 +489,8 @@ def inventory_vendors(item_id):
             ORDER BY vp.is_primary DESC, vp.is_active DESC, v.vendor_name
         ''', (item_id,)).fetchall()
     
-    return render_template('inventory_vendors.html', 
+    theme = get_theme()
+    return render_template(f'inventory_vendors_{theme}.html', 
                          item=item, 
                          vendors=vendors, 
                          vendor_products=vendor_products)
@@ -597,11 +605,27 @@ def add_recipe():
         
         return redirect(url_for('recipes'))
     
-    # Get inventory for dropdown
+    # Get unique inventory items for dropdown
     with get_db() as conn:
-        inventory = conn.execute('SELECT * FROM inventory ORDER BY item_description').fetchall()
+        inventory = conn.execute('''
+            WITH RankedInventory AS (
+                SELECT *,
+                    ROW_NUMBER() OVER (
+                        PARTITION BY item_description 
+                        ORDER BY 
+                            CASE WHEN last_purchased_date IS NOT NULL THEN 1 ELSE 2 END,
+                            last_purchased_date DESC,
+                            current_price DESC
+                    ) as rn
+                FROM inventory
+            )
+            SELECT * FROM RankedInventory 
+            WHERE rn = 1
+            ORDER BY item_description
+        ''').fetchall()
     
-    return render_template('add_recipe.html', inventory=inventory)
+    theme = get_theme()
+    return render_template(f'add_recipe_{theme}.html', inventory=inventory)
 
 @app.route('/recipes/<int:recipe_id>')
 def view_recipe(recipe_id):
@@ -617,6 +641,93 @@ def view_recipe(recipe_id):
     
     theme = get_theme()
     return render_template(f'view_recipe_{theme}.html', recipe=recipe, ingredients=ingredients)
+
+@app.route('/recipes/edit/<int:recipe_id>', methods=['GET', 'POST'])
+@with_auto_commit
+def edit_recipe(recipe_id):
+    """Edit recipe details"""
+    if request.method == 'POST':
+        # Get form data
+        recipe_name = request.form.get('recipe_name', '').strip()
+        recipe_group = request.form.get('recipe_group', '').strip()
+        recipe_type = request.form.get('recipe_type', 'Recipe')
+        menu_price = float(request.form.get('menu_price', 0) or 0)
+        status = request.form.get('status', 'Draft')
+        shelf_life = request.form.get('shelf_life', '').strip()
+        shelf_life_uom = request.form.get('shelf_life_uom', '').strip()
+        serving_size = request.form.get('serving_size', '').strip()
+        serving_size_uom = request.form.get('serving_size_uom', '').strip()
+        prep_recipe_yield = request.form.get('prep_recipe_yield', '').strip()
+        prep_recipe_yield_uom = request.form.get('prep_recipe_yield_uom', '').strip()
+        station = request.form.get('station', '').strip()
+        procedure = request.form.get('procedure', '').strip()
+        
+        # Validate required fields
+        if not recipe_name:
+            flash('Recipe name is required', 'error')
+            return redirect(url_for('edit_recipe', recipe_id=recipe_id))
+        
+        try:
+            with get_db() as conn:
+                cursor = conn.cursor()
+                
+                # Update recipe
+                cursor.execute('''
+                    UPDATE recipes 
+                    SET recipe_name = ?, recipe_group = ?, recipe_type = ?, 
+                        menu_price = ?, status = ?, shelf_life = ?, shelf_life_uom = ?,
+                        serving_size = ?, serving_size_uom = ?, 
+                        prep_recipe_yield = ?, prep_recipe_yield_uom = ?,
+                        station = ?, procedure = ?,
+                        updated_date = CURRENT_TIMESTAMP
+                    WHERE id = ?
+                ''', (recipe_name, recipe_group, recipe_type, menu_price, 
+                      status, shelf_life, shelf_life_uom, serving_size, serving_size_uom,
+                      prep_recipe_yield, prep_recipe_yield_uom, station, procedure, recipe_id))
+                
+                # Recalculate food cost and percentages
+                food_cost = cursor.execute('''
+                    SELECT SUM(ri.cost) 
+                    FROM recipe_ingredients ri 
+                    WHERE ri.recipe_id = ?
+                ''', (recipe_id,)).fetchone()[0] or 0
+                
+                food_cost_percentage = (food_cost / menu_price * 100) if menu_price > 0 else 0
+                gross_margin = menu_price - food_cost if menu_price > 0 else 0
+                
+                cursor.execute('''
+                    UPDATE recipes 
+                    SET food_cost = ?, food_cost_percentage = ?, gross_margin = ?
+                    WHERE id = ?
+                ''', (food_cost, food_cost_percentage, gross_margin, recipe_id))
+                
+                # flash('Recipe updated successfully!', 'success')
+                return redirect(url_for('view_recipe', recipe_id=recipe_id))
+                
+        except Exception as e:
+            # flash(f'Error updating recipe: {str(e)}', 'error')
+            print(f'Error updating recipe: {str(e)}')
+            return redirect(url_for('edit_recipe', recipe_id=recipe_id))
+    
+    # GET request - display edit form
+    with get_db() as conn:
+        recipe = conn.execute('SELECT * FROM recipes WHERE id = ?', (recipe_id,)).fetchone()
+        
+        if not recipe:
+            flash('Recipe not found', 'error')
+            return redirect(url_for('recipes'))
+        
+        # Get menu items that use this recipe
+        menu_usage = conn.execute('''
+            SELECT mi.id, mi.item_name, mi.menu_price, mv.version_name, mv.is_active
+            FROM menu_items mi
+            LEFT JOIN menu_versions mv ON mi.version_id = mv.id
+            WHERE mi.recipe_id = ?
+            ORDER BY mv.is_active DESC, mv.version_name
+        ''', (recipe_id,)).fetchall()
+    
+    theme = get_theme()
+    return render_template(f'edit_recipe_{theme}.html', recipe=recipe, menu_usage=menu_usage)
 
 @app.route('/recipes/<int:recipe_id>/ingredients/add', methods=['GET', 'POST'])
 def add_recipe_ingredient(recipe_id):
@@ -660,12 +771,29 @@ def add_recipe_ingredient(recipe_id):
         
         return redirect(url_for('view_recipe', recipe_id=recipe_id))
     
-    # Get recipe and inventory for form
+    # Get recipe and inventory for form - show unique ingredients only
     with get_db() as conn:
         recipe = conn.execute('SELECT * FROM recipes WHERE id = ?', (recipe_id,)).fetchone()
-        inventory = conn.execute('SELECT * FROM inventory ORDER BY item_description').fetchall()
+        # Get unique ingredients, preferring items with the most recent purchase
+        inventory = conn.execute('''
+            WITH RankedInventory AS (
+                SELECT *,
+                    ROW_NUMBER() OVER (
+                        PARTITION BY item_description 
+                        ORDER BY 
+                            CASE WHEN last_purchased_date IS NOT NULL THEN 1 ELSE 2 END,
+                            last_purchased_date DESC,
+                            current_price DESC
+                    ) as rn
+                FROM inventory
+            )
+            SELECT * FROM RankedInventory 
+            WHERE rn = 1
+            ORDER BY item_description
+        ''').fetchall()
     
-    return render_template('add_recipe_ingredient.html', recipe=recipe, inventory=inventory)
+    theme = get_theme()
+    return render_template(f'add_recipe_ingredient_{theme}.html', recipe=recipe, inventory=inventory)
 
 @app.route('/recipes/<int:recipe_id>/ingredients/edit/<int:ingredient_id>', methods=['GET', 'POST'])
 def edit_recipe_ingredient(recipe_id, ingredient_id):
@@ -718,12 +846,29 @@ def edit_recipe_ingredient(recipe_id, ingredient_id):
             JOIN inventory i ON ri.ingredient_id = i.id
             WHERE ri.id = ? AND ri.recipe_id = ?
         ''', (ingredient_id, recipe_id)).fetchone()
-        inventory = conn.execute('SELECT * FROM inventory ORDER BY item_description').fetchall()
+        # Get unique inventory items
+        inventory = conn.execute('''
+            WITH RankedInventory AS (
+                SELECT *,
+                    ROW_NUMBER() OVER (
+                        PARTITION BY item_description 
+                        ORDER BY 
+                            CASE WHEN last_purchased_date IS NOT NULL THEN 1 ELSE 2 END,
+                            last_purchased_date DESC,
+                            current_price DESC
+                    ) as rn
+                FROM inventory
+            )
+            SELECT * FROM RankedInventory 
+            WHERE rn = 1
+            ORDER BY item_description
+        ''').fetchall()
     
     if not ingredient:
         return redirect(url_for('view_recipe', recipe_id=recipe_id))
     
-    return render_template('edit_recipe_ingredient.html', 
+    theme = get_theme()
+    return render_template(f'edit_recipe_ingredient_{theme}.html', 
                          recipe=recipe, ingredient=ingredient, inventory=inventory)
 
 @app.route('/recipes/delete/<int:recipe_id>', methods=['POST'])
@@ -843,7 +988,8 @@ def menu_compare():
                 'items_changed': len([item for item in comparison_data if item['v1_data'] and item['v2_data']])
             }
             
-            return render_template('menu_compare.html',
+            theme = get_theme()
+            return render_template(f'menu_compare_{theme}.html',
                                  menu_versions=menu_versions,
                                  v1_id=v1_id,
                                  v2_id=v2_id,
@@ -852,7 +998,8 @@ def menu_compare():
                                  comparison_data=comparison_data,
                                  summary=summary)
         
-        return render_template('menu_compare.html',
+        theme = get_theme()
+        return render_template(f'menu_compare_{theme}.html',
                              menu_versions=menu_versions,
                              v1_id=v1_id,
                              v2_id=v2_id)

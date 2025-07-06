@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/design-system.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/modern-ui.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/food-icons.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive-navigation.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive-navigation.css') }}?v={{ range(1, 10000) | random }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile-buttons.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive-tables.css') }}">
     

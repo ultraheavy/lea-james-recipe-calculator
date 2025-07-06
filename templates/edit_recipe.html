@@ -1,0 +1,304 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Recipe - {{ recipe.recipe_name }} - Lea Jane's Recipe Calculator{% endblock %}
+
+{% block content %}
+<h1>Edit Recipe</h1>
+<p>Update recipe details and ingredients</p>
+
+<div style="display: flex; gap: 10px; margin-bottom: 20px;">
+    <a href="{{ url_for('view_recipe', recipe_id=recipe.id) }}" class="btn">← Back to Recipe</a>
+    <a href="{{ url_for('add_recipe_ingredient', recipe_id=recipe.id) }}" class="btn btn-success">Add Ingredient</a>
+</div>
+
+<form method="POST" style="max-width: 800px;">
+    <div class="form-section">
+        <h3>Recipe Details</h3>
+        
+        <div class="form-group">
+            <label for="recipe_name">Recipe Name *</label>
+            <input type="text" id="recipe_name" name="recipe_name" value="{{ recipe.recipe_name or '' }}" required>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="recipe_group">Recipe Group</label>
+                <select id="recipe_group" name="recipe_group">
+                    <option value="">Select Group</option>
+                    <option value="Main" {% if recipe.recipe_group == 'Main' %}selected{% endif %}>Main</option>
+                    <option value="Sides" {% if recipe.recipe_group == 'Sides' %}selected{% endif %}>Sides</option>
+                    <option value="Sauces" {% if recipe.recipe_group == 'Sauces' %}selected{% endif %}>Sauces</option>
+                    <option value="Salads" {% if recipe.recipe_group == 'Salads' %}selected{% endif %}>Salads</option>
+                    <option value="Toppings" {% if recipe.recipe_group == 'Toppings' %}selected{% endif %}>Toppings</option>
+                    <option value="Ingredient" {% if recipe.recipe_group == 'Ingredient' %}selected{% endif %}>Ingredient</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="recipe_type">Recipe Type</label>
+                <select id="recipe_type" name="recipe_type">
+                    <option value="Recipe" {% if recipe.recipe_type == 'Recipe' %}selected{% endif %}>Recipe</option>
+                    <option value="PrepRecipe" {% if recipe.recipe_type == 'PrepRecipe' %}selected{% endif %}>Prep Recipe</option>
+                    <option value="Product" {% if recipe.recipe_type == 'Product' %}selected{% endif %}>Product</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select id="status" name="status">
+                    <option value="Draft" {% if recipe.status == 'Draft' %}selected{% endif %}>Draft</option>
+                    <option value="Active" {% if recipe.status == 'Active' %}selected{% endif %}>Active</option>
+                    <option value="Archived" {% if recipe.status == 'Archived' %}selected{% endif %}>Archived</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="menu_price">Menu Price ($)</label>
+                <input type="number" id="menu_price" name="menu_price" value="{{ recipe.menu_price or '0.00' }}" min="0" step="0.01">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h3>Recipe Information</h3>
+        
+        <div class="form-group">
+            <label>Recipe Yield</label>
+            <div class="form-row">
+                <div class="form-group" style="flex: 2;">
+                    <input type="text" id="prep_recipe_yield" name="prep_recipe_yield" 
+                           value="{{ recipe.prep_recipe_yield or '' }}" 
+                           placeholder="Quantity (e.g., 4, 10, 2.5)">
+                </div>
+                <div class="form-group" style="flex: 3;">
+                    <select id="prep_recipe_yield_uom" name="prep_recipe_yield_uom">
+                        <option value="">Select UOM</option>
+                        <option value="portions" {% if recipe.prep_recipe_yield_uom == 'portions' %}selected{% endif %}>Portions</option>
+                        <option value="each" {% if recipe.prep_recipe_yield_uom == 'each' %}selected{% endif %}>Each</option>
+                        <option value="oz" {% if recipe.prep_recipe_yield_uom == 'oz' %}selected{% endif %}>Ounces</option>
+                        <option value="lb" {% if recipe.prep_recipe_yield_uom == 'lb' %}selected{% endif %}>Pounds</option>
+                        <option value="cups" {% if recipe.prep_recipe_yield_uom == 'cups' %}selected{% endif %}>Cups</option>
+                        <option value="qt" {% if recipe.prep_recipe_yield_uom == 'qt' %}selected{% endif %}>Quarts</option>
+                        <option value="gal" {% if recipe.prep_recipe_yield_uom == 'gal' %}selected{% endif %}>Gallons</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Serving Size</label>
+            <div class="form-row">
+                <div class="form-group" style="flex: 2;">
+                    <input type="text" id="serving_size" name="serving_size" 
+                           value="{{ recipe.serving_size or '' }}" 
+                           placeholder="Quantity (e.g., 1, 8, 0.5)">
+                </div>
+                <div class="form-group" style="flex: 3;">
+                    <select id="serving_size_uom" name="serving_size_uom">
+                        <option value="">Select UOM</option>
+                        <option value="each" {% if recipe.serving_size_uom == 'each' %}selected{% endif %}>Each</option>
+                        <option value="portion" {% if recipe.serving_size_uom == 'portion' %}selected{% endif %}>Portion</option>
+                        <option value="oz" {% if recipe.serving_size_uom == 'oz' %}selected{% endif %}>Ounces</option>
+                        <option value="cups" {% if recipe.serving_size_uom == 'cups' %}selected{% endif %}>Cups</option>
+                        <option value="slices" {% if recipe.serving_size_uom == 'slices' %}selected{% endif %}>Slices</option>
+                        <option value="pieces" {% if recipe.serving_size_uom == 'pieces' %}selected{% endif %}>Pieces</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Shelf Life</label>
+            <div class="form-row">
+                <div class="form-group" style="flex: 2;">
+                    <input type="text" id="shelf_life" name="shelf_life" 
+                           value="{{ recipe.shelf_life or '' }}" 
+                           placeholder="Duration (e.g., 3, 7, 24)">
+                </div>
+                <div class="form-group" style="flex: 3;">
+                    <select id="shelf_life_uom" name="shelf_life_uom">
+                        <option value="">Select UOM</option>
+                        <option value="hours" {% if recipe.shelf_life_uom == 'hours' %}selected{% endif %}>Hours</option>
+                        <option value="days" {% if recipe.shelf_life_uom == 'days' %}selected{% endif %}>Days</option>
+                        <option value="weeks" {% if recipe.shelf_life_uom == 'weeks' %}selected{% endif %}>Weeks</option>
+                        <option value="months" {% if recipe.shelf_life_uom == 'months' %}selected{% endif %}>Months</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="station">Kitchen Station</label>
+            <select id="station" name="station">
+                <option value="">Select Station</option>
+                <option value="Prep cook" {% if recipe.station == 'Prep cook' %}selected{% endif %}>Prep Cook</option>
+                <option value="Grill" {% if recipe.station == 'Grill' %}selected{% endif %}>Grill</option>
+                <option value="Fryer" {% if recipe.station == 'Fryer' %}selected{% endif %}>Fryer</option>
+                <option value="Cold Station" {% if recipe.station == 'Cold Station' %}selected{% endif %}>Cold Station</option>
+                <option value="Sauce Station" {% if recipe.station == 'Sauce Station' %}selected{% endif %}>Sauce Station</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="procedure">Cooking Instructions</label>
+            <textarea id="procedure" name="procedure" rows="6" placeholder="Enter cooking instructions and procedures...">{{ recipe.procedure or '' }}</textarea>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h3>Current Costing</h3>
+        <div class="cost-display">
+            <div class="cost-item">
+                <label>Food Cost:</label>
+                <span>${{ "%.2f"|format(recipe.food_cost or 0) }}</span>
+            </div>
+            <div class="cost-item">
+                <label>Food Cost %:</label>
+                <span class="{% if (recipe.food_cost_percentage or 0) > 35 %}cost-high{% elif (recipe.food_cost_percentage or 0) > 25 %}cost-medium{% else %}cost-good{% endif %}">
+                    {{ "%.1f"|format(recipe.food_cost_percentage or 0) }}%
+                </span>
+            </div>
+            <div class="cost-item">
+                <label>Gross Margin:</label>
+                <span>${{ "%.2f"|format(recipe.gross_margin or 0) }}</span>
+            </div>
+        </div>
+    </div>
+
+    {% if menu_usage %}
+    <div class="form-section">
+        <h3>Used on Menus</h3>
+        <div class="menu-usage">
+            {% for item in menu_usage %}
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <strong>{{ item.item_name }}</strong>
+                    <div class="menu-item-details">
+                        {{ item.version_name or 'No Version' }}
+                        {% if item.is_active %}
+                            <span class="status-badge active">Active</span>
+                        {% endif %}
+                        - ${{ "%.2f"|format(item.menu_price or 0) }}
+                    </div>
+                </div>
+                <div class="menu-item-actions">
+                    <a href="{{ url_for('edit_menu_item', item_id=item.id) }}" class="btn btn-small">Edit Menu Item</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <div style="display: flex; gap: 10px; margin-top: 30px;">
+        <a href="{{ url_for('view_recipe', recipe_id=recipe.id) }}" class="btn">Cancel</a>
+        <button type="submit" class="btn btn-success">Save Recipe</button>
+    </div>
+</form>
+
+<style>
+.form-section {
+    background: #f8f9fa;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.form-section h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.form-row .form-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.cost-display {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.cost-item {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background: white;
+    border-radius: 4px;
+    min-width: 120px;
+}
+
+.cost-item label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.cost-item span {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.cost-high { color: #dc3545; }
+.cost-medium { color: #ffc107; }
+.cost-good { color: #28a745; }
+
+.menu-usage {
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+.menu-item-details {
+    color: #666;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.status-badge.active {
+    background: #28a745;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.75em;
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+    }
+    
+    .cost-display {
+        flex-direction: column;
+    }
+    
+    .menu-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+</style>
+{% endblock %}

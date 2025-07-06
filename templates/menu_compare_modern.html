@@ -1,0 +1,247 @@
+{% extends "base_modern.html" %}
+
+{% block title %}Compare Menu Versions - Lea Jane's Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in">
+    <!-- Page Header -->
+    <div class="flex flex-col gap-4 mb-6">
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-3xl font-semibold mb-2">Menu Version Comparison</h1>
+                <p class="text-secondary">Compare items and pricing across different menu versions</p>
+            </div>
+            <a href="{{ url_for('menu') }}" class="btn btn-secondary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5m7-7l-7 7 7 7"/>
+                </svg>
+                Back to Menu
+            </a>
+        </div>
+    </div>
+
+    <!-- Version Selection -->
+    <div class="card mb-6">
+        <div class="card-body">
+            <form method="GET" action="/menu/compare" class="flex flex-wrap gap-4 items-end">
+                <div class="form-group flex-1 min-w-[200px]">
+                    <label for="v1" class="form-label">Version 1</label>
+                    <select name="v1" id="v1" class="form-control">
+                        {% for version in menu_versions %}
+                        <option value="{{ version.id }}" {% if version.id == v1_id %}selected{% endif %}>
+                            {{ version.version_name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="flex items-center px-4">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-400">
+                        <path d="M8 7l4-4 4 4m0 10l-4 4-4-4"/>
+                    </svg>
+                </div>
+                
+                <div class="form-group flex-1 min-w-[200px]">
+                    <label for="v2" class="form-label">Version 2</label>
+                    <select name="v2" id="v2" class="form-control">
+                        {% for version in menu_versions %}
+                        <option value="{{ version.id }}" {% if version.id == v2_id %}selected{% endif %}>
+                            {{ version.version_name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2zM9 9h6v6H9V9z"/>
+                    </svg>
+                    Compare
+                </button>
+            </form>
+        </div>
+    </div>
+
+    {% if comparison_data %}
+    <!-- Comparison Table -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Comparison Results</h3>
+        </div>
+        <div class="card-body">
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2" class="sticky-col">Item Name</th>
+                            <th rowspan="2">Menu Group</th>
+                            <th colspan="4" class="text-center bg-purple-50 dark:bg-purple-900/20">
+                                {{ v1_name }}
+                            </th>
+                            <th colspan="4" class="text-center bg-blue-50 dark:bg-blue-900/20">
+                                {{ v2_name }}
+                            </th>
+                            <th rowspan="2">Price Change</th>
+                            <th rowspan="2">Cost Change</th>
+                        </tr>
+                        <tr>
+                            <th class="bg-purple-50 dark:bg-purple-900/20">Price</th>
+                            <th class="bg-purple-50 dark:bg-purple-900/20">Cost</th>
+                            <th class="bg-purple-50 dark:bg-purple-900/20">Cost %</th>
+                            <th class="bg-purple-50 dark:bg-purple-900/20">Profit</th>
+                            <th class="bg-blue-50 dark:bg-blue-900/20">Price</th>
+                            <th class="bg-blue-50 dark:bg-blue-900/20">Cost</th>
+                            <th class="bg-blue-50 dark:bg-blue-900/20">Cost %</th>
+                            <th class="bg-blue-50 dark:bg-blue-900/20">Profit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in comparison_data %}
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-800">
+                            <td class="font-medium sticky-col">{{ item.item_name }}</td>
+                            <td>
+                                <span class="badge badge-secondary">{{ item.menu_group or 'Ungrouped' }}</span>
+                            </td>
+                            
+                            <!-- Version 1 data -->
+                            {% if item.v1_data %}
+                                <td class="text-right">${{ "%.2f"|format(item.v1_data.menu_price or 0) }}</td>
+                                <td class="text-right">${{ "%.2f"|format(item.v1_data.food_cost or 0) }}</td>
+                                <td class="text-right">
+                                    <span class="{% if item.v1_data.food_cost_percent > 35 %}text-red-600{% elif item.v1_data.food_cost_percent > 30 %}text-yellow-600{% else %}text-green-600{% endif %}">
+                                        {{ "%.1f"|format(item.v1_data.food_cost_percent or 0) }}%
+                                    </span>
+                                </td>
+                                <td class="text-right">${{ "%.2f"|format(item.v1_data.gross_profit or 0) }}</td>
+                            {% else %}
+                                <td colspan="4" class="text-center text-gray-400">Not in version</td>
+                            {% endif %}
+                            
+                            <!-- Version 2 data -->
+                            {% if item.v2_data %}
+                                <td class="text-right">${{ "%.2f"|format(item.v2_data.menu_price or 0) }}</td>
+                                <td class="text-right">${{ "%.2f"|format(item.v2_data.food_cost or 0) }}</td>
+                                <td class="text-right">
+                                    <span class="{% if item.v2_data.food_cost_percent > 35 %}text-red-600{% elif item.v2_data.food_cost_percent > 30 %}text-yellow-600{% else %}text-green-600{% endif %}">
+                                        {{ "%.1f"|format(item.v2_data.food_cost_percent or 0) }}%
+                                    </span>
+                                </td>
+                                <td class="text-right">${{ "%.2f"|format(item.v2_data.gross_profit or 0) }}</td>
+                            {% else %}
+                                <td colspan="4" class="text-center text-gray-400">Not in version</td>
+                            {% endif %}
+                            
+                            <!-- Changes -->
+                            <td class="text-right">
+                                {% if item.price_change %}
+                                    <span class="font-medium {% if item.price_change > 0 %}text-green-600{% else %}text-red-600{% endif %}">
+                                        {{ "%+.2f"|format(item.price_change) }}
+                                    </span>
+                                {% else %}
+                                    <span class="text-gray-400">-</span>
+                                {% endif %}
+                            </td>
+                            <td class="text-right">
+                                {% if item.cost_change %}
+                                    <span class="font-medium {% if item.cost_change > 0 %}text-red-600{% else %}text-green-600{% endif %}">
+                                        {{ "%+.2f"|format(item.cost_change) }}
+                                    </span>
+                                {% else %}
+                                    <span class="text-gray-400">-</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Summary Statistics -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+        <!-- Version 1 Summary -->
+        <div class="card">
+            <div class="card-header bg-purple-50 dark:bg-purple-900/20">
+                <h3 class="card-title">{{ v1_name }}</h3>
+            </div>
+            <div class="card-body">
+                <div class="space-y-3">
+                    <div class="flex justify-between">
+                        <span class="text-secondary">Total Items:</span>
+                        <span class="font-medium">{{ summary.v1_count }}</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-secondary">Average Price:</span>
+                        <span class="font-medium">${{ "%.2f"|format(summary.v1_avg_price) }}</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-secondary">Average Cost %:</span>
+                        <span class="font-medium {% if summary.v1_avg_cost_percent > 35 %}text-red-600{% elif summary.v1_avg_cost_percent > 30 %}text-yellow-600{% else %}text-green-600{% endif %}">
+                            {{ "%.1f"|format(summary.v1_avg_cost_percent) }}%
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Version 2 Summary -->
+        <div class="card">
+            <div class="card-header bg-blue-50 dark:bg-blue-900/20">
+                <h3 class="card-title">{{ v2_name }}</h3>
+            </div>
+            <div class="card-body">
+                <div class="space-y-3">
+                    <div class="flex justify-between">
+                        <span class="text-secondary">Total Items:</span>
+                        <span class="font-medium">{{ summary.v2_count }}</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-secondary">Average Price:</span>
+                        <span class="font-medium">${{ "%.2f"|format(summary.v2_avg_price) }}</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-secondary">Average Cost %:</span>
+                        <span class="font-medium {% if summary.v2_avg_cost_percent > 35 %}text-red-600{% elif summary.v2_avg_cost_percent > 30 %}text-yellow-600{% else %}text-green-600{% endif %}">
+                            {{ "%.1f"|format(summary.v2_avg_cost_percent) }}%
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Changes Summary -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Changes Overview</h3>
+            </div>
+            <div class="card-body">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-secondary">Items Added:</span>
+                        <span class="badge badge-success">+{{ summary.items_added }}</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-secondary">Items Removed:</span>
+                        <span class="badge badge-danger">-{{ summary.items_removed }}</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-secondary">Items Changed:</span>
+                        <span class="badge badge-warning">{{ summary.items_changed }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+        <div class="card">
+            <div class="card-body text-center py-12">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="mx-auto mb-4 text-gray-400">
+                    <path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2zM9 9h6v6H9V9z"/>
+                </svg>
+                <p class="text-secondary text-lg">Select two menu versions to compare</p>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

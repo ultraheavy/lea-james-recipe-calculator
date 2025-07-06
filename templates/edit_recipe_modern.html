@@ -1,0 +1,305 @@
+{% extends "base_modern.html" %}
+
+{% block title %}Edit Recipe - {{ recipe.recipe_name }} - Lea Jane's Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in">
+    <!-- Page Header -->
+    <div class="flex flex-col gap-4 mb-6">
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-3xl font-semibold mb-2">Edit Recipe</h1>
+                <p class="text-secondary">Update recipe details and manage menu assignments</p>
+            </div>
+            <div class="flex gap-3">
+                <a href="{{ url_for('view_recipe', recipe_id=recipe.id) }}" class="btn btn-secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5m7-7l-7 7 7 7"/>
+                    </svg>
+                    Back to Recipe
+                </a>
+                <a href="{{ url_for('add_recipe_ingredient', recipe_id=recipe.id) }}" class="btn btn-secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14m-7-7h14"/>
+                    </svg>
+                    Add Ingredient
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <form method="POST" class="grid grid-cols-1 gap-6">
+        <!-- Main Recipe Details Card -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Recipe Details</h3>
+            </div>
+            <div class="card-body">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Recipe Name -->
+                    <div class="form-group">
+                        <label for="recipe_name" class="form-label required">Recipe Name</label>
+                        <input type="text" 
+                               id="recipe_name" 
+                               name="recipe_name" 
+                               class="form-control" 
+                               value="{{ recipe.recipe_name or '' }}" 
+                               required>
+                    </div>
+
+                    <!-- Recipe Group -->
+                    <div class="form-group">
+                        <label for="recipe_group" class="form-label">Recipe Group</label>
+                        <select id="recipe_group" name="recipe_group" class="form-control">
+                            <option value="">Select Group</option>
+                            <option value="Main" {% if recipe.recipe_group == 'Main' %}selected{% endif %}>Main</option>
+                            <option value="Sides" {% if recipe.recipe_group == 'Sides' %}selected{% endif %}>Sides</option>
+                            <option value="Sauces" {% if recipe.recipe_group == 'Sauces' %}selected{% endif %}>Sauces</option>
+                            <option value="Salads" {% if recipe.recipe_group == 'Salads' %}selected{% endif %}>Salads</option>
+                            <option value="Toppings" {% if recipe.recipe_group == 'Toppings' %}selected{% endif %}>Toppings</option>
+                            <option value="Ingredient" {% if recipe.recipe_group == 'Ingredient' %}selected{% endif %}>Ingredient</option>
+                        </select>
+                    </div>
+
+                    <!-- Recipe Type -->
+                    <div class="form-group">
+                        <label for="recipe_type" class="form-label">Recipe Type</label>
+                        <select id="recipe_type" name="recipe_type" class="form-control">
+                            <option value="Recipe" {% if recipe.recipe_type == 'Recipe' %}selected{% endif %}>Recipe</option>
+                            <option value="PrepRecipe" {% if recipe.recipe_type == 'PrepRecipe' %}selected{% endif %}>Prep Recipe</option>
+                            <option value="Product" {% if recipe.recipe_type == 'Product' %}selected{% endif %}>Product</option>
+                        </select>
+                    </div>
+
+                    <!-- Status -->
+                    <div class="form-group">
+                        <label for="status" class="form-label">Status</label>
+                        <select id="status" name="status" class="form-control">
+                            <option value="Draft" {% if recipe.status == 'Draft' %}selected{% endif %}>Draft</option>
+                            <option value="Active" {% if recipe.status == 'Active' %}selected{% endif %}>Active</option>
+                            <option value="Archived" {% if recipe.status == 'Archived' %}selected{% endif %}>Archived</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing & Costing Card -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Pricing & Costing</h3>
+            </div>
+            <div class="card-body">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Menu Price -->
+                    <div class="form-group">
+                        <label for="menu_price" class="form-label">Menu Price ($)</label>
+                        <input type="number" 
+                               id="menu_price" 
+                               name="menu_price" 
+                               class="form-control" 
+                               value="{{ recipe.menu_price or '0.00' }}" 
+                               min="0" 
+                               step="0.01">
+                    </div>
+
+                    <!-- Current Food Cost (Read-only) -->
+                    <div class="form-group">
+                        <label class="form-label text-secondary">Current Food Cost</label>
+                        <div class="form-control-static">
+                            ${{ "%.2f"|format(recipe.food_cost or 0) }}
+                            <span class="text-xs text-secondary">(Auto-calculated)</span>
+                        </div>
+                    </div>
+
+                    <!-- Food Cost Percentage (Read-only) -->
+                    <div class="form-group">
+                        <label class="form-label text-secondary">Food Cost %</label>
+                        <div class="form-control-static">
+                            <span class="{% if (recipe.food_cost_percentage or 0) > 35 %}text-red-600{% elif (recipe.food_cost_percentage or 0) > 25 %}text-yellow-600{% else %}text-green-600{% endif %}">
+                                {{ "%.1f"|format(recipe.food_cost_percentage or 0) }}%
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recipe Details Card -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Recipe Information</h3>
+            </div>
+            <div class="card-body">
+                <div class="grid grid-cols-1 gap-6">
+                    <!-- Recipe Yield -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="form-group">
+                            <label for="prep_recipe_yield" class="form-label">Recipe Yield Quantity</label>
+                            <input type="text" 
+                                   id="prep_recipe_yield" 
+                                   name="prep_recipe_yield" 
+                                   class="form-control" 
+                                   value="{{ recipe.prep_recipe_yield or '' }}" 
+                                   placeholder="e.g., 4, 10, 2.5">
+                        </div>
+                        <div class="form-group">
+                            <label for="prep_recipe_yield_uom" class="form-label">Yield UOM</label>
+                            <select id="prep_recipe_yield_uom" name="prep_recipe_yield_uom" class="form-control">
+                                <option value="">Select UOM</option>
+                                <option value="portions" {% if recipe.prep_recipe_yield_uom == 'portions' %}selected{% endif %}>Portions</option>
+                                <option value="each" {% if recipe.prep_recipe_yield_uom == 'each' %}selected{% endif %}>Each</option>
+                                <option value="oz" {% if recipe.prep_recipe_yield_uom == 'oz' %}selected{% endif %}>Ounces</option>
+                                <option value="lb" {% if recipe.prep_recipe_yield_uom == 'lb' %}selected{% endif %}>Pounds</option>
+                                <option value="cups" {% if recipe.prep_recipe_yield_uom == 'cups' %}selected{% endif %}>Cups</option>
+                                <option value="qt" {% if recipe.prep_recipe_yield_uom == 'qt' %}selected{% endif %}>Quarts</option>
+                                <option value="gal" {% if recipe.prep_recipe_yield_uom == 'gal' %}selected{% endif %}>Gallons</option>
+                                <option value="liters" {% if recipe.prep_recipe_yield_uom == 'liters' %}selected{% endif %}>Liters</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Serving Size -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="form-group">
+                            <label for="serving_size" class="form-label">Serving Size Quantity</label>
+                            <input type="text" 
+                                   id="serving_size" 
+                                   name="serving_size" 
+                                   class="form-control" 
+                                   value="{{ recipe.serving_size or '' }}" 
+                                   placeholder="e.g., 1, 8, 0.5">
+                        </div>
+                        <div class="form-group">
+                            <label for="serving_size_uom" class="form-label">Serving UOM</label>
+                            <select id="serving_size_uom" name="serving_size_uom" class="form-control">
+                                <option value="">Select UOM</option>
+                                <option value="each" {% if recipe.serving_size_uom == 'each' %}selected{% endif %}>Each</option>
+                                <option value="portion" {% if recipe.serving_size_uom == 'portion' %}selected{% endif %}>Portion</option>
+                                <option value="oz" {% if recipe.serving_size_uom == 'oz' %}selected{% endif %}>Ounces</option>
+                                <option value="cups" {% if recipe.serving_size_uom == 'cups' %}selected{% endif %}>Cups</option>
+                                <option value="slices" {% if recipe.serving_size_uom == 'slices' %}selected{% endif %}>Slices</option>
+                                <option value="pieces" {% if recipe.serving_size_uom == 'pieces' %}selected{% endif %}>Pieces</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Shelf Life -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="form-group">
+                            <label for="shelf_life" class="form-label">Shelf Life Duration</label>
+                            <input type="text" 
+                                   id="shelf_life" 
+                                   name="shelf_life" 
+                                   class="form-control" 
+                                   value="{{ recipe.shelf_life or '' }}" 
+                                   placeholder="e.g., 3, 7, 24">
+                        </div>
+                        <div class="form-group">
+                            <label for="shelf_life_uom" class="form-label">Shelf Life UOM</label>
+                            <select id="shelf_life_uom" name="shelf_life_uom" class="form-control">
+                                <option value="">Select UOM</option>
+                                <option value="hours" {% if recipe.shelf_life_uom == 'hours' %}selected{% endif %}>Hours</option>
+                                <option value="days" {% if recipe.shelf_life_uom == 'days' %}selected{% endif %}>Days</option>
+                                <option value="weeks" {% if recipe.shelf_life_uom == 'weeks' %}selected{% endif %}>Weeks</option>
+                                <option value="months" {% if recipe.shelf_life_uom == 'months' %}selected{% endif %}>Months</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Kitchen Station -->
+                    <div class="form-group md:col-span-2">
+                        <label for="station" class="form-label">Kitchen Station</label>
+                        <select id="station" name="station" class="form-control">
+                            <option value="">Select Station</option>
+                            <option value="Prep cook" {% if recipe.station == 'Prep cook' %}selected{% endif %}>Prep Cook</option>
+                            <option value="Grill" {% if recipe.station == 'Grill' %}selected{% endif %}>Grill</option>
+                            <option value="Fryer" {% if recipe.station == 'Fryer' %}selected{% endif %}>Fryer</option>
+                            <option value="Cold Station" {% if recipe.station == 'Cold Station' %}selected{% endif %}>Cold Station</option>
+                            <option value="Sauce Station" {% if recipe.station == 'Sauce Station' %}selected{% endif %}>Sauce Station</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instructions Card -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Cooking Instructions</h3>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="procedure" class="form-label">Procedure/Instructions</label>
+                    <textarea id="procedure" 
+                              name="procedure" 
+                              class="form-control" 
+                              rows="6" 
+                              placeholder="Enter cooking instructions and procedures...">{{ recipe.procedure or '' }}</textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Usage Card -->
+        {% if menu_usage %}
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Used on Menus</h3>
+            </div>
+            <div class="card-body">
+                <div class="space-y-3">
+                    {% for item in menu_usage %}
+                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                        <div class="flex-1">
+                            <h4 class="font-medium">{{ item.item_name }}</h4>
+                            <div class="text-sm text-secondary">
+                                {{ item.version_name or 'No Version' }}
+                                {% if item.is_active %}
+                                    <span class="ml-2 px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Active</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-medium">${{ "%.2f"|format(item.menu_price or 0) }}</div>
+                            <a href="{{ url_for('edit_menu_item', item_id=item.id) }}" class="text-primary hover:underline text-sm">
+                                Edit Menu Item
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-end">
+            <a href="{{ url_for('view_recipe', recipe_id=recipe.id) }}" class="btn btn-secondary">
+                Cancel
+            </a>
+            <button type="submit" class="btn btn-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/>
+                    <polyline points="17,21 17,13 7,13 7,21"/>
+                    <polyline points="7,3 7,8 15,8"/>
+                </svg>
+                Save Recipe
+            </button>
+        </div>
+    </form>
+</div>
+
+<script>
+// Auto-recalculate food cost percentage when menu price changes
+document.getElementById('menu_price').addEventListener('input', function() {
+    const menuPrice = parseFloat(this.value) || 0;
+    const foodCost = {{ recipe.food_cost or 0 }};
+    
+    if (menuPrice > 0) {
+        const percentage = (foodCost / menuPrice * 100).toFixed(1);
+        // Update the display (if you want real-time updates)
+        console.log('New food cost percentage:', percentage + '%');
+    }
+});
+</script>
+{% endblock %}

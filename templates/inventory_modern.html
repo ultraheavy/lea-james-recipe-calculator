@@ -52,9 +52,10 @@
                             <option value="">All Vendors</option>
                             {% set vendor_list = [] %}
                             {% for item in items %}
-                                {% if item.vendor_name and item.vendor_name not in vendor_list %}
-                                    <option value="{{ item.vendor_name }}">{{ item.vendor_name }}</option>
-                                    {% set _ = vendor_list.append(item.vendor_name) %}
+                                {% set vendor = item.primary_vendor_name or item.vendor_name %}
+                                {% if vendor and vendor not in vendor_list %}
+                                    <option value="{{ vendor }}">{{ vendor }}</option>
+                                    {% set _ = vendor_list.append(vendor) %}
                                 {% endif %}
                             {% endfor %}
                         </select>
@@ -69,52 +70,48 @@
         <table class="table table-striped inventory-table" id="inventoryTable">
             <thead>
                 <tr>
-                    <th class="hide-mobile">Code</th>
                     <th>Item</th>
                     <th>Vendor</th>
                     <th>Price</th>
                     <th>Unit</th>
                     <th class="hide-mobile">Pack Size</th>
+                    <th class="hide-mobile">Code</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {% for item in items %}
                 <tr data-category="{{ item.product_categories|lower }}" 
-                    data-vendor="{{ item.vendor_name|lower }}"
+                    data-vendor="{{ (item.primary_vendor_name or item.vendor_name or '')|lower }}"
                     data-description="{{ item.item_description|lower }}">
-                    <td class="hide-mobile">
-                        <span class="font-mono text-sm">{{ item.item_code or '-' }}</span>
-                    </td>
                     <td class="item-cell">
                         <div class="flex items-center gap-3">
                             <div class="icon-container"></div>
                             <div>
                                 <p class="font-medium item-name">{{ item.item_description }}</p>
-                                <span class="item-code mobile-only">{{ item.item_code or '-' }}</span>
-                                {% if item.product_categories %}
-                                <div class="flex flex-wrap gap-1 mt-1">
-                                    {% for category in item.product_categories.split(',')[:2] %}
-                                    <span class="category-pill {{ category.strip().lower().split()[0] }} text-xs">
-                                        {{ category.strip() }}
-                                    </span>
-                                    {% endfor %}
-                                </div>
-                                {% endif %}
+                                <span class="item-code mobile-only text-xs text-gray-500">{{ item.item_code or '-' }}</span>
                             </div>
                         </div>
                     </td>
                     <td>
-                        <span class="text-sm">{{ item.vendor_name or '-' }}</span>
+                        <div>
+                            <p class="text-sm font-medium">{{ item.primary_vendor_name or item.vendor_name or '-' }}</p>
+                            {% if item.vendor_item_code %}
+                            <p class="text-xs text-gray-600">{{ item.vendor_item_code }}</p>
+                            {% endif %}
+                        </div>
                     </td>
                     <td>
-                        <span class="font-semibold">${{ "%.2f"|format(item.current_price or 0) }}</span>
+                        <span class="font-semibold">${{ "%.2f"|format(item.vendor_current_price or item.current_price or 0) }}</span>
                     </td>
                     <td>
                         <span class="badge badge-info">{{ item.unit_measure or '-' }}</span>
                     </td>
                     <td class="hide-mobile">
                         <span class="text-sm">{{ item.pack_size or '-' }}</span>
+                    </td>
+                    <td class="hide-mobile">
+                        <span class="font-mono text-xs text-gray-500">{{ item.item_code or '-' }}</span>
                     </td>
                     <td>
                         <div class="flex items-center gap-2">

@@ -1,0 +1,219 @@
+{% extends "base_modern.html" %}
+
+{% block title %}Add Recipe - Lea Jane's Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in">
+    <!-- Page Header -->
+    <div class="flex flex-col gap-4 mb-6">
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-3xl font-semibold mb-2">Add Recipe</h1>
+                <p class="text-secondary">Create a new recipe with cost calculations</p>
+            </div>
+            <a href="{{ url_for('recipes') }}" class="btn btn-secondary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5m7-7l-7 7 7 7"/>
+                </svg>
+                Back to Recipes
+            </a>
+        </div>
+    </div>
+
+    <form method="POST" class="grid grid-cols-1 gap-6 max-w-4xl">
+        <!-- Basic Recipe Details Card -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Recipe Details</h3>
+            </div>
+            <div class="card-body">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Recipe Name -->
+                    <div class="form-group md:col-span-2">
+                        <label for="recipe_name" class="form-label required">Recipe Name</label>
+                        <input type="text" 
+                               id="recipe_name" 
+                               name="recipe_name" 
+                               class="form-control" 
+                               placeholder="Enter recipe name"
+                               required>
+                    </div>
+
+                    <!-- Recipe Group -->
+                    <div class="form-group">
+                        <label for="recipe_group" class="form-label">Recipe Group</label>
+                        <select id="recipe_group" name="recipe_group" class="form-control">
+                            <option value="">Select Group</option>
+                            <option value="Main">Main</option>
+                            <option value="Sides">Sides</option>
+                            <option value="Sauces">Sauces</option>
+                            <option value="Salads">Salads</option>
+                            <option value="Toppings">Toppings</option>
+                            <option value="Ingredient">Ingredient</option>
+                        </select>
+                    </div>
+
+                    <!-- Recipe Type -->
+                    <div class="form-group">
+                        <label for="recipe_type" class="form-label">Recipe Type</label>
+                        <select id="recipe_type" name="recipe_type" class="form-control">
+                            <option value="Recipe" selected>Recipe</option>
+                            <option value="PrepRecipe">Prep Recipe</option>
+                            <option value="Product">Product</option>
+                        </select>
+                    </div>
+
+                    <!-- Status -->
+                    <div class="form-group">
+                        <label for="status" class="form-label">Status</label>
+                        <select id="status" name="status" class="form-control">
+                            <option value="Draft" selected>Draft</option>
+                            <option value="Active">Active</option>
+                            <option value="Archived">Archived</option>
+                        </select>
+                    </div>
+
+                    <!-- Menu Price -->
+                    <div class="form-group">
+                        <label for="menu_price" class="form-label">Menu Price ($)</label>
+                        <input type="number" 
+                               id="menu_price" 
+                               name="menu_price" 
+                               class="form-control" 
+                               min="0" 
+                               step="0.01"
+                               placeholder="0.00">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recipe Information Card -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Recipe Information</h3>
+            </div>
+            <div class="card-body">
+                <div class="grid grid-cols-1 gap-6">
+                    <!-- Recipe Yield -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="form-group">
+                            <label for="prep_recipe_yield" class="form-label">Recipe Yield Quantity</label>
+                            <input type="text" 
+                                   id="prep_recipe_yield" 
+                                   name="prep_recipe_yield" 
+                                   class="form-control" 
+                                   placeholder="e.g., 4, 10, 2.5">
+                        </div>
+                        <div class="form-group">
+                            <label for="prep_recipe_yield_uom" class="form-label">Yield UOM</label>
+                            <select id="prep_recipe_yield_uom" name="prep_recipe_yield_uom" class="form-control">
+                                <option value="">Select UOM</option>
+                                <option value="portions" selected>Portions</option>
+                                <option value="each">Each</option>
+                                <option value="oz">Ounces</option>
+                                <option value="lb">Pounds</option>
+                                <option value="cups">Cups</option>
+                                <option value="qt">Quarts</option>
+                                <option value="gal">Gallons</option>
+                                <option value="liters">Liters</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Serving Size -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="form-group">
+                            <label for="serving_size" class="form-label">Serving Size Quantity</label>
+                            <input type="text" 
+                                   id="serving_size" 
+                                   name="serving_size" 
+                                   class="form-control" 
+                                   placeholder="e.g., 1, 8, 0.5">
+                        </div>
+                        <div class="form-group">
+                            <label for="serving_size_uom" class="form-label">Serving UOM</label>
+                            <select id="serving_size_uom" name="serving_size_uom" class="form-control">
+                                <option value="">Select UOM</option>
+                                <option value="each" selected>Each</option>
+                                <option value="portion">Portion</option>
+                                <option value="oz">Ounces</option>
+                                <option value="cups">Cups</option>
+                                <option value="slices">Slices</option>
+                                <option value="pieces">Pieces</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Shelf Life -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="form-group">
+                            <label for="shelf_life" class="form-label">Shelf Life Duration</label>
+                            <input type="text" 
+                                   id="shelf_life" 
+                                   name="shelf_life" 
+                                   class="form-control" 
+                                   placeholder="e.g., 3, 7, 24">
+                        </div>
+                        <div class="form-group">
+                            <label for="shelf_life_uom" class="form-label">Shelf Life UOM</label>
+                            <select id="shelf_life_uom" name="shelf_life_uom" class="form-control">
+                                <option value="">Select UOM</option>
+                                <option value="hours">Hours</option>
+                                <option value="days" selected>Days</option>
+                                <option value="weeks">Weeks</option>
+                                <option value="months">Months</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Kitchen Station -->
+                    <div class="form-group">
+                        <label for="station" class="form-label">Kitchen Station</label>
+                        <select id="station" name="station" class="form-control">
+                            <option value="">Select Station</option>
+                            <option value="Prep cook">Prep Cook</option>
+                            <option value="Grill">Grill</option>
+                            <option value="Fryer">Fryer</option>
+                            <option value="Cold Station">Cold Station</option>
+                            <option value="Sauce Station">Sauce Station</option>
+                            <option value="Line cook">Line Cook</option>
+                            <option value="Pantry">Pantry</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instructions Card -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Cooking Instructions</h3>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="procedure" class="form-label">Procedure/Instructions</label>
+                    <textarea id="procedure" 
+                              name="procedure" 
+                              class="form-control" 
+                              rows="6" 
+                              placeholder="Enter cooking instructions and procedures..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-end">
+            <a href="{{ url_for('recipes') }}" class="btn btn-secondary">
+                Cancel
+            </a>
+            <button type="submit" class="btn btn-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14m-7-7h14"/>
+                </svg>
+                Create Recipe
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

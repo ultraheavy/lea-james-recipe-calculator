@@ -1,0 +1,218 @@
+{% extends "base_modern.html" %}
+
+{% block title %}Add Inventory Item - Lea Jane's Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in">
+    <!-- Page Header -->
+    <div class="flex flex-col gap-4 mb-6">
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-3xl font-semibold mb-2">Add Inventory Item</h1>
+                <p class="text-secondary">Add a new ingredient to your inventory master list</p>
+            </div>
+            <a href="{{ url_for('inventory') }}" class="btn btn-secondary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5m7-7l-7 7 7 7"/>
+                </svg>
+                Back to Inventory
+            </a>
+        </div>
+    </div>
+
+    <form method="POST" class="grid grid-cols-1 gap-6 max-w-4xl">
+        <!-- Basic Information Card -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Basic Information</h3>
+            </div>
+            <div class="card-body">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Item Code -->
+                    <div class="form-group">
+                        <label for="item_code" class="form-label required">Item Code</label>
+                        <input type="text" 
+                               id="item_code" 
+                               name="item_code" 
+                               class="form-control" 
+                               placeholder="Enter unique item code"
+                               required>
+                        <p class="form-text">Unique identifier for this item</p>
+                    </div>
+
+                    <!-- Item Description -->
+                    <div class="form-group">
+                        <label for="item_description" class="form-label required">Item Description</label>
+                        <input type="text" 
+                               id="item_description" 
+                               name="item_description" 
+                               class="form-control" 
+                               placeholder="Enter item name/description"
+                               required>
+                        <p class="form-text">Clear description of the item</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing & Units Card -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Pricing & Units</h3>
+            </div>
+            <div class="card-body">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Current Price -->
+                    <div class="form-group">
+                        <label for="current_price" class="form-label">Current Price ($)</label>
+                        <input type="number" 
+                               id="current_price" 
+                               name="current_price" 
+                               class="form-control" 
+                               step="0.01" 
+                               min="0"
+                               placeholder="0.00">
+                        <p class="form-text">Price per unit</p>
+                    </div>
+
+                    <!-- Unit of Measure -->
+                    <div class="form-group">
+                        <label for="unit_measure" class="form-label">Unit of Measure</label>
+                        <select id="unit_measure" name="unit_measure" class="form-control">
+                            <option value="LB">LB (Pound)</option>
+                            <option value="OZ">OZ (Ounce)</option>
+                            <option value="EA">EA (Each)</option>
+                            <option value="Box">Box</option>
+                            <option value="Can">Can</option>
+                            <option value="Bottle">Bottle</option>
+                            <option value="Bag">Bag</option>
+                            <option value="Carton">Carton</option>
+                            <option value="Roll">Roll</option>
+                            <option value="Jar">Jar</option>
+                            <option value="QT">QT (Quart)</option>
+                            <option value="GAL">GAL (Gallon)</option>
+                            <option value="G">G (Gram)</option>
+                            <option value="KG">KG (Kilogram)</option>
+                        </select>
+                        <p class="form-text">Standard unit for inventory</p>
+                    </div>
+
+                    <!-- Purchase Unit -->
+                    <div class="form-group">
+                        <label for="purchase_unit" class="form-label">Purchase Unit</label>
+                        <input type="text" 
+                               id="purchase_unit" 
+                               name="purchase_unit" 
+                               class="form-control" 
+                               placeholder="e.g., Case, Box, LB">
+                        <p class="form-text">How item is purchased from vendor</p>
+                    </div>
+
+                    <!-- Recipe Cost Unit -->
+                    <div class="form-group">
+                        <label for="recipe_cost_unit" class="form-label">Recipe Cost Unit</label>
+                        <input type="text" 
+                               id="recipe_cost_unit" 
+                               name="recipe_cost_unit" 
+                               class="form-control" 
+                               placeholder="e.g., OZ, Cup, Each">
+                        <p class="form-text">Unit used in recipe calculations</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Yield Information Card -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Yield Information</h3>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="yield_percent" class="form-label">Yield Percentage</label>
+                    <div class="flex items-center gap-4">
+                        <input type="number" 
+                               id="yield_percent" 
+                               name="yield_percent" 
+                               class="form-control max-w-xs" 
+                               step="0.1" 
+                               min="0" 
+                               max="100" 
+                               value="100">
+                        <span class="text-secondary">%</span>
+                    </div>
+                    <p class="form-text">Percentage of usable product after preparation (default: 100%)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vendor Information Card -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Vendor Information (Optional)</h3>
+            </div>
+            <div class="card-body">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Vendor Selection -->
+                    <div class="form-group">
+                        <label for="vendor_id" class="form-label">Primary Vendor</label>
+                        <select id="vendor_id" name="vendor_id" class="form-control">
+                            <option value="">Select vendor...</option>
+                            {% for vendor in vendors %}
+                            <option value="{{ vendor.id }}">{{ vendor.vendor_name }}</option>
+                            {% endfor %}
+                        </select>
+                        <p class="form-text">Select primary vendor for this item</p>
+                    </div>
+
+                    <!-- Vendor Item Code -->
+                    <div class="form-group">
+                        <label for="vendor_item_code" class="form-label">Vendor Item Code</label>
+                        <input type="text" 
+                               id="vendor_item_code" 
+                               name="vendor_item_code" 
+                               class="form-control" 
+                               placeholder="Vendor's code for this item">
+                        <p class="form-text">Vendor's specific item code</p>
+                    </div>
+
+                    <!-- Pack Size -->
+                    <div class="form-group">
+                        <label for="pack_size" class="form-label">Pack Size</label>
+                        <input type="text" 
+                               id="pack_size" 
+                               name="pack_size" 
+                               class="form-control" 
+                               placeholder="e.g., 6x#10, 24x16oz">
+                        <p class="form-text">How item is packaged by vendor</p>
+                    </div>
+
+                    <!-- Product Categories -->
+                    <div class="form-group">
+                        <label for="product_categories" class="form-label">Product Categories</label>
+                        <input type="text" 
+                               id="product_categories" 
+                               name="product_categories" 
+                               class="form-control" 
+                               placeholder="e.g., Produce, Dairy, Dry Goods">
+                        <p class="form-text">Categories for organization</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-end">
+            <a href="{{ url_for('inventory') }}" class="btn btn-secondary">
+                Cancel
+            </a>
+            <button type="submit" class="btn btn-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14m-7-7h14"/>
+                </svg>
+                Add Item
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}
