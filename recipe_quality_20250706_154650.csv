@@ -1,0 +1,10 @@
+ingredient_count,ingredients,issue_type,menu_price,missing_costs,missing_items,recipe_group,recipe_id,recipe_name,severity,total_ingredients
+,,no_ingredients,12.99,,,Main,97,24 Hour Chili Brined Chicken Thigh,critical,
+,,no_ingredients,0.0,,,Ingredient,102,Coleslaw,critical,
+,,no_ingredients,0.0,,,Sauces,100,Comeback Sauce - Updated 2025,critical,
+,,no_ingredients,0.0,,,Sauces,105,Hot Honey - 2025,critical,
+2,"Non Con, Cup, 2oz, Clear Plastic,Non Con, Lids, 1.5-2oz, Souffle, Clear",zero_cost,1.0,,,,75,DP-01 Charred-Onion Ranch Dip,high,
+3,"Comeback Sauce - Updated 2025,Non Con, Cup, 2oz, Clear Plastic,Non Con, Lids, 1.5-2oz, Souffle, Clear",zero_cost,1.0,,,,74,DP-02 Comeback Sauce,high,
+3,"Hot Honey - 2025,Non Con, Cup, 2oz, Clear Plastic,Non Con, Lids, 1.5-2oz, Souffle, Clear",zero_cost,1.0,,,,72,DP-04 Hot Honey,high,
+,,missing_costs,,1,Comeback sauce,,113,Comeback Sauce - Portion,medium,1
+,,missing_costs,,1,Comeback Sauce - Updated 2025,,74,DP-02 Comeback Sauce,medium,3

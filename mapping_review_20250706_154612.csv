@@ -1,0 +1,10 @@
+recipe_id,ingredient_id,recipe_name,bad_name,suggestion_1,score_1,id_1,suggestion_2,score_2,id_2,suggestion_3,score_3,id_3,selected_id,action
+72,309,DP-04 Hot Honey,Hot Honey - 2025,"Dry Goods, Honey, Natural",50.0,433,"Dry Goods, SO VINEGAR WH 50GR",43.8,868,"Dry Goods, Dressing, Honey Mustard",43.2,291,,
+74,389,DP-02 Comeback Sauce,Comeback Sauce - Updated 2025,"Non Con, Cup, 2oz, Clear Plastic",44.0,891,"Dry Goods, Chicken Base, Paste",43.5,175,"Dry Goods, Sauce, Chile Sambal",42.3,715,,
+79,380,LJ Mac,Mac Sauce - Modified 2025,"Dairy, Cheese Sauce, Loaf, American",47.1,138,"Dairy, Cheese Sauce, Loaf, American",47.1,195,"Dry Goods, Sauce, Chilli & Garlic",44.4,729,,
+80,427,SD-03 LJ Mac,Mac Sauce - Modified 2025,"Dairy, Cheese Sauce, Loaf, American",47.1,138,"Dairy, Cheese Sauce, Loaf, American",47.1,195,"Dry Goods, Sauce, Chilli & Garlic",44.4,729,,
+85,463,FT-03 Angry Chicken Mac bowl,Mac Sauce - Modified 2025,"Dairy, Cheese Sauce, Loaf, American",47.1,138,"Dairy, Cheese Sauce, Loaf, American",47.1,195,"Dry Goods, Sauce, Chilli & Garlic",44.4,729,,
+94,402,S-03 Plain Jane Sandwich,Hot Honey - 2025,"Dry Goods, Honey, Natural",50.0,433,"Dry Goods, SO VINEGAR WH 50GR",43.8,868,"Dry Goods, Dressing, Honey Mustard",43.2,291,,
+96,314,S-02 J-Blaze Chicken,Hot Honey - 2025,"Dry Goods, Honey, Natural",50.0,433,"Dry Goods, SO VINEGAR WH 50GR",43.8,868,"Dry Goods, Dressing, Honey Mustard",43.2,291,,
+113,535,Comeback Sauce - Portion,Comeback sauce,"Dry Goods, Sauce, BBQ Hickory",56.2,742,"Dry Goods, Sauce, Chile Sambal",51.3,715,"Dry Goods, Sauce, Chilli & Garlic",50.0,729,,
+121,422,Mac & Cheese,Mac Sauce,"Dry Goods, Sauce, BBQ Hickory",51.9,742,"Dry Goods, Sauce, Chilli & Garlic",51.6,729,"Dairy, Cheese Sauce, Loaf, American",48.6,138,,

@@ -1,0 +1,16 @@
+item_code,item_description,vendor_name,current_price,pack_size,purchase_unit,recipe_cost_unit,yield_percent
+NC001,Non Con Cup 2oz Clear Plastic,Restaurant Supply,45.00,500 each,case,each,100
+NC002,Non Con Lids 1.5-2oz Souffle Clear,Restaurant Supply,35.00,500 each,case,each,100
+NC003,Non Con Cup 4oz Clear Plastic,Restaurant Supply,55.00,500 each,case,each,100
+NC004,Non Con Lids 4oz Clear,Restaurant Supply,40.00,500 each,case,each,100
+NC005,Non Con Cup 8oz Clear Plastic,Restaurant Supply,65.00,500 each,case,each,100
+NC006,Non Con Lids 8oz Clear,Restaurant Supply,45.00,500 each,case,each,100
+NC007,Non Con Souffle Cup 1.5oz Clear,Restaurant Supply,38.00,2500 each,case,each,100
+NC008,Non Con Souffle Cup 2oz Clear,Restaurant Supply,42.00,2500 each,case,each,100
+NC009,Non Con Napkin Cocktail 1ply White,Restaurant Supply,15.00,500 each,case,each,100
+NC010,Non Con Napkin Dinner 2ply White,Restaurant Supply,25.00,300 each,case,each,100
+NC011,Non Con Fork Plastic Heavy Black,Restaurant Supply,28.00,1000 each,case,each,100
+NC012,Non Con Knife Plastic Heavy Black,Restaurant Supply,28.00,1000 each,case,each,100
+NC013,Non Con Spoon Plastic Heavy Black,Restaurant Supply,28.00,1000 each,case,each,100
+NC014,Non Con Straw Wrapped 7.75in Clear,Restaurant Supply,18.00,500 each,case,each,100
+NC015,Non Con To Go Container 9x9x3 3comp,Restaurant Supply,85.00,200 each,case,each,100

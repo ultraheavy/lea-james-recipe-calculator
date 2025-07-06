@@ -57,14 +57,14 @@ class ETLPipeline:
     
     def parse_pack_size(self, pack_size: str) -> Tuple[float, str]:
         """
-        Parse pack size string with robust grammar support
+        Parse pack size with strict validation - P3 enhanced
         
         Examples:
         - "1x4l" → (4.0, "l")
-        - "24 × 1 ea" → (1.0, "each")  # Assuming 24-pack
+        - "24 × 1 ea" → (1.0, "each")
         - "12x2.5kg" → (2.5, "kg")
         - "128 fl oz" → (128.0, "ml")
-        - "5 fl oz" → (5.0, "ml")
+        - "1 x 4" → ERROR (no unit)
         
         Returns (quantity, unit) or logs error and returns (1.0, "each")
         """
@@ -76,6 +76,13 @@ class ETLPipeline:
         
         # Replace various multiplication symbols with 'x'
         pack_size = re.sub(r'[×✕✖⨯]', 'x', pack_size)
+        
+        # STRICT: Reject "N x N" without unit first
+        no_unit_pattern = r'^(\d+(?:\.\d+)?)\s*x\s*(\d+(?:\.\d+)?)$'
+        if re.match(no_unit_pattern, pack_size, re.IGNORECASE):
+            self._log_error('pack_size', pack_size, 
+                          "Pack size missing unit - format must be 'N x N unit'")
+            return 1.0, "each"
         
         # Main pattern to match both formats:
         # Group 1-3: "N x N unit" format
@@ -260,6 +267,63 @@ class ETLPipeline:
         # This would process vendor product data
         # Implementation depends on actual CSV structure
         pass
+    
+    def seed_disposables(self, csv_path: str):
+        """Seed disposable inventory items"""
+        logger.info(f"Seeding disposable items from: {csv_path}")
+        
+        # Read CSV
+        df = pd.read_csv(csv_path, encoding='utf-8-sig')
+        
+        cursor = self.conn.cursor()
+        processed = 0
+        
+        for _, row in df.iterrows():
+            # Parse and validate pack size
+            pack_size = row.get('pack_size', '')
+            if pack_size and pd.notna(pack_size):
+                qty, unit = self.parse_pack_size(str(pack_size))
+                # Ensure pack size has unit
+                pack_size = f"{qty} {unit}"
+            
+            # Calculate unit cost
+            total_price = float(row.get('current_price', 0))
+            pack_qty = qty if qty > 0 else 1
+            unit_cost = total_price / pack_qty
+            
+            # Insert or update
+            cursor.execute("""
+                INSERT INTO inventory (
+                    item_code, item_description, vendor_name,
+                    current_price, pack_size, purchase_unit, 
+                    recipe_cost_unit, yield_percent
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(item_code) DO UPDATE SET
+                    item_description = excluded.item_description,
+                    vendor_name = excluded.vendor_name,
+                    current_price = excluded.current_price,
+                    pack_size = excluded.pack_size,
+                    purchase_unit = excluded.purchase_unit,
+                    recipe_cost_unit = excluded.recipe_cost_unit,
+                    yield_percent = excluded.yield_percent,
+                    updated_date = CURRENT_TIMESTAMP
+            """, (
+                row.get('item_code', ''),
+                row.get('item_description', ''),
+                row.get('vendor_name', ''),
+                total_price,
+                pack_size,
+                row.get('purchase_unit', 'each'),
+                row.get('recipe_cost_unit', 'each'),
+                float(row.get('yield_percent', 100))
+            ))
+            
+            processed += 1
+        
+        self.conn.commit()
+        logger.info(f"Seeded {processed} disposable items")
+        
+        return processed
     
     def fix_existing_data(self):
         """Fix pack sizes and UOMs in existing database"""
@@ -629,12 +693,16 @@ def main():
     import argparse
     
     parser = argparse.ArgumentParser(description='ETL Pipeline for Restaurant Calculator')
-    parser.add_argument('command', choices=['ingest', 'p1', 'p2'], 
+    parser.add_argument('command', choices=['ingest', 'p1', 'p2', 'seed'], 
                        help='Command to run')
     parser.add_argument('--wipe', action='store_true',
                        help='Wipe inventory and vendor_products before ingestion')
     parser.add_argument('--files', nargs='+',
                        help='CSV files to ingest')
+    parser.add_argument('--file', type=str,
+                       help='Single CSV file for seeding')
+    parser.add_argument('--fill-prices', action='store_true',
+                       help='Backfill missing prices from vendor data')
     
     args = parser.parse_args()
     
@@ -661,6 +729,15 @@ def main():
             else:
                 # Use default directory
                 etl.run_full_etl()
+            
+            if args.fill_prices:
+                etl.backfill_prices()
+            
+            # Write error log
+            etl.write_error_log()
+            
+            # Run audit
+            etl.run_audit()
         
         elif args.command == 'p1':
             etl.run_full_etl()
@@ -674,6 +751,13 @@ def main():
             print(f"- Recipes with >100% cost: {results['recipe_issues']['high_cost']}")
             print(f"- Recipes with no ingredients: {results['recipe_issues']['no_ingredients']}")
             print(f"- Recipes with zero cost: {results['recipe_issues']['zero_cost']}")
+        
+        elif args.command == 'seed':
+            if args.file and Path(args.file).exists():
+                count = etl.seed_disposables(args.file)
+                print(f"Seeded {count} disposable items")
+            else:
+                logger.error("Seed file not found or not specified")
         
     finally:
         etl.close()

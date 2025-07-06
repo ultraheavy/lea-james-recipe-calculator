@@ -240,30 +240,42 @@ class IngredientMatcher:
         self.conn.close()
 
 def main():
-    """Main entry point"""
-    parser = argparse.ArgumentParser(description='Fuzzy match recipe ingredients to inventory')
-    parser.add_argument('--generate', action='store_true',
-                       help='Generate mapping review CSV')
-    parser.add_argument('--apply-mappings', type=str,
-                       help='Apply mappings from reviewed CSV file')
-    parser.add_argument('--output', type=str,
-                       help='Output filename for mapping review')
+    """Main CLI entry point"""
+    parser = argparse.ArgumentParser(
+        description='Fuzzy match recipe ingredients to inventory')
+    
+    subparsers = parser.add_subparsers(dest='command', help='Commands')
+    
+    # Propose command
+    propose_parser = subparsers.add_parser(
+        'propose', help='Generate mapping proposals')
+    propose_parser.add_argument('--threshold', type=float, default=88.0,
+                               help='Matching threshold (0-100, default: 88)')
+    propose_parser.add_argument('--out', type=str,
+                               help='Output CSV filename')
+    
+    # Apply command
+    apply_parser = subparsers.add_parser(
+        'apply', help='Apply reviewed mappings')
+    apply_parser.add_argument('--file', type=str, required=True,
+                             help='Input CSV with reviewed mappings')
     
     args = parser.parse_args()
+    
+    if not args.command:
+        parser.print_help()
+        return
     
     matcher = IngredientMatcher()
     
     try:
-        if args.generate:
-            output_file = matcher.generate_mapping_review(args.output)
-            print(f"Mapping review generated: {output_file}")
+        if args.command == 'propose':
+            output_file = matcher.generate_mapping_review(args.out)
+            print(f"Mapping proposals saved to: {output_file}")
             
-        elif args.apply_mappings:
-            count = matcher.apply_mappings(args.apply_mappings)
+        elif args.command == 'apply':
+            count = matcher.apply_mappings(args.file)
             print(f"Applied {count} mappings")
-            
-        else:
-            parser.print_help()
             
     finally:
         matcher.close()

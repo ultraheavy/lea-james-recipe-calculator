@@ -1,0 +1,5 @@
+recipe_id,recipe_name,menu_price,recipe_group,issue_type,severity
+97,24 Hour Chili Brined Chicken Thigh,12.99,Main,no_ingredients,critical
+102,Coleslaw,0.0,Ingredient,no_ingredients,critical
+100,Comeback Sauce - Updated 2025,0.0,Sauces,no_ingredients,critical
+105,Hot Honey - 2025,0.0,Sauces,no_ingredients,critical
