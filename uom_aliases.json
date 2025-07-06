@@ -1,0 +1,44 @@
+{
+  "aliases": {
+    "ct": "each",
+    "count": "each",
+    "piece": "each",
+    "slice": "each",
+    "btl": "each",
+    "bottle": "each",
+    "bg": "bag",
+    "jug": "each",
+    "unit": "each",
+    "portions": "each",
+    "loaf": "each",
+    
+    "fl": "ml",
+    "fl oz": "fl oz",
+    "fl_oz": "fl oz",
+    "floz": "fl oz",
+    "fl ounce": "fl oz",
+    
+    "ltr": "l",
+    "ltr.": "l",
+    "liter": "l",
+    
+    "gal.": "gal",
+    "gallon": "gal",
+    
+    "tablespoon": "tbsp",
+    "teaspoon": "tsp",
+    
+    "pound": "lb",
+    "ounce": "oz",
+    "gram": "g",
+    "kilogram": "kg",
+    
+    "quart": "qt",
+    "pint": "pt"
+  },
+  "canonical_units": {
+    "weight": ["g", "kg", "mg", "lb", "oz"],
+    "volume": ["ml", "l", "fl oz", "cup", "tbsp", "tsp", "gal", "qt", "pt"],
+    "count": ["each", "dozen", "case", "pack", "can", "jar", "bag", "box", "carton", "container"]
+  }
+}

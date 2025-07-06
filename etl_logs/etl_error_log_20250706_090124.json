@@ -1,0 +1,1490 @@
+[
+  {
+    "timestamp": "2025-07-06T09:01:24.835321",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.836115",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.836325",
+    "field": "pack_size",
+    "value": "1 x 10",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.837115",
+    "field": "pack_size",
+    "value": "1 x 500",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.838633",
+    "field": "pack_size",
+    "value": "1 x 10",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.838943",
+    "field": "pack_size",
+    "value": "5 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.838970",
+    "field": "pack_size",
+    "value": "1 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.839123",
+    "field": "pack_size",
+    "value": "1 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.839274",
+    "field": "pack_size",
+    "value": "1 x 24",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.839426",
+    "field": "pack_size",
+    "value": "1 x 4",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.839789",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.840852",
+    "field": "pack_size",
+    "value": "1 x 2",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.841019",
+    "field": "pack_size",
+    "value": "1 x 16",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.841124",
+    "field": "pack_size",
+    "value": "1 x 13",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.841981",
+    "field": "pack_size",
+    "value": "4 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.842680",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.842723",
+    "field": "pack_size",
+    "value": "1 x 180",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.842743",
+    "field": "pack_size",
+    "value": "24 x 16",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.842759",
+    "field": "pack_size",
+    "value": "24 x 16",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.842774",
+    "field": "pack_size",
+    "value": "1 x 24",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.842789",
+    "field": "pack_size",
+    "value": "1 x 35",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.842803",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.842818",
+    "field": "pack_size",
+    "value": "48 x 4",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.842833",
+    "field": "pack_size",
+    "value": "1 x 50",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.842848",
+    "field": "pack_size",
+    "value": "1 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.842863",
+    "field": "pack_size",
+    "value": "4 x 4",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.842877",
+    "field": "pack_size",
+    "value": "1 x 3",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.842891",
+    "field": "pack_size",
+    "value": "1 x 3",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.842905",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.842920",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.842934",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.842949",
+    "field": "pack_size",
+    "value": "1 x 8",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.842964",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.842979",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.842995",
+    "field": "pack_size",
+    "value": "12 x 2",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843010",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843025",
+    "field": "pack_size",
+    "value": "10 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843039",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843054",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843069",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843084",
+    "field": "pack_size",
+    "value": "8 x 24",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843098",
+    "field": "pack_size",
+    "value": "4 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843113",
+    "field": "pack_size",
+    "value": "4 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843127",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843144",
+    "field": "pack_size",
+    "value": "6 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843159",
+    "field": "pack_size",
+    "value": "24 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843174",
+    "field": "pack_size",
+    "value": "24 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843189",
+    "field": "pack_size",
+    "value": "24 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843204",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843218",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843233",
+    "field": "pack_size",
+    "value": "18 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843248",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843263",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843277",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843292",
+    "field": "pack_size",
+    "value": "1 x 6",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843307",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843333",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843349",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843365",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843438",
+    "field": "pack_size",
+    "value": "1 x 4.4",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843453",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843468",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843482",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843497",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843511",
+    "field": "pack_size",
+    "value": "6 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843526",
+    "field": "pack_size",
+    "value": "1 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843540",
+    "field": "pack_size",
+    "value": "1 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843554",
+    "field": "pack_size",
+    "value": "4 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843569",
+    "field": "pack_size",
+    "value": "24 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843584",
+    "field": "pack_size",
+    "value": "24 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843598",
+    "field": "pack_size",
+    "value": "24 x 500",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843612",
+    "field": "pack_size",
+    "value": "24 x 500",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843627",
+    "field": "pack_size",
+    "value": "24 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843641",
+    "field": "pack_size",
+    "value": "4 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843656",
+    "field": "pack_size",
+    "value": "12 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843671",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843685",
+    "field": "pack_size",
+    "value": "12 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843700",
+    "field": "pack_size",
+    "value": "4 x 2.5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843714",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843729",
+    "field": "pack_size",
+    "value": "4 x 128",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843743",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843758",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843772",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843787",
+    "field": "pack_size",
+    "value": "24 x 12.5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843801",
+    "field": "pack_size",
+    "value": "24 x 12",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843816",
+    "field": "pack_size",
+    "value": "24 x 12.5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843830",
+    "field": "pack_size",
+    "value": "24 x 12.5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843844",
+    "field": "pack_size",
+    "value": "24 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843859",
+    "field": "pack_size",
+    "value": "12 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843873",
+    "field": "pack_size",
+    "value": "24 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843888",
+    "field": "pack_size",
+    "value": "7 x 32",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843902",
+    "field": "pack_size",
+    "value": "12 x 32",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843916",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843931",
+    "field": "pack_size",
+    "value": "1 x 180",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843946",
+    "field": "pack_size",
+    "value": "1 x 15",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843960",
+    "field": "pack_size",
+    "value": "12 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.843987",
+    "field": "pack_size",
+    "value": "6 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844002",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844017",
+    "field": "pack_size",
+    "value": "24 x 16",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844032",
+    "field": "pack_size",
+    "value": "24 x 16",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844046",
+    "field": "pack_size",
+    "value": "24 x 500",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844061",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844075",
+    "field": "pack_size",
+    "value": "1 x 10",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844093",
+    "field": "pack_size",
+    "value": "1 x 10",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844106",
+    "field": "pack_size",
+    "value": "1 x 25",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844121",
+    "field": "pack_size",
+    "value": "1 x 25",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844135",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844150",
+    "field": "pack_size",
+    "value": "24 x 16",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844164",
+    "field": "pack_size",
+    "value": "6 x 4.5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844179",
+    "field": "pack_size",
+    "value": "32 x 2",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844193",
+    "field": "pack_size",
+    "value": "1 x 4.8",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844208",
+    "field": "pack_size",
+    "value": "1 x 0.5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844222",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844237",
+    "field": "pack_size",
+    "value": "1 x 8",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844252",
+    "field": "pack_size",
+    "value": "1 x 24",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844266",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844281",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844296",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844311",
+    "field": "pack_size",
+    "value": "12 x 3",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844326",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844340",
+    "field": "pack_size",
+    "value": "6 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844356",
+    "field": "pack_size",
+    "value": "18 x 3",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844370",
+    "field": "pack_size",
+    "value": "1 x 10",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844384",
+    "field": "pack_size",
+    "value": "24 x 12",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844399",
+    "field": "pack_size",
+    "value": "24 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844413",
+    "field": "pack_size",
+    "value": "24 x 12.5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844427",
+    "field": "pack_size",
+    "value": "24 x 12.5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844441",
+    "field": "pack_size",
+    "value": "24 x 12.5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844456",
+    "field": "pack_size",
+    "value": "24 x 12.5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844470",
+    "field": "pack_size",
+    "value": "24 x 16",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844485",
+    "field": "pack_size",
+    "value": "24 x 500",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844499",
+    "field": "pack_size",
+    "value": "1 x 50",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844514",
+    "field": "pack_size",
+    "value": "1 x 50",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844528",
+    "field": "pack_size",
+    "value": "1000 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844542",
+    "field": "pack_size",
+    "value": "1000 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844556",
+    "field": "pack_size",
+    "value": "1 x 500",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844581",
+    "field": "pack_size",
+    "value": "1 x 50",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844596",
+    "field": "pack_size",
+    "value": "1 x 50",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844610",
+    "field": "pack_size",
+    "value": "8 x 55",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844624",
+    "field": "pack_size",
+    "value": "1 x 0.5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844639",
+    "field": "pack_size",
+    "value": "1 x 18",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844653",
+    "field": "pack_size",
+    "value": "1 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844667",
+    "field": "pack_size",
+    "value": "1 x 100",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844681",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844696",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844710",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844725",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844739",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844753",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844768",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844782",
+    "field": "pack_size",
+    "value": "1 x 168",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844796",
+    "field": "pack_size",
+    "value": "24 x 335",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844810",
+    "field": "pack_size",
+    "value": "4 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844825",
+    "field": "pack_size",
+    "value": "4 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844839",
+    "field": "pack_size",
+    "value": "4 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844853",
+    "field": "pack_size",
+    "value": "4 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844868",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844882",
+    "field": "pack_size",
+    "value": "18 x 3.2",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844896",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844911",
+    "field": "pack_size",
+    "value": "32 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844925",
+    "field": "pack_size",
+    "value": "32 x 0.5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844939",
+    "field": "pack_size",
+    "value": "1 x 35",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844953",
+    "field": "pack_size",
+    "value": "1 x 35",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844967",
+    "field": "pack_size",
+    "value": "1 x 8.5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844981",
+    "field": "pack_size",
+    "value": "4 x 2",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.844996",
+    "field": "pack_size",
+    "value": "1 x 50",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845010",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845024",
+    "field": "pack_size",
+    "value": "2 x 10",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845038",
+    "field": "pack_size",
+    "value": "2 x 10",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845052",
+    "field": "pack_size",
+    "value": "1 x 10",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845066",
+    "field": "pack_size",
+    "value": "1 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845080",
+    "field": "pack_size",
+    "value": "1 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845095",
+    "field": "pack_size",
+    "value": "1 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845109",
+    "field": "pack_size",
+    "value": "5 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845122",
+    "field": "pack_size",
+    "value": "1 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845135",
+    "field": "pack_size",
+    "value": "1 x 2.5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845159",
+    "field": "pack_size",
+    "value": "4 x 2.5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845174",
+    "field": "pack_size",
+    "value": "4 x 2.5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845187",
+    "field": "pack_size",
+    "value": "1 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845201",
+    "field": "pack_size",
+    "value": "1 x 0.5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845215",
+    "field": "pack_size",
+    "value": "1 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845229",
+    "field": "pack_size",
+    "value": "1 x 24",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845242",
+    "field": "pack_size",
+    "value": "1 x 24",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845257",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845271",
+    "field": "pack_size",
+    "value": "1 x 2.5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845285",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845299",
+    "field": "pack_size",
+    "value": "1 x 4",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845313",
+    "field": "pack_size",
+    "value": "1 x 8",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845327",
+    "field": "pack_size",
+    "value": "3 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845342",
+    "field": "pack_size",
+    "value": "1 x 8",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845356",
+    "field": "pack_size",
+    "value": "1 x 28",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845370",
+    "field": "pack_size",
+    "value": "1 x 10",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845385",
+    "field": "pack_size",
+    "value": "1 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845399",
+    "field": "pack_size",
+    "value": "1 x 4",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845413",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845427",
+    "field": "pack_size",
+    "value": "35 x 500",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845442",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845456",
+    "field": "pack_size",
+    "value": "1 x 25",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845470",
+    "field": "pack_size",
+    "value": "1 x 27.4",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845484",
+    "field": "pack_size",
+    "value": "6 x 27.4",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845498",
+    "field": "pack_size",
+    "value": "4 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845513",
+    "field": "pack_size",
+    "value": "1 x 8",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845527",
+    "field": "pack_size",
+    "value": "9 x 3",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845542",
+    "field": "pack_size",
+    "value": "3 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845556",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845570",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845585",
+    "field": "pack_size",
+    "value": "1 x 136",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845599",
+    "field": "pack_size",
+    "value": "4 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845613",
+    "field": "pack_size",
+    "value": "1 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845628",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845642",
+    "field": "pack_size",
+    "value": "1 x 50",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845656",
+    "field": "pack_size",
+    "value": "1 x 50",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845670",
+    "field": "pack_size",
+    "value": "1 x 35",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845685",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845699",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845713",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845738",
+    "field": "pack_size",
+    "value": "1 x 2",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845753",
+    "field": "pack_size",
+    "value": "1 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845767",
+    "field": "pack_size",
+    "value": "1 x 25",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845781",
+    "field": "pack_size",
+    "value": "24 x 500",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845795",
+    "field": "pack_size",
+    "value": "1 x 16",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845809",
+    "field": "pack_size",
+    "value": "1 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845823",
+    "field": "pack_size",
+    "value": "6 x 20",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845838",
+    "field": "pack_size",
+    "value": "1 x 13",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845852",
+    "field": "pack_size",
+    "value": "24 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845866",
+    "field": "pack_size",
+    "value": "1 x 25",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845881",
+    "field": "pack_size",
+    "value": "1 x 50",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845896",
+    "field": "pack_size",
+    "value": "1 x 25",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845910",
+    "field": "pack_size",
+    "value": "1 x 25",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845925",
+    "field": "pack_size",
+    "value": "24 x 4",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845939",
+    "field": "pack_size",
+    "value": "1 x 8",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845953",
+    "field": "pack_size",
+    "value": "24 x 16",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845967",
+    "field": "pack_size",
+    "value": "24 x 12",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845982",
+    "field": "pack_size",
+    "value": "24 x 20",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.845996",
+    "field": "pack_size",
+    "value": "24 x 12",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.846010",
+    "field": "pack_size",
+    "value": "12 x 3",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.846024",
+    "field": "pack_size",
+    "value": "24 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.846038",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.846053",
+    "field": "pack_size",
+    "value": "2 x 5",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.846067",
+    "field": "pack_size",
+    "value": "1 x 128",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.846081",
+    "field": "pack_size",
+    "value": "6 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.846096",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.846110",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.846124",
+    "field": "pack_size",
+    "value": "4 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.846138",
+    "field": "pack_size",
+    "value": "24 x 16.9",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.846154",
+    "field": "pack_size",
+    "value": "24 x 12",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.846168",
+    "field": "pack_size",
+    "value": "24 x 1",
+    "error": "Pack size missing unit"
+  },
+  {
+    "timestamp": "2025-07-06T09:01:24.846183",
+    "field": "pack_size",
+    "value": "1 x 1",
+    "error": "Pack size missing unit"
+  }
+]
