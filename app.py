@@ -1439,6 +1439,119 @@ def vendor_detail(vendor_id):
     template_name = 'vendor_detail.html' if theme == 'modern' else f'vendor_detail_{theme}.html'
     return render_template(template_name, vendor=vendor, products=products)
 
+# Menu Management Routes
+@app.route('/menus')
+def menus():
+    """List all menus"""
+    with get_db() as conn:
+        menus = conn.execute('''
+            SELECT m.*, 
+                   COUNT(DISTINCT mmi.menu_item_id) as item_count
+            FROM menus m
+            LEFT JOIN menu_menu_items mmi ON m.id = mmi.menu_id
+            GROUP BY m.id
+            ORDER BY m.sort_order, m.menu_name
+        ''').fetchall()
+    
+    theme = get_theme()
+    return render_template(f'menus_{theme}.html', menus=menus)
+
+@app.route('/menus/create', methods=['GET', 'POST'])
+def create_menu():
+    """Create a new menu"""
+    if request.method == 'POST':
+        with get_db() as conn:
+            cursor = conn.cursor()
+            cursor.execute('''
+                INSERT INTO menus (menu_name, description, is_active)
+                VALUES (?, ?, ?)
+            ''', (
+                request.form['menu_name'],
+                request.form.get('description', ''),
+                1 if request.form.get('is_active') else 0
+            ))
+            return redirect(url_for('menus'))
+    
+    theme = get_theme()
+    return render_template(f'create_menu_{theme}.html')
+
+@app.route('/menus/<int:menu_id>/edit', methods=['GET', 'POST'])
+def edit_menu(menu_id):
+    """Edit menu details and manage items"""
+    if request.method == 'POST':
+        with get_db() as conn:
+            cursor = conn.cursor()
+            
+            # Update menu details
+            cursor.execute('''
+                UPDATE menus 
+                SET menu_name = ?, description = ?, is_active = ?, updated_at = CURRENT_TIMESTAMP
+                WHERE id = ?
+            ''', (
+                request.form['menu_name'],
+                request.form.get('description', ''),
+                1 if request.form.get('is_active') else 0,
+                menu_id
+            ))
+            
+            return redirect(url_for('edit_menu', menu_id=menu_id))
+    
+    with get_db() as conn:
+        # Get menu details
+        menu = conn.execute('SELECT * FROM menus WHERE id = ?', (menu_id,)).fetchone()
+        
+        # Get all menu items with assignment status
+        menu_items = conn.execute('''
+            SELECT mi.*, 
+                   r.recipe_name,
+                   r.food_cost,
+                   r.food_cost_percentage,
+                   CASE WHEN mmi.menu_id IS NOT NULL THEN 1 ELSE 0 END as is_assigned,
+                   mmi.category,
+                   mmi.sort_order as item_sort_order,
+                   mmi.override_price
+            FROM menu_items mi
+            LEFT JOIN recipes r ON mi.recipe_id = r.id
+            LEFT JOIN menu_menu_items mmi ON mi.id = mmi.menu_item_id AND mmi.menu_id = ?
+            ORDER BY mmi.category, mmi.sort_order, mi.item_name
+        ''', (menu_id,)).fetchall()
+        
+        # Get categories
+        categories = conn.execute('''
+            SELECT * FROM menu_categories 
+            WHERE menu_id = ? 
+            ORDER BY sort_order
+        ''', (menu_id,)).fetchall()
+    
+    theme = get_theme()
+    return render_template(f'edit_menu_{theme}.html', 
+                         menu=menu, 
+                         menu_items=menu_items,
+                         categories=categories)
+
+@app.route('/menus/<int:menu_id>/items/toggle', methods=['POST'])
+def toggle_menu_item(menu_id):
+    """Add or remove item from menu"""
+    menu_item_id = request.form.get('menu_item_id')
+    action = request.form.get('action')
+    
+    with get_db() as conn:
+        cursor = conn.cursor()
+        
+        if action == 'add':
+            cursor.execute('''
+                INSERT OR IGNORE INTO menu_menu_items 
+                (menu_id, menu_item_id, category, sort_order)
+                VALUES (?, ?, ?, 0)
+            ''', (menu_id, menu_item_id, request.form.get('category', 'Uncategorized')))
+        else:
+            cursor.execute('''
+                DELETE FROM menu_menu_items 
+                WHERE menu_id = ? AND menu_item_id = ?
+            ''', (menu_id, menu_item_id))
+    
+    return redirect(url_for('edit_menu', menu_id=menu_id))
+
 # Error handlers for production
 @app.errorhandler(404)
 def not_found(error):

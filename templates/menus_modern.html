@@ -1,0 +1,122 @@
+{% extends "base_modern.html" %}
+{% block title %}Menu Management{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="content-header">
+        <h1>Menu Management</h1>
+        <a href="{{ url_for('create_menu') }}" class="btn btn-modern">
+            <i class="fas fa-plus"></i> Create New Menu
+        </a>
+    </div>
+
+    <div class="info-cards">
+        <div class="info-card">
+            <h3>{{ menus|length }}</h3>
+            <p>Total Menus</p>
+        </div>
+        <div class="info-card">
+            <h3>{{ menus|selectattr('is_active')|list|length }}</h3>
+            <p>Active Menus</p>
+        </div>
+        <div class="info-card">
+            <h3>{{ menus|sum(attribute='item_count') }}</h3>
+            <p>Total Assignments</p>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table class="table table-striped" id="menusTable">
+            <thead>
+                <tr>
+                    <th>Menu Name</th>
+                    <th>Description</th>
+                    <th>Items</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for menu in menus %}
+                <tr>
+                    <td>
+                        <strong>{{ menu.menu_name }}</strong>
+                    </td>
+                    <td>{{ menu.description or '-' }}</td>
+                    <td>
+                        <span class="badge badge-info">{{ menu.item_count }} items</span>
+                    </td>
+                    <td>
+                        {% if menu.is_active %}
+                            <span class="badge badge-success">Active</span>
+                        {% else %}
+                            <span class="badge badge-secondary">Inactive</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{{ url_for('edit_menu', menu_id=menu.id) }}" 
+                           class="btn btn-sm btn-modern">
+                            <i class="fas fa-edit"></i> Edit & Manage Items
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.info-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.info-card {
+    background: var(--gradient-primary);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.info-card h3 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.info-card p {
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+}
+
+.badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.875rem;
+}
+
+.badge-info {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.badge-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.badge-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+</style>
+{% endblock %}
