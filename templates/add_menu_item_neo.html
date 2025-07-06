@@ -1,0 +1,369 @@
+{% extends "base_neo.html" %}
+
+{% block title %}Add Recipe to Menu - Lea Jane's Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in max-w-4xl mx-auto">
+    <!-- Page Header -->
+    <div class="neo-header">
+        <h1 class="neo-title">Add Recipe to Menu</h1>
+        <p class="neo-subtitle">Select a recipe and add it to one or more menus</p>
+    </div>
+
+    <form method="POST" class="neo-form">
+        <!-- Recipe Selection -->
+        <div class="neo-card neo-glow">
+            <div class="neo-card-header">
+                <h3 class="neo-card-title">1. Select Recipe</h3>
+            </div>
+            <div class="neo-card-body">
+                <div class="neo-form-group">
+                    <label for="recipe_id" class="neo-label">Recipe</label>
+                    <select id="recipe_id" name="recipe_id" class="neo-select" required onchange="updateRecipeInfo()">
+                        <option value="">Choose a recipe...</option>
+                        {% for recipe in recipes %}
+                        <option value="{{ recipe.id }}" 
+                                data-cost="{{ recipe.food_cost or 0 }}"
+                                data-group="{{ recipe.recipe_group or 'Uncategorized' }}">
+                            {{ recipe.recipe_name }} 
+                            (Cost: ${{ "%.2f"|format(recipe.food_cost or 0) }})
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div id="recipe-info" class="neo-info-box" style="display: none;">
+                    <div class="neo-info-grid">
+                        <div>
+                            <span class="neo-info-label">Food Cost</span>
+                            <span class="neo-info-value" id="food-cost">$0.00</span>
+                        </div>
+                        <div>
+                            <span class="neo-info-label">Suggested Price (28% FC)</span>
+                            <span class="neo-info-value" id="suggested-price">$0.00</span>
+                        </div>
+                        <div>
+                            <span class="neo-info-label">Recipe Group</span>
+                            <span class="neo-info-value" id="recipe-group">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing & Details -->
+        <div class="neo-card neo-glow">
+            <div class="neo-card-header">
+                <h3 class="neo-card-title">2. Set Pricing & Details</h3>
+            </div>
+            <div class="neo-card-body">
+                <div class="neo-form-row">
+                    <div class="neo-form-group">
+                        <label for="menu_price" class="neo-label">Menu Price</label>
+                        <div class="neo-input-group">
+                            <span class="neo-input-prefix">$</span>
+                            <input type="number" 
+                                   id="menu_price" 
+                                   name="menu_price" 
+                                   class="neo-input" 
+                                   step="0.01" 
+                                   min="0" 
+                                   required
+                                   onchange="calculateMargins()">
+                        </div>
+                    </div>
+                    
+                    <div class="neo-form-group">
+                        <label for="menu_group" class="neo-label">Menu Category</label>
+                        <select id="menu_group" name="menu_group" class="neo-select" required>
+                            <option value="">Select category...</option>
+                            <option value="Appetizers">Appetizers</option>
+                            <option value="Salads">Salads</option>
+                            <option value="Sandwiches">Sandwiches</option>
+                            <option value="Entrees">Entrees</option>
+                            <option value="Sides">Sides</option>
+                            <option value="Desserts">Desserts</option>
+                            <option value="Beverages">Beverages</option>
+                            <option value="Specials">Specials</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="neo-form-row">
+                    <div class="neo-form-group">
+                        <label for="serving_size" class="neo-label">Serving Size</label>
+                        <input type="text" 
+                               id="serving_size" 
+                               name="serving_size" 
+                               class="neo-input" 
+                               placeholder="e.g., 8 oz, 1 plate, 2 pieces">
+                    </div>
+                    
+                    <div class="neo-form-group">
+                        <label for="item_description" class="neo-label">Menu Description</label>
+                        <textarea id="item_description" 
+                                  name="item_description" 
+                                  class="neo-textarea" 
+                                  rows="2"
+                                  placeholder="Brief description for the menu"></textarea>
+                    </div>
+                </div>
+                
+                <!-- Margin Calculator -->
+                <div id="margin-info" class="neo-info-box neo-info-highlight" style="display: none;">
+                    <h4 class="neo-info-title">Profit Margins</h4>
+                    <div class="neo-info-grid">
+                        <div>
+                            <span class="neo-info-label">Food Cost %</span>
+                            <span class="neo-info-value" id="fc-percent">0%</span>
+                        </div>
+                        <div>
+                            <span class="neo-info-label">Gross Profit</span>
+                            <span class="neo-info-value" id="gross-profit">$0.00</span>
+                        </div>
+                        <div>
+                            <span class="neo-info-label">Markup</span>
+                            <span class="neo-info-value" id="markup">0x</span>
+                        </div>
+                        <div>
+                            <span class="neo-info-label">Target Status</span>
+                            <span class="neo-info-value" id="target-status">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Selection -->
+        <div class="neo-card neo-glow">
+            <div class="neo-card-header">
+                <h3 class="neo-card-title">3. Add to Menu(s)</h3>
+            </div>
+            <div class="neo-card-body">
+                <p class="neo-text-secondary mb-4">Select which menus should include this item</p>
+                
+                <div class="neo-checkbox-list">
+                    {% for version in menu_versions %}
+                    <label class="neo-checkbox-item">
+                        <input type="checkbox" 
+                               name="version_ids" 
+                               value="{{ version.id }}" 
+                               {% if version.id == 0 %}checked{% endif %}>
+                        <div class="neo-checkbox-content">
+                            <span class="neo-checkbox-title">{{ version.version_name }}</span>
+                            {% if version.is_active %}
+                            <span class="neo-badge neo-badge-cyan">Active</span>
+                            {% endif %}
+                            {% if version.id == 0 %}
+                            <span class="neo-badge neo-badge-pink">Master</span>
+                            {% endif %}
+                            {% if version.description %}
+                            <p class="neo-checkbox-description">{{ version.description }}</p>
+                            {% endif %}
+                        </div>
+                    </label>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex gap-4 justify-center mt-8">
+            <a href="/menu" class="neo-btn neo-btn-outline">Cancel</a>
+            <button type="submit" class="neo-btn neo-btn-primary neo-glow">
+                Add to Selected Menus
+            </button>
+        </div>
+    </form>
+</div>
+
+<style>
+.neo-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.neo-input-group {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.neo-input-prefix {
+    position: absolute;
+    left: 1rem;
+    color: var(--neo-text-muted);
+}
+
+.neo-input-group .neo-input {
+    padding-left: 2rem;
+}
+
+.neo-info-box {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.neo-info-highlight {
+    background: rgba(0, 245, 255, 0.05);
+    border-color: var(--neo-cyan);
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
+}
+
+.neo-info-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--neo-cyan);
+    text-shadow: 0 0 10px var(--neo-cyan);
+}
+
+.neo-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+}
+
+.neo-info-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--neo-text-muted);
+    margin-bottom: 0.25rem;
+}
+
+.neo-info-value {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--neo-cyan);
+    text-shadow: 0 0 10px var(--neo-cyan);
+}
+
+.neo-checkbox-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.neo-checkbox-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.neo-checkbox-item:hover {
+    border-color: var(--neo-cyan);
+    background: rgba(0, 245, 255, 0.05);
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
+}
+
+.neo-checkbox-item input[type="checkbox"] {
+    margin-right: 1rem;
+    margin-top: 0.25rem;
+    accent-color: var(--neo-cyan);
+}
+
+.neo-checkbox-content {
+    flex: 1;
+}
+
+.neo-checkbox-title {
+    font-weight: 500;
+    color: var(--neo-text);
+}
+
+.neo-checkbox-description {
+    font-size: 0.875rem;
+    color: var(--neo-text-muted);
+    margin-top: 0.25rem;
+}
+
+@media (max-width: 768px) {
+    .neo-form-row {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<script>
+function updateRecipeInfo() {
+    const select = document.getElementById('recipe_id');
+    const option = select.options[select.selectedIndex];
+    
+    if (option.value) {
+        const cost = parseFloat(option.dataset.cost) || 0;
+        const suggestedPrice = cost * 3.5; // 28.5% food cost
+        
+        document.getElementById('food-cost').textContent = '$' + cost.toFixed(2);
+        document.getElementById('suggested-price').textContent = '$' + suggestedPrice.toFixed(2);
+        document.getElementById('recipe-group').textContent = option.dataset.group;
+        document.getElementById('menu_price').value = suggestedPrice.toFixed(2);
+        document.getElementById('menu_group').value = option.dataset.group;
+        
+        document.getElementById('recipe-info').style.display = 'block';
+        calculateMargins();
+    } else {
+        document.getElementById('recipe-info').style.display = 'none';
+        document.getElementById('margin-info').style.display = 'none';
+    }
+}
+
+function calculateMargins() {
+    const price = parseFloat(document.getElementById('menu_price').value) || 0;
+    const select = document.getElementById('recipe_id');
+    const option = select.options[select.selectedIndex];
+    
+    if (option.value && price > 0) {
+        const cost = parseFloat(option.dataset.cost) || 0;
+        const fcPercent = (cost / price * 100);
+        const grossProfit = price - cost;
+        const markup = price / cost;
+        
+        document.getElementById('fc-percent').textContent = fcPercent.toFixed(1) + '%';
+        document.getElementById('gross-profit').textContent = '$' + grossProfit.toFixed(2);
+        document.getElementById('markup').textContent = markup.toFixed(1) + 'x';
+        
+        // Target status
+        let status = '';
+        let statusClass = '';
+        if (fcPercent <= 25) {
+            status = 'Excellent';
+            statusClass = 'excellent';
+        } else if (fcPercent <= 30) {
+            status = 'Good';
+            statusClass = 'good';
+        } else if (fcPercent <= 35) {
+            status = 'Fair';
+            statusClass = 'fair';
+        } else {
+            status = 'High';
+            statusClass = 'high';
+        }
+        
+        const statusEl = document.getElementById('target-status');
+        statusEl.textContent = status;
+        statusEl.className = 'neo-info-value status-' + statusClass;
+        
+        document.getElementById('margin-info').style.display = 'block';
+    } else {
+        document.getElementById('margin-info').style.display = 'none';
+    }
+}
+</script>
+
+<style>
+.status-excellent { color: #00ff00 !important; text-shadow: 0 0 10px #00ff00 !important; }
+.status-good { color: var(--neo-cyan) !important; }
+.status-fair { color: #ffff00 !important; text-shadow: 0 0 10px #ffff00 !important; }
+.status-high { color: var(--neo-pink) !important; text-shadow: 0 0 10px var(--neo-pink) !important; }
+</style>
+{% endblock %}

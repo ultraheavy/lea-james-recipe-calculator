@@ -1,0 +1,115 @@
+{% extends "base_fam.html" %}
+
+{% block title %}Menu Versions - Lea Jane's Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="fam-section">
+    <!-- Page Header -->
+    <div class="fam-header">
+        <h1 class="fam-title">Menu Versions</h1>
+        <p class="fam-subtitle">Manage your menu collections</p>
+    </div>
+
+    <!-- Actions -->
+    <div style="margin-bottom: 2rem;">
+        <a href="/menu/versions/add" class="fam-btn fam-btn-primary">
+            <span style="margin-right: 0.5rem;">+</span>
+            Create New Version
+        </a>
+    </div>
+
+    <!-- Menu Versions List -->
+    <div class="fam-grid">
+        {% for version in menu_versions %}
+        <div class="fam-card">
+            <div class="fam-card-header">
+                <h3 class="fam-card-title">{{ version.version_name }}</h3>
+                {% if version.is_active %}
+                <span class="fam-badge fam-badge-success">Active</span>
+                {% endif %}
+                {% if version.id == 0 %}
+                <span class="fam-badge" style="background: #666;">Master</span>
+                {% endif %}
+            </div>
+            
+            <div class="fam-card-body">
+                {% if version.description %}
+                <p class="fam-text-muted" style="margin-bottom: 1rem;">{{ version.description }}</p>
+                {% endif %}
+                
+                <div class="fam-stats">
+                    <div>
+                        <span class="fam-stat-value">{{ version.item_count or 0 }}</span>
+                        <span class="fam-stat-label">Items</span>
+                    </div>
+                    {% if version.effective_date %}
+                    <div>
+                        <span class="fam-stat-value">{{ version.effective_date }}</span>
+                        <span class="fam-stat-label">Effective</span>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="fam-card-footer">
+                <a href="/menu?version={{ version.id }}" class="fam-btn fam-btn-secondary fam-btn-sm">
+                    View Items
+                </a>
+                {% if version.id != 0 %}
+                <a href="/menu/versions/edit/{{ version.id }}" class="fam-btn fam-btn-outline fam-btn-sm">
+                    Edit
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <!-- Back Link -->
+    <div style="margin-top: 3rem; text-align: center;">
+        <a href="/menu" class="fam-link">← Back to Menu</a>
+    </div>
+</div>
+
+<style>
+.fam-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.fam-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.fam-stat-value {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--fam-mint);
+}
+
+.fam-stat-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #666;
+    margin-top: 0.25rem;
+}
+
+.fam-card-footer {
+    display: flex;
+    gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .fam-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{% endblock %}

@@ -1,0 +1,132 @@
+{% extends "base_neo.html" %}
+
+{% block title %}Menu Versions - Lea Jane's Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in">
+    <!-- Page Header -->
+    <div class="neo-header">
+        <h1 class="neo-title">Menu Versions</h1>
+        <p class="neo-subtitle">Manage your menu collections</p>
+    </div>
+
+    <!-- Actions -->
+    <div class="mb-6">
+        <a href="/menu/versions/add" class="neo-btn neo-btn-primary neo-glow">
+            <span class="mr-2">+</span>
+            Create New Version
+        </a>
+    </div>
+
+    <!-- Menu Versions Grid -->
+    <div class="neo-grid">
+        {% for version in menu_versions %}
+        <div class="neo-card neo-glow">
+            <div class="neo-card-header">
+                <h3 class="neo-card-title">{{ version.version_name }}</h3>
+                <div class="flex gap-2">
+                    {% if version.is_active %}
+                    <span class="neo-badge neo-badge-cyan">Active</span>
+                    {% endif %}
+                    {% if version.id == 0 %}
+                    <span class="neo-badge neo-badge-pink">Master</span>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="neo-card-body">
+                {% if version.description %}
+                <p class="neo-text-secondary mb-4">{{ version.description }}</p>
+                {% endif %}
+                
+                <div class="neo-stats">
+                    <div class="neo-stat">
+                        <span class="neo-stat-value">{{ version.item_count or 0 }}</span>
+                        <span class="neo-stat-label">Items</span>
+                    </div>
+                    {% if version.effective_date %}
+                    <div class="neo-stat">
+                        <span class="neo-stat-value" style="font-size: 0.875rem;">{{ version.effective_date }}</span>
+                        <span class="neo-stat-label">Effective</span>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="neo-card-footer">
+                <a href="/menu?version={{ version.id }}" class="neo-btn neo-btn-secondary neo-btn-sm">
+                    View Items
+                </a>
+                {% if version.id != 0 %}
+                <a href="/menu/versions/edit/{{ version.id }}" class="neo-btn neo-btn-outline neo-btn-sm">
+                    Edit
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <!-- Back Link -->
+    <div class="mt-12 text-center">
+        <a href="/menu" class="neo-link">
+            <span class="mr-2">←</span>
+            Back to Menu
+        </a>
+    </div>
+</div>
+
+<style>
+.neo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.neo-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.neo-stat {
+    flex: 1;
+}
+
+.neo-stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--neo-cyan);
+    text-shadow: 0 0 20px var(--neo-cyan);
+    margin-bottom: 0.25rem;
+}
+
+.neo-stat-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--neo-text-muted);
+}
+
+.neo-badge-pink {
+    background: var(--neo-pink);
+    color: var(--neo-bg);
+    text-shadow: none;
+}
+
+.neo-badge-cyan {
+    background: var(--neo-cyan);
+    color: var(--neo-bg);
+    text-shadow: none;
+}
+
+@media (max-width: 768px) {
+    .neo-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{% endblock %}

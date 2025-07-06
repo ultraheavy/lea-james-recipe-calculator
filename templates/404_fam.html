@@ -1,0 +1,60 @@
+{% extends "base_fam.html" %}
+
+{% block title %}Page Not Found - Lea Jane's Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="fam-error-container">
+    <div class="fam-error-content">
+        <div class="fam-error-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M9 9l6 6M15 9l-6 6"/>
+                <circle cx="12" cy="12" r="10"/>
+            </svg>
+        </div>
+        <h1 class="fam-error-title">Page not found</h1>
+        <p class="fam-error-message">The page you're looking for doesn't exist.</p>
+        <a href="/" class="fam-btn fam-btn-primary">
+            Go to Dashboard
+        </a>
+    </div>
+</div>
+
+<style>
+.fam-error-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+}
+
+.fam-error-content {
+    text-align: center;
+    max-width: 400px;
+}
+
+.fam-error-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 2rem;
+    border-radius: 50%;
+    background: rgba(77, 182, 172, 0.1);
+    color: var(--fam-mint);
+}
+
+.fam-error-title {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+}
+
+.fam-error-message {
+    font-size: 1.125rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+</style>
+{% endblock %}

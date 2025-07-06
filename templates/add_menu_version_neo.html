@@ -1,0 +1,127 @@
+{% extends "base_neo.html" %}
+
+{% block title %}Create Menu Version - Lea Jane's Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in max-w-2xl mx-auto">
+    <!-- Page Header -->
+    <div class="neo-header">
+        <h1 class="neo-title">Create Menu Version</h1>
+        <p class="neo-subtitle">Set up a new menu collection</p>
+    </div>
+
+    <form method="POST" class="neo-form">
+        <div class="neo-card neo-glow">
+            <div class="neo-card-body">
+                <div class="neo-form-group">
+                    <label for="version_name" class="neo-label">Menu Name</label>
+                    <input type="text" 
+                           id="version_name" 
+                           name="version_name" 
+                           class="neo-input" 
+                           placeholder="e.g., Summer 2024 Menu"
+                           required>
+                    <small class="neo-help-text">Choose a descriptive name for this menu version</small>
+                </div>
+                
+                <div class="neo-form-group">
+                    <label for="description" class="neo-label">Description</label>
+                    <textarea id="description" 
+                              name="description" 
+                              class="neo-textarea" 
+                              rows="3"
+                              placeholder="Brief description of this menu..."></textarea>
+                </div>
+                
+                <div class="neo-form-row">
+                    <div class="neo-form-group">
+                        <label for="effective_date" class="neo-label">Effective Date</label>
+                        <input type="date" 
+                               id="effective_date" 
+                               name="effective_date" 
+                               class="neo-input">
+                        <small class="neo-help-text">When does this menu go live?</small>
+                    </div>
+                    
+                    <div class="neo-form-group">
+                        <label class="neo-label">Status</label>
+                        <div class="neo-checkbox-group">
+                            <label class="neo-checkbox">
+                                <input type="checkbox" 
+                                       id="is_active" 
+                                       name="is_active">
+                                <span>Set as active menu</span>
+                            </label>
+                            <small class="neo-help-text">This will deactivate other menus</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="neo-form-group">
+                    <label for="notes" class="neo-label">Notes</label>
+                    <textarea id="notes" 
+                              name="notes" 
+                              class="neo-textarea" 
+                              rows="4"
+                              placeholder="Any additional notes..."></textarea>
+                </div>
+            </div>
+            
+            <div class="neo-card-footer">
+                <a href="/menu/versions" class="neo-btn neo-btn-outline">Cancel</a>
+                <button type="submit" class="neo-btn neo-btn-primary neo-glow">
+                    Create Menu Version
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<style>
+.neo-form {
+    margin-top: 2rem;
+}
+
+.neo-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.neo-checkbox-group {
+    margin-top: 0.5rem;
+}
+
+.neo-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: var(--neo-text);
+}
+
+.neo-checkbox input[type="checkbox"] {
+    margin-right: 0.5rem;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--neo-cyan);
+}
+
+.neo-checkbox span {
+    font-size: 0.875rem;
+}
+
+.neo-help-text {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--neo-text-muted);
+    margin-top: 0.25rem;
+}
+
+@media (max-width: 768px) {
+    .neo-form-row {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{% endblock %}

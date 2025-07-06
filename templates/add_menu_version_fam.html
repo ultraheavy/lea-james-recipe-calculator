@@ -1,0 +1,118 @@
+{% extends "base_fam.html" %}
+
+{% block title %}Create Menu Version - Lea Jane's Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="fam-section">
+    <!-- Page Header -->
+    <div class="fam-header">
+        <h1 class="fam-title">Create Menu Version</h1>
+        <p class="fam-subtitle">Set up a new menu collection</p>
+    </div>
+
+    <form method="POST" class="fam-form" style="max-width: 600px; margin: 0 auto;">
+        <div class="fam-card">
+            <div class="fam-card-body">
+                <div class="fam-form-group">
+                    <label for="version_name" class="fam-label">Menu Name</label>
+                    <input type="text" 
+                           id="version_name" 
+                           name="version_name" 
+                           class="fam-form-control" 
+                           placeholder="e.g., Summer 2024 Menu"
+                           required>
+                    <small class="fam-help-text">Choose a descriptive name for this menu version</small>
+                </div>
+                
+                <div class="fam-form-group">
+                    <label for="description" class="fam-label">Description</label>
+                    <textarea id="description" 
+                              name="description" 
+                              class="fam-form-control" 
+                              rows="3"
+                              placeholder="Brief description of this menu..."></textarea>
+                </div>
+                
+                <div class="fam-form-row">
+                    <div class="fam-form-group">
+                        <label for="effective_date" class="fam-label">Effective Date</label>
+                        <input type="date" 
+                               id="effective_date" 
+                               name="effective_date" 
+                               class="fam-form-control">
+                        <small class="fam-help-text">When does this menu go live?</small>
+                    </div>
+                    
+                    <div class="fam-form-group">
+                        <label class="fam-label">Status</label>
+                        <div class="fam-checkbox-group">
+                            <label class="fam-checkbox">
+                                <input type="checkbox" 
+                                       id="is_active" 
+                                       name="is_active">
+                                <span>Set as active menu</span>
+                            </label>
+                            <small class="fam-help-text">This will deactivate other menus</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fam-form-group">
+                    <label for="notes" class="fam-label">Notes</label>
+                    <textarea id="notes" 
+                              name="notes" 
+                              class="fam-form-control" 
+                              rows="4"
+                              placeholder="Any additional notes..."></textarea>
+                </div>
+            </div>
+            
+            <div class="fam-card-footer" style="display: flex; gap: 1rem; justify-content: flex-end;">
+                <a href="/menu/versions" class="fam-btn fam-btn-outline">Cancel</a>
+                <button type="submit" class="fam-btn fam-btn-primary">
+                    Create Menu Version
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<style>
+.fam-form {
+    margin-top: 2rem;
+}
+
+.fam-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.fam-checkbox-group {
+    margin-top: 0.5rem;
+}
+
+.fam-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.fam-checkbox input[type="checkbox"] {
+    margin-right: 0.5rem;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.fam-checkbox span {
+    font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+    .fam-form-row {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{% endblock %}

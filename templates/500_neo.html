@@ -1,0 +1,90 @@
+{% extends "base_neo.html" %}
+
+{% block title %}Server Error - Lea Jane's Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="neo-error-container">
+    <div class="neo-error-content animate-fade-in">
+        <div class="neo-error-icon neo-glow">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 8v4m0 4h.01"/>
+            </svg>
+        </div>
+        <h1 class="neo-error-title">500</h1>
+        <p class="neo-error-subtitle">System Malfunction</p>
+        <p class="neo-error-message">Critical error detected. Attempting to reconnect to the mainframe...</p>
+        <a href="/" class="neo-btn neo-btn-primary neo-glow">
+            <span class="mr-2">←</span>
+            Reboot Dashboard
+        </a>
+    </div>
+</div>
+
+<style>
+.neo-error-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+}
+
+.neo-error-content {
+    text-align: center;
+    max-width: 500px;
+}
+
+.neo-error-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 2rem;
+    border-radius: 50%;
+    background: rgba(0, 245, 255, 0.1);
+    border: 2px solid var(--neo-cyan);
+    color: var(--neo-cyan);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(0, 245, 255, 0.8);
+    }
+}
+
+.neo-error-icon svg {
+    filter: drop-shadow(0 0 20px var(--neo-cyan));
+}
+
+.neo-error-title {
+    font-size: 4rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--neo-cyan), var(--neo-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 40px var(--neo-cyan);
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+}
+
+.neo-error-subtitle {
+    font-size: 1.5rem;
+    color: var(--neo-pink);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 20px var(--neo-pink);
+}
+
+.neo-error-message {
+    font-size: 1rem;
+    color: var(--neo-text-muted);
+    margin-bottom: 2rem;
+}
+</style>
+{% endblock %}

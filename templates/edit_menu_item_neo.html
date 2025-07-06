@@ -1,0 +1,268 @@
+{% extends "base_neo.html" %}
+
+{% block title %}Edit Menu Item - Lea Jane's Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in max-w-4xl mx-auto">
+    <!-- Page Header -->
+    <div class="neo-header">
+        <h1 class="neo-title">Edit Menu Item</h1>
+        <p class="neo-subtitle">Update pricing and details for {{ item.item_name }}</p>
+    </div>
+
+    <form method="POST" class="neo-form">
+        <!-- Current Recipe Info -->
+        <div class="neo-card neo-glow">
+            <div class="neo-card-header">
+                <h3 class="neo-card-title">Recipe Information</h3>
+            </div>
+            <div class="neo-card-body">
+                <div class="neo-info-grid">
+                    <div>
+                        <span class="neo-info-label">Recipe</span>
+                        <span class="neo-info-value">{{ item.recipe_name }}</span>
+                    </div>
+                    <div>
+                        <span class="neo-info-label">Current Food Cost</span>
+                        <span class="neo-info-value">${{ "%.2f"|format(item.recipe_food_cost or 0) }}</span>
+                    </div>
+                    <div>
+                        <span class="neo-info-label">Recipe Group</span>
+                        <span class="neo-info-value">{{ item.recipe_group or 'Uncategorized' }}</span>
+                    </div>
+                    <div>
+                        <span class="neo-info-label">Menu Version</span>
+                        <span class="neo-info-value">{{ item.version_name }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing & Details -->
+        <div class="neo-card neo-glow">
+            <div class="neo-card-header">
+                <h3 class="neo-card-title">Pricing & Details</h3>
+            </div>
+            <div class="neo-card-body">
+                <div class="neo-form-row">
+                    <div class="neo-form-group">
+                        <label for="menu_price" class="neo-label">Menu Price</label>
+                        <div class="neo-input-group">
+                            <span class="neo-input-prefix">$</span>
+                            <input type="number" 
+                                   id="menu_price" 
+                                   name="menu_price" 
+                                   class="neo-input" 
+                                   step="0.01" 
+                                   min="0" 
+                                   value="{{ item.menu_price }}"
+                                   required
+                                   onchange="calculateMargins()">
+                        </div>
+                    </div>
+                    
+                    <div class="neo-form-group">
+                        <label for="menu_group" class="neo-label">Menu Category</label>
+                        <select id="menu_group" name="menu_group" class="neo-select" required>
+                            <option value="">Select category...</option>
+                            <option value="Appetizers" {% if item.menu_group == 'Appetizers' %}selected{% endif %}>Appetizers</option>
+                            <option value="Salads" {% if item.menu_group == 'Salads' %}selected{% endif %}>Salads</option>
+                            <option value="Sandwiches" {% if item.menu_group == 'Sandwiches' %}selected{% endif %}>Sandwiches</option>
+                            <option value="Entrees" {% if item.menu_group == 'Entrees' %}selected{% endif %}>Entrees</option>
+                            <option value="Sides" {% if item.menu_group == 'Sides' %}selected{% endif %}>Sides</option>
+                            <option value="Desserts" {% if item.menu_group == 'Desserts' %}selected{% endif %}>Desserts</option>
+                            <option value="Beverages" {% if item.menu_group == 'Beverages' %}selected{% endif %}>Beverages</option>
+                            <option value="Specials" {% if item.menu_group == 'Specials' %}selected{% endif %}>Specials</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="neo-form-row">
+                    <div class="neo-form-group">
+                        <label for="serving_size" class="neo-label">Serving Size</label>
+                        <input type="text" 
+                               id="serving_size" 
+                               name="serving_size" 
+                               class="neo-input" 
+                               value="{{ item.serving_size or '' }}"
+                               placeholder="e.g., 8 oz, 1 plate, 2 pieces">
+                    </div>
+                    
+                    <div class="neo-form-group">
+                        <label for="status" class="neo-label">Status</label>
+                        <select id="status" name="status" class="neo-select">
+                            <option value="Active" {% if item.status == 'Active' %}selected{% endif %}>Active</option>
+                            <option value="Inactive" {% if item.status == 'Inactive' %}selected{% endif %}>Inactive</option>
+                            <option value="Seasonal" {% if item.status == 'Seasonal' %}selected{% endif %}>Seasonal</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="neo-form-group">
+                    <label for="item_description" class="neo-label">Menu Description</label>
+                    <textarea id="item_description" 
+                              name="item_description" 
+                              class="neo-textarea" 
+                              rows="3"
+                              placeholder="Brief description for the menu">{{ item.item_description or '' }}</textarea>
+                </div>
+                
+                <!-- Margin Calculator -->
+                <div id="margin-info" class="neo-info-box neo-info-highlight">
+                    <h4 class="neo-info-title">Profit Margins</h4>
+                    <div class="neo-info-grid">
+                        <div>
+                            <span class="neo-info-label">Food Cost %</span>
+                            <span class="neo-info-value" id="fc-percent">0%</span>
+                        </div>
+                        <div>
+                            <span class="neo-info-label">Gross Profit</span>
+                            <span class="neo-info-value" id="gross-profit">$0.00</span>
+                        </div>
+                        <div>
+                            <span class="neo-info-label">Markup</span>
+                            <span class="neo-info-value" id="markup">0x</span>
+                        </div>
+                        <div>
+                            <span class="neo-info-label">Target Status</span>
+                            <span class="neo-info-value" id="target-status">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex gap-4 justify-center mt-8">
+            <a href="/menu?version_id={{ item.version_id }}" class="neo-btn neo-btn-outline">Cancel</a>
+            <button type="submit" class="neo-btn neo-btn-primary neo-glow">
+                Save Changes
+            </button>
+        </div>
+    </form>
+</div>
+
+<style>
+.neo-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.neo-input-group {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.neo-input-prefix {
+    position: absolute;
+    left: 1rem;
+    color: var(--neo-text-muted);
+}
+
+.neo-input-group .neo-input {
+    padding-left: 2rem;
+}
+
+.neo-info-box {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.neo-info-highlight {
+    background: rgba(0, 245, 255, 0.05);
+    border-color: var(--neo-cyan);
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
+}
+
+.neo-info-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--neo-cyan);
+    text-shadow: 0 0 10px var(--neo-cyan);
+}
+
+.neo-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+}
+
+.neo-info-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--neo-text-muted);
+    margin-bottom: 0.25rem;
+}
+
+.neo-info-value {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--neo-cyan);
+    text-shadow: 0 0 10px var(--neo-cyan);
+}
+
+@media (max-width: 768px) {
+    .neo-form-row {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<script>
+const foodCost = {{ item.recipe_food_cost or 0 }};
+
+function calculateMargins() {
+    const price = parseFloat(document.getElementById('menu_price').value) || 0;
+    
+    if (price > 0) {
+        const fcPercent = (foodCost / price * 100);
+        const grossProfit = price - foodCost;
+        const markup = price / foodCost;
+        
+        document.getElementById('fc-percent').textContent = fcPercent.toFixed(1) + '%';
+        document.getElementById('gross-profit').textContent = '$' + grossProfit.toFixed(2);
+        document.getElementById('markup').textContent = markup.toFixed(1) + 'x';
+        
+        // Target status
+        let status = '';
+        let statusClass = '';
+        if (fcPercent <= 25) {
+            status = 'Excellent';
+            statusClass = 'excellent';
+        } else if (fcPercent <= 30) {
+            status = 'Good';
+            statusClass = 'good';
+        } else if (fcPercent <= 35) {
+            status = 'Fair';
+            statusClass = 'fair';
+        } else {
+            status = 'High';
+            statusClass = 'high';
+        }
+        
+        const statusEl = document.getElementById('target-status');
+        statusEl.textContent = status;
+        statusEl.className = 'neo-info-value status-' + statusClass;
+    }
+}
+
+// Calculate on load
+document.addEventListener('DOMContentLoaded', function() {
+    calculateMargins();
+});
+</script>
+
+<style>
+.status-excellent { color: #00ff00 !important; text-shadow: 0 0 10px #00ff00 !important; }
+.status-good { color: var(--neo-cyan) !important; }
+.status-fair { color: #ffff00 !important; text-shadow: 0 0 10px #ffff00 !important; }
+.status-high { color: var(--neo-pink) !important; text-shadow: 0 0 10px var(--neo-pink) !important; }
+</style>
+{% endblock %}

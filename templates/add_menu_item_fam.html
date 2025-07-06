@@ -1,0 +1,361 @@
+{% extends "base_fam.html" %}
+
+{% block title %}Add Recipe to Menu - Lea Jane's Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="fam-section">
+    <!-- Page Header -->
+    <div class="fam-header">
+        <h1 class="fam-title">Add Recipe to Menu</h1>
+        <p class="fam-subtitle">Select a recipe and add it to one or more menus</p>
+    </div>
+
+    <form method="POST" class="fam-form">
+        <!-- Recipe Selection -->
+        <div class="fam-card">
+            <div class="fam-card-header">
+                <h3 class="fam-card-title">1. Select Recipe</h3>
+            </div>
+            <div class="fam-card-body">
+                <div class="fam-form-group">
+                    <label for="recipe_id" class="fam-label">Recipe</label>
+                    <select id="recipe_id" name="recipe_id" class="fam-form-control" required onchange="updateRecipeInfo()">
+                        <option value="">Choose a recipe...</option>
+                        {% for recipe in recipes %}
+                        <option value="{{ recipe.id }}" 
+                                data-cost="{{ recipe.food_cost or 0 }}"
+                                data-group="{{ recipe.recipe_group or 'Uncategorized' }}">
+                            {{ recipe.recipe_name }} 
+                            (Cost: ${{ "%.2f"|format(recipe.food_cost or 0) }})
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div id="recipe-info" class="fam-info-box" style="display: none;">
+                    <div class="fam-info-grid">
+                        <div>
+                            <span class="fam-info-label">Food Cost</span>
+                            <span class="fam-info-value" id="food-cost">$0.00</span>
+                        </div>
+                        <div>
+                            <span class="fam-info-label">Suggested Price (28% FC)</span>
+                            <span class="fam-info-value" id="suggested-price">$0.00</span>
+                        </div>
+                        <div>
+                            <span class="fam-info-label">Recipe Group</span>
+                            <span class="fam-info-value" id="recipe-group">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing & Details -->
+        <div class="fam-card">
+            <div class="fam-card-header">
+                <h3 class="fam-card-title">2. Set Pricing & Details</h3>
+            </div>
+            <div class="fam-card-body">
+                <div class="fam-form-row">
+                    <div class="fam-form-group">
+                        <label for="menu_price" class="fam-label">Menu Price</label>
+                        <div class="fam-input-group">
+                            <span class="fam-input-prefix">$</span>
+                            <input type="number" 
+                                   id="menu_price" 
+                                   name="menu_price" 
+                                   class="fam-form-control" 
+                                   step="0.01" 
+                                   min="0" 
+                                   required
+                                   onchange="calculateMargins()">
+                        </div>
+                    </div>
+                    
+                    <div class="fam-form-group">
+                        <label for="menu_group" class="fam-label">Menu Category</label>
+                        <select id="menu_group" name="menu_group" class="fam-form-control" required>
+                            <option value="">Select category...</option>
+                            <option value="Appetizers">Appetizers</option>
+                            <option value="Salads">Salads</option>
+                            <option value="Sandwiches">Sandwiches</option>
+                            <option value="Entrees">Entrees</option>
+                            <option value="Sides">Sides</option>
+                            <option value="Desserts">Desserts</option>
+                            <option value="Beverages">Beverages</option>
+                            <option value="Specials">Specials</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="fam-form-row">
+                    <div class="fam-form-group">
+                        <label for="serving_size" class="fam-label">Serving Size</label>
+                        <input type="text" 
+                               id="serving_size" 
+                               name="serving_size" 
+                               class="fam-form-control" 
+                               placeholder="e.g., 8 oz, 1 plate, 2 pieces">
+                    </div>
+                    
+                    <div class="fam-form-group">
+                        <label for="item_description" class="fam-label">Menu Description</label>
+                        <textarea id="item_description" 
+                                  name="item_description" 
+                                  class="fam-form-control" 
+                                  rows="2"
+                                  placeholder="Brief description for the menu"></textarea>
+                    </div>
+                </div>
+                
+                <!-- Margin Calculator -->
+                <div id="margin-info" class="fam-info-box fam-info-highlight" style="display: none;">
+                    <h4 class="fam-info-title">Profit Margins</h4>
+                    <div class="fam-info-grid">
+                        <div>
+                            <span class="fam-info-label">Food Cost %</span>
+                            <span class="fam-info-value" id="fc-percent">0%</span>
+                        </div>
+                        <div>
+                            <span class="fam-info-label">Gross Profit</span>
+                            <span class="fam-info-value" id="gross-profit">$0.00</span>
+                        </div>
+                        <div>
+                            <span class="fam-info-label">Markup</span>
+                            <span class="fam-info-value" id="markup">0x</span>
+                        </div>
+                        <div>
+                            <span class="fam-info-label">Target Status</span>
+                            <span class="fam-info-value" id="target-status">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Selection -->
+        <div class="fam-card">
+            <div class="fam-card-header">
+                <h3 class="fam-card-title">3. Add to Menu(s)</h3>
+            </div>
+            <div class="fam-card-body">
+                <p class="fam-text-muted" style="margin-bottom: 1rem;">Select which menus should include this item</p>
+                
+                <div class="fam-checkbox-list">
+                    {% for version in menu_versions %}
+                    <label class="fam-checkbox-item">
+                        <input type="checkbox" 
+                               name="version_ids" 
+                               value="{{ version.id }}" 
+                               {% if version.id == 0 %}checked{% endif %}>
+                        <div class="fam-checkbox-content">
+                            <span class="fam-checkbox-title">{{ version.version_name }}</span>
+                            {% if version.is_active %}
+                            <span class="fam-badge fam-badge-success">Active</span>
+                            {% endif %}
+                            {% if version.id == 0 %}
+                            <span class="fam-badge" style="background: #666;">Master</span>
+                            {% endif %}
+                            {% if version.description %}
+                            <p class="fam-checkbox-description">{{ version.description }}</p>
+                            {% endif %}
+                        </div>
+                    </label>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
+            <a href="/menu" class="fam-btn fam-btn-outline">Cancel</a>
+            <button type="submit" class="fam-btn fam-btn-primary">
+                Add to Selected Menus
+            </button>
+        </div>
+    </form>
+</div>
+
+<style>
+.fam-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.fam-input-group {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.fam-input-prefix {
+    position: absolute;
+    left: 1rem;
+    color: #666;
+}
+
+.fam-input-group .fam-form-control {
+    padding-left: 2rem;
+}
+
+.fam-info-box {
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.fam-info-highlight {
+    background: rgba(77, 182, 172, 0.05);
+    border-color: var(--fam-mint);
+}
+
+.fam-info-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.fam-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+}
+
+.fam-info-label {
+    display: block;
+    font-size: 0.75rem;
+    color: #666;
+    margin-bottom: 0.25rem;
+}
+
+.fam-info-value {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--fam-mint);
+}
+
+.fam-checkbox-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.fam-checkbox-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.fam-checkbox-item:hover {
+    border-color: var(--fam-mint);
+    background: rgba(77, 182, 172, 0.02);
+}
+
+.fam-checkbox-item input[type="checkbox"] {
+    margin-right: 1rem;
+    margin-top: 0.25rem;
+}
+
+.fam-checkbox-content {
+    flex: 1;
+}
+
+.fam-checkbox-title {
+    font-weight: 500;
+}
+
+.fam-checkbox-description {
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 0.25rem;
+}
+
+@media (max-width: 768px) {
+    .fam-form-row {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<script>
+function updateRecipeInfo() {
+    const select = document.getElementById('recipe_id');
+    const option = select.options[select.selectedIndex];
+    
+    if (option.value) {
+        const cost = parseFloat(option.dataset.cost) || 0;
+        const suggestedPrice = cost * 3.5; // 28.5% food cost
+        
+        document.getElementById('food-cost').textContent = '$' + cost.toFixed(2);
+        document.getElementById('suggested-price').textContent = '$' + suggestedPrice.toFixed(2);
+        document.getElementById('recipe-group').textContent = option.dataset.group;
+        document.getElementById('menu_price').value = suggestedPrice.toFixed(2);
+        document.getElementById('menu_group').value = option.dataset.group;
+        
+        document.getElementById('recipe-info').style.display = 'block';
+        calculateMargins();
+    } else {
+        document.getElementById('recipe-info').style.display = 'none';
+        document.getElementById('margin-info').style.display = 'none';
+    }
+}
+
+function calculateMargins() {
+    const price = parseFloat(document.getElementById('menu_price').value) || 0;
+    const select = document.getElementById('recipe_id');
+    const option = select.options[select.selectedIndex];
+    
+    if (option.value && price > 0) {
+        const cost = parseFloat(option.dataset.cost) || 0;
+        const fcPercent = (cost / price * 100);
+        const grossProfit = price - cost;
+        const markup = price / cost;
+        
+        document.getElementById('fc-percent').textContent = fcPercent.toFixed(1) + '%';
+        document.getElementById('gross-profit').textContent = '$' + grossProfit.toFixed(2);
+        document.getElementById('markup').textContent = markup.toFixed(1) + 'x';
+        
+        // Target status
+        let status = '';
+        let statusClass = '';
+        if (fcPercent <= 25) {
+            status = 'Excellent';
+            statusClass = 'excellent';
+        } else if (fcPercent <= 30) {
+            status = 'Good';
+            statusClass = 'good';
+        } else if (fcPercent <= 35) {
+            status = 'Fair';
+            statusClass = 'fair';
+        } else {
+            status = 'High';
+            statusClass = 'high';
+        }
+        
+        const statusEl = document.getElementById('target-status');
+        statusEl.textContent = status;
+        statusEl.className = 'fam-info-value status-' + statusClass;
+        
+        document.getElementById('margin-info').style.display = 'block';
+    } else {
+        document.getElementById('margin-info').style.display = 'none';
+    }
+}
+</script>
+
+<style>
+.status-excellent { color: #28a745 !important; }
+.status-good { color: var(--fam-mint) !important; }
+.status-fair { color: #ffc107 !important; }
+.status-high { color: #dc3545 !important; }
+</style>
+{% endblock %}

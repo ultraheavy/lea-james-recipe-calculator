@@ -71,24 +71,16 @@
                     <a href="/vendors" class="neo-nav-link navbar-link {% if request.endpoint == 'vendors' %}active{% endif %}">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
                         </svg>
                         <span>Vendors</span>
                     </a>
                     
                     <!-- Theme Selector in Mobile Menu -->
-                    <div class="mobile-only theme-selector-mobile">
-                        <label class="theme-selector-label" style="color: var(--neo-cyan);">Theme</label>
-                        <div class="theme-buttons">
-                            <a href="/set-theme/modern" class="theme-btn" title="Modern">
-                                <span class="theme-dot" style="background: #6366f1;"></span>
-                            </a>
-                            <a href="/set-theme/neo" class="theme-btn active" title="Neo Tokyo">
-                                <span class="theme-dot" style="background: linear-gradient(135deg, #ff006e, #00f5ff);"></span>
-                            </a>
-                            <a href="/set-theme/fam" class="theme-btn" title="FAM Hospitality">
-                                <span class="theme-dot" style="background: #4DB6AC;"></span>
-                            </a>
-                        </div>
+                    <div class="mobile-only theme-dots">
+                        <a href="/set-theme/modern" class="theme-dot" title="Modern" style="background: #6366f1;"></a>
+                        <a href="/set-theme/neo" class="theme-dot active" title="Neo Tokyo" style="background: linear-gradient(135deg, #ff006e, #00f5ff);"></a>
+                        <a href="/set-theme/fam" class="theme-dot" title="FAM Hospitality" style="background: #4DB6AC;"></a>
                     </div>
                 </div>
                 

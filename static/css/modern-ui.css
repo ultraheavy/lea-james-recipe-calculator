@@ -640,7 +640,7 @@ select.form-control {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   /* Typography */
   h1 { font-size: 2rem; }
   h2 { font-size: 1.75rem; }

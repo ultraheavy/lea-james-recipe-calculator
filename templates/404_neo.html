@@ -1,0 +1,80 @@
+{% extends "base_neo.html" %}
+
+{% block title %}Page Not Found - Lea Jane's Recipe Calculator{% endblock %}
+
+{% block content %}
+<div class="neo-error-container">
+    <div class="neo-error-content animate-fade-in">
+        <div class="neo-error-icon neo-glow">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M9 9l6 6M15 9l-6 6"/>
+                <circle cx="12" cy="12" r="10"/>
+            </svg>
+        </div>
+        <h1 class="neo-error-title">404</h1>
+        <p class="neo-error-subtitle">Page not found</p>
+        <p class="neo-error-message">The data you're looking for has been lost in cyberspace.</p>
+        <a href="/" class="neo-btn neo-btn-primary neo-glow">
+            <span class="mr-2">←</span>
+            Return to Dashboard
+        </a>
+    </div>
+</div>
+
+<style>
+.neo-error-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+}
+
+.neo-error-content {
+    text-align: center;
+    max-width: 500px;
+}
+
+.neo-error-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 2rem;
+    border-radius: 50%;
+    background: rgba(255, 0, 110, 0.1);
+    border: 2px solid var(--neo-pink);
+    color: var(--neo-pink);
+}
+
+.neo-error-icon svg {
+    filter: drop-shadow(0 0 20px var(--neo-pink));
+}
+
+.neo-error-title {
+    font-size: 4rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--neo-pink), var(--neo-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 40px var(--neo-pink);
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+}
+
+.neo-error-subtitle {
+    font-size: 1.5rem;
+    color: var(--neo-cyan);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 20px var(--neo-cyan);
+}
+
+.neo-error-message {
+    font-size: 1rem;
+    color: var(--neo-text-muted);
+    margin-bottom: 2rem;
+}
+</style>
+{% endblock %}

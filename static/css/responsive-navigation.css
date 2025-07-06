@@ -48,9 +48,9 @@
   display: none !important;
 }
 
-/* Show mobile menu toggle by default */
+/* Show mobile menu toggle by default (mobile-first) */
 .mobile-menu-toggle {
-  display: flex !important;
+  display: flex;
   align-items: center;
   justify-content: center;
   width: var(--touch-target-comfortable);
@@ -86,9 +86,25 @@
   background: var(--bg-primary, #ffffff);
   flex-direction: column;
   padding: var(--space-md);
+  padding-bottom: var(--space-lg);
   z-index: 1050 !important; /* Force above backdrop */
   overflow-y: auto;
   animation: slideIn 0.3s ease-out;
+}
+
+/* Ensure mobile menu uses full height properly */
+@media (max-width: 767px) {
+  .navbar-menu {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Push theme selector to bottom */
+  .navbar-menu > .theme-selector-mobile {
+    margin-top: auto;
+    margin-bottom: env(safe-area-inset-bottom, 20px);
+  }
 }
 
 /* Mobile menu header with close button */
@@ -97,7 +113,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 12px;
-  padding-bottom: 8px;
+  padding: 0 16px 8px 16px;
   border-bottom: 1px solid var(--border-color, #e0e0e0);
 }
 
@@ -237,13 +253,14 @@
     align-items: center;
     gap: var(--space-sm);
     padding: 0;
+    margin-left: var(--space-xl); /* Add spacing between brand and nav */
     background: transparent;
     animation: none;
   }
   
   /* Hide mobile toggle */
   .mobile-menu-toggle {
-    display: none;
+    display: none !important;
   }
   
   /* Desktop nav links */
@@ -337,55 +354,37 @@
 }
 
 /* ========================================
-   MOBILE THEME SWITCHER
+   MOBILE THEME SWITCHER - Minimal Design
    ======================================== */
-.theme-selector-mobile {
-  margin-top: var(--space-md);
-  padding-top: var(--space-md);
-  border-top: 1px solid var(--border-color, #e0e0e0);
-}
-
-.theme-selector-label {
-  display: none; /* Hide label to save space */
-}
-
-.theme-buttons {
+.theme-dots {
   display: flex;
-  gap: 8px;
+  gap: 16px;
   justify-content: center;
-}
-
-.theme-btn {
-  position: relative;
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: var(--bg-secondary, #f5f5f5);
-  border: 2px solid transparent;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-  text-decoration: none;
-  padding: 0;
-  flex-shrink: 0;
-}
-
-.theme-btn:hover {
-  transform: scale(1.05);
-  border-color: var(--border-color, #e0e0e0);
-}
-
-.theme-btn.active {
-  border-color: var(--primary-color, #6366f1);
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15);
+  margin-top: auto;
+  padding: var(--space-2xl) 0 var(--space-xl) 0;
+  margin-bottom: env(safe-area-inset-bottom, 20px);
 }
 
 .theme-dot {
-  width: 20px;
-  height: 20px;
+  display: block !important;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  opacity: 0.6;
+  text-decoration: none;
+}
+
+.theme-dot:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+.theme-dot.active {
+  opacity: 1;
+  transform: scale(1.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* ========================================
@@ -454,7 +453,27 @@
   
   .theme-neo .mobile-menu-close {
     color: var(--neo-pink, #ff006e);
-    border-color: var(--neo-pink, #ff006e);
+    border: none;
+    background: transparent;
+    font-size: 2rem;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+  
+  .theme-neo .mobile-menu-close:hover {
+    background: rgba(255, 0, 110, 0.1);
+    text-shadow: 0 0 10px var(--neo-pink);
+    transform: rotate(90deg);
+  }
+  
+  .theme-neo .mobile-menu-header {
+    border-bottom-color: rgba(255, 0, 110, 0.3);
   }
 }
 
@@ -476,7 +495,7 @@
 
 /* FAM Theme Mobile Menu */
 .theme-fam .navbar-menu.active {
-  background: var(--fam-white, #ffffff);
+  background: var(--fam-white, #ffffff) !important;
   border-left: 4px solid var(--fam-mint, #4DB6AC);
 }
 
