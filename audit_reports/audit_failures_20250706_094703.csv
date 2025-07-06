@@ -1,0 +1,278 @@
+timestamp,table,pk,column,value,error_message
+2025-07-06T09:47:03.269056,inventory,11,pack_size,24 ct,Invalid unit in pack size: ct
+2025-07-06T09:47:03.269074,inventory,24,purchase_unit,ct,Invalid purchase unit: ct
+2025-07-06T09:47:03.269096,inventory,84,pack_size,8 piece,Invalid unit in pack size: piece
+2025-07-06T09:47:03.269100,inventory,86,pack_size,1 ct,Invalid unit in pack size: ct
+2025-07-06T09:47:03.269111,inventory,90,recipe_cost_unit,slice,Invalid recipe cost unit: slice
+2025-07-06T09:47:03.269117,inventory,92,pack_size,1 count,Invalid unit in pack size: count
+2025-07-06T09:47:03.269121,inventory,93,pack_size,1 ct,Invalid unit in pack size: ct
+2025-07-06T09:47:03.269156,inventory,153,pack_size,6 ct,Invalid unit in pack size: ct
+2025-07-06T09:47:03.269213,inventory,285,recipe_cost_unit,jug,Invalid recipe cost unit: jug
+2025-07-06T09:47:03.269222,inventory,293,purchase_unit,jug,Invalid purchase unit: jug
+2025-07-06T09:47:03.269254,inventory,342,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.269289,inventory,414,pack_size,24 ct,Invalid unit in pack size: ct
+2025-07-06T09:47:03.269297,inventory,417,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.269346,inventory,482,pack_size,18 count,Invalid unit in pack size: count
+2025-07-06T09:47:03.269383,inventory,541,pack_size,1 ct,Invalid unit in pack size: ct
+2025-07-06T09:47:03.269393,inventory,552,pack_size,32 x 0.5 ltr,Invalid unit in pack size: ltr
+2025-07-06T09:47:03.269423,inventory,614,pack_size,5 x 1,Invalid pack size format: 5 x 1
+2025-07-06T09:47:03.269426,inventory,616,pack_size,1 x 5,Invalid pack size format: 1 x 5
+2025-07-06T09:47:03.269435,inventory,620,pack_size,1 x 5,Invalid pack size format: 1 x 5
+2025-07-06T09:47:03.269444,inventory,623,pack_size,24 ct,Invalid unit in pack size: ct
+2025-07-06T09:47:03.269445,inventory,623,purchase_unit,unit,Invalid purchase unit: unit
+2025-07-06T09:47:03.269455,inventory,627,pack_size,1 count,Invalid unit in pack size: count
+2025-07-06T09:47:03.269458,inventory,628,pack_size,1 x 4,Invalid pack size format: 1 x 4
+2025-07-06T09:47:03.269464,inventory,630,pack_size,3 x 1 count,Invalid unit in pack size: count
+2025-07-06T09:47:03.269468,inventory,636,pack_size,8 piece,Invalid unit in pack size: piece
+2025-07-06T09:47:03.269480,inventory,670,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.269503,inventory,724,purchase_unit,jug,Invalid purchase unit: jug
+2025-07-06T09:47:03.269532,inventory,773,pack_size,1 x 2,Invalid pack size format: 1 x 2
+2025-07-06T09:47:03.269544,inventory,792,purchase_unit,bg,Invalid purchase unit: bg
+2025-07-06T09:47:03.269564,inventory,841,pack_size,8 count,Invalid unit in pack size: count
+2025-07-06T09:47:03.269569,inventory,853,recipe_cost_unit,btl,Invalid recipe cost unit: btl
+2025-07-06T09:47:03.269575,inventory,855,recipe_cost_unit,bottle,Invalid recipe cost unit: bottle
+2025-07-06T09:47:03.269584,inventory,865,pack_size,2 x 5 ltr,Invalid unit in pack size: ltr
+2025-07-06T09:47:03.269588,inventory,866,purchase_unit,jug,Invalid purchase unit: jug
+2025-07-06T09:47:03.269596,inventory,873,purchase_unit,bottle,Invalid purchase unit: bottle
+2025-07-06T09:47:03.269599,inventory,874,pack_size,4 x 1,Invalid pack size format: 4 x 1
+2025-07-06T09:47:03.269805,recipes,72,,,Recipe has no costed ingredients
+2025-07-06T09:47:03.269809,recipes,74,,,Recipe has no costed ingredients
+2025-07-06T09:47:03.269821,recipes,81,food_cost_percentage,119.99,High food cost percentage: 120.0%
+2025-07-06T09:47:03.269829,recipes,87,food_cost_percentage,122.49466666666666,High food cost percentage: 122.5%
+2025-07-06T09:47:03.269838,recipes,97,,,Recipe has no ingredients
+2025-07-06T09:47:03.269842,recipes,100,,,Recipe has no ingredients
+2025-07-06T09:47:03.269845,recipes,102,,,Recipe has no ingredients
+2025-07-06T09:47:03.269848,recipes,105,,,Recipe has no ingredients
+2025-07-06T09:47:03.270191,recipe_ingredients,296,ingredient_name,Collard Greens Recipe,"Ingredient name mismatch: ""Collard Greens Recipe"" vs ""Produce, Collard Green, Frozen, Chopped"""
+2025-07-06T09:47:03.270195,recipe_ingredients,304,unit_of_measure,slice,Invalid UOM: slice
+2025-07-06T09:47:03.270209,recipe_ingredients,315,ingredient_name,Kale Kimchi Recipe,"Ingredient name mismatch: ""Kale Kimchi Recipe"" vs ""PD KALE CHOPPED"""
+2025-07-06T09:47:03.270217,recipe_ingredients,320,ingredient_name,Charred Onion Ranch,"Ingredient name mismatch: ""Charred Onion Ranch"" vs ""Dry Goods, Ranch Dressing, with Jalapeno"""
+2025-07-06T09:47:03.270220,recipe_ingredients,321,ingredient_name,Kale Kimchi Recipe,"Ingredient name mismatch: ""Kale Kimchi Recipe"" vs ""PD KALE CHOPPED"""
+2025-07-06T09:47:03.270225,recipe_ingredients,324,ingredient_name,"Protein, Pork Belly, Diced, Hickory Smoked","Ingredient name mismatch: ""Protein, Pork Belly, Diced, Hickory Smoked"" vs ""Frozen, Corn Rib, Hickory Smoked"""
+2025-07-06T09:47:03.270230,recipe_ingredients,327,ingredient_name,"Water, Tap","Ingredient name mismatch: ""Water, Tap"" vs ""N/A Bev, Water, Still, Bottles"""
+2025-07-06T09:47:03.270236,recipe_ingredients,334,ingredient_name,"Produce, CABBAGE GREEN SHREDDED","Ingredient name mismatch: ""Produce, CABBAGE GREEN SHREDDED"" vs ""Produce, Cabbage, Red, Shredded"""
+2025-07-06T09:47:03.270244,recipe_ingredients,340,ingredient_name,French Fries Recipe,"Ingredient name mismatch: ""French Fries Recipe"" vs ""Dry Goods, Bread, French Toast, Thick Slice"""
+2025-07-06T09:47:03.270248,recipe_ingredients,342,unit_of_measure,slice,Invalid UOM: slice
+2025-07-06T09:47:03.270251,recipe_ingredients,343,ingredient_name,Onion Ranch,"Ingredient name mismatch: ""Onion Ranch"" vs ""Dry Goods, Ranch Dressing, with Jalapeno"""
+2025-07-06T09:47:03.270253,recipe_ingredients,344,ingredient_name,Kale Kimchi Recipe,"Ingredient name mismatch: ""Kale Kimchi Recipe"" vs ""PD KALE CHOPPED"""
+2025-07-06T09:47:03.270257,recipe_ingredients,346,ingredient_name,French Fries Recipe,"Ingredient name mismatch: ""French Fries Recipe"" vs ""Dry Goods, Bread, French Toast, Thick Slice"""
+2025-07-06T09:47:03.270260,recipe_ingredients,348,ingredient_name,Fried Chicken Tender,"Ingredient name mismatch: ""Fried Chicken Tender"" vs ""Dry Goods, Chicken Base, Paste"""
+2025-07-06T09:47:03.270265,recipe_ingredients,351,ingredient_name,French Fries Recipe,"Ingredient name mismatch: ""French Fries Recipe"" vs ""Dry Goods, Bread, French Toast, Thick Slice"""
+2025-07-06T09:47:03.270267,recipe_ingredients,352,ingredient_name,Charred Onion Ranch,"Ingredient name mismatch: ""Charred Onion Ranch"" vs ""Dry Goods, Ranch Dressing, with Jalapeno"""
+2025-07-06T09:47:03.270270,recipe_ingredients,354,unit_of_measure,fl ounce,Invalid UOM: fl ounce
+2025-07-06T09:47:03.270276,recipe_ingredients,357,ingredient_name,Onion Ranch,"Ingredient name mismatch: ""Onion Ranch"" vs ""Dry Goods, Ranch Dressing, with Jalapeno"""
+2025-07-06T09:47:03.270278,recipe_ingredients,359,unit_of_measure,,Missing unit_of_measure
+2025-07-06T09:47:03.270285,recipe_ingredients,371,ingredient_name,Fried Chicken Tender,"Ingredient name mismatch: ""Fried Chicken Tender"" vs ""Dry Goods, Chicken Base, Paste"""
+2025-07-06T09:47:03.270293,recipe_ingredients,377,unit_of_measure,tablespoon,Invalid UOM: tablespoon
+2025-07-06T09:47:03.270295,recipe_ingredients,378,unit_of_measure,tablespoon,Invalid UOM: tablespoon
+2025-07-06T09:47:03.270298,recipe_ingredients,379,unit_of_measure,tablespoon,Invalid UOM: tablespoon
+2025-07-06T09:47:03.270303,recipe_ingredients,382,ingredient_name,Charred Onion Ranch,"Ingredient name mismatch: ""Charred Onion Ranch"" vs ""Dry Goods, Ranch Dressing, with Jalapeno"""
+2025-07-06T09:47:03.270314,recipe_ingredients,393,unit_of_measure,slice,Invalid UOM: slice
+2025-07-06T09:47:03.270335,recipe_ingredients,409,ingredient_name,"Dry Goods, Oil, Canola, Salad -v","Ingredient name mismatch: ""Dry Goods, Oil, Canola, Salad -v"" vs ""Dry Goods, Oil, Canola, Salad"""
+2025-07-06T09:47:03.270353,recipe_ingredients,424,ingredient_name,Kale Kimchi Recipe,"Ingredient name mismatch: ""Kale Kimchi Recipe"" vs ""PD KALE CHOPPED"""
+2025-07-06T09:47:03.270356,recipe_ingredients,425,ingredient_name,Kale Kimchi Recipe,"Ingredient name mismatch: ""Kale Kimchi Recipe"" vs ""PD KALE CHOPPED"""
+2025-07-06T09:47:03.270382,recipe_ingredients,446,ingredient_name,Roux recipe,"Ingredient name mismatch: ""Roux recipe"" vs ""Dry Goods, Chicken  Breading, Lea Jane Recipe"""
+2025-07-06T09:47:03.270394,recipe_ingredients,459,ingredient_name,"Dry Goods,  Spice, Paprika, Powder - Spanish","Ingredient name mismatch: ""Dry Goods,  Spice, Paprika, Powder - Spanish"" vs ""Dry Goods,  Spice, Paprika, Powder"""
+2025-07-06T09:47:03.270398,recipe_ingredients,461,ingredient_name,Fried Chicken Tender,"Ingredient name mismatch: ""Fried Chicken Tender"" vs ""Dry Goods, Chicken Base, Paste"""
+2025-07-06T09:47:03.270400,recipe_ingredients,462,ingredient_name,Ritz Crumble,"Ingredient name mismatch: ""Ritz Crumble"" vs ""Dry Goods, Crackers, Ritz"""
+2025-07-06T09:47:03.270406,recipe_ingredients,466,unit_of_measure,slice,Invalid UOM: slice
+2025-07-06T09:47:03.270433,recipe_ingredients,488,ingredient_name,French Fries Recipe,"Ingredient name mismatch: ""French Fries Recipe"" vs ""Dry Goods, Bread, French Toast, Thick Slice"""
+2025-07-06T09:47:03.270440,recipe_ingredients,494,ingredient_name,Garlic Salt,"Ingredient name mismatch: ""Garlic Salt"" vs ""Dry Goods, Sauce, Chilli & Garlic"""
+2025-07-06T09:47:03.270443,recipe_ingredients,495,ingredient_name,"Dry Goods, Onion Powder","Ingredient name mismatch: ""Dry Goods, Onion Powder"" vs ""Dry Goods,  Spice, Paprika, Powder"""
+2025-07-06T09:47:03.270445,recipe_ingredients,496,ingredient_name,Hot Honey Sauce,"Ingredient name mismatch: ""Hot Honey Sauce"" vs ""Dry Goods, Dressing, Honey Mustard"""
+2025-07-06T09:47:03.270451,recipe_ingredients,499,ingredient_name,Fried Chicken Tender,"Ingredient name mismatch: ""Fried Chicken Tender"" vs ""Dry Goods, Chicken Base, Paste"""
+2025-07-06T09:47:03.270454,recipe_ingredients,501,unit_of_measure,slice,Invalid UOM: slice
+2025-07-06T09:47:03.270457,recipe_ingredients,502,ingredient_name,Kale - Chopped,"Ingredient name mismatch: ""Kale - Chopped"" vs ""PD KALE CHOPPED"""
+2025-07-06T09:47:03.270464,recipe_ingredients,507,ingredient_name,Shredded Carrots,"Ingredient name mismatch: ""Shredded Carrots"" vs ""Produce, Cabbage, Red, Shredded"""
+2025-07-06T09:47:03.270471,recipe_ingredients,512,ingredient_name,Roux recipe,"Ingredient name mismatch: ""Roux recipe"" vs ""Dry Goods, Chicken  Breading, Lea Jane Recipe"""
+2025-07-06T09:47:03.270480,recipe_ingredients,519,unit_of_measure,,Missing unit_of_measure
+2025-07-06T09:47:03.270486,recipe_ingredients,522,ingredient_name,French Fries Recipe,"Ingredient name mismatch: ""French Fries Recipe"" vs ""Dry Goods, Bread, French Toast, Thick Slice"""
+2025-07-06T09:47:03.270489,recipe_ingredients,524,unit_of_measure,slice,Invalid UOM: slice
+2025-07-06T09:47:03.270496,recipe_ingredients,528,ingredient_name,"Dry Goods, Sauce, BBQ","Ingredient name mismatch: ""Dry Goods, Sauce, BBQ"" vs ""Dry Goods, Sauce, BBQ Hickory"""
+2025-07-06T09:47:03.270499,recipe_ingredients,530,unit_of_measure,slice,Invalid UOM: slice
+2025-07-06T09:47:03.270506,recipe_ingredients,534,ingredient_name,Hot Honey Sauce,"Ingredient name mismatch: ""Hot Honey Sauce"" vs ""Dry Goods, Dressing, Honey Mustard"""
+2025-07-06T09:47:03.270509,recipe_ingredients,537,unit_of_measure,,Missing unit_of_measure
+2025-07-06T09:47:03.270516,recipe_ingredients,542,unit_of_measure,slice,Invalid UOM: slice
+2025-07-06T09:47:03.270832,vendor_products,1,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270844,vendor_products,7,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270848,vendor_products,8,pack_size,48 x 4,Invalid pack size format: 48 x 4
+2025-07-06T09:47:03.270852,vendor_products,10,pack_size,1 x 5,Invalid pack size format: 1 x 5
+2025-07-06T09:47:03.270855,vendor_products,11,pack_size,4 x 4,Invalid pack size format: 4 x 4
+2025-07-06T09:47:03.270858,vendor_products,12,pack_size,1 x 3,Invalid pack size format: 1 x 3
+2025-07-06T09:47:03.270861,vendor_products,13,pack_size,1 x 3,Invalid pack size format: 1 x 3
+2025-07-06T09:47:03.270864,vendor_products,14,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270867,vendor_products,15,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270868,vendor_products,16,inventory_id,74,Invalid inventory_id reference
+2025-07-06T09:47:03.270871,vendor_products,16,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270874,vendor_products,17,pack_size,1 x 8,Invalid pack size format: 1 x 8
+2025-07-06T09:47:03.270876,vendor_products,18,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270879,vendor_products,19,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270882,vendor_products,20,pack_size,12 x 2,Invalid pack size format: 12 x 2
+2025-07-06T09:47:03.270885,vendor_products,21,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270888,vendor_products,22,pack_size,10 x 1,Invalid pack size format: 10 x 1
+2025-07-06T09:47:03.270891,vendor_products,23,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270894,vendor_products,24,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270897,vendor_products,25,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270901,vendor_products,27,pack_size,4 x 5,Invalid pack size format: 4 x 5
+2025-07-06T09:47:03.270904,vendor_products,28,pack_size,4 x 5,Invalid pack size format: 4 x 5
+2025-07-06T09:47:03.270907,vendor_products,29,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270909,vendor_products,30,pack_size,6 x 5,Invalid pack size format: 6 x 5
+2025-07-06T09:47:03.270913,vendor_products,31,pack_size,24 x 1,Invalid pack size format: 24 x 1
+2025-07-06T09:47:03.270915,vendor_products,32,pack_size,24 x 1,Invalid pack size format: 24 x 1
+2025-07-06T09:47:03.270918,vendor_products,33,pack_size,24 x 1,Invalid pack size format: 24 x 1
+2025-07-06T09:47:03.270921,vendor_products,34,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270924,vendor_products,35,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270927,vendor_products,36,pack_size,18 x 1,Invalid pack size format: 18 x 1
+2025-07-06T09:47:03.270930,vendor_products,37,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270932,vendor_products,38,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270935,vendor_products,39,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270938,vendor_products,40,pack_size,1 x 6,Invalid pack size format: 1 x 6
+2025-07-06T09:47:03.270941,vendor_products,41,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270944,vendor_products,42,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270946,vendor_products,43,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270950,vendor_products,44,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270953,vendor_products,45,pack_size,1 x 4.4,Invalid pack size format: 1 x 4.4
+2025-07-06T09:47:03.270956,vendor_products,46,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270958,vendor_products,47,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270961,vendor_products,48,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270964,vendor_products,49,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.270967,vendor_products,50,pack_size,6 x 5,Invalid pack size format: 6 x 5
+2025-07-06T09:47:03.270969,vendor_products,51,pack_size,1 x 5,Invalid pack size format: 1 x 5
+2025-07-06T09:47:03.270972,vendor_products,52,pack_size,1 x 5,Invalid pack size format: 1 x 5
+2025-07-06T09:47:03.270975,vendor_products,53,pack_size,4 x 5,Invalid pack size format: 4 x 5
+2025-07-06T09:47:03.270978,vendor_products,54,pack_size,24 x 1,Invalid pack size format: 24 x 1
+2025-07-06T09:47:03.270981,vendor_products,55,pack_size,24 x 1,Invalid pack size format: 24 x 1
+2025-07-06T09:47:03.270989,vendor_products,58,pack_size,24 x 1,Invalid pack size format: 24 x 1
+2025-07-06T09:47:03.270992,vendor_products,59,pack_size,4 x 5,Invalid pack size format: 4 x 5
+2025-07-06T09:47:03.270997,vendor_products,60,pack_size,12 x 1,Invalid pack size format: 12 x 1
+2025-07-06T09:47:03.271000,vendor_products,61,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271003,vendor_products,62,pack_size,12 x 1,Invalid pack size format: 12 x 1
+2025-07-06T09:47:03.271006,vendor_products,63,pack_size,4 x 2.5,Invalid pack size format: 4 x 2.5
+2025-07-06T09:47:03.271008,vendor_products,64,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271013,vendor_products,66,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271015,vendor_products,67,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271018,vendor_products,68,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271021,vendor_products,69,pack_size,24 x 12.5,Invalid pack size format: 24 x 12.5
+2025-07-06T09:47:03.271026,vendor_products,71,pack_size,24 x 12.5,Invalid pack size format: 24 x 12.5
+2025-07-06T09:47:03.271029,vendor_products,72,pack_size,24 x 12.5,Invalid pack size format: 24 x 12.5
+2025-07-06T09:47:03.271032,vendor_products,73,pack_size,24 x 1,Invalid pack size format: 24 x 1
+2025-07-06T09:47:03.271035,vendor_products,74,pack_size,12 x 1,Invalid pack size format: 12 x 1
+2025-07-06T09:47:03.271038,vendor_products,75,pack_size,24 x 1,Invalid pack size format: 24 x 1
+2025-07-06T09:47:03.271043,vendor_products,78,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271049,vendor_products,81,pack_size,12 x 1,Invalid pack size format: 12 x 1
+2025-07-06T09:47:03.271052,vendor_products,82,pack_size,6 x 5,Invalid pack size format: 6 x 5
+2025-07-06T09:47:03.271055,vendor_products,83,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271062,vendor_products,87,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271069,vendor_products,92,inventory_id,365,Invalid inventory_id reference
+2025-07-06T09:47:03.271072,vendor_products,92,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271076,vendor_products,94,pack_size,6 x 4.5,Invalid pack size format: 6 x 4.5
+2025-07-06T09:47:03.271079,vendor_products,95,pack_size,32 x 2,Invalid pack size format: 32 x 2
+2025-07-06T09:47:03.271081,vendor_products,96,inventory_id,374,Invalid inventory_id reference
+2025-07-06T09:47:03.271083,vendor_products,96,pack_size,1 x 4.8,Invalid pack size format: 1 x 4.8
+2025-07-06T09:47:03.271086,vendor_products,97,pack_size,1 x 0.5,Invalid pack size format: 1 x 0.5
+2025-07-06T09:47:03.271089,vendor_products,98,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271092,vendor_products,99,pack_size,1 x 8,Invalid pack size format: 1 x 8
+2025-07-06T09:47:03.271096,vendor_products,101,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271099,vendor_products,102,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271101,vendor_products,103,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271104,vendor_products,104,pack_size,12 x 3,Invalid pack size format: 12 x 3
+2025-07-06T09:47:03.271107,vendor_products,105,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271110,vendor_products,106,pack_size,6 x 5,Invalid pack size format: 6 x 5
+2025-07-06T09:47:03.271113,vendor_products,107,pack_size,18 x 3,Invalid pack size format: 18 x 3
+2025-07-06T09:47:03.271118,vendor_products,110,pack_size,24 x 1,Invalid pack size format: 24 x 1
+2025-07-06T09:47:03.271122,vendor_products,111,pack_size,24 x 12.5,Invalid pack size format: 24 x 12.5
+2025-07-06T09:47:03.271125,vendor_products,112,pack_size,24 x 12.5,Invalid pack size format: 24 x 12.5
+2025-07-06T09:47:03.271128,vendor_products,113,pack_size,24 x 12.5,Invalid pack size format: 24 x 12.5
+2025-07-06T09:47:03.271131,vendor_products,114,pack_size,24 x 12.5,Invalid pack size format: 24 x 12.5
+2025-07-06T09:47:03.271139,vendor_products,119,pack_size,1000 x 1,Invalid pack size format: 1000 x 1
+2025-07-06T09:47:03.271143,vendor_products,120,pack_size,1000 x 1,Invalid pack size format: 1000 x 1
+2025-07-06T09:47:03.271151,vendor_products,125,pack_size,1 x 0.5,Invalid pack size format: 1 x 0.5
+2025-07-06T09:47:03.271155,vendor_products,127,pack_size,1 x 5,Invalid pack size format: 1 x 5
+2025-07-06T09:47:03.271159,vendor_products,129,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271162,vendor_products,130,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271165,vendor_products,131,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271168,vendor_products,132,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271170,vendor_products,133,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271173,vendor_products,134,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271176,vendor_products,135,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271182,vendor_products,138,pack_size,4 x 1,Invalid pack size format: 4 x 1
+2025-07-06T09:47:03.271185,vendor_products,139,pack_size,4 x 1,Invalid pack size format: 4 x 1
+2025-07-06T09:47:03.271188,vendor_products,140,pack_size,4 x 1,Invalid pack size format: 4 x 1
+2025-07-06T09:47:03.271191,vendor_products,141,pack_size,4 x 1,Invalid pack size format: 4 x 1
+2025-07-06T09:47:03.271194,vendor_products,142,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271197,vendor_products,143,pack_size,18 x 3.2,Invalid pack size format: 18 x 3.2
+2025-07-06T09:47:03.271200,vendor_products,144,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271203,vendor_products,145,pack_size,32 x 1,Invalid pack size format: 32 x 1
+2025-07-06T09:47:03.271206,vendor_products,146,pack_size,32 x 0.5,Invalid pack size format: 32 x 0.5
+2025-07-06T09:47:03.271211,vendor_products,149,pack_size,1 x 8.5,Invalid pack size format: 1 x 8.5
+2025-07-06T09:47:03.271214,vendor_products,150,pack_size,4 x 2,Invalid pack size format: 4 x 2
+2025-07-06T09:47:03.271218,vendor_products,152,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271225,vendor_products,156,pack_size,1 x 5,Invalid pack size format: 1 x 5
+2025-07-06T09:47:03.271228,vendor_products,157,pack_size,1 x 5,Invalid pack size format: 1 x 5
+2025-07-06T09:47:03.271231,vendor_products,158,pack_size,1 x 5,Invalid pack size format: 1 x 5
+2025-07-06T09:47:03.271233,vendor_products,159,pack_size,5 x 1,Invalid pack size format: 5 x 1
+2025-07-06T09:47:03.271236,vendor_products,160,pack_size,1 x 5,Invalid pack size format: 1 x 5
+2025-07-06T09:47:03.271239,vendor_products,161,pack_size,1 x 2.5,Invalid pack size format: 1 x 2.5
+2025-07-06T09:47:03.271242,vendor_products,162,pack_size,4 x 2.5,Invalid pack size format: 4 x 2.5
+2025-07-06T09:47:03.271245,vendor_products,163,pack_size,4 x 2.5,Invalid pack size format: 4 x 2.5
+2025-07-06T09:47:03.271248,vendor_products,164,pack_size,1 x 5,Invalid pack size format: 1 x 5
+2025-07-06T09:47:03.271251,vendor_products,165,pack_size,1 x 0.5,Invalid pack size format: 1 x 0.5
+2025-07-06T09:47:03.271253,vendor_products,166,pack_size,1 x 5,Invalid pack size format: 1 x 5
+2025-07-06T09:47:03.271259,vendor_products,169,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271263,vendor_products,170,pack_size,1 x 2.5,Invalid pack size format: 1 x 2.5
+2025-07-06T09:47:03.271266,vendor_products,171,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271269,vendor_products,172,pack_size,1 x 4,Invalid pack size format: 1 x 4
+2025-07-06T09:47:03.271272,vendor_products,173,pack_size,1 x 8,Invalid pack size format: 1 x 8
+2025-07-06T09:47:03.271275,vendor_products,174,pack_size,3 x 1,Invalid pack size format: 3 x 1
+2025-07-06T09:47:03.271278,vendor_products,175,pack_size,1 x 8,Invalid pack size format: 1 x 8
+2025-07-06T09:47:03.271283,vendor_products,178,pack_size,1 x 5,Invalid pack size format: 1 x 5
+2025-07-06T09:47:03.271286,vendor_products,179,pack_size,1 x 4,Invalid pack size format: 1 x 4
+2025-07-06T09:47:03.271289,vendor_products,180,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271294,vendor_products,182,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271299,vendor_products,184,pack_size,1 x 27.4,Invalid pack size format: 1 x 27.4
+2025-07-06T09:47:03.271302,vendor_products,185,pack_size,6 x 27.4,Invalid pack size format: 6 x 27.4
+2025-07-06T09:47:03.271305,vendor_products,186,pack_size,4 x 5,Invalid pack size format: 4 x 5
+2025-07-06T09:47:03.271307,vendor_products,187,pack_size,1 x 8,Invalid pack size format: 1 x 8
+2025-07-06T09:47:03.271310,vendor_products,188,pack_size,9 x 3,Invalid pack size format: 9 x 3
+2025-07-06T09:47:03.271313,vendor_products,189,pack_size,3 x 1,Invalid pack size format: 3 x 1
+2025-07-06T09:47:03.271316,vendor_products,190,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271318,vendor_products,191,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271323,vendor_products,193,pack_size,4 x 1,Invalid pack size format: 4 x 1
+2025-07-06T09:47:03.271325,vendor_products,194,pack_size,1 x 5,Invalid pack size format: 1 x 5
+2025-07-06T09:47:03.271328,vendor_products,195,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271335,vendor_products,199,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271337,vendor_products,200,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271340,vendor_products,201,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271343,vendor_products,202,pack_size,1 x 2,Invalid pack size format: 1 x 2
+2025-07-06T09:47:03.271346,vendor_products,203,pack_size,1 x 5,Invalid pack size format: 1 x 5
+2025-07-06T09:47:03.271352,vendor_products,207,pack_size,1 x 5,Invalid pack size format: 1 x 5
+2025-07-06T09:47:03.271358,vendor_products,210,pack_size,24 x 1,Invalid pack size format: 24 x 1
+2025-07-06T09:47:03.271366,vendor_products,215,pack_size,24 x 4,Invalid pack size format: 24 x 4
+2025-07-06T09:47:03.271369,vendor_products,216,pack_size,1 x 8,Invalid pack size format: 1 x 8
+2025-07-06T09:47:03.271377,vendor_products,221,pack_size,12 x 3,Invalid pack size format: 12 x 3
+2025-07-06T09:47:03.271380,vendor_products,222,pack_size,24 x 1,Invalid pack size format: 24 x 1
+2025-07-06T09:47:03.271383,vendor_products,223,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271385,vendor_products,224,pack_size,2 x 5,Invalid pack size format: 2 x 5
+2025-07-06T09:47:03.271390,vendor_products,226,pack_size,6 x 1,Invalid pack size format: 6 x 1
+2025-07-06T09:47:03.271392,vendor_products,227,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271395,vendor_products,228,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271398,vendor_products,229,pack_size,4 x 1,Invalid pack size format: 4 x 1
+2025-07-06T09:47:03.271401,vendor_products,230,pack_size,24 x 16.9,Invalid pack size format: 24 x 16.9
+2025-07-06T09:47:03.271405,vendor_products,232,pack_size,24 x 1,Invalid pack size format: 24 x 1
+2025-07-06T09:47:03.271408,vendor_products,233,pack_size,1 x 1,Invalid pack size format: 1 x 1
+2025-07-06T09:47:03.271507,recipe_ingredients,310,,,"Ingredient ""Non Con, Cup, 2oz, Clear Plastic"" not found in inventory for recipe ""DP-04 Hot Honey"""
+2025-07-06T09:47:03.271509,recipe_ingredients,311,,,"Ingredient ""Non Con, Lids, 1.5-2oz, Souffle, Clear"" not found in inventory for recipe ""DP-04 Hot Honey"""
+2025-07-06T09:47:03.271511,recipe_ingredients,361,,,"Ingredient ""Dry Goods, Waffle Cone"" not found in inventory for recipe ""Chicken Waffle Cone"""
+2025-07-06T09:47:03.271512,recipe_ingredients,377,,,"Ingredient ""Worcestershire Sauce"" not found in inventory for recipe ""Alabama White BBQ"""
+2025-07-06T09:47:03.271514,recipe_ingredients,383,,,"Ingredient ""Non Con, Cup, 2oz, Clear Plastic"" not found in inventory for recipe ""DP-01 Charred-Onion Ranch Dip"""
+2025-07-06T09:47:03.271515,recipe_ingredients,384,,,"Ingredient ""Non Con, Lids, 1.5-2oz, Souffle, Clear"" not found in inventory for recipe ""DP-01 Charred-Onion Ranch Dip"""
+2025-07-06T09:47:03.271516,recipe_ingredients,390,,,"Ingredient ""Non Con, Cup, 2oz, Clear Plastic"" not found in inventory for recipe ""DP-02 Comeback Sauce"""
+2025-07-06T09:47:03.271517,recipe_ingredients,391,,,"Ingredient ""Non Con, Lids, 1.5-2oz, Souffle, Clear"" not found in inventory for recipe ""DP-02 Comeback Sauce"""
+2025-07-06T09:47:03.271519,recipe_ingredients,420,,,"Ingredient ""Non Con, Cup, 2oz, Clear Plastic"" not found in inventory for recipe ""DP-03 Honey Mustard"""
+2025-07-06T09:47:03.271520,recipe_ingredients,421,,,"Ingredient ""Non Con, Lids, 1.5-2oz, Souffle, Clear"" not found in inventory for recipe ""DP-03 Honey Mustard"""
+2025-07-06T09:47:03.271521,recipe_ingredients,476,,,"Ingredient ""Dry Goods, MAYONNAISE  HVY PLST SHLF"" not found in inventory for recipe ""Hot Fish"""
+2025-07-06T09:47:03.271523,recipe_ingredients,484,,,"Ingredient ""Non Con, Cup, 2oz, Clear Plastic"" not found in inventory for recipe ""DP-05 Habanero Ranch"""
+2025-07-06T09:47:03.271524,recipe_ingredients,485,,,"Ingredient ""Non Con, Lids, 1.5-2oz, Souffle, Clear"" not found in inventory for recipe ""DP-05 Habanero Ranch"""
+2025-07-06T09:47:03.271525,recipe_ingredients,490,,,"Ingredient ""Dry Goods, Sauce, Tomato Ketchup, Jug"" not found in inventory for recipe ""Hot Honey Sauce"""
+2025-07-06T09:47:03.271528,recipe_ingredients,492,,,"Ingredient ""Dry Goods, Sambal Chill Sauce (wt)"" not found in inventory for recipe ""Hot Honey Sauce"""
+2025-07-06T09:47:03.271530,recipe_ingredients,536,,,"Ingredient ""Dry Goods, Waffle Cone"" not found in inventory for recipe ""FT-01 Chicken Waffle Cone"""

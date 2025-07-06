@@ -1,0 +1,239 @@
+timestamp,table,pk,column,value,error_message
+2025-07-06T09:43:37.010367,inventory,2682,item_code,,Missing required item_code
+2025-07-06T09:43:37.010376,inventory,2682,item_description,,Missing required item_description
+2025-07-06T09:43:37.010571,recipes,69,food_cost_percentage,290.4947142857143,High food cost percentage: 290.5%
+2025-07-06T09:43:37.010577,recipes,72,,,Recipe has no costed ingredients
+2025-07-06T09:43:37.010581,recipes,74,,,Recipe has no costed ingredients
+2025-07-06T09:43:37.010589,recipes,80,food_cost_percentage,511.7885,High food cost percentage: 511.8%
+2025-07-06T09:43:37.010595,recipes,85,food_cost_percentage,244.04433333333336,High food cost percentage: 244.0%
+2025-07-06T09:43:37.010599,recipes,87,food_cost_percentage,122.49466666666669,High food cost percentage: 122.5%
+2025-07-06T09:43:37.010609,recipes,97,,,Recipe has no ingredients
+2025-07-06T09:43:37.010611,recipes,97,prep_recipe_yield_uom,portions,Invalid prep recipe yield UOM: portions
+2025-07-06T09:43:37.010615,recipes,100,,,Recipe has no ingredients
+2025-07-06T09:43:37.010617,recipes,102,,,Recipe has no ingredients
+2025-07-06T09:43:37.010620,recipes,103,food_cost_percentage,345.43291666666664,High food cost percentage: 345.4%
+2025-07-06T09:43:37.010623,recipes,105,,,Recipe has no ingredients
+2025-07-06T09:43:37.010637,recipes,121,food_cost_percentage,2448.1673333333338,High food cost percentage: 2448.2%
+2025-07-06T09:43:37.010644,recipes,124,food_cost_percentage,341.31791666666663,High food cost percentage: 341.3%
+2025-07-06T09:43:37.011003,recipe_ingredients,295,ingredient_id,25,Invalid ingredient_id reference
+2025-07-06T09:43:37.011008,recipe_ingredients,296,ingredient_id,419,Invalid ingredient_id reference
+2025-07-06T09:43:37.011017,recipe_ingredients,303,ingredient_id,14,Invalid ingredient_id reference
+2025-07-06T09:43:37.011020,recipe_ingredients,304,ingredient_id,90,Invalid ingredient_id reference
+2025-07-06T09:43:37.011023,recipe_ingredients,305,ingredient_id,652,Invalid ingredient_id reference
+2025-07-06T09:43:37.011025,recipe_ingredients,306,ingredient_id,474,Invalid ingredient_id reference
+2025-07-06T09:43:37.011028,recipe_ingredients,307,ingredient_id,475,Invalid ingredient_id reference
+2025-07-06T09:43:37.011030,recipe_ingredients,308,ingredient_id,525,Invalid ingredient_id reference
+2025-07-06T09:43:37.011032,recipe_ingredients,309,ingredient_id,433,Invalid ingredient_id reference
+2025-07-06T09:43:37.011036,recipe_ingredients,312,ingredient_id,183,Invalid ingredient_id reference
+2025-07-06T09:43:37.011038,recipe_ingredients,313,ingredient_id,475,Invalid ingredient_id reference
+2025-07-06T09:43:37.011042,recipe_ingredients,315,ingredient_id,622,Invalid ingredient_id reference
+2025-07-06T09:43:37.011044,recipe_ingredients,316,ingredient_id,87,Invalid ingredient_id reference
+2025-07-06T09:43:37.011048,recipe_ingredients,317,ingredient_id,12,Invalid ingredient_id reference
+2025-07-06T09:43:37.011050,recipe_ingredients,318,ingredient_id,183,Invalid ingredient_id reference
+2025-07-06T09:43:37.011053,recipe_ingredients,319,ingredient_id,87,Invalid ingredient_id reference
+2025-07-06T09:43:37.011055,recipe_ingredients,320,ingredient_id,286,Invalid ingredient_id reference
+2025-07-06T09:43:37.011057,recipe_ingredients,321,ingredient_id,622,Invalid ingredient_id reference
+2025-07-06T09:43:37.011060,recipe_ingredients,322,ingredient_id,105,Invalid ingredient_id reference
+2025-07-06T09:43:37.011062,recipe_ingredients,323,ingredient_id,419,Invalid ingredient_id reference
+2025-07-06T09:43:37.011065,recipe_ingredients,324,ingredient_id,39,Invalid ingredient_id reference
+2025-07-06T09:43:37.011067,recipe_ingredients,325,ingredient_id,448,Invalid ingredient_id reference
+2025-07-06T09:43:37.011069,recipe_ingredients,326,ingredient_id,638,Invalid ingredient_id reference
+2025-07-06T09:43:37.011071,recipe_ingredients,327,ingredient_id,552,Invalid ingredient_id reference
+2025-07-06T09:43:37.011074,recipe_ingredients,328,ingredient_id,175,Invalid ingredient_id reference
+2025-07-06T09:43:37.011077,recipe_ingredients,329,ingredient_id,105,Invalid ingredient_id reference
+2025-07-06T09:43:37.011079,recipe_ingredients,330,ingredient_id,825,Invalid ingredient_id reference
+2025-07-06T09:43:37.011082,recipe_ingredients,334,ingredient_id,610,Invalid ingredient_id reference
+2025-07-06T09:43:37.011084,recipe_ingredients,335,ingredient_id,692,Invalid ingredient_id reference
+2025-07-06T09:43:37.011086,recipe_ingredients,336,ingredient_id,178,Invalid ingredient_id reference
+2025-07-06T09:43:37.011088,recipe_ingredients,337,ingredient_id,138,Invalid ingredient_id reference
+2025-07-06T09:43:37.011092,recipe_ingredients,339,ingredient_id,475,Invalid ingredient_id reference
+2025-07-06T09:43:37.011094,recipe_ingredients,340,ingredient_id,92,Invalid ingredient_id reference
+2025-07-06T09:43:37.011096,recipe_ingredients,341,ingredient_id,183,Invalid ingredient_id reference
+2025-07-06T09:43:37.011098,recipe_ingredients,342,ingredient_id,90,Invalid ingredient_id reference
+2025-07-06T09:43:37.011100,recipe_ingredients,343,ingredient_id,286,Invalid ingredient_id reference
+2025-07-06T09:43:37.011103,recipe_ingredients,344,ingredient_id,622,Invalid ingredient_id reference
+2025-07-06T09:43:37.011105,recipe_ingredients,345,ingredient_id,105,Invalid ingredient_id reference
+2025-07-06T09:43:37.011107,recipe_ingredients,346,ingredient_id,92,Invalid ingredient_id reference
+2025-07-06T09:43:37.011109,recipe_ingredients,348,ingredient_id,175,Invalid ingredient_id reference
+2025-07-06T09:43:37.011112,recipe_ingredients,349,ingredient_id,138,Invalid ingredient_id reference
+2025-07-06T09:43:37.011115,recipe_ingredients,351,ingredient_id,92,Invalid ingredient_id reference
+2025-07-06T09:43:37.011117,recipe_ingredients,352,ingredient_id,286,Invalid ingredient_id reference
+2025-07-06T09:43:37.011119,recipe_ingredients,353,ingredient_id,603,Invalid ingredient_id reference
+2025-07-06T09:43:37.011121,recipe_ingredients,354,ingredient_id,259,Invalid ingredient_id reference
+2025-07-06T09:43:37.011123,recipe_ingredients,355,ingredient_id,138,Invalid ingredient_id reference
+2025-07-06T09:43:37.011126,recipe_ingredients,356,ingredient_id,178,Invalid ingredient_id reference
+2025-07-06T09:43:37.011128,recipe_ingredients,357,ingredient_id,286,Invalid ingredient_id reference
+2025-07-06T09:43:37.011131,recipe_ingredients,359,ingredient_id,415,Invalid ingredient_id reference
+2025-07-06T09:43:37.011133,recipe_ingredients,359,unit_of_measure,,Missing unit_of_measure
+2025-07-06T09:43:37.011134,recipe_ingredients,360,ingredient_id,475,Invalid ingredient_id reference
+2025-07-06T09:43:37.011137,recipe_ingredients,370,ingredient_id,627,Invalid ingredient_id reference
+2025-07-06T09:43:37.011140,recipe_ingredients,371,ingredient_id,175,Invalid ingredient_id reference
+2025-07-06T09:43:37.011142,recipe_ingredients,372,ingredient_id,263,Invalid ingredient_id reference
+2025-07-06T09:43:37.011144,recipe_ingredients,373,ingredient_id,197,Invalid ingredient_id reference
+2025-07-06T09:43:37.011146,recipe_ingredients,374,ingredient_id,285,Invalid ingredient_id reference
+2025-07-06T09:43:37.011149,recipe_ingredients,375,ingredient_id,510,Invalid ingredient_id reference
+2025-07-06T09:43:37.011151,recipe_ingredients,376,ingredient_id,862,Invalid ingredient_id reference
+2025-07-06T09:43:37.011154,recipe_ingredients,377,unit_of_measure,tbsp,Invalid UOM: tbsp
+2025-07-06T09:43:37.011155,recipe_ingredients,378,ingredient_id,147,Invalid ingredient_id reference
+2025-07-06T09:43:37.011157,recipe_ingredients,378,unit_of_measure,tbsp,Invalid UOM: tbsp
+2025-07-06T09:43:37.011159,recipe_ingredients,379,ingredient_id,890,Invalid ingredient_id reference
+2025-07-06T09:43:37.011161,recipe_ingredients,379,unit_of_measure,tbsp,Invalid UOM: tbsp
+2025-07-06T09:43:37.011164,recipe_ingredients,381,ingredient_id,603,Invalid ingredient_id reference
+2025-07-06T09:43:37.011166,recipe_ingredients,382,ingredient_id,286,Invalid ingredient_id reference
+2025-07-06T09:43:37.011169,recipe_ingredients,385,ingredient_id,14,Invalid ingredient_id reference
+2025-07-06T09:43:37.011172,recipe_ingredients,386,ingredient_id,475,Invalid ingredient_id reference
+2025-07-06T09:43:37.011174,recipe_ingredients,387,ingredient_id,12,Invalid ingredient_id reference
+2025-07-06T09:43:37.011176,recipe_ingredients,388,ingredient_id,529,Invalid ingredient_id reference
+2025-07-06T09:43:37.011187,recipe_ingredients,392,ingredient_id,14,Invalid ingredient_id reference
+2025-07-06T09:43:37.011190,recipe_ingredients,393,ingredient_id,90,Invalid ingredient_id reference
+2025-07-06T09:43:37.011193,recipe_ingredients,394,ingredient_id,652,Invalid ingredient_id reference
+2025-07-06T09:43:37.011195,recipe_ingredients,395,ingredient_id,474,Invalid ingredient_id reference
+2025-07-06T09:43:37.011197,recipe_ingredients,396,ingredient_id,475,Invalid ingredient_id reference
+2025-07-06T09:43:37.011199,recipe_ingredients,397,ingredient_id,178,Invalid ingredient_id reference
+2025-07-06T09:43:37.011202,recipe_ingredients,398,ingredient_id,475,Invalid ingredient_id reference
+2025-07-06T09:43:37.011204,recipe_ingredients,399,ingredient_id,87,Invalid ingredient_id reference
+2025-07-06T09:43:37.011206,recipe_ingredients,400,ingredient_id,510,Invalid ingredient_id reference
+2025-07-06T09:43:37.011209,recipe_ingredients,401,ingredient_id,652,Invalid ingredient_id reference
+2025-07-06T09:43:37.011212,recipe_ingredients,403,ingredient_id,871,Invalid ingredient_id reference
+2025-07-06T09:43:37.011214,recipe_ingredients,404,ingredient_id,825,Invalid ingredient_id reference
+2025-07-06T09:43:37.011216,recipe_ingredients,405,ingredient_id,629,Invalid ingredient_id reference
+2025-07-06T09:43:37.011219,recipe_ingredients,406,ingredient_id,371,Invalid ingredient_id reference
+2025-07-06T09:43:37.011221,recipe_ingredients,407,ingredient_id,871,Invalid ingredient_id reference
+2025-07-06T09:43:37.011223,recipe_ingredients,408,ingredient_id,8,Invalid ingredient_id reference
+2025-07-06T09:43:37.011226,recipe_ingredients,409,ingredient_id,561,Invalid ingredient_id reference
+2025-07-06T09:43:37.011228,recipe_ingredients,410,ingredient_id,890,Invalid ingredient_id reference
+2025-07-06T09:43:37.011230,recipe_ingredients,411,ingredient_id,711,Invalid ingredient_id reference
+2025-07-06T09:43:37.011232,recipe_ingredients,412,ingredient_id,448,Invalid ingredient_id reference
+2025-07-06T09:43:37.011235,recipe_ingredients,413,ingredient_id,448,Invalid ingredient_id reference
+2025-07-06T09:43:37.011237,recipe_ingredients,414,ingredient_id,8,Invalid ingredient_id reference
+2025-07-06T09:43:37.011239,recipe_ingredients,415,ingredient_id,871,Invalid ingredient_id reference
+2025-07-06T09:43:37.011242,recipe_ingredients,416,ingredient_id,890,Invalid ingredient_id reference
+2025-07-06T09:43:37.011244,recipe_ingredients,417,ingredient_id,561,Invalid ingredient_id reference
+2025-07-06T09:43:37.011246,recipe_ingredients,418,ingredient_id,711,Invalid ingredient_id reference
+2025-07-06T09:43:37.011248,recipe_ingredients,419,ingredient_id,291,Invalid ingredient_id reference
+2025-07-06T09:43:37.011253,recipe_ingredients,423,ingredient_id,603,Invalid ingredient_id reference
+2025-07-06T09:43:37.011255,recipe_ingredients,424,ingredient_id,622,Invalid ingredient_id reference
+2025-07-06T09:43:37.011257,recipe_ingredients,425,ingredient_id,622,Invalid ingredient_id reference
+2025-07-06T09:43:37.011259,recipe_ingredients,426,ingredient_id,724,Invalid ingredient_id reference
+2025-07-06T09:43:37.011262,recipe_ingredients,428,ingredient_id,603,Invalid ingredient_id reference
+2025-07-06T09:43:37.011264,recipe_ingredients,429,ingredient_id,178,Invalid ingredient_id reference
+2025-07-06T09:43:37.011267,recipe_ingredients,430,ingredient_id,474,Invalid ingredient_id reference
+2025-07-06T09:43:37.011270,recipe_ingredients,431,ingredient_id,475,Invalid ingredient_id reference
+2025-07-06T09:43:37.011273,recipe_ingredients,432,ingredient_id,373,Invalid ingredient_id reference
+2025-07-06T09:43:37.011275,recipe_ingredients,433,ingredient_id,87,Invalid ingredient_id reference
+2025-07-06T09:43:37.011277,recipe_ingredients,434,ingredient_id,510,Invalid ingredient_id reference
+2025-07-06T09:43:37.011279,recipe_ingredients,435,ingredient_id,652,Invalid ingredient_id reference
+2025-07-06T09:43:37.011281,recipe_ingredients,436,ingredient_id,12,Invalid ingredient_id reference
+2025-07-06T09:43:37.011284,recipe_ingredients,437,ingredient_id,39,Invalid ingredient_id reference
+2025-07-06T09:43:37.011286,recipe_ingredients,438,ingredient_id,12,Invalid ingredient_id reference
+2025-07-06T09:43:37.011288,recipe_ingredients,439,ingredient_id,286,Invalid ingredient_id reference
+2025-07-06T09:43:37.011290,recipe_ingredients,440,ingredient_id,529,Invalid ingredient_id reference
+2025-07-06T09:43:37.011293,recipe_ingredients,441,ingredient_id,259,Invalid ingredient_id reference
+2025-07-06T09:43:37.011295,recipe_ingredients,442,ingredient_id,711,Invalid ingredient_id reference
+2025-07-06T09:43:37.011297,recipe_ingredients,443,ingredient_id,157,Invalid ingredient_id reference
+2025-07-06T09:43:37.011299,recipe_ingredients,444,ingredient_id,138,Invalid ingredient_id reference
+2025-07-06T09:43:37.011301,recipe_ingredients,445,ingredient_id,565,Invalid ingredient_id reference
+2025-07-06T09:43:37.011304,recipe_ingredients,446,ingredient_id,475,Invalid ingredient_id reference
+2025-07-06T09:43:37.011306,recipe_ingredients,451,ingredient_id,371,Invalid ingredient_id reference
+2025-07-06T09:43:37.011308,recipe_ingredients,452,ingredient_id,711,Invalid ingredient_id reference
+2025-07-06T09:43:37.011310,recipe_ingredients,453,ingredient_id,12,Invalid ingredient_id reference
+2025-07-06T09:43:37.011312,recipe_ingredients,454,ingredient_id,178,Invalid ingredient_id reference
+2025-07-06T09:43:37.011315,recipe_ingredients,455,ingredient_id,475,Invalid ingredient_id reference
+2025-07-06T09:43:37.011317,recipe_ingredients,456,ingredient_id,12,Invalid ingredient_id reference
+2025-07-06T09:43:37.011319,recipe_ingredients,457,ingredient_id,529,Invalid ingredient_id reference
+2025-07-06T09:43:37.011321,recipe_ingredients,458,ingredient_id,474,Invalid ingredient_id reference
+2025-07-06T09:43:37.011323,recipe_ingredients,459,ingredient_id,599,Invalid ingredient_id reference
+2025-07-06T09:43:37.011326,recipe_ingredients,460,ingredient_id,792,Invalid ingredient_id reference
+2025-07-06T09:43:37.011328,recipe_ingredients,461,ingredient_id,175,Invalid ingredient_id reference
+2025-07-06T09:43:37.011330,recipe_ingredients,462,ingredient_id,692,Invalid ingredient_id reference
+2025-07-06T09:43:37.011334,recipe_ingredients,464,ingredient_id,603,Invalid ingredient_id reference
+2025-07-06T09:43:37.011336,recipe_ingredients,465,ingredient_id,14,Invalid ingredient_id reference
+2025-07-06T09:43:37.011338,recipe_ingredients,466,ingredient_id,90,Invalid ingredient_id reference
+2025-07-06T09:43:37.011340,recipe_ingredients,467,ingredient_id,652,Invalid ingredient_id reference
+2025-07-06T09:43:37.011343,recipe_ingredients,468,ingredient_id,474,Invalid ingredient_id reference
+2025-07-06T09:43:37.011345,recipe_ingredients,469,ingredient_id,475,Invalid ingredient_id reference
+2025-07-06T09:43:37.011347,recipe_ingredients,470,ingredient_id,724,Invalid ingredient_id reference
+2025-07-06T09:43:37.011349,recipe_ingredients,471,ingredient_id,381,Invalid ingredient_id reference
+2025-07-06T09:43:37.011352,recipe_ingredients,472,ingredient_id,147,Invalid ingredient_id reference
+2025-07-06T09:43:37.011354,recipe_ingredients,473,ingredient_id,599,Invalid ingredient_id reference
+2025-07-06T09:43:37.011356,recipe_ingredients,474,ingredient_id,87,Invalid ingredient_id reference
+2025-07-06T09:43:37.011359,recipe_ingredients,475,ingredient_id,5,Invalid ingredient_id reference
+2025-07-06T09:43:37.011361,recipe_ingredients,476,ingredient_id,510,Invalid ingredient_id reference
+2025-07-06T09:43:37.011363,recipe_ingredients,477,ingredient_id,475,Invalid ingredient_id reference
+2025-07-06T09:43:37.011370,recipe_ingredients,478,ingredient_id,652,Invalid ingredient_id reference
+2025-07-06T09:43:37.011372,recipe_ingredients,479,ingredient_id,178,Invalid ingredient_id reference
+2025-07-06T09:43:37.011374,recipe_ingredients,480,ingredient_id,475,Invalid ingredient_id reference
+2025-07-06T09:43:37.011377,recipe_ingredients,481,ingredient_id,529,Invalid ingredient_id reference
+2025-07-06T09:43:37.011379,recipe_ingredients,482,ingredient_id,12,Invalid ingredient_id reference
+2025-07-06T09:43:37.011381,recipe_ingredients,483,ingredient_id,286,Invalid ingredient_id reference
+2025-07-06T09:43:37.011385,recipe_ingredients,486,ingredient_id,779,Invalid ingredient_id reference
+2025-07-06T09:43:37.011387,recipe_ingredients,487,ingredient_id,525,Invalid ingredient_id reference
+2025-07-06T09:43:37.011389,recipe_ingredients,488,ingredient_id,92,Invalid ingredient_id reference
+2025-07-06T09:43:37.011392,recipe_ingredients,489,ingredient_id,544,Invalid ingredient_id reference
+2025-07-06T09:43:37.011395,recipe_ingredients,491,ingredient_id,433,Invalid ingredient_id reference
+2025-07-06T09:43:37.011397,recipe_ingredients,492,ingredient_id,715,Invalid ingredient_id reference
+2025-07-06T09:43:37.011400,recipe_ingredients,493,ingredient_id,738,Invalid ingredient_id reference
+2025-07-06T09:43:37.011402,recipe_ingredients,494,ingredient_id,729,Invalid ingredient_id reference
+2025-07-06T09:43:37.011404,recipe_ingredients,495,ingredient_id,599,Invalid ingredient_id reference
+2025-07-06T09:43:37.011406,recipe_ingredients,496,ingredient_id,291,Invalid ingredient_id reference
+2025-07-06T09:43:37.011408,recipe_ingredients,497,ingredient_id,105,Invalid ingredient_id reference
+2025-07-06T09:43:37.011411,recipe_ingredients,498,ingredient_id,29,Invalid ingredient_id reference
+2025-07-06T09:43:37.011413,recipe_ingredients,499,ingredient_id,175,Invalid ingredient_id reference
+2025-07-06T09:43:37.011415,recipe_ingredients,500,ingredient_id,652,Invalid ingredient_id reference
+2025-07-06T09:43:37.011417,recipe_ingredients,501,ingredient_id,90,Invalid ingredient_id reference
+2025-07-06T09:43:37.011419,recipe_ingredients,502,ingredient_id,622,Invalid ingredient_id reference
+2025-07-06T09:43:37.011422,recipe_ingredients,503,ingredient_id,219,Invalid ingredient_id reference
+2025-07-06T09:43:37.011424,recipe_ingredients,504,ingredient_id,825,Invalid ingredient_id reference
+2025-07-06T09:43:37.011426,recipe_ingredients,505,ingredient_id,871,Invalid ingredient_id reference
+2025-07-06T09:43:37.011428,recipe_ingredients,506,ingredient_id,715,Invalid ingredient_id reference
+2025-07-06T09:43:37.011430,recipe_ingredients,507,ingredient_id,610,Invalid ingredient_id reference
+2025-07-06T09:43:37.011433,recipe_ingredients,508,ingredient_id,529,Invalid ingredient_id reference
+2025-07-06T09:43:37.011435,recipe_ingredients,509,ingredient_id,259,Invalid ingredient_id reference
+2025-07-06T09:43:37.011437,recipe_ingredients,510,ingredient_id,711,Invalid ingredient_id reference
+2025-07-06T09:43:37.011439,recipe_ingredients,511,ingredient_id,171,Invalid ingredient_id reference
+2025-07-06T09:43:37.011441,recipe_ingredients,512,ingredient_id,475,Invalid ingredient_id reference
+2025-07-06T09:43:37.011444,recipe_ingredients,513,ingredient_id,510,Invalid ingredient_id reference
+2025-07-06T09:43:37.011446,recipe_ingredients,514,ingredient_id,549,Invalid ingredient_id reference
+2025-07-06T09:43:37.011448,recipe_ingredients,515,ingredient_id,715,Invalid ingredient_id reference
+2025-07-06T09:43:37.011450,recipe_ingredients,516,ingredient_id,711,Invalid ingredient_id reference
+2025-07-06T09:43:37.011454,recipe_ingredients,517,ingredient_id,178,Invalid ingredient_id reference
+2025-07-06T09:43:37.011456,recipe_ingredients,518,ingredient_id,87,Invalid ingredient_id reference
+2025-07-06T09:43:37.011459,recipe_ingredients,519,ingredient_id,510,Invalid ingredient_id reference
+2025-07-06T09:43:37.011460,recipe_ingredients,519,unit_of_measure,,Missing unit_of_measure
+2025-07-06T09:43:37.011462,recipe_ingredients,520,ingredient_id,475,Invalid ingredient_id reference
+2025-07-06T09:43:37.011464,recipe_ingredients,521,ingredient_id,652,Invalid ingredient_id reference
+2025-07-06T09:43:37.011467,recipe_ingredients,522,ingredient_id,92,Invalid ingredient_id reference
+2025-07-06T09:43:37.011469,recipe_ingredients,523,ingredient_id,14,Invalid ingredient_id reference
+2025-07-06T09:43:37.011471,recipe_ingredients,524,ingredient_id,90,Invalid ingredient_id reference
+2025-07-06T09:43:37.011474,recipe_ingredients,525,ingredient_id,652,Invalid ingredient_id reference
+2025-07-06T09:43:37.011476,recipe_ingredients,526,ingredient_id,474,Invalid ingredient_id reference
+2025-07-06T09:43:37.011478,recipe_ingredients,527,ingredient_id,475,Invalid ingredient_id reference
+2025-07-06T09:43:37.011480,recipe_ingredients,528,ingredient_id,742,Invalid ingredient_id reference
+2025-07-06T09:43:37.011483,recipe_ingredients,529,ingredient_id,14,Invalid ingredient_id reference
+2025-07-06T09:43:37.011485,recipe_ingredients,530,ingredient_id,90,Invalid ingredient_id reference
+2025-07-06T09:43:37.011487,recipe_ingredients,531,ingredient_id,652,Invalid ingredient_id reference
+2025-07-06T09:43:37.011489,recipe_ingredients,532,ingredient_id,474,Invalid ingredient_id reference
+2025-07-06T09:43:37.011492,recipe_ingredients,533,ingredient_id,475,Invalid ingredient_id reference
+2025-07-06T09:43:37.011494,recipe_ingredients,534,ingredient_id,291,Invalid ingredient_id reference
+2025-07-06T09:43:37.011498,recipe_ingredients,537,ingredient_id,171,Invalid ingredient_id reference
+2025-07-06T09:43:37.011499,recipe_ingredients,537,unit_of_measure,,Missing unit_of_measure
+2025-07-06T09:43:37.011501,recipe_ingredients,538,ingredient_id,474,Invalid ingredient_id reference
+2025-07-06T09:43:37.011503,recipe_ingredients,539,ingredient_id,599,Invalid ingredient_id reference
+2025-07-06T09:43:37.011505,recipe_ingredients,540,ingredient_id,792,Invalid ingredient_id reference
+2025-07-06T09:43:37.011508,recipe_ingredients,541,ingredient_id,183,Invalid ingredient_id reference
+2025-07-06T09:43:37.011510,recipe_ingredients,542,ingredient_id,90,Invalid ingredient_id reference
+2025-07-06T09:43:37.011512,recipe_ingredients,543,ingredient_id,652,Invalid ingredient_id reference
+2025-07-06T09:43:37.011627,recipe_ingredients,310,,,"Ingredient ""Non Con, Cup, 2oz, Clear Plastic"" not found in inventory for recipe ""DP-04 Hot Honey"""
+2025-07-06T09:43:37.011630,recipe_ingredients,311,,,"Ingredient ""Non Con, Lids, 1.5-2oz, Souffle, Clear"" not found in inventory for recipe ""DP-04 Hot Honey"""
+2025-07-06T09:43:37.011632,recipe_ingredients,361,,,"Ingredient ""Dry Goods, Waffle Cone"" not found in inventory for recipe ""Chicken Waffle Cone"""
+2025-07-06T09:43:37.011633,recipe_ingredients,377,,,"Ingredient ""Worcestershire Sauce"" not found in inventory for recipe ""Alabama White BBQ"""
+2025-07-06T09:43:37.011634,recipe_ingredients,383,,,"Ingredient ""Non Con, Cup, 2oz, Clear Plastic"" not found in inventory for recipe ""DP-01 Charred-Onion Ranch Dip"""
+2025-07-06T09:43:37.011635,recipe_ingredients,384,,,"Ingredient ""Non Con, Lids, 1.5-2oz, Souffle, Clear"" not found in inventory for recipe ""DP-01 Charred-Onion Ranch Dip"""
+2025-07-06T09:43:37.011636,recipe_ingredients,390,,,"Ingredient ""Non Con, Cup, 2oz, Clear Plastic"" not found in inventory for recipe ""DP-02 Comeback Sauce"""
+2025-07-06T09:43:37.011638,recipe_ingredients,391,,,"Ingredient ""Non Con, Lids, 1.5-2oz, Souffle, Clear"" not found in inventory for recipe ""DP-02 Comeback Sauce"""
+2025-07-06T09:43:37.011639,recipe_ingredients,420,,,"Ingredient ""Non Con, Cup, 2oz, Clear Plastic"" not found in inventory for recipe ""DP-03 Honey Mustard"""
+2025-07-06T09:43:37.011640,recipe_ingredients,421,,,"Ingredient ""Non Con, Lids, 1.5-2oz, Souffle, Clear"" not found in inventory for recipe ""DP-03 Honey Mustard"""
+2025-07-06T09:43:37.011641,recipe_ingredients,484,,,"Ingredient ""Non Con, Cup, 2oz, Clear Plastic"" not found in inventory for recipe ""DP-05 Habanero Ranch"""
+2025-07-06T09:43:37.011643,recipe_ingredients,485,,,"Ingredient ""Non Con, Lids, 1.5-2oz, Souffle, Clear"" not found in inventory for recipe ""DP-05 Habanero Ranch"""
+2025-07-06T09:43:37.011644,recipe_ingredients,490,,,"Ingredient ""Dry Goods, Sauce, Tomato Ketchup, Jug"" not found in inventory for recipe ""Hot Honey Sauce"""
+2025-07-06T09:43:37.011645,recipe_ingredients,536,,,"Ingredient ""Dry Goods, Waffle Cone"" not found in inventory for recipe ""FT-01 Chicken Waffle Cone"""

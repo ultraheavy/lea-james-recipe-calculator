@@ -13,10 +13,18 @@
     "loaf": "each",
     
     "fl": "ml",
-    "fl oz": "fl oz",
-    "fl_oz": "fl oz",
-    "floz": "fl oz",
-    "fl ounce": "fl oz",
+    "fl oz": "ml",
+    "fl_oz": "ml",
+    "floz": "ml",
+    "fl-oz": "ml",
+    "fl ounce": "ml",
+    
+    "tbsp": "ml",
+    "tablespoon": "ml",
+    "tblsp": "ml",
+    
+    "tsp": "ml",
+    "teaspoon": "ml",
     
     "ltr": "l",
     "ltr.": "l",
@@ -24,9 +32,7 @@
     
     "gal.": "gal",
     "gallon": "gal",
-    
-    "tablespoon": "tbsp",
-    "teaspoon": "tsp",
+    "gal": "gal",
     
     "pound": "lb",
     "ounce": "oz",
@@ -34,11 +40,26 @@
     "kilogram": "kg",
     
     "quart": "qt",
-    "pint": "pt"
+    "qt": "qt",
+    "pint": "pt",
+    "pt": "pt",
+    "cup": "cup"
   },
   "canonical_units": {
     "weight": ["g", "kg", "mg", "lb", "oz"],
-    "volume": ["ml", "l", "fl oz", "cup", "tbsp", "tsp", "gal", "qt", "pt"],
-    "count": ["each", "dozen", "case", "pack", "can", "jar", "bag", "box", "carton", "container"]
+    "volume": ["ml", "l", "cup", "gal", "qt", "pt"],
+    "count": ["each", "dozen", "case", "pack", "can", "jar", "bag", "box", "carton", "container", "loaf", "bunch"]
+  },
+  "conversions": {
+    "tbsp_to_ml": 14.786,
+    "tsp_to_ml": 4.929,
+    "floz_to_ml": 29.573,
+    "cup_to_ml": 236.588,
+    "pt_to_ml": 473.176,
+    "qt_to_ml": 946.353,
+    "gal_to_ml": 3785.412,
+    "gal_to_l": 3.785,
+    "lb_to_g": 453.592,
+    "oz_to_g": 28.350
   }
 }

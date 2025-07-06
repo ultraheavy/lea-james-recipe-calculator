@@ -1,0 +1,7 @@
+recipe_id,ingredient_id,recipe_name,bad_name,suggestion_1,score_1,id_1,suggestion_2,score_2,id_2,suggestion_3,score_3,id_3,selected_id,action
+107,492,Hot Honey Sauce,"Dry Goods, Sambal Chill Sauce (wt)","Dry Goods, Sauce, Chile Sambal",84.6,715,"Dry Goods, Sauce, Chilli & Garlic",61.2,729,"Dry Goods, Oil, Canola, Salad",44.4,561,715,apply
+117,476,Hot Fish,"Dry Goods, MAYONNAISE  HVY PLST SHLF","Dry Goods, Mayonnaise, Heavy",68.3,510,"Dry Goods, Mayonnaise, Heavy",68.3,511,"Dry Goods, Mayonnaise, Heavy",68.3,517,510,apply
+69,350,FT-02 Loaded Fries,Pickled Shallot,"Produce, Shallots, Peeled, Fresh",63.2,629,"Produce, Shallots, Peeled, Fresh",63.2,670,"Dry Goods, Salt, Kosher",51.9,711,629,apply
+103,358,Chicken Waffle Cone,Pickled Shallot,"Produce, Shallots, Peeled, Fresh",63.2,629,"Produce, Shallots, Peeled, Fresh",63.2,670,"Dry Goods, Salt, Kosher",51.9,711,629,apply
+124,338,Loaded Fries,Pickled Shallot,"Produce, Shallots, Peeled, Fresh",63.2,629,"Produce, Shallots, Peeled, Fresh",63.2,670,"Dry Goods, Salt, Kosher",51.9,711,629,apply
+107,490,Hot Honey Sauce,"Dry Goods, Sauce, Tomato Ketchup, Jug","Dry Goods, Ketchup Packets",58.5,454,"Dry Goods, Ketchup Packets",58.5,461,"Dry Good, Sauce, Tabasco",52.0,740,454,apply

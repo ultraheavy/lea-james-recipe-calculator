@@ -61,9 +61,10 @@ class ETLPipeline:
         
         Examples:
         - "1x4l" → (4.0, "l")
-        - "24 × 1 ea" → (24.0, "each")  
-        - "12x2.5kg" → (30.0, "kg")
-        - "5 fl oz" → (5.0, "fl oz")
+        - "24 × 1 ea" → (1.0, "each")  # Assuming 24-pack
+        - "12x2.5kg" → (2.5, "kg")
+        - "128 fl oz" → (128.0, "ml")
+        - "5 fl oz" → (5.0, "ml")
         
         Returns (quantity, unit) or logs error and returns (1.0, "each")
         """
@@ -76,18 +77,22 @@ class ETLPipeline:
         # Replace various multiplication symbols with 'x'
         pack_size = re.sub(r'[×✕✖⨯]', 'x', pack_size)
         
-        # Pattern 4: Reject "N x N" without unit first
-        if re.match(r'^\d+(?:\.\d+)?\s*x\s*\d+(?:\.\d+)?$', pack_size, re.IGNORECASE):
-            self._log_error('pack_size', pack_size, "Pack size missing unit")
-            return 1.0, "each"
+        # Main pattern to match both formats:
+        # Group 1-3: "N x N unit" format
+        # Group 4-5: "N unit" format (single token)
+        pattern = r'^(?:(\d+(?:\.\d+)?)\s*x\s*(\d+(?:\.\d+)?)\s+([a-zA-Z\s-]+)|(\d+(?:\.\d+)?)\s+([a-zA-Z\s-]+))$'
+        match = re.match(pattern, pack_size, re.IGNORECASE)
         
-        # Pattern 1: "N x N unit" format (e.g., "12 x 2.5 kg")
-        pattern1 = r'^(\d+(?:\.\d+)?)\s*x\s*(\d+(?:\.\d+)?)\s+(.+)$'
-        match1 = re.match(pattern1, pack_size, re.IGNORECASE)
-        if match1:
-            packs = float(match1.group(1))
-            qty_per_pack = float(match1.group(2))
-            unit = match1.group(3).strip()
+        if match:
+            if match.group(1) is not None:
+                # "N x N unit" format
+                packs = float(match.group(1))
+                qty_per_pack = float(match.group(2))
+                unit = match.group(3).strip()
+            else:
+                # "N unit" format - treat as 1 x N unit
+                qty_per_pack = float(match.group(4))
+                unit = match.group(5).strip()
             
             # Map unit alias
             canonical_unit = self.map_uom_alias(unit)
@@ -99,8 +104,8 @@ class ETLPipeline:
                 self._log_error('pack_size', pack_size, f"Unknown unit after aliasing: {unit} → {canonical_unit}")
                 return 1.0, "each"
         
-        # Pattern 2: "NxNunit" format (no spaces, e.g., "1x4l")
-        pattern2 = r'^(\d+(?:\.\d+)?)x(\d+(?:\.\d+)?)([a-zA-Z]+.*)$'
+        # Alternative pattern for compact format "NxNunit" (no spaces)
+        pattern2 = r'^(\d+(?:\.\d+)?)x(\d+(?:\.\d+)?)([a-zA-Z]+)$'
         match2 = re.match(pattern2, pack_size, re.IGNORECASE)
         if match2:
             packs = float(match2.group(1))
@@ -116,25 +121,56 @@ class ETLPipeline:
                 self._log_error('pack_size', pack_size, f"Unknown unit after aliasing: {unit} → {canonical_unit}")
                 return 1.0, "each"
         
-        # Pattern 3: Simple "N unit" format (e.g., "5 fl oz", "24 ct")
-        pattern3 = r'^(\d+(?:\.\d+)?)\s+(.+)$'
-        match3 = re.match(pattern3, pack_size, re.IGNORECASE)
-        if match3:
-            quantity = float(match3.group(1))
-            unit = match3.group(2).strip()
-            
-            # Map unit alias
-            canonical_unit = self.map_uom_alias(unit)
-            
-            if self._is_valid_unit(canonical_unit):
-                return quantity, canonical_unit
-            else:
-                self._log_error('pack_size', pack_size, f"Unknown unit after aliasing: {unit} → {canonical_unit}")
-                return 1.0, "each"
+        # Reject "N x N" without unit
+        if re.match(r'^\d+(?:\.\d+)?\s*x\s*\d+(?:\.\d+)?$', pack_size, re.IGNORECASE):
+            self._log_error('pack_size', pack_size, "Pack size missing unit")
+            return 1.0, "each"
         
         # Fallback
         self._log_error('pack_size', pack_size, "Unparseable pack size format")
         return 1.0, "each"
+    
+    def canonical_uom(self, uom_str: str) -> Tuple[str, float]:
+        """
+        Get canonical UOM and conversion factor
+        
+        Returns (canonical_code, factor) where factor converts to canonical unit
+        E.g., "tbsp" → ("ml", 14.786)
+        """
+        if not uom_str:
+            return "each", 1.0
+        
+        # First map aliases
+        canonical = self.map_uom_alias(uom_str)
+        
+        # Load conversions
+        aliases_path = Path(__file__).parent / 'uom_aliases.json'
+        if aliases_path.exists():
+            with open(aliases_path, 'r') as f:
+                data = json.load(f)
+                conversions = data.get('conversions', {})
+                
+                # Check for specific conversion factors
+                if uom_str.lower() in ['tbsp', 'tablespoon', 'tblsp']:
+                    return canonical, conversions.get('tbsp_to_ml', 14.786)
+                elif uom_str.lower() in ['tsp', 'teaspoon']:
+                    return canonical, conversions.get('tsp_to_ml', 4.929)
+                elif uom_str.lower() in ['fl oz', 'floz', 'fl_oz', 'fl-oz', 'fl']:
+                    return canonical, conversions.get('floz_to_ml', 29.573)
+                elif uom_str.lower() == 'cup':
+                    return canonical, conversions.get('cup_to_ml', 236.588)
+                elif uom_str.lower() in ['pt', 'pint']:
+                    return canonical, conversions.get('pt_to_ml', 473.176)
+                elif uom_str.lower() in ['qt', 'quart']:
+                    return canonical, conversions.get('qt_to_ml', 946.353)
+                elif uom_str.lower() in ['gal', 'gallon', 'gal.']:
+                    return canonical, conversions.get('gal_to_ml', 3785.412)
+                elif uom_str.lower() in ['lb', 'pound']:
+                    return canonical, conversions.get('lb_to_g', 453.592)
+                elif uom_str.lower() in ['oz', 'ounce']:
+                    return canonical, conversions.get('oz_to_g', 28.350)
+        
+        return canonical, 1.0
     
     def _is_valid_unit(self, unit: str) -> bool:
         """Check if unit is valid after aliasing"""
@@ -423,15 +459,222 @@ class ETLPipeline:
         
         logger.info("ETL pipeline completed")
     
+    def backfill_prices(self):
+        """P2: Backfill missing prices from vendor_products"""
+        logger.info("Backfilling missing prices...")
+        
+        cursor = self.conn.cursor()
+        
+        # Find items with null prices
+        null_price_items = cursor.execute("""
+            SELECT id, item_code, item_description
+            FROM inventory
+            WHERE current_price IS NULL OR current_price = 0
+        """).fetchall()
+        
+        logger.info(f"Found {len(null_price_items)} items with missing prices")
+        
+        backfilled = 0
+        still_null = []
+        
+        for item_id, item_code, item_description in null_price_items:
+            # Try to find most recent price from vendor_products
+            recent_price = cursor.execute("""
+                SELECT vp.vendor_price
+                FROM vendor_products vp
+                WHERE vp.inventory_id = ?
+                  AND vp.vendor_price IS NOT NULL
+                  AND vp.vendor_price > 0
+                ORDER BY vp.id DESC
+                LIMIT 1
+            """, (item_id,)).fetchone()
+            
+            if recent_price and recent_price[0]:
+                cursor.execute("""
+                    UPDATE inventory
+                    SET current_price = ?,
+                        updated_date = CURRENT_TIMESTAMP
+                    WHERE id = ?
+                """, (recent_price[0], item_id))
+                backfilled += 1
+                logger.debug(f"Backfilled price for {item_code}: ${recent_price[0]}")
+            else:
+                still_null.append({
+                    'id': item_id,
+                    'item_code': item_code,
+                    'item_description': item_description
+                })
+        
+        self.conn.commit()
+        
+        logger.info(f"Backfilled {backfilled} prices")
+        
+        if still_null:
+            logger.warning(f"{len(still_null)} items still have null prices:")
+            for item in still_null[:10]:  # Show first 10
+                logger.warning(f"  - {item['item_code']}: {item['item_description']}")
+        
+        return backfilled, still_null
+    
+    def fix_recipe_sanity(self):
+        """P2: Flag and fix recipes with issues"""
+        logger.info("Running recipe sanity checks...")
+        
+        cursor = self.conn.cursor()
+        
+        # Create recipes_notes table if it doesn't exist
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS recipes_notes (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                recipe_id INTEGER NOT NULL,
+                note_type TEXT NOT NULL,
+                note_text TEXT,
+                created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE
+            )
+        """)
+        
+        # Find recipes with >100% food cost
+        high_cost_recipes = cursor.execute("""
+            SELECT id, recipe_name, food_cost, menu_price,
+                   ROUND((food_cost / NULLIF(menu_price, 0)) * 100, 1) as food_cost_pct
+            FROM recipes
+            WHERE menu_price > 0 
+              AND food_cost > menu_price
+        """).fetchall()
+        
+        for recipe in high_cost_recipes:
+            cursor.execute("""
+                INSERT INTO recipes_notes (recipe_id, note_type, note_text)
+                VALUES (?, 'high_food_cost', ?)
+            """, (
+                recipe[0],
+                f"Food cost ${recipe[2]:.2f} exceeds menu price ${recipe[3]:.2f} ({recipe[4]}%)"
+            ))
+        
+        logger.info(f"Flagged {len(high_cost_recipes)} recipes with >100% food cost")
+        
+        # Find recipes with no ingredients
+        empty_recipes = cursor.execute("""
+            SELECT r.id, r.recipe_name
+            FROM recipes r
+            LEFT JOIN recipe_ingredients ri ON r.id = ri.recipe_id
+            WHERE ri.id IS NULL
+        """).fetchall()
+        
+        for recipe_id, recipe_name in empty_recipes:
+            cursor.execute("""
+                INSERT INTO recipes_notes (recipe_id, note_type, note_text)
+                VALUES (?, 'no_ingredients', 'Recipe has no ingredients defined')
+            """, (recipe_id,))
+        
+        logger.info(f"Flagged {len(empty_recipes)} recipes with no ingredients")
+        
+        # Find recipes with zero-cost ingredients
+        zero_cost_recipes = cursor.execute("""
+            SELECT DISTINCT r.id, r.recipe_name
+            FROM recipes r
+            JOIN recipe_ingredients ri ON r.id = ri.recipe_id
+            LEFT JOIN inventory i ON ri.ingredient_id = i.id
+            WHERE r.food_cost = 0
+               OR (i.current_price IS NULL OR i.current_price = 0)
+        """).fetchall()
+        
+        for recipe_id, recipe_name in zero_cost_recipes:
+            cursor.execute("""
+                INSERT INTO recipes_notes (recipe_id, note_type, note_text)
+                VALUES (?, 'zero_cost', 'Recipe has zero or null cost ingredients')
+            """, (recipe_id,))
+        
+        logger.info(f"Flagged {len(zero_cost_recipes)} recipes with zero-cost ingredients")
+        
+        self.conn.commit()
+        
+        return {
+            'high_cost': len(high_cost_recipes),
+            'no_ingredients': len(empty_recipes),
+            'zero_cost': len(zero_cost_recipes)
+        }
+    
+    def run_p2_fixes(self):
+        """Run P2 data quality fixes"""
+        logger.info("Starting P2 data quality fixes...")
+        
+        # 1. Backfill prices
+        backfilled, still_null = self.backfill_prices()
+        
+        # 2. Fix recipe sanity
+        recipe_issues = self.fix_recipe_sanity()
+        
+        # 3. Run audit
+        self.run_audit()
+        
+        # 4. Generate P2 delta report
+        self.generate_delta_report()
+        
+        logger.info("P2 fixes completed")
+        
+        return {
+            'prices_backfilled': backfilled,
+            'prices_still_null': len(still_null),
+            'recipe_issues': recipe_issues
+        }
+    
     def close(self):
         """Close database connection"""
         self.conn.close()
 
 def main():
     """Main ETL entry point"""
+    import argparse
+    
+    parser = argparse.ArgumentParser(description='ETL Pipeline for Restaurant Calculator')
+    parser.add_argument('command', choices=['ingest', 'p1', 'p2'], 
+                       help='Command to run')
+    parser.add_argument('--wipe', action='store_true',
+                       help='Wipe inventory and vendor_products before ingestion')
+    parser.add_argument('--files', nargs='+',
+                       help='CSV files to ingest')
+    
+    args = parser.parse_args()
+    
     etl = ETLPipeline()
+    
     try:
-        etl.run_full_etl()
+        if args.command == 'ingest':
+            if args.wipe:
+                logger.info("Wiping inventory and vendor_products tables...")
+                cursor = etl.conn.cursor()
+                cursor.execute("DELETE FROM vendor_products")
+                cursor.execute("DELETE FROM inventory")
+                etl.conn.commit()
+                logger.info("Tables wiped")
+            
+            # Process CSV files
+            if args.files:
+                for csv_file in args.files:
+                    if Path(csv_file).exists():
+                        logger.info(f"Processing {csv_file}")
+                        etl.process_inventory_csv(csv_file)
+                    else:
+                        logger.error(f"File not found: {csv_file}")
+            else:
+                # Use default directory
+                etl.run_full_etl()
+        
+        elif args.command == 'p1':
+            etl.run_full_etl()
+        
+        elif args.command == 'p2':
+            results = etl.run_p2_fixes()
+            
+            print("\nP2 Fix Results:")
+            print(f"- Prices backfilled: {results['prices_backfilled']}")
+            print(f"- Prices still null: {results['prices_still_null']}")
+            print(f"- Recipes with >100% cost: {results['recipe_issues']['high_cost']}")
+            print(f"- Recipes with no ingredients: {results['recipe_issues']['no_ingredients']}")
+            print(f"- Recipes with zero cost: {results['recipe_issues']['zero_cost']}")
+        
     finally:
         etl.close()
 

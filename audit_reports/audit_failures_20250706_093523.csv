@@ -1,0 +1,83 @@
+timestamp,table,pk,column,value,error_message
+2025-07-06T09:35:23.679286,inventory,90,purchase_unit,loaf,Invalid purchase unit: loaf
+2025-07-06T09:35:23.679427,inventory,317,pack_size,32 fl oz,Invalid pack size format: 32 fl oz
+2025-07-06T09:35:23.679449,inventory,346,pack_size,16 fl oz,Invalid pack size format: 16 fl oz
+2025-07-06T09:35:23.679601,inventory,565,pack_size,8.5 fl oz,Invalid pack size format: 8.5 fl oz
+2025-07-06T09:35:23.679708,inventory,740,pack_size,5 fl oz,Invalid pack size format: 5 fl oz
+2025-07-06T09:35:23.679783,inventory,866,pack_size,128 fl oz,Invalid pack size format: 128 fl oz
+2025-07-06T09:35:23.679806,inventory,891,item_code,,Missing required item_code
+2025-07-06T09:35:23.679807,inventory,891,item_description,,Missing required item_description
+2025-07-06T09:35:23.680003,recipes,69,food_cost_percentage,290.4947142857143,High food cost percentage: 290.5%
+2025-07-06T09:35:23.680008,recipes,72,,,Recipe has no costed ingredients
+2025-07-06T09:35:23.680011,recipes,74,,,Recipe has no costed ingredients
+2025-07-06T09:35:23.680018,recipes,80,food_cost_percentage,511.7885,High food cost percentage: 511.8%
+2025-07-06T09:35:23.680025,recipes,85,food_cost_percentage,244.04433333333336,High food cost percentage: 244.0%
+2025-07-06T09:35:23.680028,recipes,87,food_cost_percentage,122.49466666666669,High food cost percentage: 122.5%
+2025-07-06T09:35:23.680038,recipes,97,,,Recipe has no ingredients
+2025-07-06T09:35:23.680039,recipes,97,prep_recipe_yield_uom,portions,Invalid prep recipe yield UOM: portions
+2025-07-06T09:35:23.680043,recipes,100,,,Recipe has no ingredients
+2025-07-06T09:35:23.680045,recipes,102,,,Recipe has no ingredients
+2025-07-06T09:35:23.680048,recipes,103,food_cost_percentage,345.43291666666664,High food cost percentage: 345.4%
+2025-07-06T09:35:23.680051,recipes,105,,,Recipe has no ingredients
+2025-07-06T09:35:23.680065,recipes,121,food_cost_percentage,2448.1673333333338,High food cost percentage: 2448.2%
+2025-07-06T09:35:23.680070,recipes,124,food_cost_percentage,341.31791666666663,High food cost percentage: 341.3%
+2025-07-06T09:35:23.680383,recipe_ingredients,296,ingredient_name,Collard Greens Recipe,"Ingredient name mismatch: ""Collard Greens Recipe"" vs ""Produce, Collard Green, Frozen, Chopped"""
+2025-07-06T09:35:23.680400,recipe_ingredients,315,ingredient_name,Kale Kimchi Recipe,"Ingredient name mismatch: ""Kale Kimchi Recipe"" vs ""PD KALE CHOPPED"""
+2025-07-06T09:35:23.680408,recipe_ingredients,320,ingredient_name,Charred Onion Ranch,"Ingredient name mismatch: ""Charred Onion Ranch"" vs ""Dry Goods, Ranch Dressing, with Jalapeno"""
+2025-07-06T09:35:23.680411,recipe_ingredients,321,ingredient_name,Kale Kimchi Recipe,"Ingredient name mismatch: ""Kale Kimchi Recipe"" vs ""PD KALE CHOPPED"""
+2025-07-06T09:35:23.680418,recipe_ingredients,324,ingredient_name,"Protein, Pork Belly, Diced, Hickory Smoked","Ingredient name mismatch: ""Protein, Pork Belly, Diced, Hickory Smoked"" vs ""Frozen, Corn Rib, Hickory Smoked"""
+2025-07-06T09:35:23.680423,recipe_ingredients,327,ingredient_name,"Water, Tap","Ingredient name mismatch: ""Water, Tap"" vs ""N/A Bev, Water, Still, Bottles"""
+2025-07-06T09:35:23.680429,recipe_ingredients,334,ingredient_name,"Produce, CABBAGE GREEN SHREDDED","Ingredient name mismatch: ""Produce, CABBAGE GREEN SHREDDED"" vs ""Produce, Cabbage, Red, Shredded"""
+2025-07-06T09:35:23.680438,recipe_ingredients,340,ingredient_name,French Fries Recipe,"Ingredient name mismatch: ""French Fries Recipe"" vs ""Dry Goods, Bread, French Toast, Thick Slice"""
+2025-07-06T09:35:23.680443,recipe_ingredients,343,ingredient_name,Onion Ranch,"Ingredient name mismatch: ""Onion Ranch"" vs ""Dry Goods, Ranch Dressing, with Jalapeno"""
+2025-07-06T09:35:23.680445,recipe_ingredients,344,ingredient_name,Kale Kimchi Recipe,"Ingredient name mismatch: ""Kale Kimchi Recipe"" vs ""PD KALE CHOPPED"""
+2025-07-06T09:35:23.680449,recipe_ingredients,346,ingredient_name,French Fries Recipe,"Ingredient name mismatch: ""French Fries Recipe"" vs ""Dry Goods, Bread, French Toast, Thick Slice"""
+2025-07-06T09:35:23.680452,recipe_ingredients,348,ingredient_name,Fried Chicken Tender,"Ingredient name mismatch: ""Fried Chicken Tender"" vs ""Dry Goods, Chicken Base, Paste"""
+2025-07-06T09:35:23.680456,recipe_ingredients,351,ingredient_name,French Fries Recipe,"Ingredient name mismatch: ""French Fries Recipe"" vs ""Dry Goods, Bread, French Toast, Thick Slice"""
+2025-07-06T09:35:23.680459,recipe_ingredients,352,ingredient_name,Charred Onion Ranch,"Ingredient name mismatch: ""Charred Onion Ranch"" vs ""Dry Goods, Ranch Dressing, with Jalapeno"""
+2025-07-06T09:35:23.680466,recipe_ingredients,357,ingredient_name,Onion Ranch,"Ingredient name mismatch: ""Onion Ranch"" vs ""Dry Goods, Ranch Dressing, with Jalapeno"""
+2025-07-06T09:35:23.680469,recipe_ingredients,359,unit_of_measure,,Missing unit_of_measure
+2025-07-06T09:35:23.680475,recipe_ingredients,371,ingredient_name,Fried Chicken Tender,"Ingredient name mismatch: ""Fried Chicken Tender"" vs ""Dry Goods, Chicken Base, Paste"""
+2025-07-06T09:35:23.680483,recipe_ingredients,377,unit_of_measure,tbsp,Invalid UOM: tbsp
+2025-07-06T09:35:23.680486,recipe_ingredients,378,unit_of_measure,tbsp,Invalid UOM: tbsp
+2025-07-06T09:35:23.680489,recipe_ingredients,379,unit_of_measure,tbsp,Invalid UOM: tbsp
+2025-07-06T09:35:23.680495,recipe_ingredients,382,ingredient_name,Charred Onion Ranch,"Ingredient name mismatch: ""Charred Onion Ranch"" vs ""Dry Goods, Ranch Dressing, with Jalapeno"""
+2025-07-06T09:35:23.680525,recipe_ingredients,409,ingredient_name,"Dry Goods, Oil, Canola, Salad -v","Ingredient name mismatch: ""Dry Goods, Oil, Canola, Salad -v"" vs ""Dry Goods, Oil, Canola, Salad"""
+2025-07-06T09:35:23.680542,recipe_ingredients,424,ingredient_name,Kale Kimchi Recipe,"Ingredient name mismatch: ""Kale Kimchi Recipe"" vs ""PD KALE CHOPPED"""
+2025-07-06T09:35:23.680545,recipe_ingredients,425,ingredient_name,Kale Kimchi Recipe,"Ingredient name mismatch: ""Kale Kimchi Recipe"" vs ""PD KALE CHOPPED"""
+2025-07-06T09:35:23.680571,recipe_ingredients,446,ingredient_name,Roux recipe,"Ingredient name mismatch: ""Roux recipe"" vs ""Dry Goods, Chicken  Breading, Lea Jane Recipe"""
+2025-07-06T09:35:23.680583,recipe_ingredients,459,ingredient_name,"Dry Goods,  Spice, Paprika, Powder - Spanish","Ingredient name mismatch: ""Dry Goods,  Spice, Paprika, Powder - Spanish"" vs ""Dry Goods,  Spice, Paprika, Powder"""
+2025-07-06T09:35:23.680586,recipe_ingredients,461,ingredient_name,Fried Chicken Tender,"Ingredient name mismatch: ""Fried Chicken Tender"" vs ""Dry Goods, Chicken Base, Paste"""
+2025-07-06T09:35:23.680589,recipe_ingredients,462,ingredient_name,Ritz Crumble,"Ingredient name mismatch: ""Ritz Crumble"" vs ""Dry Goods, Crackers, Ritz"""
+2025-07-06T09:35:23.680619,recipe_ingredients,488,ingredient_name,French Fries Recipe,"Ingredient name mismatch: ""French Fries Recipe"" vs ""Dry Goods, Bread, French Toast, Thick Slice"""
+2025-07-06T09:35:23.680626,recipe_ingredients,494,ingredient_name,Garlic Salt,"Ingredient name mismatch: ""Garlic Salt"" vs ""Dry Goods, Sauce, Chilli & Garlic"""
+2025-07-06T09:35:23.680629,recipe_ingredients,495,ingredient_name,"Dry Goods, Onion Powder","Ingredient name mismatch: ""Dry Goods, Onion Powder"" vs ""Dry Goods,  Spice, Paprika, Powder"""
+2025-07-06T09:35:23.680632,recipe_ingredients,496,ingredient_name,Hot Honey Sauce,"Ingredient name mismatch: ""Hot Honey Sauce"" vs ""Dry Goods, Dressing, Honey Mustard"""
+2025-07-06T09:35:23.680636,recipe_ingredients,499,ingredient_name,Fried Chicken Tender,"Ingredient name mismatch: ""Fried Chicken Tender"" vs ""Dry Goods, Chicken Base, Paste"""
+2025-07-06T09:35:23.680641,recipe_ingredients,502,ingredient_name,Kale - Chopped,"Ingredient name mismatch: ""Kale - Chopped"" vs ""PD KALE CHOPPED"""
+2025-07-06T09:35:23.680649,recipe_ingredients,507,ingredient_name,Shredded Carrots,"Ingredient name mismatch: ""Shredded Carrots"" vs ""Produce, Cabbage, Red, Shredded"""
+2025-07-06T09:35:23.680656,recipe_ingredients,512,ingredient_name,Roux recipe,"Ingredient name mismatch: ""Roux recipe"" vs ""Dry Goods, Chicken  Breading, Lea Jane Recipe"""
+2025-07-06T09:35:23.680664,recipe_ingredients,519,unit_of_measure,,Missing unit_of_measure
+2025-07-06T09:35:23.680670,recipe_ingredients,522,ingredient_name,French Fries Recipe,"Ingredient name mismatch: ""French Fries Recipe"" vs ""Dry Goods, Bread, French Toast, Thick Slice"""
+2025-07-06T09:35:23.680678,recipe_ingredients,528,ingredient_name,"Dry Goods, Sauce, BBQ","Ingredient name mismatch: ""Dry Goods, Sauce, BBQ"" vs ""Dry Goods, Sauce, BBQ Hickory"""
+2025-07-06T09:35:23.680686,recipe_ingredients,534,ingredient_name,Hot Honey Sauce,"Ingredient name mismatch: ""Hot Honey Sauce"" vs ""Dry Goods, Dressing, Honey Mustard"""
+2025-07-06T09:35:23.680690,recipe_ingredients,537,unit_of_measure,,Missing unit_of_measure
+2025-07-06T09:35:23.681027,vendor_products,16,inventory_id,74,Invalid inventory_id reference
+2025-07-06T09:35:23.681184,vendor_products,92,inventory_id,365,Invalid inventory_id reference
+2025-07-06T09:35:23.681194,vendor_products,96,inventory_id,374,Invalid inventory_id reference
+2025-07-06T09:35:23.681562,recipe_ingredients,310,,,"Ingredient ""Non Con, Cup, 2oz, Clear Plastic"" not found in inventory for recipe ""DP-04 Hot Honey"""
+2025-07-06T09:35:23.681565,recipe_ingredients,311,,,"Ingredient ""Non Con, Lids, 1.5-2oz, Souffle, Clear"" not found in inventory for recipe ""DP-04 Hot Honey"""
+2025-07-06T09:35:23.681566,recipe_ingredients,361,,,"Ingredient ""Dry Goods, Waffle Cone"" not found in inventory for recipe ""Chicken Waffle Cone"""
+2025-07-06T09:35:23.681567,recipe_ingredients,377,,,"Ingredient ""Worcestershire Sauce"" not found in inventory for recipe ""Alabama White BBQ"""
+2025-07-06T09:35:23.681569,recipe_ingredients,383,,,"Ingredient ""Non Con, Cup, 2oz, Clear Plastic"" not found in inventory for recipe ""DP-01 Charred-Onion Ranch Dip"""
+2025-07-06T09:35:23.681570,recipe_ingredients,384,,,"Ingredient ""Non Con, Lids, 1.5-2oz, Souffle, Clear"" not found in inventory for recipe ""DP-01 Charred-Onion Ranch Dip"""
+2025-07-06T09:35:23.681571,recipe_ingredients,390,,,"Ingredient ""Non Con, Cup, 2oz, Clear Plastic"" not found in inventory for recipe ""DP-02 Comeback Sauce"""
+2025-07-06T09:35:23.681572,recipe_ingredients,391,,,"Ingredient ""Non Con, Lids, 1.5-2oz, Souffle, Clear"" not found in inventory for recipe ""DP-02 Comeback Sauce"""
+2025-07-06T09:35:23.681573,recipe_ingredients,420,,,"Ingredient ""Non Con, Cup, 2oz, Clear Plastic"" not found in inventory for recipe ""DP-03 Honey Mustard"""
+2025-07-06T09:35:23.681575,recipe_ingredients,421,,,"Ingredient ""Non Con, Lids, 1.5-2oz, Souffle, Clear"" not found in inventory for recipe ""DP-03 Honey Mustard"""
+2025-07-06T09:35:23.681576,recipe_ingredients,476,,,"Ingredient ""Dry Goods, MAYONNAISE  HVY PLST SHLF"" not found in inventory for recipe ""Hot Fish"""
+2025-07-06T09:35:23.681577,recipe_ingredients,484,,,"Ingredient ""Non Con, Cup, 2oz, Clear Plastic"" not found in inventory for recipe ""DP-05 Habanero Ranch"""
+2025-07-06T09:35:23.681579,recipe_ingredients,485,,,"Ingredient ""Non Con, Lids, 1.5-2oz, Souffle, Clear"" not found in inventory for recipe ""DP-05 Habanero Ranch"""
+2025-07-06T09:35:23.681580,recipe_ingredients,490,,,"Ingredient ""Dry Goods, Sauce, Tomato Ketchup, Jug"" not found in inventory for recipe ""Hot Honey Sauce"""
+2025-07-06T09:35:23.681581,recipe_ingredients,492,,,"Ingredient ""Dry Goods, Sambal Chill Sauce (wt)"" not found in inventory for recipe ""Hot Honey Sauce"""
+2025-07-06T09:35:23.681582,recipe_ingredients,536,,,"Ingredient ""Dry Goods, Waffle Cone"" not found in inventory for recipe ""FT-01 Chicken Waffle Cone"""

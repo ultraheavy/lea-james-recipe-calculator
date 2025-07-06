@@ -1,0 +1,4 @@
+recipe_id,ingredient_id,recipe_name,bad_name,suggestion_1,score_1,id_1,suggestion_2,score_2,id_2,suggestion_3,score_3,id_3,selected_id,action
+107,492,Hot Honey Sauce,"Dry Goods, Sambal Chill Sauce (wt)","Dry Goods, Sauce, Chile Sambal",84.6,715,"Dry Goods, Sauce, Chilli & Garlic",61.2,729,"Dry Goods, Oil, Canola, Salad",44.4,561,715,apply
+117,476,Hot Fish,"Dry Goods, MAYONNAISE  HVY PLST SHLF","Dry Goods, Mayonnaise, Heavy",68.3,510,"Dry Goods, Mayonnaise, Heavy",68.3,511,"Dry Goods, Mayonnaise, Heavy",68.3,517,510,apply
+72,309,DP-04 Hot Honey,Hot Honey - 2025,"Dry Goods, Honey, Natural",50.0,433,"Dry Goods, SO VINEGAR WH 50GR",43.8,868,"Dry Goods, Dressing, Honey Mustard",43.2,291,433,apply
