@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for, make_response, flash
 import sqlite3
 import os
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), 'app'))
 from unit_converter import UnitConverter
 
 app = Flask(__name__)
