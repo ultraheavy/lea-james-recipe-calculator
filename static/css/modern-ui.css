@@ -74,8 +74,8 @@
   --bg-dark: #030712;
   
   --text-primary: #f9fafb;
-  --text-secondary: #d1d5db;
-  --text-tertiary: #9ca3af;
+  --text-secondary: #e5e7eb;  /* Increased contrast from #d1d5db */
+  --text-tertiary: #d1d5db;   /* Increased contrast from #9ca3af */
   --text-inverse: #111827;
   
   --gray-50: #374151;
@@ -88,6 +88,11 @@
   --gray-700: #f9fafb;
   --gray-800: #ffffff;
   --gray-900: #ffffff;
+  
+  /* Adjust status colors for better dark mode contrast */
+  --success-color: #34d399;  /* Brighter green */
+  --danger-color: #f87171;   /* Brighter red */
+  --warning-color: #fbbf24;  /* Brighter yellow */
 }
 
 /* Reset & Base Styles */

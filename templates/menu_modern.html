@@ -164,7 +164,7 @@
                         <span class="font-semibold">${{ "%.2f"|format(item.menu_price or 0) }}</span>
                     </td>
                     <td>
-                        <span class="text-sm">${{ "%.2f"|format(item.food_cost or item.recipe_food_cost or 0) }}</span>
+                        <span class="text-sm text-secondary">${{ "%.2f"|format(item.food_cost or item.recipe_food_cost or 0) }}</span>
                     </td>
                     <td>
                         {% set cost = item.food_cost or item.recipe_food_cost or 0 %}
@@ -180,7 +180,7 @@
                     </td>
                     <td>
                         {% if price > 0 %}
-                            <span class="font-medium text-success">${{ "%.2f"|format(price - cost) }}</span>
+                            <span class="font-semibold text-success">${{ "%.2f"|format(price - cost) }}</span>
                         {% else %}
                             <span class="text-secondary">-</span>
                         {% endif %}
