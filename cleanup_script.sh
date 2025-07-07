@@ -25,7 +25,7 @@ cp -r "$(pwd)" "$PARENT_DIR/$BACKUP_DIR"
 # Git commit current state
 echo "💾 Creating git backup commit..."
 git add .
-git commit -m "PRE-CLEANUP: Backup before file reorganization $(date)"
+git commit -m "PRE-CLEANUP: Backup before file reorganization $(date)" || echo "  - Working tree clean, no commit needed"
 
 echo ""
 echo "🗂️  PHASE 1: CREATE NEW DIRECTORY STRUCTURE"
