@@ -1749,19 +1749,24 @@ def edit_menu(menu_id):
         # Get menu details
         menu = conn.execute('SELECT * FROM menus WHERE id = ?', (menu_id,)).fetchone()
         
-        # Get all menu items with assignment status
+        # Get all menu items with assignment status (distinct by item_name and recipe_id)
         menu_items = conn.execute('''
-            SELECT mi.*, 
+            SELECT DISTINCT mi.item_name, 
+                   mi.recipe_id,
+                   mi.menu_price,
+                   mi.menu_group,
                    r.recipe_name,
                    r.food_cost,
                    r.food_cost_percentage,
                    CASE WHEN mmi.menu_id IS NOT NULL THEN 1 ELSE 0 END as is_assigned,
                    mmi.category,
                    mmi.sort_order as item_sort_order,
-                   mmi.override_price
+                   mmi.override_price,
+                   MAX(mi.id) as id  -- Use MAX to get one ID per unique item
             FROM menu_items mi
             LEFT JOIN recipes r ON mi.recipe_id = r.id
             LEFT JOIN menu_menu_items mmi ON mi.id = mmi.menu_item_id AND mmi.menu_id = ?
+            GROUP BY mi.item_name, mi.recipe_id
             ORDER BY mmi.category, mmi.sort_order, mi.item_name
         ''', (menu_id,)).fetchall()
         
