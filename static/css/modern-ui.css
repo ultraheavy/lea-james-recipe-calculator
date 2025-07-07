@@ -82,9 +82,9 @@
   --bg-tertiary: #374151;
   --bg-dark: #030712;
   
-  --text-primary: #f9fafb !important;
-  --text-secondary: #e5e7eb !important;  /* Increased contrast from #d1d5db */
-  --text-tertiary: #d1d5db !important;   /* Increased contrast from #9ca3af */
+  --text-primary: #f9fafb;
+  --text-secondary: #e5e7eb;  /* Increased contrast from #d1d5db */
+  --text-tertiary: #d1d5db;   /* Increased contrast from #9ca3af */
   --text-inverse: #111827;
   
   --gray-50: #374151;
@@ -398,6 +398,13 @@ p {
   height: 2.5rem;
   padding: 0;
   border-radius: var(--radius-full);
+}
+
+.btn-icon.btn-sm {
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
+  min-height: 2rem;
 }
 
 /* Forms */

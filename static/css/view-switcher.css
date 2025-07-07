@@ -219,6 +219,20 @@
     gap: 0.5rem;
 }
 
+/* Ensure action buttons are visible in card and list views */
+.item-card-actions .btn,
+.list-item-actions .btn {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.item-card-actions form,
+.list-item-actions form {
+    display: inline-block;
+}
+}
+
 /* Mobile Responsive Card Grid */
 @media (max-width: 640px) {
     .card-grid {

@@ -277,7 +277,7 @@ function generateInventoryCards() {
     
     rows.forEach(row => {
         const cells = row.querySelectorAll('td');
-        if (cells.length < 6) return;
+        if (cells.length < 8) return; // We now have 8 columns
         
         const card = document.createElement('div');
         card.className = 'item-card';
@@ -285,15 +285,16 @@ function generateInventoryCards() {
         card.setAttribute('data-vendor', row.getAttribute('data-vendor'));
         card.setAttribute('data-description', row.getAttribute('data-description'));
         
-        // Extract data
+        // Extract data - matching current table structure
         const iconContainer = cells[0].querySelector('.icon-container').cloneNode(true);
         const itemName = cells[0].querySelector('.item-name').textContent;
-        const itemCode = cells[0].querySelector('.item-code')?.textContent || cells[5].textContent.trim();
-        const vendor = cells[1].textContent.trim();
-        const price = cells[2].textContent.trim();
-        const unit = cells[3].textContent.trim();
-        const packSize = cells[4].textContent.trim();
-        const actions = cells[6].innerHTML;
+        const itemCode = cells[0].querySelector('.text-xs').textContent;
+        const vendorDesc = cells[1].textContent.trim(); // Vendor Description
+        const vendor = cells[2].textContent.trim();     // Vendor
+        const vendorCode = cells[3].textContent.trim(); // Vendor Code
+        const price = cells[5].textContent.trim();      // Price (index 5)
+        const packSize = cells[6].textContent.trim();   // Pack Size
+        const actions = cells[7].innerHTML;             // Actions (index 7)
         
         card.innerHTML = `
             <div class="item-card-header">
@@ -315,8 +316,8 @@ function generateInventoryCards() {
                     <span class="item-card-value price">${price}</span>
                 </div>
                 <div class="item-card-row">
-                    <span class="item-card-label">Unit</span>
-                    <span class="item-card-value">${unit}</span>
+                    <span class="item-card-label">Vendor Code</span>
+                    <span class="item-card-value">${vendorCode}</span>
                 </div>
                 <div class="item-card-row">
                     <span class="item-card-label">Pack Size</span>
@@ -342,7 +343,7 @@ function generateInventoryList() {
     
     rows.forEach(row => {
         const cells = row.querySelectorAll('td');
-        if (cells.length < 6) return;
+        if (cells.length < 8) return; // We now have 8 columns
         
         const listItem = document.createElement('div');
         listItem.className = 'list-item';
@@ -350,14 +351,16 @@ function generateInventoryList() {
         listItem.setAttribute('data-vendor', row.getAttribute('data-vendor'));
         listItem.setAttribute('data-description', row.getAttribute('data-description'));
         
-        // Extract data
+        // Extract data - matching current table structure
         const iconContainer = cells[0].querySelector('.icon-container').cloneNode(true);
         const itemName = cells[0].querySelector('.item-name').textContent;
-        const itemCode = cells[0].querySelector('.item-code')?.textContent || cells[5].textContent.trim();
-        const vendor = cells[1].textContent.trim();
-        const price = cells[2].textContent.trim();
-        const unit = cells[3].textContent.trim();
-        const actions = cells[6].innerHTML;
+        const itemCode = cells[0].querySelector('.text-xs').textContent;
+        const vendorDesc = cells[1].textContent.trim(); // Vendor Description
+        const vendor = cells[2].textContent.trim();     // Vendor
+        const vendorCode = cells[3].textContent.trim(); // Vendor Code
+        const price = cells[5].textContent.trim();      // Price (index 5)
+        const packSize = cells[6].textContent.trim();   // Pack Size
+        const actions = cells[7].innerHTML;             // Actions (index 7)
         
         listItem.innerHTML = `
             <div class="list-item-icon">
@@ -365,7 +368,7 @@ function generateInventoryList() {
             </div>
             <div class="list-item-content">
                 <div class="list-item-title">${itemName}</div>
-                <div class="list-item-subtitle">${itemCode} • ${vendor} • ${unit}</div>
+                <div class="list-item-subtitle">${itemCode} • ${vendor} • ${packSize}</div>
             </div>
             <div class="list-item-meta">
                 <div class="list-item-price">${price}</div>
