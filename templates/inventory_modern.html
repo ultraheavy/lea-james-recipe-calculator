@@ -98,12 +98,13 @@
                         <div class="flex items-center gap-3">
                             <div class="icon-container"></div>
                             <div>
-                                <p class="font-medium item-name">{{ item.item_code or '-' }}</p>
+                                <p class="font-medium item-name">{{ item.item_description }}</p>
+                                <p class="text-xs text-gray-500">{{ item.item_code or '-' }}</p>
                             </div>
                         </div>
                     </td>
                     <td>
-                        <p class="text-sm">{{ item.item_description }}</p>
+                        <p class="text-sm">{{ item.vendor_description or '-' }}</p>
                     </td>
                     <td>
                         <p class="text-sm font-medium">{{ item.primary_vendor_name or item.vendor_name or '-' }}</p>
