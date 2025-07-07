@@ -418,13 +418,23 @@ select.form-control {
   background: var(--bg-secondary);
 }
 
-/* Dark mode table text fix */
+/* Dark mode table fix with proper contrast */
 [data-theme="dark"] .table tbody tr {
   color: var(--text-primary);
+  background: transparent;
 }
 
 [data-theme="dark"] .table tbody td {
   color: inherit;
+}
+
+/* Dark mode striped table with subtle contrast */
+[data-theme="dark"] .table-striped tbody tr:nth-child(even) {
+  background: #0f172a !important; /* Slightly darker than --bg-secondary for subtle contrast */
+}
+
+[data-theme="dark"] .table tbody tr:hover {
+  background: #1e293b !important; /* Subtle highlight on hover */
 }
 
 /* Badges */
