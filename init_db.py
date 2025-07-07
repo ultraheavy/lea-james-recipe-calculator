@@ -66,9 +66,78 @@ def init_database():
         else:
             print("vendor_descriptions table already exists.")
         
+        # Check for units table
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='units'")
+        if not cursor.fetchone():
+            print("Creating units table...")
+            cursor.execute('''
+                CREATE TABLE units (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    unit_name TEXT NOT NULL UNIQUE,
+                    unit_type TEXT NOT NULL,
+                    to_base_factor REAL NOT NULL,
+                    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            ''')
+            
+            # Insert basic units
+            cursor.executemany('''
+                INSERT INTO units (unit_name, unit_type, to_base_factor) VALUES (?, ?, ?)
+            ''', [
+                ('g', 'weight', 1.0),
+                ('kg', 'weight', 1000.0),
+                ('oz', 'weight', 28.3495),
+                ('lb', 'weight', 453.592),
+                ('ml', 'volume', 1.0),
+                ('l', 'volume', 1000.0),
+                ('tsp', 'volume', 4.92892),
+                ('tbsp', 'volume', 14.7868),
+                ('cup', 'volume', 236.588),
+                ('fl oz', 'volume', 29.5735),
+                ('each', 'count', 1.0),
+                ('dozen', 'count', 12.0),
+                ('ct', 'count', 1.0)
+            ])
+            print("Created units table with basic units")
+        
+        # Check for ingredient_densities table
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='ingredient_densities'")
+        if not cursor.fetchone():
+            print("Creating ingredient_densities table...")
+            cursor.execute('''
+                CREATE TABLE ingredient_densities (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    ingredient_name TEXT NOT NULL UNIQUE,
+                    density_g_per_ml REAL NOT NULL,
+                    notes TEXT,
+                    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            ''')
+            print("Created ingredient_densities table")
+        
         # Add any future migrations here
         
         print("Database initialization complete!")
+        
+        # After all tables are set up, recalculate costs if needed
+        cursor.execute('''
+            SELECT COUNT(*) FROM menu_items 
+            WHERE menu_price > 0 AND food_cost > 0 
+            AND food_cost / menu_price > 1.0
+        ''')
+        
+        high_cost_count = cursor.fetchone()[0]
+        if high_cost_count > 10:  # If more than 10 items have >100% food cost
+            print(f"\nDetected {high_cost_count} items with impossible food costs.")
+            print("Running cost recalculation...")
+            conn.commit()  # Commit table changes first
+            conn.close()   # Close connection
+            
+            # Import and run the recalculation
+            from recalculate_all_costs import recalculate_all_costs
+            recalculate_all_costs()
+            
+            return  # Exit early since we closed the connection
         
     except Exception as e:
         conn.rollback()
