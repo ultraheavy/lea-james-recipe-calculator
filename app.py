@@ -221,6 +221,33 @@ def init_database():
                 )
             ''')
             
+            # Add menus table for menu management
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS menus (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    menu_name TEXT NOT NULL,
+                    description TEXT,
+                    is_active BOOLEAN DEFAULT FALSE,
+                    sort_order INTEGER DEFAULT 0,
+                    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            ''')
+            
+            # Add menu_menu_items junction table
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS menu_menu_items (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    menu_id INTEGER NOT NULL,
+                    menu_item_id INTEGER NOT NULL,
+                    sort_order INTEGER DEFAULT 0,
+                    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY (menu_id) REFERENCES menus (id) ON DELETE CASCADE,
+                    FOREIGN KEY (menu_item_id) REFERENCES menu_items (id) ON DELETE CASCADE,
+                    UNIQUE(menu_id, menu_item_id)
+                )
+            ''')
+            
             # Update menu_items to include version_id
             cursor.execute('''
                 PRAGMA table_info(menu_items)
@@ -237,6 +264,17 @@ def init_database():
                 cursor.execute('''
                     INSERT INTO menu_versions (version_name, is_active) 
                     VALUES ('Current Menu', 1)
+                ''')
+            
+            # Ensure default menus exist
+            cursor.execute('SELECT COUNT(*) FROM menus')
+            if cursor.fetchone()[0] == 0:
+                cursor.execute('''
+                    INSERT INTO menus (menu_name, description, is_active, sort_order) 
+                    VALUES 
+                    ('Master Menu', 'Complete list of all menu items', 1, 1),
+                    ('Current Menu', 'Currently active menu', 1, 2),
+                    ('Future Menu', 'Planned menu changes', 0, 3)
                 ''')
             
             # Add units table for conversion system
