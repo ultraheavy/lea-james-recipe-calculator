@@ -109,6 +109,21 @@ The application is designed to import/export data from Toast POS:
 - Debug mode is enabled by default
 - Accessible from network: host='0.0.0.0'
 
+## Critical UI Requirements - DO NOT CHANGE
+
+### Inventory Table Headers (FIXED - DO NOT MODIFY)
+The inventory table MUST have these exact headers in this exact order:
+1. **Item Name** - displays `item_code` (NOT item_description)
+2. **Vendor Description** - displays `item_description`
+3. **Vendor** - displays `primary_vendor_name` or `vendor_name`
+4. **Vendor Code** - displays `vendor_item_code`
+5. **Last Purchased Date** - displays `last_purchased_date`
+6. **Price** - displays `vendor_current_price` or `current_price`
+7. **Pack Size** - displays `pack_size`
+8. **Actions** - edit/vendors/delete buttons
+
+**IMPORTANT**: These headers have been specifically requested by the user and fixed multiple times. Do not change them to more "logical" names without explicit user request.
+
 ## UI/UX Design System
 
 ### Theme System
