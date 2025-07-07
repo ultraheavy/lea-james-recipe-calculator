@@ -2,16 +2,25 @@
 
 /* CSS Variables for Theme */
 :root {
-  /* Brand Colors */
+  /* Brand Colors - More vibrant palette */
   --primary-color: #6366f1;
   --primary-dark: #4f46e5;
   --primary-light: #818cf8;
+  --primary-lighter: #c7d2fe;
   --secondary-color: #f59e0b;
   --secondary-dark: #d97706;
+  --secondary-light: #fbbf24;
+  --accent-color: #ec4899;
+  --accent-dark: #db2777;
+  --accent-light: #f472b6;
   --success-color: #10b981;
+  --success-light: #34d399;
   --danger-color: #ef4444;
+  --danger-light: #f87171;
   --warning-color: #f59e0b;
+  --warning-light: #fbbf24;
   --info-color: #3b82f6;
+  --info-light: #60a5fa;
   
   /* Neutral Colors */
   --gray-50: #f9fafb;
@@ -73,9 +82,9 @@
   --bg-tertiary: #374151;
   --bg-dark: #030712;
   
-  --text-primary: #f9fafb;
-  --text-secondary: #e5e7eb;  /* Increased contrast from #d1d5db */
-  --text-tertiary: #d1d5db;   /* Increased contrast from #9ca3af */
+  --text-primary: #f9fafb !important;
+  --text-secondary: #e5e7eb !important;  /* Increased contrast from #d1d5db */
+  --text-tertiary: #d1d5db !important;   /* Increased contrast from #9ca3af */
   --text-inverse: #111827;
   
   --gray-50: #374151;
@@ -122,7 +131,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 1rem;
   font-weight: 600;
   line-height: 1.25;
-  color: var(--text-primary);
+  color: var(--text-primary) !important; /* Force proper contrast */
 }
 
 h1 { font-size: 2.5rem; }
@@ -197,11 +206,30 @@ p {
   border-radius: var(--radius);
   transition: all var(--transition);
   font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transform: translateX(-50%);
+  transition: width var(--transition);
 }
 
 .navbar-link:hover {
   color: var(--primary-color);
-  background: var(--gray-100);
+  background: var(--primary-lighter);
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.navbar-link:hover::before {
+  width: 80%;
 }
 
 .navbar-link.active {
@@ -209,6 +237,7 @@ p {
   background: var(--primary-color);
   background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
   color: white;
+  box-shadow: 0 2px 4px 0 rgba(99, 102, 241, 0.3);
 }
 
 /* Mobile Menu Toggle */
@@ -229,16 +258,29 @@ p {
   box-shadow: var(--shadow);
   overflow: hidden;
   transition: all var(--transition);
+  border: 1px solid var(--gray-100);
 }
 
 .card:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-2px);
+  border-color: var(--primary-lighter);
 }
 
 .card-header {
   padding: 1.5rem;
   border-bottom: 1px solid var(--gray-100);
+  background: linear-gradient(to bottom, var(--bg-primary), var(--bg-secondary));
+}
+
+.card-header h1,
+.card-header h2,
+.card-header h3,
+.card-header h4,
+.card-header h5,
+.card-header h6 {
+  color: var(--text-primary) !important;
+  margin-bottom: 0;
 }
 
 .card-body {
@@ -249,6 +291,26 @@ p {
   padding: 1rem 1.5rem;
   background: var(--bg-secondary);
   border-top: 1px solid var(--gray-100);
+}
+
+/* Recipe cards with colorful accents */
+.recipe-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.recipe-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+}
+
+.recipe-card:hover::before {
+  height: 6px;
 }
 
 /* Buttons */
@@ -292,11 +354,13 @@ p {
 .btn-primary {
   background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
   color: white;
+  box-shadow: 0 2px 4px 0 rgba(99, 102, 241, 0.2);
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 12px 0 rgba(99, 102, 241, 0.3);
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
 }
 
 .btn-secondary {
@@ -355,15 +419,20 @@ p {
   line-height: 1.5;
   color: var(--text-primary);
   background: var(--bg-primary);
-  border: 1px solid var(--gray-300);
+  border: 2px solid var(--gray-200);
   border-radius: var(--radius);
   transition: all var(--transition);
   outline: none;
 }
 
+.form-control:hover {
+  border-color: var(--gray-300);
+}
+
 .form-control:focus {
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+  background: var(--bg-primary);
 }
 
 .form-control::placeholder {
@@ -421,20 +490,92 @@ select.form-control {
 /* Dark mode table fix with proper contrast */
 [data-theme="dark"] .table tbody tr {
   color: var(--text-primary);
-  background: transparent;
+  background-color: var(--bg-primary) !important; /* Use primary background */
+  background: var(--bg-primary) !important;
 }
 
-[data-theme="dark"] .table tbody td {
+[data-theme="dark"] .table tbody tr td,
+[data-theme="dark"] .table tbody tr th {
   color: inherit;
+  background-color: transparent !important;
+  background: transparent !important;
 }
 
-/* Dark mode striped table with subtle contrast */
+/* Reset all table row backgrounds first */
+[data-theme="dark"] .table tbody tr:nth-child(odd) {
+  background-color: var(--bg-primary) !important;
+  background: var(--bg-primary) !important;
+}
+
+/* Dark mode ALL tables - apply striping to all tables in dark mode */
+[data-theme="dark"] .table tbody tr:nth-child(even) {
+  background-color: #0f172a !important; /* Slightly darker than --bg-secondary for subtle contrast */
+  background: #0f172a !important;
+}
+
+/* Dark mode striped table with subtle contrast (for explicitly striped tables) */
 [data-theme="dark"] .table-striped tbody tr:nth-child(even) {
-  background: #0f172a !important; /* Slightly darker than --bg-secondary for subtle contrast */
+  background-color: #0f172a !important; /* Same as above */
+  background: #0f172a !important;
+}
+
+/* Force inheritance for nested elements */
+[data-theme="dark"] .table tbody tr:nth-child(even) td,
+[data-theme="dark"] .table tbody tr:nth-child(even) th {
+  background-color: transparent !important;
+  background: transparent !important;
 }
 
 [data-theme="dark"] .table tbody tr:hover {
-  background: #1e293b !important; /* Subtle highlight on hover */
+  background-color: #1e293b !important; /* Subtle highlight on hover */
+  background: #1e293b !important;
+}
+
+[data-theme="dark"] .table tbody tr:hover td,
+[data-theme="dark"] .table tbody tr:hover th {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+/* Ensure highlight rows in dark mode have proper contrast */
+[data-theme="dark"] .highlight-row {
+  background-color: rgba(239, 68, 68, 0.1) !important;
+  background: rgba(239, 68, 68, 0.1) !important;
+}
+
+[data-theme="dark"] .highlight-row:hover {
+  background-color: rgba(239, 68, 68, 0.2) !important;
+  background: rgba(239, 68, 68, 0.2) !important;
+}
+
+/* Chrome-specific fix for table backgrounds */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  [data-theme="dark"] .table tbody tr {
+    background-color: var(--bg-primary) !important;
+  }
+  
+  [data-theme="dark"] .table tbody tr:nth-child(even) {
+    background-color: #0f172a !important;
+  }
+}
+
+/* Override any Bootstrap or other framework table styles in dark mode */
+[data-theme="dark"] table.table tbody tr {
+  background-color: var(--bg-primary) !important;
+}
+
+[data-theme="dark"] table.table tbody tr:nth-child(2n) {
+  background-color: #0f172a !important;
+}
+
+/* Ensure no white backgrounds leak through */
+[data-theme="dark"] .table,
+[data-theme="dark"] .table > tbody,
+[data-theme="dark"] .table > tbody > tr,
+[data-theme="dark"] .table > tbody > tr > td,
+[data-theme="dark"] .table > tbody > tr > th {
+  background-image: none !important;
+  border-color: var(--gray-700) !important;
 }
 
 /* Badges */
@@ -447,31 +588,41 @@ select.form-control {
   line-height: 1;
   border-radius: var(--radius-full);
   white-space: nowrap;
+  transition: all var(--transition);
 }
 
 .badge-primary {
-  background: var(--primary-color);
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
   color: white;
+  box-shadow: 0 1px 3px 0 rgba(99, 102, 241, 0.3);
 }
 
 .badge-success {
-  background: var(--success-color);
+  background: linear-gradient(135deg, var(--success-color), var(--success-light));
   color: white;
+  box-shadow: 0 1px 3px 0 rgba(16, 185, 129, 0.3);
 }
 
 .badge-warning {
-  background: var(--warning-color);
+  background: linear-gradient(135deg, var(--warning-color), var(--warning-light));
   color: white;
+  box-shadow: 0 1px 3px 0 rgba(245, 158, 11, 0.3);
 }
 
 .badge-danger {
-  background: var(--danger-color);
+  background: linear-gradient(135deg, var(--danger-color), var(--danger-light));
   color: white;
+  box-shadow: 0 1px 3px 0 rgba(239, 68, 68, 0.3);
 }
 
 .badge-info {
-  background: var(--info-color);
+  background: linear-gradient(135deg, var(--info-color), var(--info-light));
   color: white;
+  box-shadow: 0 1px 3px 0 rgba(59, 130, 246, 0.3);
+}
+
+.badge:hover {
+  transform: scale(1.05);
 }
 
 /* Alerts */
@@ -583,6 +734,7 @@ select.form-control {
 .text-danger { color: var(--danger-color); }
 .text-warning { color: var(--warning-color); }
 .text-info { color: var(--info-color); }
+.text-accent { color: var(--accent-color); }
 .text-sm { font-size: 0.875rem; }
 .text-base { font-size: 1rem; }
 .text-lg { font-size: 1.125rem; }
@@ -593,6 +745,99 @@ select.form-control {
 .font-medium { font-weight: 500; }
 .font-semibold { font-weight: 600; }
 .font-bold { font-weight: 700; }
+
+/* Stats Cards */
+.stat-card {
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--gray-100);
+  transition: all var(--transition);
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: var(--primary-color);
+  opacity: 0.1;
+  border-radius: 50%;
+  transform: translate(30px, -30px);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-lighter);
+}
+
+.stat-card.stat-success::before { background: var(--success-color); }
+.stat-card.stat-warning::before { background: var(--warning-color); }
+.stat-card.stat-danger::before { background: var(--danger-color); }
+.stat-card.stat-info::before { background: var(--info-color); }
+.stat-card.stat-accent::before { background: var(--accent-color); }
+
+/* Progress Bars */
+.progress {
+  width: 100%;
+  height: 0.5rem;
+  background: var(--gray-200);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+  border-radius: var(--radius-full);
+  transition: width 0.6s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.2) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.2) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+  animation: progress-animation 1s linear infinite;
+}
+
+@keyframes progress-animation {
+  0% { background-position: 0 0; }
+  100% { background-position: 1rem 0; }
+}
+
+.progress-bar.progress-success {
+  background: linear-gradient(135deg, var(--success-color), var(--success-light));
+}
+
+.progress-bar.progress-warning {
+  background: linear-gradient(135deg, var(--warning-color), var(--warning-light));
+}
+
+.progress-bar.progress-danger {
+  background: linear-gradient(135deg, var(--danger-color), var(--danger-light));
+}
 
 /* Loading Spinner */
 .spinner {

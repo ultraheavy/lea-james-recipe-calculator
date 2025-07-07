@@ -5,7 +5,8 @@
     padding: 0.25rem;
     background: var(--bg-secondary);
     border-radius: 0.5rem;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--gray-200);
+    box-shadow: var(--shadow-sm);
 }
 
 .view-switcher button {
@@ -17,19 +18,26 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--text-secondary);
+    color: var(--gray-600) !important; /* Ensure visible text */
     transition: all 0.2s;
     font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Ensure text is always visible */
+.view-switcher button span {
+    color: inherit !important;
 }
 
 .view-switcher button:hover {
-    background: var(--bg-hover);
-    color: var(--text-primary);
+    background: var(--gray-100);
+    color: var(--primary-color);
 }
 
 .view-switcher button.active {
-    background: var(--primary);
+    background: var(--primary-color);
     color: white;
+    box-shadow: 0 1px 3px 0 rgba(99, 102, 241, 0.3);
 }
 
 .view-switcher button svg {

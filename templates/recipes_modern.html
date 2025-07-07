@@ -20,6 +20,12 @@
             </a>
         </div>
         
+        <!-- View Controls and Search -->
+        <div class="view-controls">
+            <div id="viewSwitcher"></div>
+            <div class="flex-1"></div>
+        </div>
+        
         <!-- Search and Filters -->
         <div class="card">
             <div class="card-body">
@@ -56,8 +62,83 @@
         </div>
     </div>
     
-    <!-- Recipe Cards Grid -->
-    <div class="grid grid-cols-1 grid-cols-2 grid-cols-3 gap-6" id="recipeGrid">
+    <!-- View Content -->
+    <div class="view-content" id="recipeContent">
+        <!-- Table View -->
+        <div class="table-view" id="tableView" style="display: none;">
+            <div class="table-container">
+                <table class="table table-striped sortable-table" id="recipeTable">
+                    <thead>
+                        <tr>
+                            <th data-sort="name">Recipe Name</th>
+                            <th data-sort="group">Group</th>
+                            <th data-sort="status">Status</th>
+                            <th data-sort="cost" class="text-right">Food Cost</th>
+                            <th data-sort="price" class="text-right">Menu Price</th>
+                            <th data-sort="percent" class="text-right">Cost %</th>
+                            <th data-sort="ingredients" class="text-center">Ingredients</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for recipe in recipes %}
+                        <tr data-name="{{ recipe.recipe_name|lower }}"
+                            data-group="{{ recipe.recipe_group|lower }}"
+                            data-status="{{ recipe.status|lower }}">
+                            <td>
+                                <div class="flex items-center gap-3">
+                                    <div class="icon-container"></div>
+                                    <a href="/recipes/{{ recipe.id }}" class="text-primary font-medium">
+                                        {{ recipe.recipe_name }}
+                                    </a>
+                                </div>
+                            </td>
+                            <td>{{ recipe.recipe_group or '-' }}</td>
+                            <td>
+                                <span class="badge {% if recipe.status == 'Active' %}badge-success{% elif recipe.status == 'Draft' %}badge-warning{% else %}badge-info{% endif %}">
+                                    {{ recipe.status or 'Draft' }}
+                                </span>
+                            </td>
+                            <td class="text-right">${{ "%.2f"|format(recipe.food_cost or 0) }}</td>
+                            <td class="text-right">${{ "%.2f"|format(recipe.menu_price or 0) }}</td>
+                            <td class="text-right">
+                                {% if recipe.menu_price and recipe.food_cost %}
+                                    <span class="font-semibold {% if (recipe.food_cost / recipe.menu_price * 100) > 35 %}text-danger{% else %}text-success{% endif %}">
+                                        {{ "%.1f"|format(recipe.food_cost / recipe.menu_price * 100) }}%
+                                    </span>
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+                            <td class="text-center">
+                                <span class="badge badge-info">{{ recipe.ingredient_count or 0 }}</span>
+                            </td>
+                            <td>
+                                <div class="flex gap-2">
+                                    <a href="/recipes/{{ recipe.id }}" class="btn btn-sm btn-secondary" title="View">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                            <circle cx="12" cy="12" r="3"/>
+                                        </svg>
+                                    </a>
+                                    <a href="/recipes/{{ recipe.id }}/ingredients/add" class="btn btn-sm btn-secondary" title="Add Ingredient">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <path d="M12 8v8m-4-4h8"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Card View -->
+        <div class="card-view" id="cardView">
+            <div class="grid grid-cols-1 grid-cols-2 grid-cols-3 gap-6" id="recipeGrid">
         {% for recipe in recipes %}
         <div class="card recipe-card animate-slide-up" 
              data-name="{{ recipe.recipe_name|lower }}"
@@ -120,6 +201,60 @@
             </div>
         </div>
         {% endfor %}
+            </div>
+        </div>
+        
+        <!-- List View -->
+        <div class="list-view" id="listView" style="display: none;">
+            {% for recipe in recipes %}
+            <div class="list-item" 
+                 data-name="{{ recipe.recipe_name|lower }}"
+                 data-group="{{ recipe.recipe_group|lower }}"
+                 data-status="{{ recipe.status|lower }}">
+                <div class="list-item-icon">
+                    <div class="icon-container"></div>
+                </div>
+                <div class="list-item-content">
+                    <div class="list-item-title">
+                        <a href="/recipes/{{ recipe.id }}" class="text-primary">{{ recipe.recipe_name }}</a>
+                    </div>
+                    <div class="list-item-subtitle">
+                        {{ recipe.recipe_group or 'Uncategorized' }} • 
+                        <span class="{% if recipe.status == 'Active' %}text-success{% elif recipe.status == 'Draft' %}text-warning{% else %}text-info{% endif %}">
+                            {{ recipe.status or 'Draft' }}
+                        </span> • 
+                        {{ recipe.ingredient_count or 0 }} ingredients
+                    </div>
+                </div>
+                <div class="list-item-meta">
+                    <div class="text-right">
+                        <div class="font-semibold">${{ "%.2f"|format(recipe.food_cost or 0) }}</div>
+                        <div class="text-sm text-secondary">
+                            {% if recipe.menu_price and recipe.food_cost %}
+                                {{ "%.1f"|format(recipe.food_cost / recipe.menu_price * 100) }}%
+                            {% else %}
+                                -
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="list-item-actions">
+                        <a href="/recipes/{{ recipe.id }}" class="btn btn-sm btn-secondary" title="View">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </a>
+                        <a href="/recipes/{{ recipe.id }}/ingredients/add" class="btn btn-sm btn-secondary" title="Add Ingredient">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 8v8m-4-4h8"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
     
     {% if not recipes %}
@@ -140,26 +275,73 @@
 </div>
 
 <script>
+// Initialize view switcher and table sorting
+document.addEventListener('DOMContentLoaded', function() {
+    // Create view switcher instance
+    const viewSwitcher = new ViewSwitcher('viewSwitcher', {
+        defaultView: 'card',
+        views: ['table', 'card', 'list'],
+        onViewChange: function(view) {
+            // Hide all views
+            document.getElementById('tableView').style.display = 'none';
+            document.getElementById('cardView').style.display = 'none';
+            document.getElementById('listView').style.display = 'none';
+            
+            // Show selected view
+            document.getElementById(view + 'View').style.display = 'block';
+        }
+    });
+    
+    // Initialize table sorting
+    initSortableTable('recipeTable');
+    
+    // Initialize category icons for all views
+    initializeRecipeIcons();
+});
+
+function initializeRecipeIcons() {
+    // For table view
+    document.querySelectorAll('#recipeTable .icon-container').forEach(container => {
+        const row = container.closest('tr');
+        const group = row.getAttribute('data-group');
+        const icon = createFoodIcon(group || 'misc', 'sm');
+        container.appendChild(icon);
+    });
+    
+    // For list view
+    document.querySelectorAll('#listView .icon-container').forEach(container => {
+        const item = container.closest('.list-item');
+        const group = item.getAttribute('data-group');
+        const icon = createFoodIcon(group || 'misc', 'sm');
+        container.appendChild(icon);
+    });
+}
+
 function filterRecipes() {
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
     const groupFilter = document.getElementById('groupFilter').value.toLowerCase();
     const statusFilter = document.getElementById('statusFilter').value.toLowerCase();
-    const cards = document.querySelectorAll('.recipe-card');
     
-    cards.forEach(card => {
-        const name = card.getAttribute('data-name') || '';
-        const group = card.getAttribute('data-group') || '';
-        const status = card.getAttribute('data-status') || '';
-        
-        const matchesSearch = !searchInput || name.includes(searchInput) || group.includes(searchInput);
-        const matchesGroup = !groupFilter || group === groupFilter;
-        const matchesStatus = !statusFilter || status === statusFilter;
-        
-        if (matchesSearch && matchesGroup && matchesStatus) {
-            card.style.display = '';
-        } else {
-            card.style.display = 'none';
-        }
+    // Filter all views
+    const selectors = ['.recipe-card', '#recipeTable tbody tr', '.list-item'];
+    
+    selectors.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(element => {
+            const name = element.getAttribute('data-name') || '';
+            const group = element.getAttribute('data-group') || '';
+            const status = element.getAttribute('data-status') || '';
+            
+            const matchesSearch = !searchInput || name.includes(searchInput) || group.includes(searchInput);
+            const matchesGroup = !groupFilter || group === groupFilter;
+            const matchesStatus = !statusFilter || status === statusFilter;
+            
+            if (matchesSearch && matchesGroup && matchesStatus) {
+                element.style.display = '';
+            } else {
+                element.style.display = 'none';
+            }
+        });
     });
 }
 </script>
@@ -180,6 +362,59 @@ function filterRecipes() {
     
     .recipe-card .card-body > :last-child {
         margin-top: auto;
+    }
+    
+    /* Mobile responsive adjustments */
+    @media (max-width: 768px) {
+        /* Hide less important columns on mobile */
+        #recipeTable th:nth-child(2),
+        #recipeTable td:nth-child(2),
+        #recipeTable th:nth-child(5),
+        #recipeTable td:nth-child(5),
+        #recipeTable th:nth-child(7),
+        #recipeTable td:nth-child(7) {
+            display: none;
+        }
+        
+        /* Make table more compact on mobile */
+        #recipeTable th,
+        #recipeTable td {
+            padding: 0.5rem;
+            font-size: 0.875rem;
+        }
+        
+        /* Stack search filters on mobile */
+        .grid-cols-3 {
+            grid-template-columns: 1fr !important;
+        }
+        
+        /* Single column cards on mobile */
+        #recipeGrid {
+            grid-template-columns: 1fr !important;
+        }
+        
+        /* Adjust list view for mobile */
+        .list-item {
+            padding: 0.75rem;
+        }
+        
+        .list-item-meta {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    }
+    
+    /* Text alignment utility */
+    .text-right {
+        text-align: right;
+    }
+    
+    .text-center {
+        text-align: center;
+    }
+    
+    .flex-1 {
+        flex: 1;
     }
 </style>
 {% endblock %}
