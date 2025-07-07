@@ -418,6 +418,15 @@ select.form-control {
   background: var(--bg-secondary);
 }
 
+/* Dark mode table text fix */
+[data-theme="dark"] .table tbody tr {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .table tbody td {
+  color: inherit;
+}
+
 /* Badges */
 .badge {
   display: inline-flex;
