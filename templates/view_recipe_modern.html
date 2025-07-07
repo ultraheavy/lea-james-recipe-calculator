@@ -229,12 +229,17 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function editRecipe() {
-    alert('Edit recipe functionality coming soon!');
+    window.location.href = '/recipes/{{ recipe.id }}/edit';
 }
 
 function deleteIngredient(id) {
     if (confirm('Are you sure you want to remove this ingredient?')) {
-        alert('Delete functionality coming soon!');
+        // Create a form and submit it
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = `/recipes/{{ recipe.id }}/ingredients/delete/${id}`;
+        document.body.appendChild(form);
+        form.submit();
     }
 }
 </script>

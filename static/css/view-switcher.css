@@ -1,0 +1,246 @@
+/* View Switcher Styles */
+.view-switcher {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.25rem;
+    background: var(--bg-secondary);
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+}
+
+.view-switcher button {
+    padding: 0.5rem 0.75rem;
+    background: transparent;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+    font-size: 0.875rem;
+}
+
+.view-switcher button:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+.view-switcher button.active {
+    background: var(--primary);
+    color: white;
+}
+
+.view-switcher button svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* View Controls Container */
+.view-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .view-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+    
+    .view-switcher {
+        justify-content: center;
+    }
+    
+    .view-switcher button span {
+        display: none; /* Hide text on mobile */
+    }
+}
+
+/* Card View Styles */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.item-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.item-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-color: var(--primary);
+}
+
+.item-card-header {
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.item-card-icon {
+    flex-shrink: 0;
+}
+
+.item-card-title {
+    flex: 1;
+}
+
+.item-card-title h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem 0;
+    color: var(--text-primary);
+}
+
+.item-card-subtitle {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.item-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.item-card-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-card-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.item-card-value {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.item-card-value.price {
+    color: var(--primary);
+    font-size: 1.125rem;
+}
+
+.item-card-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.item-card-actions .btn {
+    flex: 1;
+    justify-content: center;
+}
+
+/* List View Styles */
+.list-view {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.list-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.2s;
+}
+
+.list-item:hover {
+    background: var(--bg-hover);
+    border-color: var(--primary);
+}
+
+.list-item-icon {
+    flex-shrink: 0;
+}
+
+.list-item-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.list-item-title {
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.list-item-subtitle {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.list-item-meta {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.list-item-price {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.list-item-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Mobile Responsive Card Grid */
+@media (max-width: 640px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .item-card {
+        padding: 1.25rem;
+    }
+}
+
+@media (min-width: 1536px) {
+    .card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+}
+
+/* View transition animations */
+.view-transition {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

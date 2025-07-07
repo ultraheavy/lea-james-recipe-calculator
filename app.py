@@ -649,7 +649,7 @@ def view_recipe(recipe_id):
     theme = get_theme()
     return render_template(f'view_recipe_{theme}.html', recipe=recipe, ingredients=ingredients)
 
-@app.route('/recipes/edit/<int:recipe_id>', methods=['GET', 'POST'])
+@app.route('/recipes/<int:recipe_id>/edit', methods=['GET', 'POST'])
 @with_auto_commit
 def edit_recipe(recipe_id):
     """Edit recipe details"""
@@ -724,6 +724,15 @@ def edit_recipe(recipe_id):
             flash('Recipe not found', 'error')
             return redirect(url_for('recipes'))
         
+        # Get recipe ingredients
+        recipe_ingredients = conn.execute('''
+            SELECT ri.*, i.item_description, i.current_price as unit_price
+            FROM recipe_ingredients ri
+            LEFT JOIN inventory i ON ri.ingredient_id = i.id
+            WHERE ri.recipe_id = ?
+            ORDER BY ri.ingredient_name
+        ''', (recipe_id,)).fetchall()
+        
         # Get menu items that use this recipe
         menu_usage = conn.execute('''
             SELECT mi.id, mi.item_name, mi.menu_price, mv.version_name, mv.is_active
@@ -734,7 +743,10 @@ def edit_recipe(recipe_id):
         ''', (recipe_id,)).fetchall()
     
     theme = get_theme()
-    return render_template(f'edit_recipe_{theme}.html', recipe=recipe, menu_usage=menu_usage)
+    return render_template(f'edit_recipe_{theme}.html', 
+                         recipe=recipe, 
+                         recipe_ingredients=recipe_ingredients,
+                         menu_usage=menu_usage)
 
 @app.route('/recipes/<int:recipe_id>/ingredients/add', methods=['GET', 'POST'])
 def add_recipe_ingredient(recipe_id):
@@ -878,6 +890,32 @@ def edit_recipe_ingredient(recipe_id, ingredient_id):
     return render_template(f'edit_recipe_ingredient_{theme}.html', 
                          recipe=recipe, ingredient=ingredient, inventory=inventory)
 
+@app.route('/recipes/<int:recipe_id>/ingredients/delete/<int:ingredient_id>', methods=['POST'])
+@with_auto_commit
+def delete_recipe_ingredient(recipe_id, ingredient_id):
+    """Delete an ingredient from a recipe"""
+    with get_db() as conn:
+        cursor = conn.cursor()
+        
+        # Delete the ingredient
+        cursor.execute('''
+            DELETE FROM recipe_ingredients 
+            WHERE id = ? AND recipe_id = ?
+        ''', (ingredient_id, recipe_id))
+        
+        # Update recipe total cost
+        cursor.execute('''
+            UPDATE recipes 
+            SET food_cost = COALESCE((SELECT SUM(cost) FROM recipe_ingredients WHERE recipe_id = ?), 0),
+                prime_cost = COALESCE((SELECT SUM(cost) FROM recipe_ingredients WHERE recipe_id = ?), 0) + COALESCE(labor_cost, 0)
+            WHERE id = ?
+        ''', (recipe_id, recipe_id, recipe_id))
+        
+        conn.commit()
+        flash('Ingredient removed successfully!', 'success')
+    
+    return redirect(url_for('view_recipe', recipe_id=recipe_id))
+
 @app.route('/recipes/delete/<int:recipe_id>', methods=['POST'])
 def delete_recipe(recipe_id):
     """Delete recipe and all its ingredients"""
@@ -935,6 +973,7 @@ def menu_compare():
         # Get selected versions
         v1_id = request.args.get('v1', type=int, default=1)
         v2_id = request.args.get('v2', type=int, default=2)
+        export_format = request.args.get('export')
         
         if v1_id and v2_id:
             # Get version names
@@ -964,11 +1003,14 @@ def menu_compare():
                 ''', (item['item_name'], v2_id)).fetchone()
                 
                 # Calculate changes
-                price_change = None
-                cost_change = None
+                price_change = 0
+                fc_change = 0
                 if v1_data and v2_data:
                     price_change = (v2_data['menu_price'] or 0) - (v1_data['menu_price'] or 0)
-                    cost_change = (v2_data['food_cost'] or 0) - (v1_data['food_cost'] or 0)
+                    # Calculate food cost percentage change
+                    v1_fc_pct = ((v1_data['food_cost'] or 0) / (v1_data['menu_price'] or 1) * 100) if v1_data['menu_price'] else 0
+                    v2_fc_pct = ((v2_data['food_cost'] or 0) / (v2_data['menu_price'] or 1) * 100) if v2_data['menu_price'] else 0
+                    fc_change = v2_fc_pct - v1_fc_pct
                 
                 comparison_data.append({
                     'item_name': item['item_name'],
@@ -976,34 +1018,105 @@ def menu_compare():
                     'v1_data': v1_data,
                     'v2_data': v2_data,
                     'price_change': price_change,
-                    'cost_change': cost_change
+                    'fc_change': fc_change
                 })
             
             # Calculate summary statistics
             v1_items = [item for item in comparison_data if item['v1_data']]
             v2_items = [item for item in comparison_data if item['v2_data']]
             
-            summary = {
-                'v1_count': len(v1_items),
-                'v2_count': len(v2_items),
-                'v1_avg_price': sum(item['v1_data']['menu_price'] or 0 for item in v1_items) / len(v1_items) if v1_items else 0,
-                'v2_avg_price': sum(item['v2_data']['menu_price'] or 0 for item in v2_items) / len(v2_items) if v2_items else 0,
-                'v1_avg_cost_percent': sum(item['v1_data']['food_cost_percent'] or 0 for item in v1_items) / len(v1_items) if v1_items else 0,
-                'v2_avg_cost_percent': sum(item['v2_data']['food_cost_percent'] or 0 for item in v2_items) / len(v2_items) if v2_items else 0,
-                'items_added': len([item for item in comparison_data if not item['v1_data'] and item['v2_data']]),
-                'items_removed': len([item for item in comparison_data if item['v1_data'] and not item['v2_data']]),
-                'items_changed': len([item for item in comparison_data if item['v1_data'] and item['v2_data']])
+            # Calculate v1 stats
+            v1_stats = {
+                'total_items': len(v1_items),
+                'avg_price': sum(item['v1_data']['menu_price'] or 0 for item in v1_items) / len(v1_items) if v1_items else 0,
+                'avg_food_cost_pct': sum(((item['v1_data']['food_cost'] or 0) / (item['v1_data']['menu_price'] or 1) * 100) if item['v1_data']['menu_price'] else 0 for item in v1_items) / len(v1_items) if v1_items else 0
             }
+            
+            # Calculate v2 stats
+            v2_stats = {
+                'total_items': len(v2_items),
+                'avg_price': sum(item['v2_data']['menu_price'] or 0 for item in v2_items) / len(v2_items) if v2_items else 0,
+                'avg_food_cost_pct': sum(((item['v2_data']['food_cost'] or 0) / (item['v2_data']['menu_price'] or 1) * 100) if item['v2_data']['menu_price'] else 0 for item in v2_items) / len(v2_items) if v2_items else 0
+            }
+            
+            # Calculate comparison stats
+            new_items = [item for item in comparison_data if not item['v1_data'] and item['v2_data']]
+            removed_items = [item for item in comparison_data if item['v1_data'] and not item['v2_data']]
+            changed_items = [item for item in comparison_data if item['v1_data'] and item['v2_data'] and item['price_change'] != 0]
+            common_items = [item for item in comparison_data if item['v1_data'] and item['v2_data'] and item['price_change'] == 0]
+            
+            total_price_change = sum(item['price_change'] for item in comparison_data if item['price_change'])
+            margin_impact = v2_stats['avg_food_cost_pct'] - v1_stats['avg_food_cost_pct']
+            
+            stats = {
+                'new_items': len(new_items),
+                'removed_items': len(removed_items),
+                'price_changes': len(changed_items),
+                'common_items': len(common_items),
+                'total_price_change': total_price_change,
+                'margin_impact': margin_impact
+            }
+            
+            # Handle CSV export
+            if export_format == 'csv':
+                import csv
+                from io import StringIO
+                
+                output = StringIO()
+                writer = csv.writer(output)
+                
+                # Write headers
+                writer.writerow([
+                    'Item Name', 'Menu Group',
+                    f'{v1["version_name"]} Price', f'{v1["version_name"]} Cost', f'{v1["version_name"]} FC%',
+                    f'{v2["version_name"]} Price', f'{v2["version_name"]} Cost', f'{v2["version_name"]} FC%',
+                    'Price Change', 'FC% Change', 'Status'
+                ])
+                
+                # Write data
+                for item in comparison_data:
+                    status = 'Unchanged'
+                    if not item['v1_data']:
+                        status = 'New'
+                    elif not item['v2_data']:
+                        status = 'Removed'
+                    elif item['price_change'] != 0:
+                        status = 'Changed'
+                    
+                    v1_price = item['v1_data']['menu_price'] if item['v1_data'] else ''
+                    v1_cost = item['v1_data']['food_cost'] if item['v1_data'] else ''
+                    v1_fc_pct = ((v1_cost / v1_price * 100) if v1_price and v1_cost else '') if item['v1_data'] else ''
+                    
+                    v2_price = item['v2_data']['menu_price'] if item['v2_data'] else ''
+                    v2_cost = item['v2_data']['food_cost'] if item['v2_data'] else ''
+                    v2_fc_pct = ((v2_cost / v2_price * 100) if v2_price and v2_cost else '') if item['v2_data'] else ''
+                    
+                    writer.writerow([
+                        item['item_name'], item['menu_group'],
+                        v1_price, v1_cost, f"{v1_fc_pct:.1f}%" if v1_fc_pct else '',
+                        v2_price, v2_cost, f"{v2_fc_pct:.1f}%" if v2_fc_pct else '',
+                        item['price_change'] if item['price_change'] else '',
+                        f"{item['fc_change']:.1f}%" if item['fc_change'] else '',
+                        status
+                    ])
+                
+                # Create response
+                response = make_response(output.getvalue())
+                response.headers['Content-Disposition'] = f'attachment; filename=menu_comparison_{v1_id}_vs_{v2_id}.csv'
+                response.headers['Content-Type'] = 'text/csv'
+                return response
             
             theme = get_theme()
             return render_template(f'menu_compare_{theme}.html',
                                  menu_versions=menu_versions,
                                  v1_id=v1_id,
                                  v2_id=v2_id,
-                                 v1_name=v1['version_name'] if v1 else 'Version 1',
-                                 v2_name=v2['version_name'] if v2 else 'Version 2',
-                                 comparison_data=comparison_data,
-                                 summary=summary)
+                                 v1=v1,
+                                 v2=v2,
+                                 v1_stats=v1_stats,
+                                 v2_stats=v2_stats,
+                                 stats=stats,
+                                 comparison_data=comparison_data)
         
         theme = get_theme()
         return render_template(f'menu_compare_{theme}.html',

@@ -20,6 +20,12 @@
             </a>
         </div>
         
+        <!-- View Controls and Search -->
+        <div class="view-controls">
+            <div id="viewSwitcher"></div>
+            <div class="flex-1"></div>
+        </div>
+        
         <!-- Search and Filters -->
         <div class="card">
             <div class="card-body">
@@ -65,9 +71,12 @@
         </div>
     </div>
     
-    <!-- Inventory Table -->
-    <div class="table-container">
-        <table class="table table-striped inventory-table" id="inventoryTable">
+    <!-- View Content -->
+    <div class="view-content" id="inventoryContent">
+        <!-- Table View -->
+        <div class="table-view" id="tableView">
+            <div class="table-container">
+                <table class="table table-striped inventory-table" id="inventoryTable">
             <thead>
                 <tr>
                     <th>Item</th>
@@ -148,6 +157,14 @@
                 {% endfor %}
             </tbody>
         </table>
+            </div>
+        </div>
+        
+        <!-- Card View (will be populated by JavaScript) -->
+        <div class="card-view" id="cardView" style="display: none;"></div>
+        
+        <!-- List View (will be populated by JavaScript) -->
+        <div class="list-view" id="listView" style="display: none;"></div>
     </div>
     
     {% if not items %}
@@ -208,6 +225,202 @@ function filterTable() {
         }
     });
 }
+
+// Initialize view switcher
+document.addEventListener('DOMContentLoaded', function() {
+    // Create view switcher instance
+    const viewSwitcher = new ViewSwitcher('viewSwitcher', {
+        defaultView: 'table',
+        views: ['table', 'card', 'list'],
+        onViewChange: function(view) {
+            // Hide all views
+            document.getElementById('tableView').style.display = 'none';
+            document.getElementById('cardView').style.display = 'none';
+            document.getElementById('listView').style.display = 'none';
+            
+            // Show selected view
+            if (view === 'table') {
+                document.getElementById('tableView').style.display = 'block';
+            } else if (view === 'card') {
+                const cardView = document.getElementById('cardView');
+                cardView.style.display = 'block';
+                
+                // Generate cards if not already done
+                if (!cardView.hasChildNodes()) {
+                    generateInventoryCards();
+                }
+            } else if (view === 'list') {
+                const listView = document.getElementById('listView');
+                listView.style.display = 'block';
+                
+                // Generate list if not already done
+                if (!listView.hasChildNodes()) {
+                    generateInventoryList();
+                }
+            }
+        }
+    });
+});
+
+// Generate card view for inventory
+function generateInventoryCards() {
+    const cardView = document.getElementById('cardView');
+    const tbody = document.querySelector('#inventoryTable tbody');
+    const rows = tbody.querySelectorAll('tr');
+    
+    const cardGrid = document.createElement('div');
+    cardGrid.className = 'card-grid';
+    
+    rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        if (cells.length < 6) return;
+        
+        const card = document.createElement('div');
+        card.className = 'item-card';
+        card.setAttribute('data-category', row.getAttribute('data-category'));
+        card.setAttribute('data-vendor', row.getAttribute('data-vendor'));
+        card.setAttribute('data-description', row.getAttribute('data-description'));
+        
+        // Extract data
+        const iconContainer = cells[0].querySelector('.icon-container').cloneNode(true);
+        const itemName = cells[0].querySelector('.item-name').textContent;
+        const itemCode = cells[0].querySelector('.item-code')?.textContent || cells[5].textContent.trim();
+        const vendor = cells[1].textContent.trim();
+        const price = cells[2].textContent.trim();
+        const unit = cells[3].textContent.trim();
+        const packSize = cells[4].textContent.trim();
+        const actions = cells[6].innerHTML;
+        
+        card.innerHTML = `
+            <div class="item-card-header">
+                <div class="item-card-icon">
+                    ${iconContainer.outerHTML}
+                </div>
+                <div class="item-card-title">
+                    <h3>${itemName}</h3>
+                    <div class="item-card-subtitle">${itemCode}</div>
+                </div>
+            </div>
+            <div class="item-card-body">
+                <div class="item-card-row">
+                    <span class="item-card-label">Vendor</span>
+                    <span class="item-card-value">${vendor}</span>
+                </div>
+                <div class="item-card-row">
+                    <span class="item-card-label">Price</span>
+                    <span class="item-card-value price">${price}</span>
+                </div>
+                <div class="item-card-row">
+                    <span class="item-card-label">Unit</span>
+                    <span class="item-card-value">${unit}</span>
+                </div>
+                <div class="item-card-row">
+                    <span class="item-card-label">Pack Size</span>
+                    <span class="item-card-value">${packSize}</span>
+                </div>
+            </div>
+            <div class="item-card-actions">
+                ${actions}
+            </div>
+        `;
+        
+        cardGrid.appendChild(card);
+    });
+    
+    cardView.appendChild(cardGrid);
+}
+
+// Generate list view for inventory
+function generateInventoryList() {
+    const listView = document.getElementById('listView');
+    const tbody = document.querySelector('#inventoryTable tbody');
+    const rows = tbody.querySelectorAll('tr');
+    
+    rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        if (cells.length < 6) return;
+        
+        const listItem = document.createElement('div');
+        listItem.className = 'list-item';
+        listItem.setAttribute('data-category', row.getAttribute('data-category'));
+        listItem.setAttribute('data-vendor', row.getAttribute('data-vendor'));
+        listItem.setAttribute('data-description', row.getAttribute('data-description'));
+        
+        // Extract data
+        const iconContainer = cells[0].querySelector('.icon-container').cloneNode(true);
+        const itemName = cells[0].querySelector('.item-name').textContent;
+        const itemCode = cells[0].querySelector('.item-code')?.textContent || cells[5].textContent.trim();
+        const vendor = cells[1].textContent.trim();
+        const price = cells[2].textContent.trim();
+        const unit = cells[3].textContent.trim();
+        const actions = cells[6].innerHTML;
+        
+        listItem.innerHTML = `
+            <div class="list-item-icon">
+                ${iconContainer.outerHTML}
+            </div>
+            <div class="list-item-content">
+                <div class="list-item-title">${itemName}</div>
+                <div class="list-item-subtitle">${itemCode} • ${vendor} • ${unit}</div>
+            </div>
+            <div class="list-item-meta">
+                <div class="list-item-price">${price}</div>
+                <div class="list-item-actions">
+                    ${actions}
+                </div>
+            </div>
+        `;
+        
+        listView.appendChild(listItem);
+    });
+}
+
+// Override filterTable to work with all views
+const originalFilterTable = filterTable;
+filterTable = function() {
+    originalFilterTable();
+    
+    // Also filter cards and list items
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const categoryFilter = document.getElementById('categoryFilter').value.toLowerCase();
+    const vendorFilter = document.getElementById('vendorFilter').value.toLowerCase();
+    
+    // Filter cards
+    const cards = document.querySelectorAll('.item-card');
+    cards.forEach(card => {
+        const category = card.getAttribute('data-category') || '';
+        const vendor = card.getAttribute('data-vendor') || '';
+        const description = card.getAttribute('data-description') || '';
+        
+        const matchesSearch = !searchInput || 
+            description.includes(searchInput) || 
+            category.includes(searchInput) ||
+            vendor.includes(searchInput);
+            
+        const matchesCategory = !categoryFilter || category.includes(categoryFilter);
+        const matchesVendor = !vendorFilter || vendor.includes(vendorFilter);
+        
+        card.style.display = (matchesSearch && matchesCategory && matchesVendor) ? '' : 'none';
+    });
+    
+    // Filter list items
+    const listItems = document.querySelectorAll('.list-item');
+    listItems.forEach(item => {
+        const category = item.getAttribute('data-category') || '';
+        const vendor = item.getAttribute('data-vendor') || '';
+        const description = item.getAttribute('data-description') || '';
+        
+        const matchesSearch = !searchInput || 
+            description.includes(searchInput) || 
+            category.includes(searchInput) ||
+            vendor.includes(searchInput);
+            
+        const matchesCategory = !categoryFilter || category.includes(categoryFilter);
+        const matchesVendor = !vendorFilter || vendor.includes(vendorFilter);
+        
+        item.style.display = (matchesSearch && matchesCategory && matchesVendor) ? '' : 'none';
+    });
+};
 </script>
 
 <style>
@@ -218,6 +431,10 @@ function filterTable() {
     .mx-auto {
         margin-left: auto;
         margin-right: auto;
+    }
+    
+    .flex-1 {
+        flex: 1;
     }
     
     @media (max-width: 768px) {

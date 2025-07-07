@@ -11,10 +11,18 @@ function sortTable(columnIndex, tableId = null) {
     // Remove all sort indicators
     table.querySelectorAll('thead th').forEach(header => {
         header.classList.remove('sort-asc', 'sort-desc');
+        const indicator = header.querySelector('.sort-indicator');
+        if (indicator) {
+            indicator.textContent = '↕';
+        }
     });
     
     // Add sort indicator to current column
     th.classList.add(isAscending ? 'sort-asc' : 'sort-desc');
+    const currentIndicator = th.querySelector('.sort-indicator');
+    if (currentIndicator) {
+        currentIndicator.textContent = isAscending ? '↑' : '↓';
+    }
     
     // Sort rows
     rows.sort((a, b) => {
@@ -41,12 +49,19 @@ function sortTable(columnIndex, tableId = null) {
             aValue = new Date(aValue).getTime() || 0;
             bValue = new Date(bValue).getTime() || 0;
         }
-        // Handle N/A and empty values
-        else if (aValue === '-' || aValue === 'N/A' || aValue === '') {
-            aValue = '';
+        // Try to parse as number if it looks numeric
+        else if (!isNaN(parseFloat(aValue)) && !isNaN(parseFloat(bValue))) {
+            aValue = parseFloat(aValue);
+            bValue = parseFloat(bValue);
         }
-        if (bValue === '-' || bValue === 'N/A' || bValue === '') {
-            bValue = '';
+        // Handle N/A and empty values for strings
+        else {
+            if (aValue === '-' || aValue === 'N/A' || aValue === '') {
+                aValue = '';
+            }
+            if (bValue === '-' || bValue === 'N/A' || bValue === '') {
+                bValue = '';
+            }
         }
         
         // Numeric comparison
@@ -55,8 +70,8 @@ function sortTable(columnIndex, tableId = null) {
         }
         
         // String comparison (empty values go to bottom)
-        if (aValue === '' && bValue !== '') return isAscending ? 1 : -1;
-        if (aValue !== '' && bValue === '') return isAscending ? -1 : 1;
+        if (aValue === '' && bValue !== '') return 1;
+        if (aValue !== '' && bValue === '') return -1;
         
         return isAscending ? 
             aValue.toString().localeCompare(bValue.toString()) : 
