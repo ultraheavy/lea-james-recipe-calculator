@@ -111,11 +111,13 @@ The application is designed to import/export data from Toast POS:
 
 ## Critical UI Requirements - DO NOT CHANGE
 
-### Inventory Table Headers (FIXED - DO NOT MODIFY)
-The inventory table MUST have these exact headers in this exact order:
+### 🔒 LOCKED: Inventory Table Headers (DO NOT MODIFY WITHOUT USER PERMISSION)
+The inventory table is LOCKED and MUST have these exact headers in this exact order:
+
 1. **Item Name** - displays `item_description` (THE INGREDIENT NAME like "Chicken Breast", NOT item_code)
    - Also shows `item_code` as secondary text below
-2. **Vendor Description** - displays `vendor_description` (how the vendor describes it)
+   - ⚠️ LOCKED by user request - DO NOT CHANGE
+2. **Vendor Description** - displays `vendor_description` from vendor_descriptions table
 3. **Vendor** - displays `primary_vendor_name` or `vendor_name`
 4. **Vendor Code** - displays `vendor_item_code`
 5. **Last Purchased Date** - displays `last_purchased_date`
@@ -123,12 +125,13 @@ The inventory table MUST have these exact headers in this exact order:
 7. **Pack Size** - displays `pack_size`
 8. **Actions** - edit/vendors/delete buttons
 
-**CRITICAL**: Item Name MUST show the ingredient name (item_description) because:
+**🔒 LOCK REASON**: Item Name MUST show the ingredient name (item_description) because:
 - This is what connects to recipes via recipe_ingredients
 - Chefs need to see "Chicken Breast" not "CHK-001"
 - The whole point is connecting recipes → ingredients → inventory
+- User has explicitly requested this be locked after multiple incorrect changes
 
-**IMPORTANT**: These headers have been specifically requested by the user and fixed multiple times. Do not change them without explicit user request. See docs/data-relationships.md for the full data model.
+**⚠️ WARNING**: These headers have been specifically requested by the user and fixed multiple times. The template contains LOCKED comments. Do not change them without explicit user request stating "unlock the inventory table headers". See docs/data-relationships.md for the full data model.
 
 ## UI/UX Design System
 

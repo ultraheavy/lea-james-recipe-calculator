@@ -391,10 +391,12 @@ def inventory():
             SELECT i.*, 
                    v.vendor_name as primary_vendor_name,
                    vp.vendor_item_code,
-                   vp.vendor_price as vendor_current_price
+                   vp.vendor_price as vendor_current_price,
+                   vd.vendor_description
             FROM inventory i 
             LEFT JOIN vendor_products vp ON i.id = vp.inventory_id AND vp.is_primary = 1
             LEFT JOIN vendors v ON vp.vendor_id = v.id
+            LEFT JOIN vendor_descriptions vd ON i.id = vd.inventory_id AND (vd.vendor_name = v.vendor_name OR vd.vendor_name = i.vendor_name)
             ORDER BY i.item_description
         ''').fetchall()
     theme = get_theme()

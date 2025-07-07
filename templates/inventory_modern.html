@@ -77,6 +77,9 @@
         <div class="table-view" id="tableView">
             <div class="table-container">
                 <table class="table table-striped inventory-table" id="inventoryTable">
+            <!-- LOCKED BY USER REQUEST - DO NOT CHANGE WITHOUT EXPLICIT PERMISSION -->
+            <!-- Item Name MUST show item_description (ingredient name) NOT item_code -->
+            <!-- This is what connects inventory to recipes - critical for the system -->
             <thead>
                 <tr>
                     <th>Item Name</th>
@@ -94,6 +97,7 @@
                 <tr data-category="{{ item.product_categories|lower }}" 
                     data-vendor="{{ (item.primary_vendor_name or item.vendor_name or '')|lower }}"
                     data-description="{{ item.item_description|lower }}">
+                    <!-- LOCKED: Item Name = item_description (ingredient name) -->
                     <td class="item-cell">
                         <div class="flex items-center gap-3">
                             <div class="icon-container"></div>
@@ -103,6 +107,7 @@
                             </div>
                         </div>
                     </td>
+                    <!-- Vendor Description from vendor_descriptions table -->
                     <td>
                         <p class="text-sm">{{ item.vendor_description or '-' }}</p>
                     </td>
