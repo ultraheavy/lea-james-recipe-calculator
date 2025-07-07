@@ -79,12 +79,13 @@
                 <table class="table table-striped inventory-table" id="inventoryTable">
             <thead>
                 <tr>
-                    <th>Item</th>
+                    <th>Item Name</th>
+                    <th>Vendor Description</th>
                     <th>Vendor</th>
+                    <th>Vendor Code</th>
+                    <th class="hide-mobile">Last Purchased Date</th>
                     <th>Price</th>
-                    <th>Unit</th>
                     <th class="hide-mobile">Pack Size</th>
-                    <th class="hide-mobile">Code</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -97,30 +98,27 @@
                         <div class="flex items-center gap-3">
                             <div class="icon-container"></div>
                             <div>
-                                <p class="font-medium item-name">{{ item.item_description }}</p>
-                                <span class="item-code mobile-only text-xs text-gray-500">{{ item.item_code or '-' }}</span>
+                                <p class="font-medium item-name">{{ item.item_code or '-' }}</p>
                             </div>
                         </div>
                     </td>
                     <td>
-                        <div>
-                            <p class="text-sm font-medium">{{ item.primary_vendor_name or item.vendor_name or '-' }}</p>
-                            {% if item.vendor_item_code %}
-                            <p class="text-xs text-gray-600">{{ item.vendor_item_code }}</p>
-                            {% endif %}
-                        </div>
+                        <p class="text-sm">{{ item.item_description }}</p>
+                    </td>
+                    <td>
+                        <p class="text-sm font-medium">{{ item.primary_vendor_name or item.vendor_name or '-' }}</p>
+                    </td>
+                    <td>
+                        <span class="font-mono text-xs">{{ item.vendor_item_code or '-' }}</span>
+                    </td>
+                    <td class="hide-mobile">
+                        <span class="text-sm">{{ item.last_purchased_date or '-' }}</span>
                     </td>
                     <td>
                         <span class="font-semibold">${{ "%.2f"|format(item.vendor_current_price or item.current_price or 0) }}</span>
                     </td>
-                    <td>
-                        <span class="badge badge-info">{{ item.unit_measure or '-' }}</span>
-                    </td>
                     <td class="hide-mobile">
                         <span class="text-sm">{{ item.pack_size or '-' }}</span>
-                    </td>
-                    <td class="hide-mobile">
-                        <span class="font-mono text-xs text-gray-500">{{ item.item_code or '-' }}</span>
                     </td>
                     <td>
                         <div class="flex items-center gap-2">
