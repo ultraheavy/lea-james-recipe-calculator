@@ -115,29 +115,34 @@ def init_database():
             ''')
             print("Created ingredient_densities table")
         
+        # Check if menu_items table exists before trying to query it
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='menu_items'")
+        if cursor.fetchone():
+            # After all tables are set up, recalculate costs if needed
+            cursor.execute('''
+                SELECT COUNT(*) FROM menu_items 
+                WHERE menu_price > 0 AND food_cost > 0 
+                AND food_cost / menu_price > 1.0
+            ''')
+            
+            high_cost_count = cursor.fetchone()[0]
+            if high_cost_count > 10:  # If more than 10 items have >100% food cost
+                print(f"\nDetected {high_cost_count} items with impossible food costs.")
+                print("Running cost recalculation...")
+                conn.commit()  # Commit table changes first
+                conn.close()   # Close connection
+                
+                # Import and run the recalculation
+                from recalculate_all_costs import recalculate_all_costs
+                recalculate_all_costs()
+                
+                return  # Exit early since we closed the connection
+        else:
+            print("WARNING: menu_items table does not exist - database may be incomplete!")
+        
         # Add any future migrations here
         
         print("Database initialization complete!")
-        
-        # After all tables are set up, recalculate costs if needed
-        cursor.execute('''
-            SELECT COUNT(*) FROM menu_items 
-            WHERE menu_price > 0 AND food_cost > 0 
-            AND food_cost / menu_price > 1.0
-        ''')
-        
-        high_cost_count = cursor.fetchone()[0]
-        if high_cost_count > 10:  # If more than 10 items have >100% food cost
-            print(f"\nDetected {high_cost_count} items with impossible food costs.")
-            print("Running cost recalculation...")
-            conn.commit()  # Commit table changes first
-            conn.close()   # Close connection
-            
-            # Import and run the recalculation
-            from recalculate_all_costs import recalculate_all_costs
-            recalculate_all_costs()
-            
-            return  # Exit early since we closed the connection
         
     except Exception as e:
         conn.rollback()

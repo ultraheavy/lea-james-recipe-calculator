@@ -4,7 +4,7 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "python init_db.py && gunicorn app:app --bind 0.0.0.0:$PORT",
+    "startCommand": "python init_db_minimal.py; gunicorn app:app --bind 0.0.0.0:$PORT",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
   }
