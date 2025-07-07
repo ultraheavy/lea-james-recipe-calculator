@@ -1298,6 +1298,7 @@ def add_menu_item():
                          menu_versions=menu_versions)
 
 @app.route('/menu/items/edit/<int:item_id>', methods=['GET', 'POST'])
+@with_auto_commit
 def edit_menu_item(item_id):
     """Edit a menu item"""
     if request.method == 'POST':
@@ -1309,24 +1310,96 @@ def edit_menu_item(item_id):
             item_description = request.form.get('item_description', '')
             serving_size = request.form.get('serving_size', '')
             status = request.form.get('status', 'Active')
+            recipe_id = request.form.get('recipe_id')  # Now changeable and optional
+            recipe_id = int(recipe_id) if recipe_id else None
+            selected_versions = request.form.getlist('version_ids')  # Multiple versions
             
-            # Get current food cost
-            item = cursor.execute('''
-                SELECT food_cost FROM menu_items WHERE id = ?
+            # Get the current menu item details
+            current_item = cursor.execute('''
+                SELECT * FROM menu_items WHERE id = ?
             ''', (item_id,)).fetchone()
             
-            food_cost = item['food_cost'] or 0
+            # Get the new recipe's food cost (if recipe selected)
+            if recipe_id:
+                recipe = cursor.execute('''
+                    SELECT food_cost FROM recipes WHERE id = ?
+                ''', (recipe_id,)).fetchone()
+                food_cost = recipe['food_cost'] or 0
+            else:
+                food_cost = 0
             food_cost_percent = (food_cost / menu_price * 100) if menu_price > 0 else 0
             gross_profit = menu_price - food_cost
             
+            # Update the existing menu item with new values
             cursor.execute('''
                 UPDATE menu_items 
                 SET menu_price = ?, menu_group = ?, item_description = ?,
                     serving_size = ?, status = ?, food_cost_percent = ?,
-                    gross_profit = ?, updated_date = CURRENT_TIMESTAMP
+                    gross_profit = ?, recipe_id = ?, food_cost = ?,
+                    updated_date = CURRENT_TIMESTAMP
                 WHERE id = ?
             ''', (menu_price, menu_group, item_description, serving_size, 
-                  status, food_cost_percent, gross_profit, item_id))
+                  status, food_cost_percent, gross_profit, recipe_id, food_cost, item_id))
+            
+            # Handle multi-version assignment
+            # If no versions selected, keep the current item but update it
+            if not selected_versions:
+                # Just update the current item, don't delete it
+                pass
+            else:
+                # First, get all current versions this item belongs to
+                if current_item['recipe_id']:
+                    current_versions = cursor.execute('''
+                        SELECT version_id FROM menu_items 
+                        WHERE item_name = ? AND recipe_id = ?
+                    ''', (current_item['item_name'], current_item['recipe_id'])).fetchall()
+                else:
+                    current_versions = cursor.execute('''
+                        SELECT version_id FROM menu_items 
+                        WHERE item_name = ? AND recipe_id IS NULL
+                    ''', (current_item['item_name'],)).fetchall()
+                    
+                current_version_ids = [v['version_id'] for v in current_versions]
+                
+                # Add to new versions if not already present
+                for version_id in selected_versions:
+                    version_id = int(version_id)
+                    if version_id not in current_version_ids:
+                        # Check if another item with this recipe already exists in this version
+                        if recipe_id:
+                            existing = cursor.execute('''
+                                SELECT id FROM menu_items 
+                                WHERE recipe_id = ? AND version_id = ?
+                            ''', (recipe_id, version_id)).fetchone()
+                        else:
+                            existing = None  # No recipe, no conflict possible
+                        
+                        if not existing:
+                            cursor.execute('''
+                                INSERT INTO menu_items (
+                                    item_name, recipe_id, menu_price, menu_group,
+                                    food_cost, food_cost_percent, gross_profit,
+                                    item_description, serving_size, status, version_id
+                                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                            ''', (current_item['item_name'], recipe_id, menu_price, menu_group,
+                                  food_cost, food_cost_percent, gross_profit,
+                                  item_description, serving_size, status, version_id))
+                
+                # Remove from versions not selected
+                for v_id in current_version_ids:
+                    if str(v_id) not in selected_versions:
+                        # If this is the item we're editing, don't delete it, just update it
+                        if v_id != current_item['version_id']:
+                            if current_item['recipe_id']:
+                                cursor.execute('''
+                                    DELETE FROM menu_items 
+                                    WHERE item_name = ? AND recipe_id = ? AND version_id = ?
+                                ''', (current_item['item_name'], current_item['recipe_id'], v_id))
+                            else:
+                                cursor.execute('''
+                                    DELETE FROM menu_items 
+                                    WHERE item_name = ? AND recipe_id IS NULL AND version_id = ?
+                                ''', (current_item['item_name'], v_id))
             
             conn.commit()
         
@@ -1335,15 +1408,40 @@ def edit_menu_item(item_id):
     # GET request
     with get_db() as conn:
         item = conn.execute('''
-            SELECT mi.*, r.recipe_name, r.food_cost, mv.version_name
+            SELECT mi.*, r.recipe_name, r.food_cost as recipe_food_cost, r.status as recipe_status, mv.version_name
             FROM menu_items mi
-            JOIN recipes r ON mi.recipe_id = r.id
+            LEFT JOIN recipes r ON mi.recipe_id = r.id
             JOIN menu_versions mv ON mi.version_id = mv.id
             WHERE mi.id = ?
         ''', (item_id,)).fetchone()
+        
+        # Get all available recipes
+        recipes = conn.execute('''
+            SELECT id, recipe_name, food_cost, recipe_group
+            FROM recipes
+            ORDER BY recipe_name
+        ''').fetchall()
+        
+        # Get all menu versions
+        menu_versions = conn.execute('''
+            SELECT id, version_name, is_active
+            FROM menu_versions
+            ORDER BY id
+        ''').fetchall()
+        
+        # Get current versions this item belongs to
+        current_versions = conn.execute('''
+            SELECT version_id FROM menu_items 
+            WHERE item_name = ? AND recipe_id = ?
+        ''', (item['item_name'], item['recipe_id'])).fetchall()
+        current_version_ids = [v['version_id'] for v in current_versions]
     
     theme = get_theme()
-    return render_template(f'edit_menu_item_{theme}.html', item=item)
+    return render_template(f'edit_menu_item_{theme}.html', 
+                         item=item, 
+                         recipes=recipes,
+                         menu_versions=menu_versions,
+                         current_version_ids=current_version_ids)
 
 @app.route('/menu/items/delete/<int:item_id>', methods=['POST'])
 def delete_menu_item(item_id):

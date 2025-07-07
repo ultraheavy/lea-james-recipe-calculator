@@ -11,29 +11,77 @@
     </div>
 
     <form method="POST" class="space-y-4">
-        <!-- Current Recipe Info -->
+        <!-- Recipe Selection -->
         <div class="card">
             <div class="card-body">
-                <h3 class="text-lg font-semibold mb-4">Recipe Information</h3>
+                <h3 class="text-lg font-semibold mb-4">Recipe Assignment</h3>
                 
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <p class="text-secondary text-sm">Recipe</p>
-                        <p class="font-medium">{{ item.recipe_name }}</p>
+                <div class="form-group">
+                    <label for="recipe_id" class="form-label">Select Recipe</label>
+                    <select id="recipe_id" name="recipe_id" class="form-control" onchange="updateRecipeCost()">
+                        <option value="">-- No Recipe --</option>
+                        {% for recipe in recipes %}
+                        <option value="{{ recipe.id }}" 
+                                data-cost="{{ recipe.food_cost or 0 }}"
+                                data-group="{{ recipe.recipe_group }}"
+                                {% if recipe.id == item.recipe_id %}selected{% endif %}>
+                            {{ recipe.recipe_name }} - ${{ "%.2f"|format(recipe.food_cost or 0) }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <p class="text-sm text-secondary mt-1">Current: {{ item.recipe_name or 'No recipe assigned' }}</p>
+                    {% if item.recipe_status == 'Draft' and item.status == 'Active' %}
+                    <div class="alert alert-warning mt-2">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="inline mr-2">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+                            <line x1="12" y1="9" x2="12" y2="13"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                        This menu item is Active but uses a Draft recipe
                     </div>
+                    {% endif %}
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4 mt-4">
                     <div>
-                        <p class="text-secondary text-sm">Current Food Cost</p>
-                        <p class="font-medium">${{ "%.2f"|format(item.recipe_food_cost or 0) }}</p>
+                        <p class="text-secondary text-sm">Food Cost</p>
+                        <p class="font-medium" id="recipe-cost">${{ "%.2f"|format(item.recipe_food_cost or 0) }}</p>
                     </div>
                     <div>
                         <p class="text-secondary text-sm">Recipe Group</p>
-                        <p class="font-medium">{{ item.recipe_group or 'Uncategorized' }}</p>
-                    </div>
-                    <div>
-                        <p class="text-secondary text-sm">Menu Version</p>
-                        <p class="font-medium">{{ item.version_name }}</p>
+                        <p class="font-medium" id="recipe-group">{{ item.recipe_group or 'Uncategorized' }}</p>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Menu Version Assignment -->
+        <div class="card">
+            <div class="card-body">
+                <h3 class="text-lg font-semibold mb-4">Menu Version Assignment</h3>
+                <p class="text-sm text-secondary mb-3">Select which menu versions this item should appear in:</p>
+                
+                <div class="space-y-2">
+                    {% for version in menu_versions %}
+                    <label class="flex items-center space-x-3 p-2 rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="checkbox" 
+                               name="version_ids" 
+                               value="{{ version.id }}"
+                               class="form-checkbox h-5 w-5 text-primary"
+                               {% if version.id in current_version_ids %}checked{% endif %}>
+                        <span class="{% if version.id == item.version_id %}font-semibold{% endif %}">
+                            {{ version.version_name }}
+                            {% if version.is_active %}
+                                <span class="badge badge-success ml-2">Active</span>
+                            {% endif %}
+                            {% if version.id == item.version_id %}
+                                <span class="text-sm text-secondary">(current)</span>
+                            {% endif %}
+                        </span>
+                    </label>
+                    {% endfor %}
+                </div>
+                
             </div>
         </div>
 
@@ -145,15 +193,29 @@
 </div>
 
 <script>
-const foodCost = {{ item.recipe_food_cost or 0 }};
+let currentFoodCost = {{ item.recipe_food_cost or 0 }};
+
+function updateRecipeCost() {
+    const recipeSelect = document.getElementById('recipe_id');
+    const selectedOption = recipeSelect.options[recipeSelect.selectedIndex];
+    
+    currentFoodCost = parseFloat(selectedOption.getAttribute('data-cost')) || 0;
+    const recipeGroup = selectedOption.getAttribute('data-group') || 'Uncategorized';
+    
+    document.getElementById('recipe-cost').textContent = '$' + currentFoodCost.toFixed(2);
+    document.getElementById('recipe-group').textContent = recipeGroup;
+    
+    // Recalculate margins with new cost
+    calculateMargins();
+}
 
 function calculateMargins() {
     const price = parseFloat(document.getElementById('menu_price').value) || 0;
     
     if (price > 0) {
-        const fcPercent = (foodCost / price * 100);
-        const grossProfit = price - foodCost;
-        const markup = price / foodCost;
+        const fcPercent = (currentFoodCost / price * 100);
+        const grossProfit = price - currentFoodCost;
+        const markup = currentFoodCost > 0 ? (price / currentFoodCost) : 0;
         
         document.getElementById('fc-percent').textContent = fcPercent.toFixed(1) + '%';
         document.getElementById('gross-profit').textContent = '$' + grossProfit.toFixed(2);
@@ -179,6 +241,17 @@ function calculateMargins() {
         const statusEl = document.getElementById('target-status');
         statusEl.textContent = status;
         statusEl.className = 'font-semibold ' + statusClass;
+        
+        // Update margin info background based on status
+        const marginInfo = document.getElementById('margin-info');
+        marginInfo.className = 'mt-4 p-4 rounded-lg ';
+        if (fcPercent <= 30) {
+            marginInfo.className += 'bg-green-50';
+        } else if (fcPercent <= 35) {
+            marginInfo.className += 'bg-yellow-50';
+        } else {
+            marginInfo.className += 'bg-red-50';
+        }
     }
 }
 
