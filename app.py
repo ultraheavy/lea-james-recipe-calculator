@@ -332,6 +332,33 @@ def get_theme():
     theme = request.args.get('theme') or request.cookies.get('theme', 'modern')
     return theme if theme in ['modern', 'neo', 'fam'] else 'modern'
 
+def ensure_master_menu_assignment(conn, menu_item_id):
+    """Ensure a menu item is assigned to the Master Menu"""
+    cursor = conn.cursor()
+    
+    # Get Master Menu ID
+    cursor.execute("SELECT id FROM menus WHERE menu_name = 'Master Menu'")
+    result = cursor.fetchone()
+    if not result:
+        return False
+    
+    master_menu_id = result[0]
+    
+    # Check if already assigned
+    cursor.execute("""
+        SELECT id FROM menu_menu_items 
+        WHERE menu_id = ? AND menu_item_id = ?
+    """, (master_menu_id, menu_item_id))
+    
+    if not cursor.fetchone():
+        # Add to Master Menu
+        cursor.execute("""
+            INSERT INTO menu_menu_items (menu_id, menu_item_id, sort_order)
+            VALUES (?, ?, 0)
+        """, (master_menu_id, menu_item_id))
+    
+    return True
+
 @app.route('/health')
 def health():
     """Health check endpoint for debugging"""
@@ -1314,6 +1341,10 @@ def add_menu_item():
                     ''', (recipe['recipe_name'], menu_group, item_description, 
                           recipe_id, menu_price, food_cost, food_cost_percent, 
                           gross_profit, serving_size, version_id))
+                    
+                    # Ensure new item is added to Master Menu
+                    new_item_id = cursor.lastrowid
+                    ensure_master_menu_assignment(conn, new_item_id)
             
             conn.commit()
         
@@ -1424,6 +1455,10 @@ def edit_menu_item(item_id):
                             ''', (current_item['item_name'], recipe_id, menu_price, menu_group,
                                   food_cost, food_cost_percent, gross_profit,
                                   item_description, serving_size, status, version_id))
+                            
+                            # Ensure new item is added to Master Menu
+                            new_item_id = cursor.lastrowid
+                            ensure_master_menu_assignment(conn, new_item_id)
                 
                 # Remove from versions not selected
                 for v_id in current_version_ids:
@@ -1526,6 +1561,10 @@ def copy_menu_item(item_id):
                           item['menu_price'], item['food_cost'], 
                           item['food_cost_percent'], item['gross_profit'],
                           item['status'], item['serving_size'], version_id))
+                    
+                    # Ensure new item is added to Master Menu
+                    new_item_id = cursor.lastrowid
+                    ensure_master_menu_assignment(conn, new_item_id)
             
             conn.commit()
     

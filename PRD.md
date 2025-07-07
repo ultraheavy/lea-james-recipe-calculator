@@ -11,10 +11,9 @@
 ## 🎯 **PRODUCT VISION**
 
 ### **Primary Purpose**
-Transform Excel-based recipe costing into a modern web application that integrates with XtraChef POS data to provide real-time cost management for restaurant operations.
+Create a recipe costing modern web application that integrates with XtraChef POS data to provide real-time cost management for restaurant operations focused on Owners, Ops Director and Admin ability to create new recipes, menu and menu items with real data from current system while also allowing custom items, recipes,  and  menus to be created along with custom values for cost.
 
 ### **Target Users**
-- **General Managers**: Daily cost monitoring and menu analysis
 - **Kitchen Managers**: Recipe standardization and cost control
 - **Corporate Teams**: Multi-location cost analysis and reporting
 - **Purchasing Managers**: Vendor comparison and cost optimization
