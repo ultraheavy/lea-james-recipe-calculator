@@ -3,52 +3,52 @@
 {% block content %}
 <div class="container-fluid">
     <div class="content-header">
-        <h1>Menu Management</h1>
+        <h1 style="color: #1f2937;">Menu Management</h1>
         <a href="{{ url_for('create_menu') }}" class="btn btn-modern">
             <i class="fas fa-plus"></i> Create New Menu
         </a>
     </div>
 
-    <div class="info-cards">
-        <div class="info-card">
-            <h3>{{ menus|length }}</h3>
-            <p>Total Menus</p>
+    <div class="info-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+        <div class="info-card" style="background: #6366f1; color: white; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <h3 style="font-size: 2rem; margin: 0; color: white;">{{ menus|length }}</h3>
+            <p style="margin: 0.5rem 0 0 0; color: white; opacity: 0.9;">Total Menus</p>
         </div>
-        <div class="info-card">
-            <h3>{{ menus|selectattr('is_active')|list|length }}</h3>
-            <p>Active Menus</p>
+        <div class="info-card" style="background: #10b981; color: white; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <h3 style="font-size: 2rem; margin: 0; color: white;">{{ menus|selectattr('is_active')|list|length }}</h3>
+            <p style="margin: 0.5rem 0 0 0; color: white; opacity: 0.9;">Active Menus</p>
         </div>
-        <div class="info-card">
-            <h3>{{ menus|sum(attribute='item_count') }}</h3>
-            <p>Total Assignments</p>
+        <div class="info-card" style="background: #f59e0b; color: white; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <h3 style="font-size: 2rem; margin: 0; color: white;">{{ menus|sum(attribute='item_count') }}</h3>
+            <p style="margin: 0.5rem 0 0 0; color: white; opacity: 0.9;">Total Assignments</p>
         </div>
     </div>
 
-    <div class="menus-grid">
-        {% set bg_colors = ['#f0f9ff', '#fef3c7', '#f0fdf4', '#fef2f2', '#f3f4f6', '#ede9fe', '#fdf2f8', '#ecfdf5'] %}
+    <div class="menus-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+        {% set bg_colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#84cc16'] %}
         {% for menu in menus %}
-        <div class="menu-card-item" style="border-left: 4px solid {{ bg_colors[loop.index0 % bg_colors|length] }};">
-            <div class="menu-card-header">
-                <h4>{{ menu.menu_name }}</h4>
+        <div class="menu-card-item" style="background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); overflow: hidden; border-left: 4px solid {{ bg_colors[loop.index0 % bg_colors|length] }};">
+            <div class="menu-card-header" style="padding: 1.5rem; background-color: #f9fafb; border-bottom: 1px solid #e5e7eb; display: flex; justify-content: space-between; align-items: center;">
+                <h4 style="margin: 0; font-size: 1.25rem; color: #1f2937; font-weight: 600;">{{ menu.menu_name }}</h4>
                 <div class="menu-status">
                     {% if menu.is_active %}
-                        <span class="badge badge-success">Active</span>
+                        <span class="badge" style="background-color: #10b981; color: white; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.875rem;">Active</span>
                     {% else %}
-                        <span class="badge badge-secondary">Inactive</span>
+                        <span class="badge" style="background-color: #6b7280; color: white; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.875rem;">Inactive</span>
                     {% endif %}
                 </div>
             </div>
-            <div class="menu-card-body">
-                <p class="menu-description">{{ menu.description or 'No description provided' }}</p>
+            <div class="menu-card-body" style="padding: 1.5rem;">
+                <p class="menu-description" style="color: #6b7280; margin-bottom: 1rem; line-height: 1.5;">{{ menu.description or 'No description provided' }}</p>
                 <div class="menu-stats">
-                    <span class="stat-item">
-                        <i class="fas fa-utensils"></i> {{ menu.item_count }} items
+                    <span class="stat-item" style="color: #4b5563; font-size: 0.875rem;">
+                        <i class="fas fa-utensils" style="color: #9ca3af;"></i> {{ menu.item_count }} items
                     </span>
                 </div>
             </div>
-            <div class="menu-card-footer">
+            <div class="menu-card-footer" style="padding: 1rem 1.5rem; background-color: #f9fafb; border-top: 1px solid #e5e7eb;">
                 <a href="{{ url_for('edit_menu', menu_id=menu.id) }}" 
-                   class="btn btn-modern btn-block">
+                   class="btn btn-modern btn-block" style="background: #6366f1; color: white; padding: 0.5rem 1.5rem; border-radius: 6px; text-align: center; text-decoration: none; display: block; font-weight: 500;">
                     <i class="fas fa-edit"></i> Edit & Manage Items
                 </a>
             </div>
@@ -64,6 +64,8 @@
     align-items: center;
     margin-bottom: 2rem;
 }
+
+/* Remove any conflicting styles and use inline styles for clarity */
 
 .info-cards {
     display: grid;
