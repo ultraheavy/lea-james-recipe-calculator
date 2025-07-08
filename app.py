@@ -262,17 +262,23 @@ def init_database():
                     ALTER TABLE menu_items ADD COLUMN version_id INTEGER DEFAULT 1
                 ''')
             
-            # Ensure at least one menu version exists
+            # Check if database is empty (no production data to import)
+            cursor.execute('SELECT COUNT(*) FROM inventory')
+            inventory_empty = cursor.fetchone()[0] == 0
+            
+            # Ensure at least one menu version exists (only if no production data will be imported)
             cursor.execute('SELECT COUNT(*) FROM menu_versions')
-            if cursor.fetchone()[0] == 0:
+            if cursor.fetchone()[0] == 0 and inventory_empty:
                 cursor.execute('''
                     INSERT INTO menu_versions (version_name, is_active) 
                     VALUES ('Current Menu', 1)
                 ''')
             
-            # Ensure default menus exist
+            # Ensure default menus exist (only if no production data will be imported)
+            
             cursor.execute('SELECT COUNT(*) FROM menus')
-            if cursor.fetchone()[0] == 0:
+            if cursor.fetchone()[0] == 0 and inventory_empty:
+                # Only create default menus if database is truly empty (not being imported)
                 cursor.execute('''
                     INSERT INTO menus (menu_name, description, is_active, sort_order) 
                     VALUES 
