@@ -18,15 +18,15 @@
         </select>
     </div>
     <div class="menu-action-buttons">
-        <a href="/menu/versions" class="btn btn-secondary">Manage Versions</a>
-        <a href="/menu/compare" class="btn btn-secondary">Compare</a>
-        <a href="/menu/add?version_id={{ current_version_id }}" class="btn btn-success">Add Recipe to Menu</a>
+        <a href="/menu_items/versions" class="btn btn-secondary">Manage Versions</a>
+        <a href="/menu_items/compare" class="btn btn-secondary">Compare</a>
+        <a href="/menu_items/add?version_id={{ current_version_id }}" class="btn btn-success">Add Recipe to Menu</a>
     </div>
 </div>
 
 <script>
 function changeVersion(versionId) {
-    window.location.href = '/menu?version_id=' + versionId;
+    window.location.href = "/menu_items?version_id=' + versionId;
 }
 </script>
 
@@ -62,14 +62,14 @@ function changeVersion(versionId) {
                 <td class="hide-mobile">{{ "%.1f"|format(item.food_cost_percent or 0) }}%</td>
                 <td class="hide-mobile">${{ "%.2f"|format(item.gross_profit or 0) }}</td>
                 <td>
-                    <a href="/menu/edit/{{ item.id }}" class="btn" style="font-size: 12px; padding: 5px 10px;">Edit</a>
+                    <a href="/menu_items/edit/{{ item.id }}" class="btn" style="font-size: 12px; padding: 5px 10px;">Edit</a>
                 </td>
             </tr>
             {% endfor %}
         {% else %}
             <tr>
                 <td colspan="8" style="text-align: center; padding: 40px;">
-                    No menu items found. <a href="/menu/add">Add your first menu item</a>
+                    No menu items found. <a href="/menu_items/add">Add your first menu item</a>
                 </td>
             </tr>
         {% endif %}

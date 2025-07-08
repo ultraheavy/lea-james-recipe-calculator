@@ -12,14 +12,14 @@
                 <p class="neo-text-muted">Assign recipes to menu versions for pricing analysis</p>
             </div>
             <div style="display: flex; gap: 1rem;">
-                <select class="neo-form-control" style="width: auto;" onchange="window.location.href='/menu?version_id=' + this.value">
+                <select class="neo-form-control" style="width: auto;" onchange="window.location.href='/menu_items?version_id=' + this.value">
                     {% for version in menu_versions %}
                     <option value="{{ version.id }}" {% if version.id == current_version_id %}selected{% endif %}>
                         {{ version.version_name }} {% if version.is_active %}⚡{% endif %}
                     </option>
                     {% endfor %}
                 </select>
-                <a href="/menu/add" class="neo-btn neo-btn-primary">
+                <a href="/menu_items/add" class="neo-btn neo-btn-primary">
                     <span>+</span> Add Item
                 </a>
             </div>
@@ -142,7 +142,7 @@
                 </div>
                 <h3>No menu items yet</h3>
                 <p class="neo-text-muted neo-mb-3">Start building your menu</p>
-                <a href="/menu/add" class="neo-btn neo-btn-primary">Add First Item</a>
+                <a href="/menu_items/add" class="neo-btn neo-btn-primary">Add First Item</a>
             </div>
             {% endif %}
         </div>

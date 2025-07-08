@@ -1059,7 +1059,7 @@ def delete_recipe(recipe_id):
     
     return redirect(url_for('recipes'))
 
-@app.route('/menu')
+@app.route('/menu_items')
 def menu():
     """Menu management page with version support"""
     with get_db() as conn:
@@ -1092,7 +1092,7 @@ def menu():
                          menu_versions=menu_versions,
                          current_version_id=version_id)
 
-@app.route('/menu/compare')
+@app.route('/menu_items/compare')
 def menu_compare():
     """Compare menu versions side by side"""
     with get_db() as conn:
@@ -1253,7 +1253,7 @@ def menu_compare():
                              v1_id=v1_id,
                              v2_id=v2_id)
 
-@app.route('/menu/versions')
+@app.route('/menu_items/versions')
 def menu_versions_page():
     """Manage menu versions"""
     with get_db() as conn:
@@ -1270,7 +1270,7 @@ def menu_versions_page():
     theme = get_theme()
     return render_template(f'menu_versions_{theme}.html', versions=versions)
 
-@app.route('/menu/versions/add', methods=['GET', 'POST'])
+@app.route('/menu_items/versions/add', methods=['GET', 'POST'])
 def add_menu_version():
     """Create a new menu version"""
     if request.method == 'POST':
@@ -1300,7 +1300,7 @@ def add_menu_version():
     theme = get_theme()
     return render_template(f'add_menu_version_{theme}.html')
 
-@app.route('/menu/versions/edit/<int:version_id>', methods=['GET', 'POST'])
+@app.route('/menu_items/versions/edit/<int:version_id>', methods=['GET', 'POST'])
 def edit_menu_version(version_id):
     """Edit a menu version"""
     if request.method == 'POST':
@@ -1334,7 +1334,7 @@ def edit_menu_version(version_id):
     theme = get_theme()
     return render_template(f'edit_menu_version_{theme}.html', version=version)
 
-@app.route('/menu/versions/delete/<int:version_id>', methods=['POST'])
+@app.route('/menu_items/versions/delete/<int:version_id>', methods=['POST'])
 def delete_menu_version(version_id):
     """Delete a menu version and all its items"""
     with get_db() as conn:
@@ -1358,7 +1358,7 @@ def delete_menu_version(version_id):
     
     return redirect(url_for('menu_versions_page'))
 
-@app.route('/menu/items/add', methods=['GET', 'POST'])
+@app.route('/menu_items/items/add', methods=['GET', 'POST'])
 def add_menu_item():
     """Add a recipe to menu(s)"""
     if request.method == 'POST':
@@ -1430,7 +1430,7 @@ def add_menu_item():
                          recipes=recipes, 
                          menu_versions=menu_versions)
 
-@app.route('/menu/items/edit/<int:item_id>', methods=['GET', 'POST'])
+@app.route('/menu_items/items/edit/<int:item_id>', methods=['GET', 'POST'])
 @with_auto_commit
 def edit_menu_item(item_id):
     """Edit a menu item"""
@@ -1580,7 +1580,7 @@ def edit_menu_item(item_id):
                          menu_versions=menu_versions,
                          current_version_ids=current_version_ids)
 
-@app.route('/menu/items/delete/<int:item_id>', methods=['POST'])
+@app.route('/menu_items/items/delete/<int:item_id>', methods=['POST'])
 def delete_menu_item(item_id):
     """Remove item from menu"""
     with get_db() as conn:
@@ -1589,7 +1589,7 @@ def delete_menu_item(item_id):
     
     return redirect(url_for('menu'))
 
-@app.route('/menu/items/copy/<int:item_id>', methods=['POST'])
+@app.route('/menu_items/items/copy/<int:item_id>', methods=['POST'])
 def copy_menu_item(item_id):
     """Copy a menu item to other menu versions"""
     version_ids = request.form.getlist('version_ids')
@@ -1792,7 +1792,7 @@ def vendor_detail(vendor_id):
     return render_template(template_name, vendor=vendor, products=products)
 
 # Menu Management Routes
-@app.route('/menus')
+@app.route('/menus_mgmt')
 def menus():
     """List all menus"""
     with get_db() as conn:
@@ -1808,7 +1808,7 @@ def menus():
     theme = get_theme()
     return render_template(f'menus_{theme}.html', menus=menus)
 
-@app.route('/menus/create', methods=['GET', 'POST'])
+@app.route('/menus_mgmt/create', methods=['GET', 'POST'])
 def create_menu():
     """Create a new menu"""
     if request.method == 'POST':
@@ -1827,7 +1827,7 @@ def create_menu():
     theme = get_theme()
     return render_template(f'create_menu_{theme}.html')
 
-@app.route('/menus/<int:menu_id>/edit', methods=['GET', 'POST'])
+@app.route('/menus_mgmt/<int:menu_id>/edit', methods=['GET', 'POST'])
 def edit_menu(menu_id):
     """Edit menu details and manage items"""
     if request.method == 'POST':
@@ -1886,7 +1886,7 @@ def edit_menu(menu_id):
                          menu_items=menu_items,
                          categories=categories)
 
-@app.route('/menus/<int:menu_id>/items/toggle', methods=['POST'])
+@app.route('/menus_mgmt/<int:menu_id>/items/toggle', methods=['POST'])
 def toggle_menu_item(menu_id):
     """Add or remove item from menu"""
     menu_item_id = request.form.get('menu_item_id')

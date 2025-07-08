@@ -23,7 +23,7 @@
     <!-- Version Selection -->
     <div class="card mb-6">
         <div class="card-body">
-            <form method="GET" action="/menu/compare" class="flex flex-wrap gap-4 items-end">
+            <form method="GET" action="/menu_items/compare" class="flex flex-wrap gap-4 items-end">
                 <div class="form-group flex-1 min-w-[200px]">
                     <label for="v1" class="form-label">Version 1</label>
                     <select name="v1" id="v1" class="form-control">
@@ -305,7 +305,7 @@ function filterComparison(filter) {
 function exportComparison(format) {
     const params = new URLSearchParams(window.location.search);
     params.append('export', format);
-    window.location.href = '/menu/compare?' + params.toString();
+    window.location.href = "/menu_items/compare?' + params.toString();
 }
 
 // Print comparison

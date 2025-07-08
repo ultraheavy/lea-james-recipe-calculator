@@ -10,7 +10,7 @@
             <h1 class="fam-page-title">Recipe-to-Menu Assignment</h1>
             <p class="fam-page-subtitle">{{ menu_items|length }} recipes assigned across menu versions</p>
         </div>
-        <a href="/menu/add" class="fam-btn fam-btn-primary">
+        <a href="/menu_items/add" class="fam-btn fam-btn-primary">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="10"/>
                 <path d="M12 8v8m-4-4h8"/>
@@ -104,7 +104,7 @@
                             </td>
                             <td>
                                 <div class="fam-action-buttons">
-                                    <a href="/menu/edit/{{ item.id }}" 
+                                    <a href="/menu_items/edit/{{ item.id }}" 
                                        class="fam-btn-icon"
                                        title="Edit">
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -112,7 +112,7 @@
                                             <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
                                         </svg>
                                     </a>
-                                    <form method="POST" action="/menu/delete/{{ item.id }}" style="display: inline;">
+                                    <form method="POST" action="/menu_items/delete/{{ item.id }}" style="display: inline;">
                                         <button type="submit" 
                                                 class="fam-btn-icon fam-btn-icon-danger"
                                                 title="Delete"
@@ -143,7 +143,7 @@
         </div>
         <h3 class="fam-empty-title">No menu items yet</h3>
         <p class="fam-empty-text">Start by adding your first menu item</p>
-        <a href="/menu/add" class="fam-btn fam-btn-primary">Add First Item</a>
+        <a href="/menu_items/add" class="fam-btn fam-btn-primary">Add First Item</a>
     </div>
     {% endif %}
 </div>

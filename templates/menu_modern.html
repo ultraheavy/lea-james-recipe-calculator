@@ -12,13 +12,13 @@
                 <p class="text-secondary">{{ menu_items|length }} recipes assigned across all menu versions</p>
             </div>
             <div class="flex gap-3">
-                <a href="/menu/versions" class="btn btn-secondary">
+                <a href="/menu_items/versions" class="btn btn-secondary">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
                     </svg>
                     Manage Versions
                 </a>
-                <a href="/menu/items/add" class="btn btn-primary">
+                <a href="/menu_items/items/add" class="btn btn-primary">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M12 5v14m-7-7h14"/>
                     </svg>
@@ -186,7 +186,7 @@
                     </td>
                     <td>
                         <div class="flex gap-2">
-                            <a href="/menu/items/edit/{{ item.id }}" 
+                            <a href="/menu_items/items/edit/{{ item.id }}" 
                                class="btn btn-sm btn-secondary"
                                title="Edit">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -194,7 +194,7 @@
                                     <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
                                 </svg>
                             </a>
-                            <form method="POST" action="/menu/items/delete/{{ item.id }}" 
+                            <form method="POST" action="/menu_items/items/delete/{{ item.id }}" 
                                   class="inline" 
                                   onsubmit="return confirm('Remove {{ item.item_name }} from this menu?');">
                                 <button type="submit" 
@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function changeVersion() {
     const versionId = document.getElementById('versionSelect').value;
-    window.location.href = `/menu?version_id=${versionId}`;
+    window.location.href = "/menu_items?version_id=${versionId}`;
 }
 
 function filterMenu() {

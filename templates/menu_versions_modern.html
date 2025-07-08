@@ -17,7 +17,7 @@
                 </svg>
                 Back to Menu
             </a>
-            <a href="/menu/versions/add" class="btn btn-primary">
+            <a href="/menu_items/versions/add" class="btn btn-primary">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M12 5v14m-7-7h14"/>
                 </svg>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="flex gap-2">
                         {% if version.id != 0 %}
-                        <a href="/menu/versions/edit/{{ version.id }}" 
+                        <a href="/menu_items/versions/edit/{{ version.id }}" 
                            class="btn btn-sm btn-secondary">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
@@ -51,7 +51,7 @@
                             </svg>
                         </a>
                         {% if not version.is_active %}
-                        <form method="POST" action="/menu/versions/delete/{{ version.id }}" 
+                        <form method="POST" action="/menu_items/versions/delete/{{ version.id }}" 
                               class="inline" onsubmit="return confirm('Delete this menu version and all its items?');">
                             <button type="submit" class="btn btn-sm btn-danger">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -90,7 +90,7 @@
                         View Items
                     </a>
                     {% if version.id != 0 %}
-                    <a href="/menu/compare?v1=0&v2={{ version.id }}" class="btn btn-sm btn-secondary flex-1">
+                    <a href="/menu_items/compare?v1=0&v2={{ version.id }}" class="btn btn-sm btn-secondary flex-1">
                         Compare to Master
                     </a>
                     {% endif %}

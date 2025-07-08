@@ -11,9 +11,9 @@
 Please use desktop-commander to read these critical files before any work:
 
 ```
-/Users/ndrfn/Dropbox/001-Projects/Claude_projects/python_we4b_recipe_app/LJ_Test_Doca/CLAUDE.md
-/Users/ndrfn/Dropbox/001-Projects/Claude_projects/python_we4b_recipe_app/LJ_Test_Doca/DATA_MODEL.md  
-/Users/ndrfn/Dropbox/001-Projects/Claude_projects/python_we4b_recipe_app/LJ_Test_Doca/AI_PROMPTING_GUIDE.md
+/docs/ai_safety/CLAUDE.md
+docs/technical/DATA_MODEL.md
+docs/ai_safety/AI_PROMPTING_GUIDE.md
 ```
 
 **After reading, confirm you understand:**

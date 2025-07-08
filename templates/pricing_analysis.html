@@ -135,14 +135,14 @@
 function updatePrice(itemId, newPrice) {
     if (confirm(`Update price to $${newPrice.toFixed(2)}?`)) {
         // In a real implementation, this would make an AJAX call
-        window.location.href = `/menu/update-price/${itemId}?price=${newPrice}&return_to=pricing-analysis`;
+        window.location.href = "/menu_items/update-price/${itemId}?price=${newPrice}&return_to=pricing-analysis`;
     }
 }
 
 function applyAllRecommendations() {
     if (confirm('This will update all menu prices to meet the target food cost percentage. Continue?')) {
         // In a real implementation, this would make an AJAX call
-        window.location.href = `/menu/apply-price-recommendations?target_food_cost={{ target_food_cost }}&version_id={{ current_version_id }}`;
+        window.location.href = "/menu_items/apply-price-recommendations?target_food_cost={{ target_food_cost }}&version_id={{ current_version_id }}`;
     }
 }
 </script>
