@@ -12,7 +12,7 @@
     <!-- Menu Details Form -->
     {% set menu_colors = ['#f0f9ff', '#fef3c7', '#f0fdf4', '#fef2f2', '#f3f4f6', '#ede9fe', '#fdf2f8', '#ecfdf5'] %}
     {% set menu_color = menu_colors[menu.id % menu_colors|length] %}
-    <div class="card mb-4" style="background-color: {{ menu_color }}; border: 1px solid {{ menu_color }};">
+    <div class="card mb-4 menu-details-card" style="background-color: {{ menu_color }}; border: 1px solid rgba(0,0,0,0.1);">
         <div class="card-header" style="background-color: {{ menu_color }}; border-bottom: 1px solid rgba(0,0,0,0.1);">
             <h3>Menu Details</h3>
         </div>
@@ -47,11 +47,11 @@
 
     <!-- Menu Items Assignment -->
     <div class="card">
-        <div class="card-header">
+        <div class="card-header" style="background-color: #f9fafb; border-bottom: 2px solid #e5e7eb;">
             <h3>Menu Items</h3>
             <p class="mb-0 text-muted">Check items to include in this menu</p>
         </div>
-        <div class="card-body">
+        <div class="card-body" style="background-color: white;">
             <!-- Category Tabs -->
             <ul class="nav nav-tabs mb-3" role="tablist">
                 <li class="nav-item">
@@ -213,6 +213,53 @@ function saveSelections() {
 .card-header h3 {
     margin: 0;
     font-size: 1.25rem;
+}
+
+/* Override for menu details card */
+.menu-details-card .card-header {
+    background: transparent !important;
+    color: #374151 !important;
+}
+
+.menu-details-card .card-header h3 {
+    color: #374151 !important;
+}
+
+/* Ensure form elements are readable */
+.menu-details-card .form-control,
+.menu-details-card textarea {
+    background-color: white !important;
+    border: 1px solid #d1d5db !important;
+}
+
+.menu-details-card .form-control:focus,
+.menu-details-card textarea:focus {
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
+}
+
+/* Better table styling */
+.table {
+    background-color: white;
+}
+
+.table thead th {
+    background-color: #f9fafb;
+    border-bottom: 2px solid #e5e7eb;
+    font-weight: 600;
+    color: #374151;
+}
+
+.table tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+.table-success {
+    background-color: rgba(16, 185, 129, 0.1) !important;
+}
+
+.table-success:hover {
+    background-color: rgba(16, 185, 129, 0.15) !important;
 }
 
 .nav-tabs .nav-link {
