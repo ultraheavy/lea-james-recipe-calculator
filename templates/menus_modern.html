@@ -2,209 +2,110 @@
 {% block title %}Menu Management{% endblock %}
 {% block content %}
 <div class="container-fluid">
-    <div class="content-header">
-        <h1 style="color: #1f2937;">Menu Management</h1>
-        <a href="{{ url_for('create_menu') }}" class="btn btn-modern">
-            <i class="fas fa-plus"></i> Create New Menu
-        </a>
-    </div>
-
-    <div class="info-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
-        <div class="info-card" style="background: #6366f1; color: white; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-            <h3 style="font-size: 2rem; margin: 0; color: white;">{{ menus|length }}</h3>
-            <p style="margin: 0.5rem 0 0 0; color: white; opacity: 0.9;">Total Menus</p>
-        </div>
-        <div class="info-card" style="background: #10b981; color: white; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-            <h3 style="font-size: 2rem; margin: 0; color: white;">{{ menus|selectattr('is_active')|list|length }}</h3>
-            <p style="margin: 0.5rem 0 0 0; color: white; opacity: 0.9;">Active Menus</p>
-        </div>
-        <div class="info-card" style="background: #f59e0b; color: white; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-            <h3 style="font-size: 2rem; margin: 0; color: white;">{{ menus|sum(attribute='item_count') }}</h3>
-            <p style="margin: 0.5rem 0 0 0; color: white; opacity: 0.9;">Total Assignments</p>
-        </div>
-    </div>
-
-    <div class="menus-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-        {% set bg_colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#84cc16'] %}
-        {% for menu in menus %}
-        <div class="menu-card-item" style="background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); overflow: hidden; border-left: 4px solid {{ bg_colors[loop.index0 % bg_colors|length] }};">
-            <div class="menu-card-header" style="padding: 1.5rem; background-color: #f9fafb; border-bottom: 1px solid #e5e7eb; display: flex; justify-content: space-between; align-items: center;">
-                <h4 style="margin: 0; font-size: 1.25rem; color: #1f2937; font-weight: 600;">{{ menu.menu_name }}</h4>
-                <div class="menu-status">
-                    {% if menu.is_active %}
-                        <span class="badge" style="background-color: #10b981; color: white; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.875rem;">Active</span>
-                    {% else %}
-                        <span class="badge" style="background-color: #6b7280; color: white; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.875rem;">Inactive</span>
-                    {% endif %}
-                </div>
-            </div>
-            <div class="menu-card-body" style="padding: 1.5rem;">
-                <p class="menu-description" style="color: #6b7280; margin-bottom: 1rem; line-height: 1.5;">{{ menu.description or 'No description provided' }}</p>
-                <div class="menu-stats">
-                    <span class="stat-item" style="color: #4b5563; font-size: 0.875rem;">
-                        <i class="fas fa-utensils" style="color: #9ca3af;"></i> {{ menu.item_count }} items
+    <!-- Compact Header with Stats -->
+    <div style="background: white; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <h1 style="color: #1f2937; margin: 0; font-size: 1.875rem;">Menu Management</h1>
+                <div style="display: flex; gap: 2rem; margin-top: 0.5rem;">
+                    <span style="color: #6b7280; font-size: 0.875rem;">
+                        <strong style="color: #374151;">{{ menus|length }}</strong> Total Menus
+                    </span>
+                    <span style="color: #6b7280; font-size: 0.875rem;">
+                        <strong style="color: #10b981;">{{ menus|selectattr('is_active')|list|length }}</strong> Active
+                    </span>
+                    <span style="color: #6b7280; font-size: 0.875rem;">
+                        <strong style="color: #f59e0b;">{{ menus|sum(attribute='item_count') }}</strong> Total Items
                     </span>
                 </div>
             </div>
-            <div class="menu-card-footer" style="padding: 1rem 1.5rem; background-color: #f9fafb; border-top: 1px solid #e5e7eb;">
-                <a href="{{ url_for('edit_menu', menu_id=menu.id) }}" 
-                   class="btn btn-modern btn-block" style="background: #6366f1; color: white; padding: 0.5rem 1.5rem; border-radius: 6px; text-align: center; text-decoration: none; display: block; font-weight: 500;">
-                    <i class="fas fa-edit"></i> Edit & Manage Items
-                </a>
-            </div>
+            <a href="{{ url_for('create_menu') }}" style="background: #6366f1; color: white; padding: 0.625rem 1.25rem; border-radius: 6px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 500; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+                <i class="fas fa-plus"></i> Create New Menu
+            </a>
         </div>
-        {% endfor %}
+    </div>
+
+    <!-- Menu Table -->
+    <div style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background-color: #f9fafb; border-bottom: 2px solid #e5e7eb;">
+                    <th style="text-align: left; padding: 1rem 1.5rem; font-weight: 600; color: #374151; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Menu Name</th>
+                    <th style="text-align: left; padding: 1rem 1.5rem; font-weight: 600; color: #374151; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Description</th>
+                    <th style="text-align: center; padding: 1rem 1.5rem; font-weight: 600; color: #374151; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Items</th>
+                    <th style="text-align: center; padding: 1rem 1.5rem; font-weight: 600; color: #374151; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Status</th>
+                    <th style="text-align: right; padding: 1rem 1.5rem; font-weight: 600; color: #374151; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% set accent_colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#84cc16'] %}
+                {% for menu in menus %}
+                <tr style="border-bottom: 1px solid #e5e7eb; transition: background-color 0.15s;">
+                    <td style="padding: 1.25rem 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <div style="width: 4px; height: 40px; background-color: {{ accent_colors[loop.index0 % accent_colors|length] }}; border-radius: 2px;"></div>
+                            <div>
+                                <h4 style="margin: 0; font-size: 1rem; color: #1f2937; font-weight: 600;">{{ menu.menu_name }}</h4>
+                                <p style="margin: 0.125rem 0 0 0; font-size: 0.875rem; color: #6b7280;">ID: {{ menu.id }}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="padding: 1.25rem 1.5rem; color: #6b7280; font-size: 0.875rem; max-width: 300px;">
+                        {{ menu.description or 'No description provided' }}
+                    </td>
+                    <td style="padding: 1.25rem 1.5rem; text-align: center;">
+                        <span style="display: inline-flex; align-items: center; gap: 0.375rem; background-color: #f3f4f6; color: #374151; padding: 0.375rem 0.75rem; border-radius: 6px; font-size: 0.875rem; font-weight: 500;">
+                            <i class="fas fa-utensils" style="font-size: 0.75rem;"></i>
+                            {{ menu.item_count }}
+                        </span>
+                    </td>
+                    <td style="padding: 1.25rem 1.5rem; text-align: center;">
+                        {% if menu.is_active %}
+                            <span style="display: inline-flex; align-items: center; gap: 0.375rem; background-color: #d1fae5; color: #065f46; padding: 0.375rem 0.75rem; border-radius: 6px; font-size: 0.875rem; font-weight: 500;">
+                                <span style="width: 6px; height: 6px; background-color: #10b981; border-radius: 50%;"></span>
+                                Active
+                            </span>
+                        {% else %}
+                            <span style="display: inline-flex; align-items: center; gap: 0.375rem; background-color: #f3f4f6; color: #6b7280; padding: 0.375rem 0.75rem; border-radius: 6px; font-size: 0.875rem; font-weight: 500;">
+                                <span style="width: 6px; height: 6px; background-color: #9ca3af; border-radius: 50%;"></span>
+                                Inactive
+                            </span>
+                        {% endif %}
+                    </td>
+                    <td style="padding: 1.25rem 1.5rem; text-align: right;">
+                        <a href="{{ url_for('edit_menu', menu_id=menu.id) }}" 
+                           style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: #f3f4f6; color: #374151; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: all 0.15s;"
+                           onmouseover="this.style.backgroundColor='#e5e7eb'" 
+                           onmouseout="this.style.backgroundColor='#f3f4f6'">
+                            <i class="fas fa-edit"></i> Manage
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
 
 <style>
-.content-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
+/* Add hover effect for table rows */
+tbody tr:hover {
+    background-color: #f9fafb !important;
 }
 
-/* Remove any conflicting styles and use inline styles for clarity */
-
-.info-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.info-card {
-    background: linear-gradient(135deg, var(--primary-color, #6366f1), var(--primary-dark, #4f46e5));
-    color: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.info-card h3 {
-    font-size: 2rem;
-    margin: 0;
-    color: white;
-    font-weight: 700;
-}
-
-.info-card p {
-    margin: 0.5rem 0 0 0;
-    opacity: 0.9;
-    color: white;
-    font-weight: 500;
-}
-
-.badge {
-    padding: 0.25rem 0.75rem;
-    border-radius: 12px;
-    font-size: 0.875rem;
-}
-
-.badge-info {
-    background-color: #17a2b8;
-    color: white;
-}
-
-.badge-success {
-    background-color: #28a745;
-    color: white;
-}
-
-.badge-secondary {
-    background-color: #6c757d;
-    color: white;
-}
-
-/* New card-based layout */
-.menus-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.menu-card-item {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-}
-
-.menu-card-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.menu-card-header {
-    padding: 1.5rem;
-    background-color: #f9fafb;
-    border-bottom: 1px solid #e5e7eb;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.menu-card-header h4 {
-    margin: 0;
-    font-size: 1.25rem;
-    color: #1f2937;
-    font-weight: 600;
-}
-
-.menu-card-body {
-    padding: 1.5rem;
-    flex-grow: 1;
-}
-
-.menu-description {
-    color: #6b7280;
-    margin-bottom: 1rem;
-    line-height: 1.5;
-}
-
-.menu-stats {
-    display: flex;
-    gap: 1rem;
-    color: #4b5563;
-    font-size: 0.875rem;
-}
-
-.stat-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.stat-item i {
-    color: #9ca3af;
-}
-
-.menu-card-footer {
-    padding: 1rem 1.5rem;
-    background-color: #f9fafb;
-    border-top: 1px solid #e5e7eb;
-}
-
-.btn-block {
-    width: 100%;
-    display: block;
-    text-align: center;
-}
-
-/* Ensure readability */
-.menu-card-item * {
-    color: inherit;
-}
-
-/* Remove table styles if still present */
-.table-container {
-    display: none;
+/* Responsive design */
+@media (max-width: 768px) {
+    table {
+        font-size: 0.875rem;
+    }
+    
+    th, td {
+        padding: 0.75rem !important;
+    }
+    
+    .menu-description {
+        display: none;
+    }
 }
 </style>
 {% endblock %}
