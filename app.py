@@ -25,6 +25,41 @@ except ImportError:
     def with_auto_commit(func):
         return func
 
+def cleanup_duplicate_menus(conn):
+    """One-time cleanup of duplicate menus in production"""
+    try:
+        cursor = conn.cursor()
+        
+        # Check for duplicates
+        cursor.execute("""
+            SELECT menu_name, COUNT(*) as count 
+            FROM menus 
+            GROUP BY menu_name 
+            HAVING COUNT(*) > 1
+        """)
+        
+        duplicates = cursor.fetchall()
+        
+        if duplicates:
+            print(f"Found duplicate menus, cleaning up...")
+            
+            for menu_name, count in duplicates:
+                # Keep the first one (lowest ID) and delete the rest
+                cursor.execute("""
+                    DELETE FROM menus 
+                    WHERE menu_name = ? 
+                    AND id NOT IN (
+                        SELECT MIN(id) 
+                        FROM menus 
+                        WHERE menu_name = ?
+                    )
+                """, (menu_name, menu_name))
+            
+            conn.commit()
+            print("Duplicate menus cleaned up!")
+    except Exception as e:
+        print(f"Warning: Could not cleanup duplicate menus: {e}")
+
 def import_production_data(conn):
     """Import production data if available and database is empty."""
     try:
@@ -339,6 +374,9 @@ def init_database():
             
             # Import production data if available and database is empty
             import_production_data(conn)
+            
+            # Clean up any duplicate menus that might exist
+            cleanup_duplicate_menus(conn)
             
     except Exception as e:
         print(f"Database initialization error: {e}")
