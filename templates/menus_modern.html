@@ -36,8 +36,9 @@
                 </tr>
             </thead>
             <tbody>
+                {% set bg_colors = ['#f0f9ff', '#fef3c7', '#f0fdf4', '#fef2f2', '#f3f4f6', '#ede9fe', '#fdf2f8', '#ecfdf5'] %}
                 {% for menu in menus %}
-                <tr>
+                <tr style="background-color: {{ bg_colors[loop.index0 % bg_colors|length] }};">
                     <td>
                         <strong>{{ menu.menu_name }}</strong>
                     </td>

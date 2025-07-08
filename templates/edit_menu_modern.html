@@ -10,8 +10,10 @@
     </div>
 
     <!-- Menu Details Form -->
-    <div class="card mb-4">
-        <div class="card-header">
+    {% set menu_colors = ['#f0f9ff', '#fef3c7', '#f0fdf4', '#fef2f2', '#f3f4f6', '#ede9fe', '#fdf2f8', '#ecfdf5'] %}
+    {% set menu_color = menu_colors[menu.id % menu_colors|length] %}
+    <div class="card mb-4" style="background-color: {{ menu_color }}; border: 1px solid {{ menu_color }};">
+        <div class="card-header" style="background-color: {{ menu_color }}; border-bottom: 1px solid rgba(0,0,0,0.1);">
             <h3>Menu Details</h3>
         </div>
         <div class="card-body">

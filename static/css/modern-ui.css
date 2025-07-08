@@ -1015,3 +1015,24 @@ select.form-control {
 .theme-toggle-btn:hover {
   transform: scale(1.1);
 }
+
+/* Menu Background Colors */
+.menu-bg-1 { background-color: #f0f9ff !important; } /* Light Blue */
+.menu-bg-2 { background-color: #fef3c7 !important; } /* Light Yellow */
+.menu-bg-3 { background-color: #f0fdf4 !important; } /* Light Green */
+.menu-bg-4 { background-color: #fef2f2 !important; } /* Light Red */
+.menu-bg-5 { background-color: #f3f4f6 !important; } /* Light Gray */
+.menu-bg-6 { background-color: #ede9fe !important; } /* Light Purple */
+.menu-bg-7 { background-color: #fdf2f8 !important; } /* Light Pink */
+.menu-bg-8 { background-color: #ecfdf5 !important; } /* Light Teal */
+
+/* Menu Card Styling */
+.menu-card {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.menu-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
