@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory Data Validation Report - 20250707_182313</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { color: #333; border-bottom: 3px solid #007bff; padding-bottom: 10px; }
+        h2 { color: #555; margin-top: 30px; }
+        .metric { background: #f8f9fa; padding: 15px; margin: 10px 0; border-left: 4px solid #007bff; }
+        .warning { background: #fff3cd; border-left-color: #ffc107; }
+        .error { background: #f8d7da; border-left-color: #dc3545; }
+        .success { background: #d4edda; border-left-color: #28a745; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 10px; text-align: left; border: 1px solid #ddd; }
+        th { background: #007bff; color: white; }
+        tr:nth-child(even) { background: #f8f9fa; }
+        .issue-list { max-height: 300px; overflow-y: auto; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Inventory Data Validation Report</h1>
+        <p>Generated: 2025-07-07 18:23:13</p>
+        
+        <h2>📊 Data Quality Metrics</h2>
+        <div class="metric success">
+            <h3>Overall Statistics</h3>
+            <p>Total Inventory Items: <strong>250</strong></p>
+            <p>Total Recipes: <strong>66</strong></p>
+            <p>Total Vendors: <strong>13</strong></p>
+        </div>
+        
+        <div class="metric">
+            <h3>Data Completeness</h3>
+            <p>Vendor Information: <strong>100.0%</strong></p>
+            <p>Pricing Data: <strong>100.0%</strong></p>
+            <p>Item Codes: <strong>100.0%</strong></p>
+            <p>Recipe Linkages: <strong>99.0%</strong></p>
+        </div>
+        
+        <h2>⚠️ Data Quality Issues</h2>
+        
+        <div class="metric error">
+            <h3>Duplicate Products</h3>
+            <p>Found <strong>47</strong> issues</p>
+        </div>
+                
+        <div class="metric warning">
+            <h3>Naming Issues</h3>
+            <p>Found <strong>9</strong> issues</p>
+        </div>
+                
+        <div class="metric error">
+            <h3>Potential Duplicate Descriptions</h3>
+            <p>Found <strong>13</strong> issues</p>
+        </div>
+                
+        <div class="metric warning">
+            <h3>Unmapped Recipe Ingredients</h3>
+            <p>Found <strong>2</strong> issues</p>
+        </div>
+                
+        <div class="metric warning">
+            <h3>Illogical Quantities</h3>
+            <p>Found <strong>5</strong> issues</p>
+        </div>
+                
+        <div class="metric error">
+            <h3>Vendor Statistics</h3>
+            <p>Found <strong>13</strong> issues</p>
+        </div>
+                
+        <h2>📦 Vendor Analysis</h2>
+        <table>
+            <tr>
+                <th>Vendor</th>
+                <th>Products</th>
+                <th>Priced Items</th>
+                <th>Avg Price</th>
+                <th>Price Range</th>
+            </tr>
+            
+            <tr>
+                <td>RESTAURANT DEPOT</td>
+                <td>75</td>
+                <td>75</td>
+                <td>$22.29</td>
+                <td>$3.32 - $110.07</td>
+            </tr>
+                
+            <tr>
+                <td>Jorge Garza</td>
+                <td>47</td>
+                <td>47</td>
+                <td>$30.48</td>
+                <td>$0.69 - $144.00</td>
+            </tr>
+                
+            <tr>
+                <td>JAKES, INC.</td>
+                <td>35</td>
+                <td>35</td>
+                <td>$30.10</td>
+                <td>$3.31 - $102.95</td>
+            </tr>
+                
+            <tr>
+                <td>JAKE'S, INC.</td>
+                <td>26</td>
+                <td>26</td>
+                <td>$30.89</td>
+                <td>$1.99 - $78.72</td>
+            </tr>
+                
+            <tr>
+                <td>US Foods</td>
+                <td>22</td>
+                <td>22</td>
+                <td>$21.85</td>
+                <td>$3.47 - $68.29</td>
+            </tr>
+                
+            <tr>
+                <td>Restaurant Supply</td>
+                <td>19</td>
+                <td>19</td>
+                <td>$32.62</td>
+                <td>$0.75 - $85.00</td>
+            </tr>
+                
+            <tr>
+                <td>CB Commissary LLC</td>
+                <td>7</td>
+                <td>7</td>
+                <td>$1.15</td>
+                <td>$0.57 - $2.19</td>
+            </tr>
+                
+            <tr>
+                <td>ALVARADO'S</td>
+                <td>7</td>
+                <td>7</td>
+                <td>$34.86</td>
+                <td>$28.00 - $40.00</td>
+            </tr>
+                
+            <tr>
+                <td>Buckhead Meat & Seafood OF HOUSTON</td>
+                <td>5</td>
+                <td>5</td>
+                <td>$4.29</td>
+                <td>$1.74 - $6.43</td>
+            </tr>
+                
+            <tr>
+                <td>MJ Sweet and Cake</td>
+                <td>3</td>
+                <td>3</td>
+                <td>$28.00</td>
+                <td>$20.00 - $32.00</td>
+            </tr>
+                
+            <tr>
+                <td>COMMON BOND BISTRO & BAKERY</td>
+                <td>2</td>
+                <td>2</td>
+                <td>$1.41</td>
+                <td>$0.62 - $2.19</td>
+            </tr>
+                
+            <tr>
+                <td>Sysco Houston</td>
+                <td>1</td>
+                <td>1</td>
+                <td>$71.07</td>
+                <td>$71.07 - $71.07</td>
+            </tr>
+                
+            <tr>
+                <td>ALTAMIRA LTD.</td>
+                <td>1</td>
+                <td>1</td>
+                <td>$94.85</td>
+                <td>$94.85 - $94.85</td>
+            </tr>
+                </table>
+    </div>
+</body>
+</html>
+        

@@ -1,0 +1,215 @@
+recipe_id,recipe_name,recipe_status,link_id,ingredient_name,ingredient_id,quantity,unit_of_measure,cost,mapped_item,vendor_name,current_price,item_code,mapping_status
+97,24 Hour Chili Brined Chicken Thigh,Draft,546.0,"Dairy,  Clarified Butter",105.0,0.5,oz,3.06,"Dairy,  Clarified Butter",RESTAURANT DEPOT,24.51,15700227220,VENDOR_ITEM
+97,24 Hour Chili Brined Chicken Thigh,Draft,545.0,"Dry Goods, Salt, Kosher",711.0,0.5,oz,0.47,"Dry Goods, Salt, Kosher","JAKE'S, INC.",8.47,SALT20,VENDOR_ITEM
+97,24 Hour Chili Brined Chicken Thigh,Draft,544.0,"Protein, Chicken, Thighs",183.0,6.0,oz,22.56,"Protein, Chicken, Thighs",US Foods,3.76,G20223,VENDOR_ITEM
+110,Alabama White BBQ,Draft,378.0,"Dry Good,  Cayenne Pepper, Spice",147.0,2.0,ml,0.0187,"Dry Good,  Cayenne Pepper, Spice",Jorge Garza,4.24,58897_XC6873465,VENDOR_ITEM
+110,Alabama White BBQ,Draft,379.0,"Dry Goods, Black Pepper, Ground",890.0,2.0,ml,0.0426,"Dry Goods, Black Pepper, Ground","JAKES, INC.",48.27,BSPI75,VENDOR_ITEM
+110,Alabama White BBQ,Draft,375.0,"Dry Goods, Mayonnaise, Heavy",510.0,8.0,cup,6.475,"Dry Goods, Mayonnaise, Heavy",Jorge Garza,12.95,58897_XC11725428,VENDOR_ITEM
+110,Alabama White BBQ,Draft,376.0,"Produce, VINEGAR APPLE CIDER SPW LN",862.0,2.0,cup,1.62,"Produce, VINEGAR APPLE CIDER SPW LN","JAKES, INC.",12.96,369874,VENDOR_ITEM
+110,Alabama White BBQ,Draft,377.0,Worcestershire Sauce,894.0,2.0,ml,,Worcestershire Sauce,Restaurant Supply,3.5,DG002,VENDOR_ITEM
+118,BBQ Sauce Chicken Wings,Complete,524.0,"Dry Goods, Bread, Texas Toast",90.0,1.0,each,0.219,"Dry Goods, Bread, Texas Toast",CB Commissary LLC,2.19,936,VENDOR_ITEM
+118,BBQ Sauce Chicken Wings,Complete,527.0,"Dry Goods, Chicken  Breading, Lea Jane Recipe",475.0,3.0,oz,0.3557,"Dry Goods, Chicken  Breading, Lea Jane Recipe",ALTAMIRA LTD.,94.85,32165,VENDOR_ITEM
+118,BBQ Sauce Chicken Wings,Complete,525.0,"Dry Goods, Pickle, DIll, Slices",652.0,1.0,oz,0.0014,"Dry Goods, Pickle, DIll, Slices","JAKES, INC.",26.2,PICK41,VENDOR_ITEM
+118,BBQ Sauce Chicken Wings,Complete,528.0,"Dry Goods, Sauce, BBQ",742.0,4.0,fl oz,0.5344,"Dry Goods, Sauce, BBQ Hickory",US Foods,17.1,BQSA21,VENDOR_ITEM
+118,BBQ Sauce Chicken Wings,Complete,526.0,"Dry Goods, Shortening, Pork Lard",474.0,1.0,oz,0.0854,"Dry Goods, Shortening, Pork Lard",US Foods,68.29,OILS49,VENDOR_ITEM
+118,BBQ Sauce Chicken Wings,Complete,523.0,"Protein, Chicken, Wing",14.0,10.0,oz,1.0875,"Protein, Chicken, Wing",Buckhead Meat & Seafood OF HOUSTON,1.74,1001997,VENDOR_ITEM
+119,Buffalo Chicken Wings,Complete,466.0,"Dry Goods, Bread, Texas Toast",90.0,1.0,each,0.219,"Dry Goods, Bread, Texas Toast",CB Commissary LLC,2.19,936,VENDOR_ITEM
+119,Buffalo Chicken Wings,Complete,469.0,"Dry Goods, Chicken  Breading, Lea Jane Recipe",475.0,3.0,oz,0.3557,"Dry Goods, Chicken  Breading, Lea Jane Recipe",ALTAMIRA LTD.,94.85,32165,VENDOR_ITEM
+119,Buffalo Chicken Wings,Complete,467.0,"Dry Goods, Pickle, DIll, Slices",652.0,1.0,oz,0.0014,"Dry Goods, Pickle, DIll, Slices","JAKES, INC.",26.2,PICK41,VENDOR_ITEM
+119,Buffalo Chicken Wings,Complete,470.0,"Dry Goods, Sauce, Buffalo Wing Red Hot",724.0,4.0,fl oz,0.6953,"Dry Goods, Sauce, Buffalo Wing Red Hot","JAKES, INC.",22.25,SAUC06,VENDOR_ITEM
+119,Buffalo Chicken Wings,Complete,468.0,"Dry Goods, Shortening, Pork Lard",474.0,1.0,oz,0.0854,"Dry Goods, Shortening, Pork Lard",US Foods,68.29,OILS49,VENDOR_ITEM
+119,Buffalo Chicken Wings,Complete,465.0,"Protein, Chicken, Wing",14.0,10.0,oz,1.0875,"Protein, Chicken, Wing",Buckhead Meat & Seafood OF HOUSTON,1.74,1001997,VENDOR_ITEM
+116,Buffalo Sauce - portion,Complete,426.0,"Dry Goods, Sauce, Buffalo Wing Red Hot",724.0,2.0,fl oz,0.3477,"Dry Goods, Sauce, Buffalo Wing Red Hot","JAKES, INC.",22.25,SAUC06,VENDOR_ITEM
+93,CHilli Oil - Hot Fat,Draft,459.0,"Dry Goods,  Spice, Paprika, Powder - Spanish",599.0,400.0,gram,4.2241,"Dry Goods,  Spice, Paprika, Powder",Jorge Garza,4.79,58897_XC5296039,VENDOR_ITEM
+93,CHilli Oil - Hot Fat,Draft,458.0,"Dry Goods, Shortening, Pork Lard",474.0,9600.0,gram,28.9063,"Dry Goods, Shortening, Pork Lard",US Foods,68.29,OILS49,VENDOR_ITEM
+93,CHilli Oil - Hot Fat,Draft,460.0,"Dry Goods, Spice, Cayenne Pepper, Ground",792.0,800.0,gram,7.3088,"Dry Goods, Spice, Cayenne Pepper, Ground",RESTAURANT DEPOT,20.72,41398,VENDOR_ITEM
+104,Charred Onion Ranch,Draft,408.0,"Dairy, Egg",8.0,40.0,each,15.7778,"Dairy, Egg",Jorge Garza,71.0,58897_XC9776450,VENDOR_ITEM
+104,Charred Onion Ranch,Draft,410.0,"Dry Goods, Black Pepper, Ground",890.0,3.0,cup,0.0639,"Dry Goods, Black Pepper, Ground","JAKES, INC.",48.27,BSPI75,VENDOR_ITEM
+104,Charred Onion Ranch,Draft,409.0,"Dry Goods, Oil, Canola, Salad -v",561.0,3.0,gal,0.008,"Dry Goods, Oil, Canola, Salad","JAKE'S, INC.",42.14,OILS28,VENDOR_ITEM
+104,Charred Onion Ranch,Draft,411.0,"Dry Goods, Salt, Kosher",711.0,3.0,cup,0.0021,"Dry Goods, Salt, Kosher","JAKE'S, INC.",8.47,SALT20,VENDOR_ITEM
+104,Charred Onion Ranch,Draft,407.0,"Dry Goods, Vinegar, White",871.0,3.0,qt,3.18,"Dry Goods, Vinegar, White",US Foods,4.24,OLVS11,VENDOR_ITEM
+104,Charred Onion Ranch,Draft,412.0,"Produce, Onions, Yellow",448.0,15.0,lb,5.985,"Produce, Onions, Yellow",Jorge Garza,19.95,58897_XC10610694,VENDOR_ITEM
+103,Chicken Waffle Cone,Complete,355.0,"Dairy, Cheese Sauce, Loaf, American",138.0,5.0,oz,1.5,"Dairy, Cheese Sauce, Loaf, American",Jorge Garza,144.0,58897_XC10619296,VENDOR_ITEM
+103,Chicken Waffle Cone,Complete,354.0,"Dairy, Cream, Heavy",259.0,2.0,ml,0.0114,"Dairy, Cream, Heavy","JAKE'S, INC.",64.98,MILK33,VENDOR_ITEM
+103,Chicken Waffle Cone,Complete,360.0,"Dry Goods, Chicken  Breading, Lea Jane Recipe",475.0,2.0,oz,0.2371,"Dry Goods, Chicken  Breading, Lea Jane Recipe",ALTAMIRA LTD.,94.85,32165,VENDOR_ITEM
+103,Chicken Waffle Cone,Complete,353.0,"Dry Goods, Pasta, Cavatappi",603.0,4.0,oz,0.4429,"Dry Goods, Pasta, Cavatappi","JAKES, INC.",35.43,SPAG21,VENDOR_ITEM
+103,Chicken Waffle Cone,Complete,361.0,"Dry Goods, Waffle Cone",893.0,1.0,each,,"Dry Goods, Waffle Cone",Restaurant Supply,0.75,DG001,VENDOR_ITEM
+103,Chicken Waffle Cone,Complete,359.0,"Produce, Onions, Green",415.0,1.0,each,0.79,"Produce, Onions, Green",Jorge Garza,0.79,58897_XC28467,VENDOR_ITEM
+103,Chicken Waffle Cone,Complete,356.0,"Protein, Chicken, Tenders",178.0,4.0,oz,0.715,"Protein, Chicken, Tenders",Buckhead Meat & Seafood OF HOUSTON,2.86,1002010,VENDOR_ITEM
+115,Chicken Wings,Complete,393.0,"Dry Goods, Bread, Texas Toast",90.0,1.0,each,0.219,"Dry Goods, Bread, Texas Toast",CB Commissary LLC,2.19,936,VENDOR_ITEM
+115,Chicken Wings,Complete,396.0,"Dry Goods, Chicken  Breading, Lea Jane Recipe",475.0,3.0,oz,0.3557,"Dry Goods, Chicken  Breading, Lea Jane Recipe",ALTAMIRA LTD.,94.85,32165,VENDOR_ITEM
+115,Chicken Wings,Complete,394.0,"Dry Goods, Pickle, DIll, Slices",652.0,1.0,oz,0.0014,"Dry Goods, Pickle, DIll, Slices","JAKES, INC.",26.2,PICK41,VENDOR_ITEM
+115,Chicken Wings,Complete,395.0,"Dry Goods, Shortening, Pork Lard",474.0,1.0,oz,0.0854,"Dry Goods, Shortening, Pork Lard",US Foods,68.29,OILS49,VENDOR_ITEM
+115,Chicken Wings,Complete,392.0,"Protein, Chicken, Wing",14.0,10.0,oz,1.0875,"Protein, Chicken, Wing",Buckhead Meat & Seafood OF HOUSTON,1.74,1001997,VENDOR_ITEM
+126,Clucking Spice (Seasoning Blend),Complete,472.0,"Dry Good,  Cayenne Pepper, Spice",147.0,46.0,gram,0.43,"Dry Good,  Cayenne Pepper, Spice",Jorge Garza,4.24,58897_XC6873465,VENDOR_ITEM
+126,Clucking Spice (Seasoning Blend),Complete,473.0,"Dry Goods,  Spice, Paprika, Powder",599.0,46.0,gram,0.4858,"Dry Goods,  Spice, Paprika, Powder",Jorge Garza,4.79,58897_XC5296039,VENDOR_ITEM
+126,Clucking Spice (Seasoning Blend),Complete,471.0,"Dry Goods, Spice, Ghost Pepper",381.0,120.0,gram,15.8468,"Dry Goods, Spice, Ghost Pepper",Jorge Garza,29.95,58897_XC11189472,VENDOR_ITEM
+102,Coleslaw,Draft,550.0,"Dry Goods, Mayonnaise, Heavy",510.0,3.0,oz,38.85,"Dry Goods, Mayonnaise, Heavy",Jorge Garza,12.95,58897_XC11725428,VENDOR_ITEM
+102,Coleslaw,Draft,551.0,"Dry Goods, Vinegar, White",871.0,0.5,oz,2.12,"Dry Goods, Vinegar, White",US Foods,4.24,OLVS11,VENDOR_ITEM
+102,Coleslaw,Draft,552.0,SUGAR EFG GRANULATED 403522,829.0,0.5,oz,0.65,SUGAR EFG GRANULATED 403522,"JAKES, INC.",32.36,SUGR06,VENDOR_ITEM
+122,Collard Greens - Side Portion,Complete,,,,,,,,,,,UNMAPPED
+123,Collard Greens Recipe,Complete,329.0,"Dairy,  Clarified Butter",105.0,1.0,lb,1.2255,"Dairy,  Clarified Butter",RESTAURANT DEPOT,24.51,15700227220,VENDOR_ITEM
+123,Collard Greens Recipe,Complete,328.0,"Dry Goods, Chicken Base, Paste",175.0,15.0,oz,4.0376,"Dry Goods, Chicken Base, Paste",Jorge Garza,18.95,58897_XC11270013,VENDOR_ITEM
+123,Collard Greens Recipe,Complete,326.0,"Dry Goods, Chipotle Peppers, Can",638.0,14.0,oz,2.975,"Dry Goods, Chipotle Peppers, Can",RESTAURANT DEPOT,5.95,74234951124,VENDOR_ITEM
+123,Collard Greens Recipe,Complete,330.0,"Dry Goods, Sugar, White",825.0,2.0,cup,0.0043,"Dry Goods, Sugar, White","JAKES, INC.",24.41,SUGR03,VENDOR_ITEM
+123,Collard Greens Recipe,Complete,323.0,"Produce, Collard Green, Frozen, Chopped",419.0,4.0,lb,5.3589,"Produce, Collard Green, Frozen, Chopped","JAKES, INC.",48.23,FVEG13,VENDOR_ITEM
+123,Collard Greens Recipe,Complete,325.0,"Produce, Onions, Yellow",448.0,1.0,lb,0.399,"Produce, Onions, Yellow",Jorge Garza,19.95,58897_XC10610694,VENDOR_ITEM
+123,Collard Greens Recipe,Complete,324.0,"Protein, Pork Belly, Diced, Hickory Smoked",39.0,10.0,gram,0.0979,"Frozen, Corn Rib, Hickory Smoked",Sysco Houston,71.07,7228367,VENDOR_ITEM
+123,Collard Greens Recipe,Complete,327.0,"Water, Tap",551.0,4.0,quart,0.9375,"N/A Bev, WATER PLST BTL CLR TWIST CAP",RESTAURANT DEPOT,3.75,27541009095,VENDOR_ITEM
+113,Comeback Sauce - Portion,Complete,535.0,Comeback sauce,,2.0,oz,0.014773333333333333,,,,,UNMAPPED
+100,Comeback Sauce - Updated 2025,Draft,548.0,"Dry Goods, Ketchup Packets",454.0,1.0,oz,0.03,"Dry Goods, Ketchup Packets","JAKE'S, INC.",31.09,INDV98,VENDOR_ITEM
+100,Comeback Sauce - Updated 2025,Draft,547.0,"Dry Goods, Mayonnaise, Heavy",510.0,4.0,oz,51.8,"Dry Goods, Mayonnaise, Heavy",Jorge Garza,12.95,58897_XC11725428,VENDOR_ITEM
+100,Comeback Sauce - Updated 2025,Draft,549.0,Worcestershire Sauce,894.0,0.25,oz,0.09,Worcestershire Sauce,Restaurant Supply,3.5,DG002,VENDOR_ITEM
+128,Comeback sauce,Complete,513.0,"Dry Goods, Mayonnaise, Heavy",510.0,3.0,quart,0.0103,"Dry Goods, Mayonnaise, Heavy",Jorge Garza,12.95,58897_XC11725428,VENDOR_ITEM
+128,Comeback sauce,Complete,514.0,"Dry Goods, Mustard, Creole",549.0,3.0,quart,0.0157,"Dry Goods, Mustard, Creole",US Foods,19.86,MUST16,VENDOR_ITEM
+128,Comeback sauce,Complete,516.0,"Dry Goods, Salt, Kosher",711.0,1.0,oz,0.0196,"Dry Goods, Salt, Kosher","JAKE'S, INC.",8.47,SALT20,VENDOR_ITEM
+128,Comeback sauce,Complete,515.0,"Dry Goods, Sauce, Chile Sambal",715.0,1.5,quart,0.0098,"Dry Goods, Sauce, Chile Sambal","JAKES, INC.",73.92,ORSA18,VENDOR_ITEM
+98,DP- 05 Habanero Ranch,Draft,439.0,"Dry Goods, Ranch Dressing, with Jalapeno",286.0,2.0,fl oz,0.282,"Dry Goods, Ranch Dressing, with Jalapeno",RESTAURANT DEPOT,18.05,41335351986,VENDOR_ITEM
+75,DP-01 Charred-Onion Ranch Dip,Draft,383.0,"Non Con, Cup, 2oz, Clear Plastic",891.0,1.0,each,,Non Con Cup 2oz Clear Plastic,Restaurant Supply,45.0,NC001,VENDOR_ITEM
+75,DP-01 Charred-Onion Ranch Dip,Draft,384.0,"Non Con, Lids, 1.5-2oz, Souffle, Clear",892.0,1.0,ea,,Non Con Lids 1.5-2oz Souffle Clear,Restaurant Supply,35.0,NC002,VENDOR_ITEM
+74,DP-02 Comeback Sauce,Draft,389.0,Comeback Sauce - Updated 2025,,2.0,oz,,,,,,UNMAPPED
+74,DP-02 Comeback Sauce,Draft,390.0,"Non Con, Cup, 2oz, Clear Plastic",891.0,1.0,each,,Non Con Cup 2oz Clear Plastic,Restaurant Supply,45.0,NC001,VENDOR_ITEM
+74,DP-02 Comeback Sauce,Draft,391.0,"Non Con, Lids, 1.5-2oz, Souffle, Clear",892.0,1.0,ea,,Non Con Lids 1.5-2oz Souffle Clear,Restaurant Supply,35.0,NC002,VENDOR_ITEM
+73,DP-03 Honey Mustard,Draft,419.0,"Dry Goods, Dressing, Honey Mustard",291.0,2.0,fl oz,0.4211,"Dry Goods, Dressing, Honey Mustard",US Foods,26.95,333615,VENDOR_ITEM
+73,DP-03 Honey Mustard,Draft,420.0,"Non Con, Cup, 2oz, Clear Plastic",891.0,1.0,each,,Non Con Cup 2oz Clear Plastic,Restaurant Supply,45.0,NC001,VENDOR_ITEM
+73,DP-03 Honey Mustard,Draft,421.0,"Non Con, Lids, 1.5-2oz, Souffle, Clear",892.0,1.0,ea,,Non Con Lids 1.5-2oz Souffle Clear,Restaurant Supply,35.0,NC002,VENDOR_ITEM
+72,DP-04 Hot Honey,Draft,309.0,Hot Honey - 2025,433.0,2.0,oz,,"Dry Goods, Honey, Natural",US Foods,18.77,SYRP67,VENDOR_ITEM
+72,DP-04 Hot Honey,Draft,310.0,"Non Con, Cup, 2oz, Clear Plastic",891.0,1.0,each,,Non Con Cup 2oz Clear Plastic,Restaurant Supply,45.0,NC001,VENDOR_ITEM
+72,DP-04 Hot Honey,Draft,311.0,"Non Con, Lids, 1.5-2oz, Souffle, Clear",892.0,1.0,ea,,Non Con Lids 1.5-2oz Souffle Clear,Restaurant Supply,35.0,NC002,VENDOR_ITEM
+71,DP-05 Habanero Ranch,Draft,483.0,"Dry Goods, Ranch Dressing, with Jalapeno",286.0,2.0,fl oz,0.282,"Dry Goods, Ranch Dressing, with Jalapeno",RESTAURANT DEPOT,18.05,41335351986,VENDOR_ITEM
+71,DP-05 Habanero Ranch,Draft,484.0,"Non Con, Cup, 2oz, Clear Plastic",891.0,1.0,each,,Non Con Cup 2oz Clear Plastic,Restaurant Supply,45.0,NC001,VENDOR_ITEM
+71,DP-05 Habanero Ranch,Draft,485.0,"Non Con, Lids, 1.5-2oz, Souffle, Clear",892.0,1.0,ea,,Non Con Lids 1.5-2oz Souffle Clear,Restaurant Supply,35.0,NC002,VENDOR_ITEM
+90,FC-01 Thicc'n Tenders,Draft,501.0,"Dry Goods, Bread, Texas Toast",90.0,2.0,each,0.438,"Dry Goods, Bread, Texas Toast",CB Commissary LLC,2.19,936,VENDOR_ITEM
+90,FC-01 Thicc'n Tenders,Draft,500.0,"Dry Goods, Pickle, DIll, Slices",652.0,2.0,oz,0.0028,"Dry Goods, Pickle, DIll, Slices","JAKES, INC.",26.2,PICK41,VENDOR_ITEM
+89,FC-02 Leg Quarter,Draft,542.0,"Dry Goods, Bread, Texas Toast",90.0,1.0,each,0.219,"Dry Goods, Bread, Texas Toast",CB Commissary LLC,2.19,936,VENDOR_ITEM
+89,FC-02 Leg Quarter,Draft,543.0,"Dry Goods, Pickle, DIll, Slices",652.0,2.0,oz,0.0028,"Dry Goods, Pickle, DIll, Slices","JAKES, INC.",26.2,PICK41,VENDOR_ITEM
+89,FC-02 Leg Quarter,Draft,541.0,"Protein, Chicken, Thighs",183.0,8.0,oz,1.88,"Protein, Chicken, Thighs",US Foods,3.76,G20223,VENDOR_ITEM
+67,FC-03 Whole Wings,Draft,388.0,"Dairy, Milk, Whole",529.0,2.0,fl oz,0.0895,"Dairy, Milk, Whole","JAKE'S, INC.",22.92,MLK051,VENDOR_ITEM
+67,FC-03 Whole Wings,Draft,386.0,"Dry Goods, Chicken  Breading, Lea Jane Recipe",475.0,1.0,oz,0.1186,"Dry Goods, Chicken  Breading, Lea Jane Recipe",ALTAMIRA LTD.,94.85,32165,VENDOR_ITEM
+67,FC-03 Whole Wings,Draft,387.0,"Dry Goods, Oil, Canola, Clear, Frying",12.0,2.0,oz,0.1446,"Dry Goods, Oil, Canola, Clear, Frying",Jorge Garza,40.5,58897_XC11546428,VENDOR_ITEM
+67,FC-03 Whole Wings,Draft,385.0,"Protein, Chicken, Wing",14.0,10.0,oz,1.0875,"Protein, Chicken, Wing",Buckhead Meat & Seafood OF HOUSTON,1.74,1001997,VENDOR_ITEM
+92,FC-04 Fried Chicken Tender,Draft,457.0,"Dairy, Milk, Whole",529.0,1.0,fl oz,0.0448,"Dairy, Milk, Whole","JAKE'S, INC.",22.92,MLK051,VENDOR_ITEM
+92,FC-04 Fried Chicken Tender,Draft,455.0,"Dry Goods, Chicken  Breading, Lea Jane Recipe",475.0,1.0,oz,0.1186,"Dry Goods, Chicken  Breading, Lea Jane Recipe",ALTAMIRA LTD.,94.85,32165,VENDOR_ITEM
+92,FC-04 Fried Chicken Tender,Draft,456.0,"Dry Goods, Oil, Canola, Clear, Frying",12.0,2.0,oz,0.1446,"Dry Goods, Oil, Canola, Clear, Frying",Jorge Garza,40.5,58897_XC11546428,VENDOR_ITEM
+92,FC-04 Fried Chicken Tender,Draft,454.0,"Protein, Chicken, Tenders",178.0,4.0,oz,0.715,"Protein, Chicken, Tenders",Buckhead Meat & Seafood OF HOUSTON,2.86,1002010,VENDOR_ITEM
+86,FT-01 Chicken Waffle Cone,Draft,537.0,"Dairy, Cheese, Loaf, Pepper Jack",171.0,1.0,each,0.0098,"Dairy, Cheese, Loaf, Pepper Jack",US Foods,4.45,JACK50,VENDOR_ITEM
+86,FT-01 Chicken Waffle Cone,Draft,536.0,"Dry Goods, Waffle Cone",893.0,1.0,ea,,"Dry Goods, Waffle Cone",Restaurant Supply,0.75,DG001,VENDOR_ITEM
+69,FT-02 Loaded Fries,Draft,349.0,"Dairy, Cheese Sauce, Loaf, American",138.0,4.0,oz,1.2,"Dairy, Cheese Sauce, Loaf, American",Jorge Garza,144.0,58897_XC10619296,VENDOR_ITEM
+85,FT-03 Angry Chicken Mac bowl,Draft,464.0,"Dry Goods, Pasta, Cavatappi",603.0,6.0,oz,0.6643,"Dry Goods, Pasta, Cavatappi","JAKES, INC.",35.43,SPAG21,VENDOR_ITEM
+85,FT-03 Angry Chicken Mac bowl,Draft,463.0,Mac Sauce - Modified 2025,138.0,4.0,fl oz,33.3811,"Dairy, Cheese Sauce, Loaf, American",Jorge Garza,144.0,58897_XC10619296,VENDOR_ITEM
+70,French Fries - Portion,Complete,406.0,"Frozen, Potato, French Fries, Frozen",371.0,5.0,oz,0.4138,"Frozen, Potato, French Fries, Frozen",US Foods,35.75,FRY057,VENDOR_ITEM
+82,French Fries Recipe,Complete,453.0,"Dry Goods, Oil, Canola, Clear, Frying",12.0,0.5,oz,0.0362,"Dry Goods, Oil, Canola, Clear, Frying",Jorge Garza,40.5,58897_XC11546428,VENDOR_ITEM
+82,French Fries Recipe,Complete,452.0,"Dry Goods, Salt, Kosher",711.0,0.5,oz,0.0098,"Dry Goods, Salt, Kosher","JAKE'S, INC.",8.47,SALT20,VENDOR_ITEM
+82,French Fries Recipe,Complete,451.0,"Frozen, Potato, French Fries, Frozen",371.0,5.0,oz,0.4138,"Frozen, Potato, French Fries, Frozen",US Foods,35.75,FRY057,VENDOR_ITEM
+91,Fried Chicken Tender,Draft,481.0,"Dairy, Milk, Whole",529.0,1.0,fl oz,0.0448,"Dairy, Milk, Whole","JAKE'S, INC.",22.92,MLK051,VENDOR_ITEM
+91,Fried Chicken Tender,Draft,480.0,"Dry Goods, Chicken  Breading, Lea Jane Recipe",475.0,1.0,oz,0.1186,"Dry Goods, Chicken  Breading, Lea Jane Recipe",ALTAMIRA LTD.,94.85,32165,VENDOR_ITEM
+91,Fried Chicken Tender,Draft,482.0,"Dry Goods, Oil, Canola, Clear, Frying",12.0,1.0,oz,0.0723,"Dry Goods, Oil, Canola, Clear, Frying",Jorge Garza,40.5,58897_XC11546428,VENDOR_ITEM
+91,Fried Chicken Tender,Draft,479.0,"Protein, Chicken, Tenders",178.0,4.0,oz,0.715,"Protein, Chicken, Tenders",Buckhead Meat & Seafood OF HOUSTON,2.86,1002010,VENDOR_ITEM
+125,Hot Fat,Complete,539.0,"Dry Goods,  Spice, Paprika, Powder",599.0,1000.0,gram,10.5602,"Dry Goods,  Spice, Paprika, Powder",Jorge Garza,4.79,58897_XC5296039,VENDOR_ITEM
+125,Hot Fat,Complete,538.0,"Dry Goods, Shortening, Pork Lard",474.0,1920.0,gram,5.7813,"Dry Goods, Shortening, Pork Lard",US Foods,68.29,OILS49,VENDOR_ITEM
+125,Hot Fat,Complete,540.0,"Dry Goods, Spice, Cayenne Pepper, Ground",792.0,2000.0,gram,18.2719,"Dry Goods, Spice, Cayenne Pepper, Ground",RESTAURANT DEPOT,20.72,41398,VENDOR_ITEM
+117,Hot Fish,Complete,474.0,"Dry Goods, Bread,  Burger Bun",87.0,1.0,ea,0.62,"Dry Goods, Bread,  Burger Bun",COMMON BOND BISTRO & BAKERY,0.62,90880_XC12350157,VENDOR_ITEM
+117,Hot Fish,Complete,477.0,"Dry Goods, Chicken  Breading, Lea Jane Recipe",475.0,2.0,oz,0.2371,"Dry Goods, Chicken  Breading, Lea Jane Recipe",ALTAMIRA LTD.,94.85,32165,VENDOR_ITEM
+117,Hot Fish,Complete,476.0,"Dry Goods, MAYONNAISE  HVY PLST SHLF",510.0,2.0,fl oz,,"Dry Goods, Mayonnaise, Heavy",Jorge Garza,12.95,58897_XC11725428,VENDOR_ITEM
+117,Hot Fish,Complete,478.0,"Dry Goods, Pickle, DIll, Slices",652.0,2.0,oz,0.0028,"Dry Goods, Pickle, DIll, Slices","JAKES, INC.",26.2,PICK41,VENDOR_ITEM
+117,Hot Fish,Complete,475.0,"Protein, Catfish, Fillet, Fresh",5.0,7.0,oz,2.8131,"Protein, Catfish, Fillet, Fresh",Buckhead Meat & Seafood OF HOUSTON,6.43,237552,VENDOR_ITEM
+105,Hot Honey - 2025,Draft,553.0,"Dry Goods, Honey, Natural",433.0,8.0,oz,25.03,"Dry Goods, Honey, Natural",US Foods,18.77,SYRP67,VENDOR_ITEM
+105,Hot Honey - 2025,Draft,554.0,"Dry Goods, Vinegar, White",871.0,0.25,oz,1.06,"Dry Goods, Vinegar, White",US Foods,4.24,OLVS11,VENDOR_ITEM
+106,Hot Honey - portion,Complete,,,,,,,,,,,UNMAPPED
+114,Hot Honey Chicken Wings,Complete,530.0,"Dry Goods, Bread, Texas Toast",90.0,1.0,each,0.219,"Dry Goods, Bread, Texas Toast",CB Commissary LLC,2.19,936,VENDOR_ITEM
+114,Hot Honey Chicken Wings,Complete,533.0,"Dry Goods, Chicken  Breading, Lea Jane Recipe",475.0,3.0,oz,0.3557,"Dry Goods, Chicken  Breading, Lea Jane Recipe",ALTAMIRA LTD.,94.85,32165,VENDOR_ITEM
+114,Hot Honey Chicken Wings,Complete,531.0,"Dry Goods, Pickle, DIll, Slices",652.0,1.0,oz,0.0014,"Dry Goods, Pickle, DIll, Slices","JAKES, INC.",26.2,PICK41,VENDOR_ITEM
+114,Hot Honey Chicken Wings,Complete,532.0,"Dry Goods, Shortening, Pork Lard",474.0,1.0,oz,0.0854,"Dry Goods, Shortening, Pork Lard",US Foods,68.29,OILS49,VENDOR_ITEM
+114,Hot Honey Chicken Wings,Complete,529.0,"Protein, Chicken, Wing",14.0,10.0,oz,1.0875,"Protein, Chicken, Wing",Buckhead Meat & Seafood OF HOUSTON,1.74,1001997,VENDOR_ITEM
+107,Hot Honey Sauce,Complete,493.0,Dry Good.SAUCE SOY,738.0,12.0,fl oz,0.3459,Dry Good.SAUCE SOY,RESTAURANT DEPOT,14.76,41390001710,VENDOR_ITEM
+107,Hot Honey Sauce,Complete,491.0,"Dry Goods, Honey, Natural",433.0,48.0,oz,1.877,"Dry Goods, Honey, Natural",US Foods,18.77,SYRP67,VENDOR_ITEM
+107,Hot Honey Sauce,Complete,495.0,"Dry Goods, Onion Powder",599.0,2.0,oz,0.5988,"Dry Goods,  Spice, Paprika, Powder",Jorge Garza,4.79,58897_XC5296039,VENDOR_ITEM
+107,Hot Honey Sauce,Complete,492.0,"Dry Goods, Sambal Chill Sauce (wt)",715.0,32.0,oz,,"Dry Goods, Sauce, Chile Sambal","JAKES, INC.",73.92,ORSA18,VENDOR_ITEM
+107,Hot Honey Sauce,Complete,490.0,"Dry Goods, Sauce, Tomato Ketchup, Jug",454.0,32.0,oz,,"Dry Goods, Ketchup Packets","JAKE'S, INC.",31.09,INDV98,VENDOR_ITEM
+107,Hot Honey Sauce,Complete,494.0,Garlic Salt,729.0,2.0,oz,0.4053,"Dry Goods, Sauce, Chilli & Garlic","JAKES, INC.",27.56,ORSA32,VENDOR_ITEM
+108,Kale - Chopped,Complete,486.0,"Produce, Kale, Green, Fresh, by Weight",779.0,20.0,lb,23.608,"Produce, Kale, Green, Fresh, by Weight","JAKES, INC.",29.51,PR0770,VENDOR_ITEM
+130,Kale Kimchi - Side Portion,Complete,,,,,,,,,,,UNMAPPED
+84,Kale Kimchi Recipe,Complete,506.0,"Dry Goods, Sauce, Chile Sambal",715.0,3.0,qt,18.48,"Dry Goods, Sauce, Chile Sambal","JAKES, INC.",73.92,ORSA18,VENDOR_ITEM
+84,Kale Kimchi Recipe,Complete,504.0,"Dry Goods, Sugar, White",825.0,7.0,lb,6.8348,"Dry Goods, Sugar, White","JAKES, INC.",24.41,SUGR03,VENDOR_ITEM
+84,Kale Kimchi Recipe,Complete,505.0,"Dry Goods, Vinegar, White",871.0,2.0,qt,2.12,"Dry Goods, Vinegar, White",US Foods,4.24,OLVS11,VENDOR_ITEM
+84,Kale Kimchi Recipe,Complete,502.0,Kale - Chopped,622.0,20.0,lb,27.28,PD KALE CHOPPED,RESTAURANT DEPOT,6.82,2876400126,VENDOR_ITEM
+84,Kale Kimchi Recipe,Complete,503.0,"Produce, Coleslaw Mix",219.0,10.0,lb,10.125,"Produce, Coleslaw Mix","JAKES, INC.",20.25,PR9313,VENDOR_ITEM
+84,Kale Kimchi Recipe,Complete,507.0,Shredded Carrots,610.0,2.5,lb,2.21,"Produce, Cabbage, Red, Shredded",RESTAURANT DEPOT,8.84,3.0223E+11,VENDOR_ITEM
+79,LJ Mac,Draft,381.0,"Dry Goods, Pasta, Cavatappi",603.0,9.0,lb,15.9435,"Dry Goods, Pasta, Cavatappi","JAKES, INC.",35.43,SPAG21,VENDOR_ITEM
+79,LJ Mac,Draft,380.0,Mac Sauce - Modified 2025,138.0,50.0,oz,417.2637500000001,"Dairy, Cheese Sauce, Loaf, American",Jorge Garza,144.0,58897_XC10619296,VENDOR_ITEM
+120,Lemon Pepper Chicken Wings,Complete,308.0,Dry Food. Lemon Pepper,525.0,1.5,oz,0.11,Dry Food. Lemon Pepper,RESTAURANT DEPOT,12.32,52100010793,VENDOR_ITEM
+120,Lemon Pepper Chicken Wings,Complete,304.0,"Dry Goods, Bread, Texas Toast",90.0,1.0,each,0.219,"Dry Goods, Bread, Texas Toast",CB Commissary LLC,2.19,936,VENDOR_ITEM
+120,Lemon Pepper Chicken Wings,Complete,307.0,"Dry Goods, Chicken  Breading, Lea Jane Recipe",475.0,3.0,oz,0.3557,"Dry Goods, Chicken  Breading, Lea Jane Recipe",ALTAMIRA LTD.,94.85,32165,VENDOR_ITEM
+120,Lemon Pepper Chicken Wings,Complete,305.0,"Dry Goods, Pickle, DIll, Slices",652.0,1.0,oz,0.0014,"Dry Goods, Pickle, DIll, Slices","JAKES, INC.",26.2,PICK41,VENDOR_ITEM
+120,Lemon Pepper Chicken Wings,Complete,306.0,"Dry Goods, Shortening, Pork Lard",474.0,1.0,oz,0.0854,"Dry Goods, Shortening, Pork Lard",US Foods,68.29,OILS49,VENDOR_ITEM
+120,Lemon Pepper Chicken Wings,Complete,303.0,"Protein, Chicken, Wing",14.0,10.0,oz,1.0875,"Protein, Chicken, Wing",Buckhead Meat & Seafood OF HOUSTON,1.74,1001997,VENDOR_ITEM
+109,Lemon Pepper Sauce - Portion,Complete,487.0,Dry Food. Lemon Pepper,525.0,2.0,oz,0.1467,Dry Food. Lemon Pepper,RESTAURANT DEPOT,12.32,52100010793,VENDOR_ITEM
+124,Loaded Fries,Complete,337.0,"Dairy, Cheese Sauce, Loaf, American",138.0,4.0,oz,1.2,"Dairy, Cheese Sauce, Loaf, American",Jorge Garza,144.0,58897_XC10619296,VENDOR_ITEM
+124,Loaded Fries,Complete,339.0,"Dry Goods, Chicken  Breading, Lea Jane Recipe",475.0,2.0,oz,0.2371,"Dry Goods, Chicken  Breading, Lea Jane Recipe",ALTAMIRA LTD.,94.85,32165,VENDOR_ITEM
+124,Loaded Fries,Complete,336.0,"Protein, Chicken, Tenders",178.0,4.0,oz,0.715,"Protein, Chicken, Tenders",Buckhead Meat & Seafood OF HOUSTON,2.86,1002010,VENDOR_ITEM
+121,Mac & Cheese,Complete,423.0,"Dry Goods, Pasta, Cavatappi",603.0,6.0,oz,0.6643,"Dry Goods, Pasta, Cavatappi","JAKES, INC.",35.43,SPAG21,VENDOR_ITEM
+121,Mac & Cheese,Complete,422.0,Mac Sauce,138.0,2.0,oz,121.74406666666668,"Dairy, Cheese Sauce, Loaf, American",Jorge Garza,144.0,58897_XC10619296,VENDOR_ITEM
+101,Mac Sauce,Complete,444.0,"Dairy, Cheese Sauce, Loaf, American",138.0,680.0,gram,7.1959,"Dairy, Cheese Sauce, Loaf, American",Jorge Garza,144.0,58897_XC10619296,VENDOR_ITEM
+101,Mac Sauce,Complete,443.0,"Dairy, Cheese, Cheddar, Yellow Bar",157.0,1240.0,gram,9.0487,"Dairy, Cheese, Cheddar, Yellow Bar","JAKES, INC.",3.31,PCH007,VENDOR_ITEM
+101,Mac Sauce,Complete,441.0,"Dairy, Cream, Heavy",259.0,2.0,qt,10.83,"Dairy, Cream, Heavy","JAKE'S, INC.",64.98,MILK33,VENDOR_ITEM
+101,Mac Sauce,Complete,440.0,"Dairy, Milk, Whole",529.0,2.0,gallon,0.003,"Dairy, Milk, Whole","JAKE'S, INC.",22.92,MLK051,VENDOR_ITEM
+101,Mac Sauce,Complete,445.0,"Dry Goods, Olive and Truffle Oil",565.0,86.0,gram,155.4071,"Dry Goods, Olive and Truffle Oil","JAKES, INC.",15.36,400471,VENDOR_ITEM
+101,Mac Sauce,Complete,442.0,"Dry Goods, Salt, Kosher",711.0,170.0,gram,0.1176,"Dry Goods, Salt, Kosher","JAKE'S, INC.",8.47,SALT20,VENDOR_ITEM
+77,Mac Sauce - Modified 2025,Draft,511.0,"Dairy, Cheese, Loaf, Pepper Jack",171.0,1240.0,gram,12.1651,"Dairy, Cheese, Loaf, Pepper Jack",US Foods,4.45,JACK50,VENDOR_ITEM
+77,Mac Sauce - Modified 2025,Draft,509.0,"Dairy, Cream, Heavy",259.0,3.0,qt,16.245,"Dairy, Cream, Heavy","JAKE'S, INC.",64.98,MILK33,VENDOR_ITEM
+77,Mac Sauce - Modified 2025,Draft,508.0,"Dairy, Milk, Whole",529.0,3.0,gallon,0.0045,"Dairy, Milk, Whole","JAKE'S, INC.",22.92,MLK051,VENDOR_ITEM
+77,Mac Sauce - Modified 2025,Draft,510.0,"Dry Goods, Salt, Kosher",711.0,170.0,gram,0.1176,"Dry Goods, Salt, Kosher","JAKE'S, INC.",8.47,SALT20,VENDOR_ITEM
+99,Nashville Hot Chicken,Complete,345.0,"Dairy,  Clarified Butter",105.0,0.5,oz,0.0383,"Dairy,  Clarified Butter",RESTAURANT DEPOT,24.51,15700227220,VENDOR_ITEM
+99,Nashville Hot Chicken,Complete,342.0,"Dry Goods, Bread, Texas Toast",90.0,2.0,each,0.438,"Dry Goods, Bread, Texas Toast",CB Commissary LLC,2.19,936,VENDOR_ITEM
+99,Nashville Hot Chicken,Complete,341.0,"Protein, Chicken, Thighs",183.0,7.0,oz,1.645,"Protein, Chicken, Thighs",US Foods,3.76,G20223,VENDOR_ITEM
+127,Onion Ranch,Complete,414.0,"Dairy, Egg",8.0,40.0,each,15.7778,"Dairy, Egg",Jorge Garza,71.0,58897_XC9776450,VENDOR_ITEM
+127,Onion Ranch,Complete,416.0,"Dry Goods, Black Pepper, Ground",890.0,3.0,oz,1.8101,"Dry Goods, Black Pepper, Ground","JAKES, INC.",48.27,BSPI75,VENDOR_ITEM
+127,Onion Ranch,Complete,417.0,"Dry Goods, Oil, Canola, Salad",561.0,3.0,lb,3.612,"Dry Goods, Oil, Canola, Salad","JAKE'S, INC.",42.14,OILS28,VENDOR_ITEM
+127,Onion Ranch,Complete,418.0,"Dry Goods, Salt, Kosher",711.0,3.0,oz,0.0588,"Dry Goods, Salt, Kosher","JAKE'S, INC.",8.47,SALT20,VENDOR_ITEM
+127,Onion Ranch,Complete,415.0,"Dry Goods, Vinegar, White",871.0,3.0,qt,3.18,"Dry Goods, Vinegar, White",US Foods,4.24,OLVS11,VENDOR_ITEM
+127,Onion Ranch,Complete,413.0,"Produce, Onions, Yellow",448.0,5.0,lb,1.995,"Produce, Onions, Yellow",Jorge Garza,19.95,58897_XC10610694,VENDOR_ITEM
+131,Pickled Shallot,Complete,404.0,"Dry Goods, Sugar, White",825.0,5.0,lb,4.882,"Dry Goods, Sugar, White","JAKES, INC.",24.41,SUGR03,VENDOR_ITEM
+131,Pickled Shallot,Complete,403.0,"Dry Goods, Vinegar, White",871.0,2.0,gallon,0.0022,"Dry Goods, Vinegar, White",US Foods,4.24,OLVS11,VENDOR_ITEM
+131,Pickled Shallot,Complete,405.0,"Produce, Shallots, Peeled, Fresh",629.0,20.0,lb,146.1,"Produce, Shallots, Peeled, Fresh",RESTAURANT DEPOT,58.44,53408,VENDOR_ITEM
+129,Plain Jane Sandwich,Complete,518.0,"Dry Goods, Bread,  Burger Bun",87.0,1.0,ea,0.62,"Dry Goods, Bread,  Burger Bun",COMMON BOND BISTRO & BAKERY,0.62,90880_XC12350157,VENDOR_ITEM
+129,Plain Jane Sandwich,Complete,520.0,"Dry Goods, Chicken  Breading, Lea Jane Recipe",475.0,2.0,oz,0.2371,"Dry Goods, Chicken  Breading, Lea Jane Recipe",ALTAMIRA LTD.,94.85,32165,VENDOR_ITEM
+129,Plain Jane Sandwich,Complete,519.0,"Dry Goods, Mayonnaise, Heavy",510.0,1.0,each,0.0034,"Dry Goods, Mayonnaise, Heavy",Jorge Garza,12.95,58897_XC11725428,VENDOR_ITEM
+129,Plain Jane Sandwich,Complete,521.0,"Dry Goods, Pickle, DIll, Slices",652.0,2.0,oz,0.0028,"Dry Goods, Pickle, DIll, Slices","JAKES, INC.",26.2,PICK41,VENDOR_ITEM
+129,Plain Jane Sandwich,Complete,517.0,"Protein, Chicken, Tenders",178.0,8.0,oz,1.43,"Protein, Chicken, Tenders",Buckhead Meat & Seafood OF HOUSTON,2.86,1002010,VENDOR_ITEM
+68,Ritz Crumble,Draft,335.0,"Dry Goods, Crackers, Ritz",692.0,1.0,lb,5.2788,"Dry Goods, Crackers, Ritz",RESTAURANT DEPOT,9.04,1090094,VENDOR_ITEM
+78,Roux recipe,Complete,497.0,"Dairy,  Clarified Butter",105.0,2.0,lb,2.451,"Dairy,  Clarified Butter",RESTAURANT DEPOT,24.51,15700227220,VENDOR_ITEM
+78,Roux recipe,Complete,498.0,"Dry Goods, Flour, All Purpose, White",29.0,2.0,lb,4.716,"Dry Goods, Flour, All Purpose, White",Jorge Garza,11.79,58897_XC11131128,VENDOR_ITEM
+95,S-01 OG Nashville Chicken,Draft,322.0,"Dairy,  Clarified Butter",105.0,0.5,oz,0.0383,"Dairy,  Clarified Butter",RESTAURANT DEPOT,24.51,15700227220,VENDOR_ITEM
+95,S-01 OG Nashville Chicken,Draft,319.0,"Dry Goods, Bread,  Burger Bun",87.0,1.0,each,0.62,"Dry Goods, Bread,  Burger Bun",COMMON BOND BISTRO & BAKERY,0.62,90880_XC12350157,VENDOR_ITEM
+95,S-01 OG Nashville Chicken,Draft,318.0,"Protein, Chicken, Thighs",183.0,7.0,oz,1.645,"Protein, Chicken, Thighs",US Foods,3.76,G20223,VENDOR_ITEM
+96,S-02 J-Blaze Chicken,Draft,316.0,"Dry Goods, Bread,  Burger Bun",87.0,1.0,each,0.62,"Dry Goods, Bread,  Burger Bun",COMMON BOND BISTRO & BAKERY,0.62,90880_XC12350157,VENDOR_ITEM
+96,S-02 J-Blaze Chicken,Draft,313.0,"Dry Goods, Chicken  Breading, Lea Jane Recipe",475.0,3.0,oz,0.3557,"Dry Goods, Chicken  Breading, Lea Jane Recipe",ALTAMIRA LTD.,94.85,32165,VENDOR_ITEM
+96,S-02 J-Blaze Chicken,Draft,317.0,"Dry Goods, Oil, Canola, Clear, Frying",12.0,2.0,oz,0.1446,"Dry Goods, Oil, Canola, Clear, Frying",Jorge Garza,40.5,58897_XC11546428,VENDOR_ITEM
+96,S-02 J-Blaze Chicken,Draft,314.0,Hot Honey - 2025,433.0,2.0,oz,,"Dry Goods, Honey, Natural",US Foods,18.77,SYRP67,VENDOR_ITEM
+96,S-02 J-Blaze Chicken,Draft,312.0,"Protein, Chicken, Thighs",183.0,8.0,oz,1.88,"Protein, Chicken, Thighs",US Foods,3.76,G20223,VENDOR_ITEM
+94,S-03 Plain Jane Sandwich,Draft,399.0,"Dry Goods, Bread,  Burger Bun",87.0,1.0,ea,0.62,"Dry Goods, Bread,  Burger Bun",COMMON BOND BISTRO & BAKERY,0.62,90880_XC12350157,VENDOR_ITEM
+94,S-03 Plain Jane Sandwich,Draft,398.0,"Dry Goods, Chicken  Breading, Lea Jane Recipe",475.0,2.0,oz,0.2371,"Dry Goods, Chicken  Breading, Lea Jane Recipe",ALTAMIRA LTD.,94.85,32165,VENDOR_ITEM
+94,S-03 Plain Jane Sandwich,Draft,400.0,"Dry Goods, Mayonnaise, Heavy",510.0,2.0,oz,0.0068,"Dry Goods, Mayonnaise, Heavy",Jorge Garza,12.95,58897_XC11725428,VENDOR_ITEM
+94,S-03 Plain Jane Sandwich,Draft,401.0,"Dry Goods, Pickle, DIll, Slices",652.0,2.0,oz,0.0028,"Dry Goods, Pickle, DIll, Slices","JAKES, INC.",26.2,PICK41,VENDOR_ITEM
+94,S-03 Plain Jane Sandwich,Draft,402.0,Hot Honey - 2025,433.0,2.0,oz,,"Dry Goods, Honey, Natural",US Foods,18.77,SYRP67,VENDOR_ITEM
+94,S-03 Plain Jane Sandwich,Draft,397.0,"Protein, Chicken, Tenders",178.0,8.0,oz,1.43,"Protein, Chicken, Tenders",Buckhead Meat & Seafood OF HOUSTON,2.86,1002010,VENDOR_ITEM
+88,S-04 Fish Sando,Draft,433.0,"Dry Goods, Bread,  Burger Bun",87.0,1.0,ea,0.62,"Dry Goods, Bread,  Burger Bun",COMMON BOND BISTRO & BAKERY,0.62,90880_XC12350157,VENDOR_ITEM
+88,S-04 Fish Sando,Draft,434.0,"Dry Goods, Mayonnaise, Heavy",510.0,2.0,oz,0.0068,"Dry Goods, Mayonnaise, Heavy",Jorge Garza,12.95,58897_XC11725428,VENDOR_ITEM
+88,S-04 Fish Sando,Draft,436.0,"Dry Goods, Oil, Canola, Clear, Frying",12.0,2.0,oz,0.1446,"Dry Goods, Oil, Canola, Clear, Frying",Jorge Garza,40.5,58897_XC11546428,VENDOR_ITEM
+88,S-04 Fish Sando,Draft,435.0,"Dry Goods, Pickle, DIll, Slices",652.0,2.0,oz,0.0028,"Dry Goods, Pickle, DIll, Slices","JAKES, INC.",26.2,PICK41,VENDOR_ITEM
+88,S-04 Fish Sando,Draft,432.0,"Seafood, Cod, Battered, Wedges, Frozen",373.0,4.0,oz,2.4737,"Seafood, Cod, Battered, Wedges, Frozen",RESTAURANT DEPOT,39.58,73538020154,VENDOR_ITEM
+83,SD-01 Kale & Cabbage Slaw,Draft,,,,,,,,,,,UNMAPPED
+81,SD-02 Extra-Crispy Fries with Ranch Powder,Draft,489.0,"Dry Goods, Ranch Dressing, Mix, Dry",544.0,1.0,oz,0.6995,"Dry Goods, Ranch Dressing, Mix, Dry","JAKE'S, INC.",40.29,DRES37,VENDOR_ITEM
+80,SD-03 LJ Mac,Draft,428.0,"Dry Goods, Pasta, Cavatappi",603.0,5.0,oz,0.5536,"Dry Goods, Pasta, Cavatappi","JAKES, INC.",35.43,SPAG21,VENDOR_ITEM
+80,SD-03 LJ Mac,Draft,427.0,Mac Sauce - Modified 2025,138.0,3.0,oz,25.035825000000003,"Dairy, Cheese Sauce, Loaf, American",Jorge Garza,144.0,58897_XC10619296,VENDOR_ITEM
+76,SD-04 Fried Corn Ribs,Draft,438.0,"Dry Goods, Oil, Canola, Clear, Frying",12.0,1.0,oz,0.0723,"Dry Goods, Oil, Canola, Clear, Frying",Jorge Garza,40.5,58897_XC11546428,VENDOR_ITEM
+76,SD-04 Fried Corn Ribs,Draft,437.0,"Frozen, Corn Rib, Hickory Smoked",39.0,6.0,oz,1.6657,"Frozen, Corn Rib, Hickory Smoked",Sysco Houston,71.07,7228367,VENDOR_ITEM
+87,SL-01 Chicken Caesar Salad,Draft,373.0,"Dairy, Chesse, Parmesan, Grated",197.0,2.0,oz,0.1972,"Dairy, Chesse, Parmesan, Grated",RESTAURANT DEPOT,31.56,14726,VENDOR_ITEM
+87,SL-01 Chicken Caesar Salad,Draft,374.0,"Dry Goods, Caesar Dressing",285.0,4.0,oz,0.2361,"Dry Goods, Caesar Dressing",RESTAURANT DEPOT,30.22,54565,VENDOR_ITEM
+87,SL-01 Chicken Caesar Salad,Draft,372.0,"Dry Goods, Croutons, Homestyle",263.0,2.0,oz,0.3314,"Dry Goods, Croutons, Homestyle",RESTAURANT DEPOT,26.51,2061156,VENDOR_ITEM
+87,SL-01 Chicken Caesar Salad,Draft,370.0,"Produce, Lettuce, Romaine",627.0,4.0,oz,17.6,"Produce, Lettuce, Romaine",RESTAURANT DEPOT,4.4,43858,VENDOR_ITEM
+112,Shredded Cabbage,Complete,334.0,"Produce, CABBAGE GREEN SHREDDED",610.0,10.0,lb,8.84,"Produce, Cabbage, Red, Shredded",RESTAURANT DEPOT,8.84,3.0223E+11,VENDOR_ITEM
+111,Shredded Carrots,Complete,295.0,"Produce, Carrots, Jumbo, Fresh",25.0,10.0,lb,4.7,"Produce, Carrots, Jumbo, Fresh",Jorge Garza,23.5,58897_XC5723334,VENDOR_ITEM
+132,Tenders,Complete,431.0,"Dry Goods, Chicken  Breading, Lea Jane Recipe",475.0,1.5,oz,0.1778,"Dry Goods, Chicken  Breading, Lea Jane Recipe",ALTAMIRA LTD.,94.85,32165,VENDOR_ITEM
+132,Tenders,Complete,430.0,"Dry Goods, Shortening, Pork Lard",474.0,1.0,oz,0.0854,"Dry Goods, Shortening, Pork Lard",US Foods,68.29,OILS49,VENDOR_ITEM
+132,Tenders,Complete,429.0,"Protein, Chicken, Tenders",178.0,4.0,oz,0.715,"Protein, Chicken, Tenders",Buckhead Meat & Seafood OF HOUSTON,2.86,1002010,VENDOR_ITEM

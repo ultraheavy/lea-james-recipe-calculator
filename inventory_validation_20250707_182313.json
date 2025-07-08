@@ -1,0 +1,1394 @@
+{
+  "timestamp": "20250707_182313",
+  "metrics": {
+    "recipe_linkage_percentage": 99.04761904761905,
+    "total_inventory_items": 250,
+    "items_with_vendor": 250,
+    "items_with_price": 250,
+    "items_with_item_code": 250,
+    "items_with_unit": 230,
+    "total_recipes": 66,
+    "recipes_with_ingredients": 62,
+    "total_vendors": 13,
+    "vendor_completeness": 100.0,
+    "price_completeness": 100.0,
+    "item_code_completeness": 100.0,
+    "unit_completeness": 92.0
+  },
+  "validation_results": {
+    "duplicate_products": [
+      {
+        "product": "n/a bev, coca cola, mexican, bottle",
+        "vendors": [
+          {
+            "vendor": "ALVARADO'S",
+            "id": 208,
+            "original_desc": "N/A Bev, Coca Cola, Mexican, Bottle",
+            "price": 37.0
+          },
+          {
+            "vendor": "ALVARADO'S",
+            "id": 209,
+            "original_desc": "N/A Bev, Coca Cola, Mexican, Bottle",
+            "price": 30.0
+          },
+          {
+            "vendor": "JAKES, INC.",
+            "id": 858,
+            "original_desc": "N/A Bev, Coca Cola, Mexican, Bottle",
+            "price": 39.5
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 215,
+            "original_desc": "N/A Bev, Coca Cola, Mexican, Bottle",
+            "price": 41.11
+          }
+        ],
+        "message": "Product 'n/a bev, coca cola, mexican, bottle' found with 4 different vendors"
+      },
+      {
+        "product": "n/a bev, soda, fanta, orange, mexican",
+        "vendors": [
+          {
+            "vendor": "ALVARADO'S",
+            "id": 346,
+            "original_desc": "N/A Bev, Soda, Fanta, Orange, Mexican",
+            "price": 35.0
+          },
+          {
+            "vendor": "JAKE'S, INC.",
+            "id": 784,
+            "original_desc": "N/A Bev, Soda, Fanta, Orange, Mexican",
+            "price": 44.09
+          }
+        ],
+        "message": "Product 'n/a bev, soda, fanta, orange, mexican' found with 2 different vendors"
+      },
+      {
+        "product": "n/a bev, water, mineral, topo chico, bottle",
+        "vendors": [
+          {
+            "vendor": "ALVARADO'S",
+            "id": 852,
+            "original_desc": "N/A Bev, Water, Mineral, Topo Chico, Bottle",
+            "price": 28.0
+          },
+          {
+            "vendor": "JAKE'S, INC.",
+            "id": 879,
+            "original_desc": "N/A Bev, Water, Mineral, Topo Chico, Bottle",
+            "price": 40.05
+          },
+          {
+            "vendor": "Jorge Garza",
+            "id": 853,
+            "original_desc": "N/A Bev, Water, Mineral, Topo Chico, Bottle",
+            "price": 32.5
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 854,
+            "original_desc": "N/A Bev, Water, Mineral, Topo Chico, Bottle",
+            "price": 29.69
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 855,
+            "original_desc": "N/A Bev, Water, Mineral, Topo Chico, Bottle",
+            "price": 29.69
+          }
+        ],
+        "message": "Product 'n/a bev, water, mineral, topo chico, bottle' found with 5 different vendors"
+      },
+      {
+        "product": "protein, catfish, fillet, fresh",
+        "vendors": [
+          {
+            "vendor": "Buckhead Meat & Seafood OF HOUSTON",
+            "id": 5,
+            "original_desc": "Protein, Catfish, Fillet, Fresh",
+            "price": 6.43
+          },
+          {
+            "vendor": "Buckhead Meat & Seafood OF HOUSTON",
+            "id": 145,
+            "original_desc": "Protein, Catfish, Fillet, Fresh",
+            "price": 6.43
+          },
+          {
+            "vendor": "JAKES, INC.",
+            "id": 353,
+            "original_desc": "Protein, Catfish, Fillet, Fresh",
+            "price": 5.91
+          }
+        ],
+        "message": "Product 'protein, catfish, fillet, fresh' found with 3 different vendors"
+      },
+      {
+        "product": "protein, chicken, tenders",
+        "vendors": [
+          {
+            "vendor": "Buckhead Meat & Seafood OF HOUSTON",
+            "id": 178,
+            "original_desc": "Protein, Chicken, Tenders",
+            "price": 2.86
+          },
+          {
+            "vendor": "Buckhead Meat & Seafood OF HOUSTON",
+            "id": 179,
+            "original_desc": "Protein, Chicken, Tenders",
+            "price": 4.01
+          }
+        ],
+        "message": "Product 'protein, chicken, tenders' found with 2 different vendors"
+      },
+      {
+        "product": "protein, chicken, wing",
+        "vendors": [
+          {
+            "vendor": "Buckhead Meat & Seafood OF HOUSTON",
+            "id": 14,
+            "original_desc": "Protein, Chicken, Wing",
+            "price": 1.74
+          },
+          {
+            "vendor": "JAKE'S, INC.",
+            "id": 186,
+            "original_desc": "Protein, Chicken, Wing",
+            "price": 1.99
+          }
+        ],
+        "message": "Product 'protein, chicken, wing' found with 2 different vendors"
+      },
+      {
+        "product": "dry goods, bread, burger bun",
+        "vendors": [
+          {
+            "vendor": "CB Commissary LLC",
+            "id": 89,
+            "original_desc": "Dry Goods, Bread,  Burger Bun",
+            "price": 0.62
+          },
+          {
+            "vendor": "COMMON BOND BISTRO & BAKERY",
+            "id": 87,
+            "original_desc": "Dry Goods, Bread,  Burger Bun",
+            "price": 0.62
+          }
+        ],
+        "message": "Product 'dry goods, bread, burger bun' found with 2 different vendors"
+      },
+      {
+        "product": "dry goods, bread, texas toast",
+        "vendors": [
+          {
+            "vendor": "CB Commissary LLC",
+            "id": 90,
+            "original_desc": "Dry Goods, Bread, Texas Toast",
+            "price": 2.19
+          },
+          {
+            "vendor": "COMMON BOND BISTRO & BAKERY",
+            "id": 91,
+            "original_desc": "Dry Goods, Bread, Texas Toast",
+            "price": 2.19
+          }
+        ],
+        "message": "Product 'dry goods, bread, texas toast' found with 2 different vendors"
+      },
+      {
+        "product": "dairy, cream, heavy",
+        "vendors": [
+          {
+            "vendor": "JAKE'S, INC.",
+            "id": 259,
+            "original_desc": "Dairy, Cream, Heavy",
+            "price": 64.98
+          },
+          {
+            "vendor": "Jorge Garza",
+            "id": 428,
+            "original_desc": "Dairy, Cream, Heavy",
+            "price": 5.43
+          },
+          {
+            "vendor": "Jorge Garza",
+            "id": 681,
+            "original_desc": "Dairy, Cream, Heavy",
+            "price": 5.43
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 261,
+            "original_desc": "Dairy, Cream, Heavy",
+            "price": 50.42
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 262,
+            "original_desc": "Dairy, Cream, Heavy",
+            "price": 49.5
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 317,
+            "original_desc": "Dairy, Cream, Heavy",
+            "price": 65.13
+          }
+        ],
+        "message": "Product 'dairy, cream, heavy' found with 6 different vendors"
+      },
+      {
+        "product": "dairy, milk, whole",
+        "vendors": [
+          {
+            "vendor": "JAKE'S, INC.",
+            "id": 529,
+            "original_desc": "Dairy, Milk, Whole",
+            "price": 22.92
+          },
+          {
+            "vendor": "Jorge Garza",
+            "id": 886,
+            "original_desc": "Dairy, Milk, Whole",
+            "price": 4.74
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 532,
+            "original_desc": "Dairy, Milk, Whole",
+            "price": 17.44
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 533,
+            "original_desc": "Dairy, Milk, Whole",
+            "price": 17.44
+          },
+          {
+            "vendor": "US Foods",
+            "id": 539,
+            "original_desc": "Dairy, Milk, Whole",
+            "price": 23.88
+          }
+        ],
+        "message": "Product 'dairy, milk, whole' found with 5 different vendors"
+      },
+      {
+        "product": "dry goods, ketchup packets",
+        "vendors": [
+          {
+            "vendor": "JAKE'S, INC.",
+            "id": 454,
+            "original_desc": "Dry Goods, Ketchup Packets",
+            "price": 31.09
+          },
+          {
+            "vendor": "US Foods",
+            "id": 461,
+            "original_desc": "Dry Goods, Ketchup Packets",
+            "price": 31.79
+          }
+        ],
+        "message": "Product 'dry goods, ketchup packets' found with 2 different vendors"
+      },
+      {
+        "product": "dry goods, oil, canola, clear, frying",
+        "vendors": [
+          {
+            "vendor": "JAKE'S, INC.",
+            "id": 558,
+            "original_desc": "Dry Goods, Oil, Canola, Clear, Frying",
+            "price": 29.18
+          },
+          {
+            "vendor": "Jorge Garza",
+            "id": 12,
+            "original_desc": "Dry Goods, Oil, Canola, Clear, Frying",
+            "price": 40.5
+          }
+        ],
+        "message": "Product 'dry goods, oil, canola, clear, frying' found with 2 different vendors"
+      },
+      {
+        "product": "dry goods, salt, kosher",
+        "vendors": [
+          {
+            "vendor": "JAKE'S, INC.",
+            "id": 711,
+            "original_desc": "Dry Goods, Salt, Kosher",
+            "price": 8.47
+          },
+          {
+            "vendor": "JAKE'S, INC.",
+            "id": 857,
+            "original_desc": "Dry Goods, Salt, Kosher",
+            "price": 3.54
+          }
+        ],
+        "message": "Product 'dry goods, salt, kosher' found with 2 different vendors"
+      },
+      {
+        "product": "dry goods, shortening oil, clear",
+        "vendors": [
+          {
+            "vendor": "JAKE'S, INC.",
+            "id": 752,
+            "original_desc": "Dry Goods, Shortening Oil, Clear",
+            "price": 63.49
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 759,
+            "original_desc": "Dry Goods, Shortening Oil, Clear",
+            "price": 58.06
+          }
+        ],
+        "message": "Product 'dry goods, shortening oil, clear' found with 2 different vendors"
+      },
+      {
+        "product": "frozen, bread, texas toast, white,",
+        "vendors": [
+          {
+            "vendor": "JAKE'S, INC.",
+            "id": 102,
+            "original_desc": "Frozen, Bread, Texas Toast, White,",
+            "price": 34.17
+          },
+          {
+            "vendor": "JAKE'S, INC.",
+            "id": 316,
+            "original_desc": "Frozen, Bread, Texas Toast, White,",
+            "price": 23.93
+          }
+        ],
+        "message": "Product 'frozen, bread, texas toast, white,' found with 2 different vendors"
+      },
+      {
+        "product": "n/a bev, soda, jarritos, strawberry",
+        "vendors": [
+          {
+            "vendor": "JAKE'S, INC.",
+            "id": 308,
+            "original_desc": "N/A Bev, Soda, Jarritos, Strawberry",
+            "price": 33.36
+          },
+          {
+            "vendor": "Jorge Garza",
+            "id": 437,
+            "original_desc": "N/A Bev, Soda, Jarritos, Strawberry",
+            "price": 31.5
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 442,
+            "original_desc": "N/A Bev, Soda, Jarritos, Strawberry",
+            "price": 23.27
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 443,
+            "original_desc": "N/A Bev, Soda, Jarritos, Strawberry",
+            "price": 23.27
+          }
+        ],
+        "message": "Product 'n/a bev, soda, jarritos, strawberry' found with 4 different vendors"
+      },
+      {
+        "product": "n/a bev, water, still, bottles",
+        "vendors": [
+          {
+            "vendor": "JAKE'S, INC.",
+            "id": 877,
+            "original_desc": "N/A Bev, Water, Still, Bottles",
+            "price": 6.57
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 552,
+            "original_desc": "N/A Bev, Water, Still, Bottles",
+            "price": 3.75
+          }
+        ],
+        "message": "Product 'n/a bev, water, still, bottles' found with 2 different vendors"
+      },
+      {
+        "product": "produce, celery stalks, fresh",
+        "vendors": [
+          {
+            "vendor": "JAKE'S, INC.",
+            "id": 153,
+            "original_desc": "Produce, Celery Stalks, Fresh",
+            "price": 10.01
+          },
+          {
+            "vendor": "Jorge Garza",
+            "id": 149,
+            "original_desc": "Produce, Celery Stalks, Fresh",
+            "price": 1.79
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 614,
+            "original_desc": "Produce, Celery Stalks, Fresh",
+            "price": 6.25
+          }
+        ],
+        "message": "Product 'produce, celery stalks, fresh' found with 3 different vendors"
+      },
+      {
+        "product": "protein, shrimp, white",
+        "vendors": [
+          {
+            "vendor": "JAKE'S, INC.",
+            "id": 767,
+            "original_desc": "Protein, Shrimp, White",
+            "price": 8.49
+          },
+          {
+            "vendor": "JAKES, INC.",
+            "id": 770,
+            "original_desc": "Protein, Shrimp, White",
+            "price": 6.81
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 773,
+            "original_desc": "Protein, Shrimp, White",
+            "price": 51.65
+          },
+          {
+            "vendor": "US Foods",
+            "id": 768,
+            "original_desc": "Protein, Shrimp, White",
+            "price": 5.66
+          }
+        ],
+        "message": "Product 'protein, shrimp, white' found with 4 different vendors"
+      },
+      {
+        "product": "dairy, clarified butter",
+        "vendors": [
+          {
+            "vendor": "JAKES, INC.",
+            "id": 112,
+            "original_desc": "Dairy,  Clarified Butter",
+            "price": 102.95
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 105,
+            "original_desc": "Dairy,  Clarified Butter",
+            "price": 24.51
+          }
+        ],
+        "message": "Product 'dairy, clarified butter' found with 2 different vendors"
+      },
+      {
+        "product": "dairy, cheese, cheddar, yellow bar",
+        "vendors": [
+          {
+            "vendor": "JAKES, INC.",
+            "id": 157,
+            "original_desc": "Dairy, Cheese, Cheddar, Yellow Bar",
+            "price": 3.31
+          },
+          {
+            "vendor": "JAKES, INC.",
+            "id": 163,
+            "original_desc": "Dairy, Cheese, Cheddar, Yellow Bar",
+            "price": 4.15
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 192,
+            "original_desc": "Dairy, Cheese, Cheddar, Yellow Bar",
+            "price": 110.07
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 194,
+            "original_desc": "Dairy, Cheese, Cheddar, Yellow Bar",
+            "price": 17.76
+          }
+        ],
+        "message": "Product 'dairy, cheese, cheddar, yellow bar' found with 4 different vendors"
+      },
+      {
+        "product": "dairy, egg",
+        "vendors": [
+          {
+            "vendor": "JAKES, INC.",
+            "id": 331,
+            "original_desc": "Dairy, Egg",
+            "price": 3.94
+          },
+          {
+            "vendor": "Jorge Garza",
+            "id": 8,
+            "original_desc": "Dairy, Egg",
+            "price": 71.0
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 324,
+            "original_desc": "Dairy, Egg",
+            "price": 41.95
+          },
+          {
+            "vendor": "US Foods",
+            "id": 335,
+            "original_desc": "Dairy, Egg",
+            "price": 3.9
+          }
+        ],
+        "message": "Product 'dairy, egg' found with 4 different vendors"
+      },
+      {
+        "product": "dry goods, mayonnaise, heavy",
+        "vendors": [
+          {
+            "vendor": "JAKES, INC.",
+            "id": 517,
+            "original_desc": "Dry Goods, Mayonnaise, Heavy",
+            "price": 12.47
+          },
+          {
+            "vendor": "JAKES, INC.",
+            "id": 518,
+            "original_desc": "Dry Goods, Mayonnaise, Heavy",
+            "price": 10.88
+          },
+          {
+            "vendor": "Jorge Garza",
+            "id": 510,
+            "original_desc": "Dry Goods, Mayonnaise, Heavy",
+            "price": 12.95
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 511,
+            "original_desc": "Dry Goods, Mayonnaise, Heavy",
+            "price": 10.33
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 523,
+            "original_desc": "Dry Goods, Mayonnaise, Heavy",
+            "price": 21.99
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 524,
+            "original_desc": "Dry Goods, Mayonnaise, Heavy",
+            "price": 22.74
+          },
+          {
+            "vendor": "US Foods",
+            "id": 521,
+            "original_desc": "Dry Goods, Mayonnaise, Heavy",
+            "price": 15.44
+          }
+        ],
+        "message": "Product 'dry goods, mayonnaise, heavy' found with 7 different vendors"
+      },
+      {
+        "product": "dry goods, pasta, cavatappi",
+        "vendors": [
+          {
+            "vendor": "JAKES, INC.",
+            "id": 603,
+            "original_desc": "Dry Goods, Pasta, Cavatappi",
+            "price": 35.43
+          },
+          {
+            "vendor": "US Foods",
+            "id": 607,
+            "original_desc": "Dry Goods, Pasta, Cavatappi",
+            "price": 35.23
+          }
+        ],
+        "message": "Product 'dry goods, pasta, cavatappi' found with 2 different vendors"
+      },
+      {
+        "product": "dry goods, pickle, dill, slices",
+        "vendors": [
+          {
+            "vendor": "JAKES, INC.",
+            "id": 652,
+            "original_desc": "Dry Goods, Pickle, DIll, Slices",
+            "price": 26.2
+          },
+          {
+            "vendor": "Jorge Garza",
+            "id": 776,
+            "original_desc": "Dry Goods, Pickle, DIll, Slices",
+            "price": 33.5
+          }
+        ],
+        "message": "Product 'dry goods, pickle, dill, slices' found with 2 different vendors"
+      },
+      {
+        "product": "dry goods, sauce, buffalo wing red hot",
+        "vendors": [
+          {
+            "vendor": "JAKES, INC.",
+            "id": 724,
+            "original_desc": "Dry Goods, Sauce, Buffalo Wing Red Hot",
+            "price": 22.25
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 725,
+            "original_desc": "Dry Goods, Sauce, Buffalo Wing Red Hot",
+            "price": 15.4
+          }
+        ],
+        "message": "Product 'dry goods, sauce, buffalo wing red hot' found with 2 different vendors"
+      },
+      {
+        "product": "dry goods, sugar, white",
+        "vendors": [
+          {
+            "vendor": "JAKES, INC.",
+            "id": 825,
+            "original_desc": "Dry Goods, Sugar, White",
+            "price": 24.41
+          },
+          {
+            "vendor": "JAKES, INC.",
+            "id": 827,
+            "original_desc": "Dry Goods, Sugar, White",
+            "price": 36.05
+          },
+          {
+            "vendor": "US Foods",
+            "id": 831,
+            "original_desc": "Dry Goods, Sugar, White",
+            "price": 28.65
+          }
+        ],
+        "message": "Product 'dry goods, sugar, white' found with 3 different vendors"
+      },
+      {
+        "product": "dry goods, vinegar, red wine",
+        "vendors": [
+          {
+            "vendor": "JAKES, INC.",
+            "id": 865,
+            "original_desc": "Dry Goods, Vinegar, Red Wine",
+            "price": 16.73
+          },
+          {
+            "vendor": "JAKES, INC.",
+            "id": 873,
+            "original_desc": "Dry Goods, Vinegar, Red Wine",
+            "price": 14.42
+          }
+        ],
+        "message": "Product 'dry goods, vinegar, red wine' found with 2 different vendors"
+      },
+      {
+        "product": "produce, carrot, shredded",
+        "vendors": [
+          {
+            "vendor": "JAKES, INC.",
+            "id": 702,
+            "original_desc": "Produce, Carrot, Shredded",
+            "price": 29.12
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 612,
+            "original_desc": "Produce, Carrot, Shredded",
+            "price": 6.57
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 613,
+            "original_desc": "Produce, Carrot, Shredded",
+            "price": 6.57
+          }
+        ],
+        "message": "Product 'produce, carrot, shredded' found with 3 different vendors"
+      },
+      {
+        "product": "dairy, cheese sauce, loaf, american",
+        "vendors": [
+          {
+            "vendor": "Jorge Garza",
+            "id": 138,
+            "original_desc": "Dairy, Cheese Sauce, Loaf, American",
+            "price": 144.0
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 195,
+            "original_desc": "Dairy, Cheese Sauce, Loaf, American",
+            "price": 18.78
+          }
+        ],
+        "message": "Product 'dairy, cheese sauce, loaf, american' found with 2 different vendors"
+      },
+      {
+        "product": "dry good, cayenne pepper, spice",
+        "vendors": [
+          {
+            "vendor": "Jorge Garza",
+            "id": 147,
+            "original_desc": "Dry Good,  Cayenne Pepper, Spice",
+            "price": 4.24
+          },
+          {
+            "vendor": "Jorge Garza",
+            "id": 148,
+            "original_desc": "Dry Good,  Cayenne Pepper, Spice",
+            "price": 4.24
+          }
+        ],
+        "message": "Product 'dry good, cayenne pepper, spice' found with 2 different vendors"
+      },
+      {
+        "product": "dry goods, flour, all purpose, white",
+        "vendors": [
+          {
+            "vendor": "Jorge Garza",
+            "id": 29,
+            "original_desc": "Dry Goods, Flour, All Purpose, White",
+            "price": 11.79
+          },
+          {
+            "vendor": "US Foods",
+            "id": 361,
+            "original_desc": "Dry Goods, Flour, All Purpose, White",
+            "price": 10.33
+          }
+        ],
+        "message": "Product 'dry goods, flour, all purpose, white' found with 2 different vendors"
+      },
+      {
+        "product": "n/a bev, drink soda cola coke mex gls",
+        "vendors": [
+          {
+            "vendor": "Jorge Garza",
+            "id": 213,
+            "original_desc": "N/A Bev, DRINK SODA COLA COKE MEX GLS",
+            "price": 39.75
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 214,
+            "original_desc": "N/A Bev, DRINK SODA COLA COKE MEX GLS",
+            "price": 41.11
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 526,
+            "original_desc": "N/A Bev, DRINK SODA COLA COKE MEX GLS",
+            "price": 38.11
+          }
+        ],
+        "message": "Product 'n/a bev, drink soda cola coke mex gls' found with 3 different vendors"
+      },
+      {
+        "product": "n/a bev, soda, fresca, mexican",
+        "vendors": [
+          {
+            "vendor": "Jorge Garza",
+            "id": 9,
+            "original_desc": "N/A Bev, Soda, Fresca, Mexican",
+            "price": 41.89
+          },
+          {
+            "vendor": "Jorge Garza",
+            "id": 10,
+            "original_desc": "N/A Bev, Soda, Fresca, Mexican",
+            "price": 43.5
+          },
+          {
+            "vendor": "Jorge Garza",
+            "id": 366,
+            "original_desc": "N/A Bev, Soda, Fresca, Mexican",
+            "price": 43.5
+          }
+        ],
+        "message": "Product 'n/a bev, soda, fresca, mexican' found with 3 different vendors"
+      },
+      {
+        "product": "n/a bev, soda, sprite",
+        "vendors": [
+          {
+            "vendor": "Jorge Garza",
+            "id": 140,
+            "original_desc": "N/A Bev, Soda, Sprite",
+            "price": 41.5
+          },
+          {
+            "vendor": "Jorge Garza",
+            "id": 141,
+            "original_desc": "N/A Bev, Soda, Sprite",
+            "price": 41.5
+          },
+          {
+            "vendor": "Jorge Garza",
+            "id": 142,
+            "original_desc": "N/A Bev, Soda, Sprite",
+            "price": 41.5
+          },
+          {
+            "vendor": "Jorge Garza",
+            "id": 818,
+            "original_desc": "N/A Bev, Soda, Sprite",
+            "price": 41.5
+          }
+        ],
+        "message": "Product 'n/a bev, soda, sprite' found with 4 different vendors"
+      },
+      {
+        "product": "produce, carrots, jumbo, fresh",
+        "vendors": [
+          {
+            "vendor": "Jorge Garza",
+            "id": 25,
+            "original_desc": "Produce, Carrots, Jumbo, Fresh",
+            "price": 23.5
+          },
+          {
+            "vendor": "Jorge Garza",
+            "id": 131,
+            "original_desc": "Produce, Carrots, Jumbo, Fresh",
+            "price": 0.79
+          },
+          {
+            "vendor": "Jorge Garza",
+            "id": 447,
+            "original_desc": "Produce, Carrots, Jumbo, Fresh",
+            "price": 23.5
+          }
+        ],
+        "message": "Product 'produce, carrots, jumbo, fresh' found with 3 different vendors"
+      },
+      {
+        "product": "produce, kale, green, fresh, by count",
+        "vendors": [
+          {
+            "vendor": "Jorge Garza",
+            "id": 11,
+            "original_desc": "Produce, Kale, Green, Fresh, by Count",
+            "price": 26.5
+          },
+          {
+            "vendor": "Jorge Garza",
+            "id": 414,
+            "original_desc": "Produce, Kale, Green, Fresh, by Count",
+            "price": 28.5
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 623,
+            "original_desc": "Produce, Kale, Green, Fresh, by Count",
+            "price": 25.29
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 624,
+            "original_desc": "Produce, Kale, Green, Fresh, by Count",
+            "price": 24.02
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 625,
+            "original_desc": "Produce, Kale, Green, Fresh, by Count",
+            "price": 26.59
+          }
+        ],
+        "message": "Product 'produce, kale, green, fresh, by count' found with 5 different vendors"
+      },
+      {
+        "product": "produce, lemon juice",
+        "vendors": [
+          {
+            "vendor": "Jorge Garza",
+            "id": 376,
+            "original_desc": "Produce, Lemon Juice",
+            "price": 7.49
+          },
+          {
+            "vendor": "Jorge Garza",
+            "id": 480,
+            "original_desc": "Produce, Lemon Juice",
+            "price": 6.99
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 620,
+            "original_desc": "Produce, Lemon Juice",
+            "price": 7.38
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 621,
+            "original_desc": "Produce, Lemon Juice",
+            "price": 7.38
+          }
+        ],
+        "message": "Product 'produce, lemon juice' found with 4 different vendors"
+      },
+      {
+        "product": "produce, onions, green",
+        "vendors": [
+          {
+            "vendor": "Jorge Garza",
+            "id": 415,
+            "original_desc": "Produce, Onions, Green",
+            "price": 0.79
+          },
+          {
+            "vendor": "Jorge Garza",
+            "id": 416,
+            "original_desc": "Produce, Onions, Green",
+            "price": 0.69
+          }
+        ],
+        "message": "Product 'produce, onions, green' found with 2 different vendors"
+      },
+      {
+        "product": "produce, onions, green, wt",
+        "vendors": [
+          {
+            "vendor": "Jorge Garza",
+            "id": 24,
+            "original_desc": "Produce, Onions, Green, wt",
+            "price": 25.75
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 628,
+            "original_desc": "Produce, Onions, Green, wt",
+            "price": 10.1
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 669,
+            "original_desc": "Produce, Onions, Green, wt",
+            "price": 10.1
+          },
+          {
+            "vendor": "US Foods",
+            "id": 573,
+            "original_desc": "Produce, Onions, Green, wt",
+            "price": 31.73
+          }
+        ],
+        "message": "Product 'produce, onions, green, wt' found with 4 different vendors"
+      },
+      {
+        "product": "dry goods, crackers, ritz",
+        "vendors": [
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 692,
+            "original_desc": "Dry Goods, Crackers, Ritz",
+            "price": 9.04
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 693,
+            "original_desc": "Dry Goods, Crackers, Ritz",
+            "price": 50.07
+          }
+        ],
+        "message": "Product 'dry goods, crackers, ritz' found with 2 different vendors"
+      },
+      {
+        "product": "n/a bev, soda, dr pepper, bottle",
+        "vendors": [
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 313,
+            "original_desc": "N/A Bev, Soda, Dr Pepper, Bottle",
+            "price": 29.02
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 314,
+            "original_desc": "N/A Bev, Soda, Dr Pepper, Bottle",
+            "price": 14.58
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 315,
+            "original_desc": "N/A Bev, Soda, Dr Pepper, Bottle",
+            "price": 13.43
+          }
+        ],
+        "message": "Product 'n/a bev, soda, dr pepper, bottle' found with 3 different vendors"
+      },
+      {
+        "product": "n/a bev, soda, jarritos, lime",
+        "vendors": [
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 439,
+            "original_desc": "N/A Bev, Soda, Jarritos, Lime",
+            "price": 23.27
+          },
+          {
+            "vendor": "US Foods",
+            "id": 884,
+            "original_desc": "N/A Bev, Soda, Jarritos, Lime",
+            "price": 37.3
+          }
+        ],
+        "message": "Product 'n/a bev, soda, jarritos, lime' found with 2 different vendors"
+      },
+      {
+        "product": "n/a bev, soda, mandarin, jarritos",
+        "vendors": [
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 440,
+            "original_desc": "N/A Bev, Soda, Mandarin, Jarritos",
+            "price": 23.59
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 441,
+            "original_desc": "N/A Bev, Soda, Mandarin, Jarritos",
+            "price": 23.59
+          }
+        ],
+        "message": "Product 'n/a bev, soda, mandarin, jarritos' found with 2 different vendors"
+      },
+      {
+        "product": "produce, cabbage, red, shredded",
+        "vendors": [
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 610,
+            "original_desc": "Produce, Cabbage, Red, Shredded",
+            "price": 8.84
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 611,
+            "original_desc": "Produce, Cabbage, Red, Shredded",
+            "price": 8.84
+          }
+        ],
+        "message": "Product 'produce, cabbage, red, shredded' found with 2 different vendors"
+      },
+      {
+        "product": "produce, collard greens, fresh, by weight",
+        "vendors": [
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 617,
+            "original_desc": "Produce, Collard Greens, Fresh, By Weight",
+            "price": 7.99
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 618,
+            "original_desc": "Produce, Collard Greens, Fresh, By Weight",
+            "price": 9.53
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 619,
+            "original_desc": "Produce, Collard Greens, Fresh, By Weight",
+            "price": 29.22
+          }
+        ],
+        "message": "Product 'produce, collard greens, fresh, by weight' found with 3 different vendors"
+      },
+      {
+        "product": "produce, shallots, peeled, fresh",
+        "vendors": [
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 629,
+            "original_desc": "Produce, Shallots, Peeled, Fresh",
+            "price": 58.44
+          },
+          {
+            "vendor": "RESTAURANT DEPOT",
+            "id": 670,
+            "original_desc": "Produce, Shallots, Peeled, Fresh",
+            "price": 7.73
+          }
+        ],
+        "message": "Product 'produce, shallots, peeled, fresh' found with 2 different vendors"
+      }
+    ],
+    "missing_vendor": [],
+    "naming_issues": [
+      {
+        "id": 47,
+        "description": "BAC TRAY PACK 3#",
+        "issue": "All uppercase"
+      },
+      {
+        "id": 48,
+        "description": "BAC TRAY PACK 3# FLAND",
+        "issue": "All uppercase"
+      },
+      {
+        "id": 360,
+        "description": "FLOUR HAND R ALL PURPOSE",
+        "issue": "All uppercase"
+      },
+      {
+        "id": 471,
+        "description": "LABEL 2X4 SHELF LIFE REMOVABL",
+        "issue": "All uppercase"
+      },
+      {
+        "id": 622,
+        "description": "PD KALE CHOPPED",
+        "issue": "All uppercase"
+      },
+      {
+        "id": 680,
+        "description": "PURE LIFE 35PK .5LTR",
+        "issue": "All uppercase"
+      },
+      {
+        "id": 762,
+        "description": "SHORTENING OIL CLEAR LIQ FRY",
+        "issue": "All uppercase"
+      },
+      {
+        "id": 816,
+        "description": "SPOON 13\" BK|H PRF 1CT",
+        "issue": "All uppercase"
+      },
+      {
+        "id": 829,
+        "description": "SUGAR EFG GRANULATED 403522",
+        "issue": "All uppercase"
+      }
+    ],
+    "unclear_descriptions": [],
+    "potential_duplicate_descriptions": [
+      {
+        "item1": "<sqlite3.Row object at 0x108d914e0>",
+        "item2": "<sqlite3.Row object at 0x11c5e3ac0>",
+        "similarity": "substring_match"
+      },
+      {
+        "item1": "<sqlite3.Row object at 0x11c6001f0>",
+        "item2": "<sqlite3.Row object at 0x11c6007f0>",
+        "similarity": "substring_match"
+      },
+      {
+        "item1": "<sqlite3.Row object at 0x11c6001f0>",
+        "item2": "<sqlite3.Row object at 0x11c600340>",
+        "similarity": "substring_match"
+      },
+      {
+        "item1": "<sqlite3.Row object at 0x11c600430>",
+        "item2": "<sqlite3.Row object at 0x11c6007f0>",
+        "similarity": "substring_match"
+      },
+      {
+        "item1": "<sqlite3.Row object at 0x11c600430>",
+        "item2": "<sqlite3.Row object at 0x11c600340>",
+        "similarity": "substring_match"
+      },
+      {
+        "item1": "<sqlite3.Row object at 0x11c610c10>",
+        "item2": "<sqlite3.Row object at 0x11c610d30>",
+        "similarity": "substring_match"
+      },
+      {
+        "item1": "<sqlite3.Row object at 0x11c610c10>",
+        "item2": "<sqlite3.Row object at 0x11c610e50>",
+        "similarity": "substring_match"
+      },
+      {
+        "item1": "<sqlite3.Row object at 0x11c610c10>",
+        "item2": "<sqlite3.Row object at 0x11c610ee0>",
+        "similarity": "substring_match"
+      },
+      {
+        "item1": "<sqlite3.Row object at 0x11c610c10>",
+        "item2": "<sqlite3.Row object at 0x11c611000>",
+        "similarity": "substring_match"
+      },
+      {
+        "item1": "<sqlite3.Row object at 0x11c610ca0>",
+        "item2": "<sqlite3.Row object at 0x11c610d30>",
+        "similarity": "substring_match"
+      },
+      {
+        "item1": "<sqlite3.Row object at 0x11c610ca0>",
+        "item2": "<sqlite3.Row object at 0x11c610e50>",
+        "similarity": "substring_match"
+      },
+      {
+        "item1": "<sqlite3.Row object at 0x11c610ca0>",
+        "item2": "<sqlite3.Row object at 0x11c610ee0>",
+        "similarity": "substring_match"
+      },
+      {
+        "item1": "<sqlite3.Row object at 0x11c610ca0>",
+        "item2": "<sqlite3.Row object at 0x11c611000>",
+        "similarity": "substring_match"
+      }
+    ],
+    "unmapped_recipe_ingredients": [
+      {
+        "recipe_id": 74,
+        "recipe_name": "DP-02 Comeback Sauce",
+        "ingredient_link_id": 389
+      },
+      {
+        "recipe_id": 113,
+        "recipe_name": "Comeback Sauce - Portion",
+        "ingredient_link_id": 535
+      }
+    ],
+    "illogical_quantities": [
+      {
+        "recipe_name": "Mac Sauce",
+        "ingredient": "Dairy, Cheese, Cheddar, Yellow Bar",
+        "quantity": 1240.0,
+        "unit": "gram",
+        "issues": [
+          "excessive_quantity"
+        ]
+      },
+      {
+        "recipe_name": "CHilli Oil - Hot Fat",
+        "ingredient": "Dry Goods, Shortening, Pork Lard",
+        "quantity": 9600.0,
+        "unit": "gram",
+        "issues": [
+          "excessive_quantity"
+        ]
+      },
+      {
+        "recipe_name": "Mac Sauce - Modified 2025",
+        "ingredient": "Dairy, Cheese, Loaf, Pepper Jack",
+        "quantity": 1240.0,
+        "unit": "gram",
+        "issues": [
+          "excessive_quantity"
+        ]
+      },
+      {
+        "recipe_name": "Hot Fat",
+        "ingredient": "Dry Goods, Shortening, Pork Lard",
+        "quantity": 1920.0,
+        "unit": "gram",
+        "issues": [
+          "excessive_quantity"
+        ]
+      },
+      {
+        "recipe_name": "Hot Fat",
+        "ingredient": "Dry Goods, Spice, Cayenne Pepper, Ground",
+        "quantity": 2000.0,
+        "unit": "gram",
+        "issues": [
+          "excessive_quantity"
+        ]
+      }
+    ],
+    "vendor_statistics": [
+      {
+        "vendor": "RESTAURANT DEPOT",
+        "product_count": 75,
+        "priced_items": 75,
+        "avg_price": 22.29,
+        "price_range": "$3.32 - $110.07"
+      },
+      {
+        "vendor": "Jorge Garza",
+        "product_count": 47,
+        "priced_items": 47,
+        "avg_price": 30.48,
+        "price_range": "$0.69 - $144.00"
+      },
+      {
+        "vendor": "JAKES, INC.",
+        "product_count": 35,
+        "priced_items": 35,
+        "avg_price": 30.1,
+        "price_range": "$3.31 - $102.95"
+      },
+      {
+        "vendor": "JAKE'S, INC.",
+        "product_count": 26,
+        "priced_items": 26,
+        "avg_price": 30.89,
+        "price_range": "$1.99 - $78.72"
+      },
+      {
+        "vendor": "US Foods",
+        "product_count": 22,
+        "priced_items": 22,
+        "avg_price": 21.85,
+        "price_range": "$3.47 - $68.29"
+      },
+      {
+        "vendor": "Restaurant Supply",
+        "product_count": 19,
+        "priced_items": 19,
+        "avg_price": 32.62,
+        "price_range": "$0.75 - $85.00"
+      },
+      {
+        "vendor": "CB Commissary LLC",
+        "product_count": 7,
+        "priced_items": 7,
+        "avg_price": 1.15,
+        "price_range": "$0.57 - $2.19"
+      },
+      {
+        "vendor": "ALVARADO'S",
+        "product_count": 7,
+        "priced_items": 7,
+        "avg_price": 34.86,
+        "price_range": "$28.00 - $40.00"
+      },
+      {
+        "vendor": "Buckhead Meat & Seafood OF HOUSTON",
+        "product_count": 5,
+        "priced_items": 5,
+        "avg_price": 4.29,
+        "price_range": "$1.74 - $6.43"
+      },
+      {
+        "vendor": "MJ Sweet and Cake",
+        "product_count": 3,
+        "priced_items": 3,
+        "avg_price": 28.0,
+        "price_range": "$20.00 - $32.00"
+      },
+      {
+        "vendor": "COMMON BOND BISTRO & BAKERY",
+        "product_count": 2,
+        "priced_items": 2,
+        "avg_price": 1.41,
+        "price_range": "$0.62 - $2.19"
+      },
+      {
+        "vendor": "Sysco Houston",
+        "product_count": 1,
+        "priced_items": 1,
+        "avg_price": 71.07,
+        "price_range": "$71.07 - $71.07"
+      },
+      {
+        "vendor": "ALTAMIRA LTD.",
+        "product_count": 1,
+        "priced_items": 1,
+        "avg_price": 94.85,
+        "price_range": "$94.85 - $94.85"
+      }
+    ]
+  }
+}

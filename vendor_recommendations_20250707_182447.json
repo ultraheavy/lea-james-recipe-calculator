@@ -1,0 +1,31 @@
+{
+  "timestamp": "20250707_182447",
+  "issues": [
+    {
+      "type": "punctuation_variation",
+      "vendor1": "JAKES, INC.",
+      "vendor2": "JAKE'S, INC.",
+      "recommendation": "Standardize punctuation"
+    }
+  ],
+  "recommendations": {
+    "standardization": [
+      {
+        "priority": "HIGH",
+        "action": "Standardize vendor naming conventions",
+        "details": "Found 1 vendor naming inconsistencies",
+        "examples": [
+          {
+            "type": "punctuation_variation",
+            "vendor1": "JAKES, INC.",
+            "vendor2": "JAKE'S, INC.",
+            "recommendation": "Standardize punctuation"
+          }
+        ]
+      }
+    ],
+    "consolidation": [],
+    "data_quality": [],
+    "pricing": []
+  }
+}
