@@ -219,7 +219,9 @@ def init_database():
                     description TEXT,
                     is_active BOOLEAN DEFAULT FALSE,
                     created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                    updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                    updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    effective_date TEXT,
+                    notes TEXT
                 )
             ''')
             
@@ -303,6 +305,20 @@ def init_database():
                     notes TEXT,
                     created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                     updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            ''')
+            
+            # Add vendor_descriptions table
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS vendor_descriptions (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    inventory_id INTEGER,
+                    vendor_name TEXT,
+                    vendor_description TEXT,
+                    item_code TEXT,
+                    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY (inventory_id) REFERENCES inventory (id),
+                    UNIQUE(inventory_id, vendor_name)
                 )
             ''')
             
