@@ -31,7 +31,7 @@
     <input type="text" id="recipe_cost_unit" name="recipe_cost_unit" value="{{ item.recipe_cost_unit }}">
     
     <label for="current_price">Current Price:</label>
-    <input type="number" step="0.01" id="current_price" name="current_price" value="{{ item.current_price }}">
+    <input type="number" step="0.01" id="current_price" name="current_price" value="{{ "%.2f"|format(item.current_price or 0) }}">
     
     <label for="yield_percent">Yield Percent:</label>
     <input type="number" id="yield_percent" name="yield_percent" value="{{ item.yield_percent }}">

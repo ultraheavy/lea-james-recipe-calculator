@@ -70,7 +70,7 @@
                         <input type="number" 
                                id="current_price" 
                                name="current_price" 
-                               value="{{ item.current_price }}"
+                               value="{{ "%.2f"|format(item.current_price or 0) }}"
                                class="form-control" 
                                step="0.01" 
                                min="0"

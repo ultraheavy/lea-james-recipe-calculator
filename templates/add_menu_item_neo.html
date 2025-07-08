@@ -23,7 +23,7 @@
                         <option value="">Choose a recipe...</option>
                         {% for recipe in recipes %}
                         <option value="{{ recipe.id }}" 
-                                data-cost="{{ recipe.food_cost or 0 }}"
+                                data-cost="{{ "%.2f"|format(recipe.food_cost or 0) }}"
                                 data-group="{{ recipe.recipe_group or 'Uncategorized' }}">
                             {{ recipe.recipe_name }} 
                             (Cost: ${{ "%.2f"|format(recipe.food_cost or 0) }})

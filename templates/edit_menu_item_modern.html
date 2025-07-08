@@ -101,7 +101,7 @@
                                    class="form-control pl-8" 
                                    step="0.01" 
                                    min="0" 
-                                   value="{{ item.menu_price }}"
+                                   value="{{ "%.2f"|format(item.menu_price or 0) }}"
                                    required
                                    onchange="calculateMargins()">
                         </div>
@@ -193,7 +193,7 @@
 </div>
 
 <script>
-let currentFoodCost = {{ item.recipe_food_cost or 0 }};
+let currentFoodCost = {{ "%.2f"|format(item.recipe_food_cost or 0) }};
 
 function updateRecipeCost() {
     const recipeSelect = document.getElementById('recipe_id');

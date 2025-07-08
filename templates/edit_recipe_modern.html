@@ -98,7 +98,7 @@
                                id="menu_price" 
                                name="menu_price" 
                                class="form-control" 
-                               value="{{ recipe.menu_price or '0.00' }}" 
+                               value="{{ "%.2f"|format(recipe.menu_price or 0) }}" 
                                min="0" 
                                step="0.01">
                     </div>
@@ -293,7 +293,7 @@
 // Auto-recalculate food cost percentage when menu price changes
 document.getElementById('menu_price').addEventListener('input', function() {
     const menuPrice = parseFloat(this.value) || 0;
-    const foodCost = {{ recipe.food_cost or 0 }};
+    const foodCost = {{ "%.2f"|format(recipe.food_cost or 0) }};
     
     if (menuPrice > 0) {
         const percentage = (foodCost / menuPrice * 100).toFixed(1);
