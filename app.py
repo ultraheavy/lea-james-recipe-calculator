@@ -1909,6 +1909,106 @@ def toggle_menu_item(menu_id):
     
     return redirect(url_for('edit_menu', menu_id=menu_id))
 
+@app.route('/menus_mgmt/<int:menu_id>/items/bulk_update', methods=['POST'])
+def bulk_update_menu_items(menu_id):
+    """Handle bulk updates for menu items"""
+    data = request.get_json()
+    
+    if not data or 'items' not in data:
+        return jsonify({'error': 'No items provided'}), 400
+    
+    with get_db() as conn:
+        cursor = conn.cursor()
+        
+        # Process each item
+        for item in data['items']:
+            menu_item_id = item.get('item_id')
+            action = item.get('action')
+            category = item.get('category', 'Uncategorized')
+            override_price = item.get('override_price')
+            
+            if action == 'add':
+                # First check if relationship exists
+                existing = cursor.execute('''
+                    SELECT id FROM menu_menu_items 
+                    WHERE menu_id = ? AND menu_item_id = ?
+                ''', (menu_id, menu_item_id)).fetchone()
+                
+                if existing:
+                    # Update existing
+                    cursor.execute('''
+                        UPDATE menu_menu_items 
+                        SET category = ?, override_price = ?
+                        WHERE menu_id = ? AND menu_item_id = ?
+                    ''', (category, override_price if override_price else None, menu_id, menu_item_id))
+                else:
+                    # Insert new
+                    cursor.execute('''
+                        INSERT INTO menu_menu_items 
+                        (menu_id, menu_item_id, category, sort_order, override_price)
+                        VALUES (?, ?, ?, 0, ?)
+                    ''', (menu_id, menu_item_id, category, override_price if override_price else None))
+            else:  # action == 'remove'
+                cursor.execute('''
+                    DELETE FROM menu_menu_items 
+                    WHERE menu_id = ? AND menu_item_id = ?
+                ''', (menu_id, menu_item_id))
+        
+        conn.commit()
+    
+    return jsonify({'success': True, 'redirect': url_for('edit_menu', menu_id=menu_id)})
+
+@app.route('/menus_mgmt/<int:menu_id>/delete', methods=['POST'])
+def delete_menu(menu_id):
+    """Safely delete a menu with dependency checks"""
+    with get_db() as conn:
+        cursor = conn.cursor()
+        
+        # Check menu details and dependencies
+        menu = cursor.execute('SELECT * FROM menus WHERE id = ?', (menu_id,)).fetchone()
+        if not menu:
+            return jsonify({'error': 'Menu not found'}), 404
+        
+        # Don't allow deletion of Current Menu
+        if menu['menu_name'] == 'Current Menu':
+            return jsonify({'error': 'Cannot delete the Current Menu'}), 403
+        
+        # Count associated items
+        item_count = cursor.execute('''
+            SELECT COUNT(*) FROM menu_menu_items WHERE menu_id = ?
+        ''', (menu_id,)).fetchone()[0]
+        
+        # Get confirmation if needed
+        if 'confirm' not in request.form and item_count > 0:
+            return jsonify({
+                'confirm_needed': True,
+                'menu_name': menu['menu_name'],
+                'item_count': item_count,
+                'message': f'This menu contains {item_count} items. Are you sure you want to delete it?'
+            })
+        
+        # Perform deletion
+        try:
+            # Delete menu-item associations first (cascade)
+            cursor.execute('DELETE FROM menu_menu_items WHERE menu_id = ?', (menu_id,))
+            
+            # Delete menu categories
+            cursor.execute('DELETE FROM menu_categories WHERE menu_id = ?', (menu_id,))
+            
+            # Delete the menu
+            cursor.execute('DELETE FROM menus WHERE id = ?', (menu_id,))
+            
+            conn.commit()
+            
+            return jsonify({
+                'success': True,
+                'message': f'Menu "{menu["menu_name"]}" has been deleted',
+                'redirect': url_for('menus_mgmt')
+            })
+            
+        except Exception as e:
+            return jsonify({'error': f'Failed to delete menu: {str(e)}'}), 500
+
 # Error handlers for production
 @app.errorhandler(404)
 def not_found(error):

@@ -264,15 +264,15 @@ table th,
 table td {
   padding: var(--space-sm, 8px) var(--space-md, 12px);
   text-align: left;
-  border-bottom: 1px solid var(--border-color, #e5e7eb);
+  border-bottom: 1px solid var(--gray-200, #e5e7eb);
   vertical-align: middle;
 }
 
 table th {
-  background: var(--background-secondary, #f8fafc);
+  background: var(--bg-secondary, #f8fafc);
   font-weight: 600;
-  color: var(--text-secondary, #374151);
-  border-bottom: 2px solid var(--border-color, #e5e7eb);
+  color: var(--text-primary, #374151);
+  border-bottom: 2px solid var(--gray-200, #e5e7eb);
   white-space: nowrap;
 }
 
@@ -281,7 +281,7 @@ table td {
 }
 
 table tr:hover {
-  background: var(--background-tertiary, #f9fafb);
+  background: var(--bg-secondary, #f9fafb);
 }
 
 /* Mobile table styles */

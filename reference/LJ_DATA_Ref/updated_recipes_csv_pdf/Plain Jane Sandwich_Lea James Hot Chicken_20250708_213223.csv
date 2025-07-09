@@ -1,0 +1,16 @@
+﻿Location,Lea James Hot Chicken,,,,Date & Time,07/08/2025 9:32,
+Recipe Name,Plain Jane Sandwich,,,,,,
+,,,,,,,
+Type,Serving,Serving Size,Prep Time,Cook Time,,,
+Main,,1 ea, mins, mins,,,
+,,,,,,,
+Menu Price,Gross Margin,Food Cost,Food Cost%,Labor Cost,Labor Cost%,Prime Cost,PerServing
+$15,79.05220708657478%,$3.142168937013784,20.94779291342523%,$0.00,0.00%,$3.142168937013784,$3.142168937013784/ea
+,,,,,,,
+Ingredient,Type,Measurement,Yield,Usable Yield,Cost,,
+"Protein, Chicken, Tenders",Product,8 oz,100%,100%,$2.005,,
+"Dry Goods, Bread,  Burger Bun",Product,1 ea,100%,100%,$0.62,,
+"Dry Goods, Mayonnaise, Heavy",UOM not available,,,,,,
+"Dry Goods, Chicken  Breading, Lea Jane Recipe",Product,2 oz,100%,100%,$0.237125,,
+"Dry Goods, Pickle, DIll, Slices",Product,2 oz,100%,100%,$0.174648037542885,,
+French Fries Recipe,PrepRecipe,1 each,100%,100%,$0.10539589947089925,,
