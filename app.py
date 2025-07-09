@@ -1930,27 +1930,27 @@ def bulk_update_menu_items(menu_id):
             if action == 'add':
                 # First check if relationship exists
                 existing = cursor.execute('''
-                    SELECT id FROM menu_menu_items 
+                    SELECT assignment_id FROM menu_assignments 
                     WHERE menu_id = ? AND menu_item_id = ?
                 ''', (menu_id, menu_item_id)).fetchone()
                 
                 if existing:
                     # Update existing
                     cursor.execute('''
-                        UPDATE menu_menu_items 
-                        SET category = ?, override_price = ?
+                        UPDATE menu_assignments 
+                        SET category_section = ?, price_override = ?
                         WHERE menu_id = ? AND menu_item_id = ?
                     ''', (category, override_price if override_price else None, menu_id, menu_item_id))
                 else:
                     # Insert new
                     cursor.execute('''
-                        INSERT INTO menu_menu_items 
-                        (menu_id, menu_item_id, category, sort_order, override_price)
+                        INSERT INTO menu_assignments 
+                        (menu_id, menu_item_id, category_section, sort_order, price_override)
                         VALUES (?, ?, ?, 0, ?)
                     ''', (menu_id, menu_item_id, category, override_price if override_price else None))
             else:  # action == 'remove'
                 cursor.execute('''
-                    DELETE FROM menu_menu_items 
+                    DELETE FROM menu_assignments 
                     WHERE menu_id = ? AND menu_item_id = ?
                 ''', (menu_id, menu_item_id))
         
@@ -1975,7 +1975,7 @@ def delete_menu(menu_id):
         
         # Count associated items
         item_count = cursor.execute('''
-            SELECT COUNT(*) FROM menu_menu_items WHERE menu_id = ?
+            SELECT COUNT(*) FROM menu_assignments WHERE menu_id = ?
         ''', (menu_id,)).fetchone()[0]
         
         # Get confirmation if needed
@@ -2034,7 +2034,12 @@ print("Initializing database...")
 os.makedirs('templates', exist_ok=True)
 
 # Always initialize database when module loads
-init_database()
+# Check if database exists and is properly migrated before initializing
+if not os.path.exists(DATABASE) or os.getenv('FORCE_DB_INIT') == 'true':
+    print("Initializing database (new deployment or forced)...")
+    init_database()
+else:
+    print("Database exists, skipping initialization...")
 
 if __name__ == '__main__':
     # Production mode
