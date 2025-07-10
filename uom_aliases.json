@@ -3,52 +3,29 @@
     "ct": "each",
     "count": "each",
     "piece": "each",
+    "pc": "each",
     "slice": "each",
     "btl": "each",
     "bottle": "each",
-    "bg": "bag",
     "jug": "each",
     "unit": "each",
     "portions": "each",
-    "loaf": "each",
-    
     "fl": "ml",
-    "fl oz": "ml",
-    "fl_oz": "ml",
-    "floz": "ml",
-    "fl-oz": "ml",
-    "fl ounce": "ml",
-    
-    "tbsp": "ml",
-    "tablespoon": "ml",
-    "tblsp": "ml",
-    
-    "tsp": "ml",
-    "teaspoon": "ml",
-    
+    "fl oz": "fl oz",
+    "fl_oz": "fl oz",
+    "floz": "fl oz",
+    "fl ounce": "fl oz",
     "ltr": "l",
     "ltr.": "l",
     "liter": "l",
-    
     "gal.": "gal",
     "gallon": "gal",
-    "gal": "gal",
-    
+    "lb": "lb",
     "pound": "lb",
+    "oz": "oz",
     "ounce": "oz",
-    "gram": "g",
-    "kilogram": "kg",
-    
-    "quart": "qt",
-    "qt": "qt",
-    "pint": "pt",
-    "pt": "pt",
-    "cup": "cup"
-  },
-  "canonical_units": {
-    "weight": ["g", "kg", "mg", "lb", "oz"],
-    "volume": ["ml", "l", "cup", "gal", "qt", "pt"],
-    "count": ["each", "dozen", "case", "pack", "can", "jar", "bag", "box", "carton", "container", "loaf", "bunch"]
+    "bg": "bag",
+    "pk": "pack"
   },
   "conversions": {
     "tbsp_to_ml": 14.786,
@@ -58,8 +35,29 @@
     "pt_to_ml": 473.176,
     "qt_to_ml": 946.353,
     "gal_to_ml": 3785.412,
-    "gal_to_l": 3.785,
     "lb_to_g": 453.592,
-    "oz_to_g": 28.350
+    "oz_to_g": 28.35
+  },
+  "canonical_units": {
+    "weight": [
+      "g",
+      "kg",
+      "lb",
+      "oz"
+    ],
+    "volume": [
+      "ml",
+      "l",
+      "fl oz",
+      "gal",
+      "qt",
+      "pt",
+      "cup"
+    ],
+    "count": [
+      "each",
+      "bag",
+      "pack"
+    ]
   }
 }
