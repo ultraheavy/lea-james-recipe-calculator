@@ -3,20 +3,23 @@
 {% block content %}
 <div class="container-fluid">
     <!-- Compact Header with Stats -->
-    <div style="background: white; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+    <div class="stats-container">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
             <div>
-                <h1 style="color: #1f2937; margin: 0; font-size: 1.875rem;">Menu Management</h1>
-                <div style="display: flex; gap: 2rem; margin-top: 0.5rem;">
-                    <span style="color: #6b7280; font-size: 0.875rem;">
-                        <strong style="color: #374151;">{{ menus|length }}</strong> Total Menus
-                    </span>
-                    <span style="color: #6b7280; font-size: 0.875rem;">
-                        <strong style="color: #10b981;">{{ menus|selectattr('is_active')|list|length }}</strong> Active
-                    </span>
-                    <span style="color: #6b7280; font-size: 0.875rem;">
-                        <strong style="color: #f59e0b;">{{ menus|sum(attribute='item_count') }}</strong> Total Items
-                    </span>
+                <h1 style="color: var(--text-primary); margin: 0; font-size: 1.875rem;">Menu Management</h1>
+                <div class="stats-row">
+                    <div class="stat-item stat-total">
+                        <span class="stat-value">{{ menus|length }}</span>
+                        <span class="stat-label">Total Menus</span>
+                    </div>
+                    <div class="stat-item stat-active">
+                        <span class="stat-value">{{ menus|selectattr('is_active')|list|length }}</span>
+                        <span class="stat-label">Active Menus</span>
+                    </div>
+                    <div class="stat-item stat-items">
+                        <span class="stat-value">{{ menus|sum(attribute='item_count') }}</span>
+                        <span class="stat-label">Total Assignments</span>
+                    </div>
                 </div>
             </div>
             <a href="{{ url_for('create_menu') }}" style="background: #6366f1; color: white; padding: 0.625rem 1.25rem; border-radius: 6px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 500; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
@@ -26,48 +29,48 @@
     </div>
 
     <!-- Menu Table -->
-    <div style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
-        <table style="width: 100%; border-collapse: collapse;">
+    <div style="background: var(--bg-primary); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow);">
+        <table class="table" style="width: 100%; border-collapse: collapse;">
             <thead>
-                <tr style="background-color: #f9fafb; border-bottom: 2px solid #e5e7eb;">
-                    <th style="text-align: left; padding: 1rem 1.5rem; font-weight: 600; color: #374151; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Menu Name</th>
-                    <th style="text-align: left; padding: 1rem 1.5rem; font-weight: 600; color: #374151; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Description</th>
-                    <th style="text-align: center; padding: 1rem 1.5rem; font-weight: 600; color: #374151; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Items</th>
-                    <th style="text-align: center; padding: 1rem 1.5rem; font-weight: 600; color: #374151; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Status</th>
-                    <th style="text-align: right; padding: 1rem 1.5rem; font-weight: 600; color: #374151; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Actions</th>
+                <tr style="background-color: var(--bg-secondary); border-bottom: 2px solid var(--gray-200);">
+                    <th style="text-align: left; padding: 1rem 1.5rem; font-weight: 600; color: var(--text-primary); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Menu Name</th>
+                    <th style="text-align: left; padding: 1rem 1.5rem; font-weight: 600; color: var(--text-primary); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Description</th>
+                    <th style="text-align: center; padding: 1rem 1.5rem; font-weight: 600; color: var(--text-primary); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Items</th>
+                    <th style="text-align: center; padding: 1rem 1.5rem; font-weight: 600; color: var(--text-primary); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Status</th>
+                    <th style="text-align: right; padding: 1rem 1.5rem; font-weight: 600; color: var(--text-primary); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Actions</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="background-color: var(--bg-primary);">
                 {% set accent_colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#84cc16'] %}
                 {% for menu in menus %}
-                <tr style="border-bottom: 1px solid #e5e7eb; transition: background-color 0.15s;">
+                <tr style="border-bottom: 1px solid var(--gray-200); transition: background-color 0.15s;">
                     <td style="padding: 1.25rem 1.5rem;">
                         <div style="display: flex; align-items: center; gap: 0.75rem;">
                             <div style="width: 4px; height: 40px; background-color: {{ accent_colors[loop.index0 % accent_colors|length] }}; border-radius: 2px;"></div>
                             <div>
-                                <h4 style="margin: 0; font-size: 1rem; color: #1f2937; font-weight: 600;">{{ menu.menu_name }}</h4>
-                                <p style="margin: 0.125rem 0 0 0; font-size: 0.875rem; color: #6b7280;">ID: {{ menu.id }}</p>
+                                <h4 style="margin: 0; font-size: 1rem; color: var(--text-primary); font-weight: 600;">{{ menu.menu_name }}</h4>
+                                <p style="margin: 0.125rem 0 0 0; font-size: 0.875rem; color: var(--text-secondary);">ID: {{ menu.id }}</p>
                             </div>
                         </div>
                     </td>
-                    <td style="padding: 1.25rem 1.5rem; color: #6b7280; font-size: 0.875rem; max-width: 300px;">
+                    <td style="padding: 1.25rem 1.5rem; color: var(--text-secondary); font-size: 0.875rem; max-width: 300px;">
                         {{ menu.description or 'No description provided' }}
                     </td>
                     <td style="padding: 1.25rem 1.5rem; text-align: center;">
-                        <span style="display: inline-flex; align-items: center; gap: 0.375rem; background-color: #f3f4f6; color: #374151; padding: 0.375rem 0.75rem; border-radius: 6px; font-size: 0.875rem; font-weight: 500;">
+                        <span style="display: inline-flex; align-items: center; gap: 0.375rem; background-color: var(--bg-secondary); color: var(--text-primary); padding: 0.375rem 0.75rem; border-radius: 6px; font-size: 0.875rem; font-weight: 500;">
                             <i class="fas fa-utensils" style="font-size: 0.75rem;"></i>
                             {{ menu.item_count }}
                         </span>
                     </td>
                     <td style="padding: 1.25rem 1.5rem; text-align: center;">
                         {% if menu.is_active %}
-                            <span style="display: inline-flex; align-items: center; gap: 0.375rem; background-color: #d1fae5; color: #065f46; padding: 0.375rem 0.75rem; border-radius: 6px; font-size: 0.875rem; font-weight: 500;">
-                                <span style="width: 6px; height: 6px; background-color: #10b981; border-radius: 50%;"></span>
+                            <span class="status-badge active">
+                                <span class="status-dot"></span>
                                 Active
                             </span>
                         {% else %}
-                            <span style="display: inline-flex; align-items: center; gap: 0.375rem; background-color: #f3f4f6; color: #6b7280; padding: 0.375rem 0.75rem; border-radius: 6px; font-size: 0.875rem; font-weight: 500;">
-                                <span style="width: 6px; height: 6px; background-color: #9ca3af; border-radius: 50%;"></span>
+                            <span class="status-badge inactive">
+                                <span class="status-dot"></span>
                                 Inactive
                             </span>
                         {% endif %}

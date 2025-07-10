@@ -27,7 +27,7 @@ class CostCalculator:
         
         # Get recipe info
         recipe = cursor.execute("""
-            SELECT recipe_name, prep_recipe_yield, prep_recipe_yield_uom
+            SELECT recipe_name, portions, portions_uom
             FROM recipes
             WHERE id = ?
         """, (recipe_id,)).fetchone()

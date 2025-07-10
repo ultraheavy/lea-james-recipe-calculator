@@ -1,0 +1,17 @@
+Toast POS Compliance Check|0|Should be 0
+Reasonable Food Costs|1|Should be 0
+V3 Menu Count|1|Should be 1
+Orphaned Ingredients|0|Should be 0
+Recipe Type Distribution|PrepRecipe|25
+Recipe Type Distribution|Recipe|41
+Prep Recipes Without Menu Prices|25|Should equal total prep recipes
+Final Recipes With Menu Items|41|31
+Menu Item Assignments|Current Menu|2
+Menu Item Assignments|Master Menu|35
+Menu Item Assignments|V3 Planning Menu|2
+Ingredients With Costs|210|190|20
+Migration Summary|Recipes|66
+Migration Summary|Menu Items|35
+Migration Summary|Menus|3
+Migration Summary|Menu Assignments|39
+Migration Summary|Recipe Ingredients|210

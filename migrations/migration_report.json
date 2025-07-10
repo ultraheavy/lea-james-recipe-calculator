@@ -1,0 +1,164 @@
+{
+  "timestamp": "2025-07-09T00:40:45.532273",
+  "recipes_migrated": 66,
+  "menu_items_migrated": 35,
+  "menus_migrated": 3,
+  "ingredients_migrated": 210,
+  "problems": [
+    {
+      "recipe_name": "FC-03 Whole Wings",
+      "item_count": 2,
+      "items": "Whole Wings, FC-03 Whole Wings"
+    },
+    {
+      "recipe_name": "FT-02 Loaded Fries",
+      "item_count": 2,
+      "items": "Loaded Fries, FT-02 Loaded Fries"
+    },
+    {
+      "recipe_name": "French Fries - Portion",
+      "item_count": 2,
+      "items": "French Fries - Portion, French Fries - Portion"
+    },
+    {
+      "recipe_name": "DP-05 Habanero Ranch",
+      "item_count": 3,
+      "items": "DP-05 Habanero Ranch, Habanero Ranch, DP-05 Habanero Ranch"
+    },
+    {
+      "recipe_name": "DP-04 Hot Honey",
+      "item_count": 3,
+      "items": "DP-04 Hot Honey, Hot Honey, DP-04 Hot Honey"
+    },
+    {
+      "recipe_name": "DP-03 Honey Mustard",
+      "item_count": 3,
+      "items": "DP-03 Honey Mustard, Honey Mustard, DP-03 Honey Mustard"
+    },
+    {
+      "recipe_name": "DP-02 Comeback Sauce",
+      "item_count": 3,
+      "items": "DP-02 Comeback Sauce, Comeback Sauce, DP-02 Comeback Sauce"
+    },
+    {
+      "recipe_name": "DP-01 Charred-Onion Ranch Dip",
+      "item_count": 3,
+      "items": "DP-01 Charred-Onion Ranch Dip, Charred-Onion Ranch, DP-01 Charred-Onion Ranch Dip"
+    },
+    {
+      "recipe_name": "SD-04 Fried Corn Ribs",
+      "item_count": 3,
+      "items": "SD-04 Fried Corn Ribs, Fried Corn Ribs, SD-04 Fried Corn Ribs"
+    },
+    {
+      "recipe_name": "SD-03 LJ Mac",
+      "item_count": 3,
+      "items": "SD-03 LJ Mac, LJ Mac, SD-03 LJ Mac"
+    },
+    {
+      "recipe_name": "SD-02 Extra-Crispy Fries with Ranch Powder",
+      "item_count": 4,
+      "items": "SD-02 Extra-Crispy Fries with Ranch Powder, Extra-Crispy Fries, SD-02 Extra-Crispy Fries with Ranch Powder, SD-02 Extra-Crispy Fries with Ranch Powder"
+    },
+    {
+      "recipe_name": "SD-01 Kale & Cabbage Slaw",
+      "item_count": 3,
+      "items": "SD-01 Kale & Cabbage Slaw, Kale & Cabbage Slaw, SD-01 Kale & Cabbage Slaw"
+    },
+    {
+      "recipe_name": "FT-01 Chicken Waffle Cone",
+      "item_count": 2,
+      "items": "Chicken Waffle Cone, FT-01 Chicken Waffle Cone"
+    },
+    {
+      "recipe_name": "FC-01 Thicc'n Tenders",
+      "item_count": 2,
+      "items": "Thicc'n Tenders, FC-01 Thicc'n Tenders"
+    },
+    {
+      "recipe_name": "FC-04 Fried Chicken Tender",
+      "item_count": 2,
+      "items": "Fried Chicken Tender, FC-04 Fried Chicken Tender"
+    },
+    {
+      "recipe_name": "S-03 Plain Jane Sandwich",
+      "item_count": 2,
+      "items": "Plain Jane Sandwich, S-03 Plain Jane Sandwich"
+    },
+    {
+      "recipe_name": "S-01 OG Nashville Chicken",
+      "item_count": 2,
+      "items": "S-01 OG Nashville Chicken,  S-01 OG Nashville Chicken"
+    },
+    {
+      "recipe_name": "Hot Honey - portion",
+      "item_count": 2,
+      "items": "Hot Honey - portion, Hot Honey - portion"
+    },
+    {
+      "recipe_name": "Lemon Pepper Sauce - Portion",
+      "item_count": 2,
+      "items": "Lemon Pepper Sauce - Portion, Lemon Pepper Sauce - Portion"
+    },
+    {
+      "recipe_name": "Comeback Sauce - Portion",
+      "item_count": 2,
+      "items": "Comeback Sauce - Portion, Comeback Sauce - Portion"
+    },
+    {
+      "recipe_name": "Hot Honey Chicken Wings",
+      "item_count": 2,
+      "items": "Hot Honey Chicken Wings, Hot Honey Chicken Wings"
+    },
+    {
+      "recipe_name": "Chicken Wings",
+      "item_count": 2,
+      "items": "Chicken Wings, Chicken Wings"
+    },
+    {
+      "recipe_name": "Buffalo Sauce - portion",
+      "item_count": 2,
+      "items": "Buffalo Sauce - portion, Buffalo Sauce - portion"
+    },
+    {
+      "recipe_name": "Hot Fish",
+      "item_count": 2,
+      "items": "Hot Fish, Hot Fish"
+    },
+    {
+      "recipe_name": "BBQ Sauce Chicken Wings",
+      "item_count": 2,
+      "items": "BBQ Sauce Chicken Wings, BBQ Sauce Chicken Wings"
+    },
+    {
+      "recipe_name": "Buffalo Chicken Wings",
+      "item_count": 2,
+      "items": "Buffalo Chicken Wings, Buffalo Chicken Wings"
+    },
+    {
+      "recipe_name": "Lemon Pepper Chicken Wings",
+      "item_count": 2,
+      "items": "Lemon Pepper Chicken Wings, Lemon Pepper Chicken Wings"
+    },
+    {
+      "recipe_name": "Mac & Cheese",
+      "item_count": 2,
+      "items": "Mac & Cheese, Mac & Cheese"
+    },
+    {
+      "recipe_name": "Collard Greens - Side Portion",
+      "item_count": 2,
+      "items": "Collard Greens - Side Portion, Collard Greens - Side Portion"
+    },
+    {
+      "recipe_name": "Kale Kimchi - Side Portion",
+      "item_count": 2,
+      "items": "Kale Kimchi - Side Portion, Kale Kimchi - Side Portion"
+    },
+    {
+      "recipe_name": "Tenders",
+      "item_count": 2,
+      "items": "Tenders, Tenders"
+    }
+  ]
+}
