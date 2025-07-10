@@ -187,6 +187,7 @@
     {% endif %}
 </div>
 
+<script src="{{ url_for('static', filename='js/view-switcher.js') }}"></script>
 <script>
 // Initialize category icons
 document.addEventListener('DOMContentLoaded', function() {
@@ -285,12 +286,12 @@ function generateInventoryCards() {
         card.setAttribute('data-description', row.getAttribute('data-description'));
         
         // Extract data - matching current table structure
-        const iconContainer = cells[0].querySelector('.icon-container').cloneNode(true);
-        const itemName = cells[0].querySelector('.item-name').textContent;
-        const itemCode = cells[0].querySelector('.text-xs').textContent;
+        const iconContainer = cells[0].querySelector('.icon-container');
+        const itemNameEl = cells[0].querySelector('.item-name');
+        const itemName = itemNameEl ? itemNameEl.textContent : 'Unknown Item';
         const vendorDesc = cells[1].textContent.trim(); // Vendor Description
         const vendor = cells[2].textContent.trim();     // Vendor
-        const vendorCode = cells[3].textContent.trim(); // Vendor Code
+        const vendorCode = cells[3].textContent.trim(); // Vendor Code (now the item code)
         const price = cells[5].textContent.trim();      // Price (index 5)
         const packSize = cells[6].textContent.trim();   // Pack Size
         const actions = cells[7].innerHTML;             // Actions (index 7)
@@ -298,11 +299,11 @@ function generateInventoryCards() {
         card.innerHTML = `
             <div class="item-card-header">
                 <div class="item-card-icon">
-                    ${iconContainer.outerHTML}
+                    ${iconContainer ? iconContainer.outerHTML : '<div class="food-icon icon-misc"></div>'}
                 </div>
                 <div class="item-card-title">
                     <h3>${itemName}</h3>
-                    <div class="item-card-subtitle">${itemCode}</div>
+                    <div class="item-card-subtitle">${vendorCode}</div>
                 </div>
             </div>
             <div class="item-card-body">
@@ -351,23 +352,23 @@ function generateInventoryList() {
         listItem.setAttribute('data-description', row.getAttribute('data-description'));
         
         // Extract data - matching current table structure
-        const iconContainer = cells[0].querySelector('.icon-container').cloneNode(true);
-        const itemName = cells[0].querySelector('.item-name').textContent;
-        const itemCode = cells[0].querySelector('.text-xs').textContent;
+        const iconContainer = cells[0].querySelector('.icon-container');
+        const itemNameEl = cells[0].querySelector('.item-name');
+        const itemName = itemNameEl ? itemNameEl.textContent : 'Unknown Item';
         const vendorDesc = cells[1].textContent.trim(); // Vendor Description
         const vendor = cells[2].textContent.trim();     // Vendor
-        const vendorCode = cells[3].textContent.trim(); // Vendor Code
+        const vendorCode = cells[3].textContent.trim(); // Vendor Code (now the item code)
         const price = cells[5].textContent.trim();      // Price (index 5)
         const packSize = cells[6].textContent.trim();   // Pack Size
         const actions = cells[7].innerHTML;             // Actions (index 7)
         
         listItem.innerHTML = `
             <div class="list-item-icon">
-                ${iconContainer.outerHTML}
+                ${iconContainer ? iconContainer.outerHTML : '<div class="food-icon icon-misc"></div>'}
             </div>
             <div class="list-item-content">
                 <div class="list-item-title">${itemName}</div>
-                <div class="list-item-subtitle">${itemCode} • ${vendor} • ${packSize}</div>
+                <div class="list-item-subtitle">${vendorCode} • ${vendor} • ${packSize}</div>
             </div>
             <div class="list-item-meta">
                 <div class="list-item-price">${price}</div>
@@ -381,12 +382,17 @@ function generateInventoryList() {
     });
 }
 
+// Store original filterTable before overriding
+const originalFilterTable = window.filterTable;
+
 // Override filterTable to work with all views
-const originalFilterTable = filterTable;
-filterTable = function() {
-    originalFilterTable();
+window.filterTable = function() {
+    // Call original filterTable if it exists and is different from current
+    if (originalFilterTable && originalFilterTable !== window.filterTable) {
+        originalFilterTable();
+    }
     
-    // Also filter cards and list items
+    // Get filter values
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
     const categoryFilter = document.getElementById('categoryFilter').value.toLowerCase();
     const vendorFilter = document.getElementById('vendorFilter').value.toLowerCase();

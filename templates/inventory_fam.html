@@ -19,6 +19,11 @@
         </a>
     </div>
     
+    <!-- View Controls -->
+    <div class="view-controls mb-4">
+        <div id="viewSwitcher"></div>
+    </div>
+    
     <!-- Search and Filters -->
     <div class="fam-card mb-6">
         <div class="fam-card-body">
@@ -62,10 +67,13 @@
         </div>
     </div>
     
-    <!-- Inventory Table -->
-    <div class="fam-card">
-        <div class="table-container">
-            <table class="fam-table" id="inventoryTable">
+    <!-- View Content -->
+    <div class="view-content" id="inventoryContent">
+        <!-- Table View -->
+        <div class="table-view" id="tableView">
+            <div class="fam-card">
+                <div class="table-container">
+                    <table class="fam-table" id="inventoryTable">
                 <thead>
                     <tr>
                         <th class="hide-mobile">Code</th>
@@ -149,8 +157,16 @@
                     </tr>
                     {% endfor %}
                 </tbody>
-            </table>
+                    </table>
+                </div>
+            </div>
         </div>
+        
+        <!-- Card View (will be populated by JavaScript) -->
+        <div class="card-view" id="cardView" style="display: none;"></div>
+        
+        <!-- List View (will be populated by JavaScript) -->
+        <div class="list-view" id="listView" style="display: none;"></div>
     </div>
     
     {% if not items %}
@@ -168,6 +184,7 @@
     {% endif %}
 </div>
 
+<script src="{{ url_for('static', filename='js/view-switcher.js') }}"></script>
 <script>
 // Initialize category icons
 document.addEventListener('DOMContentLoaded', function() {
@@ -180,7 +197,153 @@ document.addEventListener('DOMContentLoaded', function() {
             iconContainer.appendChild(icon);
         }
     });
+    
+    // Initialize view switcher
+    const viewSwitcher = new ViewSwitcher('viewSwitcher', {
+        defaultView: 'table',
+        views: ['table', 'card', 'list'],
+        onViewChange: function(view) {
+            // Hide all views
+            document.getElementById('tableView').style.display = 'none';
+            document.getElementById('cardView').style.display = 'none';
+            document.getElementById('listView').style.display = 'none';
+            
+            // Show selected view
+            if (view === 'table') {
+                document.getElementById('tableView').style.display = 'block';
+            } else if (view === 'card') {
+                const cardView = document.getElementById('cardView');
+                cardView.style.display = 'block';
+                
+                // Generate cards if not already done
+                if (!cardView.hasChildNodes()) {
+                    generateInventoryCards();
+                }
+            } else if (view === 'list') {
+                const listView = document.getElementById('listView');
+                listView.style.display = 'block';
+                
+                // Generate list if not already done
+                if (!listView.hasChildNodes()) {
+                    generateInventoryList();
+                }
+            }
+        }
+    });
 });
+
+// Generate card view for inventory
+function generateInventoryCards() {
+    const cardView = document.getElementById('cardView');
+    const tbody = document.querySelector('#inventoryTable tbody');
+    const rows = tbody.querySelectorAll('tr');
+    
+    const cardGrid = document.createElement('div');
+    cardGrid.className = 'fam-card-grid';
+    
+    rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        if (cells.length < 7) return;
+        
+        const card = document.createElement('div');
+        card.className = 'fam-item-card';
+        card.setAttribute('data-category', row.getAttribute('data-category'));
+        card.setAttribute('data-vendor', row.getAttribute('data-vendor'));
+        card.setAttribute('data-description', row.getAttribute('data-description'));
+        
+        const iconContainer = cells[1].querySelector('.icon-container');
+        const itemNameEl = cells[1].querySelector('.fam-item-name');
+        const itemName = itemNameEl ? itemNameEl.textContent : 'Unknown Item';
+        const itemCode = cells[0].textContent.trim();
+        const vendor = cells[2].textContent.trim();
+        const price = cells[3].textContent.trim();
+        const unit = cells[4].textContent.trim();
+        const packSize = cells[5].textContent.trim();
+        const actions = cells[6].innerHTML;
+        
+        card.innerHTML = `
+            <div class="fam-item-card-header">
+                <div class="fam-item-card-icon">
+                    ${iconContainer ? iconContainer.outerHTML : '<div class="icon-container"></div>'}
+                </div>
+                <div class="fam-item-card-title">
+                    <h3>${itemName}</h3>
+                    <div class="fam-item-card-subtitle">${itemCode}</div>
+                </div>
+            </div>
+            <div class="fam-item-card-body">
+                <div class="fam-item-card-row">
+                    <span class="fam-item-card-label">Vendor</span>
+                    <span class="fam-item-card-value">${vendor}</span>
+                </div>
+                <div class="fam-item-card-row">
+                    <span class="fam-item-card-label">Price</span>
+                    <span class="fam-item-card-value fam-price">${price}</span>
+                </div>
+                <div class="fam-item-card-row">
+                    <span class="fam-item-card-label">Unit</span>
+                    <span class="fam-item-card-value">${unit}</span>
+                </div>
+                <div class="fam-item-card-row">
+                    <span class="fam-item-card-label">Pack Size</span>
+                    <span class="fam-item-card-value">${packSize}</span>
+                </div>
+            </div>
+            <div class="fam-item-card-actions">
+                ${actions}
+            </div>
+        `;
+        
+        cardGrid.appendChild(card);
+    });
+    
+    cardView.appendChild(cardGrid);
+}
+
+// Generate list view for inventory
+function generateInventoryList() {
+    const listView = document.getElementById('listView');
+    const tbody = document.querySelector('#inventoryTable tbody');
+    const rows = tbody.querySelectorAll('tr');
+    
+    rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        if (cells.length < 7) return;
+        
+        const listItem = document.createElement('div');
+        listItem.className = 'fam-list-item';
+        listItem.setAttribute('data-category', row.getAttribute('data-category'));
+        listItem.setAttribute('data-vendor', row.getAttribute('data-vendor'));
+        listItem.setAttribute('data-description', row.getAttribute('data-description'));
+        
+        const iconContainer = cells[1].querySelector('.icon-container');
+        const itemNameEl = cells[1].querySelector('.fam-item-name');
+        const itemName = itemNameEl ? itemNameEl.textContent : 'Unknown Item';
+        const itemCode = cells[0].textContent.trim();
+        const vendor = cells[2].textContent.trim();
+        const price = cells[3].textContent.trim();
+        const unit = cells[4].textContent.trim();
+        const actions = cells[6].innerHTML;
+        
+        listItem.innerHTML = `
+            <div class="fam-list-item-icon">
+                ${iconContainer ? iconContainer.outerHTML : '<div class="icon-container"></div>'}
+            </div>
+            <div class="fam-list-item-content">
+                <div class="fam-list-item-title">${itemName}</div>
+                <div class="fam-list-item-subtitle">${itemCode} • ${vendor} • ${unit}</div>
+            </div>
+            <div class="fam-list-item-meta">
+                <div class="fam-list-item-price">${price}</div>
+                <div class="fam-list-item-actions">
+                    ${actions}
+                </div>
+            </div>
+        `;
+        
+        listView.appendChild(listItem);
+    });
+}
 
 // Table filtering
 function filterTable() {
@@ -207,6 +370,41 @@ function filterTable() {
         } else {
             row.style.display = 'none';
         }
+    });
+    
+    // Also filter cards and list items
+    const cards = document.querySelectorAll('.fam-item-card');
+    cards.forEach(card => {
+        const category = card.getAttribute('data-category') || '';
+        const vendor = card.getAttribute('data-vendor') || '';
+        const description = card.getAttribute('data-description') || '';
+        
+        const matchesSearch = !searchInput || 
+            description.includes(searchInput) || 
+            category.includes(searchInput) ||
+            vendor.includes(searchInput);
+            
+        const matchesCategory = !categoryFilter || category.includes(categoryFilter);
+        const matchesVendor = !vendorFilter || vendor.includes(vendorFilter);
+        
+        card.style.display = (matchesSearch && matchesCategory && matchesVendor) ? '' : 'none';
+    });
+    
+    const listItems = document.querySelectorAll('.fam-list-item');
+    listItems.forEach(item => {
+        const category = item.getAttribute('data-category') || '';
+        const vendor = item.getAttribute('data-vendor') || '';
+        const description = item.getAttribute('data-description') || '';
+        
+        const matchesSearch = !searchInput || 
+            description.includes(searchInput) || 
+            category.includes(searchInput) ||
+            vendor.includes(searchInput);
+            
+        const matchesCategory = !categoryFilter || category.includes(categoryFilter);
+        const matchesVendor = !vendorFilter || vendor.includes(vendorFilter);
+        
+        item.style.display = (matchesSearch && matchesCategory && matchesVendor) ? '' : 'none';
     });
 }
 </script>

@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for, make_response, flash
+from flask import Flask, render_template, request, jsonify, redirect, url_for, make_response, flash
 import sqlite3
 import os
 import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), 'app'))
 from unit_converter import UnitConverter
+from activity_logger import get_recent_activities, log_activity, init_activity_table
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
@@ -454,9 +456,65 @@ def set_theme(theme):
     response.set_cookie('theme', theme, max_age=60*60*24*365)  # 1 year
     return response
 
+def get_recent_changes_from_db():
+    """
+    Generate activity data from recent database changes when activity log is empty
+    This helps populate the dashboard when first starting to use the activity system
+    """
+    activities = []
+    
+    with get_db() as conn:
+        # Get recent recipes (use created_at/updated_at columns)
+        recent_recipes = conn.execute('''
+            SELECT recipe_name, created_at, updated_at 
+            FROM recipes 
+            WHERE created_at IS NOT NULL OR updated_at IS NOT NULL
+            ORDER BY COALESCE(updated_at, created_at) DESC 
+            LIMIT 3
+        ''').fetchall()
+        
+        for recipe in recent_recipes:
+            from activity_logger import get_time_ago
+            time_ago = get_time_ago(recipe['updated_at'] or recipe['created_at'])
+            activities.append({
+                'entity_type': 'recipe',
+                'entity_name': recipe['recipe_name'],
+                'action': 'Recipe updated' if recipe['updated_at'] != recipe['created_at'] else 'Recipe found in database',
+                'time_ago': time_ago,
+                'icon_class': 'icon-grains',
+                'activity_type': 'update' if recipe['updated_at'] != recipe['created_at'] else 'create'
+            })
+        
+        # Get recent inventory items (use created_date/updated_date columns)
+        recent_inventory = conn.execute('''
+            SELECT item_description, created_date, updated_date 
+            FROM inventory 
+            WHERE created_date IS NOT NULL OR updated_date IS NOT NULL
+            ORDER BY COALESCE(updated_date, created_date) DESC 
+            LIMIT 2
+        ''').fetchall()
+        
+        for item in recent_inventory:
+            from activity_logger import get_time_ago
+            time_ago = get_time_ago(item['updated_date'] or item['created_date'])
+            activities.append({
+                'entity_type': 'inventory',
+                'entity_name': item['item_description'],
+                'action': 'Inventory updated' if item['updated_date'] != item['created_date'] else 'Inventory found in database',
+                'time_ago': time_ago,
+                'icon_class': 'icon-produce',
+                'activity_type': 'update' if item['updated_date'] != item['created_date'] else 'create'
+            })
+    
+    # Sort all activities by most recent first (approximated)
+    return activities[:5]
+
 @app.route('/')
 def index():
-    """Dashboard with enhanced statistics"""
+    """Dashboard with enhanced statistics and real activity data"""
+    # Initialize activity table if it doesn't exist
+    init_activity_table()
+    
     with get_db() as conn:
         inventory_count = conn.execute('SELECT COUNT(*) as count FROM inventory').fetchone()['count']
         recipe_count = conn.execute('SELECT COUNT(*) as count FROM recipes').fetchone()['count']
@@ -470,8 +528,15 @@ def index():
         'vendor_count': vendor_count
     }
     
+    # Get real recent activities
+    recent_activities = get_recent_activities(limit=5)
+    
+    # If no activities exist, use recent database changes as fallback
+    if not recent_activities:
+        recent_activities = get_recent_changes_from_db()
+    
     theme = get_theme()
-    return render_template(f'index_{theme}.html', stats=stats)
+    return render_template(f'index_{theme}.html', stats=stats, recent_activities=recent_activities)
 
 @app.route('/inventory')
 def inventory():
@@ -515,7 +580,12 @@ def add_inventory():
                 float(request.form['yield_percent']) if request.form['yield_percent'] else 100,
                 request.form['product_categories']
             ))
+            inventory_id = conn.lastrowid
             conn.commit()
+            
+            # Log the inventory creation activity
+            from activity_logger import log_inventory_added
+            log_inventory_added(inventory_id, request.form['item_description'])
         
         return redirect(url_for('inventory'))
     
@@ -737,7 +807,12 @@ def add_recipe():
                 request.form.get('status', 'Draft')
             ))
             
+            recipe_id = cursor.lastrowid
             conn.commit()
+            
+            # Log the recipe creation activity
+            from activity_logger import log_recipe_created
+            log_recipe_created(recipe_id, request.form['recipe_name'])
         
         return redirect(url_for('recipes'))
     
@@ -1061,7 +1136,12 @@ def delete_recipe(recipe_id):
 
 @app.route('/menu_items')
 def menu():
-    """Menu management page with version support"""
+    """Redirect to unified menu management system"""
+    return redirect(url_for('menus'))
+
+@app.route('/menu_items_old_deprecated')
+def menu_old():
+    """Menu management page with version support - DEPRECATED"""
     with get_db() as conn:
         # Get menu versions
         menu_versions = conn.execute('''
@@ -1094,7 +1174,12 @@ def menu():
 
 @app.route('/menu_items/compare')
 def menu_compare():
-    """Compare menu versions side by side"""
+    """Redirect to unified menu management system"""
+    return redirect(url_for('menus'))
+
+@app.route('/menu_items/compare_old_deprecated')
+def menu_compare_old():
+    """Compare menu versions side by side - DEPRECATED"""
     with get_db() as conn:
         # Get all menu versions
         menu_versions = conn.execute('SELECT * FROM menu_versions ORDER BY id').fetchall()
@@ -1255,6 +1340,11 @@ def menu_compare():
 
 @app.route('/menu_items/versions')
 def menu_versions_page():
+    """Redirect to unified menu management system"""
+    return redirect(url_for('menus'))
+
+@app.route('/menu_items/versions_old_deprecated')
+def menu_versions_page_old():
     """Manage menu versions"""
     with get_db() as conn:
         versions = conn.execute('''
@@ -1360,6 +1450,19 @@ def delete_menu_version(version_id):
 
 @app.route('/menu_items/items/add', methods=['GET', 'POST'])
 def add_menu_item():
+    """Redirect to unified menu management - edit a menu to add items"""
+    # Get the Current Menu ID and redirect to its edit page
+    with get_db() as conn:
+        current_menu = conn.execute('''
+            SELECT id FROM menus WHERE menu_name = 'Current Menu' LIMIT 1
+        ''').fetchone()
+        if current_menu:
+            return redirect(url_for('edit_menu', menu_id=current_menu['id']))
+        else:
+            return redirect(url_for('menus'))
+
+@app.route('/menu_items/items/add_old_deprecated', methods=['GET', 'POST'])
+def add_menu_item_old():
     """Add a recipe to menu(s)"""
     if request.method == 'POST':
         with get_db() as conn:
@@ -1636,28 +1739,39 @@ def copy_menu_item(item_id):
 def pricing_analysis():
     """Pricing analysis and recommendations page"""
     with get_db() as conn:
-        # Get menu versions
-        menu_versions = conn.execute('SELECT * FROM menu_versions ORDER BY id').fetchall()
+        # Get menus from unified system
+        menus = conn.execute('SELECT * FROM menus ORDER BY sort_order').fetchall()
         
         # Get parameters
         target_food_cost = request.args.get('target_food_cost', type=float, default=30.0)
-        version_id = request.args.get('version_id', type=int)
+        menu_id = request.args.get('menu_id', type=int)
         
-        if not version_id:
-            # Get active version
-            active_version = conn.execute('''
-                SELECT id FROM menu_versions WHERE is_active = 1 LIMIT 1
+        if not menu_id:
+            # Get active menu (prioritize Current Menu)
+            active_menu = conn.execute('''
+                SELECT id FROM menus WHERE status = 'Active' 
+                ORDER BY CASE WHEN menu_name = 'Current Menu' THEN 0 ELSE 1 END
+                LIMIT 1
             ''').fetchone()
-            version_id = active_version['id'] if active_version else 1
+            menu_id = active_menu['id'] if active_menu else None
         
-        # Get menu items with recipe costs
+        # Get menu items with recipe costs using unified tables
         menu_items = conn.execute('''
-            SELECT m.*, r.food_cost as recipe_food_cost
-            FROM menu_items m 
-            LEFT JOIN recipes r ON m.recipe_id = r.id 
-            WHERE m.version_id = ? AND m.menu_price > 0
-            ORDER BY m.menu_group, m.item_name
-        ''', (version_id,)).fetchall()
+            SELECT 
+                mi.id,
+                mi.item_name,
+                mi.menu_group,
+                COALESCE(ma.price_override, mi.menu_price) as menu_price,
+                mi.food_cost,
+                r.food_cost as recipe_food_cost,
+                ma.category_section as category
+            FROM menu_assignments ma
+            JOIN menu_items mi ON ma.menu_item_id = mi.id
+            LEFT JOIN recipes r ON mi.recipe_id = r.id
+            WHERE ma.menu_id = ? AND ma.is_active = 1
+                AND COALESCE(ma.price_override, mi.menu_price) > 0
+            ORDER BY ma.category_section, ma.sort_order, mi.item_name
+        ''', (menu_id,)).fetchall()
         
         analysis_data = []
         total_items = 0
@@ -1721,8 +1835,8 @@ def pricing_analysis():
         
         theme = get_theme()
         return render_template(f'pricing_analysis_{theme}.html',
-                             menu_versions=menu_versions,
-                             current_version_id=version_id,
+                             menus=menus,
+                             current_menu_id=menu_id,
                              target_food_cost=target_food_cost,
                              analysis_data=analysis_data,
                              summary=summary)

@@ -11,11 +11,11 @@
                 <h1 class="text-3xl font-semibold mb-2">Pricing Analysis & Recommendations</h1>
                 <p class="text-secondary">Optimize your menu pricing to meet target food cost percentages</p>
             </div>
-            <a href="/menu_items/compare" class="btn btn-secondary">
+            <a href="/menus_mgmt" class="btn btn-secondary">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M18 4H6v16m12 0H6m12 0l-3-3m3 3l-3 3"/>
+                    <path d="M4 6h16M4 12h16M4 18h16"/>
                 </svg>
-                Compare Menu Versions
+                Manage Menus
             </a>
         </div>
     </div>
@@ -36,11 +36,11 @@
                     </div>
                 </div>
                 <div class="form-group m-0">
-                    <label class="form-label">Menu Version</label>
-                    <select name="version_id" class="form-control" onchange="this.form.submit()">
-                        {% for version in menu_versions %}
-                        <option value="{{ version.id }}" {% if version.id == current_version_id %}selected{% endif %}>
-                            {{ version.version_name }} {% if version.is_active %}(Active){% endif %}
+                    <label class="form-label">Menu</label>
+                    <select name="menu_id" class="form-control" onchange="this.form.submit()">
+                        {% for menu in menus %}
+                        <option value="{{ menu.id }}" {% if menu.id == current_menu_id %}selected{% endif %}>
+                            {{ menu.menu_name }} {% if menu.status == 'Active' %}(Active){% endif %}
                         </option>
                         {% endfor %}
                     </select>

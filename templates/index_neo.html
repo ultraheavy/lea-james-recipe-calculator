@@ -32,7 +32,7 @@
             <div class="neo-stat-label">Menu Items</div>
             <div class="neo-stat-value neo-text-lime">{{ stats.menu_count or 0 }}</div>
             <div class="neo-mt-2">
-                <a href="/menu" class="neo-text-lime">View menu →</a>
+                <a href="/menu_items" class="neo-text-lime">View menu →</a>
             </div>
         </div>
         
@@ -108,7 +108,7 @@
             <h2 class="neo-mb-1">Recent Activity</h2>
         </div>
         <div class="neo-card-body">
-            {% if recent_activity %}
+            {% if recent_activities %}
             <div class="neo-table-container">
                 <table class="neo-table">
                     <thead>
@@ -118,6 +118,16 @@
                             <th>Action</th>
                             <th>Date</th>
                         </tr>
+                    </thead>
+                    <tbody>
+                        {% for activity in recent_activities[:3] %}
+                        <tr>
+                            <td class="neo-text-lime">{{ activity.entity_name }}</td>
+                            <td>{{ activity.entity_type.title() }}</td>
+                            <td>{{ activity.action }}</td>
+                            <td class="neo-text-xs">{{ activity.time_ago }}</td>
+                        </tr>
+                        {% endfor %}
                     </thead>
                     <tbody>
                         {% for activity in recent_activity[:5] %}

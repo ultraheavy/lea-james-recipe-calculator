@@ -15,6 +15,11 @@
                 <span>+</span> Add Item
             </a>
         </div>
+        
+        <!-- View Controls -->
+        <div class="view-controls neo-mt-3">
+            <div id="viewSwitcher"></div>
+        </div>
     </div>
     
     <!-- Search and Filters -->
@@ -51,54 +56,111 @@
         </div>
     </div>
     
-    <!-- Inventory Grid -->
-    <div class="neo-grid neo-grid-3">
-        {% for item in items %}
-        <div class="neo-card neo-animate-fade-up" style="animation-delay: {{ loop.index0 * 0.03 }}s;">
-            <div class="neo-card-body">
-                <!-- Header -->
-                <div style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1rem;">
-                    <div class="icon-container"></div>
-                    <div style="flex: 1;">
-                        <h3 style="font-size: 1.125rem; font-weight: 600; margin: 0;">{{ item.item_description }}</h3>
-                        {% if item.item_code %}
-                        <p class="neo-text-muted" style="font-size: 0.875rem; margin-top: 0.25rem;">{{ item.item_code }}</p>
-                        {% endif %}
-                    </div>
-                </div>
-                
-                <!-- Price Info -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
-                    <div>
-                        <p class="neo-text-muted" style="font-size: 0.75rem; margin-bottom: 0.25rem;">Current Price</p>
-                        <p class="neo-text-cyan" style="font-size: 1.25rem; font-weight: 700;">
-                            ${{ "%.2f"|format(item.current_price or 0) }}
-                        </p>
-                    </div>
-                    <div>
-                        <p class="neo-text-muted" style="font-size: 0.75rem; margin-bottom: 0.25rem;">Unit</p>
-                        <p style="font-weight: 500;">{{ item.unit_measure or '-' }}</p>
-                    </div>
-                </div>
-                
-                <!-- Meta Info -->
-                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
-                    {% if item.vendor_name %}
-                    <span class="neo-badge neo-badge-purple">{{ item.vendor_name }}</span>
-                    {% endif %}
-                    {% if item.product_categories %}
-                    <span class="neo-badge neo-badge-cyan">{{ item.product_categories }}</span>
-                    {% endif %}
-                </div>
-                
-                <!-- Actions -->
-                <div style="display: flex; gap: 0.5rem;">
-                    <button class="neo-btn neo-btn-secondary" style="flex: 1; font-size: 0.875rem;">Edit</button>
-                    <button class="neo-btn neo-btn-ghost" style="flex: 1; font-size: 0.875rem;">Details</button>
+    <!-- View Content -->
+    <div class="view-content" id="inventoryContent">
+        <!-- Table View -->
+        <div class="table-view" id="tableView" style="display: none;">
+            <div class="neo-card">
+                <div class="table-container">
+                    <table class="neo-table" id="inventoryTable">
+                        <thead>
+                            <tr>
+                                <th>Item Name</th>
+                                <th>Vendor</th>
+                                <th>Vendor Code</th>
+                                <th>Price</th>
+                                <th>Unit</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in items %}
+                            <tr data-category="{{ item.product_categories|lower }}" 
+                                data-vendor="{{ (item.vendor_name or '')|lower }}"
+                                data-description="{{ item.item_description|lower }}">
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <div class="icon-container"></div>
+                                        <div>
+                                            <p class="item-name" style="margin: 0;">{{ item.item_description }}</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{{ item.vendor_name or '-' }}</td>
+                                <td><span class="neo-text-muted">{{ item.vendor_item_code or item.item_code or '-' }}</span></td>
+                                <td><span class="neo-text-cyan">${{ "%.2f"|format(item.current_price or 0) }}</span></td>
+                                <td>{{ item.unit_measure or '-' }}</td>
+                                <td>
+                                    <div style="display: flex; gap: 0.5rem;">
+                                        <a href="/inventory/edit/{{ item.id }}" class="neo-btn neo-btn-sm neo-btn-secondary">Edit</a>
+                                        <a href="/inventory/vendors/{{ item.id }}" class="neo-btn neo-btn-sm neo-btn-ghost">Vendors</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-        {% endfor %}
+        
+        <!-- Card View -->
+        <div class="card-view" id="cardView">
+            <div class="neo-grid neo-grid-3">
+                {% for item in items %}
+                <div class="neo-card neo-animate-fade-up" style="animation-delay: {{ loop.index0 * 0.03 }}s;"
+                     data-category="{{ item.product_categories|lower }}" 
+                     data-vendor="{{ (item.vendor_name or '')|lower }}"
+                     data-description="{{ item.item_description|lower }}">
+                    <div class="neo-card-body">
+                        <!-- Header -->
+                        <div style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1rem;">
+                            <div class="icon-container"></div>
+                            <div style="flex: 1;">
+                                <h3 class="item-name" style="font-size: 1.125rem; font-weight: 600; margin: 0;">{{ item.item_description }}</h3>
+                                {% if item.vendor_item_code or item.item_code %}
+                                <p class="neo-text-muted" style="font-size: 0.875rem; margin-top: 0.25rem;">{{ item.vendor_item_code or item.item_code }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <!-- Price Info -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                            <div>
+                                <p class="neo-text-muted" style="font-size: 0.75rem; margin-bottom: 0.25rem;">Current Price</p>
+                                <p class="neo-text-cyan" style="font-size: 1.25rem; font-weight: 700;">
+                                    ${{ "%.2f"|format(item.current_price or 0) }}
+                                </p>
+                            </div>
+                            <div>
+                                <p class="neo-text-muted" style="font-size: 0.75rem; margin-bottom: 0.25rem;">Unit</p>
+                                <p style="font-weight: 500;">{{ item.unit_measure or '-' }}</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Meta Info -->
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+                            {% if item.vendor_name %}
+                            <span class="neo-badge neo-badge-purple">{{ item.vendor_name }}</span>
+                            {% endif %}
+                            {% if item.product_categories %}
+                            <span class="neo-badge neo-badge-cyan">{{ item.product_categories }}</span>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Actions -->
+                        <div style="display: flex; gap: 0.5rem;">
+                            <a href="/inventory/edit/{{ item.id }}" class="neo-btn neo-btn-secondary" style="flex: 1; font-size: 0.875rem;">Edit</a>
+                            <a href="/inventory/vendors/{{ item.id }}" class="neo-btn neo-btn-ghost" style="flex: 1; font-size: 0.875rem;">Vendors</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!-- List View (will be populated by JavaScript) -->
+        <div class="list-view" id="listView" style="display: none;"></div>
     </div>
     
     {% if not items %}
@@ -115,18 +177,188 @@
     {% endif %}
 </div>
 
+<script src="{{ url_for('static', filename='js/view-switcher.js') }}"></script>
 <script>
-// Initialize icons based on item names
-document.addEventListener('DOMContentLoaded', function() {
-    const cards = document.querySelectorAll('.neo-card');
-    cards.forEach((card, index) => {
-        const itemName = card.querySelector('h3')?.textContent || '';
+// Initialize icons for all views
+function initializeIcons() {
+    // Icons for cards
+    const cards = document.querySelectorAll('.card-view .neo-card');
+    cards.forEach((card) => {
+        const categories = card.getAttribute('data-category');
         const iconContainer = card.querySelector('.icon-container');
-        if (iconContainer && itemName) {
-            const icon = createFoodIcon(itemName, 'md');
+        if (iconContainer && categories && !iconContainer.hasChildNodes()) {
+            const icon = createFoodIcon(categories, 'md');
             iconContainer.appendChild(icon);
         }
     });
+    
+    // Icons for table
+    const rows = document.querySelectorAll('#inventoryTable tbody tr');
+    rows.forEach(row => {
+        const categories = row.getAttribute('data-category');
+        const iconContainer = row.querySelector('.icon-container');
+        if (iconContainer && categories && !iconContainer.hasChildNodes()) {
+            const icon = createFoodIcon(categories, 'sm');
+            iconContainer.appendChild(icon);
+        }
+    });
+}
+
+// Filter function
+function filterItems() {
+    const searchInput = document.querySelector('input[name="search"]').value.toLowerCase();
+    const categoryFilter = document.querySelector('select[name="category"]').value.toLowerCase();
+    const vendorFilter = document.querySelector('select[name="vendor"]').value.toLowerCase();
+    
+    // Filter cards
+    const cards = document.querySelectorAll('.card-view .neo-card[data-category]');
+    cards.forEach(card => {
+        const category = card.getAttribute('data-category') || '';
+        const vendor = card.getAttribute('data-vendor') || '';
+        const description = card.getAttribute('data-description') || '';
+        
+        const matchesSearch = !searchInput || 
+            description.includes(searchInput) || 
+            category.includes(searchInput) ||
+            vendor.includes(searchInput);
+            
+        const matchesCategory = !categoryFilter || category.includes(categoryFilter);
+        const matchesVendor = !vendorFilter || vendor.includes(vendorFilter);
+        
+        card.style.display = (matchesSearch && matchesCategory && matchesVendor) ? '' : 'none';
+    });
+    
+    // Filter table rows
+    const rows = document.querySelectorAll('#inventoryTable tbody tr');
+    rows.forEach(row => {
+        const category = row.getAttribute('data-category') || '';
+        const vendor = row.getAttribute('data-vendor') || '';
+        const description = row.getAttribute('data-description') || '';
+        
+        const matchesSearch = !searchInput || 
+            description.includes(searchInput) || 
+            category.includes(searchInput) ||
+            vendor.includes(searchInput);
+            
+        const matchesCategory = !categoryFilter || category.includes(categoryFilter);
+        const matchesVendor = !vendorFilter || vendor.includes(vendorFilter);
+        
+        row.style.display = (matchesSearch && matchesCategory && matchesVendor) ? '' : 'none';
+    });
+    
+    // Filter list items
+    const listItems = document.querySelectorAll('.list-item');
+    listItems.forEach(item => {
+        const category = item.getAttribute('data-category') || '';
+        const vendor = item.getAttribute('data-vendor') || '';
+        const description = item.getAttribute('data-description') || '';
+        
+        const matchesSearch = !searchInput || 
+            description.includes(searchInput) || 
+            category.includes(searchInput) ||
+            vendor.includes(searchInput);
+            
+        const matchesCategory = !categoryFilter || category.includes(categoryFilter);
+        const matchesVendor = !vendorFilter || vendor.includes(vendorFilter);
+        
+        item.style.display = (matchesSearch && matchesCategory && matchesVendor) ? '' : 'none';
+    });
+}
+
+// Generate list view
+function generateInventoryList() {
+    const listView = document.getElementById('listView');
+    const tbody = document.querySelector('#inventoryTable tbody');
+    const rows = tbody.querySelectorAll('tr');
+    
+    rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        if (cells.length < 6) return;
+        
+        const listItem = document.createElement('div');
+        listItem.className = 'neo-list-item';
+        listItem.setAttribute('data-category', row.getAttribute('data-category'));
+        listItem.setAttribute('data-vendor', row.getAttribute('data-vendor'));
+        listItem.setAttribute('data-description', row.getAttribute('data-description'));
+        
+        const iconContainer = cells[0].querySelector('.icon-container');
+        const itemName = cells[0].querySelector('.item-name').textContent;
+        const vendor = cells[1].textContent.trim();
+        const vendorCode = cells[2].textContent.trim();
+        const price = cells[3].textContent.trim();
+        const unit = cells[4].textContent.trim();
+        const actions = cells[5].innerHTML;
+        
+        listItem.innerHTML = `
+            <div class="neo-list-item-icon">
+                ${iconContainer ? iconContainer.outerHTML : '<div class="icon-container"></div>'}
+            </div>
+            <div class="neo-list-item-content">
+                <div class="neo-list-item-title">${itemName}</div>
+                <div class="neo-list-item-subtitle">${vendorCode} • ${vendor} • ${unit}</div>
+            </div>
+            <div class="neo-list-item-meta">
+                <div class="neo-list-item-price neo-text-cyan">${price}</div>
+                <div class="neo-list-item-actions">
+                    ${actions}
+                </div>
+            </div>
+        `;
+        
+        listView.appendChild(listItem);
+    });
+    
+    // Initialize icons in list view
+    const listIcons = listView.querySelectorAll('.icon-container');
+    listIcons.forEach((container, i) => {
+        const row = rows[i];
+        if (row && !container.hasChildNodes()) {
+            const categories = row.getAttribute('data-category');
+            if (categories) {
+                const icon = createFoodIcon(categories, 'sm');
+                container.appendChild(icon);
+            }
+        }
+    });
+}
+
+// Initialize view switcher
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize icons
+    initializeIcons();
+    
+    // Create view switcher instance
+    const viewSwitcher = new ViewSwitcher('viewSwitcher', {
+        defaultView: 'card',
+        views: ['table', 'card', 'list'],
+        onViewChange: function(view) {
+            // Hide all views
+            document.getElementById('tableView').style.display = 'none';
+            document.getElementById('cardView').style.display = 'none';
+            document.getElementById('listView').style.display = 'none';
+            
+            // Show selected view
+            if (view === 'table') {
+                document.getElementById('tableView').style.display = 'block';
+            } else if (view === 'card') {
+                document.getElementById('cardView').style.display = 'block';
+            } else if (view === 'list') {
+                const listView = document.getElementById('listView');
+                listView.style.display = 'block';
+                
+                // Generate list if not already done
+                if (!listView.hasChildNodes()) {
+                    generateInventoryList();
+                }
+            }
+        }
+    });
+    
+    // Attach filter listeners
+    const searchInput = document.querySelector('input[name="search"]');
+    if (searchInput) {
+        searchInput.addEventListener('input', filterItems);
+    }
 });
 </script>
 
@@ -140,6 +372,99 @@ document.addEventListener('DOMContentLoaded', function() {
 .neo-card:hover {
     border-color: var(--neo-cyan);
     box-shadow: var(--glow-cyan);
+}
+
+/* List view styles */
+.neo-list-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--neo-bg-dark);
+    border: 1px solid var(--neo-border);
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.neo-list-item:hover {
+    border-color: var(--neo-cyan);
+    box-shadow: var(--glow-cyan-subtle);
+}
+
+.neo-list-item-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+}
+
+.neo-list-item-icon .icon-container {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.neo-list-item-content {
+    flex: 1;
+}
+
+.neo-list-item-title {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.neo-list-item-subtitle {
+    font-size: 0.875rem;
+    color: var(--neo-text-muted);
+}
+
+.neo-list-item-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.neo-list-item-price {
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+.neo-list-item-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* View controls */
+.view-controls {
+    margin-top: 1rem;
+}
+
+/* Table styles */
+.neo-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.neo-table th {
+    text-align: left;
+    padding: 0.75rem;
+    border-bottom: 2px solid var(--neo-border);
+    color: var(--neo-cyan);
+    font-weight: 600;
+}
+
+.neo-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--neo-border);
+}
+
+.neo-table tr:hover {
+    background: rgba(0, 255, 255, 0.03);
+}
+
+/* Button size variants */
+.neo-btn-sm {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
 }
 
 /* Stagger animation for grid items */
@@ -156,6 +481,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 .neo-animate-fade-up {
     animation: slide-up 0.4s ease-out forwards;
+}
+
+/* Neo margin utility */
+.neo-mt-3 {
+    margin-top: 1rem;
 }
 </style>
 {% endblock %}

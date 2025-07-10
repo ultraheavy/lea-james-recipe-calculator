@@ -4,8 +4,8 @@ echo "Killing any existing processes..."
 pkill -f "python3 app.py" 2>/dev/null || true
 sleep 2
 
-echo "Starting the Flask app on port 8888..."
-nohup python3 app.py > app.log 2>&1 &
+echo "Activating virtual environment and starting Flask app on port 8888..."
+source venv/bin/activate && nohup python3 app.py > app.log 2>&1 &
 sleep 3
 
 echo "App started! Access it at: http://localhost:8888"

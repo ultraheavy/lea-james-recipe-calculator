@@ -421,24 +421,25 @@ p {
 
 .form-control {
   width: 100%;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  line-height: 1.5;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
   color: var(--text-primary);
   background: var(--bg-primary);
-  border: 2px solid var(--gray-200);
+  border: 1px solid var(--gray-300);
   border-radius: var(--radius);
   transition: all var(--transition);
   outline: none;
+  font-family: inherit;
 }
 
 .form-control:hover {
-  border-color: var(--gray-300);
+  border-color: var(--gray-400);
 }
 
 .form-control:focus {
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
   background: var(--bg-primary);
 }
 
@@ -448,10 +449,35 @@ p {
 
 select.form-control {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236b7280' d='M1.293 2.293a1 1 0 011.414 0L6 5.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 1rem center;
-  padding-right: 2.5rem;
+  background-position: right 0.75rem center;
+  background-size: 12px 8px;
+  padding-right: 2rem;
+  cursor: pointer;
+}
+
+/* Fix dropdown options font size */
+select.form-control option {
+  font-size: 0.875rem;
+  padding: 0.5rem;
+  font-family: inherit;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Ensure consistent height */
+select.form-control {
+  height: 38px;
+  min-height: 38px;
+}
+
+/* Fix Firefox dropdown appearance */
+@-moz-document url-prefix() {
+  select.form-control {
+    text-indent: 0.01px;
+    text-overflow: '';
+  }
 }
 
 /* Tables */
