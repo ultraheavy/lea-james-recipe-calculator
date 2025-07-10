@@ -8,6 +8,7 @@ env/
 venv/
 ENV/
 .venv
+test_env/
 
 # Database
 *.db
@@ -40,6 +41,8 @@ Thumbs.db
 # Backup files
 *.bak
 backup/
+*_backup_*.db
+restaurant_calculator_backup_*.db
 
 # Temporary files
 tmp/
@@ -52,4 +55,7 @@ flask_session/
 dist/
 build/
 *.egg-info/
+
+# Health reports
+health_report_*.json
 EOF < /dev/null
