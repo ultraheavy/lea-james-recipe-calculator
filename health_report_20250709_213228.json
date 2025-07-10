@@ -1,0 +1,32 @@
+{
+  "timestamp": "2025-07-09T21:32:28.253159",
+  "overall_status": "healthy",
+  "checks": {
+    "database": {
+      "status": "healthy",
+      "table_count": 25,
+      "error": null
+    },
+    "xtrachef": {
+      "status": "healthy",
+      "items_with_data": 250,
+      "items_with_dates": 230,
+      "error": null
+    },
+    "recipe_costing": {
+      "status": "healthy",
+      "recipes_with_costs": 63,
+      "total_ingredients": 210,
+      "linked_ingredients": 208,
+      "link_rate": 99.04761904761905,
+      "error": null
+    },
+    "menu_system": {
+      "status": "healthy",
+      "total_menu_items": 107,
+      "items_with_pricing": 82,
+      "total_assignments": 147,
+      "error": null
+    }
+  }
+}
