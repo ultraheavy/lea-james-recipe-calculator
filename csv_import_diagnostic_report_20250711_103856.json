@@ -1,0 +1,2401 @@
+{
+  "generated_at": "2025-07-11T10:38:56.903647",
+  "summary": {
+    "total_issues": 332,
+    "categories": {
+      "field_mapping_errors": 307,
+      "data_type_errors": 0,
+      "uom_parsing_errors": 0,
+      "encoding_errors": 0,
+      "formula_errors": 0,
+      "systematic_issues": 4
+    }
+  },
+  "details": {
+    "field_mapping_errors": [
+      {
+        "table": "inventory",
+        "item_code": "58897_XC9776450",
+        "field": "pack_size",
+        "csv_value": "180 case",
+        "db_value": "180 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC10484627",
+        "field": "pack_size",
+        "csv_value": "24 x 16 cs",
+        "db_value": "24 x 16 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC11725426",
+        "field": "pack_size",
+        "csv_value": "24 x 16 cs",
+        "db_value": "24 x 16 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC11546426",
+        "field": "pack_size",
+        "csv_value": "24 cs",
+        "db_value": "24 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC11546428",
+        "field": "pack_size",
+        "csv_value": "35 each",
+        "db_value": "35 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC11546427",
+        "field": "pack_size",
+        "csv_value": "48 x 4 ct",
+        "db_value": "48 x 4 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC5723334",
+        "field": "pack_size",
+        "csv_value": "50 case",
+        "db_value": "50 pound"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC11131128",
+        "field": "pack_size",
+        "csv_value": "5 cs",
+        "db_value": "5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7228367",
+        "field": "pack_size",
+        "csv_value": "4 x 4 cs",
+        "db_value": "4 x 4 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "70247159793",
+        "field": "pack_size",
+        "csv_value": "3 cs",
+        "db_value": "3 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "18692",
+        "field": "pack_size",
+        "csv_value": "3 cs",
+        "db_value": "3 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7.60695E+11",
+        "field": "pack_size",
+        "csv_value": "500 case",
+        "db_value": "4 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "101841_XC7523071",
+        "field": "pack_size",
+        "csv_value": "1 cs",
+        "db_value": "1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "BSPI75",
+        "field": "pack_size",
+        "csv_value": "3 x 5 case",
+        "db_value": "5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "486",
+        "field": "pack_size",
+        "csv_value": "1 cs",
+        "db_value": "1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "90880_XC12350157",
+        "field": "pack_size",
+        "csv_value": "1 cs",
+        "db_value": "1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "483",
+        "field": "pack_size",
+        "csv_value": "12 x 2 cs",
+        "db_value": "12 x 2 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "936",
+        "field": "pack_size",
+        "csv_value": "10 x 1 loaf",
+        "db_value": "10 x 1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "90880_XC12350158",
+        "field": "pack_size",
+        "csv_value": "1 cs",
+        "db_value": "1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "BRD040",
+        "field": "pack_size",
+        "csv_value": "7 x 32 cs",
+        "db_value": "7 x 32 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "BRD040",
+        "field": "pack_size",
+        "csv_value": "7 x 32 cs",
+        "db_value": "7 x 32 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "900006",
+        "field": "pack_size",
+        "csv_value": "2 x 5 cs",
+        "db_value": "8 x 24 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "900006",
+        "field": "pack_size",
+        "csv_value": "8 x 24 cs",
+        "db_value": "8 x 24 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "15700227220",
+        "field": "pack_size",
+        "csv_value": "4 x 5 cs",
+        "db_value": "4 x 5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "BUTR28",
+        "field": "pack_size",
+        "csv_value": "4 x 5 case",
+        "db_value": "4 x 5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "BUTR28",
+        "field": "pack_size",
+        "csv_value": "4 x 5 cs",
+        "db_value": "4 x 5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "BUTR28",
+        "field": "pack_size",
+        "csv_value": "4 x 5 case",
+        "db_value": "4 x 5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "MILK33",
+        "field": "pack_size",
+        "csv_value": "12 x 1 cs",
+        "db_value": "12 x 1 qt"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC10619296",
+        "field": "pack_size",
+        "csv_value": "6 x 5 case",
+        "db_value": "6 x 5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC10619293",
+        "field": "pack_size",
+        "csv_value": "24 x 1 cs",
+        "db_value": "24 x 1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC11813053",
+        "field": "pack_size",
+        "csv_value": "24 x 1 cs",
+        "db_value": "24 x 1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC11484060",
+        "field": "pack_size",
+        "csv_value": "24 x 1 cs",
+        "db_value": "24 x 1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC10484628",
+        "field": "pack_size",
+        "csv_value": "1 cs",
+        "db_value": "1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC3682926",
+        "field": "pack_size",
+        "csv_value": "18 x 1 case",
+        "db_value": "18 x 1 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC6873465",
+        "field": "pack_size",
+        "csv_value": "1 case",
+        "db_value": "1 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC11813060",
+        "field": "pack_size",
+        "csv_value": "1 cs",
+        "db_value": "1 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC63226",
+        "field": "pack_size",
+        "csv_value": "1 cs",
+        "db_value": "1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "PR8153",
+        "field": "pack_size",
+        "csv_value": "6 cs",
+        "db_value": "6 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "PR8153",
+        "field": "pack_size",
+        "csv_value": "6 bag",
+        "db_value": "6 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "PR8153",
+        "field": "pack_size",
+        "csv_value": "6 cs",
+        "db_value": "6 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "NCHS64",
+        "field": "pack_size",
+        "csv_value": "2 x 5 lb",
+        "db_value": "1 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC11270013",
+        "field": "pack_size",
+        "csv_value": "4.4 each",
+        "db_value": "4.4 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "34500487757",
+        "field": "pack_size",
+        "csv_value": "6 x 5 cs",
+        "db_value": "6 x 5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "71505015875",
+        "field": "pack_size",
+        "csv_value": "5 cs",
+        "db_value": "5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "44310",
+        "field": "pack_size",
+        "csv_value": "5 cs",
+        "db_value": "5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7.60695E+11",
+        "field": "pack_size",
+        "csv_value": "5 lb",
+        "db_value": "4 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "14726",
+        "field": "pack_size",
+        "csv_value": "4 x 5 case",
+        "db_value": "4 x 5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "165826_XC12097639",
+        "field": "pack_size",
+        "csv_value": "24 x 1 cs",
+        "db_value": "24 x 1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "165826_XC12097641",
+        "field": "pack_size",
+        "csv_value": "24 x 1 cs",
+        "db_value": "24 x 1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC10447740",
+        "field": "pack_size",
+        "csv_value": "24 x 500 cs",
+        "db_value": "24 x 500 ml"
+      },
+      {
+        "table": "inventory",
+        "item_code": "49000047790",
+        "field": "pack_size",
+        "csv_value": "24 x 500 cs",
+        "db_value": "24 x 500 ml"
+      },
+      {
+        "table": "inventory",
+        "item_code": "49000046595",
+        "field": "pack_size",
+        "csv_value": "24 x 1 cs",
+        "db_value": "24 x 1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "PR9313",
+        "field": "pack_size",
+        "csv_value": "5 cs",
+        "db_value": "4 x 5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "PR9313",
+        "field": "pack_size",
+        "csv_value": "4 x 5 cs",
+        "db_value": "4 x 5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "PR9313",
+        "field": "pack_size",
+        "csv_value": "4 x 5 cs",
+        "db_value": "4 x 5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "400471",
+        "field": "pack_size",
+        "csv_value": "8.5 cs",
+        "db_value": "8.5 ml"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7.60695E+11",
+        "field": "pack_size",
+        "csv_value": "10 cs",
+        "db_value": "4 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "MILK33",
+        "field": "pack_size",
+        "csv_value": "12 x 1 cs",
+        "db_value": "12 x 1 qt"
+      },
+      {
+        "table": "inventory",
+        "item_code": "MILK33",
+        "field": "pack_size",
+        "csv_value": "12 x 1 cs",
+        "db_value": "12 x 1 qt"
+      },
+      {
+        "table": "inventory",
+        "item_code": "10031",
+        "field": "pack_size",
+        "csv_value": "1 case",
+        "db_value": "1 qt"
+      },
+      {
+        "table": "inventory",
+        "item_code": "41467000738",
+        "field": "pack_size",
+        "csv_value": "12 x 1 case",
+        "db_value": "12 x 1 quart"
+      },
+      {
+        "table": "inventory",
+        "item_code": "2061156",
+        "field": "pack_size",
+        "csv_value": "4 x 2.5 cs",
+        "db_value": "4 x 2.5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "54565",
+        "field": "pack_size",
+        "csv_value": "4 x 128 case",
+        "db_value": "4 x 128 ounce"
+      },
+      {
+        "table": "inventory",
+        "item_code": "41335351986",
+        "field": "pack_size",
+        "csv_value": "1 cs",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "333615",
+        "field": "pack_size",
+        "csv_value": "1 cs",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "333615",
+        "field": "pack_size",
+        "csv_value": "1 cs",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "333615",
+        "field": "pack_size",
+        "csv_value": "1 each",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "41335086710",
+        "field": "pack_size",
+        "csv_value": "1 jug",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "CDK145",
+        "field": "pack_size",
+        "csv_value": "24 x 12.5 cs",
+        "db_value": "24 x 12.5 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "CDK145",
+        "field": "pack_size",
+        "csv_value": "24 x 12.5 each",
+        "db_value": "24 x 12.5 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "CDK149",
+        "field": "pack_size",
+        "csv_value": "24 x 12 case",
+        "db_value": "24 x 12 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "CDK148",
+        "field": "pack_size",
+        "csv_value": "24 x 12.5 cs",
+        "db_value": "24 x 12.5 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "CDK148",
+        "field": "pack_size",
+        "csv_value": "24 x 12.5 case",
+        "db_value": "24 x 12.5 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "CDK148",
+        "field": "pack_size",
+        "csv_value": "24 x 12.5 cs",
+        "db_value": "24 x 12.5 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "CDK146",
+        "field": "pack_size",
+        "csv_value": "24 x 12.5 cs",
+        "db_value": "24 x 12.5 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "CDK146",
+        "field": "pack_size",
+        "csv_value": "24 x 12.5 cs",
+        "db_value": "24 x 12.5 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "CDK146",
+        "field": "pack_size",
+        "csv_value": "24 x 12.5 cs",
+        "db_value": "24 x 12.5 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "440808",
+        "field": "pack_size",
+        "csv_value": "24 x 1 pack",
+        "db_value": "24 x 1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "BRD040",
+        "field": "pack_size",
+        "csv_value": "7 x 32 cs",
+        "db_value": "7 x 32 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "40900016084",
+        "field": "pack_size",
+        "csv_value": "12 x 32 carton",
+        "db_value": "12 x 32 ml"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7.60695E+11",
+        "field": "pack_size",
+        "csv_value": "84 cs",
+        "db_value": "4 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7.60695E+11",
+        "field": "pack_size",
+        "csv_value": "15 x 12 cs",
+        "db_value": "4 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "51213",
+        "field": "pack_size",
+        "csv_value": "180 case",
+        "db_value": "180 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "EGGS07",
+        "field": "pack_size",
+        "csv_value": "15 lb",
+        "db_value": "12 x 1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "EGGS08",
+        "field": "pack_size",
+        "csv_value": "15 lb",
+        "db_value": "15 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "EGGS07",
+        "field": "pack_size",
+        "csv_value": "12 cs",
+        "db_value": "12 x 1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "EGGS07",
+        "field": "pack_size",
+        "csv_value": "12 x 1 lb",
+        "db_value": "12 x 1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC10111214",
+        "field": "pack_size",
+        "csv_value": "6 x 5 cs",
+        "db_value": "6 x 5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC10447737",
+        "field": "pack_size",
+        "csv_value": "1 cs",
+        "db_value": "1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "165826_XC12097645",
+        "field": "pack_size",
+        "csv_value": "24 x 16 cs",
+        "db_value": "24 x 16 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "165826_XC12097643",
+        "field": "pack_size",
+        "csv_value": "24 x 16 cs",
+        "db_value": "24 x 16 ml"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC10172096",
+        "field": "pack_size",
+        "csv_value": "24 x 500 cs",
+        "db_value": "24 x 500 ml"
+      },
+      {
+        "table": "inventory",
+        "item_code": "472265",
+        "field": "pack_size",
+        "csv_value": "24 x 500 cs",
+        "db_value": "24 x 500 ml"
+      },
+      {
+        "table": "inventory",
+        "item_code": "FIS035",
+        "field": "pack_size",
+        "csv_value": "10 cs",
+        "db_value": "10 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "FLOR33",
+        "field": "pack_size",
+        "csv_value": "25 bag",
+        "db_value": "25 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "FLOR33",
+        "field": "pack_size",
+        "csv_value": "25 bag",
+        "db_value": "25 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "FLOR32",
+        "field": "pack_size",
+        "csv_value": "25 bag",
+        "db_value": "25 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "FLOR33",
+        "field": "pack_size",
+        "csv_value": "25 each",
+        "db_value": "25 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7.60695E+11",
+        "field": "pack_size",
+        "csv_value": "25 cs",
+        "db_value": "4 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC11270014",
+        "field": "pack_size",
+        "csv_value": "24 x 16 cs",
+        "db_value": "24 x 16 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "FRY057",
+        "field": "pack_size",
+        "csv_value": "6 x 4.5 cs",
+        "db_value": "6 x 4.5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "FRY057",
+        "field": "pack_size",
+        "csv_value": "6 x 4.5 cs",
+        "db_value": "6 x 4.5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "FRY057",
+        "field": "pack_size",
+        "csv_value": "6 x 4.5 cs",
+        "db_value": "6 x 4.5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "73538020154",
+        "field": "pack_size",
+        "csv_value": "32 x 2 cs",
+        "db_value": "32 x 2 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC11090807",
+        "field": "pack_size",
+        "csv_value": "0.5 cs",
+        "db_value": "0.5 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC11281491",
+        "field": "pack_size",
+        "csv_value": "1 each",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC11189472",
+        "field": "pack_size",
+        "csv_value": "8 each",
+        "db_value": "8 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7.60695E+11",
+        "field": "pack_size",
+        "csv_value": "10 x 100 each",
+        "db_value": "4 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7.60695E+11",
+        "field": "pack_size",
+        "csv_value": "12 x 100 case",
+        "db_value": "4 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7.60695E+11",
+        "field": "pack_size",
+        "csv_value": "10 x 500 cs",
+        "db_value": "4 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7.60695E+11",
+        "field": "pack_size",
+        "csv_value": "10 x 100 case",
+        "db_value": "4 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC10943904",
+        "field": "pack_size",
+        "csv_value": "24 cs",
+        "db_value": "24 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC37782",
+        "field": "pack_size",
+        "csv_value": "1 case",
+        "db_value": "1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "FVEG13",
+        "field": "pack_size",
+        "csv_value": "12 x 3 each",
+        "db_value": "12 x 3 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC10172100",
+        "field": "pack_size",
+        "csv_value": "1 qt",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "SYRP67",
+        "field": "pack_size",
+        "csv_value": "5 each",
+        "db_value": "6 x 5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "SYRP67",
+        "field": "pack_size",
+        "csv_value": "5 bottle",
+        "db_value": "6 x 5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "SYRP67",
+        "field": "pack_size",
+        "csv_value": "6 x 5 cs",
+        "db_value": "6 x 5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "71100210057",
+        "field": "pack_size",
+        "csv_value": "18 x 3 each",
+        "db_value": "18 x 3 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7.42434E+11",
+        "field": "pack_size",
+        "csv_value": "10 each",
+        "db_value": "1 x 10"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC11725424",
+        "field": "pack_size",
+        "csv_value": "24 x 12 cs",
+        "db_value": "24 x 12 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "90478410050",
+        "field": "pack_size",
+        "csv_value": "24 x 1 cs",
+        "db_value": "24 x 1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "90478410012",
+        "field": "pack_size",
+        "csv_value": "24 x 12.5 case",
+        "db_value": "24 x 12.5 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "19514",
+        "field": "pack_size",
+        "csv_value": "24 x 12.5 cs",
+        "db_value": "24 x 12.5 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "90478410098",
+        "field": "pack_size",
+        "csv_value": "24 x 12.5 each",
+        "db_value": "24 x 12.5 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "20260",
+        "field": "pack_size",
+        "csv_value": "24 x 12.5 cs",
+        "db_value": "24 x 12.5 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "165826_XC12097642",
+        "field": "pack_size",
+        "csv_value": "24 x 16 each",
+        "db_value": "24 x 16 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "165826_XC12097644",
+        "field": "pack_size",
+        "csv_value": "24 x 500 cs",
+        "db_value": "24 x 500 ml"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC6949630",
+        "field": "pack_size",
+        "csv_value": "50 cs",
+        "db_value": "50 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC10610694",
+        "field": "pack_size",
+        "csv_value": "50 case",
+        "db_value": "50 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "INDV98",
+        "field": "pack_size",
+        "csv_value": "1000 x 1 cs",
+        "db_value": "1000 x 1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "INDV98",
+        "field": "pack_size",
+        "csv_value": "1000 x 1 cs",
+        "db_value": "1000 x 1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7.60695E+11",
+        "field": "pack_size",
+        "csv_value": "114 each",
+        "db_value": "4 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "9329384",
+        "field": "pack_size",
+        "csv_value": "1000 x 1 cs",
+        "db_value": "1000 x 1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "9329384",
+        "field": "pack_size",
+        "csv_value": "1000 x 1 cs",
+        "db_value": "1000 x 1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "ROLP69",
+        "field": "pack_size",
+        "csv_value": "1 cs",
+        "db_value": "1 x 500"
+      },
+      {
+        "table": "inventory",
+        "item_code": "ROLP69",
+        "field": "pack_size",
+        "csv_value": "500 cs",
+        "db_value": "1 x 500"
+      },
+      {
+        "table": "inventory",
+        "item_code": "OILS49",
+        "field": "pack_size",
+        "csv_value": "50 ca",
+        "db_value": "50 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "OILS49",
+        "field": "pack_size",
+        "csv_value": "35 cs",
+        "db_value": "50 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "OILS49",
+        "field": "pack_size",
+        "csv_value": "50 cs",
+        "db_value": "50 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "32165",
+        "field": "pack_size",
+        "csv_value": "50 cs",
+        "db_value": "50 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "DMIX11",
+        "field": "pack_size",
+        "csv_value": "1 cs",
+        "db_value": "8 x 55 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "DMIX11",
+        "field": "pack_size",
+        "csv_value": "8 x 55 cs",
+        "db_value": "8 x 55 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC48718",
+        "field": "pack_size",
+        "csv_value": "0.5 each",
+        "db_value": "0.5 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "PR3001",
+        "field": "pack_size",
+        "csv_value": "18 cs",
+        "db_value": "18 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7.60695E+11",
+        "field": "pack_size",
+        "csv_value": "100 x 1 cs",
+        "db_value": "4 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7.60695E+11",
+        "field": "pack_size",
+        "csv_value": "10 x 1 pack",
+        "db_value": "4 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "44313",
+        "field": "pack_size",
+        "csv_value": "5 cs",
+        "db_value": "5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "GLIN18",
+        "field": "pack_size",
+        "csv_value": "100 cs",
+        "db_value": "100 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "GLIN18",
+        "field": "pack_size",
+        "csv_value": "100 cs",
+        "db_value": "100 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC11725428",
+        "field": "pack_size",
+        "csv_value": "1 each",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "36243",
+        "field": "pack_size",
+        "csv_value": "1 each",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7.60695E+11",
+        "field": "pack_size",
+        "csv_value": "4 x 1 cs",
+        "db_value": "4 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "6328157",
+        "field": "pack_size",
+        "csv_value": "1 each",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "6328157",
+        "field": "pack_size",
+        "csv_value": "1 cs",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "MAYO02",
+        "field": "pack_size",
+        "csv_value": "1 each",
+        "db_value": "1 gallon"
+      },
+      {
+        "table": "inventory",
+        "item_code": "MAYO32",
+        "field": "pack_size",
+        "csv_value": "1 each",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "MAYO02",
+        "field": "pack_size",
+        "csv_value": "1 each",
+        "db_value": "1 gallon"
+      },
+      {
+        "table": "inventory",
+        "item_code": "6328157",
+        "field": "pack_size",
+        "csv_value": "1 each",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "48001265301",
+        "field": "pack_size",
+        "csv_value": "1 each",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "48001265400",
+        "field": "pack_size",
+        "csv_value": "1 each",
+        "db_value": "1 gallon"
+      },
+      {
+        "table": "inventory",
+        "item_code": "49000044225",
+        "field": "pack_size",
+        "csv_value": "24 x 335 case",
+        "db_value": "24 x 335 ml"
+      },
+      {
+        "table": "inventory",
+        "item_code": "MLK051",
+        "field": "pack_size",
+        "csv_value": "4 x 1 cs",
+        "db_value": "4 x 1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "MLK051",
+        "field": "pack_size",
+        "csv_value": "4 x 1 cs",
+        "db_value": "4 x 1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "41900076382",
+        "field": "pack_size",
+        "csv_value": "4 x 1 cs",
+        "db_value": "4 x 1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "370441",
+        "field": "pack_size",
+        "csv_value": "4 x 1 gal",
+        "db_value": "4 x 1 gallon"
+      },
+      {
+        "table": "inventory",
+        "item_code": "MLK060",
+        "field": "pack_size",
+        "csv_value": "4 x 1 cs",
+        "db_value": "4 x 1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "MLK060",
+        "field": "pack_size",
+        "csv_value": "4 x 1 cs",
+        "db_value": "4 x 1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "MLK060",
+        "field": "pack_size",
+        "csv_value": "4 x 1 cs",
+        "db_value": "4 x 1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "DRES37",
+        "field": "pack_size",
+        "csv_value": "24 x 16.9 cs",
+        "db_value": "18 x 3.2 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "DRES37",
+        "field": "pack_size",
+        "csv_value": "18 x 3.2 each",
+        "db_value": "18 x 3.2 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "DRES37",
+        "field": "pack_size",
+        "csv_value": "18 x 3.2 cs",
+        "db_value": "18 x 3.2 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "MUST16",
+        "field": "pack_size",
+        "csv_value": "4 x 1 ca",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "MUST16",
+        "field": "pack_size",
+        "csv_value": "4 x 1 cs",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "MUST16",
+        "field": "pack_size",
+        "csv_value": "1 each",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "27541009095",
+        "field": "pack_size",
+        "csv_value": "32 x 1 cs",
+        "db_value": "32 x 1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "1220319",
+        "field": "pack_size",
+        "csv_value": "32 x 0.5 cs",
+        "db_value": "32 x 0.5 l"
+      },
+      {
+        "table": "inventory",
+        "item_code": "OIL027",
+        "field": "pack_size",
+        "csv_value": "35 cs",
+        "db_value": "35 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "OIL027",
+        "field": "pack_size",
+        "csv_value": "35 cs",
+        "db_value": "35 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "OIL027",
+        "field": "pack_size",
+        "csv_value": "35 cs",
+        "db_value": "35 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "OILS28",
+        "field": "pack_size",
+        "csv_value": "35 cs",
+        "db_value": "35 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "OILS28",
+        "field": "pack_size",
+        "csv_value": "35 each",
+        "db_value": "35 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "OILS28",
+        "field": "pack_size",
+        "csv_value": "35 cs",
+        "db_value": "35 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "400471",
+        "field": "pack_size",
+        "csv_value": "8.5 cs",
+        "db_value": "8.5 ml"
+      },
+      {
+        "table": "inventory",
+        "item_code": "PR1411",
+        "field": "pack_size",
+        "csv_value": "4 x 2 cs",
+        "db_value": "4 x 2 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "PR1400",
+        "field": "pack_size",
+        "csv_value": "50 cs",
+        "db_value": "50 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7.60695E+11",
+        "field": "pack_size",
+        "csv_value": "1 cs",
+        "db_value": "4 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7.60695E+11",
+        "field": "pack_size",
+        "csv_value": "1 cs",
+        "db_value": "4 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC5296039",
+        "field": "pack_size",
+        "csv_value": "1 case",
+        "db_value": "1 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "SPAG21",
+        "field": "pack_size",
+        "csv_value": "2 x 10 cs",
+        "db_value": "2 x 10 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "SPAG21",
+        "field": "pack_size",
+        "csv_value": "2 x 10 cs",
+        "db_value": "2 x 10 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "1023018",
+        "field": "pack_size",
+        "csv_value": "2 x 10 each",
+        "db_value": "2 x 10 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "1023018",
+        "field": "pack_size",
+        "csv_value": "2 x 10 each",
+        "db_value": "2 x 10 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "1023018",
+        "field": "pack_size",
+        "csv_value": "2 x 10 case",
+        "db_value": "2 x 10 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "ORSA18",
+        "field": "pack_size",
+        "csv_value": "1 each",
+        "db_value": "3 x 1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "3.0223E+11",
+        "field": "pack_size",
+        "csv_value": "10 each",
+        "db_value": "1 x 10"
+      },
+      {
+        "table": "inventory",
+        "item_code": "50622",
+        "field": "pack_size",
+        "csv_value": "5 cs",
+        "db_value": "5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "50624",
+        "field": "pack_size",
+        "csv_value": "5 bag",
+        "db_value": "5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "17923001168",
+        "field": "pack_size",
+        "csv_value": "5 bag",
+        "db_value": "5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7.40695E+12",
+        "field": "pack_size",
+        "csv_value": "5 x 1 bag",
+        "db_value": "5 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "6.80444E+11",
+        "field": "pack_size",
+        "csv_value": "5 cs",
+        "db_value": "5 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "28764000456",
+        "field": "pack_size",
+        "csv_value": "2.5 cs",
+        "db_value": "2.5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "2876400045",
+        "field": "pack_size",
+        "csv_value": "4 x 2.5 cs",
+        "db_value": "4 x 2.5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "42312",
+        "field": "pack_size",
+        "csv_value": "4 x 2.5 each",
+        "db_value": "4 x 2.5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "8.96968E+11",
+        "field": "pack_size",
+        "csv_value": "5 cs",
+        "db_value": "5 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "430288",
+        "field": "pack_size",
+        "csv_value": "0.5 each",
+        "db_value": "0.5 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "2876400126",
+        "field": "pack_size",
+        "csv_value": "5 cs",
+        "db_value": "5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "20600425195",
+        "field": "pack_size",
+        "csv_value": "24 unit",
+        "db_value": "24 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "8.13831E+12",
+        "field": "pack_size",
+        "csv_value": "24 cs",
+        "db_value": "1 x 24"
+      },
+      {
+        "table": "inventory",
+        "item_code": "42519",
+        "field": "pack_size",
+        "csv_value": "1 cs",
+        "db_value": "1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "28764000661",
+        "field": "pack_size",
+        "csv_value": "2.5 cs",
+        "db_value": "2.5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "43858",
+        "field": "pack_size",
+        "csv_value": "1 cs",
+        "db_value": "1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "8.13831E+11",
+        "field": "pack_size",
+        "csv_value": "4 cs",
+        "db_value": "4 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "53408",
+        "field": "pack_size",
+        "csv_value": "8 cs",
+        "db_value": "8 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "20600800169",
+        "field": "pack_size",
+        "csv_value": "3 x 1 cs",
+        "db_value": "3 x 1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "74234951124",
+        "field": "pack_size",
+        "csv_value": "28 cs",
+        "db_value": "28 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "PR1568",
+        "field": "pack_size",
+        "csv_value": "10 cs",
+        "db_value": "10 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "PICK41",
+        "field": "pack_size",
+        "csv_value": "5 cs",
+        "db_value": "5 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "PICK41",
+        "field": "pack_size",
+        "csv_value": "5 cs",
+        "db_value": "5 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "PICK41",
+        "field": "pack_size",
+        "csv_value": "5 each",
+        "db_value": "5 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "40138",
+        "field": "pack_size",
+        "csv_value": "4 bag",
+        "db_value": "4 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "6.46127E+11",
+        "field": "pack_size",
+        "csv_value": "1 bag",
+        "db_value": "1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "68274669316",
+        "field": "pack_size",
+        "csv_value": "35 x 500 case",
+        "db_value": "35 x 500 ml"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC11484063",
+        "field": "pack_size",
+        "csv_value": "1 cs",
+        "db_value": "1 qt"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC7505960",
+        "field": "pack_size",
+        "csv_value": "25 each",
+        "db_value": "25 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "1090094",
+        "field": "pack_size",
+        "csv_value": "27.4 cs",
+        "db_value": "27.4 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "44000058326",
+        "field": "pack_size",
+        "csv_value": "6 x 27.4 each",
+        "db_value": "6 x 27.4 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "PR0399",
+        "field": "pack_size",
+        "csv_value": "4 x 5 cs",
+        "db_value": "4 x 5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "PR0399",
+        "field": "pack_size",
+        "csv_value": "4 x 5 cs",
+        "db_value": "4 x 5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "PR0399",
+        "field": "pack_size",
+        "csv_value": "4 x 5 each",
+        "db_value": "4 x 5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "PR0770",
+        "field": "pack_size",
+        "csv_value": "25 cs",
+        "db_value": "25 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "PR0770",
+        "field": "pack_size",
+        "csv_value": "2 x 10 cs",
+        "db_value": "25 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "PR9903",
+        "field": "pack_size",
+        "csv_value": "8 cs",
+        "db_value": "8 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "SALT03",
+        "field": "pack_size",
+        "csv_value": "12 x 3 case",
+        "db_value": "12 x 3 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "SALT20",
+        "field": "pack_size",
+        "csv_value": "9 x 3 cs",
+        "db_value": "9 x 3 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "SALT20",
+        "field": "pack_size",
+        "csv_value": "9 x 3 cs",
+        "db_value": "9 x 3 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "ORSA18",
+        "field": "pack_size",
+        "csv_value": "3 x 1 each",
+        "db_value": "3 x 1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "BQSA21",
+        "field": "pack_size",
+        "csv_value": "1 each",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "BQSA21",
+        "field": "pack_size",
+        "csv_value": "1 cs",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "SAUC06",
+        "field": "pack_size",
+        "csv_value": "1 each",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "SAUC06",
+        "field": "pack_size",
+        "csv_value": "1 cs",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "SAUC06",
+        "field": "pack_size",
+        "csv_value": "1 jug",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "41500741611",
+        "field": "pack_size",
+        "csv_value": "1 cs",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "ORSA32",
+        "field": "pack_size",
+        "csv_value": "136 jar",
+        "db_value": "136 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "ORSA32",
+        "field": "pack_size",
+        "csv_value": "136 jar",
+        "db_value": "136 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "8.12944E+11",
+        "field": "pack_size",
+        "csv_value": "2 cs",
+        "db_value": "1 x 13"
+      },
+      {
+        "table": "inventory",
+        "item_code": "41390001710",
+        "field": "pack_size",
+        "csv_value": "4 x 1 case",
+        "db_value": "4 x 1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "11210000032",
+        "field": "pack_size",
+        "csv_value": "5 cs",
+        "db_value": "5 ml"
+      },
+      {
+        "table": "inventory",
+        "item_code": "BQSA21",
+        "field": "pack_size",
+        "csv_value": "1 each",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "OILS46",
+        "field": "pack_size",
+        "csv_value": "50 each",
+        "db_value": "50 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "OILS46",
+        "field": "pack_size",
+        "csv_value": "50 cs",
+        "db_value": "50 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "1020020",
+        "field": "pack_size",
+        "csv_value": "50 each",
+        "db_value": "50 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "OILS91",
+        "field": "pack_size",
+        "csv_value": "35 each",
+        "db_value": "35 pound"
+      },
+      {
+        "table": "inventory",
+        "item_code": "OILS91",
+        "field": "pack_size",
+        "csv_value": "35 case",
+        "db_value": "35 pound"
+      },
+      {
+        "table": "inventory",
+        "item_code": "8.10044E+11",
+        "field": "pack_size",
+        "csv_value": "2 cs",
+        "db_value": "2 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "8.10044E+11",
+        "field": "pack_size",
+        "csv_value": "2 bag",
+        "db_value": "2 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7.60695E+11",
+        "field": "pack_size",
+        "csv_value": "1 each",
+        "db_value": "4 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC11725427",
+        "field": "pack_size",
+        "csv_value": "5 each",
+        "db_value": "5 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "PR0770",
+        "field": "pack_size",
+        "csv_value": "25 cs",
+        "db_value": "25 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "272261",
+        "field": "pack_size",
+        "csv_value": "24 x 1 cs",
+        "db_value": "24 x 1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "272261",
+        "field": "pack_size",
+        "csv_value": "24 x 1 cs",
+        "db_value": "24 x 1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "472265",
+        "field": "pack_size",
+        "csv_value": "24 x 500 cs",
+        "db_value": "24 x 500 ml"
+      },
+      {
+        "table": "inventory",
+        "item_code": "472265",
+        "field": "pack_size",
+        "csv_value": "24 x 500 cs",
+        "db_value": "24 x 500 ml"
+      },
+      {
+        "table": "inventory",
+        "item_code": "410006",
+        "field": "pack_size",
+        "csv_value": "6 x 1 case",
+        "db_value": "6 x 1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7.60695E+11",
+        "field": "pack_size",
+        "csv_value": "4 x 5 cs",
+        "db_value": "4 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7.60696E+11",
+        "field": "pack_size",
+        "csv_value": "12 cs",
+        "db_value": "1 x 16"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7.60696E+11",
+        "field": "pack_size",
+        "csv_value": "5 cs",
+        "db_value": "1 x 16"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7.60696E+11",
+        "field": "pack_size",
+        "csv_value": "16 cs",
+        "db_value": "1 x 16"
+      },
+      {
+        "table": "inventory",
+        "item_code": "41398",
+        "field": "pack_size",
+        "csv_value": "5 bg",
+        "db_value": "5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "BSPI75",
+        "field": "pack_size",
+        "csv_value": "5 cs",
+        "db_value": "5 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "ISP016",
+        "field": "pack_size",
+        "csv_value": "6 x 20 cs",
+        "db_value": "6 x 20 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "8.12944E+11",
+        "field": "pack_size",
+        "csv_value": "13 cs",
+        "db_value": "1 x 13"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC10447739",
+        "field": "pack_size",
+        "csv_value": "24 x 1 cs",
+        "db_value": "24 x 1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "SUGR03",
+        "field": "pack_size",
+        "csv_value": "25 cs",
+        "db_value": "25 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "SUGR03",
+        "field": "pack_size",
+        "csv_value": "25 cs",
+        "db_value": "25 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "4395612",
+        "field": "pack_size",
+        "csv_value": "25 cs",
+        "db_value": "25 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "400188",
+        "field": "pack_size",
+        "csv_value": "50 cs",
+        "db_value": "50 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "SUGR06",
+        "field": "pack_size",
+        "csv_value": "25 cs",
+        "db_value": "25 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "SUGR06",
+        "field": "pack_size",
+        "csv_value": "25 each",
+        "db_value": "25 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "4395612",
+        "field": "pack_size",
+        "csv_value": "25 cs",
+        "db_value": "25 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "TEA030",
+        "field": "pack_size",
+        "csv_value": "24 x 1 cs",
+        "db_value": "24 x 4 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "TEA030",
+        "field": "pack_size",
+        "csv_value": "24 x 4 case",
+        "db_value": "24 x 4 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "TEA031",
+        "field": "pack_size",
+        "csv_value": "8 cs",
+        "db_value": "8 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "TEA031",
+        "field": "pack_size",
+        "csv_value": "8 cs",
+        "db_value": "8 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "165826_XC12097640",
+        "field": "pack_size",
+        "csv_value": "24 x 16 cs",
+        "db_value": "24 x 16 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC10447738",
+        "field": "pack_size",
+        "csv_value": "24 x 12 cs",
+        "db_value": "24 x 12 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "87914",
+        "field": "pack_size",
+        "csv_value": "24 x 20 cs",
+        "db_value": "24 x 20 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "21136070378",
+        "field": "pack_size",
+        "csv_value": "24 x 12 cs",
+        "db_value": "24 x 12 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "SALT03",
+        "field": "pack_size",
+        "csv_value": "12 x 3 case",
+        "db_value": "12 x 3 lb"
+      },
+      {
+        "table": "inventory",
+        "item_code": "272261",
+        "field": "pack_size",
+        "csv_value": "24 x 1 cs",
+        "db_value": "24 x 1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "369874",
+        "field": "pack_size",
+        "csv_value": "1 each",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "270670",
+        "field": "pack_size",
+        "csv_value": "2 x 5 each",
+        "db_value": "2 x 5 l"
+      },
+      {
+        "table": "inventory",
+        "item_code": "OLVS24",
+        "field": "pack_size",
+        "csv_value": "128 jug",
+        "db_value": "128 ml"
+      },
+      {
+        "table": "inventory",
+        "item_code": "410006",
+        "field": "pack_size",
+        "csv_value": "1 each",
+        "db_value": "6 x 1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "410006",
+        "field": "pack_size",
+        "csv_value": "6 x 1 cs",
+        "db_value": "6 x 1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "OLVS11",
+        "field": "pack_size",
+        "csv_value": "6 x 1 cs",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "OLVS11",
+        "field": "pack_size",
+        "csv_value": "6 x 1 each",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "OLVS11",
+        "field": "pack_size",
+        "csv_value": "1 each",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "OLVS13",
+        "field": "pack_size",
+        "csv_value": "1 bottle",
+        "db_value": "1 gal"
+      },
+      {
+        "table": "inventory",
+        "item_code": "7.60695E+11",
+        "field": "pack_size",
+        "csv_value": "4 x 1 case",
+        "db_value": "4 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "CDNK24",
+        "field": "pack_size",
+        "csv_value": "24 x 16.9 case",
+        "db_value": "24 x 16.9 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "CDNK24",
+        "field": "pack_size",
+        "csv_value": "24 x 12.5 cs",
+        "db_value": "24 x 16.9 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "CDNK24",
+        "field": "pack_size",
+        "csv_value": "24 x 16.9 cs",
+        "db_value": "24 x 16.9 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "272352",
+        "field": "pack_size",
+        "csv_value": "24 x 12 cs",
+        "db_value": "24 x 12 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "272352",
+        "field": "pack_size",
+        "csv_value": "24 x 12 cs",
+        "db_value": "24 x 12 oz"
+      },
+      {
+        "table": "inventory",
+        "item_code": "405123",
+        "field": "pack_size",
+        "csv_value": "24 x 1 cs",
+        "db_value": "24 x 1 each"
+      },
+      {
+        "table": "inventory",
+        "item_code": "58897_XC11725429",
+        "field": "pack_size",
+        "csv_value": "1 gal",
+        "db_value": "1 gallon"
+      }
+    ],
+    "data_type_errors": [],
+    "uom_parsing_errors": [],
+    "encoding_errors": [],
+    "formula_errors": [],
+    "systematic_issues": {
+      "csv_structure": [
+        {
+          "file": "data/sources/data_sources_from_toast/Kale Kimchi Recipe_Lea James Hot Chicken_20250626_234802.csv",
+          "issues": [
+            "File has BOM (Byte Order Mark)",
+            "Toast format with metadata headers",
+            "Column '\ufeffLocation' has mixed types: {'currency', 'text'}",
+            "Column 'Lea James Hot Chicken' has mixed types: {'currency', 'text'}",
+            "Column 'Date & Time' has mixed types: {'currency', 'text'}",
+            "Column '06/26/2025 11:48' has mixed types: {'quantity_with_unit', 'text'}"
+          ],
+          "encoding": "utf-8"
+        },
+        {
+          "file": "data/sources/data_sources_from_toast/Chicken Waffle Cone_Lea James Hot Chicken_20250620_105842.csv",
+          "issues": [
+            "File has BOM (Byte Order Mark)",
+            "Toast format with metadata headers",
+            "Column '\ufeffLocation' has mixed types: {'currency', 'text'}",
+            "Column 'Date & Time' has mixed types: {'currency', 'text'}",
+            "Column '06/20/2025 10:58' has mixed types: {'currency', 'text'}"
+          ],
+          "encoding": "utf-8"
+        },
+        {
+          "file": "data/sources/data_sources_from_toast/DP-01 Charred-Onion Ranch Dip_Lea James Hot Chicken_20250626_234631.csv",
+          "issues": [
+            "File has BOM (Byte Order Mark)",
+            "Toast format with metadata headers",
+            "Column '\ufeffLocation' has mixed types: {'currency', 'text'}",
+            "Column 'Date & Time' has mixed types: {'currency', 'text'}",
+            "Column '06/26/2025 11:46' has mixed types: {'currency', 'text'}"
+          ],
+          "encoding": "utf-8"
+        },
+        {
+          "file": "data/sources/data_sources_from_toast/Hot Honey _Lea James Hot Chicken_20250620_113959.csv",
+          "issues": [
+            "File has BOM (Byte Order Mark)",
+            "Toast format with metadata headers",
+            "Column '\ufeffLocation' has mixed types: {'currency', 'text'}",
+            "Column 'Lea James Hot Chicken' has mixed types: {'currency', 'text'}",
+            "Column 'Date & Time' has mixed types: {'currency', 'text'}"
+          ],
+          "encoding": "utf-8"
+        },
+        {
+          "file": "data/sources/data_sources_from_toast/FC-03 Whole Wings_Lea James Hot Chicken_20250626_234834.csv",
+          "issues": [
+            "File has BOM (Byte Order Mark)",
+            "Toast format with metadata headers",
+            "Column '\ufeffLocation' has mixed types: {'currency', 'text'}",
+            "Column 'Date & Time' has mixed types: {'currency', 'text'}",
+            "Column '06/26/2025 11:48' has mixed types: {'currency', 'text'}"
+          ],
+          "encoding": "utf-8"
+        },
+        {
+          "file": "data/sources/data_sources_from_toast/Chicken Wings_Lea James Hot Chicken_20250620_105350.csv",
+          "issues": [
+            "File has BOM (Byte Order Mark)",
+            "Toast format with metadata headers",
+            "Column '\ufeffLocation' has mixed types: {'currency', 'text'}",
+            "Column 'Date & Time' has mixed types: {'currency', 'text'}",
+            "Column '06/20/2025 10:53' has mixed types: {'currency', 'text'}"
+          ],
+          "encoding": "utf-8"
+        },
+        {
+          "file": "data/sources/data_sources_from_toast/Charred Onion Ranch_Lea James Hot Chicken_20250620_115800.csv",
+          "issues": [
+            "File has BOM (Byte Order Mark)",
+            "Toast format with metadata headers",
+            "Column '\ufeffLocation' has mixed types: {'currency', 'text'}",
+            "Column 'Lea James Hot Chicken' has mixed types: {'currency', 'text'}",
+            "Column 'Date & Time' has mixed types: {'currency', 'text'}"
+          ],
+          "encoding": "utf-8"
+        },
+        {
+          "file": "data/sources/data_sources_from_toast/Onion Ranch_Lea James Hot Chicken_20250620_105715.csv",
+          "issues": [
+            "File has BOM (Byte Order Mark)",
+            "Toast format with metadata headers",
+            "Column '\ufeffLocation' has mixed types: {'currency', 'text'}",
+            "Column 'Lea James Hot Chicken' has mixed types: {'currency', 'text'}",
+            "Column 'Date & Time' has mixed types: {'currency', 'text'}",
+            "Column '06/20/2025 10:57' has mixed types: {'quantity_with_unit', 'text'}"
+          ],
+          "encoding": "utf-8"
+        },
+        {
+          "file": "data/sources/data_sources_from_toast/Recipe_Summary_7_4_2025, 12_07_01 AM.csv",
+          "issues": [
+            "Column 'RecipeName' has mixed types: {'quantity_with_unit', 'text'}"
+          ],
+          "encoding": "utf-8"
+        },
+        {
+          "file": "data/sources/data_sources_from_toast/FC-04 Fried Chicken Tender_Lea James Hot Chicken_20250626_234932.csv",
+          "issues": [
+            "File has BOM (Byte Order Mark)",
+            "Toast format with metadata headers",
+            "Column '\ufeffLocation' has mixed types: {'currency', 'text'}",
+            "Column 'Date & Time' has mixed types: {'currency', 'text'}",
+            "Column '06/26/2025 11:49' has mixed types: {'currency', 'text'}"
+          ],
+          "encoding": "utf-8"
+        },
+        {
+          "file": "data/sources/data_sources_from_toast/CHilli Oil - Hot Fat_Lea James Hot Chicken_20250626_234942.csv",
+          "issues": [
+            "File has BOM (Byte Order Mark)",
+            "Toast format with metadata headers",
+            "Column '\ufeffLocation' has mixed types: {'currency', 'text'}",
+            "Column 'Lea James Hot Chicken' has mixed types: {'currency', 'text'}",
+            "Column 'Date & Time' has mixed types: {'currency', 'text'}",
+            "Column '06/26/2025 11:49' has mixed types: {'quantity_with_unit', 'text'}"
+          ],
+          "encoding": "utf-8"
+        },
+        {
+          "file": "data/sources/data_sources_from_toast/Lea_Janes_Hot_Chicken_Item_Detail_Report_20250704_023013.csv",
+          "issues": [
+            "Column 'Item Library' has mixed types: {'integer', 'quantity_with_unit', 'text'}"
+          ],
+          "encoding": "utf-8"
+        },
+        {
+          "file": "data/sources/data_sources_from_toast/Kale - Chopped_Lea James Hot Chicken_20250620_113457.csv",
+          "issues": [
+            "File has BOM (Byte Order Mark)",
+            "Toast format with metadata headers",
+            "Column '\ufeffLocation' has mixed types: {'currency', 'text'}",
+            "Column 'Lea James Hot Chicken' has mixed types: {'currency', 'text'}",
+            "Column 'Date & Time' has mixed types: {'currency', 'text'}"
+          ],
+          "encoding": "utf-8"
+        },
+        {
+          "file": "data/sources/data_sources_from_toast/FC-01 Thicc'n Tenders_Lea James Hot Chicken_20250626_234913.csv",
+          "issues": [
+            "File has BOM (Byte Order Mark)",
+            "Toast format with metadata headers",
+            "Column '\ufeffLocation' has mixed types: {'currency', 'text'}",
+            "Column 'Date & Time' has mixed types: {'currency', 'text'}",
+            "Column '06/26/2025 11:49' has mixed types: {'currency', 'text'}"
+          ],
+          "encoding": "utf-8"
+        },
+        {
+          "file": "data/sources/data_sources_from_toast/S-01 OG Nashville Chicken_Lea James Hot Chicken_20250626_235004.csv",
+          "issues": [
+            "File has BOM (Byte Order Mark)",
+            "Toast format with metadata headers",
+            "Column '\ufeffLocation' has mixed types: {'currency', 'text'}",
+            "Column 'Date & Time' has mixed types: {'currency', 'text'}",
+            "Column '06/26/2025 11:50' has mixed types: {'currency', 'text'}"
+          ],
+          "encoding": "utf-8"
+        },
+        {
+          "file": "data/current_menu_items.csv",
+          "issues": [
+            "Column 'French Fries - Portion' has mixed types: {'quantity_with_unit', 'text'}"
+          ],
+          "encoding": "utf-8"
+        },
+        {
+          "file": "data/current_recipes.csv",
+          "issues": [
+            "Column 'FC-03 Whole Wings' has mixed types: {'quantity_with_unit', 'text'}"
+          ],
+          "encoding": "utf-8"
+        },
+        {
+          "file": "data/sources/recipe_quality_20250706_153609.csv",
+          "issues": [
+            "Column 'recipe_name' has mixed types: {'quantity_with_unit', 'text'}"
+          ],
+          "encoding": "utf-8"
+        },
+        {
+          "file": "data/sources/recipe_quality_20250706_153925.csv",
+          "issues": [
+            "Column 'recipe_name' has mixed types: {'quantity_with_unit', 'text'}"
+          ],
+          "encoding": "utf-8"
+        },
+        {
+          "file": "data/sources/recipe_quality_20250706_154650.csv",
+          "issues": [
+            "Column 'recipe_name' has mixed types: {'quantity_with_unit', 'text'}"
+          ],
+          "encoding": "utf-8"
+        },
+        {
+          "file": "data/sources/recipe_quality_20250706_153549.csv",
+          "issues": [
+            "Column 'recipe_name' has mixed types: {'quantity_with_unit', 'text'}"
+          ],
+          "encoding": "utf-8"
+        }
+      ],
+      "ingredient_count_mismatch": [
+        {
+          "recipe": "Chicken Waffle Cone",
+          "csv_count": 9,
+          "db_count": 7
+        },
+        {
+          "recipe": "DP-01 Charred-Onion Ranch Dip",
+          "csv_count": 3,
+          "db_count": 2
+        },
+        {
+          "recipe": "FC-01 Thicc'n Tenders",
+          "csv_count": 3,
+          "db_count": 2
+        },
+        {
+          "recipe": "S-01 OG Nashville Chicken",
+          "csv_count": 5,
+          "db_count": 3
+        }
+      ],
+      "common_uom_patterns": [],
+      "formula_patterns": {}
+    }
+  }
+}

@@ -1,0 +1,67 @@
+recipe_id,recipe_name,recipe_type,calculated_cost,pdf_stated_cost,variance,has_errors,has_warnings,status
+67,FC-03 Whole Wings,Recipe,0.0,1.4402,-1.44,True,True,success
+68,Ritz Crumble,PrepRecipe,0.0,5.2788,-5.28,True,True,success
+69,FT-02 Loaded Fries,Recipe,0.0,6.519,-6.52,True,True,success
+70,French Fries - Portion,Recipe,0.0,0.4138,-0.41,True,True,success
+71,DP-05 Habanero Ranch,Recipe,0.0,0.282,-0.28,True,True,success
+72,DP-04 Hot Honey,Recipe,0.0,,0,True,False,success
+73,DP-03 Honey Mustard,Recipe,0.0,0.4211,-0.42,True,True,success
+74,DP-02 Comeback Sauce,Recipe,0.0,,0,True,False,success
+75,DP-01 Charred-Onion Ranch Dip,Recipe,0.0,0.0095,-0.01,True,False,success
+76,SD-04 Fried Corn Ribs,Recipe,0.0,1.738,-1.74,True,True,success
+77,Mac Sauce - Modified 2025,PrepRecipe,0.0,36.060100000000006,-36.06,True,True,success
+78,Roux recipe,PrepRecipe,0.0,7.167,-7.17,True,True,success
+79,LJ Mac,PrepRecipe,0.0,15.9435,-15.94,True,True,success
+80,SD-03 LJ Mac,Recipe,0.0,0.5536,-0.55,True,True,success
+81,SD-02 Extra-Crispy Fries with Ranch Powder,Recipe,0.0,5.999499999999999,-6.0,True,True,success
+82,French Fries Recipe,PrepRecipe,0.0,0.4598,-0.46,True,True,success
+83,SD-01 Kale & Cabbage Slaw,Recipe,0.0,0.4263,-0.43,False,True,success
+84,Kale Kimchi Recipe,PrepRecipe,0.0,67.04979999999999,-67.05,True,True,success
+85,FT-03 Angry Chicken Mac bowl,Recipe,0.0,1.3432,-1.34,True,True,success
+86,FT-01 Chicken Waffle Cone,Recipe,0.0,0.0098,-0.01,True,False,success
+87,SL-01 Chicken Caesar Salad,Recipe,0.0,18.3742,-18.37,True,True,success
+88,S-04 Fish Sando,Recipe,0.0,3.2479000000000005,-3.25,True,True,success
+89,FC-02 Leg Quarter,Recipe,0.0,2.1018,-2.1,True,True,success
+90,FC-01 Thicc'n Tenders,Recipe,0.0,0.4693,-0.47,True,True,success
+91,Fried Chicken Tender,PrepRecipe,0.0,0.9507,-0.95,True,True,success
+92,FC-04 Fried Chicken Tender,Recipe,0.0,1.023,-1.02,True,True,success
+93,CHilli Oil - Hot Fat,PrepRecipe,0.0,40.4392,-40.44,True,True,success
+94,S-03 Plain Jane Sandwich,Recipe,0.0,2.2967000000000004,-2.3,True,True,success
+95,S-01 OG Nashville Chicken,Recipe,0.0,2.5685000000000002,-2.57,True,True,success
+96,S-02 J-Blaze Chicken,Recipe,0.0,3.2560000000000002,-3.26,True,True,success
+97,24 Hour Chili Brined Chicken Thigh,PrepRecipe,0.0,26.09,-26.09,True,True,success
+98,DP- 05 Habanero Ranch,Recipe,0.0,0.282,-0.28,True,True,success
+99,Nashville Hot Chicken,Recipe,0.0,3.4465000000000003,-3.45,True,True,success
+100,Comeback Sauce - Updated 2025,PrepRecipe,0.0,51.919999999999995,-51.92,True,True,success
+101,Mac Sauce,PrepRecipe,0.0,182.61610000000002,-182.62,True,True,success
+102,Coleslaw,PrepRecipe,0.0,41.620000000000005,-41.62,True,True,success
+103,Chicken Waffle Cone,Recipe,0.0,3.7058999999999997,-3.71,True,True,success
+104,Charred Onion Ranch,PrepRecipe,0.0,25.016799999999996,-25.02,True,True,success
+105,Hot Honey - 2025,PrepRecipe,0.0,26.09,-26.09,True,True,success
+106,Hot Honey - portion,Recipe,0.0,0.0142,-0.01,False,False,success
+107,Hot Honey Sauce,PrepRecipe,0.0,3.2270000000000003,-3.23,True,True,success
+108,Kale - Chopped,PrepRecipe,0.0,23.608,-23.61,True,True,success
+109,Lemon Pepper Sauce - Portion,Recipe,0.0,0.1467,-0.15,True,True,success
+110,Alabama White BBQ,PrepRecipe,0.0,8.1563,-8.16,True,True,success
+111,Shredded Carrots,PrepRecipe,0.0,4.7,-4.7,True,True,success
+112,Shredded Cabbage,PrepRecipe,0.0,8.84,-8.84,True,True,success
+113,Comeback Sauce - Portion,Recipe,0.0,,0,False,False,success
+114,Hot Honey Chicken Wings,Recipe,0.0,1.7775,-1.78,True,True,success
+115,Chicken Wings,Recipe,0.0,1.749,-1.75,True,True,success
+116,Buffalo Sauce - portion,Recipe,0.0,0.3477,-0.35,True,True,success
+117,Hot Fish,Recipe,0.0,3.673,-3.67,True,True,success
+118,BBQ Sauce Chicken Wings,Recipe,0.0,2.2834000000000003,-2.28,True,True,success
+119,Buffalo Chicken Wings,Recipe,0.0,2.4443,-2.44,True,True,success
+120,Lemon Pepper Chicken Wings,Recipe,0.0,1.8590000000000002,-1.86,True,True,success
+121,Mac & Cheese,Recipe,0.0,0.6643,-0.66,True,True,success
+122,Collard Greens - Side Portion,Recipe,0.0,0.0236,-0.02,False,True,success
+123,Collard Greens Recipe,PrepRecipe,0.0,15.035700000000002,-15.04,True,True,success
+124,Loaded Fries,Recipe,0.0,3.2121,-3.21,True,True,success
+125,Hot Fat,PrepRecipe,0.0,34.6134,-34.61,True,True,success
+126,Clucking Spice (Seasoning Blend),PrepRecipe,0.0,16.762600000000003,-16.76,True,True,success
+127,Onion Ranch,PrepRecipe,0.0,26.433699999999998,-26.43,True,True,success
+128,Comeback sauce,PrepRecipe,0.0,0.0554,-0.06,True,True,success
+129,Plain Jane Sandwich,Recipe,0.0,3.3533,-3.35,True,True,success
+130,Kale Kimchi - Side Portion,Recipe,0.0,0.4263,-0.43,False,True,success
+131,Pickled Shallot,PrepRecipe,0.0,150.9842,-150.98,True,True,success
+132,Tenders,Recipe,0.0,0.9782,-0.98,True,True,success

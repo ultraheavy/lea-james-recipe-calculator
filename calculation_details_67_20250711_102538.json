@@ -1,0 +1,81 @@
+{
+  "recipe_id": 67,
+  "recipe_name": "FC-03 Whole Wings",
+  "recipe_type": "Recipe",
+  "timestamp": "2025-07-11T10:25:38.511020",
+  "ingredients": [
+    {
+      "ingredient_name": "Protein, Chicken, Wing",
+      "ingredient_type": "Product",
+      "quantity": 10.0,
+      "unit": "oz",
+      "unit_cost": 1.74,
+      "total_cost": 0.0,
+      "steps": [],
+      "warnings": [],
+      "errors": [
+        "Cannot convert 10.0 oz to lb lb for Protein, Chicken, Wing"
+      ]
+    },
+    {
+      "ingredient_name": "Dry Goods, Chicken  Breading, Lea Jane Recipe",
+      "ingredient_type": "Product",
+      "quantity": 1.0,
+      "unit": "oz",
+      "unit_cost": 1.897,
+      "total_cost": 0.0,
+      "steps": [],
+      "warnings": [],
+      "errors": [
+        "Cannot convert 1.0 oz to lb case for Dry Goods, Chicken  Breading, Lea Jane Recipe"
+      ]
+    },
+    {
+      "ingredient_name": "Dry Goods, Oil, Canola, Clear, Frying",
+      "ingredient_type": "Product",
+      "quantity": 2.0,
+      "unit": "oz",
+      "unit_cost": 1.1571,
+      "total_cost": 0.0,
+      "steps": [],
+      "warnings": [],
+      "errors": [
+        "Cannot convert 2.0 oz to lb ea for Dry Goods, Oil, Canola, Clear, Frying"
+      ]
+    },
+    {
+      "ingredient_name": "Dairy, Milk, Whole",
+      "ingredient_type": "Product",
+      "quantity": 2.0,
+      "unit": "fl oz",
+      "unit_cost": 5.73,
+      "total_cost": 0.0,
+      "steps": [],
+      "warnings": [],
+      "errors": [
+        "Cannot convert 2.0 fl oz to gal case for Dairy, Milk, Whole"
+      ]
+    }
+  ],
+  "total_cost": 0.0,
+  "cost_per_serving": 0.0,
+  "pdf_stated_cost": 1.4402,
+  "variance_from_pdf": -1.44,
+  "calculation_steps": [
+    {
+      "step": "per_serving_calculation",
+      "formula": "$0 / 1.0 servings",
+      "result": "$0.0000"
+    }
+  ],
+  "warnings": [
+    "Cost variance of $-1.44 (-99.99%) from PDF stated cost"
+  ],
+  "errors": [
+    "Cannot convert 10.0 oz to lb lb for Protein, Chicken, Wing",
+    "Cannot convert 1.0 oz to lb case for Dry Goods, Chicken  Breading, Lea Jane Recipe",
+    "Cannot convert 2.0 oz to lb ea for Dry Goods, Oil, Canola, Clear, Frying",
+    "Cannot convert 2.0 fl oz to gal case for Dairy, Milk, Whole"
+  ],
+  "variance_percent": -99.99
+}

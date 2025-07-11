@@ -1,0 +1,98 @@
+{
+  "recipe_id": 99,
+  "recipe_name": "Nashville Hot Chicken",
+  "recipe_type": "Recipe",
+  "timestamp": "2025-07-11T10:32:41.678773",
+  "ingredients": [
+    {
+      "ingredient_name": "Protein, Chicken, Thighs",
+      "ingredient_type": "Product",
+      "quantity": 7.0,
+      "unit": "oz",
+      "unit_cost": 3.76,
+      "total_cost": 1.64,
+      "steps": [
+        {
+          "step": "unit_conversion",
+          "from": "7.0 oz",
+          "to": "0.4375 lb",
+          "formula": "0.4375 \u00d7 $3.7600/lb",
+          "result": "$1.64"
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "ingredient_name": "Dry Goods, Bread, Texas Toast",
+      "ingredient_type": "Product",
+      "quantity": 2.0,
+      "unit": "each",
+      "unit_cost": 0.219,
+      "total_cost": 0.44,
+      "steps": [
+        {
+          "step": "direct_calculation",
+          "formula": "2.0 each \u00d7 $0.2190/each",
+          "result": "$0.44"
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "ingredient_name": "Dairy,  Clarified Butter",
+      "ingredient_type": "Product",
+      "quantity": 0.5,
+      "unit": "oz",
+      "unit_cost": 1.2255,
+      "total_cost": 0.04,
+      "steps": [
+        {
+          "step": "unit_conversion",
+          "from": "0.5 oz",
+          "to": "0.03125 lb",
+          "formula": "0.03125 \u00d7 $1.2255/lb",
+          "result": "$0.04"
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    }
+  ],
+  "total_cost": 2.12,
+  "cost_per_serving": 2.12,
+  "pdf_stated_cost": 3.4465000000000003,
+  "variance_from_pdf": -1.33,
+  "calculation_steps": [
+    {
+      "step": "unit_conversion",
+      "from": "7.0 oz",
+      "to": "0.4375 lb",
+      "formula": "0.4375 \u00d7 $3.7600/lb",
+      "result": "$1.64"
+    },
+    {
+      "step": "direct_calculation",
+      "formula": "2.0 each \u00d7 $0.2190/each",
+      "result": "$0.44"
+    },
+    {
+      "step": "unit_conversion",
+      "from": "0.5 oz",
+      "to": "0.03125 lb",
+      "formula": "0.03125 \u00d7 $1.2255/lb",
+      "result": "$0.04"
+    },
+    {
+      "step": "per_serving_calculation",
+      "formula": "$2.12 / 1.0 servings",
+      "result": "$2.1200"
+    }
+  ],
+  "warnings": [
+    "Cost variance of $-1.33 (-38.59%) from PDF stated cost"
+  ],
+  "errors": [],
+  "variance_percent": -38.59
+}

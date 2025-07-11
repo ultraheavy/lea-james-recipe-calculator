@@ -1,63 +1,130 @@
 {
   "aliases": {
-    "ct": "each",
-    "count": "each",
-    "piece": "each",
-    "pc": "each",
-    "slice": "each",
-    "btl": "each",
-    "bottle": "each",
-    "jug": "each",
-    "unit": "each",
-    "portions": "each",
-    "fl": "ml",
-    "fl oz": "fl oz",
-    "fl_oz": "fl oz",
-    "floz": "fl oz",
-    "fl ounce": "fl oz",
-    "ltr": "l",
-    "ltr.": "l",
-    "liter": "l",
-    "gal.": "gal",
-    "gallon": "gal",
-    "lb": "lb",
+    "kilogram": "kg",
+    "kilograms": "kg", 
+    "kilo": "kg",
+    "kilos": "kg",
+    "kg": "kg",
+    "kgs": "kg",
+    
+    "gram": "g",
+    "grams": "g",
+    "gm": "g",
+    "gms": "g",
+    "g": "g",
+    "gr": "g",
+    
     "pound": "lb",
-    "oz": "oz",
+    "pounds": "lb",
+    "lbs": "lb",
+    "lb": "lb",
+    "#": "lb",
+    
     "ounce": "oz",
+    "ounces": "oz",
+    "oz": "oz",
+    "ozs": "oz",
+    
+    "liter": "l",
+    "liters": "l",
+    "litre": "l",
+    "litres": "l",
+    "l": "l",
+    "ltr": "l",
+    
+    "milliliter": "ml",
+    "milliliters": "ml",
+    "millilitre": "ml",
+    "millilitres": "ml",
+    "ml": "ml",
+    "mls": "ml",
+    
+    "gallon": "gal",
+    "gallons": "gal",
+    "gal": "gal",
+    "gals": "gal",
+    
+    "quart": "qt",
+    "quarts": "qt",
+    "qt": "qt",
+    "qts": "qt",
+    
+    "pint": "pt",
+    "pints": "pt",
+    "pt": "pt",
+    "pts": "pt",
+    
+    "cup": "cup",
+    "cups": "cup",
+    "c": "cup",
+    
+    "fluid ounce": "fl oz",
+    "fluid ounces": "fl oz",
+    "fl oz": "fl oz",
+    "fl. oz.": "fl oz",
+    "floz": "fl oz",
+    "fluid oz": "fl oz",
+    
+    "tablespoon": "tbsp",
+    "tablespoons": "tbsp",
+    "tbsp": "tbsp",
+    "tbs": "tbsp",
+    "t": "tbsp",
+    
+    "teaspoon": "tsp",
+    "teaspoons": "tsp",
+    "tsp": "tsp",
+    "ts": "tsp",
+    
+    "each": "each",
+    "ea": "each",
+    "unit": "each",
+    "units": "each",
+    "piece": "each",
+    "pieces": "each",
+    "item": "each",
+    "items": "each",
+    "portion": "each",
+    "portions": "each",
+    "serving": "each",
+    "servings": "each",
+    
+    "dozen": "doz",
+    "doz": "doz",
+    "dz": "doz",
+    
+    "case": "case",
+    "cases": "case",
+    "cs": "case",
+    "box": "case",
+    "boxes": "case",
+    
+    "bunch": "bunch",
+    "bunches": "bunch",
+    "bn": "bunch",
+    
+    "pack": "pack",
+    "packs": "pack",
+    "pk": "pack",
+    "package": "pack",
+    "packages": "pack",
+    
+    "can": "can",
+    "cans": "can",
+    "cn": "can",
+    "tin": "can",
+    "tins": "can",
+    
+    "bag": "bag",
+    "bags": "bag",
     "bg": "bag",
-    "pk": "pack"
-  },
-  "conversions": {
-    "tbsp_to_ml": 14.786,
-    "tsp_to_ml": 4.929,
-    "floz_to_ml": 29.573,
-    "cup_to_ml": 236.588,
-    "pt_to_ml": 473.176,
-    "qt_to_ml": 946.353,
-    "gal_to_ml": 3785.412,
-    "lb_to_g": 453.592,
-    "oz_to_g": 28.35
-  },
-  "canonical_units": {
-    "weight": [
-      "g",
-      "kg",
-      "lb",
-      "oz"
-    ],
-    "volume": [
-      "ml",
-      "l",
-      "fl oz",
-      "gal",
-      "qt",
-      "pt",
-      "cup"
-    ],
-    "count": [
-      "each",
-      "bag",
-      "pack"
-    ]
+    
+    "bottle": "bottle",
+    "bottles": "bottle",
+    "btl": "bottle",
+    
+    "jar": "jar",
+    "jars": "jar",
+    "jr": "jar"
   }
 }

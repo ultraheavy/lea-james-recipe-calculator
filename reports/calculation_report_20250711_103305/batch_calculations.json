@@ -1,0 +1,623 @@
+{
+  "start_time": "2025-07-11T10:33:05.338530",
+  "total_recipes": 66,
+  "successful": 42,
+  "failed": 24,
+  "recipes": [
+    {
+      "recipe_id": 67,
+      "recipe_name": "FC-03 Whole Wings",
+      "recipe_type": "Recipe",
+      "calculated_cost": 1.44,
+      "pdf_stated_cost": 1.4402,
+      "variance": 0,
+      "has_errors": false,
+      "has_warnings": false,
+      "status": "success"
+    },
+    {
+      "recipe_id": 68,
+      "recipe_name": "Ritz Crumble",
+      "recipe_type": "PrepRecipe",
+      "calculated_cost": 5.28,
+      "pdf_stated_cost": 5.2788,
+      "variance": 0,
+      "has_errors": false,
+      "has_warnings": false,
+      "status": "success"
+    },
+    {
+      "recipe_id": 69,
+      "recipe_name": "FT-02 Loaded Fries",
+      "recipe_type": "Recipe",
+      "calculated_cost": 1.2,
+      "pdf_stated_cost": 6.519,
+      "variance": -5.32,
+      "has_errors": false,
+      "has_warnings": true,
+      "status": "success"
+    },
+    {
+      "recipe_id": 70,
+      "recipe_name": "French Fries - Portion",
+      "recipe_type": "Recipe",
+      "calculated_cost": 0.41,
+      "pdf_stated_cost": 0.4138,
+      "variance": 0,
+      "has_errors": false,
+      "has_warnings": false,
+      "status": "success"
+    },
+    {
+      "recipe_id": 71,
+      "recipe_name": "DP-05 Habanero Ranch",
+      "recipe_type": "Recipe",
+      "calculated_cost": 0.44,
+      "pdf_stated_cost": 0.282,
+      "variance": 0.16,
+      "has_errors": false,
+      "has_warnings": true,
+      "status": "success"
+    },
+    {
+      "recipe_id": 72,
+      "recipe_name": "DP-04 Hot Honey",
+      "status": "failed",
+      "error": "[<class 'decimal.ConversionSyntax'>]"
+    },
+    {
+      "recipe_id": 73,
+      "recipe_name": "DP-03 Honey Mustard",
+      "recipe_type": "Recipe",
+      "calculated_cost": 0.58,
+      "pdf_stated_cost": 0.4211,
+      "variance": 0.16,
+      "has_errors": false,
+      "has_warnings": true,
+      "status": "success"
+    },
+    {
+      "recipe_id": 74,
+      "recipe_name": "DP-02 Comeback Sauce",
+      "status": "failed",
+      "error": "[<class 'decimal.ConversionSyntax'>]"
+    },
+    {
+      "recipe_id": 75,
+      "recipe_name": "DP-01 Charred-Onion Ranch Dip",
+      "recipe_type": "Recipe",
+      "calculated_cost": 0.16,
+      "pdf_stated_cost": 0.0095,
+      "variance": 0.15,
+      "has_errors": false,
+      "has_warnings": true,
+      "status": "success"
+    },
+    {
+      "recipe_id": 76,
+      "recipe_name": "SD-04 Fried Corn Ribs",
+      "recipe_type": "Recipe",
+      "calculated_cost": 1.74,
+      "pdf_stated_cost": 1.738,
+      "variance": 0,
+      "has_errors": false,
+      "has_warnings": false,
+      "status": "success"
+    },
+    {
+      "recipe_id": 77,
+      "recipe_name": "Mac Sauce - Modified 2025",
+      "recipe_type": "PrepRecipe",
+      "calculated_cost": 45.72,
+      "pdf_stated_cost": 36.060100000000006,
+      "variance": 9.66,
+      "has_errors": false,
+      "has_warnings": true,
+      "status": "success"
+    },
+    {
+      "recipe_id": 78,
+      "recipe_name": "Roux recipe",
+      "recipe_type": "PrepRecipe",
+      "calculated_cost": 7.17,
+      "pdf_stated_cost": 7.167,
+      "variance": 0,
+      "has_errors": false,
+      "has_warnings": false,
+      "status": "success"
+    },
+    {
+      "recipe_id": 79,
+      "recipe_name": "LJ Mac",
+      "recipe_type": "PrepRecipe",
+      "calculated_cost": 587.44,
+      "pdf_stated_cost": 15.9435,
+      "variance": 571.5,
+      "has_errors": false,
+      "has_warnings": true,
+      "status": "success"
+    },
+    {
+      "recipe_id": 80,
+      "recipe_name": "SD-03 LJ Mac",
+      "recipe_type": "Recipe",
+      "calculated_cost": 34.84,
+      "pdf_stated_cost": 0.5536,
+      "variance": 34.29,
+      "has_errors": false,
+      "has_warnings": true,
+      "status": "success"
+    },
+    {
+      "recipe_id": 81,
+      "recipe_name": "SD-02 Extra-Crispy Fries with Ranch Powder",
+      "recipe_type": "Recipe",
+      "calculated_cost": 0.7,
+      "pdf_stated_cost": 5.999499999999999,
+      "variance": -5.3,
+      "has_errors": false,
+      "has_warnings": true,
+      "status": "success"
+    },
+    {
+      "recipe_id": 82,
+      "recipe_name": "French Fries Recipe",
+      "recipe_type": "PrepRecipe",
+      "calculated_cost": 0.46,
+      "pdf_stated_cost": 0.4598,
+      "variance": 0,
+      "has_errors": false,
+      "has_warnings": false,
+      "status": "success"
+    },
+    {
+      "recipe_id": 83,
+      "recipe_name": "SD-01 Kale & Cabbage Slaw",
+      "recipe_type": "Recipe",
+      "calculated_cost": 0.0,
+      "pdf_stated_cost": 0.4263,
+      "variance": -0.43,
+      "has_errors": false,
+      "has_warnings": true,
+      "status": "success"
+    },
+    {
+      "recipe_id": 84,
+      "recipe_name": "Kale Kimchi Recipe",
+      "recipe_type": "PrepRecipe",
+      "calculated_cost": 62.335,
+      "pdf_stated_cost": 67.04979999999999,
+      "variance": -4.71,
+      "has_errors": false,
+      "has_warnings": true,
+      "status": "success"
+    },
+    {
+      "recipe_id": 85,
+      "recipe_name": "FT-03 Angry Chicken Mac bowl",
+      "recipe_type": "Recipe",
+      "calculated_cost": 46.38,
+      "pdf_stated_cost": 1.3432,
+      "variance": 45.04,
+      "has_errors": false,
+      "has_warnings": true,
+      "status": "success"
+    },
+    {
+      "recipe_id": 86,
+      "recipe_name": "FT-01 Chicken Waffle Cone",
+      "status": "failed",
+      "error": "[<class 'decimal.ConversionSyntax'>]"
+    },
+    {
+      "recipe_id": 87,
+      "recipe_name": "SL-01 Chicken Caesar Salad",
+      "recipe_type": "Recipe",
+      "calculated_cost": 0.77,
+      "pdf_stated_cost": 18.3742,
+      "variance": -17.6,
+      "has_errors": true,
+      "has_warnings": true,
+      "status": "success"
+    },
+    {
+      "recipe_id": 88,
+      "recipe_name": "S-04 Fish Sando",
+      "status": "failed",
+      "error": "[<class 'decimal.ConversionSyntax'>]"
+    },
+    {
+      "recipe_id": 89,
+      "recipe_name": "FC-02 Leg Quarter",
+      "status": "failed",
+      "error": "[<class 'decimal.ConversionSyntax'>]"
+    },
+    {
+      "recipe_id": 90,
+      "recipe_name": "FC-01 Thicc'n Tenders",
+      "status": "failed",
+      "error": "[<class 'decimal.ConversionSyntax'>]"
+    },
+    {
+      "recipe_id": 91,
+      "recipe_name": "Fried Chicken Tender",
+      "recipe_type": "PrepRecipe",
+      "calculated_cost": 0.95,
+      "pdf_stated_cost": 0.9507,
+      "variance": 0,
+      "has_errors": false,
+      "has_warnings": false,
+      "status": "success"
+    },
+    {
+      "recipe_id": 92,
+      "recipe_name": "FC-04 Fried Chicken Tender",
+      "recipe_type": "Recipe",
+      "calculated_cost": 1.02,
+      "pdf_stated_cost": 1.023,
+      "variance": 0,
+      "has_errors": false,
+      "has_warnings": false,
+      "status": "success"
+    },
+    {
+      "recipe_id": 93,
+      "recipe_name": "CHilli Oil - Hot Fat",
+      "recipe_type": "PrepRecipe",
+      "calculated_cost": 40.44,
+      "pdf_stated_cost": 40.4392,
+      "variance": 0,
+      "has_errors": false,
+      "has_warnings": false,
+      "status": "success"
+    },
+    {
+      "recipe_id": 94,
+      "recipe_name": "S-03 Plain Jane Sandwich",
+      "status": "failed",
+      "error": "[<class 'decimal.ConversionSyntax'>]"
+    },
+    {
+      "recipe_id": 95,
+      "recipe_name": "S-01 OG Nashville Chicken",
+      "recipe_type": "Recipe",
+      "calculated_cost": 2.3,
+      "pdf_stated_cost": 2.5685000000000002,
+      "variance": -0.27,
+      "has_errors": false,
+      "has_warnings": true,
+      "status": "success"
+    },
+    {
+      "recipe_id": 96,
+      "recipe_name": "S-02 J-Blaze Chicken",
+      "status": "failed",
+      "error": "[<class 'decimal.ConversionSyntax'>]"
+    },
+    {
+      "recipe_id": 97,
+      "recipe_name": "24 Hour Chili Brined Chicken Thigh",
+      "recipe_type": "PrepRecipe",
+      "calculated_cost": 1.46,
+      "pdf_stated_cost": 26.09,
+      "variance": -24.63,
+      "has_errors": false,
+      "has_warnings": true,
+      "status": "success"
+    },
+    {
+      "recipe_id": 98,
+      "recipe_name": "DP- 05 Habanero Ranch",
+      "recipe_type": "Recipe",
+      "calculated_cost": 0.28,
+      "pdf_stated_cost": 0.282,
+      "variance": 0,
+      "has_errors": false,
+      "has_warnings": false,
+      "status": "success"
+    },
+    {
+      "recipe_id": 99,
+      "recipe_name": "Nashville Hot Chicken",
+      "recipe_type": "Recipe",
+      "calculated_cost": 2.12,
+      "pdf_stated_cost": 3.4465000000000003,
+      "variance": -1.33,
+      "has_errors": false,
+      "has_warnings": true,
+      "status": "success"
+    },
+    {
+      "recipe_id": 100,
+      "recipe_name": "Comeback Sauce - Updated 2025",
+      "status": "failed",
+      "error": "[<class 'decimal.ConversionSyntax'>]"
+    },
+    {
+      "recipe_id": 101,
+      "recipe_name": "Mac Sauce",
+      "status": "failed",
+      "error": "[<class 'decimal.ConversionSyntax'>]"
+    },
+    {
+      "recipe_id": 102,
+      "recipe_name": "Coleslaw",
+      "status": "failed",
+      "error": "[<class 'decimal.ConversionSyntax'>]"
+    },
+    {
+      "recipe_id": 103,
+      "recipe_name": "Chicken Waffle Cone",
+      "recipe_type": "Recipe",
+      "calculated_cost": 3.73,
+      "pdf_stated_cost": 3.7058999999999997,
+      "variance": 0.02,
+      "has_errors": false,
+      "has_warnings": true,
+      "status": "success"
+    },
+    {
+      "recipe_id": 104,
+      "recipe_name": "Charred Onion Ranch",
+      "status": "failed",
+      "error": "[<class 'decimal.ConversionSyntax'>]"
+    },
+    {
+      "recipe_id": 105,
+      "recipe_name": "Hot Honey - 2025",
+      "status": "failed",
+      "error": "[<class 'decimal.ConversionSyntax'>]"
+    },
+    {
+      "recipe_id": 106,
+      "recipe_name": "Hot Honey - portion",
+      "recipe_type": "Recipe",
+      "calculated_cost": 0.0,
+      "pdf_stated_cost": 0.0142,
+      "variance": -0.01,
+      "has_errors": false,
+      "has_warnings": false,
+      "status": "success"
+    },
+    {
+      "recipe_id": 107,
+      "recipe_name": "Hot Honey Sauce",
+      "status": "failed",
+      "error": "[<class 'decimal.ConversionSyntax'>]"
+    },
+    {
+      "recipe_id": 108,
+      "recipe_name": "Kale - Chopped",
+      "recipe_type": "PrepRecipe",
+      "calculated_cost": 23.61,
+      "pdf_stated_cost": 23.608,
+      "variance": 0,
+      "has_errors": false,
+      "has_warnings": false,
+      "status": "success"
+    },
+    {
+      "recipe_id": 109,
+      "recipe_name": "Lemon Pepper Sauce - Portion",
+      "recipe_type": "Recipe",
+      "calculated_cost": 0.15,
+      "pdf_stated_cost": 0.1467,
+      "variance": 0,
+      "has_errors": false,
+      "has_warnings": false,
+      "status": "success"
+    },
+    {
+      "recipe_id": 110,
+      "recipe_name": "Alabama White BBQ",
+      "status": "failed",
+      "error": "[<class 'decimal.ConversionSyntax'>]"
+    },
+    {
+      "recipe_id": 111,
+      "recipe_name": "Shredded Carrots",
+      "recipe_type": "PrepRecipe",
+      "calculated_cost": 4.7,
+      "pdf_stated_cost": 4.7,
+      "variance": 0,
+      "has_errors": false,
+      "has_warnings": false,
+      "status": "success"
+    },
+    {
+      "recipe_id": 112,
+      "recipe_name": "Shredded Cabbage",
+      "recipe_type": "PrepRecipe",
+      "calculated_cost": 0.0,
+      "pdf_stated_cost": 8.84,
+      "variance": -8.84,
+      "has_errors": true,
+      "has_warnings": true,
+      "status": "success"
+    },
+    {
+      "recipe_id": 113,
+      "recipe_name": "Comeback Sauce - Portion",
+      "recipe_type": "Recipe",
+      "calculated_cost": 9.032,
+      "pdf_stated_cost": null,
+      "variance": 0,
+      "has_errors": false,
+      "has_warnings": false,
+      "status": "success"
+    },
+    {
+      "recipe_id": 114,
+      "recipe_name": "Hot Honey Chicken Wings",
+      "status": "failed",
+      "error": "[<class 'decimal.ConversionSyntax'>]"
+    },
+    {
+      "recipe_id": 115,
+      "recipe_name": "Chicken Wings",
+      "status": "failed",
+      "error": "[<class 'decimal.ConversionSyntax'>]"
+    },
+    {
+      "recipe_id": 116,
+      "recipe_name": "Buffalo Sauce - portion",
+      "recipe_type": "Recipe",
+      "calculated_cost": 0.35,
+      "pdf_stated_cost": 0.3477,
+      "variance": 0,
+      "has_errors": false,
+      "has_warnings": false,
+      "status": "success"
+    },
+    {
+      "recipe_id": 117,
+      "recipe_name": "Hot Fish",
+      "status": "failed",
+      "error": "[<class 'decimal.ConversionSyntax'>]"
+    },
+    {
+      "recipe_id": 118,
+      "recipe_name": "BBQ Sauce Chicken Wings",
+      "status": "failed",
+      "error": "[<class 'decimal.ConversionSyntax'>]"
+    },
+    {
+      "recipe_id": 119,
+      "recipe_name": "Buffalo Chicken Wings",
+      "status": "failed",
+      "error": "[<class 'decimal.ConversionSyntax'>]"
+    },
+    {
+      "recipe_id": 120,
+      "recipe_name": "Lemon Pepper Chicken Wings",
+      "status": "failed",
+      "error": "[<class 'decimal.ConversionSyntax'>]"
+    },
+    {
+      "recipe_id": 121,
+      "recipe_name": "Mac & Cheese",
+      "status": "failed",
+      "error": "[<class 'decimal.ConversionSyntax'>]"
+    },
+    {
+      "recipe_id": 122,
+      "recipe_name": "Collard Greens - Side Portion",
+      "recipe_type": "Recipe",
+      "calculated_cost": 0.0,
+      "pdf_stated_cost": 0.0236,
+      "variance": -0.02,
+      "has_errors": false,
+      "has_warnings": true,
+      "status": "success"
+    },
+    {
+      "recipe_id": 123,
+      "recipe_name": "Collard Greens Recipe",
+      "status": "failed",
+      "error": "[<class 'decimal.ConversionSyntax'>]"
+    },
+    {
+      "recipe_id": 124,
+      "recipe_name": "Loaded Fries",
+      "recipe_type": "Recipe",
+      "calculated_cost": 2.16,
+      "pdf_stated_cost": 3.2121,
+      "variance": -1.05,
+      "has_errors": false,
+      "has_warnings": true,
+      "status": "success"
+    },
+    {
+      "recipe_id": 125,
+      "recipe_name": "Hot Fat",
+      "recipe_type": "PrepRecipe",
+      "calculated_cost": 34.61,
+      "pdf_stated_cost": 34.6134,
+      "variance": 0,
+      "has_errors": false,
+      "has_warnings": false,
+      "status": "success"
+    },
+    {
+      "recipe_id": 126,
+      "recipe_name": "Clucking Spice (Seasoning Blend)",
+      "recipe_type": "PrepRecipe",
+      "calculated_cost": 16.77,
+      "pdf_stated_cost": 16.762600000000003,
+      "variance": 0.01,
+      "has_errors": false,
+      "has_warnings": false,
+      "status": "success"
+    },
+    {
+      "recipe_id": 127,
+      "recipe_name": "Onion Ranch",
+      "recipe_type": "PrepRecipe",
+      "calculated_cost": 26.44,
+      "pdf_stated_cost": 26.433699999999998,
+      "variance": 0.01,
+      "has_errors": false,
+      "has_warnings": false,
+      "status": "success"
+    },
+    {
+      "recipe_id": 128,
+      "recipe_name": "Comeback sauce",
+      "recipe_type": "PrepRecipe",
+      "calculated_cost": 33.87,
+      "pdf_stated_cost": 0.0554,
+      "variance": 33.81,
+      "has_errors": false,
+      "has_warnings": true,
+      "status": "success"
+    },
+    {
+      "recipe_id": 129,
+      "recipe_name": "Plain Jane Sandwich",
+      "status": "failed",
+      "error": "[<class 'decimal.ConversionSyntax'>]"
+    },
+    {
+      "recipe_id": 130,
+      "recipe_name": "Kale Kimchi - Side Portion",
+      "recipe_type": "Recipe",
+      "calculated_cost": 0.0,
+      "pdf_stated_cost": 0.4263,
+      "variance": -0.43,
+      "has_errors": false,
+      "has_warnings": true,
+      "status": "success"
+    },
+    {
+      "recipe_id": 131,
+      "recipe_name": "Pickled Shallot",
+      "recipe_type": "PrepRecipe",
+      "calculated_cost": 159.46,
+      "pdf_stated_cost": 150.9842,
+      "variance": 8.48,
+      "has_errors": false,
+      "has_warnings": true,
+      "status": "success"
+    },
+    {
+      "recipe_id": 132,
+      "recipe_name": "Tenders",
+      "recipe_type": "Recipe",
+      "calculated_cost": 0.99,
+      "pdf_stated_cost": 0.9782,
+      "variance": 0.01,
+      "has_errors": false,
+      "has_warnings": false,
+      "status": "success"
+    }
+  ],
+  "summary_stats": {
+    "total_calculated_cost": 1161.507,
+    "total_pdf_stated_cost": 519.1313,
+    "recipes_matching_pdf": 19,
+    "recipes_with_variance": 22,
+    "max_variance": 571.5,
+    "min_variance": -24.63
+  },
+  "end_time": "2025-07-11T10:33:05.346697"
+}

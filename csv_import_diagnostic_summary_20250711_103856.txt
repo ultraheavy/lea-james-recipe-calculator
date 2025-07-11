@@ -1,0 +1,29 @@
+CSV IMPORT DIAGNOSTIC REPORT
+================================================================================
+
+SUMMARY
+----------------------------------------
+Total Issues Found: 332
+
+ISSUE BREAKDOWN
+----------------------------------------
+
+Field Mapping Errors: 307
+  - inventory.pack_size: CSV='180 case' vs DB='180 each'
+  - inventory.pack_size: CSV='24 x 16 cs' vs DB='24 x 16 oz'
+  - inventory.pack_size: CSV='24 x 16 cs' vs DB='24 x 16 oz'
+  - inventory.pack_size: CSV='24 cs' vs DB='24 each'
+  - inventory.pack_size: CSV='35 each' vs DB='35 lb'
+  ... and 302 more
+
+SYSTEMATIC ISSUES
+----------------------------------------
+
+Most Common UOM Patterns Causing Errors:
+
+RECOMMENDATIONS
+----------------------------------------
+4. Handle Toast CSV format:
+   - Skip metadata headers
+   - Find actual data headers dynamically
+   - Handle inconsistent column counts

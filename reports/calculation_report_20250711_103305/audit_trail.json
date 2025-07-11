@@ -1,0 +1,4018 @@
+{
+  "generated_at": "2025-07-11T10:33:05.347459",
+  "total_calculations": 48,
+  "calculations": [
+    {
+      "recipe_id": 67,
+      "recipe_name": "FC-03 Whole Wings",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.338591",
+      "ingredients": [
+        {
+          "ingredient_name": "Protein, Chicken, Wing",
+          "ingredient_type": "Product",
+          "quantity": "10.0",
+          "unit": "oz",
+          "unit_cost": "1.7400",
+          "total_cost": "1.09",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "10.0 oz",
+              "to": "0.625 lb",
+              "formula": "0.625 \u00d7 $1.7400/lb",
+              "result": "$1.09"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Chicken  Breading, Lea Jane Recipe",
+          "ingredient_type": "Product",
+          "quantity": "1.0",
+          "unit": "oz",
+          "unit_cost": "1.8970",
+          "total_cost": "0.12",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "1.0 oz",
+              "to": "0.0625 lb",
+              "formula": "0.0625 \u00d7 $1.8970/lb",
+              "result": "$0.12"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Oil, Canola, Clear, Frying",
+          "ingredient_type": "Product",
+          "quantity": "2.0",
+          "unit": "oz",
+          "unit_cost": "1.1571",
+          "total_cost": "0.14",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "2.0 oz",
+              "to": "0.125 lb",
+              "formula": "0.125 \u00d7 $1.1571/lb",
+              "result": "$0.14"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dairy, Milk, Whole",
+          "ingredient_type": "Product",
+          "quantity": "2.0",
+          "unit": "fl oz",
+          "unit_cost": "5.7300",
+          "total_cost": "0.09",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "2.0 fl oz",
+              "to": "0.01562499174461947318784490980 gal",
+              "formula": "0.01562499174461947318784490980 \u00d7 $5.7300/gal",
+              "result": "$0.09"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "1.44",
+      "cost_per_serving": "1.4400",
+      "pdf_stated_cost": "1.4402",
+      "variance_from_pdf": "-0.00",
+      "calculation_steps": [
+        {
+          "step": "unit_conversion",
+          "from": "10.0 oz",
+          "to": "0.625 lb",
+          "formula": "0.625 \u00d7 $1.7400/lb",
+          "result": "$1.09"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "1.0 oz",
+          "to": "0.0625 lb",
+          "formula": "0.0625 \u00d7 $1.8970/lb",
+          "result": "$0.12"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "2.0 oz",
+          "to": "0.125 lb",
+          "formula": "0.125 \u00d7 $1.1571/lb",
+          "result": "$0.14"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "2.0 fl oz",
+          "to": "0.01562499174461947318784490980 gal",
+          "formula": "0.01562499174461947318784490980 \u00d7 $5.7300/gal",
+          "result": "$0.09"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$1.44 / 1.0 servings",
+          "result": "$1.4400"
+        }
+      ],
+      "warnings": [],
+      "errors": [],
+      "variance_percent": "-0.00"
+    },
+    {
+      "recipe_id": 68,
+      "recipe_name": "Ritz Crumble",
+      "recipe_type": "PrepRecipe",
+      "timestamp": "2025-07-11T10:33:05.338914",
+      "ingredients": [
+        {
+          "ingredient_name": "Dry Goods, Crackers, Ritz",
+          "ingredient_type": "Product",
+          "quantity": "1.0",
+          "unit": "lb",
+          "unit_cost": "0.3299",
+          "total_cost": "5.28",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "1.0 lb",
+              "to": "16 oz",
+              "formula": "16 \u00d7 $0.3299/oz",
+              "result": "$5.28"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "5.28",
+      "cost_per_serving": "2.6400",
+      "pdf_stated_cost": "5.2788",
+      "variance_from_pdf": "0.00",
+      "calculation_steps": [
+        {
+          "step": "unit_conversion",
+          "from": "1.0 lb",
+          "to": "16 oz",
+          "formula": "16 \u00d7 $0.3299/oz",
+          "result": "$5.28"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$5.28 / 2.0 servings",
+          "result": "$2.6400"
+        }
+      ],
+      "warnings": [],
+      "errors": [],
+      "variance_percent": "0.00"
+    },
+    {
+      "recipe_id": 69,
+      "recipe_name": "FT-02 Loaded Fries",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.339003",
+      "ingredients": [
+        {
+          "ingredient_name": "Dairy, Cheese Sauce, Loaf, American",
+          "ingredient_type": "Product",
+          "quantity": "4.0",
+          "unit": "oz",
+          "unit_cost": "4.8000",
+          "total_cost": "1.20",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "4.0 oz",
+              "to": "0.25 lb",
+              "formula": "0.25 \u00d7 $4.8000/lb",
+              "result": "$1.20"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "1.20",
+      "cost_per_serving": "1.2000",
+      "pdf_stated_cost": "6.519",
+      "variance_from_pdf": "-5.32",
+      "calculation_steps": [
+        {
+          "step": "unit_conversion",
+          "from": "4.0 oz",
+          "to": "0.25 lb",
+          "formula": "0.25 \u00d7 $4.8000/lb",
+          "result": "$1.20"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$1.20 / 1.0 servings",
+          "result": "$1.2000"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $-5.32 (-81.61%) from PDF stated cost"
+      ],
+      "errors": [],
+      "variance_percent": "-81.61"
+    },
+    {
+      "recipe_id": 70,
+      "recipe_name": "French Fries - Portion",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.339078",
+      "ingredients": [
+        {
+          "ingredient_name": "Frozen, Potato, French Fries, Frozen",
+          "ingredient_type": "Product",
+          "quantity": "5.0",
+          "unit": "oz",
+          "unit_cost": "1.3241",
+          "total_cost": "0.41",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "5.0 oz",
+              "to": "0.3125 lb",
+              "formula": "0.3125 \u00d7 $1.3241/lb",
+              "result": "$0.41"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "0.41",
+      "cost_per_serving": "0.4100",
+      "pdf_stated_cost": "0.4138",
+      "variance_from_pdf": "-0.00",
+      "calculation_steps": [
+        {
+          "step": "unit_conversion",
+          "from": "5.0 oz",
+          "to": "0.3125 lb",
+          "formula": "0.3125 \u00d7 $1.3241/lb",
+          "result": "$0.41"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$0.41 / 1.0 servings",
+          "result": "$0.4100"
+        }
+      ],
+      "warnings": [],
+      "errors": [],
+      "variance_percent": "-0.00"
+    },
+    {
+      "recipe_id": 71,
+      "recipe_name": "DP-05 Habanero Ranch",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.339146",
+      "ingredients": [
+        {
+          "ingredient_name": "Dry Goods, Ranch Dressing, with Jalapeno",
+          "ingredient_type": "Product",
+          "quantity": "2.0",
+          "unit": "fl oz",
+          "unit_cost": "18.0500",
+          "total_cost": "0.28",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "2.0 fl oz",
+              "to": "0.01562499174461947318784490980 gal",
+              "formula": "0.01562499174461947318784490980 \u00d7 $18.0500/gal",
+              "result": "$0.28"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Non Con, Cup, 2oz, Clear Plastic",
+          "ingredient_type": "Product",
+          "quantity": "1.0",
+          "unit": "each",
+          "unit_cost": "0.0900",
+          "total_cost": "0.09",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "1.0 each \u00d7 $0.0900/each",
+              "result": "$0.09"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Non Con, Lids, 1.5-2oz, Souffle, Clear",
+          "ingredient_type": "Product",
+          "quantity": "1.0",
+          "unit": "ea",
+          "unit_cost": "0.0700",
+          "total_cost": "0.07",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "1.0 each \u00d7 $0.0700/each",
+              "result": "$0.07"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "0.44",
+      "cost_per_serving": "0.2200",
+      "pdf_stated_cost": "0.282",
+      "variance_from_pdf": "0.16",
+      "calculation_steps": [
+        {
+          "step": "unit_conversion",
+          "from": "2.0 fl oz",
+          "to": "0.01562499174461947318784490980 gal",
+          "formula": "0.01562499174461947318784490980 \u00d7 $18.0500/gal",
+          "result": "$0.28"
+        },
+        {
+          "step": "direct_calculation",
+          "formula": "1.0 each \u00d7 $0.0900/each",
+          "result": "$0.09"
+        },
+        {
+          "step": "direct_calculation",
+          "formula": "1.0 each \u00d7 $0.0700/each",
+          "result": "$0.07"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$0.44 / 2.0 servings",
+          "result": "$0.2200"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $0.16 (56.74%) from PDF stated cost"
+      ],
+      "errors": [],
+      "variance_percent": "56.74"
+    },
+    {
+      "recipe_id": 73,
+      "recipe_name": "DP-03 Honey Mustard",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.339414",
+      "ingredients": [
+        {
+          "ingredient_name": "Dry Goods, Dressing, Honey Mustard",
+          "ingredient_type": "Product",
+          "quantity": "2.0",
+          "unit": "fl oz",
+          "unit_cost": "26.9500",
+          "total_cost": "0.42",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "2.0 fl oz",
+              "to": "0.01562499174461947318784490980 gal",
+              "formula": "0.01562499174461947318784490980 \u00d7 $26.9500/gal",
+              "result": "$0.42"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Non Con, Cup, 2oz, Clear Plastic",
+          "ingredient_type": "Product",
+          "quantity": "1.0",
+          "unit": "each",
+          "unit_cost": "0.0900",
+          "total_cost": "0.09",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "1.0 each \u00d7 $0.0900/each",
+              "result": "$0.09"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Non Con, Lids, 1.5-2oz, Souffle, Clear",
+          "ingredient_type": "Product",
+          "quantity": "1.0",
+          "unit": "ea",
+          "unit_cost": "0.0700",
+          "total_cost": "0.07",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "1.0 each \u00d7 $0.0700/each",
+              "result": "$0.07"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "0.58",
+      "cost_per_serving": "0.2900",
+      "pdf_stated_cost": "0.4211",
+      "variance_from_pdf": "0.16",
+      "calculation_steps": [
+        {
+          "step": "unit_conversion",
+          "from": "2.0 fl oz",
+          "to": "0.01562499174461947318784490980 gal",
+          "formula": "0.01562499174461947318784490980 \u00d7 $26.9500/gal",
+          "result": "$0.42"
+        },
+        {
+          "step": "direct_calculation",
+          "formula": "1.0 each \u00d7 $0.0900/each",
+          "result": "$0.09"
+        },
+        {
+          "step": "direct_calculation",
+          "formula": "1.0 each \u00d7 $0.0700/each",
+          "result": "$0.07"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$0.58 / 2.0 servings",
+          "result": "$0.2900"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $0.16 (38.00%) from PDF stated cost"
+      ],
+      "errors": [],
+      "variance_percent": "38.00"
+    },
+    {
+      "recipe_id": 75,
+      "recipe_name": "DP-01 Charred-Onion Ranch Dip",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.339645",
+      "ingredients": [
+        {
+          "ingredient_name": "Non Con, Cup, 2oz, Clear Plastic",
+          "ingredient_type": "Product",
+          "quantity": "1.0",
+          "unit": "each",
+          "unit_cost": "0.0900",
+          "total_cost": "0.09",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "1.0 each \u00d7 $0.0900/each",
+              "result": "$0.09"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Non Con, Lids, 1.5-2oz, Souffle, Clear",
+          "ingredient_type": "Product",
+          "quantity": "1.0",
+          "unit": "ea",
+          "unit_cost": "0.0700",
+          "total_cost": "0.07",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "1.0 each \u00d7 $0.0700/each",
+              "result": "$0.07"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "0.16",
+      "cost_per_serving": "0.0800",
+      "pdf_stated_cost": "0.0095",
+      "variance_from_pdf": "0.15",
+      "calculation_steps": [
+        {
+          "step": "direct_calculation",
+          "formula": "1.0 each \u00d7 $0.0900/each",
+          "result": "$0.09"
+        },
+        {
+          "step": "direct_calculation",
+          "formula": "1.0 each \u00d7 $0.0700/each",
+          "result": "$0.07"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$0.16 / 2.0 servings",
+          "result": "$0.0800"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $0.15 (1578.95%) from PDF stated cost"
+      ],
+      "errors": [],
+      "variance_percent": "1578.95"
+    },
+    {
+      "recipe_id": 76,
+      "recipe_name": "SD-04 Fried Corn Ribs",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.339714",
+      "ingredients": [
+        {
+          "ingredient_name": "Frozen, Corn Rib, Hickory Smoked",
+          "ingredient_type": "Product",
+          "quantity": "6.0",
+          "unit": "oz",
+          "unit_cost": "4.4419",
+          "total_cost": "1.67",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "6.0 oz",
+              "to": "0.375 lb",
+              "formula": "0.375 \u00d7 $4.4419/lb",
+              "result": "$1.67"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Oil, Canola, Clear, Frying",
+          "ingredient_type": "Product",
+          "quantity": "1.0",
+          "unit": "oz",
+          "unit_cost": "1.1571",
+          "total_cost": "0.07",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "1.0 oz",
+              "to": "0.0625 lb",
+              "formula": "0.0625 \u00d7 $1.1571/lb",
+              "result": "$0.07"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "1.74",
+      "cost_per_serving": "0.2900",
+      "pdf_stated_cost": "1.738",
+      "variance_from_pdf": "0.00",
+      "calculation_steps": [
+        {
+          "step": "unit_conversion",
+          "from": "6.0 oz",
+          "to": "0.375 lb",
+          "formula": "0.375 \u00d7 $4.4419/lb",
+          "result": "$1.67"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "1.0 oz",
+          "to": "0.0625 lb",
+          "formula": "0.0625 \u00d7 $1.1571/lb",
+          "result": "$0.07"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$1.74 / 6.0 servings",
+          "result": "$0.2900"
+        }
+      ],
+      "warnings": [],
+      "errors": [],
+      "variance_percent": "0.00"
+    },
+    {
+      "recipe_id": 77,
+      "recipe_name": "Mac Sauce - Modified 2025",
+      "recipe_type": "PrepRecipe",
+      "timestamp": "2025-07-11T10:33:05.339797",
+      "ingredients": [
+        {
+          "ingredient_name": "Dairy, Milk, Whole",
+          "ingredient_type": "Product",
+          "quantity": "3.0",
+          "unit": "gallon",
+          "unit_cost": "5.7300",
+          "total_cost": "17.19",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "3.0 gal \u00d7 $5.7300/gal",
+              "result": "$17.19"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dairy, Cream, Heavy",
+          "ingredient_type": "Product",
+          "quantity": "3.0",
+          "unit": "qt",
+          "unit_cost": "5.4150",
+          "total_cost": "16.24",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "3.0 qt \u00d7 $5.4150/qt",
+              "result": "$16.24"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Salt, Kosher",
+          "ingredient_type": "Product",
+          "quantity": "170.0",
+          "unit": "gram",
+          "unit_cost": "0.3137",
+          "total_cost": "0.12",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "170.0 g",
+              "to": "0.3747861514312421735833083476 lb",
+              "formula": "0.3747861514312421735833083476 \u00d7 $0.3137/lb",
+              "result": "$0.12"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dairy, Cheese, Loaf, Pepper Jack",
+          "ingredient_type": "Product",
+          "quantity": "1240.0",
+          "unit": "gram",
+          "unit_cost": "4.4500",
+          "total_cost": "12.17",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "1240.0 g",
+              "to": "2.733734281027884089666484418 lb",
+              "formula": "2.733734281027884089666484418 \u00d7 $4.4500/lb",
+              "result": "$12.17"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "45.72",
+      "cost_per_serving": "45.7200",
+      "pdf_stated_cost": "36.060100000000006",
+      "variance_from_pdf": "9.66",
+      "calculation_steps": [
+        {
+          "step": "direct_calculation",
+          "formula": "3.0 gal \u00d7 $5.7300/gal",
+          "result": "$17.19"
+        },
+        {
+          "step": "direct_calculation",
+          "formula": "3.0 qt \u00d7 $5.4150/qt",
+          "result": "$16.24"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "170.0 g",
+          "to": "0.3747861514312421735833083476 lb",
+          "formula": "0.3747861514312421735833083476 \u00d7 $0.3137/lb",
+          "result": "$0.12"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "1240.0 g",
+          "to": "2.733734281027884089666484418 lb",
+          "formula": "2.733734281027884089666484418 \u00d7 $4.4500/lb",
+          "result": "$12.17"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$45.72 / 1.0 servings",
+          "result": "$45.7200"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $9.66 (26.79%) from PDF stated cost"
+      ],
+      "errors": [],
+      "variance_percent": "26.79"
+    },
+    {
+      "recipe_id": 78,
+      "recipe_name": "Roux recipe",
+      "recipe_type": "PrepRecipe",
+      "timestamp": "2025-07-11T10:33:05.339913",
+      "ingredients": [
+        {
+          "ingredient_name": "Dairy,  Clarified Butter",
+          "ingredient_type": "Product",
+          "quantity": "2.0",
+          "unit": "lb",
+          "unit_cost": "1.2255",
+          "total_cost": "2.45",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "2.0 lb \u00d7 $1.2255/lb",
+              "result": "$2.45"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Flour, All Purpose, White",
+          "ingredient_type": "Product",
+          "quantity": "2.0",
+          "unit": "lb",
+          "unit_cost": "2.3580",
+          "total_cost": "4.72",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "2.0 lb \u00d7 $2.3580/lb",
+              "result": "$4.72"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "7.17",
+      "cost_per_serving": "7.1700",
+      "pdf_stated_cost": "7.167",
+      "variance_from_pdf": "0.00",
+      "calculation_steps": [
+        {
+          "step": "direct_calculation",
+          "formula": "2.0 lb \u00d7 $1.2255/lb",
+          "result": "$2.45"
+        },
+        {
+          "step": "direct_calculation",
+          "formula": "2.0 lb \u00d7 $2.3580/lb",
+          "result": "$4.72"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$7.17 / 1.0 servings",
+          "result": "$7.1700"
+        }
+      ],
+      "warnings": [],
+      "errors": [],
+      "variance_percent": "0.00"
+    },
+    {
+      "recipe_id": 77,
+      "recipe_name": "Mac Sauce - Modified 2025",
+      "recipe_type": "PrepRecipe",
+      "timestamp": "2025-07-11T10:33:05.340036",
+      "ingredients": [
+        {
+          "ingredient_name": "Dairy, Milk, Whole",
+          "ingredient_type": "Product",
+          "quantity": "3.0",
+          "unit": "gallon",
+          "unit_cost": "5.7300",
+          "total_cost": "17.19",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "3.0 gal \u00d7 $5.7300/gal",
+              "result": "$17.19"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dairy, Cream, Heavy",
+          "ingredient_type": "Product",
+          "quantity": "3.0",
+          "unit": "qt",
+          "unit_cost": "5.4150",
+          "total_cost": "16.24",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "3.0 qt \u00d7 $5.4150/qt",
+              "result": "$16.24"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Salt, Kosher",
+          "ingredient_type": "Product",
+          "quantity": "170.0",
+          "unit": "gram",
+          "unit_cost": "0.3137",
+          "total_cost": "0.12",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "170.0 g",
+              "to": "0.3747861514312421735833083476 lb",
+              "formula": "0.3747861514312421735833083476 \u00d7 $0.3137/lb",
+              "result": "$0.12"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dairy, Cheese, Loaf, Pepper Jack",
+          "ingredient_type": "Product",
+          "quantity": "1240.0",
+          "unit": "gram",
+          "unit_cost": "4.4500",
+          "total_cost": "12.17",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "1240.0 g",
+              "to": "2.733734281027884089666484418 lb",
+              "formula": "2.733734281027884089666484418 \u00d7 $4.4500/lb",
+              "result": "$12.17"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "45.72",
+      "cost_per_serving": "45.7200",
+      "pdf_stated_cost": "36.060100000000006",
+      "variance_from_pdf": "9.66",
+      "calculation_steps": [
+        {
+          "step": "direct_calculation",
+          "formula": "3.0 gal \u00d7 $5.7300/gal",
+          "result": "$17.19"
+        },
+        {
+          "step": "direct_calculation",
+          "formula": "3.0 qt \u00d7 $5.4150/qt",
+          "result": "$16.24"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "170.0 g",
+          "to": "0.3747861514312421735833083476 lb",
+          "formula": "0.3747861514312421735833083476 \u00d7 $0.3137/lb",
+          "result": "$0.12"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "1240.0 g",
+          "to": "2.733734281027884089666484418 lb",
+          "formula": "2.733734281027884089666484418 \u00d7 $4.4500/lb",
+          "result": "$12.17"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$45.72 / 1.0 servings",
+          "result": "$45.7200"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $9.66 (26.79%) from PDF stated cost"
+      ],
+      "errors": [],
+      "variance_percent": "26.79"
+    },
+    {
+      "recipe_id": 79,
+      "recipe_name": "LJ Mac",
+      "recipe_type": "PrepRecipe",
+      "timestamp": "2025-07-11T10:33:05.339987",
+      "ingredients": [
+        {
+          "ingredient_name": "Mac Sauce - Modified 2025",
+          "ingredient_type": "Prep Recipe",
+          "quantity": "50.0",
+          "unit": "oz",
+          "unit_cost": "11.43",
+          "total_cost": "571.500",
+          "steps": [
+            {
+              "step": "nested_recipe_cost",
+              "description": "Using nested recipe: Mac Sauce - Modified 2025",
+              "formula": "$45.72 / 4.0 gallon",
+              "unit_cost": "$11.43/unit",
+              "total_cost": "$571.500"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Pasta, Cavatappi",
+          "ingredient_type": "Product",
+          "quantity": "9.0",
+          "unit": "lb",
+          "unit_cost": "1.7715",
+          "total_cost": "15.94",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "9.0 lb \u00d7 $1.7715/lb",
+              "result": "$15.94"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "587.440",
+      "cost_per_serving": "587.4400",
+      "pdf_stated_cost": "15.9435",
+      "variance_from_pdf": "571.50",
+      "calculation_steps": [
+        {
+          "step": "nested_recipe_cost",
+          "description": "Using nested recipe: Mac Sauce - Modified 2025",
+          "formula": "$45.72 / 4.0 gallon",
+          "unit_cost": "$11.43/unit",
+          "total_cost": "$571.500"
+        },
+        {
+          "step": "direct_calculation",
+          "formula": "9.0 lb \u00d7 $1.7715/lb",
+          "result": "$15.94"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$587.440 / 1.0 servings",
+          "result": "$587.4400"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $571.50 (3584.53%) from PDF stated cost"
+      ],
+      "errors": [],
+      "variance_percent": "3584.53"
+    },
+    {
+      "recipe_id": 77,
+      "recipe_name": "Mac Sauce - Modified 2025",
+      "recipe_type": "PrepRecipe",
+      "timestamp": "2025-07-11T10:33:05.340231",
+      "ingredients": [
+        {
+          "ingredient_name": "Dairy, Milk, Whole",
+          "ingredient_type": "Product",
+          "quantity": "3.0",
+          "unit": "gallon",
+          "unit_cost": "5.7300",
+          "total_cost": "17.19",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "3.0 gal \u00d7 $5.7300/gal",
+              "result": "$17.19"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dairy, Cream, Heavy",
+          "ingredient_type": "Product",
+          "quantity": "3.0",
+          "unit": "qt",
+          "unit_cost": "5.4150",
+          "total_cost": "16.24",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "3.0 qt \u00d7 $5.4150/qt",
+              "result": "$16.24"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Salt, Kosher",
+          "ingredient_type": "Product",
+          "quantity": "170.0",
+          "unit": "gram",
+          "unit_cost": "0.3137",
+          "total_cost": "0.12",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "170.0 g",
+              "to": "0.3747861514312421735833083476 lb",
+              "formula": "0.3747861514312421735833083476 \u00d7 $0.3137/lb",
+              "result": "$0.12"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dairy, Cheese, Loaf, Pepper Jack",
+          "ingredient_type": "Product",
+          "quantity": "1240.0",
+          "unit": "gram",
+          "unit_cost": "4.4500",
+          "total_cost": "12.17",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "1240.0 g",
+              "to": "2.733734281027884089666484418 lb",
+              "formula": "2.733734281027884089666484418 \u00d7 $4.4500/lb",
+              "result": "$12.17"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "45.72",
+      "cost_per_serving": "45.7200",
+      "pdf_stated_cost": "36.060100000000006",
+      "variance_from_pdf": "9.66",
+      "calculation_steps": [
+        {
+          "step": "direct_calculation",
+          "formula": "3.0 gal \u00d7 $5.7300/gal",
+          "result": "$17.19"
+        },
+        {
+          "step": "direct_calculation",
+          "formula": "3.0 qt \u00d7 $5.4150/qt",
+          "result": "$16.24"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "170.0 g",
+          "to": "0.3747861514312421735833083476 lb",
+          "formula": "0.3747861514312421735833083476 \u00d7 $0.3137/lb",
+          "result": "$0.12"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "1240.0 g",
+          "to": "2.733734281027884089666484418 lb",
+          "formula": "2.733734281027884089666484418 \u00d7 $4.4500/lb",
+          "result": "$12.17"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$45.72 / 1.0 servings",
+          "result": "$45.7200"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $9.66 (26.79%) from PDF stated cost"
+      ],
+      "errors": [],
+      "variance_percent": "26.79"
+    },
+    {
+      "recipe_id": 80,
+      "recipe_name": "SD-03 LJ Mac",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.340182",
+      "ingredients": [
+        {
+          "ingredient_name": "Mac Sauce - Modified 2025",
+          "ingredient_type": "Prep Recipe",
+          "quantity": "3.0",
+          "unit": "oz",
+          "unit_cost": "11.43",
+          "total_cost": "34.290",
+          "steps": [
+            {
+              "step": "nested_recipe_cost",
+              "description": "Using nested recipe: Mac Sauce - Modified 2025",
+              "formula": "$45.72 / 4.0 gallon",
+              "unit_cost": "$11.43/unit",
+              "total_cost": "$34.290"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Pasta, Cavatappi",
+          "ingredient_type": "Product",
+          "quantity": "5.0",
+          "unit": "oz",
+          "unit_cost": "1.7715",
+          "total_cost": "0.55",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "5.0 oz",
+              "to": "0.3125 lb",
+              "formula": "0.3125 \u00d7 $1.7715/lb",
+              "result": "$0.55"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "34.840",
+      "cost_per_serving": "34.8400",
+      "pdf_stated_cost": "0.5536",
+      "variance_from_pdf": "34.29",
+      "calculation_steps": [
+        {
+          "step": "nested_recipe_cost",
+          "description": "Using nested recipe: Mac Sauce - Modified 2025",
+          "formula": "$45.72 / 4.0 gallon",
+          "unit_cost": "$11.43/unit",
+          "total_cost": "$34.290"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "5.0 oz",
+          "to": "0.3125 lb",
+          "formula": "0.3125 \u00d7 $1.7715/lb",
+          "result": "$0.55"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$34.840 / 1.0 servings",
+          "result": "$34.8400"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $34.29 (6194.00%) from PDF stated cost"
+      ],
+      "errors": [],
+      "variance_percent": "6194.00"
+    },
+    {
+      "recipe_id": 81,
+      "recipe_name": "SD-02 Extra-Crispy Fries with Ranch Powder",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.340369",
+      "ingredients": [
+        {
+          "ingredient_name": "Dry Goods, Ranch Dressing, Mix, Dry",
+          "ingredient_type": "Product",
+          "quantity": "1.0",
+          "unit": "oz",
+          "unit_cost": "0.6995",
+          "total_cost": "0.70",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "1.0 oz \u00d7 $0.6995/oz",
+              "result": "$0.70"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "0.70",
+      "cost_per_serving": "0.7000",
+      "pdf_stated_cost": "5.999499999999999",
+      "variance_from_pdf": "-5.30",
+      "calculation_steps": [
+        {
+          "step": "direct_calculation",
+          "formula": "1.0 oz \u00d7 $0.6995/oz",
+          "result": "$0.70"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$0.70 / 1.0 servings",
+          "result": "$0.7000"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $-5.30 (-88.34%) from PDF stated cost"
+      ],
+      "errors": [],
+      "variance_percent": "-88.34"
+    },
+    {
+      "recipe_id": 82,
+      "recipe_name": "French Fries Recipe",
+      "recipe_type": "PrepRecipe",
+      "timestamp": "2025-07-11T10:33:05.340430",
+      "ingredients": [
+        {
+          "ingredient_name": "Frozen, Potato, French Fries, Frozen",
+          "ingredient_type": "Product",
+          "quantity": "5.0",
+          "unit": "oz",
+          "unit_cost": "1.3241",
+          "total_cost": "0.41",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "5.0 oz",
+              "to": "0.3125 lb",
+              "formula": "0.3125 \u00d7 $1.3241/lb",
+              "result": "$0.41"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Salt, Kosher",
+          "ingredient_type": "Product",
+          "quantity": "0.5",
+          "unit": "oz",
+          "unit_cost": "0.3137",
+          "total_cost": "0.01",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "0.5 oz",
+              "to": "0.03125 lb",
+              "formula": "0.03125 \u00d7 $0.3137/lb",
+              "result": "$0.01"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Oil, Canola, Clear, Frying",
+          "ingredient_type": "Product",
+          "quantity": "0.5",
+          "unit": "oz",
+          "unit_cost": "1.1571",
+          "total_cost": "0.04",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "0.5 oz",
+              "to": "0.03125 lb",
+              "formula": "0.03125 \u00d7 $1.1571/lb",
+              "result": "$0.04"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "0.46",
+      "cost_per_serving": "0.4600",
+      "pdf_stated_cost": "0.4598",
+      "variance_from_pdf": "0.00",
+      "calculation_steps": [
+        {
+          "step": "unit_conversion",
+          "from": "5.0 oz",
+          "to": "0.3125 lb",
+          "formula": "0.3125 \u00d7 $1.3241/lb",
+          "result": "$0.41"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "0.5 oz",
+          "to": "0.03125 lb",
+          "formula": "0.03125 \u00d7 $0.3137/lb",
+          "result": "$0.01"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "0.5 oz",
+          "to": "0.03125 lb",
+          "formula": "0.03125 \u00d7 $1.1571/lb",
+          "result": "$0.04"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$0.46 / 1.0 servings",
+          "result": "$0.4600"
+        }
+      ],
+      "warnings": [],
+      "errors": [],
+      "variance_percent": "0.00"
+    },
+    {
+      "recipe_id": 83,
+      "recipe_name": "SD-01 Kale & Cabbage Slaw",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.340527",
+      "ingredients": [],
+      "total_cost": "0",
+      "cost_per_serving": "0.0000",
+      "pdf_stated_cost": "0.4263",
+      "variance_from_pdf": "-0.43",
+      "calculation_steps": [
+        {
+          "step": "per_serving_calculation",
+          "formula": "$0 / 1.0 servings",
+          "result": "$0.0000"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $-0.43 (-100.87%) from PDF stated cost"
+      ],
+      "errors": [],
+      "variance_percent": "-100.87"
+    },
+    {
+      "recipe_id": 108,
+      "recipe_name": "Kale - Chopped",
+      "recipe_type": "PrepRecipe",
+      "timestamp": "2025-07-11T10:33:05.340639",
+      "ingredients": [
+        {
+          "ingredient_name": "Produce, Kale, Green, Fresh, by Weight",
+          "ingredient_type": "Product",
+          "quantity": "20.0",
+          "unit": "lb",
+          "unit_cost": "1.1804",
+          "total_cost": "23.61",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "20.0 lb \u00d7 $1.1804/lb",
+              "result": "$23.61"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "23.61",
+      "cost_per_serving": "0",
+      "pdf_stated_cost": "23.608",
+      "variance_from_pdf": "0.00",
+      "calculation_steps": [
+        {
+          "step": "direct_calculation",
+          "formula": "20.0 lb \u00d7 $1.1804/lb",
+          "result": "$23.61"
+        }
+      ],
+      "warnings": [],
+      "errors": [],
+      "variance_percent": "0.00"
+    },
+    {
+      "recipe_id": 111,
+      "recipe_name": "Shredded Carrots",
+      "recipe_type": "PrepRecipe",
+      "timestamp": "2025-07-11T10:33:05.340763",
+      "ingredients": [
+        {
+          "ingredient_name": "Produce, Carrots, Jumbo, Fresh",
+          "ingredient_type": "Product",
+          "quantity": "10.0",
+          "unit": "lb",
+          "unit_cost": "0.4700",
+          "total_cost": "4.70",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "10.0 lb \u00d7 $0.4700/lb",
+              "result": "$4.70"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "4.70",
+      "cost_per_serving": "4.7000",
+      "pdf_stated_cost": "4.7",
+      "variance_from_pdf": "0.00",
+      "calculation_steps": [
+        {
+          "step": "direct_calculation",
+          "formula": "10.0 lb \u00d7 $0.4700/lb",
+          "result": "$4.70"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$4.70 / 1.0 servings",
+          "result": "$4.7000"
+        }
+      ],
+      "warnings": [],
+      "errors": [],
+      "variance_percent": "0.00"
+    },
+    {
+      "recipe_id": 84,
+      "recipe_name": "Kale Kimchi Recipe",
+      "recipe_type": "PrepRecipe",
+      "timestamp": "2025-07-11T10:33:05.340573",
+      "ingredients": [
+        {
+          "ingredient_name": "Kale - Chopped",
+          "ingredient_type": "Prep Recipe",
+          "quantity": "20.0",
+          "unit": "lb",
+          "unit_cost": "1.1805",
+          "total_cost": "23.61000",
+          "steps": [
+            {
+              "step": "nested_recipe_cost",
+              "description": "Using nested recipe: Kale - Chopped",
+              "formula": "$23.61 / 20.0 lb",
+              "unit_cost": "$1.1805/unit",
+              "total_cost": "$23.61000"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Produce, Coleslaw Mix",
+          "ingredient_type": "Product",
+          "quantity": "10.0",
+          "unit": "lb",
+          "unit_cost": "1.0125",
+          "total_cost": "10.12",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "10.0 lb \u00d7 $1.0125/lb",
+              "result": "$10.12"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Sugar, White",
+          "ingredient_type": "Product",
+          "quantity": "7.0",
+          "unit": "lb",
+          "unit_cost": "0.9764",
+          "total_cost": "6.83",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "7.0 lb \u00d7 $0.9764/lb",
+              "result": "$6.83"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Vinegar, White",
+          "ingredient_type": "Product",
+          "quantity": "2.0",
+          "unit": "qt",
+          "unit_cost": "4.2400",
+          "total_cost": "2.12",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "2.0 qt",
+              "to": "0.5000002641721768579889628865 gal",
+              "formula": "0.5000002641721768579889628865 \u00d7 $4.2400/gal",
+              "result": "$2.12"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Sauce, Chile Sambal",
+          "ingredient_type": "Product",
+          "quantity": "3.0",
+          "unit": "qt",
+          "unit_cost": "24.6400",
+          "total_cost": "18.48",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "3.0 qt",
+              "to": "0.7500003962582652869834443297 gal",
+              "formula": "0.7500003962582652869834443297 \u00d7 $24.6400/gal",
+              "result": "$18.48"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Shredded Carrots",
+          "ingredient_type": "Prep Recipe",
+          "quantity": "2.5",
+          "unit": "lb",
+          "unit_cost": "0.47",
+          "total_cost": "1.175",
+          "steps": [
+            {
+              "step": "nested_recipe_cost",
+              "description": "Using nested recipe: Shredded Carrots",
+              "formula": "$4.70 / 10.0 lb",
+              "unit_cost": "$0.47/unit",
+              "total_cost": "$1.175"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "62.33500",
+      "cost_per_serving": "62.3350",
+      "pdf_stated_cost": "67.04979999999999",
+      "variance_from_pdf": "-4.71",
+      "calculation_steps": [
+        {
+          "step": "nested_recipe_cost",
+          "description": "Using nested recipe: Kale - Chopped",
+          "formula": "$23.61 / 20.0 lb",
+          "unit_cost": "$1.1805/unit",
+          "total_cost": "$23.61000"
+        },
+        {
+          "step": "direct_calculation",
+          "formula": "10.0 lb \u00d7 $1.0125/lb",
+          "result": "$10.12"
+        },
+        {
+          "step": "direct_calculation",
+          "formula": "7.0 lb \u00d7 $0.9764/lb",
+          "result": "$6.83"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "2.0 qt",
+          "to": "0.5000002641721768579889628865 gal",
+          "formula": "0.5000002641721768579889628865 \u00d7 $4.2400/gal",
+          "result": "$2.12"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "3.0 qt",
+          "to": "0.7500003962582652869834443297 gal",
+          "formula": "0.7500003962582652869834443297 \u00d7 $24.6400/gal",
+          "result": "$18.48"
+        },
+        {
+          "step": "nested_recipe_cost",
+          "description": "Using nested recipe: Shredded Carrots",
+          "formula": "$4.70 / 10.0 lb",
+          "unit_cost": "$0.47/unit",
+          "total_cost": "$1.175"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$62.33500 / 1.0 servings",
+          "result": "$62.3350"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $-4.71 (-7.02%) from PDF stated cost"
+      ],
+      "errors": [],
+      "variance_percent": "-7.02"
+    },
+    {
+      "recipe_id": 77,
+      "recipe_name": "Mac Sauce - Modified 2025",
+      "recipe_type": "PrepRecipe",
+      "timestamp": "2025-07-11T10:33:05.340890",
+      "ingredients": [
+        {
+          "ingredient_name": "Dairy, Milk, Whole",
+          "ingredient_type": "Product",
+          "quantity": "3.0",
+          "unit": "gallon",
+          "unit_cost": "5.7300",
+          "total_cost": "17.19",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "3.0 gal \u00d7 $5.7300/gal",
+              "result": "$17.19"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dairy, Cream, Heavy",
+          "ingredient_type": "Product",
+          "quantity": "3.0",
+          "unit": "qt",
+          "unit_cost": "5.4150",
+          "total_cost": "16.24",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "3.0 qt \u00d7 $5.4150/qt",
+              "result": "$16.24"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Salt, Kosher",
+          "ingredient_type": "Product",
+          "quantity": "170.0",
+          "unit": "gram",
+          "unit_cost": "0.3137",
+          "total_cost": "0.12",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "170.0 g",
+              "to": "0.3747861514312421735833083476 lb",
+              "formula": "0.3747861514312421735833083476 \u00d7 $0.3137/lb",
+              "result": "$0.12"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dairy, Cheese, Loaf, Pepper Jack",
+          "ingredient_type": "Product",
+          "quantity": "1240.0",
+          "unit": "gram",
+          "unit_cost": "4.4500",
+          "total_cost": "12.17",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "1240.0 g",
+              "to": "2.733734281027884089666484418 lb",
+              "formula": "2.733734281027884089666484418 \u00d7 $4.4500/lb",
+              "result": "$12.17"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "45.72",
+      "cost_per_serving": "45.7200",
+      "pdf_stated_cost": "36.060100000000006",
+      "variance_from_pdf": "9.66",
+      "calculation_steps": [
+        {
+          "step": "direct_calculation",
+          "formula": "3.0 gal \u00d7 $5.7300/gal",
+          "result": "$17.19"
+        },
+        {
+          "step": "direct_calculation",
+          "formula": "3.0 qt \u00d7 $5.4150/qt",
+          "result": "$16.24"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "170.0 g",
+          "to": "0.3747861514312421735833083476 lb",
+          "formula": "0.3747861514312421735833083476 \u00d7 $0.3137/lb",
+          "result": "$0.12"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "1240.0 g",
+          "to": "2.733734281027884089666484418 lb",
+          "formula": "2.733734281027884089666484418 \u00d7 $4.4500/lb",
+          "result": "$12.17"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$45.72 / 1.0 servings",
+          "result": "$45.7200"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $9.66 (26.79%) from PDF stated cost"
+      ],
+      "errors": [],
+      "variance_percent": "26.79"
+    },
+    {
+      "recipe_id": 85,
+      "recipe_name": "FT-03 Angry Chicken Mac bowl",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.340841",
+      "ingredients": [
+        {
+          "ingredient_name": "Mac Sauce - Modified 2025",
+          "ingredient_type": "Prep Recipe",
+          "quantity": "4.0",
+          "unit": "fl oz",
+          "unit_cost": "11.43",
+          "total_cost": "45.720",
+          "steps": [
+            {
+              "step": "nested_recipe_cost",
+              "description": "Using nested recipe: Mac Sauce - Modified 2025",
+              "formula": "$45.72 / 4.0 gallon",
+              "unit_cost": "$11.43/unit",
+              "total_cost": "$45.720"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Pasta, Cavatappi",
+          "ingredient_type": "Product",
+          "quantity": "6.0",
+          "unit": "oz",
+          "unit_cost": "1.7715",
+          "total_cost": "0.66",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "6.0 oz",
+              "to": "0.375 lb",
+              "formula": "0.375 \u00d7 $1.7715/lb",
+              "result": "$0.66"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "46.380",
+      "cost_per_serving": "46.3800",
+      "pdf_stated_cost": "1.3432",
+      "variance_from_pdf": "45.04",
+      "calculation_steps": [
+        {
+          "step": "nested_recipe_cost",
+          "description": "Using nested recipe: Mac Sauce - Modified 2025",
+          "formula": "$45.72 / 4.0 gallon",
+          "unit_cost": "$11.43/unit",
+          "total_cost": "$45.720"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "6.0 oz",
+          "to": "0.375 lb",
+          "formula": "0.375 \u00d7 $1.7715/lb",
+          "result": "$0.66"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$46.380 / 1.0 servings",
+          "result": "$46.3800"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $45.04 (3353.19%) from PDF stated cost"
+      ],
+      "errors": [],
+      "variance_percent": "3353.19"
+    },
+    {
+      "recipe_id": 87,
+      "recipe_name": "SL-01 Chicken Caesar Salad",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.341167",
+      "ingredients": [
+        {
+          "ingredient_name": "Produce, Lettuce, Romaine",
+          "ingredient_type": "Product",
+          "quantity": "4.0",
+          "unit": "oz",
+          "unit_cost": "4.4000",
+          "total_cost": "0",
+          "steps": [],
+          "warnings": [],
+          "errors": [
+            "Cannot convert 4.0 oz to each for Produce, Lettuce, Romaine"
+          ]
+        },
+        {
+          "ingredient_name": "Dry Goods, Croutons, Homestyle",
+          "ingredient_type": "Product",
+          "quantity": "2.0",
+          "unit": "oz",
+          "unit_cost": "2.6510",
+          "total_cost": "0.33",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "2.0 oz",
+              "to": "0.125 lb",
+              "formula": "0.125 \u00d7 $2.6510/lb",
+              "result": "$0.33"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dairy, Chesse, Parmesan, Grated",
+          "ingredient_type": "Product",
+          "quantity": "2.0",
+          "unit": "oz",
+          "unit_cost": "1.5780",
+          "total_cost": "0.20",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "2.0 oz",
+              "to": "0.125 lb",
+              "formula": "0.125 \u00d7 $1.5780/lb",
+              "result": "$0.20"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Caesar Dressing",
+          "ingredient_type": "Product",
+          "quantity": "4.0",
+          "unit": "oz",
+          "unit_cost": "0.0590",
+          "total_cost": "0.24",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "4.0 oz \u00d7 $0.0590/oz",
+              "result": "$0.24"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "0.77",
+      "cost_per_serving": "0.7700",
+      "pdf_stated_cost": "18.3742",
+      "variance_from_pdf": "-17.60",
+      "calculation_steps": [
+        {
+          "step": "unit_conversion",
+          "from": "2.0 oz",
+          "to": "0.125 lb",
+          "formula": "0.125 \u00d7 $2.6510/lb",
+          "result": "$0.33"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "2.0 oz",
+          "to": "0.125 lb",
+          "formula": "0.125 \u00d7 $1.5780/lb",
+          "result": "$0.20"
+        },
+        {
+          "step": "direct_calculation",
+          "formula": "4.0 oz \u00d7 $0.0590/oz",
+          "result": "$0.24"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$0.77 / 1.0 servings",
+          "result": "$0.7700"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $-17.60 (-95.79%) from PDF stated cost"
+      ],
+      "errors": [
+        "Cannot convert 4.0 oz to each for Produce, Lettuce, Romaine"
+      ],
+      "variance_percent": "-95.79"
+    },
+    {
+      "recipe_id": 91,
+      "recipe_name": "Fried Chicken Tender",
+      "recipe_type": "PrepRecipe",
+      "timestamp": "2025-07-11T10:33:05.341539",
+      "ingredients": [
+        {
+          "ingredient_name": "Protein, Chicken, Tenders",
+          "ingredient_type": "Product",
+          "quantity": "4.0",
+          "unit": "oz",
+          "unit_cost": "2.8600",
+          "total_cost": "0.72",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "4.0 oz",
+              "to": "0.25 lb",
+              "formula": "0.25 \u00d7 $2.8600/lb",
+              "result": "$0.72"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Chicken  Breading, Lea Jane Recipe",
+          "ingredient_type": "Product",
+          "quantity": "1.0",
+          "unit": "oz",
+          "unit_cost": "1.8970",
+          "total_cost": "0.12",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "1.0 oz",
+              "to": "0.0625 lb",
+              "formula": "0.0625 \u00d7 $1.8970/lb",
+              "result": "$0.12"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dairy, Milk, Whole",
+          "ingredient_type": "Product",
+          "quantity": "1.0",
+          "unit": "fl oz",
+          "unit_cost": "5.7300",
+          "total_cost": "0.04",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "1.0 fl oz",
+              "to": "0.007812495872309736593922454899 gal",
+              "formula": "0.007812495872309736593922454899 \u00d7 $5.7300/gal",
+              "result": "$0.04"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Oil, Canola, Clear, Frying",
+          "ingredient_type": "Product",
+          "quantity": "1.0",
+          "unit": "oz",
+          "unit_cost": "1.1571",
+          "total_cost": "0.07",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "1.0 oz",
+              "to": "0.0625 lb",
+              "formula": "0.0625 \u00d7 $1.1571/lb",
+              "result": "$0.07"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "0.95",
+      "cost_per_serving": "0.9500",
+      "pdf_stated_cost": "0.9507",
+      "variance_from_pdf": "-0.00",
+      "calculation_steps": [
+        {
+          "step": "unit_conversion",
+          "from": "4.0 oz",
+          "to": "0.25 lb",
+          "formula": "0.25 \u00d7 $2.8600/lb",
+          "result": "$0.72"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "1.0 oz",
+          "to": "0.0625 lb",
+          "formula": "0.0625 \u00d7 $1.8970/lb",
+          "result": "$0.12"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "1.0 fl oz",
+          "to": "0.007812495872309736593922454899 gal",
+          "formula": "0.007812495872309736593922454899 \u00d7 $5.7300/gal",
+          "result": "$0.04"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "1.0 oz",
+          "to": "0.0625 lb",
+          "formula": "0.0625 \u00d7 $1.1571/lb",
+          "result": "$0.07"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$0.95 / 1.0 servings",
+          "result": "$0.9500"
+        }
+      ],
+      "warnings": [],
+      "errors": [],
+      "variance_percent": "-0.00"
+    },
+    {
+      "recipe_id": 92,
+      "recipe_name": "FC-04 Fried Chicken Tender",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.341645",
+      "ingredients": [
+        {
+          "ingredient_name": "Protein, Chicken, Tenders",
+          "ingredient_type": "Product",
+          "quantity": "4.0",
+          "unit": "oz",
+          "unit_cost": "2.8600",
+          "total_cost": "0.72",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "4.0 oz",
+              "to": "0.25 lb",
+              "formula": "0.25 \u00d7 $2.8600/lb",
+              "result": "$0.72"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Chicken  Breading, Lea Jane Recipe",
+          "ingredient_type": "Product",
+          "quantity": "1.0",
+          "unit": "oz",
+          "unit_cost": "1.8970",
+          "total_cost": "0.12",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "1.0 oz",
+              "to": "0.0625 lb",
+              "formula": "0.0625 \u00d7 $1.8970/lb",
+              "result": "$0.12"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Oil, Canola, Clear, Frying",
+          "ingredient_type": "Product",
+          "quantity": "2.0",
+          "unit": "oz",
+          "unit_cost": "1.1571",
+          "total_cost": "0.14",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "2.0 oz",
+              "to": "0.125 lb",
+              "formula": "0.125 \u00d7 $1.1571/lb",
+              "result": "$0.14"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dairy, Milk, Whole",
+          "ingredient_type": "Product",
+          "quantity": "1.0",
+          "unit": "fl oz",
+          "unit_cost": "5.7300",
+          "total_cost": "0.04",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "1.0 fl oz",
+              "to": "0.007812495872309736593922454899 gal",
+              "formula": "0.007812495872309736593922454899 \u00d7 $5.7300/gal",
+              "result": "$0.04"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "1.02",
+      "cost_per_serving": "1.0200",
+      "pdf_stated_cost": "1.023",
+      "variance_from_pdf": "-0.00",
+      "calculation_steps": [
+        {
+          "step": "unit_conversion",
+          "from": "4.0 oz",
+          "to": "0.25 lb",
+          "formula": "0.25 \u00d7 $2.8600/lb",
+          "result": "$0.72"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "1.0 oz",
+          "to": "0.0625 lb",
+          "formula": "0.0625 \u00d7 $1.8970/lb",
+          "result": "$0.12"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "2.0 oz",
+          "to": "0.125 lb",
+          "formula": "0.125 \u00d7 $1.1571/lb",
+          "result": "$0.14"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "1.0 fl oz",
+          "to": "0.007812495872309736593922454899 gal",
+          "formula": "0.007812495872309736593922454899 \u00d7 $5.7300/gal",
+          "result": "$0.04"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$1.02 / 1.0 servings",
+          "result": "$1.0200"
+        }
+      ],
+      "warnings": [],
+      "errors": [],
+      "variance_percent": "-0.00"
+    },
+    {
+      "recipe_id": 93,
+      "recipe_name": "CHilli Oil - Hot Fat",
+      "recipe_type": "PrepRecipe",
+      "timestamp": "2025-07-11T10:33:05.341750",
+      "ingredients": [
+        {
+          "ingredient_name": "Dry Goods, Shortening, Pork Lard",
+          "ingredient_type": "Product",
+          "quantity": "9600.0",
+          "unit": "gram",
+          "unit_cost": "1.3658",
+          "total_cost": "28.91",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "9600.0 g",
+              "to": "21.16439443376426391999858904 lb",
+              "formula": "21.16439443376426391999858904 \u00d7 $1.3658/lb",
+              "result": "$28.91"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods,  Spice, Paprika, Powder - Spanish",
+          "ingredient_type": "Product",
+          "quantity": "400.0",
+          "unit": "gram",
+          "unit_cost": "4.7900",
+          "total_cost": "4.22",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "400.0 g",
+              "to": "0.8818497680735109966666078767 lb",
+              "formula": "0.8818497680735109966666078767 \u00d7 $4.7900/lb",
+              "result": "$4.22"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Spice, Cayenne Pepper, Ground",
+          "ingredient_type": "Product",
+          "quantity": "800.0",
+          "unit": "gram",
+          "unit_cost": "4.1440",
+          "total_cost": "7.31",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "800.0 g",
+              "to": "1.763699536147021993333215753 lb",
+              "formula": "1.763699536147021993333215753 \u00d7 $4.1440/lb",
+              "result": "$7.31"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "40.44",
+      "cost_per_serving": "0",
+      "pdf_stated_cost": "40.4392",
+      "variance_from_pdf": "0.00",
+      "calculation_steps": [
+        {
+          "step": "unit_conversion",
+          "from": "9600.0 g",
+          "to": "21.16439443376426391999858904 lb",
+          "formula": "21.16439443376426391999858904 \u00d7 $1.3658/lb",
+          "result": "$28.91"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "400.0 g",
+          "to": "0.8818497680735109966666078767 lb",
+          "formula": "0.8818497680735109966666078767 \u00d7 $4.7900/lb",
+          "result": "$4.22"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "800.0 g",
+          "to": "1.763699536147021993333215753 lb",
+          "formula": "1.763699536147021993333215753 \u00d7 $4.1440/lb",
+          "result": "$7.31"
+        }
+      ],
+      "warnings": [],
+      "errors": [],
+      "variance_percent": "0.00"
+    },
+    {
+      "recipe_id": 95,
+      "recipe_name": "S-01 OG Nashville Chicken",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.341959",
+      "ingredients": [
+        {
+          "ingredient_name": "Protein, Chicken, Thighs",
+          "ingredient_type": "Product",
+          "quantity": "7.0",
+          "unit": "oz",
+          "unit_cost": "3.7600",
+          "total_cost": "1.64",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "7.0 oz",
+              "to": "0.4375 lb",
+              "formula": "0.4375 \u00d7 $3.7600/lb",
+              "result": "$1.64"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Bread,  Burger Bun",
+          "ingredient_type": "Product",
+          "quantity": "1.0",
+          "unit": "each",
+          "unit_cost": "0.6200",
+          "total_cost": "0.62",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "1.0 each \u00d7 $0.6200/each",
+              "result": "$0.62"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dairy,  Clarified Butter",
+          "ingredient_type": "Product",
+          "quantity": "0.5",
+          "unit": "oz",
+          "unit_cost": "1.2255",
+          "total_cost": "0.04",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "0.5 oz",
+              "to": "0.03125 lb",
+              "formula": "0.03125 \u00d7 $1.2255/lb",
+              "result": "$0.04"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "2.30",
+      "cost_per_serving": "2.3000",
+      "pdf_stated_cost": "2.5685000000000002",
+      "variance_from_pdf": "-0.27",
+      "calculation_steps": [
+        {
+          "step": "unit_conversion",
+          "from": "7.0 oz",
+          "to": "0.4375 lb",
+          "formula": "0.4375 \u00d7 $3.7600/lb",
+          "result": "$1.64"
+        },
+        {
+          "step": "direct_calculation",
+          "formula": "1.0 each \u00d7 $0.6200/each",
+          "result": "$0.62"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "0.5 oz",
+          "to": "0.03125 lb",
+          "formula": "0.03125 \u00d7 $1.2255/lb",
+          "result": "$0.04"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$2.30 / 1.0 servings",
+          "result": "$2.3000"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $-0.27 (-10.51%) from PDF stated cost"
+      ],
+      "errors": [],
+      "variance_percent": "-10.51"
+    },
+    {
+      "recipe_id": 97,
+      "recipe_name": "24 Hour Chili Brined Chicken Thigh",
+      "recipe_type": "PrepRecipe",
+      "timestamp": "2025-07-11T10:33:05.342210",
+      "ingredients": [
+        {
+          "ingredient_name": "Protein, Chicken, Thighs",
+          "ingredient_type": "Product",
+          "quantity": "6.0",
+          "unit": "oz",
+          "unit_cost": "3.7600",
+          "total_cost": "1.41",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "6.0 oz",
+              "to": "0.375 lb",
+              "formula": "0.375 \u00d7 $3.7600/lb",
+              "result": "$1.41"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Salt, Kosher",
+          "ingredient_type": "Product",
+          "quantity": "0.5",
+          "unit": "oz",
+          "unit_cost": "0.3137",
+          "total_cost": "0.01",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "0.5 oz",
+              "to": "0.03125 lb",
+              "formula": "0.03125 \u00d7 $0.3137/lb",
+              "result": "$0.01"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dairy,  Clarified Butter",
+          "ingredient_type": "Product",
+          "quantity": "0.5",
+          "unit": "oz",
+          "unit_cost": "1.2255",
+          "total_cost": "0.04",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "0.5 oz",
+              "to": "0.03125 lb",
+              "formula": "0.03125 \u00d7 $1.2255/lb",
+              "result": "$0.04"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "1.46",
+      "cost_per_serving": "1.4600",
+      "pdf_stated_cost": "26.09",
+      "variance_from_pdf": "-24.63",
+      "calculation_steps": [
+        {
+          "step": "unit_conversion",
+          "from": "6.0 oz",
+          "to": "0.375 lb",
+          "formula": "0.375 \u00d7 $3.7600/lb",
+          "result": "$1.41"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "0.5 oz",
+          "to": "0.03125 lb",
+          "formula": "0.03125 \u00d7 $0.3137/lb",
+          "result": "$0.01"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "0.5 oz",
+          "to": "0.03125 lb",
+          "formula": "0.03125 \u00d7 $1.2255/lb",
+          "result": "$0.04"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$1.46 / 1.0 servings",
+          "result": "$1.4600"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $-24.63 (-94.40%) from PDF stated cost"
+      ],
+      "errors": [],
+      "variance_percent": "-94.40"
+    },
+    {
+      "recipe_id": 98,
+      "recipe_name": "DP- 05 Habanero Ranch",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.342303",
+      "ingredients": [
+        {
+          "ingredient_name": "Dry Goods, Ranch Dressing, with Jalapeno",
+          "ingredient_type": "Product",
+          "quantity": "2.0",
+          "unit": "fl oz",
+          "unit_cost": "18.0500",
+          "total_cost": "0.28",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "2.0 fl oz",
+              "to": "0.01562499174461947318784490980 gal",
+              "formula": "0.01562499174461947318784490980 \u00d7 $18.0500/gal",
+              "result": "$0.28"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "0.28",
+      "cost_per_serving": "0.1400",
+      "pdf_stated_cost": "0.282",
+      "variance_from_pdf": "-0.00",
+      "calculation_steps": [
+        {
+          "step": "unit_conversion",
+          "from": "2.0 fl oz",
+          "to": "0.01562499174461947318784490980 gal",
+          "formula": "0.01562499174461947318784490980 \u00d7 $18.0500/gal",
+          "result": "$0.28"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$0.28 / 2.0 servings",
+          "result": "$0.1400"
+        }
+      ],
+      "warnings": [],
+      "errors": [],
+      "variance_percent": "-0.00"
+    },
+    {
+      "recipe_id": 99,
+      "recipe_name": "Nashville Hot Chicken",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.342361",
+      "ingredients": [
+        {
+          "ingredient_name": "Protein, Chicken, Thighs",
+          "ingredient_type": "Product",
+          "quantity": "7.0",
+          "unit": "oz",
+          "unit_cost": "3.7600",
+          "total_cost": "1.64",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "7.0 oz",
+              "to": "0.4375 lb",
+              "formula": "0.4375 \u00d7 $3.7600/lb",
+              "result": "$1.64"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Bread, Texas Toast",
+          "ingredient_type": "Product",
+          "quantity": "2.0",
+          "unit": "each",
+          "unit_cost": "0.2190",
+          "total_cost": "0.44",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "2.0 each \u00d7 $0.2190/each",
+              "result": "$0.44"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dairy,  Clarified Butter",
+          "ingredient_type": "Product",
+          "quantity": "0.5",
+          "unit": "oz",
+          "unit_cost": "1.2255",
+          "total_cost": "0.04",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "0.5 oz",
+              "to": "0.03125 lb",
+              "formula": "0.03125 \u00d7 $1.2255/lb",
+              "result": "$0.04"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "2.12",
+      "cost_per_serving": "2.1200",
+      "pdf_stated_cost": "3.4465000000000003",
+      "variance_from_pdf": "-1.33",
+      "calculation_steps": [
+        {
+          "step": "unit_conversion",
+          "from": "7.0 oz",
+          "to": "0.4375 lb",
+          "formula": "0.4375 \u00d7 $3.7600/lb",
+          "result": "$1.64"
+        },
+        {
+          "step": "direct_calculation",
+          "formula": "2.0 each \u00d7 $0.2190/each",
+          "result": "$0.44"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "0.5 oz",
+          "to": "0.03125 lb",
+          "formula": "0.03125 \u00d7 $1.2255/lb",
+          "result": "$0.04"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$2.12 / 1.0 servings",
+          "result": "$2.1200"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $-1.33 (-38.59%) from PDF stated cost"
+      ],
+      "errors": [],
+      "variance_percent": "-38.59"
+    },
+    {
+      "recipe_id": 103,
+      "recipe_name": "Chicken Waffle Cone",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.342759",
+      "ingredients": [
+        {
+          "ingredient_name": "Dry Goods, Pasta, Cavatappi",
+          "ingredient_type": "Product",
+          "quantity": "4.0",
+          "unit": "oz",
+          "unit_cost": "1.7715",
+          "total_cost": "0.44",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "4.0 oz",
+              "to": "0.25 lb",
+              "formula": "0.25 \u00d7 $1.7715/lb",
+              "result": "$0.44"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dairy, Cream, Heavy",
+          "ingredient_type": "Product",
+          "quantity": "2.0",
+          "unit": "ml",
+          "unit_cost": "5.4150",
+          "total_cost": "0.01",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "2.0 ml",
+              "to": "0.002113376298273477233125482774 qt",
+              "formula": "0.002113376298273477233125482774 \u00d7 $5.4150/qt",
+              "result": "$0.01"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dairy, Cheese Sauce, Loaf, American",
+          "ingredient_type": "Product",
+          "quantity": "5.0",
+          "unit": "oz",
+          "unit_cost": "4.8000",
+          "total_cost": "1.50",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "5.0 oz",
+              "to": "0.3125 lb",
+              "formula": "0.3125 \u00d7 $4.8000/lb",
+              "result": "$1.50"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Protein, Chicken, Tenders",
+          "ingredient_type": "Product",
+          "quantity": "4.0",
+          "unit": "oz",
+          "unit_cost": "2.8600",
+          "total_cost": "0.72",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "4.0 oz",
+              "to": "0.25 lb",
+              "formula": "0.25 \u00d7 $2.8600/lb",
+              "result": "$0.72"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Produce, Onions, Green",
+          "ingredient_type": "Product",
+          "quantity": "1.0",
+          "unit": "each",
+          "unit_cost": "0.7900",
+          "total_cost": "0.79",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "1.0 each \u00d7 $0.7900/each",
+              "result": "$0.79"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Chicken  Breading, Lea Jane Recipe",
+          "ingredient_type": "Product",
+          "quantity": "2.0",
+          "unit": "oz",
+          "unit_cost": "1.8970",
+          "total_cost": "0.24",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "2.0 oz",
+              "to": "0.125 lb",
+              "formula": "0.125 \u00d7 $1.8970/lb",
+              "result": "$0.24"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Waffle Cone",
+          "ingredient_type": "Product",
+          "quantity": "1.0",
+          "unit": "each",
+          "unit_cost": "0.0312",
+          "total_cost": "0.03",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "1.0 each \u00d7 $0.0312/each",
+              "result": "$0.03"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "3.73",
+      "cost_per_serving": "3.7300",
+      "pdf_stated_cost": "3.7058999999999997",
+      "variance_from_pdf": "0.02",
+      "calculation_steps": [
+        {
+          "step": "unit_conversion",
+          "from": "4.0 oz",
+          "to": "0.25 lb",
+          "formula": "0.25 \u00d7 $1.7715/lb",
+          "result": "$0.44"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "2.0 ml",
+          "to": "0.002113376298273477233125482774 qt",
+          "formula": "0.002113376298273477233125482774 \u00d7 $5.4150/qt",
+          "result": "$0.01"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "5.0 oz",
+          "to": "0.3125 lb",
+          "formula": "0.3125 \u00d7 $4.8000/lb",
+          "result": "$1.50"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "4.0 oz",
+          "to": "0.25 lb",
+          "formula": "0.25 \u00d7 $2.8600/lb",
+          "result": "$0.72"
+        },
+        {
+          "step": "direct_calculation",
+          "formula": "1.0 each \u00d7 $0.7900/each",
+          "result": "$0.79"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "2.0 oz",
+          "to": "0.125 lb",
+          "formula": "0.125 \u00d7 $1.8970/lb",
+          "result": "$0.24"
+        },
+        {
+          "step": "direct_calculation",
+          "formula": "1.0 each \u00d7 $0.0312/each",
+          "result": "$0.03"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$3.73 / 1.0 servings",
+          "result": "$3.7300"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $0.02 (0.54%) from PDF stated cost"
+      ],
+      "errors": [],
+      "variance_percent": "0.54"
+    },
+    {
+      "recipe_id": 106,
+      "recipe_name": "Hot Honey - portion",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.343097",
+      "ingredients": [],
+      "total_cost": "0",
+      "cost_per_serving": "0.0000",
+      "pdf_stated_cost": "0.0142",
+      "variance_from_pdf": "-0.01",
+      "calculation_steps": [
+        {
+          "step": "per_serving_calculation",
+          "formula": "$0 / 1.0 servings",
+          "result": "$0.0000"
+        }
+      ],
+      "warnings": [],
+      "errors": [],
+      "variance_percent": "-70.42"
+    },
+    {
+      "recipe_id": 108,
+      "recipe_name": "Kale - Chopped",
+      "recipe_type": "PrepRecipe",
+      "timestamp": "2025-07-11T10:33:05.343257",
+      "ingredients": [
+        {
+          "ingredient_name": "Produce, Kale, Green, Fresh, by Weight",
+          "ingredient_type": "Product",
+          "quantity": "20.0",
+          "unit": "lb",
+          "unit_cost": "1.1804",
+          "total_cost": "23.61",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "20.0 lb \u00d7 $1.1804/lb",
+              "result": "$23.61"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "23.61",
+      "cost_per_serving": "0",
+      "pdf_stated_cost": "23.608",
+      "variance_from_pdf": "0.00",
+      "calculation_steps": [
+        {
+          "step": "direct_calculation",
+          "formula": "20.0 lb \u00d7 $1.1804/lb",
+          "result": "$23.61"
+        }
+      ],
+      "warnings": [],
+      "errors": [],
+      "variance_percent": "0.00"
+    },
+    {
+      "recipe_id": 109,
+      "recipe_name": "Lemon Pepper Sauce - Portion",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.343311",
+      "ingredients": [
+        {
+          "ingredient_name": "Dry Food. Lemon Pepper",
+          "ingredient_type": "Product",
+          "quantity": "2.0",
+          "unit": "oz",
+          "unit_cost": "0.0733",
+          "total_cost": "0.15",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "2.0 oz \u00d7 $0.0733/oz",
+              "result": "$0.15"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "0.15",
+      "cost_per_serving": "0.1500",
+      "pdf_stated_cost": "0.1467",
+      "variance_from_pdf": "0.00",
+      "calculation_steps": [
+        {
+          "step": "direct_calculation",
+          "formula": "2.0 oz \u00d7 $0.0733/oz",
+          "result": "$0.15"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$0.15 / 1.0 servings",
+          "result": "$0.1500"
+        }
+      ],
+      "warnings": [],
+      "errors": [],
+      "variance_percent": "0.00"
+    },
+    {
+      "recipe_id": 111,
+      "recipe_name": "Shredded Carrots",
+      "recipe_type": "PrepRecipe",
+      "timestamp": "2025-07-11T10:33:05.343478",
+      "ingredients": [
+        {
+          "ingredient_name": "Produce, Carrots, Jumbo, Fresh",
+          "ingredient_type": "Product",
+          "quantity": "10.0",
+          "unit": "lb",
+          "unit_cost": "0.4700",
+          "total_cost": "4.70",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "10.0 lb \u00d7 $0.4700/lb",
+              "result": "$4.70"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "4.70",
+      "cost_per_serving": "4.7000",
+      "pdf_stated_cost": "4.7",
+      "variance_from_pdf": "0.00",
+      "calculation_steps": [
+        {
+          "step": "direct_calculation",
+          "formula": "10.0 lb \u00d7 $0.4700/lb",
+          "result": "$4.70"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$4.70 / 1.0 servings",
+          "result": "$4.7000"
+        }
+      ],
+      "warnings": [],
+      "errors": [],
+      "variance_percent": "0.00"
+    },
+    {
+      "recipe_id": 112,
+      "recipe_name": "Shredded Cabbage",
+      "recipe_type": "PrepRecipe",
+      "timestamp": "2025-07-11T10:33:05.343532",
+      "ingredients": [
+        {
+          "ingredient_name": "Produce, CABBAGE GREEN SHREDDED",
+          "ingredient_type": "Product",
+          "quantity": "10.0",
+          "unit": "lb",
+          "unit_cost": "0",
+          "total_cost": "0",
+          "steps": [],
+          "warnings": [],
+          "errors": [
+            "Missing pack size or purchase unit for Produce, CABBAGE GREEN SHREDDED"
+          ]
+        }
+      ],
+      "total_cost": "0",
+      "cost_per_serving": "0",
+      "pdf_stated_cost": "8.84",
+      "variance_from_pdf": "-8.84",
+      "calculation_steps": [],
+      "warnings": [
+        "Cost variance of $-8.84 (-100.00%) from PDF stated cost"
+      ],
+      "errors": [
+        "Missing pack size or purchase unit for Produce, CABBAGE GREEN SHREDDED"
+      ],
+      "variance_percent": "-100.00"
+    },
+    {
+      "recipe_id": 128,
+      "recipe_name": "Comeback sauce",
+      "recipe_type": "PrepRecipe",
+      "timestamp": "2025-07-11T10:33:05.343628",
+      "ingredients": [
+        {
+          "ingredient_name": "Dry Goods, Mayonnaise, Heavy",
+          "ingredient_type": "Product",
+          "quantity": "3.0",
+          "unit": "quart",
+          "unit_cost": "12.9500",
+          "total_cost": "9.71",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "3.0 qt",
+              "to": "0.7500003962582652869834443297 gal",
+              "formula": "0.7500003962582652869834443297 \u00d7 $12.9500/gal",
+              "result": "$9.71"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Mustard, Creole",
+          "ingredient_type": "Product",
+          "quantity": "3.0",
+          "unit": "quart",
+          "unit_cost": "19.8600",
+          "total_cost": "14.90",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "3.0 qt",
+              "to": "0.7500003962582652869834443297 gal",
+              "formula": "0.7500003962582652869834443297 \u00d7 $19.8600/gal",
+              "result": "$14.90"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Sauce, Chile Sambal",
+          "ingredient_type": "Product",
+          "quantity": "1.5",
+          "unit": "quart",
+          "unit_cost": "24.6400",
+          "total_cost": "9.24",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "1.5 qt",
+              "to": "0.3750001981291326434917221648 gal",
+              "formula": "0.3750001981291326434917221648 \u00d7 $24.6400/gal",
+              "result": "$9.24"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Salt, Kosher",
+          "ingredient_type": "Product",
+          "quantity": "1.0",
+          "unit": "oz",
+          "unit_cost": "0.3137",
+          "total_cost": "0.02",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "1.0 oz",
+              "to": "0.0625 lb",
+              "formula": "0.0625 \u00d7 $0.3137/lb",
+              "result": "$0.02"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "33.87",
+      "cost_per_serving": "0",
+      "pdf_stated_cost": "0.0554",
+      "variance_from_pdf": "33.81",
+      "calculation_steps": [
+        {
+          "step": "unit_conversion",
+          "from": "3.0 qt",
+          "to": "0.7500003962582652869834443297 gal",
+          "formula": "0.7500003962582652869834443297 \u00d7 $12.9500/gal",
+          "result": "$9.71"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "3.0 qt",
+          "to": "0.7500003962582652869834443297 gal",
+          "formula": "0.7500003962582652869834443297 \u00d7 $19.8600/gal",
+          "result": "$14.90"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "1.5 qt",
+          "to": "0.3750001981291326434917221648 gal",
+          "formula": "0.3750001981291326434917221648 \u00d7 $24.6400/gal",
+          "result": "$9.24"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "1.0 oz",
+          "to": "0.0625 lb",
+          "formula": "0.0625 \u00d7 $0.3137/lb",
+          "result": "$0.02"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $33.81 (61028.88%) from PDF stated cost"
+      ],
+      "errors": [],
+      "variance_percent": "61028.88"
+    },
+    {
+      "recipe_id": 113,
+      "recipe_name": "Comeback Sauce - Portion",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.343585",
+      "ingredients": [
+        {
+          "ingredient_name": "Comeback sauce",
+          "ingredient_type": "Prep Recipe",
+          "quantity": "2.0",
+          "unit": "oz",
+          "unit_cost": "4.516",
+          "total_cost": "9.0320",
+          "steps": [
+            {
+              "step": "nested_recipe_cost",
+              "description": "Using nested recipe: Comeback sauce",
+              "formula": "$33.87 / 7.5 quart",
+              "unit_cost": "$4.516/unit",
+              "total_cost": "$9.0320"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "9.0320",
+      "cost_per_serving": "9.0320",
+      "pdf_stated_cost": null,
+      "variance_from_pdf": null,
+      "calculation_steps": [
+        {
+          "step": "nested_recipe_cost",
+          "description": "Using nested recipe: Comeback sauce",
+          "formula": "$33.87 / 7.5 quart",
+          "unit_cost": "$4.516/unit",
+          "total_cost": "$9.0320"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$9.0320 / 1.0 servings",
+          "result": "$9.0320"
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "recipe_id": 116,
+      "recipe_name": "Buffalo Sauce - portion",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.343970",
+      "ingredients": [
+        {
+          "ingredient_name": "Dry Goods, Sauce, Buffalo Wing Red Hot",
+          "ingredient_type": "Product",
+          "quantity": "2.0",
+          "unit": "fl oz",
+          "unit_cost": "22.2500",
+          "total_cost": "0.35",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "2.0 fl oz",
+              "to": "0.01562499174461947318784490980 gal",
+              "formula": "0.01562499174461947318784490980 \u00d7 $22.2500/gal",
+              "result": "$0.35"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "0.35",
+      "cost_per_serving": "0.3500",
+      "pdf_stated_cost": "0.3477",
+      "variance_from_pdf": "0.00",
+      "calculation_steps": [
+        {
+          "step": "unit_conversion",
+          "from": "2.0 fl oz",
+          "to": "0.01562499174461947318784490980 gal",
+          "formula": "0.01562499174461947318784490980 \u00d7 $22.2500/gal",
+          "result": "$0.35"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$0.35 / 1.0 servings",
+          "result": "$0.3500"
+        }
+      ],
+      "warnings": [],
+      "errors": [],
+      "variance_percent": "0.00"
+    },
+    {
+      "recipe_id": 122,
+      "recipe_name": "Collard Greens - Side Portion",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.344662",
+      "ingredients": [],
+      "total_cost": "0",
+      "cost_per_serving": "0.0000",
+      "pdf_stated_cost": "0.0236",
+      "variance_from_pdf": "-0.02",
+      "calculation_steps": [
+        {
+          "step": "per_serving_calculation",
+          "formula": "$0 / 1.0 servings",
+          "result": "$0.0000"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $-0.02 (-84.75%) from PDF stated cost"
+      ],
+      "errors": [],
+      "variance_percent": "-84.75"
+    },
+    {
+      "recipe_id": 124,
+      "recipe_name": "Loaded Fries",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.345341",
+      "ingredients": [
+        {
+          "ingredient_name": "Protein, Chicken, Tenders",
+          "ingredient_type": "Product",
+          "quantity": "4.0",
+          "unit": "oz",
+          "unit_cost": "2.8600",
+          "total_cost": "0.72",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "4.0 oz",
+              "to": "0.25 lb",
+              "formula": "0.25 \u00d7 $2.8600/lb",
+              "result": "$0.72"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dairy, Cheese Sauce, Loaf, American",
+          "ingredient_type": "Product",
+          "quantity": "4.0",
+          "unit": "oz",
+          "unit_cost": "4.8000",
+          "total_cost": "1.20",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "4.0 oz",
+              "to": "0.25 lb",
+              "formula": "0.25 \u00d7 $4.8000/lb",
+              "result": "$1.20"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Chicken  Breading, Lea Jane Recipe",
+          "ingredient_type": "Product",
+          "quantity": "2.0",
+          "unit": "oz",
+          "unit_cost": "1.8970",
+          "total_cost": "0.24",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "2.0 oz",
+              "to": "0.125 lb",
+              "formula": "0.125 \u00d7 $1.8970/lb",
+              "result": "$0.24"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "2.16",
+      "cost_per_serving": "2.1600",
+      "pdf_stated_cost": "3.2121",
+      "variance_from_pdf": "-1.05",
+      "calculation_steps": [
+        {
+          "step": "unit_conversion",
+          "from": "4.0 oz",
+          "to": "0.25 lb",
+          "formula": "0.25 \u00d7 $2.8600/lb",
+          "result": "$0.72"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "4.0 oz",
+          "to": "0.25 lb",
+          "formula": "0.25 \u00d7 $4.8000/lb",
+          "result": "$1.20"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "2.0 oz",
+          "to": "0.125 lb",
+          "formula": "0.125 \u00d7 $1.8970/lb",
+          "result": "$0.24"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$2.16 / 1.0 servings",
+          "result": "$2.1600"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $-1.05 (-32.69%) from PDF stated cost"
+      ],
+      "errors": [],
+      "variance_percent": "-32.69"
+    },
+    {
+      "recipe_id": 125,
+      "recipe_name": "Hot Fat",
+      "recipe_type": "PrepRecipe",
+      "timestamp": "2025-07-11T10:33:05.345681",
+      "ingredients": [
+        {
+          "ingredient_name": "Dry Goods, Shortening, Pork Lard",
+          "ingredient_type": "Product",
+          "quantity": "1920.0",
+          "unit": "gram",
+          "unit_cost": "1.3658",
+          "total_cost": "5.78",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "1920.0 g",
+              "to": "4.232878886752852783999717808 lb",
+              "formula": "4.232878886752852783999717808 \u00d7 $1.3658/lb",
+              "result": "$5.78"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods,  Spice, Paprika, Powder",
+          "ingredient_type": "Product",
+          "quantity": "1000.0",
+          "unit": "gram",
+          "unit_cost": "4.7900",
+          "total_cost": "10.56",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "1000.0 g",
+              "to": "2.204624420183777491666519692 lb",
+              "formula": "2.204624420183777491666519692 \u00d7 $4.7900/lb",
+              "result": "$10.56"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Spice, Cayenne Pepper, Ground",
+          "ingredient_type": "Product",
+          "quantity": "2000.0",
+          "unit": "gram",
+          "unit_cost": "4.1440",
+          "total_cost": "18.27",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "2000.0 g",
+              "to": "4.409248840367554983333039383 lb",
+              "formula": "4.409248840367554983333039383 \u00d7 $4.1440/lb",
+              "result": "$18.27"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "34.61",
+      "cost_per_serving": "0",
+      "pdf_stated_cost": "34.6134",
+      "variance_from_pdf": "-0.00",
+      "calculation_steps": [
+        {
+          "step": "unit_conversion",
+          "from": "1920.0 g",
+          "to": "4.232878886752852783999717808 lb",
+          "formula": "4.232878886752852783999717808 \u00d7 $1.3658/lb",
+          "result": "$5.78"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "1000.0 g",
+          "to": "2.204624420183777491666519692 lb",
+          "formula": "2.204624420183777491666519692 \u00d7 $4.7900/lb",
+          "result": "$10.56"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "2000.0 g",
+          "to": "4.409248840367554983333039383 lb",
+          "formula": "4.409248840367554983333039383 \u00d7 $4.1440/lb",
+          "result": "$18.27"
+        }
+      ],
+      "warnings": [],
+      "errors": [],
+      "variance_percent": "-0.00"
+    },
+    {
+      "recipe_id": 126,
+      "recipe_name": "Clucking Spice (Seasoning Blend)",
+      "recipe_type": "PrepRecipe",
+      "timestamp": "2025-07-11T10:33:05.345836",
+      "ingredients": [
+        {
+          "ingredient_name": "Dry Goods, Spice, Ghost Pepper",
+          "ingredient_type": "Product",
+          "quantity": "120.0",
+          "unit": "gram",
+          "unit_cost": "3.7438",
+          "total_cost": "15.85",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "120.0 g",
+              "to": "4.232878886752852783999717808 oz",
+              "formula": "4.232878886752852783999717808 \u00d7 $3.7438/oz",
+              "result": "$15.85"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Good,  Cayenne Pepper, Spice",
+          "ingredient_type": "Product",
+          "quantity": "46.0",
+          "unit": "gram",
+          "unit_cost": "4.2400",
+          "total_cost": "0.43",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "46.0 g",
+              "to": "0.1014127233284537646166599058 lb",
+              "formula": "0.1014127233284537646166599058 \u00d7 $4.2400/lb",
+              "result": "$0.43"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods,  Spice, Paprika, Powder",
+          "ingredient_type": "Product",
+          "quantity": "46.0",
+          "unit": "gram",
+          "unit_cost": "4.7900",
+          "total_cost": "0.49",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "46.0 g",
+              "to": "0.1014127233284537646166599058 lb",
+              "formula": "0.1014127233284537646166599058 \u00d7 $4.7900/lb",
+              "result": "$0.49"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "16.77",
+      "cost_per_serving": "0",
+      "pdf_stated_cost": "16.762600000000003",
+      "variance_from_pdf": "0.01",
+      "calculation_steps": [
+        {
+          "step": "unit_conversion",
+          "from": "120.0 g",
+          "to": "4.232878886752852783999717808 oz",
+          "formula": "4.232878886752852783999717808 \u00d7 $3.7438/oz",
+          "result": "$15.85"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "46.0 g",
+          "to": "0.1014127233284537646166599058 lb",
+          "formula": "0.1014127233284537646166599058 \u00d7 $4.2400/lb",
+          "result": "$0.43"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "46.0 g",
+          "to": "0.1014127233284537646166599058 lb",
+          "formula": "0.1014127233284537646166599058 \u00d7 $4.7900/lb",
+          "result": "$0.49"
+        }
+      ],
+      "warnings": [],
+      "errors": [],
+      "variance_percent": "0.06"
+    },
+    {
+      "recipe_id": 127,
+      "recipe_name": "Onion Ranch",
+      "recipe_type": "PrepRecipe",
+      "timestamp": "2025-07-11T10:33:05.346023",
+      "ingredients": [
+        {
+          "ingredient_name": "Produce, Onions, Yellow",
+          "ingredient_type": "Product",
+          "quantity": "5.0",
+          "unit": "lb",
+          "unit_cost": "0.3990",
+          "total_cost": "2.00",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "5.0 lb \u00d7 $0.3990/lb",
+              "result": "$2.00"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dairy, Egg",
+          "ingredient_type": "Product",
+          "quantity": "40.0",
+          "unit": "each",
+          "unit_cost": "0.3944",
+          "total_cost": "15.78",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "40.0 each \u00d7 $0.3944/each",
+              "result": "$15.78"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Vinegar, White",
+          "ingredient_type": "Product",
+          "quantity": "3.0",
+          "unit": "qt",
+          "unit_cost": "4.2400",
+          "total_cost": "3.18",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "3.0 qt",
+              "to": "0.7500003962582652869834443297 gal",
+              "formula": "0.7500003962582652869834443297 \u00d7 $4.2400/gal",
+              "result": "$3.18"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Black Pepper, Ground",
+          "ingredient_type": "Product",
+          "quantity": "3.0",
+          "unit": "oz",
+          "unit_cost": "9.6540",
+          "total_cost": "1.81",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "3.0 oz",
+              "to": "0.1875 lb",
+              "formula": "0.1875 \u00d7 $9.6540/lb",
+              "result": "$1.81"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Oil, Canola, Salad",
+          "ingredient_type": "Product",
+          "quantity": "3.0",
+          "unit": "lb",
+          "unit_cost": "1.2040",
+          "total_cost": "3.61",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "3.0 lb \u00d7 $1.2040/lb",
+              "result": "$3.61"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Salt, Kosher",
+          "ingredient_type": "Product",
+          "quantity": "3.0",
+          "unit": "oz",
+          "unit_cost": "0.3137",
+          "total_cost": "0.06",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "3.0 oz",
+              "to": "0.1875 lb",
+              "formula": "0.1875 \u00d7 $0.3137/lb",
+              "result": "$0.06"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "26.44",
+      "cost_per_serving": "0",
+      "pdf_stated_cost": "26.433699999999998",
+      "variance_from_pdf": "0.01",
+      "calculation_steps": [
+        {
+          "step": "direct_calculation",
+          "formula": "5.0 lb \u00d7 $0.3990/lb",
+          "result": "$2.00"
+        },
+        {
+          "step": "direct_calculation",
+          "formula": "40.0 each \u00d7 $0.3944/each",
+          "result": "$15.78"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "3.0 qt",
+          "to": "0.7500003962582652869834443297 gal",
+          "formula": "0.7500003962582652869834443297 \u00d7 $4.2400/gal",
+          "result": "$3.18"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "3.0 oz",
+          "to": "0.1875 lb",
+          "formula": "0.1875 \u00d7 $9.6540/lb",
+          "result": "$1.81"
+        },
+        {
+          "step": "direct_calculation",
+          "formula": "3.0 lb \u00d7 $1.2040/lb",
+          "result": "$3.61"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "3.0 oz",
+          "to": "0.1875 lb",
+          "formula": "0.1875 \u00d7 $0.3137/lb",
+          "result": "$0.06"
+        }
+      ],
+      "warnings": [],
+      "errors": [],
+      "variance_percent": "0.04"
+    },
+    {
+      "recipe_id": 128,
+      "recipe_name": "Comeback sauce",
+      "recipe_type": "PrepRecipe",
+      "timestamp": "2025-07-11T10:33:05.346204",
+      "ingredients": [
+        {
+          "ingredient_name": "Dry Goods, Mayonnaise, Heavy",
+          "ingredient_type": "Product",
+          "quantity": "3.0",
+          "unit": "quart",
+          "unit_cost": "12.9500",
+          "total_cost": "9.71",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "3.0 qt",
+              "to": "0.7500003962582652869834443297 gal",
+              "formula": "0.7500003962582652869834443297 \u00d7 $12.9500/gal",
+              "result": "$9.71"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Mustard, Creole",
+          "ingredient_type": "Product",
+          "quantity": "3.0",
+          "unit": "quart",
+          "unit_cost": "19.8600",
+          "total_cost": "14.90",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "3.0 qt",
+              "to": "0.7500003962582652869834443297 gal",
+              "formula": "0.7500003962582652869834443297 \u00d7 $19.8600/gal",
+              "result": "$14.90"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Sauce, Chile Sambal",
+          "ingredient_type": "Product",
+          "quantity": "1.5",
+          "unit": "quart",
+          "unit_cost": "24.6400",
+          "total_cost": "9.24",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "1.5 qt",
+              "to": "0.3750001981291326434917221648 gal",
+              "formula": "0.3750001981291326434917221648 \u00d7 $24.6400/gal",
+              "result": "$9.24"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Salt, Kosher",
+          "ingredient_type": "Product",
+          "quantity": "1.0",
+          "unit": "oz",
+          "unit_cost": "0.3137",
+          "total_cost": "0.02",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "1.0 oz",
+              "to": "0.0625 lb",
+              "formula": "0.0625 \u00d7 $0.3137/lb",
+              "result": "$0.02"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "33.87",
+      "cost_per_serving": "0",
+      "pdf_stated_cost": "0.0554",
+      "variance_from_pdf": "33.81",
+      "calculation_steps": [
+        {
+          "step": "unit_conversion",
+          "from": "3.0 qt",
+          "to": "0.7500003962582652869834443297 gal",
+          "formula": "0.7500003962582652869834443297 \u00d7 $12.9500/gal",
+          "result": "$9.71"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "3.0 qt",
+          "to": "0.7500003962582652869834443297 gal",
+          "formula": "0.7500003962582652869834443297 \u00d7 $19.8600/gal",
+          "result": "$14.90"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "1.5 qt",
+          "to": "0.3750001981291326434917221648 gal",
+          "formula": "0.3750001981291326434917221648 \u00d7 $24.6400/gal",
+          "result": "$9.24"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "1.0 oz",
+          "to": "0.0625 lb",
+          "formula": "0.0625 \u00d7 $0.3137/lb",
+          "result": "$0.02"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $33.81 (61028.88%) from PDF stated cost"
+      ],
+      "errors": [],
+      "variance_percent": "61028.88"
+    },
+    {
+      "recipe_id": 130,
+      "recipe_name": "Kale Kimchi - Side Portion",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.346483",
+      "ingredients": [],
+      "total_cost": "0",
+      "cost_per_serving": "0.0000",
+      "pdf_stated_cost": "0.4263",
+      "variance_from_pdf": "-0.43",
+      "calculation_steps": [
+        {
+          "step": "per_serving_calculation",
+          "formula": "$0 / 1.0 servings",
+          "result": "$0.0000"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $-0.43 (-100.87%) from PDF stated cost"
+      ],
+      "errors": [],
+      "variance_percent": "-100.87"
+    },
+    {
+      "recipe_id": 131,
+      "recipe_name": "Pickled Shallot",
+      "recipe_type": "PrepRecipe",
+      "timestamp": "2025-07-11T10:33:05.346536",
+      "ingredients": [
+        {
+          "ingredient_name": "Dry Goods, Vinegar, White",
+          "ingredient_type": "Product",
+          "quantity": "2.0",
+          "unit": "gallon",
+          "unit_cost": "4.2400",
+          "total_cost": "8.48",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "2.0 gal \u00d7 $4.2400/gal",
+              "result": "$8.48"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Sugar, White",
+          "ingredient_type": "Product",
+          "quantity": "5.0",
+          "unit": "lb",
+          "unit_cost": "0.9764",
+          "total_cost": "4.88",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "5.0 lb \u00d7 $0.9764/lb",
+              "result": "$4.88"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Produce, Shallots, Peeled, Fresh",
+          "ingredient_type": "Product",
+          "quantity": "20.0",
+          "unit": "lb",
+          "unit_cost": "7.3050",
+          "total_cost": "146.10",
+          "steps": [
+            {
+              "step": "direct_calculation",
+              "formula": "20.0 lb \u00d7 $7.3050/lb",
+              "result": "$146.10"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "159.46",
+      "cost_per_serving": "0",
+      "pdf_stated_cost": "150.9842",
+      "variance_from_pdf": "8.48",
+      "calculation_steps": [
+        {
+          "step": "direct_calculation",
+          "formula": "2.0 gal \u00d7 $4.2400/gal",
+          "result": "$8.48"
+        },
+        {
+          "step": "direct_calculation",
+          "formula": "5.0 lb \u00d7 $0.9764/lb",
+          "result": "$4.88"
+        },
+        {
+          "step": "direct_calculation",
+          "formula": "20.0 lb \u00d7 $7.3050/lb",
+          "result": "$146.10"
+        }
+      ],
+      "warnings": [
+        "Cost variance of $8.48 (5.62%) from PDF stated cost"
+      ],
+      "errors": [],
+      "variance_percent": "5.62"
+    },
+    {
+      "recipe_id": 132,
+      "recipe_name": "Tenders",
+      "recipe_type": "Recipe",
+      "timestamp": "2025-07-11T10:33:05.346623",
+      "ingredients": [
+        {
+          "ingredient_name": "Protein, Chicken, Tenders",
+          "ingredient_type": "Product",
+          "quantity": "4.0",
+          "unit": "oz",
+          "unit_cost": "2.8600",
+          "total_cost": "0.72",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "4.0 oz",
+              "to": "0.25 lb",
+              "formula": "0.25 \u00d7 $2.8600/lb",
+              "result": "$0.72"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Shortening, Pork Lard",
+          "ingredient_type": "Product",
+          "quantity": "1.0",
+          "unit": "oz",
+          "unit_cost": "1.3658",
+          "total_cost": "0.09",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "1.0 oz",
+              "to": "0.0625 lb",
+              "formula": "0.0625 \u00d7 $1.3658/lb",
+              "result": "$0.09"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        },
+        {
+          "ingredient_name": "Dry Goods, Chicken  Breading, Lea Jane Recipe",
+          "ingredient_type": "Product",
+          "quantity": "1.5",
+          "unit": "oz",
+          "unit_cost": "1.8970",
+          "total_cost": "0.18",
+          "steps": [
+            {
+              "step": "unit_conversion",
+              "from": "1.5 oz",
+              "to": "0.09375 lb",
+              "formula": "0.09375 \u00d7 $1.8970/lb",
+              "result": "$0.18"
+            }
+          ],
+          "warnings": [],
+          "errors": []
+        }
+      ],
+      "total_cost": "0.99",
+      "cost_per_serving": "0.9900",
+      "pdf_stated_cost": "0.9782",
+      "variance_from_pdf": "0.01",
+      "calculation_steps": [
+        {
+          "step": "unit_conversion",
+          "from": "4.0 oz",
+          "to": "0.25 lb",
+          "formula": "0.25 \u00d7 $2.8600/lb",
+          "result": "$0.72"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "1.0 oz",
+          "to": "0.0625 lb",
+          "formula": "0.0625 \u00d7 $1.3658/lb",
+          "result": "$0.09"
+        },
+        {
+          "step": "unit_conversion",
+          "from": "1.5 oz",
+          "to": "0.09375 lb",
+          "formula": "0.09375 \u00d7 $1.8970/lb",
+          "result": "$0.18"
+        },
+        {
+          "step": "per_serving_calculation",
+          "formula": "$0.99 / 1.0 servings",
+          "result": "$0.9900"
+        }
+      ],
+      "warnings": [],
+      "errors": [],
+      "variance_percent": "1.02"
+    }
+  ],
+  "summary": {
+    "total_recipes": 42,
+    "calculations_with_errors": 2,
+    "calculations_with_warnings": 26,
+    "average_variance_from_pdf": 14.811702127659574
+  }
+}
