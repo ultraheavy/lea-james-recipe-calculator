@@ -16,8 +16,13 @@ def get_database_path():
     """
     # Check if running on Railway with volume
     if os.path.exists('/data'):
-        print("Railway volume detected at /data")
+        print("✅ Railway volume detected at /data")
+        print(f"  Volume writable: {os.access('/data', os.W_OK)}")
         return '/data/restaurant_calculator.db'
+    
+    # Check Railway environment without volume
+    if os.getenv('RAILWAY_ENVIRONMENT'):
+        print("⚠️  Running on Railway but no volume found at /data")
     
     # Local development
     print("Using local database path")
