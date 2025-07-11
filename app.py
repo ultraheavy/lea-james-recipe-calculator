@@ -10,13 +10,21 @@ from activity_logger import get_recent_activities, log_activity, init_activity_t
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
 
-# Support for production deployment
-if os.getenv('FLASK_ENV') == 'production':
-    # In production, use a persistent volume or local directory
-    DATABASE = os.getenv('DATABASE_PATH', 'restaurant_calculator.db')
-else:
-    # In development, use local file
-    DATABASE = 'restaurant_calculator.db'
+# Support for production deployment with Railway volumes
+try:
+    from railway_volume_config import setup_volume_database
+    DATABASE = setup_volume_database()
+except ImportError:
+    # Fallback to original logic if volume config not available
+    if os.getenv('FLASK_ENV') == 'production':
+        # Check for Railway volume first
+        if os.path.exists('/data'):
+            DATABASE = '/data/restaurant_calculator.db'
+        else:
+            DATABASE = os.getenv('DATABASE_PATH', 'restaurant_calculator.db')
+    else:
+        # In development, use local file
+        DATABASE = 'restaurant_calculator.db'
 
 # Set up auto-commit decorator (optional)
 try:
