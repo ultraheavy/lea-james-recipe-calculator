@@ -440,12 +440,25 @@ def health():
             conn.execute('SELECT 1')
             tables = conn.execute("SELECT name FROM sqlite_master WHERE type='table'").fetchall()
             table_names = [t['name'] for t in tables]
+        
+        # Volume debugging info
+        volume_info = {
+            'railway_env': os.getenv('RAILWAY_ENVIRONMENT', 'not set'),
+            '/data_exists': os.path.exists('/data'),
+            '/data_is_dir': os.path.isdir('/data') if os.path.exists('/data') else False,
+            '/data_writable': os.access('/data', os.W_OK) if os.path.exists('/data') else False,
+            '/data_contents': os.listdir('/data') if os.path.exists('/data') else [],
+            'db_in_volume': os.path.exists('/data/restaurant_calculator.db'),
+            'local_db_exists': os.path.exists('restaurant_calculator.db'),
+            'database_path_used': DATABASE
+        }
             
         return jsonify({
             'status': 'healthy',
             'database': DATABASE,
             'tables': table_names,
-            'table_count': len(table_names)
+            'table_count': len(table_names),
+            'volume': volume_info
         })
     except Exception as e:
         return jsonify({
