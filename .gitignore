@@ -58,4 +58,4 @@ build/
 
 # Health reports
 health_report_*.json
-EOF < /dev/null
+EOF < /dev/nullrestaurant_calculator.db
