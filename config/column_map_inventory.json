@@ -1,0 +1,96 @@
+{
+  "Product(s)": {
+    "target": "FAM_Product_Name",
+    "required": true,
+    "admin_review": true,
+    "type": "string",
+    "validation": {
+      "flag_if_empty": true,
+      "description": "Product name must not be empty"
+    }
+  },
+  "Location Name": {
+    "target": "FAM_Restaurant_Location_Name",
+    "required": true,
+    "admin_review": true,
+    "type": "string"
+  },
+  "Vendor Name": {
+    "target": "Vendor_Name",
+    "required": true,
+    "admin_review": true,
+    "type": "string"
+  },
+  "Item Code": {
+    "target": "Vendor_Item_Code",
+    "required": true,
+    "admin_review": true,
+    "type": "string"
+  },
+  "Item Description": {
+    "target": "Vendor_Item_Description",
+    "required": true,
+    "admin_review": true,
+    "type": "string"
+  },
+  "UOM": {
+    "target": "Vendor_UOM",
+    "required": true,
+    "admin_review": true,
+    "type": "string",
+    "validation": {
+      "flag_if_empty": true,
+      "description": "Vendor UOM must be specified"
+    }
+  },
+  "Item UOM": {
+    "target": "Inventory_UOM",
+    "required": true,
+    "admin_review": true,
+    "type": "string",
+    "validation": {
+      "flag_if_empty": true,
+      "description": "Inventory UOM should be specified"
+    }
+  },
+  "Pack": {
+    "target": "Pack_qty",
+    "required": true,
+    "admin_review": true,
+    "type": "integer",
+    "default": 1
+  },
+  "Size": {
+    "target": "Size_qty",
+    "required": true,
+    "admin_review": true,
+    "type": "float",
+    "default": 1
+  },
+  "Unit": {
+    "target": "Size_UOM",
+    "required": true,
+    "admin_review": true,
+    "type": "string",
+    "validation": {
+      "flag_if_empty": true,
+      "description": "Size UOM should be specified"
+    }
+  },
+  "Last Purchased Date": {
+    "target": "Last_Purchased_Date",
+    "required": true,
+    "admin_review": true,
+    "type": "date"
+  },
+  "Last Purchased Price ($)": {
+    "target": "Last_Purchased_Price",
+    "required": true,
+    "admin_review": true,
+    "type": "float",
+    "validation": {
+      "flag_if_zero": true,
+      "description": "Last purchased price should not be $0"
+    }
+  }
+}

@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for, make_response, flash
-from flask import Flask, render_template, request, jsonify, redirect, url_for, make_response, flash
 import sqlite3
 import os
 import sys
@@ -9,6 +8,16 @@ from activity_logger import get_recent_activities, log_activity, init_activity_t
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
+
+# Import and register inventory staging blueprint
+try:
+    from inventory_staging_admin import inventory_staging_bp
+    app.register_blueprint(inventory_staging_bp)
+    print("Successfully registered inventory staging blueprint at /admin/inventory-staging/")
+except ImportError as e:
+    print(f"Warning: Could not import inventory staging admin: {e}")
+except Exception as e:
+    print(f"Error registering inventory staging blueprint: {e}")
 
 # Support for production deployment with Railway volumes
 try:
