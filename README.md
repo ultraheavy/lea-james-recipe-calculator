@@ -2,6 +2,22 @@
 
 A professional web application for restaurant recipe costing and menu management. Track ingredients, build recipes, analyze costs, and optimize your menu pricing - all in one integrated platform.
 
+## Current Status
+
+The application is actively being enhanced with new data import capabilities:
+
+### ✅ Working Features
+- **Inventory Staging Admin**: Successfully imports and validates items from CSV exports
+- **Recipe Staging Admin**: Imports recipe summary data from xtraCHEF exports with validation
+- Core recipe costing and menu management functionality
+
+### 🚧 In Development
+- **Individual Recipe CSV Loader**: Next phase to parse detailed ingredients from 70+ individual recipe CSV files
+- Enhanced validation and data quality checks
+
+### ❌ Abandoned Approaches
+- **PDF Recipe Parser**: Initial attempt to extract recipe data from PDFs was discontinued due to OCR accuracy issues. The CSV format provides cleaner, more reliable data.
+
 ## Features
 
 ✅ **Inventory Management**
@@ -9,12 +25,14 @@ A professional web application for restaurant recipe costing and menu management
 - Track vendors and compare costs
 - Monitor purchase units vs recipe units
 - Calculate yield percentages for accurate costing
+- CSV import staging system for bulk data loading
 
 ✅ **Recipe Builder**
 - Create detailed recipes with precise measurements
 - Automatic cost calculations per portion
 - Track prep time, shelf life, and cooking stations
 - Scale recipes up or down instantly
+- Staging system for recipe data validation before commit
 
 ✅ **Menu Management**
 - Link recipes to menu items
@@ -33,6 +51,12 @@ A professional web application for restaurant recipe costing and menu management
 - Compare prices and choose best options
 - Manage vendor relationships
 - Optimize purchasing decisions
+
+✅ **Data Import System**
+- Staging tables for data validation
+- Admin interfaces for reviewing and approving imports
+- Duplicate detection and handling
+- Business rule validation
 
 ## Benefits
 

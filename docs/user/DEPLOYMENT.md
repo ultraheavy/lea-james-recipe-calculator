@@ -126,12 +126,31 @@ Railway provides:
 - Deployment history
 - Crash notifications
 
+## Current Data Import Status
+
+The application includes several admin interfaces for data import:
+
+1. **Inventory Staging Admin** (`/admin/staging/inventory/`)
+   - Fully functional for importing item CSV data
+   - Access at: `https://yourdomain.com/admin/staging/inventory/`
+
+2. **Recipe Staging Admin** (`/admin/staging/recipes-list/`)
+   - Operational for recipe summary CSV imports
+   - Access at: `https://yourdomain.com/admin/staging/recipes-list/`
+
+3. **Individual Recipe Loader** (In Development)
+   - Will handle 70+ individual recipe CSV files
+   - CSV format chosen over PDF due to better data quality
+
+Note: The PDF recipe parser was attempted but abandoned due to OCR accuracy issues. All data imports now use CSV format for reliability.
+
 ## Next Steps
 
 1. Set up staging environment (separate Railway project)
 2. Configure automated backups for database
 3. Set up monitoring alerts
-4. Consider adding:
+4. Complete individual recipe CSV loader implementation
+5. Consider adding:
    - User authentication
    - SSL certificate (Railway provides free)
    - CDN for static assets
