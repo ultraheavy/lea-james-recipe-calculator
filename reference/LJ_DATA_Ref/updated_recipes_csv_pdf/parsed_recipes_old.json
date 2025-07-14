@@ -1,0 +1,4708 @@
+[
+  {
+    "source_file": "24 Hour Chili Brined Chicken Thigh.pdf",
+    "metadata": {
+      "recipe_name": "2244 Hour Chili Brined Chicken Thigh",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 474 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Alabama White BBQ .pdf",
+    "metadata": {
+      "recipe_name": "Alabama White BBQ",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Dry Goods, Mayonnaise, Heavy",
+        "quantity": "8",
+        "unit": "cup",
+        "cost": "7.72",
+        "category": null,
+        "raw_line": "8 cup Dry Goods, Mayonnaise, Heavy $7.72 2 cup Produce, VINEGAR APPLE CIDER $1.62"
+      },
+      {
+        "ingredient_name": "Produce, VINEGAR APPLE CIDER",
+        "quantity": "2",
+        "unit": "cup",
+        "cost": "1.62",
+        "category": null,
+        "raw_line": "8 cup Dry Goods, Mayonnaise, Heavy $7.72 2 cup Produce, VINEGAR APPLE CIDER $1.62"
+      },
+      {
+        "ingredient_name": "SPW LN",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "SPW LN"
+      },
+      {
+        "ingredient_name": "Sauce",
+        "quantity": "2",
+        "unit": "Worcestershire",
+        "cost": "0.00",
+        "category": null,
+        "raw_line": "2 Worcestershire Sauce $0.00 2 Dry Good, Cayenne Pepper, $0.44"
+      },
+      {
+        "ingredient_name": "Good, Cayenne Pepper,",
+        "quantity": "2",
+        "unit": "Dry",
+        "cost": "0.44",
+        "category": null,
+        "raw_line": "2 Worcestershire Sauce $0.00 2 Dry Good, Cayenne Pepper, $0.44"
+      },
+      {
+        "ingredient_name": "tablespoon tablespoon Spice",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "tablespoon tablespoon Spice"
+      },
+      {
+        "ingredient_name": "Goods, Black Pepper",
+        "quantity": "2",
+        "unit": "Dry",
+        "cost": null,
+        "category": null,
+        "raw_line": "2 Dry Goods, Black Pepper,"
+      },
+      {
+        "ingredient_name": "tablespoon Ground",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "tablespoon Ground"
+      },
+      {
+        "ingredient_name": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS"
+      },
+      {
+        "ingredient_name": "1. Combine all ingredients in a mixing bowl",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "1. Combine all ingredients in a mixing bowl"
+      },
+      {
+        "ingredient_name": "2. Whisk until smooth and well combined",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "2. Whisk until smooth and well combined"
+      },
+      {
+        "ingredient_name": "3. Refrigerate for at least 2 hours before serving (flavors meld better)",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "3. Refrigerate for at least 2 hours before serving (flavors meld better)"
+      },
+      {
+        "ingredient_name": "4. Stir before each use",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "4. Stir before each use"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 1025 characters extracted"
+    ]
+  },
+  {
+    "source_file": "BBQ Sauce Chicken Wings.pdf",
+    "metadata": {
+      "recipe_name": "BBQ Sauce Chicken Wings",
+      "prefix": null,
+      "yield": "1",
+      "yield_uom": "each",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "each",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Protein, Chicken, Wing",
+        "quantity": "10",
+        "unit": "oz",
+        "cost": "1.09",
+        "category": null,
+        "raw_line": "10 oz Protein, Chicken, Wing $1.09 1 slice Dry Goods, Bread, Texas Toast $0.22"
+      },
+      {
+        "ingredient_name": "Dry Goods, Bread, Texas Toast",
+        "quantity": "1",
+        "unit": "slice",
+        "cost": "0.22",
+        "category": null,
+        "raw_line": "10 oz Protein, Chicken, Wing $1.09 1 slice Dry Goods, Bread, Texas Toast $0.22"
+      },
+      {
+        "ingredient_name": "Dry Goods, Pickle, DIll,",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": "0.09",
+        "category": null,
+        "raw_line": "1 oz Dry Goods, Pickle, DIll, $0.09 1 oz Dry Goods, Shortening, Pork $0.09"
+      },
+      {
+        "ingredient_name": "Dry Goods, Shortening, Pork",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": "0.09",
+        "category": null,
+        "raw_line": "1 oz Dry Goods, Pickle, DIll, $0.09 1 oz Dry Goods, Shortening, Pork $0.09"
+      },
+      {
+        "ingredient_name": "Slices Lard",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Slices Lard"
+      },
+      {
+        "ingredient_name": "Dry Goods, Chicken Breading,",
+        "quantity": "3",
+        "unit": "oz",
+        "cost": "0.36",
+        "category": null,
+        "raw_line": "3 oz Dry Goods, Chicken Breading, $0.36 4 fl oz Dry Goods, Sauce, BBQ Sweet $0.61"
+      },
+      {
+        "ingredient_name": "oz Dry Goods, Sauce, BBQ Sweet",
+        "quantity": "4",
+        "unit": "fl",
+        "cost": "0.61",
+        "category": null,
+        "raw_line": "3 oz Dry Goods, Chicken Breading, $0.36 4 fl oz Dry Goods, Sauce, BBQ Sweet $0.61"
+      },
+      {
+        "ingredient_name": "Lea Jane Recipe",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Lea Jane Recipe"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 797 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Buffalo Chicken Wings.pdf",
+    "metadata": {
+      "recipe_name": "Buffalo Chicken Wings",
+      "prefix": null,
+      "yield": "1",
+      "yield_uom": "each",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "each",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Protein, Chicken, Wing",
+        "quantity": "10",
+        "unit": "oz",
+        "cost": "1.09",
+        "category": null,
+        "raw_line": "10 oz Protein, Chicken, Wing $1.09 1 slice Dry Goods, Bread, Texas Toast $0.22"
+      },
+      {
+        "ingredient_name": "Dry Goods, Bread, Texas Toast",
+        "quantity": "1",
+        "unit": "slice",
+        "cost": "0.22",
+        "category": null,
+        "raw_line": "10 oz Protein, Chicken, Wing $1.09 1 slice Dry Goods, Bread, Texas Toast $0.22"
+      },
+      {
+        "ingredient_name": "Dry Goods, Pickle, DIll,",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": "0.09",
+        "category": null,
+        "raw_line": "1 oz Dry Goods, Pickle, DIll, $0.09 1 oz Dry Goods, Shortening, Pork $0.09"
+      },
+      {
+        "ingredient_name": "Dry Goods, Shortening, Pork",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": "0.09",
+        "category": null,
+        "raw_line": "1 oz Dry Goods, Pickle, DIll, $0.09 1 oz Dry Goods, Shortening, Pork $0.09"
+      },
+      {
+        "ingredient_name": "Slices Lard",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Slices Lard"
+      },
+      {
+        "ingredient_name": "Dry Goods, Chicken Breading,",
+        "quantity": "3",
+        "unit": "oz",
+        "cost": "0.36",
+        "category": null,
+        "raw_line": "3 oz Dry Goods, Chicken Breading, $0.36 4 fl oz Dry Goods, Sauce, Buffalo Wing $0.7"
+      },
+      {
+        "ingredient_name": "oz Dry Goods, Sauce, Buffalo Wing",
+        "quantity": "4",
+        "unit": "fl",
+        "cost": "0.7",
+        "category": null,
+        "raw_line": "3 oz Dry Goods, Chicken Breading, $0.36 4 fl oz Dry Goods, Sauce, Buffalo Wing $0.7"
+      },
+      {
+        "ingredient_name": "Lea Jane Recipe Red Hot",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Lea Jane Recipe Red Hot"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 804 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Buffalo Sauce - portion.pdf",
+    "metadata": {
+      "recipe_name": "Buffalo Sauce -- portion",
+      "prefix": null,
+      "yield": "1",
+      "yield_uom": "ea",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "ea",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Dry Goods, Sauce, Buffalo Wing",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Dry Goods, Sauce, Buffalo Wing"
+      },
+      {
+        "ingredient_name": "oz",
+        "quantity": "2",
+        "unit": "fl",
+        "cost": "0.35",
+        "category": null,
+        "raw_line": "2 fl oz $0.35"
+      },
+      {
+        "ingredient_name": "Red Hot",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Red Hot"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 580 characters extracted"
+    ]
+  },
+  {
+    "source_file": "CHilli Oil - Hot Fat.pdf",
+    "metadata": {
+      "recipe_name": "CHilli Oil -- Hot Fat",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Dry Goods, Shortening, Pork",
+        "quantity": "9600",
+        "unit": "gram",
+        "cost": "28.91",
+        "category": null,
+        "raw_line": "9600 gram Dry Goods, Shortening, Pork $28.91 400 gram Dry Goods, Spice, Paprika, $3.07"
+      },
+      {
+        "ingredient_name": "Dry Goods, Spice, Paprika,",
+        "quantity": "400",
+        "unit": "gram",
+        "cost": "3.07",
+        "category": null,
+        "raw_line": "9600 gram Dry Goods, Shortening, Pork $28.91 400 gram Dry Goods, Spice, Paprika, $3.07"
+      },
+      {
+        "ingredient_name": "Lard Powder - Spanish",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Lard Powder - Spanish"
+      },
+      {
+        "ingredient_name": "Dry Goods, Spice, Cayenne",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Dry Goods, Spice, Cayenne"
+      },
+      {
+        "ingredient_name": "800 gram",
+        "quantity": null,
+        "unit": null,
+        "cost": "7.31",
+        "category": null,
+        "raw_line": "800 gram $7.31"
+      },
+      {
+        "ingredient_name": "Pepper, Ground",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Pepper, Ground"
+      },
+      {
+        "ingredient_name": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS"
+      },
+      {
+        "ingredient_name": "PPrroocceedduurree",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "PPrroocceedduurree::"
+      },
+      {
+        "ingredient_name": "1. Heat lard on range to 220°F-250°F",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "1. Heat lard on range to 220°F-250°F"
+      },
+      {
+        "ingredient_name": "2. Whisk lard to ensure even heating",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "2. Whisk lard to ensure even heating"
+      },
+      {
+        "ingredient_name": "3. When target temperature is reached, add dry spices slowly while whisking",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "3. When target temperature is reached, add dry spices slowly while whisking"
+      },
+      {
+        "ingredient_name": "4. DDOO NNOOTT aadddd aallll aatt oonnccee",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "4. DDOO NNOOTT aadddd aallll aatt oonnccee"
+      },
+      {
+        "ingredient_name": "5. Once fully incorporated, carefully transfer to \u0000 pans",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "5. Once fully incorporated, carefully transfer to \u0000 pans"
+      },
+      {
+        "ingredient_name": "6. Wrap tightly with plastic wrap to steep for a minimum of 30 minutes",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "6. Wrap tightly with plastic wrap to steep for a minimum of 30 minutes"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 1072 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Charred Onion Ranch.pdf",
+    "metadata": {
+      "recipe_name": "Charred Onion Ranch",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Dry Goods, Vinegar, White",
+        "quantity": "3",
+        "unit": "qt",
+        "cost": "2.54",
+        "category": null,
+        "raw_line": "3 qt Dry Goods, Vinegar, White $2.54 40 each Dairy, Egg $13"
+      },
+      {
+        "ingredient_name": "Dairy, Egg",
+        "quantity": "40",
+        "unit": "each",
+        "cost": "13",
+        "category": null,
+        "raw_line": "3 qt Dry Goods, Vinegar, White $2.54 40 each Dairy, Egg $13"
+      },
+      {
+        "ingredient_name": "Dry Goods, Oil, Canola, Salad",
+        "quantity": "3",
+        "unit": "gal",
+        "cost": "30.24",
+        "category": null,
+        "raw_line": "3 gal Dry Goods, Oil, Canola, Salad $30.24 3 cup Dry Goods, Black Pepper, $7.16"
+      },
+      {
+        "ingredient_name": "Dry Goods, Black Pepper,",
+        "quantity": "3",
+        "unit": "cup",
+        "cost": "7.16",
+        "category": null,
+        "raw_line": "3 gal Dry Goods, Oil, Canola, Salad $30.24 3 cup Dry Goods, Black Pepper, $7.16"
+      },
+      {
+        "ingredient_name": "-v Ground",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "-v Ground"
+      },
+      {
+        "ingredient_name": "Dry Goods, Salt, Kosher",
+        "quantity": "3",
+        "unit": "cup",
+        "cost": "5.49",
+        "category": null,
+        "raw_line": "3 cup Dry Goods, Salt, Kosher $5.49 15 lb Produce, Onions, Yellow $5.98"
+      },
+      {
+        "ingredient_name": "Produce, Onions, Yellow",
+        "quantity": "15",
+        "unit": "lb",
+        "cost": "5.98",
+        "category": null,
+        "raw_line": "3 cup Dry Goods, Salt, Kosher $5.49 15 lb Produce, Onions, Yellow $5.98"
+      },
+      {
+        "ingredient_name": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS"
+      },
+      {
+        "ingredient_name": "Char onions: Char onions on flat top until properly charred",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Char onions: Char onions on flat top until properly charred"
+      },
+      {
+        "ingredient_name": "1. Puree base: Once onions are charred, puree onions and white vinegar",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "1. Puree base: Once onions are charred, puree onions and white vinegar"
+      },
+      {
+        "ingredient_name": "2. Add eggs: Once pureed, add eggs and blend for 5 minutes, constantly moving the stick",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "2. Add eggs: Once pureed, add eggs and blend for 5 minutes, constantly moving the stick"
+      },
+      {
+        "ingredient_name": "blender up and down",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "blender up and down"
+      },
+      {
+        "ingredient_name": "3. Create emulsion: Once onions, white vinegar and eggs are smooth, slowly emulsify with oil",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "3. Create emulsion: Once onions, white vinegar and eggs are smooth, slowly emulsify with oil"
+      },
+      {
+        "ingredient_name": "while still moving stick blender",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "while still moving stick blender"
+      },
+      {
+        "ingredient_name": "4. Season: Once thick, season with cracked black pepper and salt",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "4. Season: Once thick, season with cracked black pepper and salt"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 1195 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Chicken Waffle Cone.pdf",
+    "metadata": {
+      "recipe_name": "Chicken Waffle Cone",
+      "prefix": null,
+      "yield": "1",
+      "yield_uom": "ea",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "ea",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Dry Goods, Pasta, Cavatappi",
+        "quantity": "4",
+        "unit": "oz",
+        "cost": "0.44",
+        "category": null,
+        "raw_line": "4 oz Dry Goods, Pasta, Cavatappi $0.44 2 fl ounce Dairy, Cream, Heavy $0.34"
+      },
+      {
+        "ingredient_name": "ounce Dairy, Cream, Heavy",
+        "quantity": "2",
+        "unit": "fl",
+        "cost": "0.34",
+        "category": null,
+        "raw_line": "4 oz Dry Goods, Pasta, Cavatappi $0.44 2 fl ounce Dairy, Cream, Heavy $0.34"
+      },
+      {
+        "ingredient_name": "Dairy, Cheese Sauce, Loaf,",
+        "quantity": "5",
+        "unit": "oz",
+        "cost": "1.03",
+        "category": null,
+        "raw_line": "5 oz Dairy, Cheese Sauce, Loaf, $1.03 4 oz Protein, Chicken, Tenders $1"
+      },
+      {
+        "ingredient_name": "Protein, Chicken, Tenders",
+        "quantity": "4",
+        "unit": "oz",
+        "cost": "1",
+        "category": null,
+        "raw_line": "5 oz Dairy, Cheese Sauce, Loaf, $1.03 4 oz Protein, Chicken, Tenders $1"
+      },
+      {
+        "ingredient_name": "American",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "American"
+      },
+      {
+        "ingredient_name": "Onion Ranch",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.15",
+        "category": null,
+        "raw_line": "2 oz Onion Ranch $0.15 1 oz Pickled Shallot $0.31"
+      },
+      {
+        "ingredient_name": "Pickled Shallot",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": "0.31",
+        "category": null,
+        "raw_line": "2 oz Onion Ranch $0.15 1 oz Pickled Shallot $0.31"
+      },
+      {
+        "ingredient_name": "Produce, Onions, Green",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": "0.1",
+        "category": null,
+        "raw_line": "1 oz Produce, Onions, Green $0.1 2 oz Dry Goods, Chicken Breading, $0.24"
+      },
+      {
+        "ingredient_name": "Dry Goods, Chicken Breading,",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.24",
+        "category": null,
+        "raw_line": "1 oz Produce, Onions, Green $0.1 2 oz Dry Goods, Chicken Breading, $0.24"
+      },
+      {
+        "ingredient_name": "Lea Jane Recipe",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Lea Jane Recipe"
+      },
+      {
+        "ingredient_name": "Dry Goods, Waffle Cone",
+        "quantity": "1",
+        "unit": "ea",
+        "cost": "0.00",
+        "category": null,
+        "raw_line": "1 ea Dry Goods, Waffle Cone $0.00"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 848 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Chicken Wings.pdf",
+    "metadata": {
+      "recipe_name": "Chicken Wings",
+      "prefix": null,
+      "yield": "1",
+      "yield_uom": "each",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "each",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Protein, Chicken, Wing",
+        "quantity": "10",
+        "unit": "oz",
+        "cost": "1.09",
+        "category": null,
+        "raw_line": "10 oz Protein, Chicken, Wing $1.09 1 slice Dry Goods, Bread, Texas Toast $0.22"
+      },
+      {
+        "ingredient_name": "Dry Goods, Bread, Texas Toast",
+        "quantity": "1",
+        "unit": "slice",
+        "cost": "0.22",
+        "category": null,
+        "raw_line": "10 oz Protein, Chicken, Wing $1.09 1 slice Dry Goods, Bread, Texas Toast $0.22"
+      },
+      {
+        "ingredient_name": "Dry Goods, Pickle, DIll,",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": "0.09",
+        "category": null,
+        "raw_line": "1 oz Dry Goods, Pickle, DIll, $0.09 1 oz Dry Goods, Shortening, Pork $0.09"
+      },
+      {
+        "ingredient_name": "Dry Goods, Shortening, Pork",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": "0.09",
+        "category": null,
+        "raw_line": "1 oz Dry Goods, Pickle, DIll, $0.09 1 oz Dry Goods, Shortening, Pork $0.09"
+      },
+      {
+        "ingredient_name": "Slices Lard",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Slices Lard"
+      },
+      {
+        "ingredient_name": "Dry Goods, Chicken Breading",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Dry Goods, Chicken Breading,"
+      },
+      {
+        "ingredient_name": "$0.36",
+        "quantity": "3",
+        "unit": "oz",
+        "cost": null,
+        "category": null,
+        "raw_line": "3 oz $0.36"
+      },
+      {
+        "ingredient_name": "Lea Jane Recipe",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Lea Jane Recipe"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 737 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Clucking Spice (Seasoning Blend) (1).pdf",
+    "metadata": {
+      "recipe_name": "Clucking Spice ((Seasoning Blend))",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Dry Goods, Spice, Ghost Pepper",
+        "quantity": "120",
+        "unit": "gram",
+        "cost": "15.85",
+        "category": null,
+        "raw_line": "120 gram Dry Goods, Spice, Ghost Pepper $15.85 46 gram Dry Good, Cayenne Pepper, $0.8"
+      },
+      {
+        "ingredient_name": "Dry Good, Cayenne Pepper,",
+        "quantity": "46",
+        "unit": "gram",
+        "cost": "0.8",
+        "category": null,
+        "raw_line": "120 gram Dry Goods, Spice, Ghost Pepper $15.85 46 gram Dry Good, Cayenne Pepper, $0.8"
+      },
+      {
+        "ingredient_name": "Spice",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Spice"
+      },
+      {
+        "ingredient_name": "Dry Goods, Spice, Paprika",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Dry Goods, Spice, Paprika,"
+      },
+      {
+        "ingredient_name": "46 gram",
+        "quantity": null,
+        "unit": null,
+        "cost": "0.49",
+        "category": null,
+        "raw_line": "46 gram $0.49"
+      },
+      {
+        "ingredient_name": "Powder",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Powder"
+      },
+      {
+        "ingredient_name": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS"
+      },
+      {
+        "ingredient_name": "1. Weigh ingredients using spoon into quart container",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "1. Weigh ingredients using spoon into quart container"
+      },
+      {
+        "ingredient_name": "2. Seal with lid and shake well to combine evenly",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "2. Seal with lid and shake well to combine evenly"
+      },
+      {
+        "ingredient_name": "3. Transfer to shaker tin for use",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "3. Transfer to shaker tin for use"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 864 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Clucking Spice (Seasoning Blend).pdf",
+    "metadata": {
+      "recipe_name": "Clucking Spice ((Seasoning Blend))",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Dry Goods, Spice, Ghost Pepper",
+        "quantity": "120",
+        "unit": "gram",
+        "cost": "15.85",
+        "category": null,
+        "raw_line": "120 gram Dry Goods, Spice, Ghost Pepper $15.85 46 gram Dry Good, Cayenne Pepper, $0.8"
+      },
+      {
+        "ingredient_name": "Dry Good, Cayenne Pepper,",
+        "quantity": "46",
+        "unit": "gram",
+        "cost": "0.8",
+        "category": null,
+        "raw_line": "120 gram Dry Goods, Spice, Ghost Pepper $15.85 46 gram Dry Good, Cayenne Pepper, $0.8"
+      },
+      {
+        "ingredient_name": "Spice",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Spice"
+      },
+      {
+        "ingredient_name": "Dry Goods, Spice, Paprika",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Dry Goods, Spice, Paprika,"
+      },
+      {
+        "ingredient_name": "46 gram",
+        "quantity": null,
+        "unit": null,
+        "cost": "0.49",
+        "category": null,
+        "raw_line": "46 gram $0.49"
+      },
+      {
+        "ingredient_name": "Powder",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Powder"
+      },
+      {
+        "ingredient_name": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS"
+      },
+      {
+        "ingredient_name": "1. Weigh ingredients using spoon into quart container",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "1. Weigh ingredients using spoon into quart container"
+      },
+      {
+        "ingredient_name": "2. Seal with lid and shake well to combine evenly",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "2. Seal with lid and shake well to combine evenly"
+      },
+      {
+        "ingredient_name": "3. Transfer to shaker tin for use",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "3. Transfer to shaker tin for use"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 864 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Coleslaw (1).pdf",
+    "metadata": {
+      "recipe_name": "Coleslaw",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Produce, Coleslaw Mix",
+        "quantity": "2",
+        "unit": "lb",
+        "cost": "1.73",
+        "category": null,
+        "raw_line": "2 lb Produce, Coleslaw Mix $1.73 1340 gram Dry Goods, Mayonnaise, Heavy $5.88"
+      },
+      {
+        "ingredient_name": "Dry Goods, Mayonnaise, Heavy",
+        "quantity": "1340",
+        "unit": "gram",
+        "cost": "5.88",
+        "category": null,
+        "raw_line": "2 lb Produce, Coleslaw Mix $1.73 1340 gram Dry Goods, Mayonnaise, Heavy $5.88"
+      },
+      {
+        "ingredient_name": "Dry Goods, Vinegar, White",
+        "quantity": "60",
+        "unit": "gram",
+        "cost": "0.05",
+        "category": null,
+        "raw_line": "60 gram Dry Goods, Vinegar, White $0.05 1 oz Dry Goods, Salt, Kosher $0.17"
+      },
+      {
+        "ingredient_name": "Dry Goods, Salt, Kosher",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": "0.17",
+        "category": null,
+        "raw_line": "60 gram Dry Goods, Vinegar, White $0.05 1 oz Dry Goods, Salt, Kosher $0.17"
+      },
+      {
+        "ingredient_name": "Dry Goods, Black Pepper",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Dry Goods, Black Pepper,"
+      },
+      {
+        "ingredient_name": "$0.5",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": null,
+        "category": null,
+        "raw_line": "1 oz $0.5"
+      },
+      {
+        "ingredient_name": "Ground",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Ground"
+      },
+      {
+        "ingredient_name": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS"
+      },
+      {
+        "ingredient_name": "Fold ingredients together and season to taste",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Fold ingredients together and season to taste"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 739 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Coleslaw.pdf",
+    "metadata": {
+      "recipe_name": "Coleslaw",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Produce, Coleslaw Mix",
+        "quantity": "2",
+        "unit": "lb",
+        "cost": "1.73",
+        "category": null,
+        "raw_line": "2 lb Produce, Coleslaw Mix $1.73 1340 gram Dry Goods, Mayonnaise, Heavy $5.88"
+      },
+      {
+        "ingredient_name": "Dry Goods, Mayonnaise, Heavy",
+        "quantity": "1340",
+        "unit": "gram",
+        "cost": "5.88",
+        "category": null,
+        "raw_line": "2 lb Produce, Coleslaw Mix $1.73 1340 gram Dry Goods, Mayonnaise, Heavy $5.88"
+      },
+      {
+        "ingredient_name": "Dry Goods, Vinegar, White",
+        "quantity": "60",
+        "unit": "gram",
+        "cost": "0.05",
+        "category": null,
+        "raw_line": "60 gram Dry Goods, Vinegar, White $0.05 1 oz Dry Goods, Salt, Kosher $0.17"
+      },
+      {
+        "ingredient_name": "Dry Goods, Salt, Kosher",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": "0.17",
+        "category": null,
+        "raw_line": "60 gram Dry Goods, Vinegar, White $0.05 1 oz Dry Goods, Salt, Kosher $0.17"
+      },
+      {
+        "ingredient_name": "Dry Goods, Black Pepper",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Dry Goods, Black Pepper,"
+      },
+      {
+        "ingredient_name": "$0.5",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": null,
+        "category": null,
+        "raw_line": "1 oz $0.5"
+      },
+      {
+        "ingredient_name": "Ground",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Ground"
+      },
+      {
+        "ingredient_name": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS"
+      },
+      {
+        "ingredient_name": "Fold ingredients together and season to taste",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Fold ingredients together and season to taste"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 739 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Collard Greens - Side Portion.pdf",
+    "metadata": {
+      "recipe_name": "Collard Greens -- Side Portion",
+      "prefix": null,
+      "yield": "1",
+      "yield_uom": "ea",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "ea",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "oz Collard Greens Recipe",
+        "quantity": "8",
+        "unit": "fl",
+        "cost": "0.22",
+        "category": null,
+        "raw_line": "8 fl oz Collard Greens Recipe $0.22"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 570 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Collard Greens Recipe.pdf",
+    "metadata": {
+      "recipe_name": "Collard Greens Recipe",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Produce, Collard Green,",
+        "quantity": "4",
+        "unit": "lb",
+        "cost": "5.36",
+        "category": null,
+        "raw_line": "4 lb Produce, Collard Green, $5.36 10 gram Protein, Pork Belly, Diced, $0.01"
+      },
+      {
+        "ingredient_name": "Protein, Pork Belly, Diced,",
+        "quantity": "10",
+        "unit": "gram",
+        "cost": "0.01",
+        "category": null,
+        "raw_line": "4 lb Produce, Collard Green, $5.36 10 gram Protein, Pork Belly, Diced, $0.01"
+      },
+      {
+        "ingredient_name": "Frozen, Chopped Hickory Smoked",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Frozen, Chopped Hickory Smoked"
+      },
+      {
+        "ingredient_name": "Produce, Onions, Yellow",
+        "quantity": "1",
+        "unit": "lb",
+        "cost": "0.4",
+        "category": null,
+        "raw_line": "1 lb Produce, Onions, Yellow $0.4 14 oz Dry Goods, Chipotle Peppers, $2.98"
+      },
+      {
+        "ingredient_name": "Dry Goods, Chipotle Peppers,",
+        "quantity": "14",
+        "unit": "oz",
+        "cost": "2.98",
+        "category": null,
+        "raw_line": "1 lb Produce, Onions, Yellow $0.4 14 oz Dry Goods, Chipotle Peppers, $2.98"
+      },
+      {
+        "ingredient_name": "Water, Tap",
+        "quantity": "4",
+        "unit": "quart",
+        "cost": "0.00",
+        "category": null,
+        "raw_line": "4 quart Water, Tap $0.00 15 oz Dry Goods, Chicken Base, Paste $4.04"
+      },
+      {
+        "ingredient_name": "Dry Goods, Chicken Base, Paste",
+        "quantity": "15",
+        "unit": "oz",
+        "cost": "4.04",
+        "category": null,
+        "raw_line": "4 quart Water, Tap $0.00 15 oz Dry Goods, Chicken Base, Paste $4.04"
+      },
+      {
+        "ingredient_name": "Dairy, Clarified Butter",
+        "quantity": "1",
+        "unit": "lb",
+        "cost": "5.22",
+        "category": null,
+        "raw_line": "1 lb Dairy, Clarified Butter $5.22 2 cup Dry Goods, Sugar, White $1.01"
+      },
+      {
+        "ingredient_name": "Dry Goods, Sugar, White",
+        "quantity": "2",
+        "unit": "cup",
+        "cost": "1.01",
+        "category": null,
+        "raw_line": "1 lb Dairy, Clarified Butter $5.22 2 cup Dry Goods, Sugar, White $1.01"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 871 characters extracted",
+      "Page 2: 651 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Comeback Sauce - Portion.pdf",
+    "metadata": {
+      "recipe_name": "Comeback Sauce -- Portion",
+      "prefix": null,
+      "yield": "1",
+      "yield_uom": "ea",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "ea",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Comeback sauce",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.3",
+        "category": null,
+        "raw_line": "2 oz Comeback sauce $0.3"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 550 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Comeback Sauce - Updated 2025.pdf",
+    "metadata": {
+      "recipe_name": "Comeback Sauce -- Updated 22002255",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Dry Goods, Mayonnaise, Heavy",
+        "quantity": "3",
+        "unit": "quart",
+        "cost": "11.58",
+        "category": null,
+        "raw_line": "3 quart Dry Goods, Mayonnaise, Heavy $11.58 3 quart Dry Goods, Mustard, Creole $14.9"
+      },
+      {
+        "ingredient_name": "Dry Goods, Mustard, Creole",
+        "quantity": "3",
+        "unit": "quart",
+        "cost": "14.9",
+        "category": null,
+        "raw_line": "3 quart Dry Goods, Mayonnaise, Heavy $11.58 3 quart Dry Goods, Mustard, Creole $14.9"
+      },
+      {
+        "ingredient_name": "Dry Goods, Sauce, Chile Sambal",
+        "quantity": "1.5",
+        "unit": "quart",
+        "cost": "9.7",
+        "category": null,
+        "raw_line": "1.5 quart Dry Goods, Sauce, Chile Sambal $9.7 1 oz Dry Goods, Salt, Kosher $0.17"
+      },
+      {
+        "ingredient_name": "Dry Goods, Salt, Kosher",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": "0.17",
+        "category": null,
+        "raw_line": "1.5 quart Dry Goods, Sauce, Chile Sambal $9.7 1 oz Dry Goods, Salt, Kosher $0.17"
+      },
+      {
+        "ingredient_name": "Dry Goods, Spice, Paprika,",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": "0.22",
+        "category": null,
+        "raw_line": "1 oz Dry Goods, Spice, Paprika, $0.22 1 oz Dry Goods, Black Pepper, $0.5"
+      },
+      {
+        "ingredient_name": "Dry Goods, Black Pepper,",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": "0.5",
+        "category": null,
+        "raw_line": "1 oz Dry Goods, Spice, Paprika, $0.22 1 oz Dry Goods, Black Pepper, $0.5"
+      },
+      {
+        "ingredient_name": "Powder - Spanish Ground",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Powder - Spanish Ground"
+      },
+      {
+        "ingredient_name": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS"
+      },
+      {
+        "ingredient_name": "MAYO",
+        "quantity": "3",
+        "unit": "QT",
+        "cost": null,
+        "category": null,
+        "raw_line": "3 QT MAYO"
+      },
+      {
+        "ingredient_name": "CREOLE MUSTARD",
+        "quantity": "3",
+        "unit": "QT",
+        "cost": null,
+        "category": null,
+        "raw_line": "3 QT CREOLE MUSTARD"
+      },
+      {
+        "ingredient_name": "CHILI SAMBAL SAUCE",
+        "quantity": "1.5",
+        "unit": "QT",
+        "cost": null,
+        "category": null,
+        "raw_line": "1.5 QT CHILI SAMBAL SAUCE"
+      },
+      {
+        "ingredient_name": "KOSHER SALT",
+        "quantity": "40",
+        "unit": "gms",
+        "cost": null,
+        "category": null,
+        "raw_line": "40 gms KOSHER SALT"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 922 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Comeback sauce.pdf",
+    "metadata": {
+      "recipe_name": "Comeback sauce",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Dry Goods, Mayonnaise, Heavy",
+        "quantity": "3",
+        "unit": "quart",
+        "cost": "11.58",
+        "category": null,
+        "raw_line": "3 quart Dry Goods, Mayonnaise, Heavy $11.58 3 quart Dry Goods, Mustard, Creole $14.9"
+      },
+      {
+        "ingredient_name": "Dry Goods, Mustard, Creole",
+        "quantity": "3",
+        "unit": "quart",
+        "cost": "14.9",
+        "category": null,
+        "raw_line": "3 quart Dry Goods, Mayonnaise, Heavy $11.58 3 quart Dry Goods, Mustard, Creole $14.9"
+      },
+      {
+        "ingredient_name": "Dry Goods, Sauce, Chile Sambal",
+        "quantity": "1.5",
+        "unit": "quart",
+        "cost": "9.7",
+        "category": null,
+        "raw_line": "1.5 quart Dry Goods, Sauce, Chile Sambal $9.7 1 oz Dry Goods, Salt, Kosher $0.17"
+      },
+      {
+        "ingredient_name": "Dry Goods, Salt, Kosher",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": "0.17",
+        "category": null,
+        "raw_line": "1.5 quart Dry Goods, Sauce, Chile Sambal $9.7 1 oz Dry Goods, Salt, Kosher $0.17"
+      },
+      {
+        "ingredient_name": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS"
+      },
+      {
+        "ingredient_name": "MAYO",
+        "quantity": "3",
+        "unit": "QT",
+        "cost": null,
+        "category": null,
+        "raw_line": "3 QT MAYO"
+      },
+      {
+        "ingredient_name": "CREOLE MUSTARD",
+        "quantity": "3",
+        "unit": "QT",
+        "cost": null,
+        "category": null,
+        "raw_line": "3 QT CREOLE MUSTARD"
+      },
+      {
+        "ingredient_name": "CHILI SAMBAL SAUCE",
+        "quantity": "1.5",
+        "unit": "QT",
+        "cost": null,
+        "category": null,
+        "raw_line": "1.5 QT CHILI SAMBAL SAUCE"
+      },
+      {
+        "ingredient_name": "KOSHER SALT",
+        "quantity": "40",
+        "unit": "gms",
+        "cost": null,
+        "category": null,
+        "raw_line": "40 gms KOSHER SALT"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 798 characters extracted"
+    ]
+  },
+  {
+    "source_file": "DP- 05 Habanero Ranch.pdf",
+    "metadata": {
+      "recipe_name": "DP-- 0055 Habanero Ranch",
+      "prefix": null,
+      "yield": "2",
+      "yield_uom": "oz",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "2",
+      "serving_uom": "oz",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Dry Goods, Ranch Dressing, with",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Dry Goods, Ranch Dressing, with"
+      },
+      {
+        "ingredient_name": "oz",
+        "quantity": "2",
+        "unit": "fl",
+        "cost": "0.28",
+        "category": null,
+        "raw_line": "2 fl oz $0.28"
+      },
+      {
+        "ingredient_name": "Jalapeno",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Jalapeno"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 578 characters extracted"
+    ]
+  },
+  {
+    "source_file": "DP-01 Charred-Onion Ranch Dip.pdf",
+    "metadata": {
+      "recipe_name": "Chared--Onion Ranch Dip",
+      "prefix": "DP-01",
+      "yield": "2",
+      "yield_uom": "oz",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "2",
+      "serving_uom": "oz",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Charred Onion Ranch",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.81",
+        "category": null,
+        "raw_line": "2 oz Charred Onion Ranch $0.81 1 each Non Con, Cup, 2oz, Clear $0.01"
+      },
+      {
+        "ingredient_name": "Non Con, Cup, 2oz, Clear",
+        "quantity": "1",
+        "unit": "each",
+        "cost": "0.01",
+        "category": null,
+        "raw_line": "2 oz Charred Onion Ranch $0.81 1 each Non Con, Cup, 2oz, Clear $0.01"
+      },
+      {
+        "ingredient_name": "Non Con, Lids, 1.5-2oz",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Non Con, Lids, 1.5-2oz,"
+      },
+      {
+        "ingredient_name": "$0.01",
+        "quantity": "1",
+        "unit": "ea",
+        "cost": null,
+        "category": null,
+        "raw_line": "1 ea $0.01"
+      },
+      {
+        "ingredient_name": "Souffle, Clear",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Souffle, Clear"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 666 characters extracted"
+    ]
+  },
+  {
+    "source_file": "DP-02 Comeback Sauce.pdf",
+    "metadata": {
+      "recipe_name": "Comeback Sauce",
+      "prefix": "DP-02",
+      "yield": "2",
+      "yield_uom": "oz",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "2",
+      "serving_uom": "oz",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Comeback Sauce - Updated 2025",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.31",
+        "category": null,
+        "raw_line": "2 oz Comeback Sauce - Updated 2025 $0.31 1 each Non Con, Cup, 2oz, Clear $0.01"
+      },
+      {
+        "ingredient_name": "Non Con, Cup, 2oz, Clear",
+        "quantity": "1",
+        "unit": "each",
+        "cost": "0.01",
+        "category": null,
+        "raw_line": "2 oz Comeback Sauce - Updated 2025 $0.31 1 each Non Con, Cup, 2oz, Clear $0.01"
+      },
+      {
+        "ingredient_name": "Non Con, Lids, 1.5-2oz",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Non Con, Lids, 1.5-2oz,"
+      },
+      {
+        "ingredient_name": "$0.01",
+        "quantity": "1",
+        "unit": "ea",
+        "cost": null,
+        "category": null,
+        "raw_line": "1 ea $0.01"
+      },
+      {
+        "ingredient_name": "Souffle, Clear",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Souffle, Clear"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 659 characters extracted"
+    ]
+  },
+  {
+    "source_file": "DP-03 Honey Mustard.pdf",
+    "metadata": {
+      "recipe_name": "Honey Mustard",
+      "prefix": "DP-03",
+      "yield": "2",
+      "yield_uom": "oz",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "2",
+      "serving_uom": "oz",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "oz Dry Goods, Dressing, Honey",
+        "quantity": "2",
+        "unit": "fl",
+        "cost": "0.42",
+        "category": null,
+        "raw_line": "2 fl oz Dry Goods, Dressing, Honey $0.42 1 each Non Con, Cup, 2oz, Clear $0.01"
+      },
+      {
+        "ingredient_name": "Non Con, Cup, 2oz, Clear",
+        "quantity": "1",
+        "unit": "each",
+        "cost": "0.01",
+        "category": null,
+        "raw_line": "2 fl oz Dry Goods, Dressing, Honey $0.42 1 each Non Con, Cup, 2oz, Clear $0.01"
+      },
+      {
+        "ingredient_name": "Mustard Plastic",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Mustard Plastic"
+      },
+      {
+        "ingredient_name": "Non Con, Lids, 1.5-2oz",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Non Con, Lids, 1.5-2oz,"
+      },
+      {
+        "ingredient_name": "$0.01",
+        "quantity": "1",
+        "unit": "ea",
+        "cost": null,
+        "category": null,
+        "raw_line": "1 ea $0.01"
+      },
+      {
+        "ingredient_name": "Souffle, Clear",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Souffle, Clear"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 665 characters extracted"
+    ]
+  },
+  {
+    "source_file": "DP-04 Hot Honey.pdf",
+    "metadata": {
+      "recipe_name": "Hot Honey",
+      "prefix": "DP-04",
+      "yield": "2",
+      "yield_uom": "oz",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "2",
+      "serving_uom": "oz",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Hot Honey - 2025",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.16",
+        "category": null,
+        "raw_line": "2 oz Hot Honey - 2025 $0.16 1 each Non Con, Cup, 2oz, Clear $0.01"
+      },
+      {
+        "ingredient_name": "Non Con, Cup, 2oz, Clear",
+        "quantity": "1",
+        "unit": "each",
+        "cost": "0.01",
+        "category": null,
+        "raw_line": "2 oz Hot Honey - 2025 $0.16 1 each Non Con, Cup, 2oz, Clear $0.01"
+      },
+      {
+        "ingredient_name": "Non Con, Lids, 1.5-2oz",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Non Con, Lids, 1.5-2oz,"
+      },
+      {
+        "ingredient_name": "$0.01",
+        "quantity": "1",
+        "unit": "ea",
+        "cost": null,
+        "category": null,
+        "raw_line": "1 ea $0.01"
+      },
+      {
+        "ingredient_name": "Souffle, Clear",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Souffle, Clear"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 636 characters extracted"
+    ]
+  },
+  {
+    "source_file": "FC-01 Thicc'n Tenders.pdf",
+    "metadata": {
+      "recipe_name": "Thic''n Tenders",
+      "prefix": "FC-01",
+      "yield": "1",
+      "yield_uom": "ea",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "ea",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Fried Chicken Tender",
+        "quantity": "3",
+        "unit": "each",
+        "cost": "3.66",
+        "category": null,
+        "raw_line": "3 each Fried Chicken Tender $3.66 2 oz Dry Goods, Pickle, DIll, $0.17"
+      },
+      {
+        "ingredient_name": "Dry Goods, Pickle, DIll,",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.17",
+        "category": null,
+        "raw_line": "3 each Fried Chicken Tender $3.66 2 oz Dry Goods, Pickle, DIll, $0.17"
+      },
+      {
+        "ingredient_name": "Slices",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Slices"
+      },
+      {
+        "ingredient_name": "Dry Goods, Bread, Texas Toast",
+        "quantity": "2",
+        "unit": "slice",
+        "cost": "0.44",
+        "category": null,
+        "raw_line": "2 slice Dry Goods, Bread, Texas Toast $0.44"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 643 characters extracted"
+    ]
+  },
+  {
+    "source_file": "FC-02 Leg Quarter.pdf",
+    "metadata": {
+      "recipe_name": "Leg Quarter",
+      "prefix": "FC-02",
+      "yield": "1",
+      "yield_uom": "ea",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "ea",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Protein, Chicken, Thighs",
+        "quantity": "8",
+        "unit": "oz",
+        "cost": "1.88",
+        "category": null,
+        "raw_line": "8 oz Protein, Chicken, Thighs $1.88 1 slice Dry Goods, Bread, Texas Toast $0.22"
+      },
+      {
+        "ingredient_name": "Dry Goods, Bread, Texas Toast",
+        "quantity": "1",
+        "unit": "slice",
+        "cost": "0.22",
+        "category": null,
+        "raw_line": "8 oz Protein, Chicken, Thighs $1.88 1 slice Dry Goods, Bread, Texas Toast $0.22"
+      },
+      {
+        "ingredient_name": "Dry Goods, Pickle, DIll",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Dry Goods, Pickle, DIll,"
+      },
+      {
+        "ingredient_name": "$0.17",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": null,
+        "category": null,
+        "raw_line": "2 oz $0.17"
+      },
+      {
+        "ingredient_name": "Slices",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Slices"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 637 characters extracted"
+    ]
+  },
+  {
+    "source_file": "FC-04 Fried Chicken Tender.pdf",
+    "metadata": {
+      "recipe_name": "Fried Chicken Tender",
+      "prefix": "FC-04",
+      "yield": "1",
+      "yield_uom": "ea",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "ea",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Protein, Chicken, Tenders",
+        "quantity": "4",
+        "unit": "oz",
+        "cost": "1",
+        "category": null,
+        "raw_line": "4 oz Protein, Chicken, Tenders $1 1 oz Dry Goods, Chicken Breading, $0.12"
+      },
+      {
+        "ingredient_name": "Dry Goods, Chicken Breading,",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": "0.12",
+        "category": null,
+        "raw_line": "4 oz Protein, Chicken, Tenders $1 1 oz Dry Goods, Chicken Breading, $0.12"
+      },
+      {
+        "ingredient_name": "Lea Jane Recipe",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Lea Jane Recipe"
+      },
+      {
+        "ingredient_name": "Dry Goods, Oil, Canola, Clear,",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.1",
+        "category": null,
+        "raw_line": "2 oz Dry Goods, Oil, Canola, Clear, $0.1 1 fl oz Dairy, Milk, Whole $0.05"
+      },
+      {
+        "ingredient_name": "oz Dairy, Milk, Whole",
+        "quantity": "1",
+        "unit": "fl",
+        "cost": "0.05",
+        "category": null,
+        "raw_line": "2 oz Dry Goods, Oil, Canola, Clear, $0.1 1 fl oz Dairy, Milk, Whole $0.05"
+      },
+      {
+        "ingredient_name": "Frying",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Frying"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 700 characters extracted"
+    ]
+  },
+  {
+    "source_file": "FT-03 Angry Chicken Mac bowl .pdf",
+    "metadata": {
+      "recipe_name": "Angry Chicken Mac bowl",
+      "prefix": "FT-03",
+      "yield": "1",
+      "yield_uom": "ea",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "ea",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Fried Chicken Tender",
+        "quantity": "2",
+        "unit": "ea",
+        "cost": "2.44",
+        "category": null,
+        "raw_line": "2 ea Fried Chicken Tender $2.44 2 oz Ritz Crumble $0.61"
+      },
+      {
+        "ingredient_name": "Ritz Crumble",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.61",
+        "category": null,
+        "raw_line": "2 ea Fried Chicken Tender $2.44 2 oz Ritz Crumble $0.61"
+      },
+      {
+        "ingredient_name": "oz Mac Sauce - Modified 2025",
+        "quantity": "4",
+        "unit": "fl",
+        "cost": "0.46",
+        "category": null,
+        "raw_line": "4 fl oz Mac Sauce - Modified 2025 $0.46 6 oz Dry Goods, Pasta, Cavatappi $0.66"
+      },
+      {
+        "ingredient_name": "Dry Goods, Pasta, Cavatappi",
+        "quantity": "6",
+        "unit": "oz",
+        "cost": "0.66",
+        "category": null,
+        "raw_line": "4 fl oz Mac Sauce - Modified 2025 $0.46 6 oz Dry Goods, Pasta, Cavatappi $0.66"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 669 characters extracted"
+    ]
+  },
+  {
+    "source_file": "French Fries - Portion (1).pdf",
+    "metadata": {
+      "recipe_name": "French Fries -- Portion",
+      "prefix": null,
+      "yield": "1",
+      "yield_uom": "ea",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "ea",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "French Fries Recipe",
+        "quantity": "5",
+        "unit": "oz",
+        "cost": null,
+        "category": null,
+        "raw_line": "5 oz French Fries Recipe"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 386 characters extracted"
+    ]
+  },
+  {
+    "source_file": "French Fries - Portion.pdf",
+    "metadata": {
+      "recipe_name": "French Fries -- Portion",
+      "prefix": null,
+      "yield": "1",
+      "yield_uom": "ea",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "ea",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "French Fries Recipe",
+        "quantity": "5",
+        "unit": "oz",
+        "cost": "0.53",
+        "category": null,
+        "raw_line": "5 oz French Fries Recipe $0.53"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 554 characters extracted"
+    ]
+  },
+  {
+    "source_file": "French Fries Recipe.pdf",
+    "metadata": {
+      "recipe_name": "French Fries Recipe",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Frozen, Potato, French Fries,",
+        "quantity": "5",
+        "unit": "oz",
+        "cost": "0.41",
+        "category": null,
+        "raw_line": "5 oz Frozen, Potato, French Fries, $0.41 0.5 oz Dry Goods, Salt, Kosher $0.09"
+      },
+      {
+        "ingredient_name": "Dry Goods, Salt, Kosher",
+        "quantity": "0.5",
+        "unit": "oz",
+        "cost": "0.09",
+        "category": null,
+        "raw_line": "5 oz Frozen, Potato, French Fries, $0.41 0.5 oz Dry Goods, Salt, Kosher $0.09"
+      },
+      {
+        "ingredient_name": "Frozen",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Frozen"
+      },
+      {
+        "ingredient_name": "Dry Goods, Oil, Canola, Clear",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Dry Goods, Oil, Canola, Clear,"
+      },
+      {
+        "ingredient_name": "$0.03",
+        "quantity": "0.5",
+        "unit": "oz",
+        "cost": null,
+        "category": null,
+        "raw_line": "0.5 oz $0.03"
+      },
+      {
+        "ingredient_name": "Frying",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Frying"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 616 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Fried Chicken Tender.pdf",
+    "metadata": {
+      "recipe_name": "Fried Chicken Tender",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Protein, Chicken, Tenders",
+        "quantity": "4",
+        "unit": "oz",
+        "cost": "1",
+        "category": null,
+        "raw_line": "4 oz Protein, Chicken, Tenders $1 1 oz Dry Goods, Chicken Breading, $0.12"
+      },
+      {
+        "ingredient_name": "Dry Goods, Chicken Breading,",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": "0.12",
+        "category": null,
+        "raw_line": "4 oz Protein, Chicken, Tenders $1 1 oz Dry Goods, Chicken Breading, $0.12"
+      },
+      {
+        "ingredient_name": "Lea Jane Recipe",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Lea Jane Recipe"
+      },
+      {
+        "ingredient_name": "oz Dairy, Milk, Whole",
+        "quantity": "1",
+        "unit": "fl",
+        "cost": "0.05",
+        "category": null,
+        "raw_line": "1 fl oz Dairy, Milk, Whole $0.05 1 oz Dry Goods, Oil, Canola, Clear, $0.05"
+      },
+      {
+        "ingredient_name": "Dry Goods, Oil, Canola, Clear,",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": "0.05",
+        "category": null,
+        "raw_line": "1 fl oz Dairy, Milk, Whole $0.05 1 oz Dry Goods, Oil, Canola, Clear, $0.05"
+      },
+      {
+        "ingredient_name": "Frying",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Frying"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 664 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Hot Fat.pdf",
+    "metadata": {
+      "recipe_name": "Hot Fat",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Dry Goods, Shortening, Pork",
+        "quantity": "1920",
+        "unit": "gram",
+        "cost": "5.78",
+        "category": null,
+        "raw_line": "1920 gram Dry Goods, Shortening, Pork $5.78 1000 gram Dry Goods, Spice, Paprika, $10.56"
+      },
+      {
+        "ingredient_name": "Dry Goods, Spice, Paprika,",
+        "quantity": "1000",
+        "unit": "gram",
+        "cost": "10.56",
+        "category": null,
+        "raw_line": "1920 gram Dry Goods, Shortening, Pork $5.78 1000 gram Dry Goods, Spice, Paprika, $10.56"
+      },
+      {
+        "ingredient_name": "Lard Powder",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Lard Powder"
+      },
+      {
+        "ingredient_name": "Dry Goods, Spice, Cayenne",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Dry Goods, Spice, Cayenne"
+      },
+      {
+        "ingredient_name": "2000 gram",
+        "quantity": null,
+        "unit": null,
+        "cost": "18.27",
+        "category": null,
+        "raw_line": "2000 gram $18.27"
+      },
+      {
+        "ingredient_name": "Pepper, Ground",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Pepper, Ground"
+      },
+      {
+        "ingredient_name": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS"
+      },
+      {
+        "ingredient_name": "Heat lard on range to 220F-250F",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Heat lard on range to 220F-250F"
+      },
+      {
+        "ingredient_name": "1. Whisk lard to ensure even heating",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "1. Whisk lard to ensure even heating"
+      },
+      {
+        "ingredient_name": "2. When target temperature is reached, add dry spices slowly while whisking (DO NOT add all",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "2. When target temperature is reached, add dry spices slowly while whisking (DO NOT add all"
+      },
+      {
+        "ingredient_name": "at once)",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "at once)"
+      },
+      {
+        "ingredient_name": "3. Once fully incorporated, carefully transfer to 1/2 pans and wrap tightly with plastic",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "3. Once fully incorporated, carefully transfer to 1/2 pans and wrap tightly with plastic"
+      },
+      {
+        "ingredient_name": "wrap to steep for a minimum of 30 minutes",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "wrap to steep for a minimum of 30 minutes."
+      },
+      {
+        "ingredient_name": "4. Wrap tightly with plastic wrap to steep for minimum 30 minutes",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "4. Wrap tightly with plastic wrap to steep for minimum 30 minutes"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 1068 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Hot Fish.pdf",
+    "metadata": {
+      "recipe_name": "Hot Fish",
+      "prefix": null,
+      "yield": "1",
+      "yield_uom": "ea",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "ea",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Dry Goods, Bread, Burger Bun",
+        "quantity": "1",
+        "unit": "ea",
+        "cost": "0.62",
+        "category": null,
+        "raw_line": "1 ea Dry Goods, Bread, Burger Bun $0.62 7 oz Protein, Catfish, Fillet, $2.81"
+      },
+      {
+        "ingredient_name": "Protein, Catfish, Fillet,",
+        "quantity": "7",
+        "unit": "oz",
+        "cost": "2.81",
+        "category": null,
+        "raw_line": "1 ea Dry Goods, Bread, Burger Bun $0.62 7 oz Protein, Catfish, Fillet, $2.81"
+      },
+      {
+        "ingredient_name": "Fresh",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Fresh"
+      },
+      {
+        "ingredient_name": "oz Dry Goods, MAYONNAISE HVY PLST",
+        "quantity": "2",
+        "unit": "fl",
+        "cost": "0.33",
+        "category": null,
+        "raw_line": "2 fl oz Dry Goods, MAYONNAISE HVY PLST $0.33 2 oz Dry Goods, Chicken Breading, $0.24"
+      },
+      {
+        "ingredient_name": "Dry Goods, Chicken Breading,",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.24",
+        "category": null,
+        "raw_line": "2 fl oz Dry Goods, MAYONNAISE HVY PLST $0.33 2 oz Dry Goods, Chicken Breading, $0.24"
+      },
+      {
+        "ingredient_name": "SHLF Lea Jane Recipe",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "SHLF Lea Jane Recipe"
+      },
+      {
+        "ingredient_name": "Dry Goods, Pickle, DIll",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Dry Goods, Pickle, DIll,"
+      },
+      {
+        "ingredient_name": "$0.17",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": null,
+        "category": null,
+        "raw_line": "2 oz $0.17"
+      },
+      {
+        "ingredient_name": "Slices",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Slices"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 729 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Hot Honey - 2025.pdf",
+    "metadata": {
+      "recipe_name": "Hot Honey -- 22002255",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Dry Goods, Honey, Natural",
+        "quantity": "5",
+        "unit": "lb",
+        "cost": "3.13",
+        "category": null,
+        "raw_line": "5 lb Dry Goods, Honey, Natural $3.13 275 gram Dry Goods, Sambal Chill Sauce $2.54"
+      },
+      {
+        "ingredient_name": "Dry Goods, Sambal Chill Sauce",
+        "quantity": "275",
+        "unit": "gram",
+        "cost": "2.54",
+        "category": null,
+        "raw_line": "5 lb Dry Goods, Honey, Natural $3.13 275 gram Dry Goods, Sambal Chill Sauce $2.54"
+      },
+      {
+        "ingredient_name": "Dry Goods, Salt, Kosher",
+        "quantity": "48",
+        "unit": "gram",
+        "cost": "0.3",
+        "category": null,
+        "raw_line": "48 gram Dry Goods, Salt, Kosher $0.3 23 gram Dry Goods, Garlic Powder $0.00"
+      },
+      {
+        "ingredient_name": "Dry Goods, Garlic Powder",
+        "quantity": "23",
+        "unit": "gram",
+        "cost": "0.00",
+        "category": null,
+        "raw_line": "48 gram Dry Goods, Salt, Kosher $0.3 23 gram Dry Goods, Garlic Powder $0.00"
+      },
+      {
+        "ingredient_name": "Dry Goods, Onion Powder",
+        "quantity": "26",
+        "unit": "gram",
+        "cost": "0.58",
+        "category": null,
+        "raw_line": "26 gram Dry Goods, Onion Powder $0.58"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 692 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Hot Honey - portion.pdf",
+    "metadata": {
+      "recipe_name": "Hot Honey -- portion",
+      "prefix": null,
+      "yield": "1",
+      "yield_uom": "oz",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "oz",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Hot Honey Sauce",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.22",
+        "category": null,
+        "raw_line": "2 oz Hot Honey Sauce $0.22"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 546 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Hot Honey Chicken Wings.pdf",
+    "metadata": {
+      "recipe_name": "Hot Honey Chicken Wings",
+      "prefix": null,
+      "yield": "1",
+      "yield_uom": "each",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "each",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Protein, Chicken, Wing",
+        "quantity": "10",
+        "unit": "oz",
+        "cost": "1.09",
+        "category": null,
+        "raw_line": "10 oz Protein, Chicken, Wing $1.09 1 slice Dry Goods, Bread, Texas Toast $0.22"
+      },
+      {
+        "ingredient_name": "Dry Goods, Bread, Texas Toast",
+        "quantity": "1",
+        "unit": "slice",
+        "cost": "0.22",
+        "category": null,
+        "raw_line": "10 oz Protein, Chicken, Wing $1.09 1 slice Dry Goods, Bread, Texas Toast $0.22"
+      },
+      {
+        "ingredient_name": "Dry Goods, Pickle, DIll,",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": "0.09",
+        "category": null,
+        "raw_line": "1 oz Dry Goods, Pickle, DIll, $0.09 1 oz Dry Goods, Shortening, Pork $0.09"
+      },
+      {
+        "ingredient_name": "Dry Goods, Shortening, Pork",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": "0.09",
+        "category": null,
+        "raw_line": "1 oz Dry Goods, Pickle, DIll, $0.09 1 oz Dry Goods, Shortening, Pork $0.09"
+      },
+      {
+        "ingredient_name": "Slices Lard",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Slices Lard"
+      },
+      {
+        "ingredient_name": "Dry Goods, Chicken Breading,",
+        "quantity": "3",
+        "unit": "oz",
+        "cost": "0.36",
+        "category": null,
+        "raw_line": "3 oz Dry Goods, Chicken Breading, $0.36 4 oz Hot Honey Sauce $0.43"
+      },
+      {
+        "ingredient_name": "Hot Honey Sauce",
+        "quantity": "4",
+        "unit": "oz",
+        "cost": "0.43",
+        "category": null,
+        "raw_line": "3 oz Dry Goods, Chicken Breading, $0.36 4 oz Hot Honey Sauce $0.43"
+      },
+      {
+        "ingredient_name": "Lea Jane Recipe",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Lea Jane Recipe"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 782 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Hot Honey Sauce.pdf",
+    "metadata": {
+      "recipe_name": "Hot Honey Sauce",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Dry Goods, Sauce, Tomato",
+        "quantity": "32",
+        "unit": "oz",
+        "cost": "1.96",
+        "category": null,
+        "raw_line": "32 oz Dry Goods, Sauce, Tomato $1.96 48 oz Dry Goods, Honey, Natural $1.88"
+      },
+      {
+        "ingredient_name": "Dry Goods, Honey, Natural",
+        "quantity": "48",
+        "unit": "oz",
+        "cost": "1.88",
+        "category": null,
+        "raw_line": "32 oz Dry Goods, Sauce, Tomato $1.96 48 oz Dry Goods, Honey, Natural $1.88"
+      },
+      {
+        "ingredient_name": "Ketchup, Jug",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Ketchup, Jug"
+      },
+      {
+        "ingredient_name": "Dry Goods, Sambal Chill Sauce",
+        "quantity": "32",
+        "unit": "oz",
+        "cost": "8.38",
+        "category": null,
+        "raw_line": "32 oz Dry Goods, Sambal Chill Sauce $8.38 12 fl oz Dry Good.SAUCE SOY $0.35"
+      },
+      {
+        "ingredient_name": "oz Dry Good.SAUCE SOY",
+        "quantity": "12",
+        "unit": "fl",
+        "cost": "0.35",
+        "category": null,
+        "raw_line": "32 oz Dry Goods, Sambal Chill Sauce $8.38 12 fl oz Dry Good.SAUCE SOY $0.35"
+      },
+      {
+        "ingredient_name": "Garlic Salt",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.00",
+        "category": null,
+        "raw_line": "2 oz Garlic Salt $0.00 2 oz Dry Goods, Onion Powder $1.26"
+      },
+      {
+        "ingredient_name": "Dry Goods, Onion Powder",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "1.26",
+        "category": null,
+        "raw_line": "2 oz Garlic Salt $0.00 2 oz Dry Goods, Onion Powder $1.26"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 709 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Kale - Chopped.pdf",
+    "metadata": {
+      "recipe_name": "Kale -- Chopped",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Produce, Kale, Green, Fresh, by",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Produce, Kale, Green, Fresh, by"
+      },
+      {
+        "ingredient_name": "$23.78",
+        "quantity": "20",
+        "unit": "lb",
+        "cost": null,
+        "category": null,
+        "raw_line": "20 lb $23.78"
+      },
+      {
+        "ingredient_name": "Weight",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Weight"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 542 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Kale Kimchi - Side Portion.pdf",
+    "metadata": {
+      "recipe_name": "Kale Kimchi -- Side Portion",
+      "prefix": null,
+      "yield": "1",
+      "yield_uom": "ea",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "ea",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Kale Kimchi Recipe",
+        "quantity": "5",
+        "unit": "oz",
+        "cost": "0.4",
+        "category": null,
+        "raw_line": "5 oz Kale Kimchi Recipe $0.4"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 553 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Kale Kimchi Recipe.pdf",
+    "metadata": {
+      "recipe_name": "Kale Kimchi Recipe",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Kale - Chopped",
+        "quantity": "20",
+        "unit": "lb",
+        "cost": "23.78",
+        "category": null,
+        "raw_line": "20 lb Kale - Chopped $23.78 10 lb Produce, Coleslaw Mix $8.64"
+      },
+      {
+        "ingredient_name": "Produce, Coleslaw Mix",
+        "quantity": "10",
+        "unit": "lb",
+        "cost": "8.64",
+        "category": null,
+        "raw_line": "20 lb Kale - Chopped $23.78 10 lb Produce, Coleslaw Mix $8.64"
+      },
+      {
+        "ingredient_name": "Dry Goods, Sugar, White",
+        "quantity": "7",
+        "unit": "lb",
+        "cost": "8.02",
+        "category": null,
+        "raw_line": "7 lb Dry Goods, Sugar, White $8.02 2 qt Dry Goods, Vinegar, White $1.69"
+      },
+      {
+        "ingredient_name": "Dry Goods, Vinegar, White",
+        "quantity": "2",
+        "unit": "qt",
+        "cost": "1.69",
+        "category": null,
+        "raw_line": "7 lb Dry Goods, Sugar, White $8.02 2 qt Dry Goods, Vinegar, White $1.69"
+      },
+      {
+        "ingredient_name": "Dry Goods, Sauce, Chile Sambal",
+        "quantity": "3",
+        "unit": "qt",
+        "cost": "19.4",
+        "category": null,
+        "raw_line": "3 qt Dry Goods, Sauce, Chile Sambal $19.4 2.5 lb Shredded Carrots $1.98"
+      },
+      {
+        "ingredient_name": "Shredded Carrots",
+        "quantity": "2.5",
+        "unit": "lb",
+        "cost": "1.98",
+        "category": null,
+        "raw_line": "3 qt Dry Goods, Sauce, Chile Sambal $19.4 2.5 lb Shredded Carrots $1.98"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 703 characters extracted"
+    ]
+  },
+  {
+    "source_file": "LJ Mac.pdf",
+    "metadata": {
+      "recipe_name": "LJ Mac",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Mac Sauce - Modified 2025",
+        "quantity": "50",
+        "unit": "oz",
+        "cost": "5.72",
+        "category": null,
+        "raw_line": "50 oz Mac Sauce - Modified 2025 $5.72 9 lb Dry Goods, Pasta, Cavatappi $15.85"
+      },
+      {
+        "ingredient_name": "Dry Goods, Pasta, Cavatappi",
+        "quantity": "9",
+        "unit": "lb",
+        "cost": "15.85",
+        "category": null,
+        "raw_line": "50 oz Mac Sauce - Modified 2025 $5.72 9 lb Dry Goods, Pasta, Cavatappi $15.85"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 547 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Lemon Pepper Chicken Wings.pdf",
+    "metadata": {
+      "recipe_name": "Lemon Pepper Chicken Wings",
+      "prefix": null,
+      "yield": "1",
+      "yield_uom": "each",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "each",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Protein, Chicken, Wing",
+        "quantity": "10",
+        "unit": "oz",
+        "cost": "1.09",
+        "category": null,
+        "raw_line": "10 oz Protein, Chicken, Wing $1.09 1 slice Dry Goods, Bread, Texas Toast $0.22"
+      },
+      {
+        "ingredient_name": "Dry Goods, Bread, Texas Toast",
+        "quantity": "1",
+        "unit": "slice",
+        "cost": "0.22",
+        "category": null,
+        "raw_line": "10 oz Protein, Chicken, Wing $1.09 1 slice Dry Goods, Bread, Texas Toast $0.22"
+      },
+      {
+        "ingredient_name": "Dry Goods, Pickle, DIll,",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": "0.09",
+        "category": null,
+        "raw_line": "1 oz Dry Goods, Pickle, DIll, $0.09 1 oz Dry Goods, Shortening, Pork $0.09"
+      },
+      {
+        "ingredient_name": "Dry Goods, Shortening, Pork",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": "0.09",
+        "category": null,
+        "raw_line": "1 oz Dry Goods, Pickle, DIll, $0.09 1 oz Dry Goods, Shortening, Pork $0.09"
+      },
+      {
+        "ingredient_name": "Slices Lard",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Slices Lard"
+      },
+      {
+        "ingredient_name": "Dry Goods, Chicken Breading,",
+        "quantity": "3",
+        "unit": "oz",
+        "cost": "0.36",
+        "category": null,
+        "raw_line": "3 oz Dry Goods, Chicken Breading, $0.36 1.5 oz Dry Food. Lemon Pepper $0.11"
+      },
+      {
+        "ingredient_name": "Dry Food. Lemon Pepper",
+        "quantity": "1.5",
+        "unit": "oz",
+        "cost": "0.11",
+        "category": null,
+        "raw_line": "3 oz Dry Goods, Chicken Breading, $0.36 1.5 oz Dry Food. Lemon Pepper $0.11"
+      },
+      {
+        "ingredient_name": "Lea Jane Recipe",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Lea Jane Recipe"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 797 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Lemon Pepper Sauce - Portion.pdf",
+    "metadata": {
+      "recipe_name": "Lemon Pepper Sauce -- Portion",
+      "prefix": null,
+      "yield": "1",
+      "yield_uom": "ea",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "ea",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Dry Food. Lemon Pepper",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.15",
+        "category": null,
+        "raw_line": "2 oz Dry Food. Lemon Pepper $0.15"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 570 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Loaded Fries.pdf",
+    "metadata": {
+      "recipe_name": "Loaded Fries",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Protein, Chicken, Tenders",
+        "quantity": "4",
+        "unit": "oz",
+        "cost": "1",
+        "category": null,
+        "raw_line": "4 oz Protein, Chicken, Tenders $1 4 oz Dairy, Cheese Sauce, Loaf, $0.83"
+      },
+      {
+        "ingredient_name": "Dairy, Cheese Sauce, Loaf,",
+        "quantity": "4",
+        "unit": "oz",
+        "cost": "0.83",
+        "category": null,
+        "raw_line": "4 oz Protein, Chicken, Tenders $1 4 oz Dairy, Cheese Sauce, Loaf, $0.83"
+      },
+      {
+        "ingredient_name": "American",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "American"
+      },
+      {
+        "ingredient_name": "Pickled Shallot",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": "0.31",
+        "category": null,
+        "raw_line": "1 oz Pickled Shallot $0.31 2 oz Dry Goods, Chicken Breading, $0.24"
+      },
+      {
+        "ingredient_name": "Dry Goods, Chicken Breading,",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.24",
+        "category": null,
+        "raw_line": "1 oz Pickled Shallot $0.31 2 oz Dry Goods, Chicken Breading, $0.24"
+      },
+      {
+        "ingredient_name": "Lea Jane Recipe",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Lea Jane Recipe"
+      },
+      {
+        "ingredient_name": "French Fries Recipe",
+        "quantity": "1",
+        "unit": "ea",
+        "cost": "0.11",
+        "category": null,
+        "raw_line": "1 ea French Fries Recipe $0.11"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 687 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Mac & Cheese.pdf",
+    "metadata": {
+      "recipe_name": "Mac & Cheese",
+      "prefix": null,
+      "yield": "1",
+      "yield_uom": "ea",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "ea",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Mac Sauce",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.29",
+        "category": null,
+        "raw_line": "2 oz Mac Sauce $0.29 6 oz Dry Goods, Pasta, Cavatappi $0.66"
+      },
+      {
+        "ingredient_name": "Dry Goods, Pasta, Cavatappi",
+        "quantity": "6",
+        "unit": "oz",
+        "cost": "0.66",
+        "category": null,
+        "raw_line": "2 oz Mac Sauce $0.29 6 oz Dry Goods, Pasta, Cavatappi $0.66"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 564 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Mac Sauce - Modified 2025.pdf",
+    "metadata": {
+      "recipe_name": "Mac Sauce -- Modified 22002255",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Dairy, Milk, Whole",
+        "quantity": "3",
+        "unit": "gallon",
+        "cost": "17.91",
+        "category": null,
+        "raw_line": "3 gallon Dairy, Milk, Whole $17.91 3 qt Dairy, Cream, Heavy $16.25"
+      },
+      {
+        "ingredient_name": "Dairy, Cream, Heavy",
+        "quantity": "3",
+        "unit": "qt",
+        "cost": "16.25",
+        "category": null,
+        "raw_line": "3 gallon Dairy, Milk, Whole $17.91 3 qt Dairy, Cream, Heavy $16.25"
+      },
+      {
+        "ingredient_name": "Dry Goods, Salt, Kosher",
+        "quantity": "170",
+        "unit": "gram",
+        "cost": "1.05",
+        "category": null,
+        "raw_line": "170 gram Dry Goods, Salt, Kosher $1.05 1240 gram Dairy, Cheese, Loaf, Pepper $12.17"
+      },
+      {
+        "ingredient_name": "Dairy, Cheese, Loaf, Pepper",
+        "quantity": "1240",
+        "unit": "gram",
+        "cost": "12.17",
+        "category": null,
+        "raw_line": "170 gram Dry Goods, Salt, Kosher $1.05 1240 gram Dairy, Cheese, Loaf, Pepper $12.17"
+      },
+      {
+        "ingredient_name": "Roux recipe",
+        "quantity": "1800",
+        "unit": "gram",
+        "cost": "11.17",
+        "category": null,
+        "raw_line": "1800 gram Roux recipe $11.17"
+      },
+      {
+        "ingredient_name": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS"
+      },
+      {
+        "ingredient_name": "PPrroocceedduurree",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "PPrroocceedduurree::"
+      },
+      {
+        "ingredient_name": "1. Heat milk and cream in stock pot to 195°F",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "1. Heat milk and cream in stock pot to 195°F"
+      },
+      {
+        "ingredient_name": "2. When it reaches temp, add roux \u0000 at a time",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "2. When it reaches temp, add roux \u0000 at a time"
+      },
+      {
+        "ingredient_name": "3. Once roux is added, bring up to 205°F (light boil) and turn off heat",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "3. Once roux is added, bring up to 205°F (light boil) and turn off heat"
+      },
+      {
+        "ingredient_name": "4. DDOO NNOOTT BBUURRNN TTHHEE BBAASSEE (Johnny's emphasis)",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "4. DDOO NNOOTT BBUURRNN TTHHEE BBAASSEE (Johnny's emphasis)"
+      },
+      {
+        "ingredient_name": "5. Carefully transfer to 22 qt cambro and blend with IB",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "5. Carefully transfer to 22 qt cambro and blend with IB"
+      },
+      {
+        "ingredient_name": "6. Add Pepper Jack and Velveeta while blending",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "6. Add Pepper Jack and Velveeta while blending"
+      },
+      {
+        "ingredient_name": "7. When cheese is fully blended and smooth, add salt",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "7. When cheese is fully blended and smooth, add salt"
+      },
+      {
+        "ingredient_name": "8. Continue blending until smooth",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "8. Continue blending until smooth"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 1207 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Mac Sauce.pdf",
+    "metadata": {
+      "recipe_name": "Mac Sauce",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Dairy, Milk, Whole",
+        "quantity": "2",
+        "unit": "gallon",
+        "cost": "11.94",
+        "category": null,
+        "raw_line": "2 gallon Dairy, Milk, Whole $11.94 2 qt Dairy, Cream, Heavy $10.83"
+      },
+      {
+        "ingredient_name": "Dairy, Cream, Heavy",
+        "quantity": "2",
+        "unit": "qt",
+        "cost": "10.83",
+        "category": null,
+        "raw_line": "2 gallon Dairy, Milk, Whole $11.94 2 qt Dairy, Cream, Heavy $10.83"
+      },
+      {
+        "ingredient_name": "Dry Goods, Salt, Kosher",
+        "quantity": "170",
+        "unit": "gram",
+        "cost": "1.05",
+        "category": null,
+        "raw_line": "170 gram Dry Goods, Salt, Kosher $1.05 1240 gram Dairy, Cheese, Cheddar, Yellow $11.18"
+      },
+      {
+        "ingredient_name": "Dairy, Cheese, Cheddar, Yellow",
+        "quantity": "1240",
+        "unit": "gram",
+        "cost": "11.18",
+        "category": null,
+        "raw_line": "170 gram Dry Goods, Salt, Kosher $1.05 1240 gram Dairy, Cheese, Cheddar, Yellow $11.18"
+      },
+      {
+        "ingredient_name": "Dairy, Cheese Sauce, Loaf,",
+        "quantity": "680",
+        "unit": "gram",
+        "cost": "4.96",
+        "category": null,
+        "raw_line": "680 gram Dairy, Cheese Sauce, Loaf, $4.96 86 gram Dry Goods, Olive and Truffle $5.84"
+      },
+      {
+        "ingredient_name": "Dry Goods, Olive and Truffle",
+        "quantity": "86",
+        "unit": "gram",
+        "cost": "5.84",
+        "category": null,
+        "raw_line": "680 gram Dairy, Cheese Sauce, Loaf, $4.96 86 gram Dry Goods, Olive and Truffle $5.84"
+      },
+      {
+        "ingredient_name": "American Oil",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "American Oil"
+      },
+      {
+        "ingredient_name": "Roux recipe",
+        "quantity": "3.3",
+        "unit": "pound",
+        "cost": "9.29",
+        "category": null,
+        "raw_line": "3.3 pound Roux recipe $9.29"
+      },
+      {
+        "ingredient_name": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS"
+      },
+      {
+        "ingredient_name": "PPrroocceedduurree",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "PPrroocceedduurree::"
+      },
+      {
+        "ingredient_name": "1. Heat milk and cream in stock pot to 195°F",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "1. Heat milk and cream in stock pot to 195°F"
+      },
+      {
+        "ingredient_name": "2. When it reaches temp, add roux \u0000 at a time",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "2. When it reaches temp, add roux \u0000 at a time"
+      },
+      {
+        "ingredient_name": "3. Once roux is added, bring up to 205°F (light boil) and turn off heat",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "3. Once roux is added, bring up to 205°F (light boil) and turn off heat"
+      },
+      {
+        "ingredient_name": "4. DDOO NNOOTT BBUURRNN TTHHEE BBAASSEE (Johnny's emphasis)",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "4. DDOO NNOOTT BBUURRNN TTHHEE BBAASSEE (Johnny's emphasis)"
+      },
+      {
+        "ingredient_name": "5. Carefully transfer to 22 qt cambro and blend with IB",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "5. Carefully transfer to 22 qt cambro and blend with IB"
+      },
+      {
+        "ingredient_name": "6. Add Pepper Jack and Velveeta while blending",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "6. Add Pepper Jack and Velveeta while blending"
+      },
+      {
+        "ingredient_name": "7. When cheese is fully blended and smooth, add salt",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "7. When cheese is fully blended and smooth, add salt"
+      },
+      {
+        "ingredient_name": "8. Continue blending until smooth",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "8. Continue blending until smooth"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 1267 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Nashville Hot Chicken.pdf",
+    "metadata": {
+      "recipe_name": "Nashville Hot Chicken",
+      "prefix": null,
+      "yield": "1",
+      "yield_uom": "ea",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "ea",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Protein, Chicken, Thighs",
+        "quantity": "7",
+        "unit": "oz",
+        "cost": "1.64",
+        "category": null,
+        "raw_line": "7 oz Protein, Chicken, Thighs $1.64 2 slice Dry Goods, Bread, Texas Toast $0.44"
+      },
+      {
+        "ingredient_name": "Dry Goods, Bread, Texas Toast",
+        "quantity": "2",
+        "unit": "slice",
+        "cost": "0.44",
+        "category": null,
+        "raw_line": "7 oz Protein, Chicken, Thighs $1.64 2 slice Dry Goods, Bread, Texas Toast $0.44"
+      },
+      {
+        "ingredient_name": "Onion Ranch",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.15",
+        "category": null,
+        "raw_line": "2 oz Onion Ranch $0.15 3 oz Kale Kimchi Recipe $0.24"
+      },
+      {
+        "ingredient_name": "Kale Kimchi Recipe",
+        "quantity": "3",
+        "unit": "oz",
+        "cost": "0.24",
+        "category": null,
+        "raw_line": "2 oz Onion Ranch $0.15 3 oz Kale Kimchi Recipe $0.24"
+      },
+      {
+        "ingredient_name": "Dairy, Clarified Butter",
+        "quantity": "0.5",
+        "unit": "oz",
+        "cost": "0.16",
+        "category": null,
+        "raw_line": "0.5 oz Dairy, Clarified Butter $0.16 5 oz Frozen, Potato, French Fries, $0.41"
+      },
+      {
+        "ingredient_name": "Frozen, Potato, French Fries,",
+        "quantity": "5",
+        "unit": "oz",
+        "cost": "0.41",
+        "category": null,
+        "raw_line": "0.5 oz Dairy, Clarified Butter $0.16 5 oz Frozen, Potato, French Fries, $0.41"
+      },
+      {
+        "ingredient_name": "Frozen",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Frozen"
+      },
+      {
+        "ingredient_name": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS"
+      },
+      {
+        "ingredient_name": "1. Bread and fry chicken tender to LJ spec",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "1. Bread and fry chicken tender to LJ spec"
+      },
+      {
+        "ingredient_name": "2. While chicken is frying butter TX Toast using the butter wheel",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "2. While chicken is frying butter TX Toast using the butter wheel"
+      },
+      {
+        "ingredient_name": "3. Toast bread on flat top to golden brown (no burnt bread)",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "3. Toast bread on flat top to golden brown (no burnt bread)"
+      },
+      {
+        "ingredient_name": "4. Place perfectly toasted bread on a plate and drizzle both sides with Garlic ranch",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "4. Place perfectly toasted bread on a plate and drizzle both sides with Garlic ranch"
+      },
+      {
+        "ingredient_name": "5. When chicken thigh is cooked make it the specified heat level",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "5. When chicken thigh is cooked make it the specified heat level"
+      },
+      {
+        "ingredient_name": "6. Place on one piece of the toast",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "6. Place on one piece of the toast"
+      },
+      {
+        "ingredient_name": "7. Top with 3oz well drained Kim Chi slaw",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "7. Top with 3oz well drained Kim Chi slaw"
+      },
+      {
+        "ingredient_name": "8. Place second piece of toast on top to complete the sandwich",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "8. Place second piece of toast on top to complete the sandwich"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 1260 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Onion Ranch.pdf",
+    "metadata": {
+      "recipe_name": "Onion Ranch",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Produce, Onions, Yellow",
+        "quantity": "5",
+        "unit": "lb",
+        "cost": "2",
+        "category": null,
+        "raw_line": "5 lb Produce, Onions, Yellow $2 40 each Dairy, Egg $13"
+      },
+      {
+        "ingredient_name": "Dairy, Egg",
+        "quantity": "40",
+        "unit": "each",
+        "cost": "13",
+        "category": null,
+        "raw_line": "5 lb Produce, Onions, Yellow $2 40 each Dairy, Egg $13"
+      },
+      {
+        "ingredient_name": "Dry Goods, Vinegar, White",
+        "quantity": "3",
+        "unit": "qt",
+        "cost": "2.54",
+        "category": null,
+        "raw_line": "3 qt Dry Goods, Vinegar, White $2.54 3 oz Dry Goods, Black Pepper, $1.49"
+      },
+      {
+        "ingredient_name": "Dry Goods, Black Pepper,",
+        "quantity": "3",
+        "unit": "oz",
+        "cost": "1.49",
+        "category": null,
+        "raw_line": "3 qt Dry Goods, Vinegar, White $2.54 3 oz Dry Goods, Black Pepper, $1.49"
+      },
+      {
+        "ingredient_name": "Ground",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Ground"
+      },
+      {
+        "ingredient_name": "Dry Goods, Oil, Canola, Salad",
+        "quantity": "3",
+        "unit": "lb",
+        "cost": "3.77",
+        "category": null,
+        "raw_line": "3 lb Dry Goods, Oil, Canola, Salad $3.77 3 oz Dry Goods, Salt, Kosher $0.52"
+      },
+      {
+        "ingredient_name": "Dry Goods, Salt, Kosher",
+        "quantity": "3",
+        "unit": "oz",
+        "cost": "0.52",
+        "category": null,
+        "raw_line": "3 lb Dry Goods, Oil, Canola, Salad $3.77 3 oz Dry Goods, Salt, Kosher $0.52"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 696 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Pickled Shallot.pdf",
+    "metadata": {
+      "recipe_name": "Pickled Shallot",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": true
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Dry Goods, Vinegar, White",
+        "quantity": "2",
+        "unit": "gallon",
+        "cost": "6.77",
+        "category": null,
+        "raw_line": "2 gallon Dry Goods, Vinegar, White $6.77 5 lb Dry Goods, Sugar, White $5.73"
+      },
+      {
+        "ingredient_name": "Dry Goods, Sugar, White",
+        "quantity": "5",
+        "unit": "lb",
+        "cost": "5.73",
+        "category": null,
+        "raw_line": "2 gallon Dry Goods, Vinegar, White $6.77 5 lb Dry Goods, Sugar, White $5.73"
+      },
+      {
+        "ingredient_name": "Produce, Shallots, Peeled",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Produce, Shallots, Peeled,"
+      },
+      {
+        "ingredient_name": "$146.1",
+        "quantity": "20",
+        "unit": "lb",
+        "cost": null,
+        "category": null,
+        "raw_line": "20 lb $146.1"
+      },
+      {
+        "ingredient_name": "Fresh",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Fresh"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 635 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Plain Jane Sandwich.pdf",
+    "metadata": {
+      "recipe_name": "Plain Jane Sandwich",
+      "prefix": null,
+      "yield": "1",
+      "yield_uom": "ea",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "ea",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Protein, Chicken, Tenders",
+        "quantity": "8",
+        "unit": "oz",
+        "cost": "2",
+        "category": null,
+        "raw_line": "8 oz Protein, Chicken, Tenders $2 1 ea Dry Goods, Bread, Burger Bun $0.62"
+      },
+      {
+        "ingredient_name": "Dry Goods, Bread, Burger Bun",
+        "quantity": "1",
+        "unit": "ea",
+        "cost": "0.62",
+        "category": null,
+        "raw_line": "8 oz Protein, Chicken, Tenders $2 1 ea Dry Goods, Bread, Burger Bun $0.62"
+      },
+      {
+        "ingredient_name": "Dry Goods, Chicken Breading",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.24",
+        "category": null,
+        "raw_line": "UOM not Dry Goods, Mayonnaise, Heavy 2 oz Dry Goods, Chicken Breading, $0.24"
+      },
+      {
+        "ingredient_name": "available Lea Jane Recipe",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "available Lea Jane Recipe"
+      },
+      {
+        "ingredient_name": "Dry Goods, Pickle, DIll,",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.17",
+        "category": null,
+        "raw_line": "2 oz Dry Goods, Pickle, DIll, $0.17 1 each French Fries Recipe $0.11"
+      },
+      {
+        "ingredient_name": "French Fries Recipe",
+        "quantity": "1",
+        "unit": "each",
+        "cost": "0.11",
+        "category": null,
+        "raw_line": "2 oz Dry Goods, Pickle, DIll, $0.17 1 each French Fries Recipe $0.11"
+      },
+      {
+        "ingredient_name": "Slices",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Slices"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 771 characters extracted"
+    ]
+  },
+  {
+    "source_file": "S-01 OG Nashville Chicken.pdf",
+    "metadata": {
+      "recipe_name": "S--0011 OG Nashville Chicken",
+      "prefix": null,
+      "yield": "1",
+      "yield_uom": "ea",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "ea",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Protein, Chicken, Thighs",
+        "quantity": "7",
+        "unit": "oz",
+        "cost": "1.64",
+        "category": null,
+        "raw_line": "7 oz Protein, Chicken, Thighs $1.64 1 each Dry Goods, Bread, Burger Bun $0.62"
+      },
+      {
+        "ingredient_name": "Dry Goods, Bread, Burger Bun",
+        "quantity": "1",
+        "unit": "each",
+        "cost": "0.62",
+        "category": null,
+        "raw_line": "7 oz Protein, Chicken, Thighs $1.64 1 each Dry Goods, Bread, Burger Bun $0.62"
+      },
+      {
+        "ingredient_name": "Charred Onion Ranch",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.81",
+        "category": null,
+        "raw_line": "2 oz Charred Onion Ranch $0.81 3 oz Kale Kimchi Recipe $0.24"
+      },
+      {
+        "ingredient_name": "Kale Kimchi Recipe",
+        "quantity": "3",
+        "unit": "oz",
+        "cost": "0.24",
+        "category": null,
+        "raw_line": "2 oz Charred Onion Ranch $0.81 3 oz Kale Kimchi Recipe $0.24"
+      },
+      {
+        "ingredient_name": "Dairy, Clarified Butter",
+        "quantity": "0.5",
+        "unit": "oz",
+        "cost": "0.16",
+        "category": null,
+        "raw_line": "0.5 oz Dairy, Clarified Butter $0.16"
+      },
+      {
+        "ingredient_name": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS"
+      },
+      {
+        "ingredient_name": "1. Bread and fry chicken tender to LJ spec",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "1. Bread and fry chicken tender to LJ spec"
+      },
+      {
+        "ingredient_name": "2. While chicken is frying, split and butter challah bun using the butter wheel",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "2. While chicken is frying, split and butter challah bun using the butter wheel."
+      },
+      {
+        "ingredient_name": "3. Toast bun top and bottom to golden brown (no burnt bread)",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "3. Toast bun top and bottom to golden brown (no burnt bread)"
+      },
+      {
+        "ingredient_name": "4. Place perfectly toasted bread on a plate and drizzle both sides with Charred Onion Ranch",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "4. Place perfectly toasted bread on a plate and drizzle both sides with Charred Onion Ranch"
+      },
+      {
+        "ingredient_name": "5. When chicken thigh is cooked,add specified heat - OG Chili oil or Hot Honey - and place",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "5. When chicken thigh is cooked,add specified heat - OG Chili oil or Hot Honey - and place"
+      },
+      {
+        "ingredient_name": "on one piece of the bun bottom",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "on one piece of the bun bottom."
+      },
+      {
+        "ingredient_name": "6. Top with 3 oz well drained Kim Chi slaw",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "6. Top with 3 oz well drained Kim Chi slaw"
+      },
+      {
+        "ingredient_name": "7. Place bun top on to complete the sandwich",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "7. Place bun top on to complete the sandwich."
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 1249 characters extracted"
+    ]
+  },
+  {
+    "source_file": "S-02 J-Blaze Chicken.pdf",
+    "metadata": {
+      "recipe_name": "S--0022 J--Blaze Chicken",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Protein, Chicken, Thighs",
+        "quantity": "8",
+        "unit": "oz",
+        "cost": "1.88",
+        "category": null,
+        "raw_line": "8 oz Protein, Chicken, Thighs $1.88 3 oz Dry Goods, Chicken Breading, $0.36"
+      },
+      {
+        "ingredient_name": "Dry Goods, Chicken Breading,",
+        "quantity": "3",
+        "unit": "oz",
+        "cost": "0.36",
+        "category": null,
+        "raw_line": "8 oz Protein, Chicken, Thighs $1.88 3 oz Dry Goods, Chicken Breading, $0.36"
+      },
+      {
+        "ingredient_name": "Lea Jane Recipe",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Lea Jane Recipe"
+      },
+      {
+        "ingredient_name": "Hot Honey - 2025",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.16",
+        "category": null,
+        "raw_line": "2 oz Hot Honey - 2025 $0.16 3 oz Kale Kimchi Recipe $0.24"
+      },
+      {
+        "ingredient_name": "Kale Kimchi Recipe",
+        "quantity": "3",
+        "unit": "oz",
+        "cost": "0.24",
+        "category": null,
+        "raw_line": "2 oz Hot Honey - 2025 $0.16 3 oz Kale Kimchi Recipe $0.24"
+      },
+      {
+        "ingredient_name": "Dry Goods, Bread, Burger Bun",
+        "quantity": "1",
+        "unit": "each",
+        "cost": "0.62",
+        "category": null,
+        "raw_line": "1 each Dry Goods, Bread, Burger Bun $0.62 2 oz Dry Goods, Oil, Canola, Clear, $0.1"
+      },
+      {
+        "ingredient_name": "Dry Goods, Oil, Canola, Clear,",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.1",
+        "category": null,
+        "raw_line": "1 each Dry Goods, Bread, Burger Bun $0.62 2 oz Dry Goods, Oil, Canola, Clear, $0.1"
+      },
+      {
+        "ingredient_name": "Frying",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Frying"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 747 characters extracted"
+    ]
+  },
+  {
+    "source_file": "S-03 Plain Jane Sandwich.pdf",
+    "metadata": {
+      "recipe_name": "S--0033 Plain Jane Sandwich",
+      "prefix": null,
+      "yield": "1",
+      "yield_uom": "ea",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "ea",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Protein, Chicken, Tenders",
+        "quantity": "8",
+        "unit": "oz",
+        "cost": "2",
+        "category": null,
+        "raw_line": "8 oz Protein, Chicken, Tenders $2 2 oz Dry Goods, Chicken Breading, $0.24"
+      },
+      {
+        "ingredient_name": "Dry Goods, Chicken Breading,",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.24",
+        "category": null,
+        "raw_line": "8 oz Protein, Chicken, Tenders $2 2 oz Dry Goods, Chicken Breading, $0.24"
+      },
+      {
+        "ingredient_name": "Lea Jane Recipe",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Lea Jane Recipe"
+      },
+      {
+        "ingredient_name": "Dry Goods, Bread, Burger Bun",
+        "quantity": "1",
+        "unit": "ea",
+        "cost": "0.62",
+        "category": null,
+        "raw_line": "1 ea Dry Goods, Bread, Burger Bun $0.62 2 oz Dry Goods, Mayonnaise, Heavy $0.25"
+      },
+      {
+        "ingredient_name": "Dry Goods, Mayonnaise, Heavy",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.25",
+        "category": null,
+        "raw_line": "1 ea Dry Goods, Bread, Burger Bun $0.62 2 oz Dry Goods, Mayonnaise, Heavy $0.25"
+      },
+      {
+        "ingredient_name": "Dry Goods, Pickle, DIll,",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.17",
+        "category": null,
+        "raw_line": "2 oz Dry Goods, Pickle, DIll, $0.17 2 oz Hot Honey - 2025 $0.16"
+      },
+      {
+        "ingredient_name": "Hot Honey - 2025",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.16",
+        "category": null,
+        "raw_line": "2 oz Dry Goods, Pickle, DIll, $0.17 2 oz Hot Honey - 2025 $0.16"
+      },
+      {
+        "ingredient_name": "Slices",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Slices"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 768 characters extracted"
+    ]
+  },
+  {
+    "source_file": "S-04 Fish Sando.pdf",
+    "metadata": {
+      "recipe_name": "S--0044 Fish Sando",
+      "prefix": null,
+      "yield": "1",
+      "yield_uom": "ea",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "ea",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Seafood, Cod, Battered,",
+        "quantity": "4",
+        "unit": "oz",
+        "cost": "2.47",
+        "category": null,
+        "raw_line": "4 oz Seafood, Cod, Battered, $2.47 1 ea Dry Goods, Bread, Burger Bun $0.62"
+      },
+      {
+        "ingredient_name": "Dry Goods, Bread, Burger Bun",
+        "quantity": "1",
+        "unit": "ea",
+        "cost": "0.62",
+        "category": null,
+        "raw_line": "4 oz Seafood, Cod, Battered, $2.47 1 ea Dry Goods, Bread, Burger Bun $0.62"
+      },
+      {
+        "ingredient_name": "Wedges, Frozen",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Wedges, Frozen"
+      },
+      {
+        "ingredient_name": "Dry Goods, Mayonnaise, Heavy",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.25",
+        "category": null,
+        "raw_line": "2 oz Dry Goods, Mayonnaise, Heavy $0.25 2 oz Dry Goods, Pickle, DIll, $0.17"
+      },
+      {
+        "ingredient_name": "Dry Goods, Pickle, DIll,",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.17",
+        "category": null,
+        "raw_line": "2 oz Dry Goods, Mayonnaise, Heavy $0.25 2 oz Dry Goods, Pickle, DIll, $0.17"
+      },
+      {
+        "ingredient_name": "Slices",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Slices"
+      },
+      {
+        "ingredient_name": "Dry Goods, Oil, Canola, Clear",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Dry Goods, Oil, Canola, Clear,"
+      },
+      {
+        "ingredient_name": "$0.1",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": null,
+        "category": null,
+        "raw_line": "2 oz $0.1"
+      },
+      {
+        "ingredient_name": "Frying",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Frying"
+      },
+      {
+        "ingredient_name": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "PPRREEPPAARRAATTIIOONN && PPRROOCCEEDDUURREESS"
+      },
+      {
+        "ingredient_name": "cod-marinated overnight, hand battered and fried to crispy deliciousness, served with dill",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "cod-marinated overnight, hand battered and fried to crispy deliciousness, served with dill"
+      },
+      {
+        "ingredient_name": "pickles, Dukes mayo on a challah bun",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "pickles, Dukes mayo on a challah bun"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 906 characters extracted"
+    ]
+  },
+  {
+    "source_file": "SD-01 Kale & Cabbage Slaw.pdf",
+    "metadata": {
+      "recipe_name": "Kale & Cabage Slaw",
+      "prefix": "SD-01",
+      "yield": "1",
+      "yield_uom": "ea",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "ea",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Kale Kimchi Recipe",
+        "quantity": "5",
+        "unit": "oz",
+        "cost": "0.4",
+        "category": null,
+        "raw_line": "5 oz Kale Kimchi Recipe $0.4"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 551 characters extracted"
+    ]
+  },
+  {
+    "source_file": "SD-03 LJ Mac.pdf",
+    "metadata": {
+      "recipe_name": "LJ Mac",
+      "prefix": "SD-03",
+      "yield": "1",
+      "yield_uom": "ea",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "ea",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Mac Sauce - Modified 2025",
+        "quantity": "3",
+        "unit": "oz",
+        "cost": "0.34",
+        "category": null,
+        "raw_line": "3 oz Mac Sauce - Modified 2025 $0.34 5 oz Dry Goods, Pasta, Cavatappi $0.55"
+      },
+      {
+        "ingredient_name": "Dry Goods, Pasta, Cavatappi",
+        "quantity": "5",
+        "unit": "oz",
+        "cost": "0.55",
+        "category": null,
+        "raw_line": "3 oz Mac Sauce - Modified 2025 $0.34 5 oz Dry Goods, Pasta, Cavatappi $0.55"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 580 characters extracted"
+    ]
+  },
+  {
+    "source_file": "SD-04 Fried Corn Ribs.pdf",
+    "metadata": {
+      "recipe_name": "Fried Corn Ribs",
+      "prefix": "SD-04",
+      "yield": "6",
+      "yield_uom": "oz",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "6",
+      "serving_uom": "oz",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Frozen, Corn Rib, Hickory",
+        "quantity": "6",
+        "unit": "oz",
+        "cost": "1.67",
+        "category": null,
+        "raw_line": "6 oz Frozen, Corn Rib, Hickory $1.67 1 oz Dry Goods, Oil, Canola, Clear, $0.05"
+      },
+      {
+        "ingredient_name": "Dry Goods, Oil, Canola, Clear,",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": "0.05",
+        "category": null,
+        "raw_line": "6 oz Frozen, Corn Rib, Hickory $1.67 1 oz Dry Goods, Oil, Canola, Clear, $0.05"
+      },
+      {
+        "ingredient_name": "Smoked Frying",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Smoked Frying"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 614 characters extracted"
+    ]
+  },
+  {
+    "source_file": "SL-01 Chicken Caesar Salad.pdf",
+    "metadata": {
+      "recipe_name": "Chicken Caesar Salad",
+      "prefix": "SL-01",
+      "yield": "1",
+      "yield_uom": "each",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "each",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Produce, Lettuce, Romaine",
+        "quantity": "4",
+        "unit": "oz",
+        "cost": "2.93",
+        "category": null,
+        "raw_line": "4 oz Produce, Lettuce, Romaine $2.93 1 each Fried Chicken Tender $1.22"
+      },
+      {
+        "ingredient_name": "Fried Chicken Tender",
+        "quantity": "1",
+        "unit": "each",
+        "cost": "1.22",
+        "category": null,
+        "raw_line": "4 oz Produce, Lettuce, Romaine $2.93 1 each Fried Chicken Tender $1.22"
+      },
+      {
+        "ingredient_name": "Dry Goods, Croutons, Homestyle",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.33",
+        "category": null,
+        "raw_line": "2 oz Dry Goods, Croutons, Homestyle $0.33 2 oz Dairy, Chesse, Parmesan, $0.2"
+      },
+      {
+        "ingredient_name": "Dairy, Chesse, Parmesan,",
+        "quantity": "2",
+        "unit": "oz",
+        "cost": "0.2",
+        "category": null,
+        "raw_line": "2 oz Dry Goods, Croutons, Homestyle $0.33 2 oz Dairy, Chesse, Parmesan, $0.2"
+      },
+      {
+        "ingredient_name": "Grated",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Grated"
+      },
+      {
+        "ingredient_name": "Dry Goods, Caesar Dressing",
+        "quantity": "4",
+        "unit": "oz",
+        "cost": "0.24",
+        "category": null,
+        "raw_line": "4 oz Dry Goods, Caesar Dressing $0.24"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 744 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Shredded Cabbage.pdf",
+    "metadata": {
+      "recipe_name": "Shredded Cabbage",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Produce, CABBAGE GREEN SHREDDED",
+        "quantity": "10",
+        "unit": "lb",
+        "cost": "15.26",
+        "category": null,
+        "raw_line": "10 lb Produce, CABBAGE GREEN SHREDDED $15.26"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 518 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Shredded Carrots.pdf",
+    "metadata": {
+      "recipe_name": "Shredded Carrots",
+      "prefix": null,
+      "yield": null,
+      "yield_uom": null,
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": null,
+      "serving_uom": null,
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Produce, Carrots, Jumbo, Fresh",
+        "quantity": "10",
+        "unit": "lb",
+        "cost": "7.9",
+        "category": null,
+        "raw_line": "10 lb Produce, Carrots, Jumbo, Fresh $7.9"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 521 characters extracted"
+    ]
+  },
+  {
+    "source_file": "Tenders.pdf",
+    "metadata": {
+      "recipe_name": "Tenders",
+      "prefix": null,
+      "yield": "1",
+      "yield_uom": "each",
+      "shelf_life": null,
+      "shelf_life_uom": null,
+      "serving_size": "1",
+      "serving_uom": "each",
+      "prep_time": null,
+      "cook_time": null,
+      "allergens": [],
+      "is_prep_recipe": false
+    },
+    "ingredients": [
+      {
+        "ingredient_name": "Protein, Chicken, Tenders",
+        "quantity": "4",
+        "unit": "oz",
+        "cost": "1",
+        "category": null,
+        "raw_line": "4 oz Protein, Chicken, Tenders $1 1 oz Dry Goods, Shortening, Pork $0.09"
+      },
+      {
+        "ingredient_name": "Dry Goods, Shortening, Pork",
+        "quantity": "1",
+        "unit": "oz",
+        "cost": "0.09",
+        "category": null,
+        "raw_line": "4 oz Protein, Chicken, Tenders $1 1 oz Dry Goods, Shortening, Pork $0.09"
+      },
+      {
+        "ingredient_name": "Dry Goods, Chicken Breading",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Dry Goods, Chicken Breading,"
+      },
+      {
+        "ingredient_name": "$0.18",
+        "quantity": "1.5",
+        "unit": "oz",
+        "cost": null,
+        "category": null,
+        "raw_line": "1.5 oz $0.18"
+      },
+      {
+        "ingredient_name": "Lea Jane Recipe",
+        "quantity": null,
+        "unit": null,
+        "cost": null,
+        "category": null,
+        "raw_line": "Lea Jane Recipe"
+      }
+    ],
+    "errors": [],
+    "debug_info": [
+      "Page 1: 638 characters extracted"
+    ]
+  }
+]

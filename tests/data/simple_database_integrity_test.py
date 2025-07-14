@@ -3,7 +3,7 @@
 DATABASE INTEGRITY TESTS - Simple Version (No Dependencies)
 Critical tests for schema validation, relationship constraints, and data consistency
 
-These tests ensure database integrity for Lea James Hot Chicken system
+These tests ensure database integrity for Lea Jane's Hot Chicken system
 """
 
 import sqlite3

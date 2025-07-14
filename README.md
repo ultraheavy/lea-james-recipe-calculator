@@ -1,4 +1,4 @@
-# Lea James Recipe Cost Calculator
+# Lea Jane's Recipe Cost Calculator
 
 A professional web application for restaurant recipe costing and menu management. Track ingredients, build recipes, analyze costs, and optimize your menu pricing - all in one integrated platform.
 
@@ -86,4 +86,4 @@ For questions or issues, please contact your system administrator or create an i
 
 ## License
 
-© 2024 Lea James Hot Chicken. All rights reserved.
+© 2024 Lea Jane's Hot Chicken. All rights reserved.

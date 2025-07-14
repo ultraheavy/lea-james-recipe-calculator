@@ -92,7 +92,7 @@ calc.close()
 
 ## 🎉 **BOTTOM LINE**
 
-Your Lea James Hot Chicken recipe management system is **working excellently** with:
+Your Lea Jane's Hot Chicken recipe management system is **working excellently** with:
 - ✅ 78-86% profit margins
 - ✅ 250 inventory items tracked
 - ✅ 66 recipes costed accurately

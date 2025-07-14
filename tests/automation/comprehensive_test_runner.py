@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 COMPREHENSIVE TEST SUITE RUNNER
-Runs all Lea James Hot Chicken tests in the correct order
+Runs all Lea Jane's Hot Chicken tests in the correct order
 """
 
 import os

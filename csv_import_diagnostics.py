@@ -316,8 +316,8 @@ class CSVImportDiagnostics:
         
     def _extract_recipe_name_from_filename(self, filename: str) -> str:
         """Extract recipe name from Toast CSV filename"""
-        # Pattern: "Recipe Name_Lea James Hot Chicken_date.csv"
-        match = re.match(r'^(.+?)_Lea James Hot Chicken_\d+', filename)
+        # Pattern: "Recipe Name_Lea Jane's Hot Chicken_date.csv"
+        match = re.match(r'^(.+?)_Lea Jane\'s Hot Chicken_\d+', filename)
         if match:
             return match.group(1).strip()
         return filename.replace('.csv', '')

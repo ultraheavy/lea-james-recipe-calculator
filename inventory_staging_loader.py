@@ -143,8 +143,13 @@ class InventoryStagingLoader:
     def load_csv_to_staging(self, csv_path: str) -> Dict[str, Any]:
         """Load CSV file into staging table"""
         batch_id = self._create_batch_id()
+        
+        # Extract filename from path for tracking
+        source_filename = Path(csv_path).name
+        
         stats = {
             'batch_id': batch_id,
+            'source_file': source_filename,
             'total_rows': 0,
             'loaded_rows': 0,
             'error_rows': 0,
@@ -196,6 +201,7 @@ class InventoryStagingLoader:
                         'staging_id': None,  # Auto-increment
                         'original_row_number': row_num,
                         'import_batch_id': batch_id,
+                        'source_filename': source_filename,
                         'needs_review': False  # Default to false
                     }
                     
@@ -292,11 +298,11 @@ class InventoryStagingLoader:
                         try:
                             minimal_query = """
                                 INSERT INTO stg_inventory_items 
-                                (original_row_number, import_batch_id, needs_review, review_notes)
-                                VALUES (?, ?, ?, ?)
+                                (original_row_number, import_batch_id, source_filename, needs_review, review_notes)
+                                VALUES (?, ?, ?, ?, ?)
                             """
                             error_msg = f"Failed to insert full row: {str(e)}. Row data: {str(row)[:500]}"
-                            cursor.execute(minimal_query, (row_num, batch_id, True, error_msg))
+                            cursor.execute(minimal_query, (row_num, batch_id, source_filename, True, error_msg))
                             stats['loaded_rows'] += 1
                             stats['needs_review'] += 1
                         except Exception as final_e:

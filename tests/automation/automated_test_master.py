@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 AUTOMATED TEST EXECUTION MASTER CONTROLLER
-Configures and runs the complete Lea James Hot Chicken test suite
+Configures and runs the complete Lea Jane's Hot Chicken test suite
 """
 
 import os
@@ -212,7 +212,7 @@ class AutomatedTestExecutor:
 # 🧪 AUTOMATED TEST EXECUTION REPORT
 **Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 **Duration:** {self.results['overall']['duration']:.2f} seconds
-**Environment:** Lea James Hot Chicken Production System
+**Environment:** Lea Jane's Hot Chicken Production System
 
 ## 📊 OVERALL TEST RESULTS
 
@@ -302,7 +302,7 @@ class AutomatedTestExecutor:
         """Execute complete automated test suite"""
         print("🚀 STARTING COMPREHENSIVE AUTOMATED TEST SUITE")
         print("=" * 70)
-        print("Lea James Hot Chicken - Production System Validation")
+        print("Lea Jane's Hot Chicken - Production System Validation")
         print("=" * 70)
         
         # Run tests in dependency order
@@ -349,7 +349,7 @@ class AutomatedTestExecutor:
         print("🔗 Creating CI/CD integration hooks...")
         
         # Create GitHub Actions workflow
-        github_workflow = """name: Lea James Hot Chicken - Automated Tests
+        github_workflow = """name: Lea Jane's Hot Chicken - Automated Tests
 
 on:
   push:
@@ -391,7 +391,7 @@ jobs:
         
         # Create pre-commit hook
         pre_commit_hook = """#!/bin/bash
-# Pre-commit hook for Lea James Hot Chicken
+# Pre-commit hook for Lea Jane's Hot Chicken
 # Runs critical tests before allowing commits
 
 echo "🧪 Running pre-commit tests..."

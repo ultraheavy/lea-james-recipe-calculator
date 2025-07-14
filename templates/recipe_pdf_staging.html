@@ -1,0 +1,404 @@
+{% extends "base_modern.html" %}
+
+{% block title %}PDF Recipe Staging Review{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="h3 mb-3">PDF Recipe Staging Review</h1>
+            
+            <!-- Summary Cards -->
+            <div class="row mb-4">
+                <div class="col-md-3">
+                    <div class="card text-white bg-primary">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Recipes</h5>
+                            <p class="card-text display-4">{{ total_recipes }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-white bg-info">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Ingredients</h5>
+                            <p class="card-text display-4">{{ total_ingredients }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-white bg-warning">
+                        <div class="card-body">
+                            <h5 class="card-title">Needs Review</h5>
+                            <p class="card-text display-4">{{ total_needs_review }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-white bg-success">
+                        <div class="card-body">
+                            <h5 class="card-title">Approved</h5>
+                            <p class="card-text display-4">{{ total_approved }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Commit Section -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card border-success" id="commitSection" style="display:none;">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">Ready to Commit</h5>
+                        </div>
+                        <div class="card-body">
+                            <p id="readyCount">Loading...</p>
+                            <button class="btn btn-success" onclick="showReadyRecipes()">
+                                <i class="fas fa-list"></i> View Ready Recipes
+                            </button>
+                            <button class="btn btn-primary" onclick="commitToDatabase()">
+                                <i class="fas fa-database"></i> Commit to Database
+                            </button>
+                            <a href="/admin/recipe-pdf-staging/committed-recipes" class="btn btn-outline-success">
+                                <i class="fas fa-check-circle"></i> View Committed Recipes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Filters -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <form method="get" id="filterForm">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="needsReview" name="needs_review" value="true" 
+                                           {% if needs_review_filter %}checked{% endif %} onchange="this.form.submit()">
+                                    <label class="form-check-label" for="needsReview">
+                                        Needs Review Only
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="prepOnly" name="prep_only" value="true" 
+                                           {% if prep_only_filter %}checked{% endif %} onchange="this.form.submit()">
+                                    <label class="form-check-label" for="prepOnly">
+                                        Prep Recipes Only
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="recipe" placeholder="Search recipe name..." 
+                                       value="{{ recipe_filter }}" onblur="this.form.submit()">
+                            </div>
+                            <div class="col-md-2">
+                                <a href="{{ url_for('pdf_staging.index') }}" class="btn btn-secondary">Clear Filters</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recipe List -->
+    <div class="row">
+        <div class="col-12">
+            {% for recipe_name, recipe_data in recipes.items() %}
+            <div class="card mb-4">
+                <div class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <h5 class="mb-0">
+                                {% if recipe_data.prefix %}
+                                    <span class="badge bg-secondary">{{ recipe_data.prefix }}</span>
+                                {% endif %}
+                                {{ recipe_name }}
+                                {% if recipe_data.is_prep %}
+                                    <span class="badge bg-info">Prep Recipe</span>
+                                {% endif %}
+                            </h5>
+                            <small class="text-muted">Source: {{ recipe_data.source_file }}</small>
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <button class="btn btn-success btn-sm" onclick="approveRecipe('{{ recipe_name }}')">
+                                <i class="fas fa-check"></i> Approve All
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th width="30%">Ingredient</th>
+                                    <th width="10%">Quantity</th>
+                                    <th width="10%">Unit</th>
+                                    <th width="10%">Cost</th>
+                                    <th width="20%">Source Text</th>
+                                    <th width="10%">Status</th>
+                                    <th width="10%">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for ing in recipe_data.ingredients %}
+                                <tr id="row-{{ ing.staging_id }}" class="{% if ing.needs_review %}table-warning{% elif ing.approved %}table-success{% endif %}">
+                                    <td>
+                                        <input type="text" class="form-control form-control-sm" 
+                                               value="{{ ing.ingredient_name }}" 
+                                               id="name-{{ ing.staging_id }}"
+                                               onchange="markChanged({{ ing.staging_id }})">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control form-control-sm" 
+                                               value="{{ ing.quantity or '' }}" 
+                                               id="qty-{{ ing.staging_id }}"
+                                               onchange="markChanged({{ ing.staging_id }})">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control form-control-sm" 
+                                               value="{{ ing.unit or '' }}" 
+                                               id="unit-{{ ing.staging_id }}"
+                                               onchange="markChanged({{ ing.staging_id }})">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control form-control-sm" 
+                                               value="{{ ing.cost or '' }}" 
+                                               id="cost-{{ ing.staging_id }}"
+                                               onchange="markChanged({{ ing.staging_id }})">
+                                    </td>
+                                    <td>
+                                        <small class="text-muted" title="{{ ing.source_text }}">
+                                            {{ ing.source_text[:50] }}{% if ing.source_text|length > 50 %}...{% endif %}
+                                        </small>
+                                    </td>
+                                    <td>
+                                        {% if ing.approved %}
+                                            <span class="badge bg-success">Approved</span>
+                                        {% elif ing.needs_review %}
+                                            <span class="badge bg-warning">Review</span>
+                                        {% else %}
+                                            <span class="badge bg-secondary">Pending</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm" onclick="saveIngredient({{ ing.staging_id }})" 
+                                                id="save-{{ ing.staging_id }}" style="display:none;">
+                                            <i class="fas fa-save"></i>
+                                        </button>
+                                        <button class="btn btn-success btn-sm" onclick="approveIngredient({{ ing.staging_id }})"
+                                                {% if ing.approved %}disabled{% endif %}>
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                        <button class="btn btn-danger btn-sm" onclick="deleteIngredient({{ ing.staging_id }})">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+function markChanged(id) {
+    document.getElementById('save-' + id).style.display = 'inline-block';
+}
+
+function saveIngredient(id) {
+    const data = {
+        ingredient_name: document.getElementById('name-' + id).value,
+        quantity: document.getElementById('qty-' + id).value,
+        unit: document.getElementById('unit-' + id).value,
+        cost: document.getElementById('cost-' + id).value,
+        needs_review: false
+    };
+    
+    // Check if needs review
+    if (!data.cost || data.cost === '0' || data.cost === '0.00' || !data.quantity || !data.unit) {
+        data.needs_review = true;
+    }
+    
+    fetch(`/admin/recipe-pdf-staging/update/${id}`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(result => {
+        if (result.success) {
+            showAlert('success', 'Ingredient updated');
+            document.getElementById('save-' + id).style.display = 'none';
+            // Update row class
+            const row = document.getElementById('row-' + id);
+            if (data.needs_review) {
+                row.classList.add('table-warning');
+            } else {
+                row.classList.remove('table-warning');
+            }
+        } else {
+            showAlert('danger', 'Error: ' + result.error);
+        }
+    });
+}
+
+function approveIngredient(id) {
+    fetch(`/admin/recipe-pdf-staging/approve/${id}`, {
+        method: 'POST'
+    })
+    .then(response => response.json())
+    .then(result => {
+        if (result.success) {
+            showAlert('success', 'Ingredient approved');
+            const row = document.getElementById('row-' + id);
+            row.classList.remove('table-warning');
+            row.classList.add('table-success');
+            // Disable approve button
+            event.target.disabled = true;
+        } else {
+            showAlert('danger', 'Error: ' + result.error);
+        }
+    });
+}
+
+function approveRecipe(recipeName) {
+    if (!confirm(`Approve all ingredients for ${recipeName}?`)) return;
+    
+    fetch('/admin/recipe-pdf-staging/approve-recipe', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({recipe_name: recipeName})
+    })
+    .then(response => response.json())
+    .then(result => {
+        if (result.success) {
+            showAlert('success', result.message);
+            location.reload();
+        } else {
+            showAlert('danger', 'Error: ' + result.error);
+        }
+    });
+}
+
+function deleteIngredient(id) {
+    if (!confirm('Delete this ingredient?')) return;
+    
+    fetch(`/admin/recipe-pdf-staging/delete/${id}`, {
+        method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(result => {
+        if (result.success) {
+            showAlert('success', 'Ingredient deleted');
+            document.getElementById('row-' + id).remove();
+        } else {
+            showAlert('danger', 'Error: ' + result.error);
+        }
+    });
+}
+
+function showAlert(type, message) {
+    const alertDiv = document.createElement('div');
+    alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3`;
+    alertDiv.style.zIndex = '9999';
+    alertDiv.innerHTML = `
+        ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    `;
+    document.body.appendChild(alertDiv);
+    
+    setTimeout(() => alertDiv.remove(), 3000);
+}
+
+// Check for ready recipes on page load
+document.addEventListener('DOMContentLoaded', function() {
+    checkReadyRecipes();
+});
+
+function checkReadyRecipes() {
+    fetch('/admin/recipe-pdf-staging/stats')
+    .then(response => response.json())
+    .then(stats => {
+        if (stats.ready_to_commit > 0) {
+            document.getElementById('commitSection').style.display = 'block';
+            document.getElementById('readyCount').textContent = 
+                `${stats.ready_to_commit} recipes are ready to commit to the database.`;
+        }
+    });
+}
+
+function showReadyRecipes() {
+    fetch('/admin/recipe-pdf-staging/ready-to-commit')
+    .then(response => response.json())
+    .then(recipes => {
+        let html = '<h5>Recipes Ready to Commit:</h5><ul class="list-group">';
+        recipes.forEach(recipe => {
+            let status = recipe.already_exists ? 
+                '<span class="badge bg-danger">Already Exists - Will Skip</span>' : 
+                '<span class="badge bg-success">Ready</span>';
+            
+            html += `<li class="list-group-item d-flex justify-content-between align-items-center">
+                ${recipe.recipe_prefix ? recipe.recipe_prefix + ' ' : ''}${recipe.recipe_name}
+                <span>
+                    ${recipe.ingredient_count} ingredients
+                    ${recipe.is_prep_recipe ? '<span class="badge bg-info">Prep</span>' : ''}
+                    ${status}
+                </span>
+            </li>`;
+        });
+        html += '</ul>';
+        
+        // Show in modal or alert
+        const modal = document.createElement('div');
+        modal.className = 'modal fade show d-block';
+        modal.style.backgroundColor = 'rgba(0,0,0,0.5)';
+        modal.innerHTML = `
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Ready to Commit</h5>
+                        <button type="button" class="btn-close" onclick="this.closest('.modal').remove()"></button>
+                    </div>
+                    <div class="modal-body">${html}</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" onclick="this.closest('.modal').remove()">Close</button>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    });
+}
+
+function commitToDatabase() {
+    if (!confirm('This will commit all approved recipes to the main database. Continue?')) return;
+    
+    fetch('/admin/recipe-pdf-staging/commit-to-database', {
+        method: 'POST'
+    })
+    .then(response => response.json())
+    .then(result => {
+        if (result.success) {
+            let message = result.message;
+            if (result.errors && result.errors.length > 0) {
+                message += '\n\nWarnings:\n' + result.errors.join('\n');
+            }
+            alert(message);
+            location.reload();
+        } else {
+            showAlert('danger', 'Error: ' + result.error);
+        }
+    });
+}
+</script>
+{% endblock %}

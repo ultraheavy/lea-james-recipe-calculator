@@ -1,8 +1,8 @@
-# 🧪 Lea James Hot Chicken - Comprehensive Test Suite Overview
+# 🧪 Lea Jane's Hot Chicken - Comprehensive Test Suite Overview
 
 ## Executive Summary
 
-The Lea James Hot Chicken test suite is a comprehensive, multi-layered testing framework designed to ensure the reliability, accuracy, and integrity of the restaurant's recipe cost management system. The framework emphasizes protection of critical XtraChef integration points while maintaining strict business logic validation for profitability analysis.
+The Lea Jane's Hot Chicken test suite is a comprehensive, multi-layered testing framework designed to ensure the reliability, accuracy, and integrity of the restaurant's recipe cost management system. The framework emphasizes protection of critical XtraChef integration points while maintaining strict business logic validation for profitability analysis.
 
 ## 🏗️ Test Architecture
 

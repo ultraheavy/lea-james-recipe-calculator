@@ -20,7 +20,7 @@ def get_db():
 
 def find_recipe_csv_files():
     """Find all individual recipe CSV files"""
-    pattern = os.path.join(DATA_DIR, '*_Lea James Hot Chicken_*.csv')
+    pattern = os.path.join(DATA_DIR, '*_Lea Jane\'s Hot Chicken_*.csv')
     recipe_files = glob.glob(pattern)
     
     # Filter out the main reports

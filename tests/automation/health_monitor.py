@@ -18,7 +18,7 @@ from datetime import datetime
 from typing import Dict, List, Any
 
 class HealthMonitor:
-    """Continuous health monitoring for Lea James Hot Chicken system"""
+    """Continuous health monitoring for Lea Jane's Hot Chicken system"""
     
     def __init__(self, database_path: str = 'restaurant_calculator.db'):
         self.database_path = database_path

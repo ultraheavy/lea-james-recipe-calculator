@@ -276,12 +276,13 @@ class InventoryStagingAdmin:
         }
         
         try:
-            # Select approved items
+            # Select approved items without validation issues
             if batch_id:
                 query = """
                     SELECT * FROM stg_inventory_items 
                     WHERE review_status = 'approved' 
                     AND processed_to_live = 0 
+                    AND needs_review = 0
                     AND import_batch_id = ?
                 """
                 params = [batch_id]
@@ -290,6 +291,7 @@ class InventoryStagingAdmin:
                     SELECT * FROM stg_inventory_items 
                     WHERE review_status = 'approved' 
                     AND processed_to_live = 0
+                    AND needs_review = 0
                 """
                 params = []
             

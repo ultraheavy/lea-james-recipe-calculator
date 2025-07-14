@@ -194,7 +194,7 @@ def import_individual_recipe_files():
         for recipe_file in recipe_files:
             filename = os.path.basename(recipe_file)
             # Extract recipe name from filename (before the restaurant name)
-            recipe_name = filename.split('_Lea James')[0].strip()
+            recipe_name = filename.split('_Lea Jane\'s')[0].strip()
             
             # Get recipe ID
             recipe = conn.execute(

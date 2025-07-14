@@ -19,6 +19,26 @@ except ImportError as e:
 except Exception as e:
     print(f"Error registering inventory staging blueprint: {e}")
 
+# Import and register recipe staging blueprint
+try:
+    from recipe_staging_admin import recipe_staging_bp
+    app.register_blueprint(recipe_staging_bp)
+    print("Successfully registered recipe staging blueprint at /admin/recipe-staging/")
+except ImportError as e:
+    print(f"Warning: Could not import recipe staging admin: {e}")
+except Exception as e:
+    print(f"Error registering recipe staging blueprint: {e}")
+
+# Import and register PDF recipe staging blueprint
+try:
+    from recipe_pdf_staging_admin import pdf_staging_bp
+    app.register_blueprint(pdf_staging_bp)
+    print("Successfully registered PDF recipe staging blueprint at /admin/recipe-pdf-staging/")
+except ImportError as e:
+    print(f"Warning: Could not import PDF recipe staging admin: {e}")
+except Exception as e:
+    print(f"Error registering PDF recipe staging blueprint: {e}")
+
 # Support for production deployment with Railway volumes
 try:
     from railway_volume_config import setup_volume_database

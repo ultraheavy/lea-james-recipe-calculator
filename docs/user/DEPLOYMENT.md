@@ -1,4 +1,4 @@
-# Deployment Guide for Lea James Recipe Calculator
+# Deployment Guide for Lea Jane's Recipe Calculator
 
 This guide covers deploying the application to Railway and setting up GitHub for collaboration.
 

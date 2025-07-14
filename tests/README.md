@@ -1,8 +1,8 @@
-# 🧪 Lea James Hot Chicken - Automated Testing Framework
+# 🧪 Lea Jane's Hot Chicken - Automated Testing Framework
 
 ## 📋 **Testing Strategy Overview**
 
-This comprehensive testing suite ensures the reliability and accuracy of the Lea James Hot Chicken recipe cost management system. All tests follow the project's **CLAUDE.md** guidelines and protect critical XtraChef integration points.
+This comprehensive testing suite ensures the reliability and accuracy of the Lea Jane's Hot Chicken recipe cost management system. All tests follow the project's **CLAUDE.md** guidelines and protect critical XtraChef integration points.
 
 ## 🏗️ **Directory Structure**
 

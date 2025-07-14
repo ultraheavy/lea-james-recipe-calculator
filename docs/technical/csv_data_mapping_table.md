@@ -7,7 +7,7 @@
 
 | Column Name | Data Type | Example Value | Purpose | FK/PK Relationship |
 |------------|-----------|---------------|---------|-------------------|
-| `LocationName` | String | "Lea James Hot Chicken" | Restaurant identifier | - |
+| `LocationName` | String | "Lea Jane's Hot Chicken" | Restaurant identifier | - |
 | `RecipeName` | String | "FC-03 Whole Wings" | **PRIMARY KEY** | PK for recipe links |
 | `Status` | String | "Draft" | Recipe approval state | - |
 | `RecipeGroup` | String | "Main" | Menu category | - |
@@ -25,7 +25,7 @@
 
 | Column Name | Data Type | Example Value | Purpose | FK/PK Relationship |
 |------------|-----------|---------------|---------|-------------------|
-| `Location Name` | String | "Lea James Hot Chicken" | Restaurant identifier | - |
+| `Location Name` | String | "Lea Jane's Hot Chicken" | Restaurant identifier | - |
 | `Vendor Name` | String | "Buckhead Meat & Seafood OF HOUSTON" | Supplier company name | - |
 | `Item Code` | String | "58897_XC11484066" | XtraChef internal ID | - |
 | `Item Description` | String | "4 \| 10#av CHICKEN WING BUFFALO 1812 JNT" | Vendor-specific product description | - |
@@ -46,7 +46,7 @@
 #### **Header Section:**
 | Field | Example Value | Purpose | Data Type |
 |-------|---------------|---------|-----------|
-| Location | "Lea James Hot Chicken" | Restaurant identifier | String |
+| Location | "Lea Jane's Hot Chicken" | Restaurant identifier | String |
 | Recipe Name | "Plain Jane Sandwich" | **Links to Recipe Summary** | String (FK) |
 | Type | "Main" | Menu category | String |
 | Menu Price | "$15" | Selling price | Decimal(2) |

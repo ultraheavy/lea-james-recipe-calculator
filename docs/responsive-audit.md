@@ -1,4 +1,4 @@
-# Responsive Design Audit - Lea James Recipe Calculator
+# Responsive Design Audit - Lea Jane's Recipe Calculator
 
 ## Date: January 2025
 ## Current Status: Phase 1 - Design Branch

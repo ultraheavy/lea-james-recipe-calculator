@@ -25,6 +25,82 @@
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236366f1'/><text y='65' x='50' text-anchor='middle' font-size='60' fill='white'>LJ</text></svg>">
     
+    <style>
+        /* Dropdown Styles */
+        .navbar-dropdown {
+            position: relative;
+        }
+        
+        .dropdown-arrow {
+            margin-left: 4px;
+            transition: transform 0.2s;
+        }
+        
+        .navbar-dropdown.active .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            min-width: 200px;
+            padding: 8px 0;
+            margin-top: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.2s;
+            z-index: 1000;
+        }
+        
+        .navbar-dropdown.active .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            display: block;
+            padding: 10px 16px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        
+        .dropdown-item:hover {
+            background-color: rgba(var(--primary-rgb), 0.1);
+        }
+        
+        .dropdown-item.active {
+            background-color: rgba(var(--primary-rgb), 0.15);
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .navbar-dropdown .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                margin-top: 0;
+                padding-left: 20px;
+            }
+            
+            .dropdown-arrow {
+                display: none;
+            }
+        }
+    </style>
+    
     {% block extra_head %}{% endblock %}
 </head>
 <body class="theme-modern">
@@ -98,12 +174,28 @@
                         <span>Vendors</span>
                     </a>
                     
-                    <a href="/admin/inventory-staging/" class="navbar-link {% if 'inventory-staging' in request.path %}active{% endif %}">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M9 11H4a2 2 0 00-2 2v7a2 2 0 002 2h5m6-11h5a2 2 0 012 2v7a2 2 0 01-2 2h-5m-6-11V4a2 2 0 012-2h4a2 2 0 012 2v7m-6 0h6"/>
-                        </svg>
-                        <span>Import Review</span>
-                    </a>
+                    <div class="navbar-dropdown">
+                        <a href="#" class="navbar-link {% if '/admin/' in request.path %}active{% endif %}" onclick="toggleDropdown(event)">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M9 11H4a2 2 0 00-2 2v7a2 2 0 002 2h5m6-11h5a2 2 0 012 2v7a2 2 0 01-2 2h-5m-6-11V4a2 2 0 012-2h4a2 2 0 012 2v7m-6 0h6"/>
+                            </svg>
+                            <span>Admin</span>
+                            <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6"/>
+                            </svg>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="/admin/inventory-staging/" class="dropdown-item {% if 'inventory-staging' in request.path %}active{% endif %}">
+                                Inventory Staging
+                            </a>
+                            <a href="/admin/recipe-staging/" class="dropdown-item {% if 'recipe-staging' in request.path %}active{% endif %}">
+                                Recipe Staging
+                            </a>
+                            <a href="/admin/recipe-pdf-staging/" class="dropdown-item {% if 'recipe-pdf-staging' in request.path %}active{% endif %}">
+                                PDF Recipe Staging
+                            </a>
+                        </div>
+                    </div>
                     
                     <!-- Theme Selector in Mobile Menu -->
                     <div class="mobile-only theme-dots">
@@ -198,6 +290,28 @@
             menu.classList.remove('active');
             backdrop.classList.remove('active');
             document.body.style.overflow = '';
+        }
+        
+        // Toggle dropdown
+        function toggleDropdown(event) {
+            event.preventDefault();
+            const dropdown = event.currentTarget.closest('.navbar-dropdown');
+            
+            // Close other dropdowns
+            document.querySelectorAll('.navbar-dropdown').forEach(d => {
+                if (d !== dropdown) d.classList.remove('active');
+            });
+            
+            // Toggle current dropdown
+            dropdown.classList.toggle('active');
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function closeDropdown(e) {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('active');
+                    document.removeEventListener('click', closeDropdown);
+                }
+            });
         }
         
         // Theme toggle

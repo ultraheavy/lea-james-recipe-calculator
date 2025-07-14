@@ -1,6 +1,6 @@
 # Unit Tests - Individual Function Validation
 
-This directory contains unit tests for individual functions and utilities in the Lea James Hot Chicken system.
+This directory contains unit tests for individual functions and utilities in the Lea Jane's Hot Chicken system.
 
 ## Test Files:
 

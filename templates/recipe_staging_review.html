@@ -1,6 +1,6 @@
 {% extends "base_modern.html" %}
 
-{% block title %}Inventory Staging Review{% endblock %}
+{% block title %}Recipe Staging Review{% endblock %}
 
 {% block content %}
 <style>
@@ -101,7 +101,7 @@
         overflow-x: auto !important;
         overflow-y: visible;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        -webkit-overflow-scrolling: touch; /* smooth scrolling on mobile */
+        -webkit-overflow-scrolling: touch;
         max-width: 100%;
     }
     
@@ -150,26 +150,45 @@
     }
     
     /* Highlighting for problematic rows */
-    .review-table tr.row-has-issues {
+    .review-table tr.row-has-warnings {
         background-color: #fff3cd !important;
     }
     
-    .review-table tr.row-has-issues:hover {
+    .review-table tr.row-has-warnings:hover {
         background-color: #ffe69c !important;
     }
     
-    /* Issue indicators */
-    .issue-indicators {
-        display: inline-block;
-        position: relative;
-        margin-left: 5px;
-        vertical-align: middle;
+    .review-table tr.row-has-errors {
+        background-color: #f8d7da !important;
     }
     
-    .issue-flag {
-        cursor: help;
+    .review-table tr.row-has-errors:hover {
+        background-color: #f5c2c7 !important;
+    }
+    
+    /* Validation Notes Styles */
+    .validation-notes-cell {
+        max-width: 300px;
+    }
+    
+    .validation-notes {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .validation-icon {
         font-size: 1.2em;
+        cursor: help;
+        flex-shrink: 0;
+    }
+    
+    .error-icon {
         animation: pulse 2s infinite;
+    }
+    
+    .warning-icon {
+        animation: pulse 3s infinite;
     }
     
     @keyframes pulse {
@@ -178,82 +197,35 @@
         100% { opacity: 1; }
     }
     
-    .issue-tooltip {
-        position: absolute;
-        left: 30px;
-        top: -10px;
-        background: #333;
-        color: white;
-        padding: 10px 15px;
-        border-radius: 6px;
-        font-size: 0.85em;
-        white-space: nowrap;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s;
-        z-index: 1000;
-        min-width: 200px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    .validation-details {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        align-items: center;
     }
     
-    .issue-tooltip strong {
-        display: block;
-        margin-bottom: 5px;
-        color: #ffc107;
-    }
-    
-    .issue-tooltip ul {
-        margin: 0;
-        padding-left: 20px;
-        list-style: disc;
-    }
-    
-    .issue-tooltip li {
-        margin: 2px 0;
-    }
-    
-    .issue-tooltip::before {
-        content: '';
-        position: absolute;
-        right: 100%;
-        top: 20px;
-        border: 6px solid transparent;
-        border-right-color: #333;
-    }
-    
-    .issue-indicators:hover .issue-tooltip {
-        opacity: 1;
-        pointer-events: auto;
-    }
-    
-    /* Individual issue type badges */
-    .issue-badge {
+    .validation-badge {
         display: inline-block;
-        padding: 2px 6px;
-        border-radius: 3px;
+        padding: 2px 8px;
+        border-radius: 12px;
         font-size: 0.75em;
         font-weight: 500;
-        margin: 0 2px;
+        white-space: nowrap;
     }
     
-    .issue-badge.missing-uom {
+    .validation-badge.error-badge {
         background: #dc3545;
         color: white;
     }
     
-    .issue-badge.zero-price {
-        background: #fd7e14;
-        color: white;
-    }
-    
-    .issue-badge.duplicate {
-        background: #0dcaf0;
-        color: #000;
-    }
-    
-    .issue-badge.blank-description {
+    .validation-badge.warning-badge {
         background: #ffc107;
         color: #000;
+    }
+    
+    .validation-ok {
+        color: #28a745;
+        font-size: 0.9em;
     }
     
     .status-badge {
@@ -277,6 +249,11 @@
     .status-rejected {
         background: #f8d7da;
         color: #721c24;
+    }
+    
+    .status-hold {
+        background: #e2e3e5;
+        color: #383d41;
     }
     
     .flag-indicator {
@@ -518,6 +495,130 @@
         to { opacity: 1; }
     }
     
+    /* Source info styles */
+    .checkbox-cell {
+        text-align: center;
+        position: relative;
+    }
+    
+    .source-info {
+        display: inline-block;
+        position: relative;
+        margin-right: 10px;
+    }
+    
+    .source-info-icon {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        border-radius: 50%;
+        background: #6c757d;
+        color: white;
+        font-size: 11px;
+        text-align: center;
+        cursor: help;
+    }
+    
+    .source-tooltip {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #333;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 11px;
+        white-space: nowrap;
+        display: none;
+        z-index: 1000;
+        margin-bottom: 5px;
+    }
+    
+    .source-tooltip::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 5px;
+        border-style: solid;
+        border-color: #333 transparent transparent transparent;
+    }
+    
+    .source-info:hover .source-tooltip {
+        display: block;
+    }
+    
+    .expand-details {
+        cursor: pointer;
+        color: var(--primary-color);
+        font-size: 12px;
+        text-decoration: underline;
+    }
+    
+    .expandable-row {
+        background: #f8f9fa;
+    }
+    
+    .details-cell {
+        padding: 0 !important;
+    }
+    
+    .details-content {
+        padding: 20px;
+    }
+    
+    .details-section {
+        margin-bottom: 20px;
+    }
+    
+    .details-section:last-child {
+        margin-bottom: 0;
+    }
+    
+    .details-section h4 {
+        margin: 0 0 10px 0;
+        color: var(--text-primary);
+        font-size: 14px;
+        font-weight: 600;
+    }
+    
+    .details-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+    
+    .detail-item {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .detail-item label {
+        font-weight: 500;
+        color: var(--text-secondary);
+        font-size: 12px;
+    }
+    
+    .detail-item span {
+        color: var(--text-primary);
+        font-size: 13px;
+    }
+    
+    .validation-list {
+        margin: 0;
+        padding-left: 20px;
+    }
+    
+    .validation-list li {
+        margin-bottom: 5px;
+        color: var(--text-primary);
+        font-size: 13px;
+    }
+    
     /* Column Mapping Panel Styles */
     .column-mapping-panel {
         background: var(--card-bg);
@@ -644,6 +745,15 @@
         border: 1px solid #ffeaa7;
     }
     
+    .issue-summary-item.error-item {
+        background: #f8d7da;
+        border-color: #f5c2c7;
+    }
+    
+    .issue-summary-item.error-item .issue-count {
+        color: #721c24;
+    }
+    
     .issue-count {
         display: block;
         font-size: 2em;
@@ -656,16 +766,6 @@
         display: block;
         font-size: 0.9em;
         color: #666;
-    }
-    
-    /* Update checkbox column to accommodate issue indicators */
-    .checkbox-col {
-        width: 80px;
-        position: relative;
-    }
-    
-    .checkbox-col input[type="checkbox"] {
-        margin-right: 5px;
     }
     
     /* Approval checkbox styles */
@@ -745,7 +845,8 @@
     }
     
     .edit-form-group input,
-    .edit-form-group select {
+    .edit-form-group select,
+    .edit-form-group textarea {
         width: 100%;
         padding: 8px 12px;
         border: 1px solid #ced4da;
@@ -754,7 +855,8 @@
     }
     
     .edit-form-group input:focus,
-    .edit-form-group select:focus {
+    .edit-form-group select:focus,
+    .edit-form-group textarea:focus {
         outline: none;
         border-color: var(--primary-color);
         box-shadow: 0 0 0 2px rgba(0,123,255,0.1);
@@ -994,7 +1096,7 @@
 
 <div class="staging-container">
     <div class="staging-header">
-        <h1>Inventory Staging Review</h1>
+        <h1>Recipe Staging Review</h1>
         <div style="display: flex; gap: 10px;">
             <button class="btn btn-primary" onclick="bulkApproveValid()">
                 Bulk Approve Valid Rows
@@ -1026,51 +1128,75 @@
     </div>
     
     <!-- Issue Summary -->
-    {% set missing_uom_count = 0 %}
+    {% set low_food_cost_count = 0 %}
+    {% set high_food_cost_count = 0 %}
+    {% set low_margin_count = 0 %}
     {% set zero_price_count = 0 %}
-    {% set duplicate_count = 0 %}
-    {% set blank_desc_count = 0 %}
+    {% set draft_status_count = 0 %}
+    {% set missing_fields_count = 0 %}
+    
     {% for item in items %}
-        {% if not item.Inventory_UOM_cleaned or item.Inventory_UOM_cleaned == '-' or not item.Vendor_UOM_cleaned or item.Vendor_UOM_cleaned == '-' %}
-            {% set missing_uom_count = missing_uom_count + 1 %}
+        {% if item.food_cost_percentage and item.food_cost_percentage < 10 %}
+            {% set low_food_cost_count = low_food_cost_count + 1 %}
         {% endif %}
-        {% if not item.Last_Purchased_Price_cleaned or item.Last_Purchased_Price_cleaned == 0 %}
+        {% if item.food_cost_percentage and item.food_cost_percentage > 40 %}
+            {% set high_food_cost_count = high_food_cost_count + 1 %}
+        {% endif %}
+        {% if item.gross_margin and item.gross_margin < 60 %}
+            {% set low_margin_count = low_margin_count + 1 %}
+        {% endif %}
+        {% if not item.menu_price or item.menu_price == 0 %}
             {% set zero_price_count = zero_price_count + 1 %}
         {% endif %}
-        {% if item.is_duplicate %}
-            {% set duplicate_count = duplicate_count + 1 %}
+        {% set problem_statuses = ['Draft', 'Test', 'draft', 'test'] %}
+        {% if not item.status or item.status in problem_statuses %}
+            {% set draft_status_count = draft_status_count + 1 %}
         {% endif %}
-        {% if not item.Vendor_Item_Description_cleaned or item.Vendor_Item_Description_cleaned.strip() == '' %}
-            {% set blank_desc_count = blank_desc_count + 1 %}
+        {% if not item.recipe_name or not item.food_cost or (item.recipe_type == 'PrepRecipe' and (not item.yield_quantity or not item.yield_unit)) or not item.serving_size %}
+            {% set missing_fields_count = missing_fields_count + 1 %}
         {% endif %}
     {% endfor %}
     
-    {% if missing_uom_count > 0 or zero_price_count > 0 or duplicate_count > 0 or blank_desc_count > 0 %}
+    {% set total_issues = low_food_cost_count + high_food_cost_count + low_margin_count + zero_price_count + draft_status_count + missing_fields_count %}
+    
+    {% if total_issues > 0 %}
     <div class="issue-summary">
-        <h3>⚠️ Issues Found</h3>
+        <h3>⚠️ Validation Summary</h3>
         <div class="issue-summary-grid">
-            {% if missing_uom_count > 0 %}
+            {% if low_food_cost_count > 0 %}
             <div class="issue-summary-item">
-                <span class="issue-count">{{ missing_uom_count }}</span>
-                <span class="issue-label">Missing UOM</span>
+                <span class="issue-count">{{ low_food_cost_count }}</span>
+                <span class="issue-label">Food Cost < 10%</span>
+            </div>
+            {% endif %}
+            {% if high_food_cost_count > 0 %}
+            <div class="issue-summary-item error-item">
+                <span class="issue-count">{{ high_food_cost_count }}</span>
+                <span class="issue-label">Food Cost > 40%</span>
+            </div>
+            {% endif %}
+            {% if low_margin_count > 0 %}
+            <div class="issue-summary-item">
+                <span class="issue-count">{{ low_margin_count }}</span>
+                <span class="issue-label">Margin < 60%</span>
             </div>
             {% endif %}
             {% if zero_price_count > 0 %}
-            <div class="issue-summary-item">
+            <div class="issue-summary-item error-item">
                 <span class="issue-count">{{ zero_price_count }}</span>
-                <span class="issue-label">Zero/Missing Price</span>
+                <span class="issue-label">$0 Menu Price</span>
             </div>
             {% endif %}
-            {% if duplicate_count > 0 %}
+            {% if draft_status_count > 0 %}
             <div class="issue-summary-item">
-                <span class="issue-count">{{ duplicate_count }}</span>
-                <span class="issue-label">Duplicate Products</span>
+                <span class="issue-count">{{ draft_status_count }}</span>
+                <span class="issue-label">Draft/Test Status</span>
             </div>
             {% endif %}
-            {% if blank_desc_count > 0 %}
-            <div class="issue-summary-item">
-                <span class="issue-count">{{ blank_desc_count }}</span>
-                <span class="issue-label">Blank Descriptions</span>
+            {% if missing_fields_count > 0 %}
+            <div class="issue-summary-item error-item">
+                <span class="issue-count">{{ missing_fields_count }}</span>
+                <span class="issue-label">Missing Required Fields</span>
             </div>
             {% endif %}
         </div>
@@ -1085,7 +1211,7 @@
                 <option value="">All Batches</option>
                 {% for batch in batches %}
                 <option value="{{ batch.batch_id }}" {% if filters.batch_id == batch.batch_id %}selected{% endif %}>
-                    {{ batch.batch_id }} ({{ batch.total_rows }} items)
+                    {{ batch.batch_id }} ({{ batch.total_rows }} recipes)
                 </option>
                 {% endfor %}
             </select>
@@ -1098,6 +1224,7 @@
                 <option value="pending" {% if filters.review_status == 'pending' %}selected{% endif %}>Pending</option>
                 <option value="approved" {% if filters.review_status == 'approved' %}selected{% endif %}>Approved</option>
                 <option value="rejected" {% if filters.review_status == 'rejected' %}selected{% endif %}>Rejected</option>
+                <option value="hold" {% if filters.review_status == 'hold' %}selected{% endif %}>On Hold</option>
             </select>
         </div>
         
@@ -1111,13 +1238,22 @@
         </div>
         
         <div class="filter-group">
+            <label>Recipe Type</label>
+            <select id="typeFilter" onchange="applyFilters()">
+                <option value="">All Types</option>
+                <option value="Recipe" {% if filters.recipe_type == 'Recipe' %}selected{% endif %}>Recipe</option>
+                <option value="PrepRecipe" {% if filters.recipe_type == 'PrepRecipe' %}selected{% endif %}>Prep Recipe</option>
+            </select>
+        </div>
+        
+        <div class="filter-group">
             <label>Search</label>
-            <input type="text" id="searchFilter" placeholder="Search items..." 
+            <input type="text" id="searchFilter" placeholder="Search recipes..." 
                    value="{{ filters.search or '' }}" onkeyup="debounceSearch()">
         </div>
         
         <div class="filter-group">
-            <label>Items per page</label>
+            <label>Recipes per page</label>
             <select id="perPageFilter" onchange="applyFilters()">
                 <option value="50" {% if per_page == 50 %}selected{% endif %}>50</option>
                 <option value="75" {% if per_page == 75 %}selected{% endif %}>75</option>
@@ -1137,64 +1273,94 @@
         <p class="mapping-subtitle">Understanding how xtraCHEF export columns are mapped to the application</p>
         <div class="mapping-grid">
             <div class="mapping-item">
-                <span class="original-column">Product(s)</span>
+                <span class="original-column">RecipeName</span>
                 <span class="arrow">→</span>
-                <span class="mapped-column">FAM Product Name</span>
+                <span class="mapped-column">Recipe Name</span>
             </div>
             <div class="mapping-item">
-                <span class="original-column">Location Name</span>
+                <span class="original-column">Type</span>
                 <span class="arrow">→</span>
-                <span class="mapped-column">FAM Restaurant Location</span>
+                <span class="mapped-column">Recipe Type</span>
             </div>
             <div class="mapping-item">
-                <span class="original-column">Vendor Name</span>
+                <span class="original-column">Status</span>
                 <span class="arrow">→</span>
-                <span class="mapped-column">Vendor Name</span>
+                <span class="mapped-column">Status</span>
             </div>
             <div class="mapping-item">
-                <span class="original-column">Item Code</span>
+                <span class="original-column">FoodCost</span>
                 <span class="arrow">→</span>
-                <span class="mapped-column">Vendor Item Code</span>
+                <span class="mapped-column">Food Cost</span>
             </div>
             <div class="mapping-item">
-                <span class="original-column">Item Description</span>
+                <span class="original-column">FoodCostPercentage</span>
                 <span class="arrow">→</span>
-                <span class="mapped-column">Vendor Item Description</span>
+                <span class="mapped-column">Food Cost %</span>
             </div>
             <div class="mapping-item">
-                <span class="original-column">UOM</span>
+                <span class="original-column">MenuPrice</span>
                 <span class="arrow">→</span>
-                <span class="mapped-column">Vendor UOM</span>
+                <span class="mapped-column">Menu Price</span>
             </div>
             <div class="mapping-item">
-                <span class="original-column">Item UOM</span>
+                <span class="original-column">GrossMargin</span>
                 <span class="arrow">→</span>
-                <span class="mapped-column">Inventory UOM</span>
+                <span class="mapped-column">Gross Margin</span>
             </div>
             <div class="mapping-item">
-                <span class="original-column">Pack</span>
+                <span class="original-column">PrepRecipeYield</span>
                 <span class="arrow">→</span>
-                <span class="mapped-column">Pack Qty</span>
+                <span class="mapped-column">Yield</span>
             </div>
             <div class="mapping-item">
-                <span class="original-column">Size</span>
+                <span class="original-column">PerServing</span>
                 <span class="arrow">→</span>
-                <span class="mapped-column">Size Qty</span>
+                <span class="mapped-column">Per Serving</span>
             </div>
             <div class="mapping-item">
-                <span class="original-column">Unit</span>
+                <span class="original-column">LocationName</span>
                 <span class="arrow">→</span>
-                <span class="mapped-column">Size UOM</span>
+                <span class="mapped-column">FAM Location Name</span>
             </div>
             <div class="mapping-item">
-                <span class="original-column">Last Purchased Date</span>
+                <span class="original-column">RecipeGroup</span>
                 <span class="arrow">→</span>
-                <span class="mapped-column">Last Purchased Date</span>
+                <span class="mapped-column">Recipe Group</span>
             </div>
             <div class="mapping-item">
-                <span class="original-column">Last Purchased Price ($)</span>
+                <span class="original-column">LaborCost</span>
                 <span class="arrow">→</span>
-                <span class="mapped-column">Last Purchased Price</span>
+                <span class="mapped-column">Labor Cost</span>
+            </div>
+            <div class="mapping-item">
+                <span class="original-column">LaborCostPercentage</span>
+                <span class="arrow">→</span>
+                <span class="mapped-column">Labor Cost %</span>
+            </div>
+            <div class="mapping-item">
+                <span class="original-column">PrimeCost</span>
+                <span class="arrow">→</span>
+                <span class="mapped-column">Prime Cost</span>
+            </div>
+            <div class="mapping-item">
+                <span class="original-column">PrimeCostPercentage</span>
+                <span class="arrow">→</span>
+                <span class="mapped-column">Prime Cost %</span>
+            </div>
+            <div class="mapping-item">
+                <span class="original-column">CostModified</span>
+                <span class="arrow">→</span>
+                <span class="mapped-column">Date Cost Modified</span>
+            </div>
+            <div class="mapping-item">
+                <span class="original-column">ShelfLife</span>
+                <span class="arrow">→</span>
+                <span class="mapped-column">Shelf Life</span>
+            </div>
+            <div class="mapping-item">
+                <span class="original-column">ServingSize</span>
+                <span class="arrow">→</span>
+                <span class="mapped-column">Serving Size</span>
             </div>
         </div>
     </div>
@@ -1210,74 +1376,85 @@
                         <input type="checkbox" class="select-all" onchange="toggleSelectAll(this)">
                     </th>
                     <th>Approved</th>
-                    <th class="column-tooltip" data-original="Product(s)">FAM Product Name</th>
-                    <th class="column-tooltip" data-original="Location Name">FAM Restaurant Location</th>
-                    <th class="column-tooltip" data-original="Vendor Name">Vendor Name</th>
-                    <th class="column-tooltip" data-original="Item Code">Vendor Item Code</th>
-                    <th class="column-tooltip" data-original="Item Description">Vendor Item Description</th>
-                    <th class="column-tooltip" data-original="UOM">Vendor UOM</th>
-                    <th class="column-tooltip" data-original="Item UOM">Inventory UOM</th>
-                    <th class="column-tooltip" data-original="Pack">Pack Qty</th>
-                    <th class="column-tooltip" data-original="Size">Size Qty</th>
-                    <th class="column-tooltip" data-original="Unit">Size UOM</th>
-                    <th class="column-tooltip" data-original="Last Purchased Date">Last Purchased Date</th>
-                    <th class="column-tooltip" data-original="Last Purchased Price ($)">Last Purchased Price</th>
+                    <th class="column-tooltip" data-original="RecipeName">Recipe Name</th>
+                    <th class="column-tooltip" data-original="Type">Type</th>
+                    <th class="column-tooltip" data-original="Status">Status</th>
+                    <th class="column-tooltip" data-original="FoodCost">Food Cost</th>
+                    <th class="column-tooltip" data-original="FoodCostPercentage">Food Cost %</th>
+                    <th class="column-tooltip" data-original="MenuPrice">Menu Price</th>
+                    <th class="column-tooltip" data-original="GrossMargin">Gross Margin</th>
+                    <th class="column-tooltip" data-original="PrepRecipeYield">Yield</th>
+                    <th class="column-tooltip" data-original="PerServing">Per Serving</th>
                     <th>Review Status</th>
-                    <th>Flags</th>
+                    <th>Validation Notes</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {% for item in items %}
                 {% set issues = [] %}
-                {% set has_issues = false %}
+                {% set severity = 'none' %}
                 
-                {# Check for missing Inventory UOM #}
-                {% if not item.Inventory_UOM_cleaned or item.Inventory_UOM_cleaned == '-' %}
-                    {% set _ = issues.append({'type': 'missing_inventory_uom', 'message': 'Missing Inventory UOM'}) %}
-                    {% set has_issues = true %}
+                {# Check food cost percentage issues #}
+                {% if item.food_cost_percentage %}
+                    {% if item.food_cost_percentage < 10 %}
+                        {% set _ = issues.append({'type': 'low_food_cost', 'message': 'Food cost < 10%', 'severity': 'warning'}) %}
+                        {% set severity = 'warning' if severity == 'none' else severity %}
+                    {% elif item.food_cost_percentage > 40 %}
+                        {% set _ = issues.append({'type': 'high_food_cost', 'message': 'Food cost > 40%', 'severity': 'error'}) %}
+                        {% set severity = 'error' %}
+                    {% endif %}
                 {% endif %}
                 
-                {# Check for missing Vendor UOM #}
-                {% if not item.Vendor_UOM_cleaned or item.Vendor_UOM_cleaned == '-' %}
-                    {% set _ = issues.append({'type': 'missing_vendor_uom', 'message': 'Missing Vendor UOM'}) %}
-                    {% set has_issues = true %}
+                {# Check gross margin #}
+                {% if item.gross_margin and item.gross_margin < 60 %}
+                    {% set _ = issues.append({'type': 'low_margin', 'message': 'Gross margin < 60%', 'severity': 'warning'}) %}
+                    {% set severity = 'warning' if severity == 'none' else severity %}
                 {% endif %}
                 
-                {# Check for zero or missing price #}
-                {% if not item.Last_Purchased_Price_cleaned or item.Last_Purchased_Price_cleaned == 0 %}
-                    {% set _ = issues.append({'type': 'zero_price', 'message': 'Contracted Price is $0 or missing'}) %}
-                    {% set has_issues = true %}
+                {# Check menu price #}
+                {% if not item.menu_price or item.menu_price == 0 %}
+                    {% set _ = issues.append({'type': 'zero_price', 'message': 'Menu price is $0 or blank', 'severity': 'error'}) %}
+                    {% set severity = 'error' %}
                 {% endif %}
                 
-                {# Check for duplicate product name #}
+                {# Check recipe status #}
+                {% set problem_statuses = ['Draft', 'Test', 'draft', 'test'] %}
+                {% if not item.status or item.status in problem_statuses %}
+                    {% set _ = issues.append({'type': 'draft_status', 'message': 'Recipe status: ' + (item.status or 'undefined'), 'severity': 'warning'}) %}
+                    {% set severity = 'warning' if severity == 'none' else severity %}
+                {% endif %}
+                
+                {# Check required fields #}
+                {% if not item.recipe_name %}
+                    {% set _ = issues.append({'type': 'missing_name', 'message': 'Missing recipe name', 'severity': 'error'}) %}
+                    {% set severity = 'error' %}
+                {% endif %}
+                
+                {% if not item.food_cost or item.food_cost == 0 %}
+                    {% set _ = issues.append({'type': 'missing_cost', 'message': 'Missing food cost', 'severity': 'error'}) %}
+                    {% set severity = 'error' %}
+                {% endif %}
+                
+                {% if item.recipe_type == 'PrepRecipe' and (not item.yield_quantity or not item.yield_unit) %}
+                    {% set _ = issues.append({'type': 'missing_yield', 'message': 'Prep recipe missing yield', 'severity': 'error'}) %}
+                    {% set severity = 'error' %}
+                {% endif %}
+                
+                {% if not item.serving_size %}
+                    {% set _ = issues.append({'type': 'missing_serving', 'message': 'Missing serving size', 'severity': 'warning'}) %}
+                    {% set severity = 'warning' if severity == 'none' else severity %}
+                {% endif %}
+                
+                {# Check for duplicates #}
                 {% if item.is_duplicate %}
-                    {% set _ = issues.append({'type': 'duplicate', 'message': 'Duplicate FAM Product Name'}) %}
-                    {% set has_issues = true %}
+                    {% set _ = issues.append({'type': 'duplicate', 'message': 'Duplicate recipe', 'severity': 'warning'}) %}
+                    {% set severity = 'warning' if severity == 'none' else severity %}
                 {% endif %}
                 
-                {# Check for blank vendor item description #}
-                {% if not item.Vendor_Item_Description_cleaned or item.Vendor_Item_Description_cleaned.strip() == '' %}
-                    {% set _ = issues.append({'type': 'blank_description', 'message': 'Blank Vendor Item Description'}) %}
-                    {% set has_issues = true %}
-                {% endif %}
-                
-                <tr data-id="{{ item.staging_id }}" class="{% if has_issues %}row-has-issues{% endif %} {% if item.needs_review %}needs-review{% endif %}" data-issues="{{ issues|tojson|e }}">
+                <tr data-id="{{ item.staging_id }}" class="{% if severity == 'error' %}row-has-errors{% elif severity == 'warning' %}row-has-warnings{% endif %} {% if item.needs_review %}needs-review{% endif %}" data-issues="{{ issues|tojson|e }}">
                     <td>
                         <input type="checkbox" class="item-select" value="{{ item.staging_id }}">
-                        {% if has_issues %}
-                        <div class="issue-indicators">
-                            <span class="issue-flag" title="This row has {{ issues|length }} issue(s)">⚠️</span>
-                            <div class="issue-tooltip">
-                                <strong>Issues found:</strong>
-                                <ul>
-                                {% for issue in issues %}
-                                    <li>{{ issue.message }}</li>
-                                {% endfor %}
-                                </ul>
-                            </div>
-                        </div>
-                        {% endif %}
                         <div class="source-info">
                             <span class="source-info-icon" title="Source info">ℹ</span>
                             <div class="source-tooltip">
@@ -1292,108 +1469,102 @@
                                class="approval-checkbox" 
                                data-id="{{ item.staging_id }}"
                                {% if item.review_status == 'approved' %}checked{% endif %}
-                               {% if has_issues %}disabled title="Cannot approve items with validation issues"{% endif %}
+                               {% if severity == 'error' %}disabled title="Cannot approve items with critical validation issues"{% endif %}
                                onchange="toggleApproval({{ item.staging_id }}, this)">
                     </td>
                     <td>
-                        <div class="editable" data-field="FAM_Product_Name_cleaned">
-                            {{ item.FAM_Product_Name_cleaned or item.FAM_Product_Name_raw or '' }}
-                            {% if item.FAM_Product_Name_flag %}
-                                <span class="flag-indicator flag-warning" title="{{ item.FAM_Product_Name_flag }}">!</span>
+                        <div class="editable" data-field="recipe_name">
+                            {{ item.recipe_name or '' }}
+                            {% if item.recipe_name_flag %}
+                                <span class="flag-indicator flag-warning" title="{{ item.recipe_name_flag }}">!</span>
+                            {% endif %}
+                            {% if item.is_duplicate %}
+                                <span class="flag-indicator flag-info" title="Duplicate recipe">D</span>
+                            {% endif %}
+                            {% if item.matched_recipe_id %}
+                                <span class="flag-indicator flag-warning" title="Already exists in database">E</span>
                             {% endif %}
                         </div>
                     </td>
                     <td>
-                        {{ item.FAM_Restaurant_Location_Name_cleaned or '' }}
-                        {% if item.FAM_Restaurant_Location_Name_flag %}
-                            <span class="flag-indicator flag-info" title="{{ item.FAM_Restaurant_Location_Name_flag }}">!</span>
+                        {{ item.recipe_type or '' }}
+                        {% if item.recipe_type_flag %}
+                            <span class="flag-indicator flag-info" title="{{ item.recipe_type_flag }}">!</span>
                         {% endif %}
                     </td>
                     <td>
-                        {{ item.Vendor_Name_cleaned or '' }}
-                        {% if item.Vendor_Name_flag %}
-                            <span class="flag-indicator flag-warning" title="{{ item.Vendor_Name_flag }}">!</span>
+                        <span class="status-badge status-{{ (item.status or 'pending')|lower }}">
+                            {{ item.status or 'Unknown' }}
+                        </span>
+                    </td>
+                    <td>
+                        <div class="editable" data-field="food_cost">
+                            ${{ "%.2f"|format(item.food_cost or 0) }}
+                            {% if item.food_cost_flag %}
+                                <span class="flag-indicator flag-error" title="{{ item.food_cost_flag }}">!</span>
+                            {% endif %}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editable" data-field="food_cost_percentage">
+                            {{ "%.1f"|format(item.food_cost_percentage or 0) }}%
+                            {% if item.food_cost_percentage_flag %}
+                                <span class="flag-indicator flag-warning" title="{{ item.food_cost_percentage_flag }}">!</span>
+                            {% endif %}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="editable" data-field="menu_price">
+                            ${{ "%.2f"|format(item.menu_price or 0) }}
+                            {% if item.menu_price_flag %}
+                                <span class="flag-indicator flag-warning" title="{{ item.menu_price_flag }}">!</span>
+                            {% endif %}
+                        </div>
+                    </td>
+                    <td>
+                        {{ "%.1f"|format(item.gross_margin or 0) }}%
+                        {% if item.gross_margin_flag %}
+                            <span class="flag-indicator flag-warning" title="{{ item.gross_margin_flag }}">!</span>
+                        {% endif %}
+                        {% if item.margin_variance and abs(item.margin_variance) > 5 %}
+                            <span class="flag-indicator flag-error" title="Margin variance: {{ "%.1f"|format(item.margin_variance) }}%">V</span>
                         {% endif %}
                     </td>
                     <td>
-                        {{ item.Vendor_Item_Code_cleaned or '' }}
-                        {% if item.Vendor_Item_Code_flag %}
-                            <span class="flag-indicator flag-warning" title="{{ item.Vendor_Item_Code_flag }}">!</span>
+                        <div class="editable" data-field="yield_quantity">
+                            {{ item.yield_quantity or '-' }} {{ item.yield_unit or '' }}
+                            {% if item.yield_quantity_flag %}
+                                <span class="flag-indicator flag-info" title="{{ item.yield_quantity_flag }}">!</span>
+                            {% endif %}
+                        </div>
+                    </td>
+                    <td>
+                        ${{ "%.2f"|format(item.per_serving or 0) }}
+                        {% if item.per_serving_flag %}
+                            <span class="flag-indicator flag-info" title="{{ item.per_serving_flag }}">!</span>
                         {% endif %}
-                    </td>
-                    <td title="{{ item.Vendor_Item_Description_cleaned or '' }}">
-                        {{ (item.Vendor_Item_Description_cleaned or '')[:30] }}{% if (item.Vendor_Item_Description_cleaned or '')|length > 30 %}...{% endif %}
-                        {% if item.Vendor_Item_Description_flag %}
-                            <span class="flag-indicator flag-info" title="{{ item.Vendor_Item_Description_flag }}">!</span>
-                        {% endif %}
-                    </td>
-                    <td>
-                        <div class="editable" data-field="Vendor_UOM_cleaned">
-                            {{ item.Vendor_UOM_cleaned or '-' }}
-                            {% if item.Vendor_UOM_flag %}
-                                <span class="flag-indicator flag-warning" title="{{ item.Vendor_UOM_flag }}">!</span>
-                            {% endif %}
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editable" data-field="Inventory_UOM_cleaned">
-                            {{ item.Inventory_UOM_cleaned or '-' }}
-                            {% if item.Inventory_UOM_flag %}
-                                <span class="flag-indicator flag-warning" title="{{ item.Inventory_UOM_flag }}">!</span>
-                            {% endif %}
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editable" data-field="Pack_qty_cleaned">
-                            {{ item.Pack_qty_cleaned or 1 }}
-                            {% if item.Pack_qty_flag %}
-                                <span class="flag-indicator flag-info" title="{{ item.Pack_qty_flag }}">!</span>
-                            {% endif %}
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editable" data-field="Size_qty_cleaned">
-                            {{ item.Size_qty_cleaned or 1 }}
-                            {% if item.Size_qty_flag %}
-                                <span class="flag-indicator flag-info" title="{{ item.Size_qty_flag }}">!</span>
-                            {% endif %}
-                        </div>
-                    </td>
-                    <td>
-                        <div class="editable" data-field="Size_UOM_cleaned">
-                            {{ item.Size_UOM_cleaned or '-' }}
-                            {% if item.Size_UOM_flag %}
-                                <span class="flag-indicator flag-warning" title="{{ item.Size_UOM_flag }}">!</span>
-                            {% endif %}
-                        </div>
-                    </td>
-                    <td>
-                        {{ item.Last_Purchased_Date_cleaned or item.Last_Purchased_Date_raw or '' }}
-                        {% if item.Last_Purchased_Date_flag %}
-                            <span class="flag-indicator flag-info" title="{{ item.Last_Purchased_Date_flag }}">!</span>
-                        {% endif %}
-                    </td>
-                    <td>
-                        <div class="editable" data-field="Last_Purchased_Price_cleaned">
-                            ${{ "%.2f"|format(item.Last_Purchased_Price_cleaned or 0) }}
-                            {% if item.Last_Purchased_Price_flag %}
-                                <span class="flag-indicator flag-warning" title="{{ item.Last_Purchased_Price_flag }}">!</span>
-                            {% endif %}
-                        </div>
                     </td>
                     <td>
                         <span class="status-badge status-{{ item.review_status or 'pending' }}">
                             {{ item.review_status or 'pending' }}
                         </span>
                     </td>
-                    <td>
-                        {% if item.needs_review %}
-                            <div class="flags-detail" title="{{ item.review_notes }}">
-                                <span class="flag-indicator flag-error">!</span>
-                                <small>{{ (item.review_notes or '')[:50] }}...</small>
+                    <td class="validation-notes-cell">
+                        {% if issues %}
+                            <div class="validation-notes">
+                                {% if severity == 'error' %}
+                                    <span class="validation-icon error-icon" title="{{ issues|length }} critical issue(s)">🛑</span>
+                                {% else %}
+                                    <span class="validation-icon warning-icon" title="{{ issues|length }} warning(s)">⚠️</span>
+                                {% endif %}
+                                <div class="validation-details">
+                                    {% for issue in issues %}
+                                        <span class="validation-badge {{ issue.severity }}-badge">{{ issue.message }}</span>
+                                    {% endfor %}
+                                </div>
                             </div>
                         {% else %}
-                            <span style="color: #28a745;">✓</span>
+                            <span class="validation-ok">✓ Valid</span>
                         {% endif %}
                     </td>
                     <td>
@@ -1409,48 +1580,81 @@
                 </tr>
                 
                 <!-- Expandable details row -->
-                <tr class="row-details" id="details-{{ item.staging_id }}">
-                    <td colspan="16">
+                <tr class="expandable-row" id="details-{{ item.staging_id }}" style="display: none;">
+                    <td colspan="13" class="details-cell">
                         <div class="details-content">
-                            <div class="detail-item">
-                                <div class="detail-label">Source Information</div>
-                                <div class="detail-value">
-                                    <strong>File:</strong> {{ item.source_filename or 'Unknown' }}<br>
-                                    <strong>Row Number:</strong> {{ item.original_row_number or 'Unknown' }}<br>
-                                    <strong>Import Batch:</strong> {{ item.import_batch_id }}<br>
-                                    <strong>Import Date:</strong> {{ item.import_timestamp }}
+                            <div class="details-section">
+                                <h4>Source Information</h4>
+                                <div class="details-grid">
+                                    <div class="detail-item">
+                                        <label>Import Batch:</label>
+                                        <span>{{ item.import_batch_id }}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <label>Source File:</label>
+                                        <span>{{ item.source_filename or 'N/A' }}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <label>Original Row:</label>
+                                        <span>{{ item.original_row_number or 'N/A' }}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <label>Created:</label>
+                                        <span>{{ item.created_at|default('N/A') }}</span>
+                                    </div>
                                 </div>
                             </div>
+                            
+                            {% if item.validation_errors %}
+                            <div class="details-section">
+                                <h4>Validation Details</h4>
+                                <ul class="validation-list">
+                                    {% for error in item.validation_errors %}
+                                    <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            {% endif %}
                             
                             {% if item.review_notes %}
-                            <div class="detail-item">
-                                <div class="detail-label">Review Notes</div>
-                                <div class="detail-value">{{ item.review_notes }}</div>
+                            <div class="details-section">
+                                <h4>Review Notes</h4>
+                                <p>{{ item.review_notes }}</p>
                             </div>
                             {% endif %}
                             
-                            {% if item.duplicate_check_hash %}
-                            <div class="detail-item">
-                                <div class="detail-label">Data Integrity</div>
-                                <div class="detail-value">
-                                    <strong>Duplicate Check:</strong> {% if item.is_duplicate %}⚠️ Duplicate Found{% else %}✓ Unique{% endif %}<br>
-                                    <strong>Hash:</strong> <code style="font-size: 0.8em;">{{ item.duplicate_check_hash[:16] }}...</code>
-                                </div>
-                            </div>
-                            {% endif %}
-                            
-                            <div class="detail-item">
-                                <div class="detail-label">Processing Status</div>
-                                <div class="detail-value">
-                                    <strong>Review Status:</strong> {{ item.review_status }}<br>
-                                    <strong>Needs Review:</strong> {% if item.needs_review %}Yes{% else %}No{% endif %}<br>
-                                    <strong>Processed to Live:</strong> {% if item.processed_to_live %}Yes{% else %}No{% endif %}
+                            <div class="details-section">
+                                <h4>Raw Values</h4>
+                                <div class="details-grid">
+                                    {% if item.food_cost_raw %}
+                                    <div class="detail-item">
+                                        <label>Original Food Cost:</label>
+                                        <span>{{ item.food_cost_raw }}</span>
+                                    </div>
+                                    {% endif %}
+                                    {% if item.food_cost_percentage_raw %}
+                                    <div class="detail-item">
+                                        <label>Original Food Cost %:</label>
+                                        <span>{{ item.food_cost_percentage_raw }}</span>
+                                    </div>
+                                    {% endif %}
+                                    {% if item.menu_price_raw %}
+                                    <div class="detail-item">
+                                        <label>Original Menu Price:</label>
+                                        <span>{{ item.menu_price_raw }}</span>
+                                    </div>
+                                    {% endif %}
+                                    {% if item.gross_margin_raw %}
+                                    <div class="detail-item">
+                                        <label>Original Gross Margin:</label>
+                                        <span>{{ item.gross_margin_raw }}</span>
+                                    </div>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
                     </td>
                 </tr>
-                
                 {% endfor %}
             </tbody>
         </table>
@@ -1483,6 +1687,7 @@
         </div>
         <div>
             <button class="btn btn-success" onclick="bulkAction('approve')">Approve Selected</button>
+            <button class="btn btn-secondary" onclick="bulkAction('hold')">Hold Selected</button>
             <button class="btn btn-danger" onclick="bulkAction('reject')">Reject Selected</button>
         </div>
     </div>
@@ -1505,20 +1710,6 @@ function toggleSelectAll(checkbox) {
         }
     });
     updateBulkActions();
-}
-
-// Toggle row details
-function toggleRowDetails(itemId) {
-    const detailsRow = document.getElementById(`details-${itemId}`);
-    const expandLink = event.target;
-    
-    if (detailsRow.style.display === 'table-row') {
-        detailsRow.style.display = 'none';
-        expandLink.textContent = 'Details ▼';
-    } else {
-        detailsRow.style.display = 'table-row';
-        expandLink.textContent = 'Details ▲';
-    }
 }
 
 // Handle individual checkbox changes
@@ -1559,6 +1750,9 @@ function applyFilters() {
     const review = document.getElementById('reviewFilter').value;
     if (review !== '') params.append('needs_review', review);
     
+    const type = document.getElementById('typeFilter').value;
+    if (type) params.append('recipe_type', type);
+    
     const search = document.getElementById('searchFilter').value;
     if (search) params.append('search', search);
     
@@ -1588,7 +1782,7 @@ document.addEventListener('click', function(e) {
         const itemId = row.dataset.id;
         
         // Remove any flag indicators from the value
-        const cleanValue = currentValue.replace(/!$/, '').trim();
+        const cleanValue = currentValue.replace(/[!DEvV]$/, '').replace(/[$%]/g, '').trim();
         
         e.target.classList.add('editing');
         e.target.innerHTML = `<input type="text" class="edit-input" value="${cleanValue}" data-field="${field}" data-id="${itemId}">`;
@@ -1614,7 +1808,7 @@ function saveEdit() {
     const parent = this.parentElement;
     
     // Send update to server
-    fetch(`/admin/inventory-staging/item/${itemId}`, {
+    fetch(`/admin/recipe-staging/item/${itemId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -1647,11 +1841,13 @@ function bulkAction(action) {
     
     const message = action === 'approve' 
         ? `Approve ${selectedItems.size} items?` 
+        : action === 'hold'
+        ? `Hold ${selectedItems.size} items?`
         : `Reject ${selectedItems.size} items?`;
     
     if (!confirm(message)) return;
     
-    fetch('/admin/inventory-staging/batch-action', {
+    fetch('/admin/recipe-staging/batch-action', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -1681,6 +1877,10 @@ function approveItem(itemId) {
     updateItemStatus(itemId, 'approve');
 }
 
+function holdItem(itemId) {
+    updateItemStatus(itemId, 'hold');
+}
+
 function rejectItem(itemId) {
     updateItemStatus(itemId, 'reject');
 }
@@ -1692,7 +1892,7 @@ function deleteItem(itemId) {
 }
 
 function updateItemStatus(itemId, action) {
-    fetch('/admin/inventory-staging/batch-action', {
+    fetch('/admin/recipe-staging/batch-action', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -1720,7 +1920,7 @@ function updateItemStatus(itemId, action) {
 // Bulk approve all valid rows
 function bulkApproveValid() {
     // Find all rows that don't have issues
-    const validRows = document.querySelectorAll('tr:not(.row-has-issues)');
+    const validRows = document.querySelectorAll('tr:not(.row-has-warnings):not(.row-has-errors)');
     const validIds = [];
     
     validRows.forEach(row => {
@@ -1741,7 +1941,7 @@ function bulkApproveValid() {
     
     if (!confirm(`Approve ${validIds.length} valid rows?`)) return;
     
-    fetch('/admin/inventory-staging/batch-action', {
+    fetch('/admin/recipe-staging/batch-action', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -1772,26 +1972,27 @@ function processToLive() {
     const approvedValidRows = document.querySelectorAll('tr[data-id]').length > 0 ? 
         Array.from(document.querySelectorAll('tr[data-id]')).filter(row => {
             const checkbox = row.querySelector('.approval-checkbox');
-            const hasIssues = row.classList.contains('row-warning');
-            return checkbox && checkbox.checked && !hasIssues;
+            const hasErrors = row.classList.contains('row-error');
+            const hasWarnings = row.classList.contains('row-warning');
+            return checkbox && checkbox.checked && !hasErrors && !hasWarnings;
         }).length : 0;
     
     if (approvedValidRows === 0) {
-        showToast('info', 'No Records to Commit', 'There are no approved records without validation issues to commit.');
+        showToast('info', 'No Records to Commit', 'There are no approved recipes without validation issues to commit.');
         return;
     }
     
     const batch = document.getElementById('batchFilter').value;
     const message = batch 
-        ? `Commit ${approvedValidRows} approved records from this batch to live inventory?` 
-        : `Commit ${approvedValidRows} approved records to live inventory?`;
+        ? `Commit ${approvedValidRows} approved recipes from this batch to live recipes?` 
+        : `Commit ${approvedValidRows} approved recipes to live recipes?`;
     
     if (!confirm(message)) return;
     
     // Show processing toast
-    showToast('info', 'Processing', 'Committing approved records to live database...');
+    showToast('info', 'Processing', 'Committing approved recipes to live database...');
     
-    fetch('/admin/inventory-staging/process-to-live', {
+    fetch('/admin/recipe-staging/process-to-live', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -1803,16 +2004,16 @@ function processToLive() {
     .then(response => response.json())
     .then(data => {
         if (data.processed > 0) {
-            showToast('success', 'Records Committed Successfully', 
-                `${data.processed} records have been committed to the live database.${data.errors > 0 ? ` ${data.errors} records had errors.` : ''}`);
+            showToast('success', 'Recipes Committed Successfully', 
+                `${data.processed} recipes have been committed to the live database.${data.errors > 0 ? ` ${data.errors} recipes had errors.` : ''}`);
             
             // Reload after a short delay to let user see the success message
             setTimeout(() => {
                 location.reload();
             }, 2000);
         } else {
-            showToast('error', 'No Records Processed', 
-                `No records were committed. ${data.errors > 0 ? `${data.errors} records had errors.` : 'Please check the records and try again.'}`);
+            showToast('error', 'No Recipes Processed', 
+                `No recipes were committed. ${data.errors > 0 ? `${data.errors} recipes had errors.` : 'Please check the recipes and try again.'}`);
         }
         
         if (data.details && data.details.length > 0) {
@@ -1821,8 +2022,22 @@ function processToLive() {
     })
     .catch(error => {
         console.error('Error:', error);
-        showToast('error', 'Processing Failed', 'Failed to commit records. Please try again.');
+        showToast('error', 'Processing Failed', 'Failed to commit recipes. Please try again.');
     });
+}
+
+// Toggle approval checkbox
+function toggleRowDetails(itemId) {
+    const detailsRow = document.getElementById(`details-${itemId}`);
+    const expandLink = event.target;
+    
+    if (detailsRow.style.display === 'none') {
+        detailsRow.style.display = 'table-row';
+        expandLink.textContent = 'Details ▲';
+    } else {
+        detailsRow.style.display = 'none';
+        expandLink.textContent = 'Details ▼';
+    }
 }
 
 // Toast notification system
@@ -1870,7 +2085,7 @@ function updateStatistics() {
         total++;
         
         const checkbox = row.querySelector('.approval-checkbox');
-        const hasIssues = row.classList.contains('row-warning');
+        const hasIssues = row.classList.contains('row-warning') || row.classList.contains('row-error');
         
         if (checkbox && checkbox.checked) {
             approved++;
@@ -1888,12 +2103,11 @@ function updateStatistics() {
     document.getElementById('unapprovedCount').textContent = unapproved;
 }
 
-// Toggle approval checkbox
 function toggleApproval(itemId, checkbox) {
     const isApproved = checkbox.checked;
-    const action = isApproved ? 'approve' : 'pending';
+    const action = isApproved ? 'approved' : 'pending';
     
-    fetch(`/admin/inventory-staging/item/${itemId}`, {
+    fetch(`/admin/recipe-staging/item/${itemId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -1930,30 +2144,31 @@ function toggleApproval(itemId, checkbox) {
 // Edit modal functions
 function editItem(itemId) {
     // Fetch item data
-    fetch(`/admin/inventory-staging/item/${itemId}`)
+    fetch(`/admin/recipe-staging/item/${itemId}`)
         .then(response => response.json())
         .then(data => {
             // Populate the form
             document.getElementById('edit_staging_id').value = itemId;
-            document.getElementById('edit_product_name').value = data.FAM_Product_Name_cleaned || '';
-            document.getElementById('edit_vendor_name').value = data.Vendor_Name_cleaned || '';
-            document.getElementById('edit_vendor_code').value = data.Vendor_Item_Code_cleaned || '';
-            document.getElementById('edit_vendor_desc').value = data.Vendor_Item_Description_cleaned || '';
-            document.getElementById('edit_vendor_uom').value = data.Vendor_UOM_cleaned || '';
-            document.getElementById('edit_inventory_uom').value = data.Inventory_UOM_cleaned || '';
-            document.getElementById('edit_pack_qty').value = data.Pack_qty_cleaned || 1;
-            document.getElementById('edit_size_qty').value = data.Size_qty_cleaned || 1;
-            document.getElementById('edit_size_uom').value = data.Size_UOM_cleaned || '';
-            document.getElementById('edit_last_price').value = data.Last_Purchased_Price_cleaned || 0;
+            document.getElementById('edit_recipe_name').value = data.recipe_name || '';
+            document.getElementById('edit_recipe_type').value = data.recipe_type || 'Recipe';
+            document.getElementById('edit_status').value = data.status || '';
+            document.getElementById('edit_food_cost').value = data.food_cost || 0;
+            document.getElementById('edit_food_cost_percentage').value = data.food_cost_percentage || 0;
+            document.getElementById('edit_menu_price').value = data.menu_price || 0;
+            document.getElementById('edit_gross_margin').value = data.gross_margin || 0;
+            document.getElementById('edit_yield_quantity').value = data.yield_quantity || '';
+            document.getElementById('edit_yield_unit').value = data.yield_unit || '';
+            document.getElementById('edit_serving_size').value = data.serving_size || '';
+            document.getElementById('edit_serving_size_uom').value = data.serving_size_uom || '';
             document.getElementById('edit_review_status').value = data.review_status || 'pending';
-            document.getElementById('edit_review_notes').value = data.review_notes || '';
+            document.getElementById('edit_validation_notes').value = data.validation_notes || '';
             
             // Show the modal
             document.getElementById('editModal').style.display = 'block';
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('Failed to load item data');
+            alert('Failed to load recipe data');
         });
 }
 
@@ -1974,7 +2189,7 @@ function saveEditItem() {
         }
     }
     
-    fetch(`/admin/inventory-staging/item/${itemId}`, {
+    fetch(`/admin/recipe-staging/item/${itemId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -1984,17 +2199,17 @@ function saveEditItem() {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            alert('Item updated successfully');
+            alert('Recipe updated successfully');
             closeEditModal();
             // Reload the page to show updated data
             window.location.reload();
         } else {
-            alert('Failed to update item: ' + (data.message || 'Unknown error'));
+            alert('Failed to update recipe: ' + (data.message || 'Unknown error'));
         }
     })
     .catch(error => {
         console.error('Error:', error);
-        alert('Failed to update item');
+        alert('Failed to update recipe');
     });
 }
 
@@ -2031,60 +2246,73 @@ document.addEventListener('keydown', function(e) {
 <div id="editModal" class="edit-modal">
     <div class="edit-modal-content">
         <div class="edit-modal-header">
-            <h2>Edit Inventory Item</h2>
+            <h2>Edit Recipe</h2>
             <button class="close-modal" onclick="closeEditModal()">&times;</button>
         </div>
         <form id="editForm">
             <input type="hidden" id="edit_staging_id" name="staging_id">
             
             <div class="edit-form-group">
-                <label for="edit_product_name">FAM Product Name</label>
-                <input type="text" id="edit_product_name" name="FAM_Product_Name_cleaned">
+                <label for="edit_recipe_name">Recipe Name</label>
+                <input type="text" id="edit_recipe_name" name="recipe_name" required>
             </div>
             
             <div class="edit-form-group">
-                <label for="edit_vendor_name">Vendor Name</label>
-                <input type="text" id="edit_vendor_name" name="Vendor_Name_cleaned">
+                <label for="edit_recipe_type">Recipe Type</label>
+                <select id="edit_recipe_type" name="recipe_type">
+                    <option value="Recipe">Recipe</option>
+                    <option value="PrepRecipe">Prep Recipe</option>
+                </select>
             </div>
             
             <div class="edit-form-group">
-                <label for="edit_vendor_code">Vendor Item Code</label>
-                <input type="text" id="edit_vendor_code" name="Vendor_Item_Code_cleaned">
+                <label for="edit_status">Status</label>
+                <select id="edit_status" name="status">
+                    <option value="Active">Active</option>
+                    <option value="Draft">Draft</option>
+                    <option value="Test">Test</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
             </div>
             
             <div class="edit-form-group">
-                <label for="edit_vendor_desc">Vendor Item Description</label>
-                <input type="text" id="edit_vendor_desc" name="Vendor_Item_Description_cleaned">
+                <label for="edit_food_cost">Food Cost ($)</label>
+                <input type="number" id="edit_food_cost" name="food_cost" step="0.01" min="0">
             </div>
             
             <div class="edit-form-group">
-                <label for="edit_vendor_uom">Vendor UOM</label>
-                <input type="text" id="edit_vendor_uom" name="Vendor_UOM_cleaned">
+                <label for="edit_food_cost_percentage">Food Cost %</label>
+                <input type="number" id="edit_food_cost_percentage" name="food_cost_percentage" step="0.1" min="0" max="100">
             </div>
             
             <div class="edit-form-group">
-                <label for="edit_inventory_uom">Inventory UOM</label>
-                <input type="text" id="edit_inventory_uom" name="Inventory_UOM_cleaned">
+                <label for="edit_menu_price">Menu Price ($)</label>
+                <input type="number" id="edit_menu_price" name="menu_price" step="0.01" min="0">
             </div>
             
             <div class="edit-form-group">
-                <label for="edit_pack_qty">Pack Qty</label>
-                <input type="number" id="edit_pack_qty" name="Pack_qty_cleaned" min="1">
+                <label for="edit_gross_margin">Gross Margin (%)</label>
+                <input type="number" id="edit_gross_margin" name="gross_margin" step="0.1" min="0" max="100">
             </div>
             
             <div class="edit-form-group">
-                <label for="edit_size_qty">Size Qty</label>
-                <input type="number" id="edit_size_qty" name="Size_qty_cleaned" step="0.01" min="0.01">
+                <label for="edit_yield_quantity">Yield Quantity</label>
+                <input type="number" id="edit_yield_quantity" name="yield_quantity" step="0.01" min="0">
             </div>
             
             <div class="edit-form-group">
-                <label for="edit_size_uom">Size UOM</label>
-                <input type="text" id="edit_size_uom" name="Size_UOM_cleaned">
+                <label for="edit_yield_unit">Yield Unit</label>
+                <input type="text" id="edit_yield_unit" name="yield_unit">
             </div>
             
             <div class="edit-form-group">
-                <label for="edit_last_price">Last Purchased Price ($)</label>
-                <input type="number" id="edit_last_price" name="Last_Purchased_Price_cleaned" step="0.01" min="0">
+                <label for="edit_serving_size">Serving Size</label>
+                <input type="number" id="edit_serving_size" name="serving_size" step="0.01" min="0">
+            </div>
+            
+            <div class="edit-form-group">
+                <label for="edit_serving_size_uom">Serving Size UOM</label>
+                <input type="text" id="edit_serving_size_uom" name="serving_size_uom">
             </div>
             
             <div class="edit-form-group">
@@ -2093,12 +2321,13 @@ document.addEventListener('keydown', function(e) {
                     <option value="pending">Pending</option>
                     <option value="approved">Approved</option>
                     <option value="rejected">Rejected</option>
+                    <option value="hold">On Hold</option>
                 </select>
             </div>
             
             <div class="edit-form-group">
-                <label for="edit_review_notes">Review Notes</label>
-                <textarea id="edit_review_notes" name="review_notes" rows="3" style="width: 100%; padding: 8px 12px; border: 1px solid #ced4da; border-radius: 4px;"></textarea>
+                <label for="edit_validation_notes">Validation Notes</label>
+                <textarea id="edit_validation_notes" name="validation_notes" rows="3"></textarea>
             </div>
         </form>
         

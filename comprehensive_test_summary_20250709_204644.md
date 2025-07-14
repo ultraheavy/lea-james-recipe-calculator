@@ -1,6 +1,6 @@
 # 🧪 COMPREHENSIVE TEST SUMMARY REPORT
 **Generated:** 2025-07-09 20:46:44
-**Project:** Lea James Hot Chicken Recipe Management System
+**Project:** Lea Jane's Hot Chicken Recipe Management System
 
 ## 📊 EXECUTIVE SUMMARY
 
