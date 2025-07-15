@@ -29,15 +29,17 @@ except ImportError as e:
 except Exception as e:
     print(f"Error registering recipe staging blueprint: {e}")
 
-# Import and register PDF recipe staging blueprint
+# PDF recipe staging blueprint removed - functionality archived
+
+# Import and register recipe CSV staging blueprint
 try:
-    from recipe_pdf_staging_admin import pdf_staging_bp
-    app.register_blueprint(pdf_staging_bp)
-    print("Successfully registered PDF recipe staging blueprint at /admin/recipe-pdf-staging/")
+    from recipe_csv_staging_admin import recipe_csv_staging_bp
+    app.register_blueprint(recipe_csv_staging_bp)
+    print("Successfully registered recipe CSV staging blueprint at /admin/recipe-csv-staging/")
 except ImportError as e:
-    print(f"Warning: Could not import PDF recipe staging admin: {e}")
+    print(f"Warning: Could not import recipe CSV staging admin: {e}")
 except Exception as e:
-    print(f"Error registering PDF recipe staging blueprint: {e}")
+    print(f"Error registering recipe CSV staging blueprint: {e}")
 
 # Support for production deployment with Railway volumes
 try:

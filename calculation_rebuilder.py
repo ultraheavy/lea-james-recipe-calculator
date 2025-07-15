@@ -25,13 +25,14 @@ logger = logging.getLogger(__name__)
 # Import dependencies
 from uom_standardizer import UOMStandardizer
 
-# Try to import PDF extractor if available
-try:
-    from pdf_recipe_extractor import PDFRecipeExtractor
-    PDF_SUPPORT = True
-except ImportError:
-    logger.warning("PDF recipe extractor not available - PDF validation disabled")
-    PDF_SUPPORT = False
+# PDF functionality archived - commented out
+# try:
+#     from pdf_recipe_extractor import PDFRecipeExtractor
+#     PDF_SUPPORT = True
+# except ImportError:
+#     logger.warning("PDF recipe extractor not available - PDF validation disabled")
+#     PDF_SUPPORT = False
+PDF_SUPPORT = False  # PDF functionality has been archived
 
 
 class CalculationRebuilder:

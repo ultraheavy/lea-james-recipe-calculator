@@ -12,8 +12,8 @@
     <!-- Menu Details Form -->
     {% set menu_colors = ['#f0f9ff', '#fef3c7', '#f0fdf4', '#fef2f2', '#f3f4f6', '#ede9fe', '#fdf2f8', '#ecfdf5'] %}
     {% set menu_color = menu_colors[menu.id % menu_colors|length] %}
-    <div class="card mb-4 menu-details-card" style="background-color: {{ menu_color }}; border: 1px solid rgba(0,0,0,0.1);">
-        <div class="card-header" style="background-color: {{ menu_color }}; border-bottom: 1px solid rgba(0,0,0,0.1);">
+    <div class="card mb-4 menu-details-card" style="background-color: var(--card-bg); border: 1px solid var(--border-color);">
+        <div class="card-header" style="background-color: var(--card-header-bg); border-bottom: 1px solid var(--border-color);">
             <h3>Menu Details</h3>
         </div>
         <div class="card-body">
@@ -47,11 +47,11 @@
 
     <!-- Menu Items Assignment -->
     <div class="card">
-        <div class="card-header" style="background-color: #f9fafb; border-bottom: 2px solid #e5e7eb;">
+        <div class="card-header" style="background-color: var(--card-header-bg); border-bottom: 2px solid var(--border-color);">
             <h3>Menu Items</h3>
             <p class="mb-0 text-muted">Check items to include in this menu</p>
         </div>
-        <div class="card-body" style="background-color: white;">
+        <div class="card-body" style="background-color: var(--card-bg);">
             <!-- Category Tabs -->
             <ul class="nav nav-tabs mb-3" role="tablist">
                 <li class="nav-item">
@@ -210,6 +210,21 @@ function saveSelections(event) {
 </script>
 
 <style>
+/* Define missing CSS variables for compatibility */
+:root {
+    --card-bg: var(--surface-color, #ffffff);
+    --card-header-bg: var(--surface-secondary, #f9fafb);
+    --input-bg: var(--surface-color, #ffffff);
+    --hover-bg: var(--surface-secondary, #f9fafb);
+}
+
+[data-theme="dark"] {
+    --card-bg: var(--surface-color, #1f2937);
+    --card-header-bg: var(--surface-secondary, #111827);
+    --input-bg: var(--surface-color, #1f2937);
+    --hover-bg: var(--surface-secondary, #111827);
+}
+
 .card {
     border: none;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -230,18 +245,19 @@ function saveSelections(event) {
 /* Override for menu details card */
 .menu-details-card .card-header {
     background: transparent !important;
-    color: #374151 !important;
+    color: var(--text-primary) !important;
 }
 
 .menu-details-card .card-header h3 {
-    color: #374151 !important;
+    color: var(--text-primary) !important;
 }
 
 /* Ensure form elements are readable */
 .menu-details-card .form-control,
 .menu-details-card textarea {
-    background-color: white !important;
-    border: 1px solid #d1d5db !important;
+    background-color: var(--input-bg) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-primary) !important;
 }
 
 .menu-details-card .form-control:focus,
@@ -252,26 +268,34 @@ function saveSelections(event) {
 
 /* Better table styling */
 .table {
-    background-color: white;
+    background-color: var(--card-bg);
 }
 
 .table thead th {
-    background-color: #f9fafb;
-    border-bottom: 2px solid #e5e7eb;
+    background-color: var(--surface-color);
+    border-bottom: 2px solid var(--border-color);
     font-weight: 600;
-    color: #374151;
+    color: var(--text-primary);
 }
 
 .table tbody tr:hover {
-    background-color: #f9fafb;
+    background-color: var(--hover-bg);
 }
 
 .table-success {
     background-color: rgba(16, 185, 129, 0.1) !important;
 }
 
+[data-theme="dark"] .table-success {
+    background-color: rgba(16, 185, 129, 0.2) !important;
+}
+
 .table-success:hover {
     background-color: rgba(16, 185, 129, 0.15) !important;
+}
+
+[data-theme="dark"] .table-success:hover {
+    background-color: rgba(16, 185, 129, 0.25) !important;
 }
 
 .nav-tabs .nav-link {
@@ -286,9 +310,6 @@ function saveSelections(event) {
     background: none;
 }
 
-.table-success {
-    background-color: rgba(40, 167, 69, 0.1);
-}
 
 .form-control-sm {
     height: calc(1.5em + .5rem + 2px);

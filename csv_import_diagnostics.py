@@ -450,13 +450,16 @@ class CSVImportDiagnostics:
         
     def _check_pdf_extractor(self) -> bool:
         """Check if PDF extractor is available"""
-        try:
-            from pdf_recipe_extractor import PDFRecipeExtractor
-            self.pdf_extractor = PDFRecipeExtractor('data/sources/pdf_recipes')
-            return True
-        except ImportError:
-            logger.warning("PDF extractor not available for ground truth comparison")
-            return False
+        # PDF functionality archived - commented out
+        # try:
+        #     from pdf_recipe_extractor import PDFRecipeExtractor
+        #     self.pdf_extractor = PDFRecipeExtractor('data/sources/pdf_recipes')
+        #     return True
+        # except ImportError:
+        #     logger.warning("PDF extractor not available for ground truth comparison")
+        #     return False
+        logger.warning("PDF extractor functionality has been archived")
+        return False
             
     def compare_csv_vs_pdf(self):
         """Compare CSV data with PDF ground truth"""

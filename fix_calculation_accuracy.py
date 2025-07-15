@@ -64,12 +64,14 @@ class CalculationAccuracyFixer:
 ╚══════════════════════════════════════════════════════════╝
         """)
         
-        # Phase 1: Extract PDF Data (Agent 1)
-        logger.info("\n🚀 PHASE 1: PDF Data Extraction")
-        if self.run_agent("PDF Recipe Extractor", "pdf_recipe_extractor.py"):
-            logger.info("PDF extraction complete - ground truth established")
-        else:
-            logger.warning("PDF extraction failed - continuing with existing data")
+        # Phase 1: Extract PDF Data (Agent 1) - ARCHIVED
+        # PDF functionality has been archived
+        # logger.info("\n🚀 PHASE 1: PDF Data Extraction")
+        # if self.run_agent("PDF Recipe Extractor", "pdf_recipe_extractor.py"):
+        #     logger.info("PDF extraction complete - ground truth established")
+        # else:
+        #     logger.warning("PDF extraction failed - continuing with existing data")
+        logger.info("\n🚀 PHASE 1: PDF Data Extraction - SKIPPED (functionality archived)")
         
         # Phase 2: Fix UOM Issues (Agent 2)
         logger.info("\n🔧 PHASE 2: UOM Standardization")
@@ -138,7 +140,7 @@ NEXT STEPS:
 5. Monitor calculation accuracy going forward
 
 FILES CREATED:
-- pdf_recipe_extractor.py: Extracts ground truth from PDFs
+- pdf_recipe_extractor.py: Extracts ground truth from PDFs (ARCHIVED)
 - uom_standardizer.py: Fixes unit of measure issues
 - calculation_rebuilder.py: Rebuilds all recipe calculations
 - csv_import_diagnostics.py: Diagnoses import problems
