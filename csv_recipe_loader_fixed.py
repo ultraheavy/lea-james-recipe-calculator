@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-CSV Recipe Loader FIXED - Properly handles actual CSV format
+CSV Recipe Loader FIXED - Properly handles the actual CSV format
 """
 
 import os

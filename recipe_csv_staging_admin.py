@@ -21,8 +21,96 @@ class RecipeCsvStagingAdmin:
         else:
             self.db_path = db_path
     
+    def get_recipes_for_review(self, filters: Dict = None, page: int = 1, per_page: int = 50) -> Dict:
+        """Get RECIPES for review (not individual ingredients)"""
+        conn = sqlite3.connect(self.db_path)
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+        
+        # Get recipe-level summary data
+        where_clauses = ["is_latest_version = 1"]
+        params = []
+        
+        # Apply filters
+        if filters:
+            if filters.get('batch_id'):
+                where_clauses.append("import_batch_id = ?")
+                params.append(filters['batch_id'])
+            
+            if filters.get('review_status'):
+                where_clauses.append("review_status = ?")
+                params.append(filters['review_status'])
+            
+            if filters.get('is_prep_recipe') is not None:
+                where_clauses.append("is_prep_recipe = ?")
+                params.append(filters['is_prep_recipe'])
+        
+        # Count unique recipes
+        count_query = f"""
+            SELECT COUNT(DISTINCT recipe_name) 
+            FROM stg_csv_recipes
+            WHERE {' AND '.join(where_clauses)}
+        """
+        total_count = cursor.execute(count_query, params).fetchone()[0]
+        
+        # Get recipe summaries with pagination
+        offset = (page - 1) * per_page
+        recipe_query = f"""
+            SELECT 
+                recipe_name,
+                COUNT(*) as ingredient_count,
+                SUM(CAST(cost AS REAL)) as total_cost,
+                MAX(is_prep_recipe) as is_prep_recipe,
+                MAX(source_filename) as source_filename,
+                MAX(import_batch_id) as import_batch_id,
+                MIN(review_status) as review_status,
+                MAX(needs_review) as needs_review,
+                COUNT(CASE WHEN used_as_ingredient = 1 THEN 1 END) as prep_ingredient_count
+            FROM stg_csv_recipes
+            WHERE {' AND '.join(where_clauses)}
+            GROUP BY recipe_name
+            ORDER BY recipe_name
+            LIMIT ? OFFSET ?
+        """
+        params.extend([per_page, offset])
+        
+        recipes = []
+        for row in cursor.execute(recipe_query, params):
+            recipe = dict(row)
+            recipe['review_status'] = recipe['review_status'] or 'pending'
+            recipes.append(recipe)
+        
+        conn.close()
+        
+        return {
+            'recipes': recipes,
+            'total': total_count,
+            'page': page,
+            'per_page': per_page,
+            'total_pages': (total_count + per_page - 1) // per_page
+        }
+    
+    def get_recipe_ingredients(self, recipe_name: str) -> List[Dict]:
+        """Get all ingredients for a specific recipe"""
+        conn = sqlite3.connect(self.db_path)
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+        
+        query = """
+            SELECT * FROM stg_csv_recipes
+            WHERE recipe_name = ? AND is_latest_version = 1
+            ORDER BY row_number
+        """
+        
+        ingredients = []
+        for row in cursor.execute(query, (recipe_name,)):
+            ingredients.append(dict(row))
+        
+        conn.close()
+        return ingredients
+    
     def get_review_items(self, filters: Dict = None, page: int = 1, per_page: int = 50) -> Dict:
-        """Get items for review with filtering and pagination"""
+        """DEPRECATED - Use get_recipes_for_review instead"""
         conn = sqlite3.connect(self.db_path)
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
@@ -302,6 +390,72 @@ class RecipeCsvStagingAdmin:
         
         return results
     
+    def approve_recipe(self, recipe_name: str) -> Dict:
+        """Approve all ingredients for a recipe"""
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        result = {'success': False, 'message': '', 'updated': 0}
+        
+        try:
+            # Update all ingredients for this recipe
+            query = """
+                UPDATE stg_csv_recipes 
+                SET review_status = 'approved', 
+                    needs_review = 0, 
+                    reviewed_at = CURRENT_TIMESTAMP,
+                    reviewed_by = 'admin'
+                WHERE recipe_name = ? AND is_latest_version = 1
+            """
+            
+            cursor.execute(query, (recipe_name,))
+            result['updated'] = cursor.rowcount
+            conn.commit()
+            
+            result['success'] = True
+            result['message'] = f'Approved {result["updated"]} ingredients for recipe "{recipe_name}"'
+            
+        except Exception as e:
+            conn.rollback()
+            result['message'] = f"Error approving recipe: {str(e)}"
+        finally:
+            conn.close()
+        
+        return result
+    
+    def reject_recipe(self, recipe_name: str, reason: str = None) -> Dict:
+        """Reject all ingredients for a recipe"""
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        result = {'success': False, 'message': '', 'updated': 0}
+        
+        try:
+            # Update all ingredients for this recipe
+            query = """
+                UPDATE stg_csv_recipes 
+                SET review_status = 'rejected',
+                    reviewed_at = CURRENT_TIMESTAMP,
+                    reviewed_by = 'admin',
+                    review_notes = ?
+                WHERE recipe_name = ? AND is_latest_version = 1
+            """
+            
+            cursor.execute(query, (reason or 'Rejected by admin', recipe_name))
+            result['updated'] = cursor.rowcount
+            conn.commit()
+            
+            result['success'] = True
+            result['message'] = f'Rejected {result["updated"]} ingredients for recipe "{recipe_name}"'
+            
+        except Exception as e:
+            conn.rollback()
+            result['message'] = f"Error rejecting recipe: {str(e)}"
+        finally:
+            conn.close()
+        
+        return result
+    
     def process_to_live(self, batch_id: str = None) -> Dict:
         """Process approved recipes to live recipe tables"""
         conn = sqlite3.connect(self.db_path)
@@ -363,7 +517,7 @@ class RecipeCsvStagingAdmin:
                 try:
                     # Check if recipe already exists
                     existing = cursor.execute(
-                        "SELECT recipe_id FROM recipes WHERE recipe_name = ?",
+                        "SELECT recipe_id FROM recipes_actual WHERE recipe_name = ?",
                         (recipe_name,)
                     ).fetchone()
                     
@@ -390,11 +544,18 @@ class RecipeCsvStagingAdmin:
                     
                     # Insert recipe
                     cursor.execute("""
-                        INSERT INTO recipes (
-                            recipe_name, is_prep_recipe, source_file,
-                            created_at, created_by
-                        ) VALUES (?, ?, ?, CURRENT_TIMESTAMP, 'csv_import')
-                    """, (recipe_name, is_prep_recipe, recipe_data['source_filename']))
+                        INSERT INTO recipes_actual (
+                            recipe_name, 
+                            recipe_type,
+                            recipe_group,
+                            status,
+                            created_at
+                        ) VALUES (?, ?, ?, 'Active', CURRENT_TIMESTAMP)
+                    """, (
+                        recipe_name, 
+                        'PrepRecipe' if is_prep_recipe else 'Recipe',
+                        'Prep' if is_prep_recipe else 'Main'  # Default grouping
+                    ))
                     
                     recipe_id = cursor.lastrowid
                     results['processed_recipes'] += 1
@@ -417,19 +578,24 @@ class RecipeCsvStagingAdmin:
                         ingredients = cursor.execute(ingredients_query, (recipe_name,)).fetchall()
                     
                     # Insert ingredients
-                    for ingredient in ingredients:
+                    for idx, ingredient in enumerate(ingredients):
                         cursor.execute("""
-                            INSERT INTO recipe_ingredients (
-                                recipe_id, ingredient_name, quantity, unit, cost,
-                                source_file, created_at
+                            INSERT INTO recipe_ingredients_actual (
+                                recipe_id, 
+                                ingredient_order,
+                                ingredient_name, 
+                                quantity, 
+                                unit, 
+                                total_cost,
+                                created_at
                             ) VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
                         """, (
                             recipe_id,
+                            idx + 1,  # ingredient_order
                             ingredient['ingredient_name'],
-                            ingredient['quantity'],
-                            ingredient['unit'],
-                            ingredient['cost'],
-                            ingredient['source_filename']
+                            ingredient['quantity'] or 0,
+                            ingredient['unit'] or 'each',
+                            ingredient['cost'] or 0
                         ))
                         results['processed_ingredients'] += 1
                         
@@ -531,23 +697,15 @@ admin = RecipeCsvStagingAdmin()
 # Routes
 @recipe_csv_staging_bp.route('/')
 def index():
-    """Main review page"""
+    """Main review page - Shows RECIPES not ingredients"""
     # Get filters from request
     filters = {}
     if request.args.get('batch_id'):
         filters['batch_id'] = request.args.get('batch_id')
-    if request.args.get('needs_review'):
-        filters['needs_review'] = request.args.get('needs_review') == '1'
     if request.args.get('review_status'):
         filters['review_status'] = request.args.get('review_status')
-    if request.args.get('is_duplicate'):
-        filters['is_duplicate'] = request.args.get('is_duplicate') == '1'
     if request.args.get('is_prep_recipe'):
         filters['is_prep_recipe'] = request.args.get('is_prep_recipe') == '1'
-    if request.args.get('has_issues'):
-        filters['has_issues'] = request.args.get('has_issues') == '1'
-    if request.args.get('show_all_versions'):
-        filters['show_all_versions'] = request.args.get('show_all_versions') == '1'
     if request.args.get('search'):
         filters['search'] = request.args.get('search')
     
@@ -556,12 +714,12 @@ def index():
     per_page = int(request.args.get('per_page', 50))
     
     # Get data
-    data = admin.get_review_items(filters, page, per_page)
+    data = admin.get_recipes_for_review(filters, page, per_page)
     batches = admin.get_batch_list()
     stats = admin.get_statistics()
     
     return render_template('recipe_csv_staging_review.html',
-                         items=data['items'],
+                         recipes=data['recipes'],
                          total=data['total'],
                          page=data['page'],
                          per_page=data['per_page'],
@@ -569,6 +727,12 @@ def index():
                          batches=batches,
                          stats=stats,
                          filters=filters)
+
+@recipe_csv_staging_bp.route('/recipe/<recipe_name>/ingredients')
+def get_recipe_ingredients(recipe_name):
+    """Get ingredients for a specific recipe"""
+    ingredients = admin.get_recipe_ingredients(recipe_name)
+    return jsonify({'ingredients': ingredients})
 
 @recipe_csv_staging_bp.route('/item/<int:staging_id>', methods=['GET', 'POST'])
 def item(staging_id):
@@ -594,6 +758,19 @@ def item(staging_id):
             return jsonify(dict(item))
         else:
             return jsonify({'error': 'Item not found'}), 404
+
+@recipe_csv_staging_bp.route('/recipe/<recipe_name>/approve', methods=['POST'])
+def approve_recipe(recipe_name):
+    """Approve all ingredients for a recipe"""
+    result = admin.approve_recipe(recipe_name)
+    return jsonify(result)
+
+@recipe_csv_staging_bp.route('/recipe/<recipe_name>/reject', methods=['POST'])
+def reject_recipe(recipe_name):
+    """Reject all ingredients for a recipe"""
+    reason = request.json.get('reason') if request.json else None
+    result = admin.reject_recipe(recipe_name, reason)
+    return jsonify(result)
 
 @recipe_csv_staging_bp.route('/batch-action', methods=['POST'])
 def batch_action():
