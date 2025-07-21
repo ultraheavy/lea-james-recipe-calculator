@@ -1,8 +1,8 @@
 Database Export Summary
-Generated: 2025-07-07 20:17:01
+Generated: 2025-07-20 21:59:01
 ==============================
 inventory: 250 records
 recipes: 66 records
-menu_items: 106 records
+menu_items: 107 records
 vendors: 25 records
 vendor_descriptions: 219 records
